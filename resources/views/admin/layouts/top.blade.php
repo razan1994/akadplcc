@@ -11,14 +11,14 @@
 
 
         {{-- <meta property="og:image" content="https://br-ws.com/wazefate/public/front_end_style/images/logo.png"/> --}}
-        <meta property="og:title" content="Juman Dead Sea"/>
+        <meta property="og:title" content="JmeGoods"/>
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="300">
         <meta property="og:image:height" content="300">
         {{-- <meta property="og:description" content="Your description."/>   --}}
 
-    <title>Juman | Admin Dashboard</title>
+    <title>JmeGoods | Admin Dashboard</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"

@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $public_user_types = ['Super Admin', 'Customer'];
-            $public_categories = Category::where('status', 1)->orderBy('created_at', 'asc')->get();
             $public_products = Product::where('status', 1)->orderBy('created_at', 'asc')->get();
 
             if (Auth::check() && Auth::guard('customer')->check()) {
@@ -50,7 +49,6 @@ class AppServiceProvider extends ServiceProvider
 
             view()->share([
                 'public_user_types' => $public_user_types,
-                'public_categories' => $public_categories,
                 'public_products' => $public_products,
                 'public_customer_carts' => $public_customer_carts,
             ]);

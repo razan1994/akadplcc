@@ -36,26 +36,20 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1><i class="fas fa-user-md"></i> All Categories Archived</h1>
+                    <h1><i class="mdi mdi-account-multiple"></i> All Categories</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.dashboard') }}">
-                                    <i class="mdi  mdi-home"></i> Dashboard
-                                </a>
+                                <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi  mdi-home"></i> Dashboard </a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.categories-index') }}">
-                                    <i class="fas fa-spell-check"></i> All Categories
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item" aria-current="page"><i
-                                class="mdi mdi-delete"></i> All Categories Archived
-                            </li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Categories</li>
                         </ol>
                     </nav>
                 </div>
-
+                <div>
+                    <a href="{{ route('super_admin.superCategories-create') }}" class="mb-1 btn btn-primary"><i class="mdi mdi-playlist-plus"></i> Add New </a>
+                    <a href="{{ route('super_admin.superCategories-showSoftDelete') }}" class=" mb-1 btn btn-danger"><i class=" mdi mdi-delete"></i> Archive </a>
+                </div>
             </div>
 
             {{-- ============================================== --}}
@@ -80,9 +74,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (isset($categories))
-                                @if ($categories->count() > 0)
-                                    @foreach ($categories as $index => $category)
+                            {{-- Super Admin --}}
+                            @if (isset($superCategories))
+                                @if ($superCategories->count() > 0)
+                                    @foreach ($superCategories as $index => $category)
                                         <tr>
                                             <td>{!! isset($category->id) ? $category->id : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($category->name_ar) ? $category->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
@@ -107,9 +102,12 @@
                                                     <span style='color:red;'>Undefined</span>
                                                 @endif
                                             </td>
-                                            <td style="text-align: center">
-                                                <a href="{{ route('super_admin.categories-softDeleteRestore', $category->id) }}" class="unarchive mb-1 btn btn-sm btn-success"><i class="mdi mdi-redo-variant"></i></a>
-                                                <a href="{{ route('super_admin.categories-destroy', [$category->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
+                                            <td>
+                                                {{-- <a href="{{ route('super_admin.superCategories-show', [$category->id]) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a> --}}
+                                                <a href="{{ route('super_admin.superCategories-edit', [$category->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
+                                                <a href="{{ route('super_admin.superCategories-activeInactiveSingle', [$category->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
+                                                <a href="{{ route('super_admin.superCategories-softDelete', [$category->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
+                                                {{-- <a href="{{ route('super_admin.superCategories-destroy', [$category->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -119,25 +117,27 @@
                     </table>
                 </div>
             </div>
-        @endsection
 
-        @section('admin_javascript')
-            <script>
-                jQuery(document).ready(function() {
-                    jQuery('#hoverable-data-table').DataTable({
-                        "aLengthMenu": [
-                            [20, 30, 50, 75, -1],
-                            [20, 30, 50, 75, "All"]
-                        ],
-                        "pageLength": 20,
-                        "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'
-                        "order": [[ 2, "desc" ]]
-                    });
-                });
-            </script>
-            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}">
-            </script>
-            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}">
-            </script>
+        </div>
+    </div>
+@endsection
 
-        @endsection
+@section('admin_javascript')
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('#hoverable-data-table').DataTable({
+                "aLengthMenu": [
+                    [20, 30, 50, 75, -1],
+                    [20, 30, 50, 75, "All"]
+                ],
+                "pageLength": 20,
+                "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'
+            });
+        });
+    </script>
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}">
+    </script>
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}">
+    </script>
+
+@endsection

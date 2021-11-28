@@ -8,28 +8,31 @@
 @section('content')
     <div class="content-wrapper">
         <div class="content">
-
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 {{-- ============================================== --}}
                 {{-- ================== Header ==================== --}}
                 {{-- ============================================== --}}
                 <div>
-                    <h1><i class="mdi mdi-playlist-plus"></i> Add New Category</h1>
+                    <h1><i class="mdi mdi-playlist-edit"></i> Update Main Category Information</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi mdi-home"></i> Dashboard </a>
+                                <a href="{{ route('super_admin.dashboard') }}">
+                                    <i class="mdi mdi-home"></i> Dashboard
+                                </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.categories-index') }}"> <i class="mdi mdi-account-group"></i> All Categories </a>
+                                <a href="{{ route('super_admin.mainCategories-index') }}">
+                                    <i class="mdi mdi-account-group"></i> All Main Categories
+                                </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New Category</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-edit"></i> Edit</li>
                         </ol>
                     </nav>
                 </div>
 
                 {{-- ============================================== --}}
-                {{-- ==================== Body ==================== --}}
+                {{-- =================== Body ===================== --}}
                 {{-- ============================================== --}}
                 <div class="content-wrapper">
                     <div class="content">
@@ -37,20 +40,18 @@
                             <div class="col-lg-12">
                                 <div class="card card-default">
                                     <div class="card-header justify-content-between " style="background-color: #4c84ff;">
+                                        {{-- <h2 style="color:white;"><i class="mdi mdi-star mdi-spin"></i> طلبات سحب الرصيد : </h2> --}}
                                     </div>
                                     <div class="card-body">
-                                        <form action="{{ route('super_admin.categories-store') }}" method="POST"
-                                            enctype="multipart/form-data" id="createForm">
+                                        <form action="{{ route('super_admin.mainCategories-update', [$mainCategory->id]) }}" method="POST"
+                                            id="updateForm" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
 
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Name AR : <strong
-                                                            class="text-danger"> * @error('name_ar') (
-                                                            {{ $message }} ) @enderror</strong>
+                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Name AR : <strong class="text-danger"> * @error('name_ar') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -58,27 +59,22 @@
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
                                                         <input type="text" name="name_ar"
-                                                            class="form-control @error('name_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Name AR"
-                                                            value="{{ old('name_ar') }}">
+                                                            class="form-control @error('name_ar') is-invalid @enderror" id="validationServer01"
+                                                            placeholder="Name AR" value="{{ isset($mainCategory->name_ar) ? $mainCategory->name_ar : null }}">
                                                     </div>
                                                 </div>
 
                                                 {{-- Name EN --}}
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
+                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Name EN : <strong class="text-danger"> * @error('name_en') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account"
-                                                                id="inputGroupPrepend2"></span>
+                                                            <span class="input-group-text mdi mdi-account" id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <input type="text" name="name_en"
-                                                            class="form-control @error('name_en') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Name EN"
-                                                            value="{{ old('name_en') }}">
+                                                        <input type="text" name="name_en" class="form-control @error('name_en') is-invalid @enderror" id="validationServer01" placeholder="Name EN"
+                                                            value="{{ isset($mainCategory->name_en) ? $mainCategory->name_en : null }}">
                                                     </div>
                                                 </div>
 
@@ -86,8 +82,7 @@
                                                 <div class="col-12">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        Description AR : <strong class="text-danger"> * @error('description_ar')
-                                                            - {{ $message }} @enderror</strong>
+                                                        Description AR : <strong class="text-danger"> * @error('description_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -96,7 +91,7 @@
                                                         </div>
                                                         <textarea style="width: 90% !important" name="description_ar"
                                                             class="form-control "
-                                                            rows="5">{{ old('description_ar') }}</textarea>
+                                                            rows="5">{{ isset($mainCategory->description_ar) ? $mainCategory->description_ar : null }}</textarea>
                                                     </div>
                                                 </div>
 
@@ -114,7 +109,7 @@
                                                         </div>
                                                         <textarea style="width: 90% !important" name="description_en"
                                                             class="form-control "
-                                                            rows="5">{{ old('description_en') }}</textarea>
+                                                            rows="5">{{ isset($mainCategory->description_en) ? $mainCategory->description_en : null }}</textarea>
                                                     </div>
                                                 </div>
 
@@ -130,13 +125,13 @@
                                                         </div>
                                                         <select name="status" class="custom-select my-1 mr-sm-2 @error('status') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                             <option value="">Select Status...</option>
-                                                            <option value="1" @if (old('status') == '1') selected @endif>Active</option>
-                                                            <option value="2" @if (old('status') == '2') selected @endif>Inactive</option>
+                                                            <option value="1" @if (isset($mainCategory->status) && $mainCategory->status == '1') selected @endif>Active</option>
+                                                            <option value="2" @if (isset($mainCategory->status) && $mainCategory->status == '2') selected @endif>Inactive</option>
                                                         </select>
                                                     </div>
                                                 </div>
 
-                                                {{-- Image --}}
+                                                {{-- Image Filed --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
@@ -150,9 +145,23 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- Display Image --}}
+                                                <div class="col-md-12 mb-3">
+                                                    @if (isset($mainCategory->image))
+                                                        @if ($mainCategory->image && file_exists($mainCategory->image))
+                                                            <img src="{{ asset($mainCategory->image) }}" width="100" height="100" style="border-radius: 10px; border:solid 1px black;">
+                                                        @else
+                                                            <img src="{{ asset('front_end_style/images/default.png') }}" width="100" height="100">
+                                                        @endif
+                                                    @else
+                                                        <img src="{{ asset('front_end_style/images/default.png') }}" width="100" height="70">
+                                                    @endif
+                                                </div>
+
                                             </div>
+
                                             {{-- Button --}}
-                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-playlist-plus"></i> Add</button>
+                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-content-save-all"></i> Save Updates</button>
                                         </form>
                                     </div>
                                 </div>
@@ -164,7 +173,6 @@
         </div>
 
     @endsection
-
     @section('admin_javascript')
-      
+
     @endsection

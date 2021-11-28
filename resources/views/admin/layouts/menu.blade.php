@@ -11,7 +11,7 @@
                     </g>
                 </svg> --}}
                 {{-- <img height="33" width="30" src="{{ asset('images_default/blueray_logo.jpg') }}" alt=""> --}}
-                <span class="brand-name text-truncate"> Juman Dead Sea</span>
+                <span class="brand-name text-truncate"> JmeGoods </span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -62,8 +62,20 @@
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.categories-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Categories </span>
+                                    href="{{ route('super_admin.superCategories-index') }}">
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Super Categories </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.mainCategories-index') }}">
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Main Categories </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a class="sidenav-item-link"
+                                    href="">
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Sub Categories </span>
                                 </a>
                             </li>
                             <li class="active">
@@ -103,7 +115,7 @@
                         </div>
                     </ul>
                 </li>
-              
+
                 {{-- Website Layout --}}
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#job"

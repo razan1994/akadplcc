@@ -10,7 +10,6 @@ use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\SupportTicketController;
-use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\ProductController;
 use App\Http\Controllers\Backend\Admin\OrderController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
@@ -20,10 +19,14 @@ use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\FaqController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\MainCategoryController;
 use App\Http\Controllers\Backend\Admin\PromoCodeController;
+use App\Http\Controllers\Backend\Admin\SubCategoryController;
+use App\Http\Controllers\Backend\Admin\SuperCategoryController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\FrontEndController;
 
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     // ==================================================================================================================
@@ -130,20 +133,52 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/activeInactiveSingle/{id}/{user_type}', [UserController::class, 'activeInactiveSingle'])->name('users-activeInactiveSingle');
         });
 
-        // Category Routes :
+        // Super Category Routes :
         // ==============================================================================
-        Route::group(['prefix' => 'categories'], function () {
-            Route::get('/create', [CategoryController::class, 'create'])->name('categories-create');
-            Route::post('/store', [CategoryController::class, 'store'])->name('categories-store');
-            Route::get('/index', [CategoryController::class, 'index'])->name('categories-index');
-            Route::get('show/{id}', [CategoryController::class, 'show'])->name('categories-show');
-            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('categories-edit');
-            Route::post('update/{id}', [CategoryController::class, 'update'])->name('categories-update');
-            Route::get('activeInactiveSingle/{id}', [CategoryController::class, 'activeInactiveSingle'])->name('categories-activeInactiveSingle');
-            Route::get('softDelete/{id}', [CategoryController::class, 'softDelete'])->name('categories-softDelete');
-            Route::get('showSoftDelete', [CategoryController::class, 'showSoftDelete'])->name('categories-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [CategoryController::class, 'softDeleteRestore'])->name('categories-softDeleteRestore');
-            Route::get('destroy/{id}', [CategoryController::class, 'destroy'])->name('categories-destroy');
+        Route::group(['prefix' => 'superCategories'], function () {
+            Route::get('/create', [SuperCategoryController::class, 'create'])->name('superCategories-create');
+            Route::post('/store', [SuperCategoryController::class, 'store'])->name('superCategories-store');
+            Route::get('/index', [SuperCategoryController::class, 'index'])->name('superCategories-index');
+            Route::get('show/{id}', [SuperCategoryController::class, 'show'])->name('superCategories-show');
+            Route::get('edit/{id}', [SuperCategoryController::class, 'edit'])->name('superCategories-edit');
+            Route::post('update/{id}', [SuperCategoryController::class, 'update'])->name('superCategories-update');
+            Route::get('activeInactiveSingle/{id}', [SuperCategoryController::class, 'activeInactiveSingle'])->name('superCategories-activeInactiveSingle');
+            Route::get('softDelete/{id}', [SuperCategoryController::class, 'softDelete'])->name('superCategories-softDelete');
+            Route::get('showSoftDelete', [SuperCategoryController::class, 'showSoftDelete'])->name('superCategories-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [SuperCategoryController::class, 'softDeleteRestore'])->name('superCategories-softDeleteRestore');
+            Route::get('destroy/{id}', [SuperCategoryController::class, 'destroy'])->name('superCategories-destroy');
+        });
+
+        // Main Category Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'mainCategories'], function () {
+            Route::get('/create', [MainCategoryController::class, 'create'])->name('mainCategories-create');
+            Route::post('/store', [MainCategoryController::class, 'store'])->name('mainCategories-store');
+            Route::get('/index', [MainCategoryController::class, 'index'])->name('mainCategories-index');
+            Route::get('show/{id}', [MainCategoryController::class, 'show'])->name('mainCategories-show');
+            Route::get('edit/{id}', [MainCategoryController::class, 'edit'])->name('mainCategories-edit');
+            Route::post('update/{id}', [MainCategoryController::class, 'update'])->name('mainCategories-update');
+            Route::get('activeInactiveSingle/{id}', [MainCategoryController::class, 'activeInactiveSingle'])->name('mainCategories-activeInactiveSingle');
+            Route::get('softDelete/{id}', [MainCategoryController::class, 'softDelete'])->name('mainCategories-softDelete');
+            Route::get('showSoftDelete', [MainCategoryController::class, 'showSoftDelete'])->name('mainCategories-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [MainCategoryController::class, 'softDeleteRestore'])->name('mainCategories-softDeleteRestore');
+            Route::get('destroy/{id}', [MainCategoryController::class, 'destroy'])->name('mainCategories-destroy');
+        });
+
+        // Super Category Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'subCategories'], function () {
+            Route::get('/create', [SubCategoryController::class, 'create'])->name('subCategories-create');
+            Route::post('/store', [SubCategoryController::class, 'store'])->name('subCategories-store');
+            Route::get('/index', [SubCategoryController::class, 'index'])->name('subCategories-index');
+            Route::get('show/{id}', [SubCategoryController::class, 'show'])->name('subCategories-show');
+            Route::get('edit/{id}', [SubCategoryController::class, 'edit'])->name('subCategories-edit');
+            Route::post('update/{id}', [SubCategoryController::class, 'update'])->name('subCategories-update');
+            Route::get('activeInactiveSingle/{id}', [SubCategoryController::class, 'activeInactiveSingle'])->name('subCategories-activeInactiveSingle');
+            Route::get('softDelete/{id}', [SubCategoryController::class, 'softDelete'])->name('subCategories-softDelete');
+            Route::get('showSoftDelete', [SubCategoryController::class, 'showSoftDelete'])->name('subCategories-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [SubCategoryController::class, 'softDeleteRestore'])->name('subCategories-softDeleteRestore');
+            Route::get('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subCategories-destroy');
         });
 
         // Product Routes :

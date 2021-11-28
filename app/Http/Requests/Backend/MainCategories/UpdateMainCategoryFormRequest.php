@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\Categories;
+namespace App\Http\Requests\Backend\MainCategories;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateCategoryFormRequest extends FormRequest
+class UpdateMainCategoryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,8 @@ class UpdateCategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required|unique:categories,name_ar,' . $this->id,
-            'name_en' => 'required|unique:categories,name_en,' . $this->id,
+            'name_ar' => 'required|unique:main_categories,name_ar,' . $this->id,
+            'name_en' => 'required|unique:main_categories,name_en,' . $this->id,
             // 'description_ar' => 'required',
             // 'description_en' => 'required',
             "image" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif|max:4048',

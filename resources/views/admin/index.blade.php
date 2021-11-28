@@ -47,7 +47,7 @@
         <div class="col-xl-6 col-sm-6">
             <div class="card card-mini mb-4">
                 <div class="card-body">
-                    <h2 class="mb-1"> {{ isset($public_categories) ? $public_categories->count() : 0 }} </h2>
+                    <h2 class="mb-1">  </h2>
                     <h5 style="color: blue;"><i class="mdi mdi-star mdi-spin"></i> All Categories</h5>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     <p style="color: black;"><a href="{{ route('super_admin.orders-index') }}">Delivery Orders</a></p>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="media widget-media p-4 bg-white border">
                 <div class="icon rounded-circle bg-primary mr-4">
@@ -237,7 +237,7 @@
             </div>
         </div>
     </div>
-    
+
 
     {{-- =========================================================== --}}
     {{-- ================= Pending delivery orders ================= --}}
@@ -310,7 +310,7 @@
                                             <td>{!! isset($order->sub_total) ? $order->sub_total . '<small> SAR</small>' : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>25 <small>SAR</small></td>
                                             <td>{!! isset($order->total) ? $order->total + 25 . '<small> SAR</small>' : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            
+
                                             <td>
                                                 <a href="{{ route('super_admin.orders-show', [$order->id]) }}" title="Show Order Details" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
                                                 @if (!isset($order->delivery_status) )
@@ -366,7 +366,7 @@
                                         <tr>
                                             <td>{!! isset($product->id) ? $product->id : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->name_en) ? $product->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($product->category->name_en) ? $product->category->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            {{-- <td>{!! isset($product->category->name_en) ? $product->category->name_en : "<span style='color:red;'>Undefined</span>" !!}</td> --}}
                                             <td>{!! isset($product->quantity_available) ? $product->quantity_available : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->quantity_limit) ? $product->quantity_limit : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>

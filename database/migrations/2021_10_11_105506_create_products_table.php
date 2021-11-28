@@ -15,7 +15,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->bigInteger('super_category_id');
+            $table->bigInteger('main_category_id');
+            $table->bigInteger('sub_category_id');
             $table->string('name_ar')->unique();
             $table->string('name_en')->unique();
             $table->longText('main_description_ar')->nullable();
@@ -30,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity_limit')->default(0);
             $table->longText('image')->nullable();
             $table->tinyInteger('status')->comment = '1 => Active || 2 => Inactive';
-            $table->foreignId('created_by')->constrained('users');
+            $table->bigInteger('updated_by');
             $table->softDeletes();
             $table->timestamps();
         });
