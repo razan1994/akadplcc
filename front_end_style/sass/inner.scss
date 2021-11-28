@@ -1,0 +1,2571 @@
+@import "global.scss";
+@import "variable.scss";
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************Genral Style***************************/
+/****************************************************************/
+/****************************************************************/
+
+.inner-top {
+    position: relative;
+}
+
+.inner-top .img-page {
+    height: 100%;
+}
+
+.inner-top .img-page img{
+    width: 100%;
+    height: 460px;
+}
+
+.inner-top .c_title_top {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+
+.inner-top .c_title_top h1 {
+    font-size: 53px;
+    color: #fff;
+    text-align: center;
+}
+
+
+.c_inner_body{
+    background: #F4F4F4;
+    padding: 30px 0;
+}
+
+.c_title_page {
+    margin-bottom: 40px;
+}
+
+
+.c_inner_pages{
+
+    .c_title_page {
+        margin-bottom: 40px;
+        padding: 30px 0;
+        background: #f0f0f0;
+    }
+
+    .c_title_page h2{
+        color: $titleColor;
+    }
+
+}
+
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************c_page_profile***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+
+.people_profile{
+
+
+
+    .card {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        // max-width: 750px;
+
+
+
+        .card-head{
+            margin-bottom: 20px;
+        }
+
+        .card-head a.u-right {
+            float: left;
+        }
+
+        .card-head  .c_title_card{
+            color: #a6afb9;
+        }
+
+        .card-content .c_fomr label {
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .card-content .c_fomr span {
+            color: $pargColor;
+            font-family: 'DroidArabicKufi';
+            font-size: 14px;
+        }
+
+        .card-content .c_fomr {
+            margin: 10px 0;
+        }
+
+
+    }
+
+    .c_skills{
+
+
+        .c_item {
+            border-bottom: 1px solid #ededed;
+            padding: 12px 0;
+        }
+
+        .c_item h4 {
+            margin: 0;
+            width: auto;
+            font-size: 15px;
+            padding: 10px;
+            background-color: #e2e2e2;
+            color: #000;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+        }
+    }
+
+
+    .c_experiance{
+        .c_item{
+            border-bottom: #ccc solid 1px;
+            margin-bottom: 20px;
+        }
+        .c_item h4{
+            color: $titleColor;
+            font-size: 16px;
+        }
+
+        .c_item p {
+            margin-bottom: 0px;
+            font-size: 14px;
+            color: $secounColor;
+        }
+
+        .c_item span{
+            font-family: 'DroidArabicKufi';
+            margin: 0 10px;
+        }
+    }
+
+    .jobs{
+
+
+        .c_item{
+            border-radius: 10px;
+
+            height: auto;
+        }
+        .c_item:hover{
+            border: 1px solid #dedede00;;
+        }
+
+        .c_item .c_info {
+            margin-bottom: 25px;
+        }
+
+        .c_tilte_section h2 {
+            font-size: 26px;
+            margin: 50px 0 25px;
+        }
+
+        .c_numberdate {
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .c_numberdate > div {
+            float: right;
+            margin-left: 35px;
+        }
+
+        .c_item .c_numberdate p {
+            font-size: 14px;
+            color: #2f2f2f;
+            margin: 0;
+        }
+        .c_item .c_sicne span {
+            font-size: 14px;
+        }
+
+        .c_item .c_numberdate span,
+        .c_item .c_numberdate label
+         {
+            font-family: 'DroidArabicKufi';
+            font-size: 14px;
+
+        }
+
+        .c_item .c_numberdate .c_sicne {
+            position: relative;
+            bottom: auto;
+            left: auto;
+        }
+
+        .c_item .c_sicne img {
+            margin-left: 7px;
+            margin-top: 0;
+        }
+
+        .c_item  .c_editpost {
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .c_editpost .c_save{
+            text-align: center;
+            font-size: 12px !important;
+            padding: 4px 14px !important;
+            height: 28px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            display: inline-block;
+            @extend %button;
+        }
+
+
+        .c_editpost .c_delete{
+            text-align: center;
+            font-size: 12px !important;
+            padding: 4px 14px !important;
+            height: 28px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            display: inline-block;
+            @extend %button_delete;
+        }
+
+    }
+
+
+    .c_leftmenu {
+        margin-top: 20px;
+
+        li a {
+            width: 100%;
+            display: inline-block;
+            padding: 10px;
+            @extend %button;
+        }
+
+        li a:hover {
+            @extend %buttonHover;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    }
+
+    div#quieq_tap {
+        margin-top: 70px;
+    }
+
+    .row{
+        margin: 0;
+    }
+
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************personalInformation_edit***************************/
+/****************************************************************/
+/****************************************************************/
+
+.c_form_edit.card {
+      @extend %card;
+
+    .form-group label {
+        @extend %formLabel;
+    }
+
+    .form-group input,
+    .form-group select {
+        @extend %formInput;
+    }
+
+    .form-group .c_Canle{
+        @extend %button_cancle;
+    }
+    .form-group .c_save{
+        @extend %button;
+    }
+
+    .c_buttons{
+        margin-top: 50px;
+    }
+
+
+    .form-group .c_delete{
+        @extend %button_delete;
+    }
+
+    .form-group label{
+        float: right;
+    }
+
+    .form-group .cf-logogg{
+        float: right;
+        width: 60%;
+    }
+
+    .cf-logogg img {
+        max-width: 100%;
+        max-height: 150px;
+    }
+
+    .cf-logogg label {
+        cursor: pointer;
+        width: auto;
+        color: #00f;
+    }
+
+    .cf-logogg label input {
+        display: none;
+    }
+
+    .form-group textarea{
+        @extend %formInput;
+        height: 200px;
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+        position: relative;
+    display: inline-block;
+    }
+}
+
+
+
+.personalInformation_edit{
+    .c_seelctchosci select{
+        height: 55px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        width: 40%;
+        /* color: #c2c2c2; */
+        font-size: 12px;
+        text-align: right;
+        background-position-x: 2% !important;
+        padding: 6px 12px;
+    }
+}
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************company_profile***************************/
+/****************************************************************/
+/****************************************************************/
+
+.company_profile{
+    .card .c_fomr {
+        margin-bottom: 35px !important;
+    }
+
+
+    .c_fav .c_save{
+        @extend %button;
+    }
+
+    .c_fav button{
+        width: 100%;
+        text-align: center;
+        font-size: 10px !important;
+        padding: 3px 10px !important;
+        margin-bottom: 5px;
+        font-family: 'DroidArabicKufi';
+    }
+
+
+    .c_fav .c_delete{
+        @extend %button_delete;
+
+
+    }
+
+    .jobs .c_item .c_sicne {
+        position: absolute;
+        bottom: -8px;
+        left: -4px;
+    }
+
+
+    .c_compamnu_nfo{
+        @extend %gr_relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background: #dddddd63; */
+        padding: 20px;
+        border: 1px solid #ddd;
+
+        .c_img {
+            float: right;
+            width: 25%;
+        }
+
+        .c_img img{
+            width: 100%;
+        }
+
+        .c_nameComp {
+            float: right;
+            margin: 20px;
+            width: 70%;
+        }
+
+        .c_nameComp h4 {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .c_nameComp h6 {
+            box-shadow: 0 0 4px 1px #eeeeeed9;
+            padding: 8px 5px;
+            color: $secounColor;
+        }
+
+        h6 label {
+            margin-bottom: 0;
+            margin-left: 15px;
+        }
+
+
+    }
+
+    .c_fomrs {
+        background: #dddddd63;
+        padding: 20px;
+    }
+}
+
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************post_details***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.post_details{
+
+    .c_item {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px 2px #bbbbbb45;
+        margin-bottom: 30px;
+        position: relative;
+
+
+        .c_info .c_postion h3 {
+            font-size: 20px;
+            color: $secounColor;
+        }
+        .c_info .c_postion h4 {
+            font-size: 16px;
+            color: $secounColor;
+            line-height: 30px;
+        }
+
+        .c_info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: $secounColor;
+        }
+
+        .c_sicne img {
+            margin-left: 7px;
+        }
+
+        .c_sicne span {
+            font-size: 11px;
+            color: $pargColor;
+        }
+
+
+        .c_company_name {
+            margin-bottom: 5px;
+        }
+
+        .c_company_name a{
+            font-size: 16px;
+            color: $mainColor;
+        }
+
+    }
+
+
+    .c_descriotn_jobb .c_rown h4 {
+        font-size: 18px;
+        color: $secounColor;
+        margin-bottom: 15px;
+    }
+
+    .c_descriotn_jobb .c_rown p {
+        font-size: 14px;
+        color: $secounColor;
+        font-family: 'DroidArabicKufi';
+    }
+
+    .c_descriotn_jobb .c_rown {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 25px;
+    }
+
+    .c_inmages img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .c_fav {
+        position: absolute;
+        left: 2%;
+        top: 8%;
+    }
+
+    .c_fav img {
+        filter: grayscale(1);
+        transition: 0.5s;
+        margin-right: 10px;
+    }
+
+    .c_fav img:hover {
+        filter: grayscale(0);
+    }
+
+}
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************main_sections***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.main_sections{
+
+    .c_vaption .c_par{
+        @extend %gr_relative;
+    }
+
+
+    .c_vaption .c_par h4 {
+        font-size: 24px;
+        color: #525252;
+        margin-bottom: 20px;
+    }
+
+    .c_vaption form {
+        display: flex;
+    }
+
+    .c_vaption form .form-group {
+        width: 25%;
+    }
+
+
+
+    .c_vaption form .form-group.c_first_child select{
+        border-radius: 0 10px 10px 0 !important;
+    }
+
+    .c_vaption form .form-group select,
+    .c_vaption form .form-group input {
+        height: 50px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        width: 100%;
+        color: #c2c2c2;
+        font-size: 14px;
+        text-align: right;
+        background-position-x: 2%;
+
+    }
+
+    .c_vaption form .form-group input::placeholder{
+        color: #c2c2c2;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .c_vaption form  button {
+        width: 200px;
+        height: 50px;
+        border-radius: 10px 0px 0px 10px;
+        font-size: 19px;
+        color: #fff;
+        background: $mainColor;
+        border: 0;
+    }
+
+
+
+    .c_sectionsmain {
+        background: #fff;
+        padding: 20px;
+        margin: 40px 0;
+
+        .col-md-6{
+            padding: 0 10px;
+        }
+
+        .c_item {
+            padding: 10px;
+            background: #42618a12;
+            margin: 10px 0;
+        }
+
+        .c_item a {
+            color: $secounColor;
+        }
+
+        .c_item span {
+            float: left;
+            text-decoration: underline;
+        }
+
+    }
+
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************page_login***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.page_login{
+
+
+    .c_box_log {
+        max-width: 800px;
+        padding: 0 !important;
+        border-radius: 20px;
+        margin: 75px 0;
+    }
+
+     .min-h-screen.bg-gray-100 {
+        background: none !important;
+    }
+
+
+
+    .c-right {
+        float: right;
+        width: 40%;
+        background: #2884fd;
+        padding: 50px 20px;
+        height: 600px;
+        text-align: right;
+
+        .csjll {
+            margin: 30px 0;
+        }
+
+        .csjll p {
+            color: #fff;
+        }
+
+        .c_regiavr .c_registrbtn {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .c_registrbtn a {
+            display: inherit;
+            color: #fff;
+            padding: 10px 5px;
+            border-radius: 15px;
+        }
+
+        .c_registrbtn.c_regist_fac a{
+            background: #3b5998;
+        }
+        .c_registrbtn.c_regist_gog a{
+            background: #c43010;
+        }
+        .c_registrbtn.c_regist_ema a{
+            background: #dfdfdf;
+            color: $secounColor;
+        }
+    }
+
+    .c-left {
+        float: left;
+        width: 60%;
+        height: 600px;
+        padding: 80px 40px;
+
+        .c_tuser h6 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+        .c_creataccq p {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .c_filed_login input,
+        .c_filed_login select {
+            text-align: right;
+            height: 50px;
+            color: $secounColor;
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            background-position-x: 5%;
+        }
+
+        .c_filed_login input::placeholder {
+            color: #939393;
+            font-family: 'DroidArabicKufi';
+        }
+
+        .c_filed_login {
+            margin: 30px 0;
+        }
+
+        .c_loignbtn button {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            display: block;
+            color: #fff;
+            background: #3660b7;
+            border: 1px solid #3660b7;
+            transition: .5s;
+            padding: 20px !important;
+            border-radius: 15px;
+            font-size: 16px;
+            letter-spacing: 0;
+        }
+
+        .c_loignbtn button:hover {
+            color: #3660b7 !important;
+            background: #fff !important;
+            border: 1px solid #3660b7 !important;
+        }
+
+        .c_loignbtn {
+            margin-top: 22px;
+        }
+
+        .c_filed_login .input-group-prepend {
+            display: none;
+        }
+
+    }
+
+
+}
+
+
+
+
+.page_register{
+    .c-left {
+        overflow: scroll;
+
+
+    }
+
+
+
+                    /* width */
+                    .c-left::-webkit-scrollbar {
+                        width: 8px;
+                    }
+
+                    /* Track */
+                    .c-left::-webkit-scrollbar-track {
+                        box-shadow: inset 0 0 5px #f4f4f4;
+                        border-radius: 0px;
+                    }
+
+                    /* Handle */
+                    .c-left::-webkit-scrollbar-thumb {
+                        background: #ccc;
+                        border-radius: 20px;
+                    }
+
+                    /* Handle on hover */
+                    .c-left::-webkit-scrollbar-thumb:hover {
+                        background: #ddd;
+                    }
+
+
+}
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************complaints***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.complaints{
+    .c_pargword p {
+        margin-bottom: 50px;
+    }
+
+    form{
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            width: 100%;
+            color: $secounColor;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            text-align: right;
+            border: 1px solid #d4d4d4;
+            box-shadow: 0 0 3px 1px #ddddddb5;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder{
+            color: #aaa;
+            font-family: 'DroidArabicKufi';
+            font-size: 14px;
+        }
+
+        .form-group .c_submit{
+            @extend %button;
+        }
+
+        .form-group .c_submit:hover{
+            @extend %buttonHover;
+        }
+
+    }
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************contact_us***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.contact_us{
+
+    .c_right{
+        li{
+            background: #f1f1f1;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        li span {
+            display: inline-block;
+        }
+
+        li label {
+            margin-left: 25px;
+        }
+
+        li span p {
+            margin-bottom: 10px;
+            color: $pargColor;
+        }
+
+        li span a{
+            color: #7c7c7c;
+        }
+
+
+    }
+}
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************about_us***************************/
+/****************************************************************/
+/****************************************************************/
+
+.about_us{
+    .c_subtitle {
+        text-align: center;
+        max-width: 700px;
+        margin: auto;
+    }
+
+
+    .c_row
+    {
+        @extend %gr_relative;
+        padding: 50px 0;
+    }
+    .c_row .c_parg {
+        width: 55%;
+    }
+    .c_row .c_image {
+        width: 40%;
+    }
+
+    .c_row.c_vision .c_image{
+        float: left;
+    }
+
+    .c_row.c_vision .c_parg{
+        float: right;
+    }
+    .c_row.c_messege .c_parg {
+        float: left;
+    }
+    .c_row.c_messege .c_image {
+        float: right;
+    }
+    .c_row.c_value .c_parg {
+        width: 75%;
+    }
+    .c_row.c_value .c_image {
+        width: 22%;
+    }
+
+    .c_row h3 {
+        margin: 20px 0;
+        color: $titleColor;
+    }
+
+    .c_row p {
+        font-size: 15px;
+        line-height: 30px;
+        color: $secounColor;
+    }
+
+    .c_goal {
+        text-align: center;
+        background: #f7f7f7;
+        padding: 30px 0 60px;
+    }
+
+    .c_goal img {
+        margin: auto;
+    }
+
+    .c_goal h3 {
+        color: #767676;
+    }
+
+    .c_goal p{
+        font-size: 15px;
+        line-height: 30px;
+        color: $secounColor;
+    }
+
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************news***********************************/
+/****************************************************************/
+/****************************************************************/
+
+.news{
+
+    .c_item{
+        margin-bottom: 30px;
+        transition: .5s;
+
+        &:hover{
+            box-shadow: 0 0 10px #cccc;
+        }
+        .c_image img {
+            width: 100%;
+            height: 220px;
+        }
+
+        .c_parg h3 {
+            font-size: 19px;
+            margin-bottom: 25px;
+            color: $titleColor;
+        }
+
+        .c_parg p {
+            font-size: 13px;
+            line-height: 30px;
+            color: $secounColor;
+        }
+
+        .c_sicne label{
+            margin: 0;
+        }
+
+        .c_sicne span{
+            color: $pargColor
+        };
+
+        .c_desc {
+            padding: 20px 10px;
+        }
+    }
+}
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************news_details***********************************/
+/****************************************************************/
+/****************************************************************/
+
+.news_details{
+
+
+    .c_mainnew{
+        .c_item{
+            &:hover{
+                box-shadow: none;
+            }
+            .c_image img {
+                height: 500px;
+                border-radius: 15px;
+            }
+
+            .c_sicne {
+                margin-bottom: 25px;
+            }
+        }
+
+    }
+
+
+    .c_relatednews{
+        margin-top: 70px;
+        h4 {
+            margin-bottom: 50px;
+            color: $secounColor;
+            position: relative;
+        }
+
+
+    }
+
+}
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************privacy_policy*************************/
+/****************************************************************/
+/****************************************************************/
+
+
+.privacy_policy{
+
+    .c_block h5 {
+        margin: 20px 0;
+        color: $titleColor;
+    }
+
+    .c_block p {
+        font-size: 15px;
+        line-height: 40px;
+        text-align: justify;
+        color: $secounColor;
+    }
+
+
+}
+
+
+
+/**************/
+
+.main_page_jobs {
+    padding: 0;
+
+
+    .c_mainContent{
+        padding: 60px 0;
+    }
+}
+
+
+
+
+/****************************************************************/
+/*************************c_page_messeges***************************/
+/****************************************************************/
+/****************************************************************/
+
+
+
+.c_page_messeges{
+
+
+    .c-right{
+        height: 600px;
+        overflow: auto;
+
+        .nav-tabs .nav-link {
+            padding: 15px 40px;
+        }
+
+        li.nav-item {
+            position: relative;
+        }
+
+        .c_delte {
+            position: absolute;
+            top: 10%;
+            left: 3%;
+        }
+
+        .c_time_end {
+            position: absolute;
+            bottom: 14%;
+            left: 3%;
+            font-size: 13px;
+        }
+
+
+        .row{
+            margin: 0;
+        }
+
+        .c_messegeItem  {
+            display: flex;
+            width: 100%;
+        }
+
+        .c_messegeItem .c_image {
+            width: 25%;
+            border-radius: 50%;
+        }
+
+        .c_messegeItem .c_image img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .c_messegeItem .c_ttile h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: $mainColor;
+        }
+
+        .c_messegeItem .c_infmesss {
+            width: 75%;
+        }
+
+        .c_messegeItem .c_infmesss .c_ttile {
+            display: flex;
+        }
+
+        .c_messegeItem .c_infmesss .c_activeuser {
+            margin-right: 20px;
+        }
+
+        .c_messegeItem .c_infmesss .c_activeuser img {
+            width: 10px;
+        }
+
+        .c_messegeItem .c_body p {
+            font-size: 12px;
+            font-weight: normal;
+            margin-bottom: 5px;
+            color: $secounColor;
+        }
+
+        .c_messegeItem .c_time span {
+            color: #919191;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+    }
+
+
+
+
+    .c-left{
+
+        height: 600px;
+        overflow: auto;
+
+        .c_nomesseges {
+            text-align: center;
+            color: $secounColor;
+            margin: 0 50px;
+            padding: 50px;
+            background: #fff;
+            box-shadow: 0 0 9px 1px #8888883d;
+            border-radius: 10px;
+        }
+
+        .c_done_rating {
+            text-align: center;
+            text-shadow: 0 0 5px #0b8585;
+            padding: 10px;
+        }
+
+        .c_rassaal{
+            @extend %gr_relative;
+        }
+
+
+        .c_rassaal .c_body p {
+            color: #646464;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .c_rassaal .c_box {
+            margin-bottom: 5px;
+            padding: 10px 20px;
+        }
+
+        .c_rassaal .c_messegeCurn {
+            margin-bottom: 40px;
+            width: 75%;
+        }
+
+        .c_rassaal .c_messegeCurn.c_mHer {
+            float: right;
+        }
+
+        .c_rassaal .c_messegeCurn.c_mMe {
+            float: left;
+        }
+
+        .c_rassaal .c_name h3 {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .c_rassaal .c_time span {
+            color: #919191;
+            font-size: 11px;
+        }
+
+
+        .c_rassaal .c_messegeCurn.c_mMe .c_box {
+            background: #cfd3e3;
+        }
+
+
+        .c_textType {
+            display: flex;
+            @extend %gr_relative;
+            margin-top: 50px;
+        }
+
+        .c_textType .c_tupemessge {
+            width: 100%;
+        }
+
+        .c_textType .c_btnsflir {
+            display: flex;
+            position: absolute;
+            left: 2%;
+            top: 10%;
+        }
+
+        .c_textType .c_tupemessge textarea {
+            width: 100%;
+            padding: 15px 30px;
+            height: 60px;
+            border: 0;
+            box-shadow: 0 0 4px 1px #ababab6e;
+            border-radius: 30px;
+        }
+
+        .c_textType .c_imgUp input {
+            display: none;
+        }
+
+        .c_textType .c_btnRplay {
+            margin-right: 10px;
+        }
+
+
+    }
+
+
+    // prif
+
+    .c-right{
+        float: right;
+        width: 37%;
+        padding: 100px 0;
+
+
+
+
+
+        .quieq_tap ul {
+            display: block;
+        }
+
+        .c_searchc {
+            width: 340px;
+            margin: auto;
+            margin-bottom: 44px;
+        }
+
+
+        .c_searchc  input {
+            padding: 15px 35px;
+            width: 100%;
+            height: 45px;
+            border-radius: 35px !important;
+        }
+
+        .c_searchc  input::placeholder {
+            font-size: 16px;
+            color: #a8a8a8;
+        }
+
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover
+       {
+           border: 0;
+           border-radius: 0;
+       }
+
+
+        .nav-tabs .nav-link {
+           font-size: 14px;
+           font-weight: bold;
+           color: $secounColor;
+           border: 0;
+           border-radius: 0;
+       }
+
+
+         .nav-tabs .nav-item.show .nav-link,
+         .nav-tabs .nav-link.active,
+         .nav-tabs .nav-link:hover {
+           color: $mainColor;
+           background-color: #f5f5f5;
+       }
+
+
+
+
+
+    }
+
+
+
+    .c-left {
+        float: left;
+        width: 63%;
+        padding: 75px 0;
+        box-shadow: inset -2px -3px 5px 0px #d4d4d4d1;
+
+
+
+        .row {
+            margin: auto !important;
+        }
+
+
+        .c_editInfo{
+
+
+            padding: 0 50px 0 100px;
+
+
+            .c_imgchosee > label{
+
+                width: 100px !important;
+                height: 100px;
+
+            }
+
+            .c_imgchosee .c_editm {
+                position: absolute;
+                bottom: 20px;
+                right: 2px;
+            }
+
+
+            .c_imgchosee span {
+                font-size: 17px;
+                font-weight: bold;
+                color: $mainColor;
+                margin-right: 40px;
+            }
+
+            .c_imgUp input {
+                display: none;
+            }
+
+            .c_imgUp {
+                width: 100%;
+                height: 100%;
+            }
+
+            .c_imgUp img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+
+            .form-group {
+                margin-bottom: 44px;
+            }
+
+            .form-group label{
+                width: 100%;
+                font-size: 14px;
+                font-weight: bold;
+                color: #4c4c4c;
+                margin-bottom: 18px;
+            }
+
+            .form-group > input,
+            .form-group > select,
+            .form-group .select2-selection
+             {
+                width: 100%;
+                height: 45px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                padding: 6px 12px;
+                text-align: right;
+            }
+
+
+            .c_btnn button{
+                @extend %button;
+
+            }
+
+            .c_btnn button:hover{
+                @extend %buttonHover;
+            }
+        }
+
+        .c_statususerwx h4 {
+            font-size: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .c_statususerwx label {
+            margin-bottom: 0;
+            margin-left: 15px;
+        }
+
+        .c_statususerwx span {
+            font-size: 12px;
+        }
+
+        .c_statususerwx a {
+            color: $mainColor;
+        }
+
+        .c_commentMessage {
+            padding: 0 100px;
+            position: relative;
+
+            .c_box {
+                background: #fff;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                display: flex;
+            }
+
+
+            .c_box .c_image {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+
+            .c_box .c_body {
+                @extend %gr_relative;
+            }
+
+
+            .c_textare textarea{
+                padding: 25px 30px;
+                background: #fff;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                width: 100%;
+                height: 180px;
+            }
+
+
+
+             button{
+                @extend %button;
+                border-radius: 30px;
+            }
+
+             button:hover{
+                @extend %buttonHover;
+            }
+
+
+        }
+    }
+
+                        /* width */
+                    .c_mainContent ::-webkit-scrollbar {
+                        width: 8px;
+                    }
+
+                    /* Track */
+                    .c_mainContent ::-webkit-scrollbar-track {
+                        box-shadow: inset 0 0 5px #f4f4f4;
+                        border-radius: 0px;
+                    }
+
+                    /* Handle */
+                    .c_mainContent ::-webkit-scrollbar-thumb {
+                        background: #ccc;
+                        border-radius: 20px;
+                    }
+
+                    /* Handle on hover */
+                    .c_mainContent ::-webkit-scrollbar-thumb:hover {
+                        background: #ddd;
+                    }
+
+
+}
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************add comment*************************/
+/****************************************************************/
+/****************************************************************/
+
+
+
+.c_comments{
+
+    .c_messegeItem  {
+        display: flex;
+        width: 100%;
+        background: #eee;
+        padding: 20px;
+    }
+
+    .c_messegeItem .c_image {
+        width: 9%;
+        border-radius: 50%;
+    }
+
+    .c_messegeItem .c_image img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .c_messegeItem .c_ttile h3,
+    .c_messegeItem .c_ttile a {
+
+        font-size: 22px;
+        font-weight: bold;
+        color: $mainColor;
+    }
+
+    .c_messegeItem .c_infmesss {
+        width: 90%;
+        position: relative;
+    }
+
+    .c_messegeItem .c_infmesss .c_ttile {
+        display: flex;
+    }
+
+    .c_messegeItem .c_infmesss .c_activeuser {
+        margin-right: 20px;
+    }
+
+    .c_messegeItem .c_infmesss .c_activeuser img {
+        width: 10px;
+    }
+
+    .c_messegeItem .c_body p {
+        font-size: 12px;
+        font-weight: normal;
+        margin-bottom: 5px;
+        color: $secounColor;
+    }
+
+    .c_messegeItem .c_time span {
+        color: #919191;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    .c_editpost .c_save{
+        text-align: center;
+        font-size: 12px !important;
+        padding: 4px 14px !important;
+        height: 28px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        display: inline-block;
+        @extend %button;
+    }
+
+
+    .c_editpost .c_delete{
+        text-align: center;
+        font-size: 12px !important;
+        padding: 4px 14px !important;
+        height: 28px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        display: inline-block;
+        @extend %button_delete;
+    }
+
+    .c_editpost {
+        display: flex;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+}
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************add comment*************************/
+/****************************************************************/
+/****************************************************************/
+
+
+
+.c_add_comment{
+
+    textarea {
+        width: 100%;
+        text-align: right;
+        border: 1px solid #d4d4d4;
+        box-shadow: 0 0 3px 1px #ddddddb5;
+    }
+
+    textarea::placeholder{
+        color: #aaa;
+        font-family: 'DroidArabicKufi';
+        font-size: 14px;
+    }
+
+    .c_submit{
+        @extend %button;
+    }
+
+    .c_submit:hover{
+        @extend %buttonHover;
+    }
+
+}
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************add comment*************************/
+/****************************************************************/
+/****************************************************************/
+
+
+
+.c_reviewss{
+
+    position: absolute;
+    left: 2%;
+    bottom: 3%;
+
+    h4{
+        font-size: 14px;
+    }
+
+    .rating {
+        direction: rtl;
+        unicode-bidi: bidi-override;
+        color: #ddd; /* Personal choice */
+        padding: 50px;
+    }
+    .rating input {
+        display: none;
+    }
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked + label,
+    .rating input:checked + label ~ label {
+        color: #ffc107; /* Personal color choice. Lifted from Bootstrap 4 */
+    }
+
+
+    .rating label i {
+        font-size: 40px;
+    }
+
+
+    textarea {
+        width: 100%;
+        text-align: right;
+        border: 1px solid #d4d4d4;
+        box-shadow: 0 0 3px 1px #ddddddb5;
+    }
+
+    textarea::placeholder{
+        color: #aaa;
+        font-family: 'DroidArabicKufi';
+        font-size: 14px;
+    }
+
+    .c_submit{
+        @extend %button;
+    }
+
+    .c_submit:hover{
+        @extend %buttonHover;
+    }
+
+
+
+}
+
+
+.c_follow{
+    position: absolute;
+    left: 2%;
+    top: 4%;
+
+    .c_button{
+        @extend %button;
+        font-size: 12px;
+        padding: 3px 17px;
+        margin-right: 10px;
+    }
+    .c_button:hover{
+        @extend %buttonHover;
+    }
+
+    .c_banComp{
+        background: #bf3838;
+        border: 1px solid #bf3838;
+    }
+    .c_banComp:hover{
+        color: #bf3838;
+        border: 1px solid #bf3838;
+    }
+
+
+    .c_messegesbutton{
+        background: #2884fd;
+        border: 1px solid #2884fd;
+    }
+    .c_messegesbutton:hover{
+        color: #2884fd;
+        border: 1px solid #2884fd;
+    }
+
+    i {
+        margin-left: 5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************courses***************************/
+/****************************************************************/
+/****************************************************************/
+
+.courses {
+
+  .form-group label {
+      @extend %formLabel;
+  }
+
+  .form-group input,
+  .form-group select {
+      @extend %formInput;
+  }
+
+  .form-group .c_Canle{
+      @extend %button_cancle;
+  }
+  .form-group .c_save{
+      @extend %button;
+  }
+
+}
+
+/****/
+
+.courses_details {
+
+
+    .c_details_coursee .c_donwlod_file {
+        position: absolute;
+        left: 2%;
+    }
+
+    .c_details_coursee  h4 {
+        color: $titleColor;
+    }
+
+    .c_titligm img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .c_body h5{
+        margin-bottom: 15px;
+    }
+
+    .c_body p {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .c_body h5, .c_body p{
+        color: $titleColor;
+    }
+
+    .c_imgaes .swiper_imgcourses {
+        width: 100%;
+    }
+
+    .c_imgaes img{
+        width: 100%;
+        height: 315px;
+    }
+
+    hr{
+        @extend %gr_relative;
+    }
+
+    .c_moredetails {
+        .c_itme {
+            box-shadow: 0 0 4px 1px #eeeeeed9;
+            padding:5px 15px;
+            color: $secounColor;
+            margin-bottom: 30px;
+        }
+
+        .c_itme label{
+            color: $secounColor;
+            margin: 0;
+        }
+
+        .c_itme span{
+            color: $mainColor;
+        }
+    }
+
+
+    .c_files {
+        .c_donwlod_file {
+            text-align: center;
+            box-shadow: 0 0 4px 1px #42618a8a;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: .5s;
+            border-radius: 15px;
+        }
+
+        .c_donwlod_file i {
+            margin-bottom: 10px;
+        }
+
+        .c_donwlod_file a{
+            color: $mainColor;
+        }
+        .c_donwlod_file:hover{
+            background: $mainColor;
+            box-shadow: none;
+        }
+
+        .c_donwlod_file:hover a{
+            color: #fff;
+        }
+    }
+}
+
+
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************messsege_send***************************/
+/****************************************************************/
+/****************************************************************/
+
+.messsege_send{
+    .c_messegeItem  {
+        display: flex;
+        width: 100%;
+    }
+
+    .c_messegeItem .c_image {
+        width: 25%;
+        border-radius: 50%;
+    }
+
+    .c_messegeItem .c_image img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .c_messegeItem .c_ttile h3 {
+        font-size: 22px;
+        font-weight: bold;
+        color: $mainColor;
+    }
+
+    .c_messegeItem .c_infmesss {
+        width: 75%;
+    }
+
+    .c_messegeItem .c_infmesss .c_ttile {
+        margin-top: 10px;
+    }
+
+    .c_messegeItem .c_infmesss .c_ttile h6{
+        color: #646464;
+    }
+
+    .c_messegeItem .c_infmesss .c_activeuser {
+        margin-right: 20px;
+    }
+
+    .c_messegeItem .c_infmesss .c_activeuser img {
+        width: 10px;
+    }
+
+
+}
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************view_people***************************/
+/****************************************************************/
+/****************************************************************/
+
+.view_people{
+
+    .jobs .c_item .c_img{
+        margin-bottom: 15px;
+    }
+
+    .jobs .c_item .c_img a {
+        border: 0;
+        padding: 0;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .jobs .c_item .c_img img {
+        height: 100%;
+    }
+
+    .c_mails {
+        display: inline-grid;
+        margin-bottom: 10px;
+    }
+    .c_name h5 {
+        margin-bottom: 5px;
+        color: $secounColor;
+    }
+    .c_mails a {
+        font-size: 14px;
+        color: $pargColor;
+        font-family: 'DroidArabicKufi';
+    }
+
+    .jobs .c_item .c_country p {
+        font-family: 'DroidArabicKufiBold';
+        margin-bottom: 5px;
+    }
+
+    .jobs .c_item .c_country p i {
+        width: 15px;
+    }
+
+    .jobs .c_item {
+        padding: 20px 20px 0;
+    }
+
+
+    .c_editpost .c_button{
+        @extend %button;
+        font-size: 12px;
+        padding: 3px 17px;
+        margin-right: 10px;
+        display: inline-block;
+    }
+    .c_editpost .c_button:hover{
+        @extend %buttonHover;
+    }
+
+    .c_editpost .c_messegesbutton{
+        background: #2884fd;
+        border: 1px solid #2884fd;
+    }
+    .c_editpost .c_messegesbutton:hover{
+        color: #2884fd;
+        border: 1px solid #2884fd;
+    }
+
+
+    .c_editpost .c_banComp{
+        background: #bf3838;
+        border: 1px solid #bf3838;
+    }
+    .c_editpost .c_banComp:hover{
+        color: #bf3838;
+        border: 1px solid #bf3838;
+    }
+
+    .c_editpost .c_followbutton{
+        background: #2c692b;
+        border: 1px solid #2c692b;
+    }
+    .c_editpost .c_followbutton:hover{
+        color: #2c692b;
+        border: 1px solid #2c692b;
+    }
+
+    .c_vaption .c_par{
+        @extend %gr_relative;
+    }
+
+
+    .c_vaption .c_par h4 {
+        font-size: 20px;
+        color: #525252;
+        margin-bottom: 10px;
+    }
+
+    .c_vaption form {
+        display: flex;
+        margin: 15px 0 0;
+        justify-content: center;
+    }
+
+    .c_vaption form .form-group {
+        width: 25%;
+        position: relative;
+        margin: 0;
+    }
+
+    .c_vaption form#searchJob {
+        margin-bottom: 30px;
+    }
+
+
+    .c_vaption form .form-group.c_first_child select,
+    .c_vaption form .form-group.c_first_child input{
+        border-radius: 0 10px 10px 0 !important;
+        border-left: 0;
+    }
+
+    .c_vaption form .form-group.c_last_child select,
+    .c_vaption form .form-group.c_last_child input{
+        border-right: 0;
+    }
+
+    .c_vaption form .form-group select,
+    .c_vaption form .form-group input {
+        height: 44px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        width: 100%;
+        color: #c2c2c2;
+        font-size: 12px;
+        text-align: right;
+        background-position-x: 2% !important;
+        padding: 6px 12px;
+    }
+
+    .c_vaption form .form-group input::placeholder{
+        color: #c2c2c2;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .c_vaption form  button {
+        height: 44px;
+        padding: 0 15px;
+        border-radius: 10px 0px 0px 10px;
+        font-size: 14px;
+        color: #fff;
+        background: $mainColor;
+        border: 0;
+    }
+
+
+
+    .c_vaption .c_par {
+        text-align: center;
+        padding: 30px;
+        background: #ebeae9;
+    }
+
+    .c_vaption form .form-group::after{
+        content: "";
+        position: absolute;
+        height: 32px;
+        width: 2px;
+        background: #ebeae9;
+        left: 0;
+        top: 17%;
+    }
+
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************serach_save***************************/
+/****************************************************************/
+/****************************************************************/
+
+.serach_save{
+    .c_item{
+        border-radius: 10px;
+        border: 1px solid #dedede;
+        height: auto;
+        padding: 15px;
+        transition: .5s;
+        margin-bottom: 30px;
+    }
+    .c_item:hover{
+        border: 1px solid #dedede00;;
+        box-shadow: 0 0 10px #cccc;
+    }
+
+    .c_editpost .c_save{
+        text-align: center;
+        font-size: 12px !important;
+        padding: 4px 14px !important;
+        height: 28px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        display: inline-block;
+        @extend %button;
+    }
+
+
+    .c_editpost .c_delete{
+        text-align: center;
+        font-size: 12px !important;
+        padding: 4px 14px !important;
+        height: 28px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        display: inline-block;
+        @extend %button_delete;
+    }
+
+
+    .c_item ul {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+
+    .c_item li {
+        list-style: inside;
+        float: right;
+        width: 48%;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+
+
+
+
+/*************************c_notifactions_page***************************/
+.c_notifactions_page {
+
+    .c_editpost {
+        top: 0;
+        padding: 10px;
+        bottom: auto;
+    }
+
+    .c_editpost a {
+        margin: 0 5px !important;
+    }
+
+    .c_comments .c_messegeItem .c_infmesss .c_ttile {
+        max-width: 80%;
+    }
+
+
+    .c_comments .c_unread .c_messegeItem {
+        transition: .5s;
+        border: 1px solid #aaa;
+    }
+
+
+    .c_comments .c_messegeItem .c_ttile h3,
+    .c_comments .c_messegeItem .c_body p{
+        font-family: 'DroidArabicKufi';
+        font-weight: normal;
+    }
+
+    .c_comments .c_unread .c_messegeItem .c_ttile h3,
+    .c_comments .c_unread .c_messegeItem .c_body p{
+        font-family: 'DroidArabicKufiBold';
+        font-weight: bold;
+    }
+
+    .c_comments .c_unread .c_messegeItem .c_time span {
+        color: #0056b3;
+        font-weight: bold;
+    }
+}
+
+
+/*************************reviews***************************/
+.reviews{
+
+    .c_comments .c_messegeItem {
+        display: flex;
+        width: 100%;
+        background: #fff;
+        padding: 20px;
+    }
+
+    .c_comments .c_messegeItem:hover {
+        background: #fafafa;
+    }
+
+}
+
+/*************************c_but_mark_read***************************/
+.c_but_mark_read{
+
+    @extend %gr_relative;
+
+    .c_markrewwad,
+    .c_markrewwad:active:focus:hover {
+        float: left;
+        display: inline-block;
+        margin-bottom: 10px;
+        background: #2f2f2f !important;
+        border-color: #2f2f2f !important;
+    }
+
+    .c_delete,
+    .c_delete:active:focus:hover{
+        float: left;
+        display: inline-block;
+        margin-bottom: 10px;
+        background: #e84c4cf2 !important;
+        border: 1px solid #e84c4cf2 !important;
+        margin: 0 15px;
+    }
+}
+
+/*************************c_total_reviews***************************/
+.c_total_reviews{
+
+
+    .c_block {
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px #b7b7b791;
+        margin-bottom: 20px;
+    }
+
+    .c_left ul li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .c_left li span {
+        margin-left: 10px;
+    }
+
+    .c_left .c_progress {
+        height: 15px;
+    }
+    .c_left .c_bar {
+        background: $mainColor;
+    }
+
+    .c_nespam {
+        margin-right: 20px;
+        width: 0;
+    }
+
+    .c_right {
+        text-align: center;
+    }
+
+    .c_nimber_ttol span {
+        color: $pargColor;
+        font-size: 64px;
+        font-weight: 100;
+        line-height: 64px;
+    }
+
+    .c_review {
+        display: flex;
+        justify-content: center;
+    }
+
+    .c_num_reveiws span {
+        color: $pargColor;
+    }
+}
+
+
+.c_unread .c_item{
+    border: 1px solid #aaa;
+    background: #fcfcfc;
+}
+
+
+
+
+.prices{
+
+    .c_item {
+        border: 1px solid #ededed;
+        background: #FAFAFB;
+        padding: 15px ;
+        margin-bottom: 30px;
+        height: 430px;
+        position: relative;
+
+        .pricing-details .title {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 900;
+            font-size: 12px;
+            line-height: 14px;
+            color: rgba(82,82,128,0.8);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .pricing-details .sub-title {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            font-family: 'DroidArabicKufi';
+            margin: 0;
+        }
+
+        .pricing-details .pricing {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            padding: 20px 0;
+            line-height: 20px;
+        }
+        .pricing .rate {
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: normal;
+            font-family: 'DroidArabicKufi';
+            display: inline-block;
+        }
+        .pricing-details .items-wrapper {
+            font-size: 14px;
+            line-height: 20px;
+            list-style: none;
+        }
+        .pricing-details .items-wrapper>li {
+            margin-bottom: 10px;
+            position: relative;
+            font-family: 'DroidArabicKufi';
+            list-style: inside;
+        }
+
+        .tips {
+            position: absolute;
+            bottom: 20px;
+            margin-top: 25px;
+            font-size: 10px;
+            margin-bottom: 7px;
+            left: 32px;
+            right: 32px;
+        }
+
+        .orange-tips {
+            font-size: 12px;
+            line-height: 17px;
+            color: #232333;
+            font-family: 'DroidArabicKufi';
+        }
+
+        .pricing-details p{
+            font-family: 'DroidArabicKufi';
+            margin-top: 20px;
+        }
+
+        .c_buttno{
+            @extend %button;
+            display: inline-block;
+        }
+
+        .c_buttno:hover{
+            @extend %buttonHover;
+        }
+
+    }
+}
+
+
+
+
+
+/****************************************************************/
+/****************************************************************/
+/*************************c_allIndividualDrivers****************/
+/****************************************************************/
+/****************************************************************/
+
+
+.c_allIndividualDrivers {
+
+    .c_form_edit.card {
+        margin: 0;
+        border: 0;
+        border-radius: 5px;
+        border-top: 5px solid $mainColor;
+    }
+
+    .c-filiters{
+       .c_title_filter h4 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .c_form_filiter > label {
+            color: $mainColor;
+            margin-bottom: 15px;
+        }
+
+        .input-group .form-check {
+            padding: 0;
+            margin: 5px 0;
+        }
+
+        .input-group .form-check label.form-check-label {
+            font-size: 12px;
+            margin: 0 5px;
+        }
+        .c_form_edit.card .form-group select {
+            width: 100%;
+        }
+
+        .c_button_filtir button{
+            @extend %button;
+        }
+        .c_button_filtir button:hover{
+            @extend %buttonHover;
+        }
+    }
+}

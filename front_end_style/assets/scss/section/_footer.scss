@@ -1,0 +1,430 @@
+/*  07. footer area css here */
+
+.footer_top {
+	padding: 77px 0 67px;
+    border-bottom: 1px solid $grey_color;
+    @media #{$desktop-device}{
+        padding: 77px 0 75px;
+    }
+    @media #{$tablet-device}{
+        padding: 77px 0 32px;
+    }
+    @media #{$large-mobile}{
+        padding: 60px 0 6px;
+    }
+}
+.widgets_container{
+    @media #{$tablet-device}{
+        margin-bottom: 28px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 49px;
+        text-align: center;
+    }
+    &.contact_us{
+        & > a{
+            margin-bottom: 25px;
+            @media #{$large-mobile}{
+                margin-bottom: 15px;
+            }
+            display: block;
+            & img{
+                @media #{$large-mobile}{
+                    max-width: 120px;;
+                }
+            }
+        }
+    }
+    & > h3{
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: inline-block;
+        line-height: 15px;
+        @media #{$tablet-device}{
+           padding-bottom: 10px;
+            margin-bottom: 16px;
+        }
+        @media #{$large-mobile}{
+            margin-bottom: 13px;
+        }
+    }
+    &.widget_newsletter{
+        @media #{$large-mobile}{
+            margin-bottom: 52px;
+        }
+    }
+}
+
+.footer_contact{
+    margin-bottom: 24px;
+    @media #{$tablet-device}{
+       margin-bottom: 16px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 18px;
+    }
+    & ul{
+        & li{
+            font-size: 15px;
+            line-height: 24px;
+            margin-bottom: 15px;
+            @media #{$desktop-device}{
+                font-size: 14px;
+            }
+            @media #{$tablet-device}{
+               font-size: 14px;
+            }
+            @media #{$large-mobile}{
+                line-height: 24px;
+                margin-bottom: 6px;
+                font-size: 14px;
+            }
+            &:last-child{
+                margin-bottom: 0;
+            }
+            & i{
+                font-size: 20px;
+                margin-right: 15px;
+                color: $secondary_color;
+                @media #{$desktop-device}{
+                    margin-right: 12px;
+                }
+                @media #{$large-mobile}{
+                    margin-right: 6px;
+                }
+            }
+            & span{
+                font-weight: 700;
+                margin-right: 20px;
+                @media #{$desktop-device}{
+                    margin-right: 15px;
+                }
+                 @media #{$large-mobile}{
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.footer_menu{
+    & ul{
+        & li{
+            margin-bottom: 3px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            @media #{$large-mobile}{
+                margin-bottom: 2px;
+            }
+            & a{
+               font-size: 15px;
+               line-height: 28px;
+                @media #{$desktop-device}{
+                    font-size: 14px;
+                }
+                @media #{$tablet-device}{
+                   font-size: 14px;
+                }
+                @media #{$large-mobile}{
+                    line-height: 27px;
+                    font-size: 14px;
+                }
+                &:hover{
+                    color: $secondary_color;
+                }
+                & i{
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+}
+
+.footer_social{
+    margin-top: 30px;
+    @media #{$large-mobile}{
+        margin-top: 20px;
+    }
+    & ul{
+        & li{
+            display: inline-block;
+            margin-right: 10px;
+            &:last-child{
+                margin-right: 0;
+            }
+            & a{
+                width: 40px;
+                height: 40px;
+                line-height: 38px;
+                font-size: 16px;
+                display: block;
+                border: 1px solid $grey_color;
+                text-align: center;
+                &:hover{
+                    background: $secondary_color;
+                    border-color: $secondary_color;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.single_instagram {
+	width: 29%;
+	display: inline-block;
+	margin: 5px 3px;
+    @media #{$desktop-device}{
+       margin: 4px 3px;
+    }
+    & a{
+        @media #{$tablet-device}{
+           width: 100%;
+        }
+        @media #{$large-mobile}{
+           width: 100%;
+        }
+        & img{
+            @media #{$tablet-device}{
+               width: 100%;
+            }
+            @media #{$large-mobile}{
+               width: 100%;
+            }
+        }
+    }
+}
+
+
+.footer_bottom{
+    padding: 20px 0;
+    @media #{$large-mobile}{
+        padding: 17px 0 23px;
+    }
+}
+.copyright_area{
+    @media #{$large-mobile}{
+        text-align: center;
+        margin-bottom: 14px;
+    }
+    & p{
+        text-transform: capitalize;
+        & a{
+            color: $secondary_color;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.footer_payment{
+    @media #{$large-mobile}{
+        text-align: center !important;
+    }
+}
+
+
+
+/*home two css here*/
+.footer_two{
+    & .footer_contact{
+        & ul{
+            & li{
+                & i{
+                   color: $secondary_color2; 
+                }
+            }
+        }
+    }
+    & .footer_menu{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                       color: $secondary_color2;  
+                    }
+                }
+            }
+        }
+    }
+    & .newsletter_form{
+        & form{
+            & button{
+                background: $secondary_color2;  
+                &:hover{
+                    background: $fonts_color;
+                }
+            }
+        }
+    }
+    & .footer_social{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        background: $secondary_color2;
+                        border-color: $secondary_color2;
+                    }
+                }
+            }
+        }
+    }
+    & .copyright_area{
+        & p{
+            & a{
+                color: $secondary_color2;
+            }
+        }
+    }
+}
+
+
+
+/*home three css here*/
+.footer_three{
+    & .footer_contact{
+        & ul{
+            & li{
+                & i{
+                    color: $secondary_color3;
+                }
+            }
+        }
+    }
+    & .newsletter_form {
+        & form{
+            & button{
+                background: $secondary_color3;
+                &:hover{
+                    background: $fonts_color;
+                }
+            }
+        }
+    }
+    & .footer_menu {
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        color: $secondary_color3;
+                    }
+                }
+            }
+        }
+    }
+    & .footer_social{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        background: $secondary_color3;
+                        border-color: $secondary_color3;
+                    }
+                }
+            }
+        }
+    }
+    & .copyright_area{
+        & p{
+            & a{
+                color: $secondary_color3;
+            }
+        }
+    }
+    & .footer_top{
+        @media #{$tablet-device}{
+           padding: 67px 0 22px;
+        }
+        @media #{$large-mobile}{
+           padding: 27px 0 6px;
+        }
+    }
+}
+
+
+
+/*home four css here*/
+.footer_four{
+    & .footer_contact{
+        & ul{
+            & li{
+                & i{
+                    color: $secondary_color4;
+                }
+            }
+        }
+    }
+    & .footer_menu{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        color: $secondary_color4;
+                    }
+                }
+            }
+        }
+    }
+    & .newsletter_form {
+        & form{
+            & button{
+                background: $secondary_color4;
+                &:hover{
+                    background: $fonts_color;
+                }
+            }
+        }
+    }
+    & .footer_social{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        background: $secondary_color4;
+                        border-color: $secondary_color4;
+                    }
+                }
+            }
+        }
+    }
+    & .copyright_area{
+        & p{
+            & a{
+                color: $secondary_color4; 
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
