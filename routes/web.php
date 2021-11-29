@@ -179,6 +179,8 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('showSoftDelete', [SubCategoryController::class, 'showSoftDelete'])->name('subCategories-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [SubCategoryController::class, 'softDeleteRestore'])->name('subCategories-softDeleteRestore');
             Route::get('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subCategories-destroy');
+
+            Route::post('getMainCategories', [SubCategoryController::class, 'getMainCategories'])->name('getMainCategories');
         });
 
         // Product Routes :

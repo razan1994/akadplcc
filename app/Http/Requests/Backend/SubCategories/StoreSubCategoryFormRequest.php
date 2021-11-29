@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\MainCategories;
+namespace App\Http\Requests\Backend\SubCategories;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateMainCategoryFormRequest extends FormRequest
+class StoreSubCategoryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,13 +26,14 @@ class UpdateMainCategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required|unique:main_categories,name_ar,' . $this->id,
-            'name_en' => 'required|unique:main_categories,name_en,' . $this->id,
+            'super_category_id' => 'required',
+            'main_category_id' => 'required',
+            'name_ar' => 'required|unique:sub_categories',
+            'name_en' => 'required|unique:sub_categories',
             // 'description_ar' => 'required',
             // 'description_en' => 'required',
             "image" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif|max:4048',
             'status' => 'required|numeric',
-            'super_category_id' => 'required',
         ];
     }
 
@@ -40,6 +41,7 @@ class UpdateMainCategoryFormRequest extends FormRequest
     {
         return [
             'super_category_id.required' => 'Super Category is Required !!',
+            'main_category_id.required' => 'Main Category is Required !!',
             'name_ar.required' => 'Name AR is Required !!',
             'name_ar.unique' => 'This Name AR is Already Registered !!',
 

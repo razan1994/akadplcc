@@ -247,10 +247,10 @@ class SuperCategoryController extends Controller
         try {
             $superCategory = SuperCategory::find($superCategory_id);
             if ($superCategory) {
-                if ($superCategory->status == 'Active') {
+                if ($superCategory->status == 1) {
                     $superCategory->status = 2;  // 2 => Inactive
                     $superCategory->save();
-                } elseif ($superCategory->status == 'Inactive') {
+                } elseif ($superCategory->status == 2) {
                     $superCategory->status = 1;  // 1 => Active
                     $superCategory->save();
                 }

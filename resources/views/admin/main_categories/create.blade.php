@@ -21,7 +21,7 @@
                                 <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi mdi-home"></i> Dashboard </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.mainCategories-index') }}"> <i class="mdi mdi-account-group"></i> All Categories </a>
+                                <a href="{{ route('super_admin.mainCategories-index') }}"> <i class="mdi mdi-account-group"></i> All Main Categories </a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New Main Category</li>
                         </ol>
@@ -44,7 +44,7 @@
                                             @csrf
                                             <div class="form-row">
 
-                                                {{-- Name AR --}}
+                                                {{-- Super Category --}}
                                                 <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">

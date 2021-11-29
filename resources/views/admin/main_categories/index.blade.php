@@ -36,13 +36,13 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1><i class="mdi mdi-account-multiple"></i> All Categories</h1>
+                    <h1><i class="mdi mdi-account-multiple"></i> All Main Categories</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi  mdi-home"></i> Dashboard </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Categories</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Main Categories</li>
                         </ol>
                     </nav>
                 </div>
@@ -64,6 +64,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th><i class="mdi mdi-account"></i> Super Category</th>
                                 <th><i class="mdi mdi-account"></i> Name Ar</th>
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
                                 <th><i class="mdi mdi-email"></i> Desc AR</th>
@@ -80,6 +81,7 @@
                                     @foreach ($mainCategories as $index => $category)
                                         <tr>
                                             <td>{!! isset($category->id) ? $category->id : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td><a href="{{ route('super_admin.superCategories-index') }}">{!! isset($category->superCategory->name_en) ? $category->superCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
                                             <td>{!! isset($category->name_ar) ? $category->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($category->name_en) ? $category->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($category->description_ar) ? $category->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
@@ -93,10 +95,10 @@
                                             </td>
                                             <td>
                                                 @if (isset($category->status))
-                                                    @if ($category->status == 'Active')
-                                                        <span style="color: green;">{{ isset($category->status) ? $category->status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                    @if ($category->status == 1)
+                                                        <span style="color: green;">Active</span>
                                                     @else
-                                                        <span style="color: red;">{{ isset($category->status) ? $category->status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                        <span style="color: red;">Not Active</span>
                                                     @endif
                                                 @else
                                                     <span style='color:red;'>Undefined</span>
@@ -105,7 +107,7 @@
                                             <td>
                                                 {{-- <a href="{{ route('super_admin.superCategories-show', [$category->id]) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a> --}}
                                                 <a href="{{ route('super_admin.mainCategories-edit', [$category->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
-                                                <a href="{{ route('super_admin.mainCategories-activeInactiveSingle', [$category->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
+                                                <a href="{{ route('super_admin.mainCategories-activeInactiveSingle', [$category->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm {{ $category->status == 1 ? 'btn-warning' : 'btn-success' }}"><i class="mdi mdi-stop"></i></a>
                                                 <a href="{{ route('super_admin.mainCategories-softDelete', [$category->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
                                                 {{-- <a href="{{ route('super_admin.superCategories-destroy', [$category->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>

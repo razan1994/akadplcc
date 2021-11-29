@@ -27,7 +27,7 @@ class MainCategoryController extends Controller
     {
         try {
             $mainCategories = MainCategory::select('*')->orderBy('created_at', 'asc')->get();
-            return view('admin.main_Categories.index', compact('mainCategories'));
+            return view('admin.main_categories.index', compact('mainCategories'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -62,7 +62,7 @@ class MainCategoryController extends Controller
 
             $super_categories = SuperCategory::get();
 
-            return view('admin.main_Categories.create',compact('super_categories'));
+            return view('admin.main_categories.create',compact('super_categories'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -155,7 +155,8 @@ class MainCategoryController extends Controller
         try {
             $mainCategory = MainCategory::find($mainCategory_id);
             if ($mainCategory) {
-                return view('admin.main_categories.edit', compact('mainCategory'));
+                $super_categories = SuperCategory::get();
+                return view('admin.main_categories.edit', compact('mainCategory','super_categories'));
             } else {
                 return redirect()->route('super_admin.mainCategories-index')->with('danger', 'This record is not in the records');
             }
@@ -194,6 +195,7 @@ class MainCategoryController extends Controller
 
             if ($mainCategory) {
                 // Standard Updated Data :
+                $update_data['super_category_id'] = $request->super_category_id;
                 $update_data['name_ar'] = $request->name_ar;
                 $update_data['name_en'] = $request->name_en;
                 $update_data['description_ar'] = $request->description_ar;
@@ -249,10 +251,10 @@ class MainCategoryController extends Controller
         try {
             $mainCategory = MainCategory::find($mainCategory_id);
             if ($mainCategory) {
-                if ($mainCategory->status == 'Active') {
+                if ($mainCategory->status == 1) {
                     $mainCategory->status = 2;  // 2 => Inactive
                     $mainCategory->save();
-                } elseif ($mainCategory->status == 'Inactive') {
+                } elseif ($mainCategory->status == 2) {
                     $mainCategory->status = 1;  // 1 => Active
                     $mainCategory->save();
                 }

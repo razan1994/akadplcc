@@ -13,7 +13,7 @@
                 {{-- ================== Header ==================== --}}
                 {{-- ============================================== --}}
                 <div>
-                    <h1><i class="mdi mdi-playlist-edit"></i> Update Super Category Information</h1>
+                    <h1><i class="mdi mdi-playlist-edit"></i> Update Sub Category Information</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
@@ -22,8 +22,8 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.superCategories-index') }}">
-                                    <i class="mdi mdi-account-group"></i> All Super Categories
+                                <a href="{{ route('super_admin.subCategories-index') }}">
+                                    <i class="mdi mdi-account-group"></i> All Sub Categories
                                 </a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-edit"></i> Edit</li>
@@ -43,11 +43,59 @@
                                         {{-- <h2 style="color:white;"><i class="mdi mdi-star mdi-spin"></i> طلبات سحب الرصيد : </h2> --}}
                                     </div>
                                     <div class="card-body">
-                                        <form action="{{ route('super_admin.superCategories-update', [$superCategory->id]) }}" method="POST"
+                                        <form action="{{ route('super_admin.subCategories-update', [$subCategory->id]) }}" method="POST"
                                             id="updateForm" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
 
+                                                {{-- Super Category --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Super Category : <strong
+                                                            class="text-danger"> * @error('super_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="super_category_id" class="form-control" required>
+
+                                                            <option value="">Select Super Category</option>
+                                                            @if(isset($super_categories) && $super_categories->count() > 0)
+                                                            @foreach ($super_categories as $category)
+                                                                <option value="{{ $category->id }}" @if($category->id == $subCategory->super_category_id) selected @endif>{{ $category->name_en }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                {{-- Main Category --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Main Category : <strong
+                                                            class="text-danger"> * @error('main_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="main_category_id" class="form-control" required>
+
+                                                            <option value="">Select Main Category</option>
+                                                            @if(isset($main_categories) && $main_categories->count() > 0)
+                                                            @foreach ($main_categories as $category)
+                                                                <option value="{{ $category->id }}" @if($category->id == $subCategory->main_category_id) selected @endif>{{ $category->name_en }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
@@ -60,7 +108,7 @@
                                                         </div>
                                                         <input type="text" name="name_ar"
                                                             class="form-control @error('name_ar') is-invalid @enderror" id="validationServer01"
-                                                            placeholder="Name AR" value="{{ isset($superCategory->name_ar) ? $superCategory->name_ar : null }}">
+                                                            placeholder="Name AR" value="{{ isset($subCategory->name_ar) ? $subCategory->name_ar : null }}">
                                                     </div>
                                                 </div>
 
@@ -74,7 +122,7 @@
                                                             <span class="input-group-text mdi mdi-account" id="inputGroupPrepend2"></span>
                                                         </div>
                                                         <input type="text" name="name_en" class="form-control @error('name_en') is-invalid @enderror" id="validationServer01" placeholder="Name EN"
-                                                            value="{{ isset($superCategory->name_en) ? $superCategory->name_en : null }}">
+                                                            value="{{ isset($subCategory->name_en) ? $subCategory->name_en : null }}">
                                                     </div>
                                                 </div>
 
@@ -91,7 +139,7 @@
                                                         </div>
                                                         <textarea style="width: 90% !important" name="description_ar"
                                                             class="form-control "
-                                                            rows="5">{{ isset($superCategory->description_ar) ? $superCategory->description_ar : null }}</textarea>
+                                                            rows="5">{{ isset($subCategory->description_ar) ? $subCategory->description_ar : null }}</textarea>
                                                     </div>
                                                 </div>
 
@@ -109,7 +157,7 @@
                                                         </div>
                                                         <textarea style="width: 90% !important" name="description_en"
                                                             class="form-control "
-                                                            rows="5">{{ isset($superCategory->description_en) ? $superCategory->description_en : null }}</textarea>
+                                                            rows="5">{{ isset($subCategory->description_en) ? $subCategory->description_en : null }}</textarea>
                                                     </div>
                                                 </div>
 
@@ -125,8 +173,8 @@
                                                         </div>
                                                         <select name="status" class="custom-select my-1 mr-sm-2 @error('status') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                             <option value="">Select Status...</option>
-                                                            <option value="1" @if (isset($superCategory->status) && $superCategory->status == '1') selected @endif>Active</option>
-                                                            <option value="2" @if (isset($superCategory->status) && $superCategory->status == '2') selected @endif>Inactive</option>
+                                                            <option value="1" @if (isset($subCategory->status) && $subCategory->status == '1') selected @endif>Active</option>
+                                                            <option value="2" @if (isset($subCategory->status) && $subCategory->status == '2') selected @endif>Inactive</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -147,9 +195,9 @@
 
                                                 {{-- Display Image --}}
                                                 <div class="col-md-12 mb-3">
-                                                    @if (isset($superCategory->image))
-                                                        @if ($superCategory->image && file_exists($superCategory->image))
-                                                            <img src="{{ asset($superCategory->image) }}" width="100" height="100" style="border-radius: 10px; border:solid 1px black;">
+                                                    @if (isset($subCategory->image))
+                                                        @if ($subCategory->image && file_exists($subCategory->image))
+                                                            <img src="{{ asset($subCategory->image) }}" width="100" height="100" style="border-radius: 10px; border:solid 1px black;">
                                                         @else
                                                             <img src="{{ asset('front_end_style/images/default.png') }}" width="100" height="100">
                                                         @endif

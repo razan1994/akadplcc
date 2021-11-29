@@ -14,16 +14,16 @@
                 {{-- ================== Header ==================== --}}
                 {{-- ============================================== --}}
                 <div>
-                    <h1><i class="mdi mdi-playlist-plus"></i> Add New Super Category</h1>
+                    <h1><i class="mdi mdi-playlist-plus"></i> Add New Sub Category</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi mdi-home"></i> Dashboard </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.superCategories-index') }}"> <i class="mdi mdi-account-group"></i> All Categories </a>
+                                <a href="{{ route('super_admin.subCategories-index') }}"> <i class="mdi mdi-account-group"></i> All Sub Categories </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New Super Category</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New Sub Category</li>
                         </ol>
                     </nav>
                 </div>
@@ -39,11 +39,53 @@
                                     <div class="card-header justify-content-between " style="background-color: #4c84ff;">
                                     </div>
                                     <div class="card-body">
-                                        <form action="{{ route('super_admin.superCategories-store') }}" method="POST"
+                                        <form action="{{ route('super_admin.subCategories-store') }}" method="POST"
                                             enctype="multipart/form-data" id="createForm">
                                             @csrf
                                             <div class="form-row">
 
+                                                {{-- Super Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Super Category : <strong
+                                                            class="text-danger"> * @error('super_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="super_category_id" id="super_category_id" class="form-control" required>
+
+                                                            <option value="">Select Super Category....</option>
+                                                            @if(isset($super_categories) && $super_categories->count() > 0)
+                                                            @foreach ($super_categories as $category)
+                                                            <option value="{{ $category->id }}" @if(old('super_category_id') == $category->id) selected @endif>{{ $category->name_en }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                {{-- Main Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Main Category : <strong
+                                                            class="text-danger"> * @error('main_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="main_category_id" id="main_category_id" class="form-control" required>
+                                                            <option value="">Select Main Category....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -166,5 +208,54 @@
     @endsection
 
     @section('admin_javascript')
+
+        <script>
+            $(document).on('load',function(){
+                setTimeout(() => {
+                    getMainCategories();
+                }, 1000);
+            });
+
+            $(document).on("change","#super_category_id",function(){
+
+                getMainCategories();
+
+            });
+
+            function getMainCategories(){
+
+                super_category_id = $("#super_category_id").val();
+
+                formData = new FormData();
+                formData.append('super_category_id',super_category_id);
+
+                $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "{{ route('super_admin.getMainCategories') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data['status'] == true) {
+                        $("#main_category_id").html('');
+                        html = '<option value="">Select Main Category....</option>';
+                        for (let key = 0; key < data.mainCategories.length; key++) {
+
+                            html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                        }
+                        $("#main_category_id").html(html);
+
+                    }
+                },
+                error: function(data) {
+                    alert(data.responseText);
+                }
+            });
+            }
+        </script>
 
     @endsection

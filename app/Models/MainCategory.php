@@ -22,4 +22,39 @@ class MainCategory extends Model
         'image',
         'status',
     ];
+
+
+    //=====================================================================================
+    //============================== Relations ============================================
+    //=====================================================================================
+
+
+
+    // relation with users table
+    // by : Mohammed Salah
+    public function user(){
+        return $this->belongsTo(User::class,'updated_by');
+    }
+
+
+    // relation with super categories table
+    // by : Mohammed Salah
+    public function superCategory(){
+        return $this->belongsTo(SuperCategory::class,'super_category_id');
+    }
+
+    // relation with sub categories table
+    // by : Mohammed Salah
+    public function subCategories(){
+        return $this->hasMany(SubCategory::class,'main_category_id');
+    }
+
+
+    // relation with products table
+    // by : Mohammed Salah
+    public function products(){
+        return $this->hasMany(Product::class,'main_category_id');
+    }
+
+
 }

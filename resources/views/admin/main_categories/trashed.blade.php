@@ -70,6 +70,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th><i class="mdi mdi-account"></i> Super Category</th>
                                 <th><i class="mdi mdi-account"></i> Name Ar</th>
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
                                 <th><i class="mdi mdi-email"></i> Desc AR</th>
@@ -85,6 +86,7 @@
                                     @foreach ($mainCategories as $index => $mainCategory)
                                         <tr>
                                             <td>{!! isset($mainCategory->id) ? $mainCategory->id : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td><a href="{{ route('super_admin.superCategories-index') }}">{!! isset($mainCategory->superCategory->name_en) ? $mainCategory->superCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
                                             <td>{!! isset($mainCategory->name_ar) ? $mainCategory->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($mainCategory->name_en) ? $mainCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($mainCategory->description_ar) ? $mainCategory->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>

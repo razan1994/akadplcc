@@ -48,6 +48,30 @@
                                             @csrf
                                             <div class="form-row">
 
+                                                {{-- Super Category --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Super Category : <strong
+                                                            class="text-danger"> * @error('super_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="super_category_id" class="form-control" required>
+
+                                                            <option value="">Select Super Category</option>
+                                                            @if(isset($super_categories) && $super_categories->count() > 0)
+                                                            @foreach ($super_categories as $category)
+                                                                <option value="{{ $category->id }}" @if($category->id == $mainCategory->super_category_id) selected @endif>{{ $category->name_en }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">

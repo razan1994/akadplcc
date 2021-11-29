@@ -74,7 +74,7 @@
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link"
-                                    href="">
+                                    href="{{ route('super_admin.subCategories-index') }}">
                                     <span class="nav-text"> <i class="fas fa-store"></i> Sub Categories </span>
                                 </a>
                             </li>

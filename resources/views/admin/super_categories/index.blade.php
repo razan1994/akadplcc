@@ -36,13 +36,13 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1><i class="mdi mdi-account-multiple"></i> All Categories</h1>
+                    <h1><i class="mdi mdi-account-multiple"></i> All Super Categories</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi  mdi-home"></i> Dashboard </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Categories</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Super Categories</li>
                         </ol>
                     </nav>
                 </div>
@@ -105,7 +105,7 @@
                                             <td>
                                                 {{-- <a href="{{ route('super_admin.superCategories-show', [$category->id]) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a> --}}
                                                 <a href="{{ route('super_admin.superCategories-edit', [$category->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
-                                                <a href="{{ route('super_admin.superCategories-activeInactiveSingle', [$category->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
+                                                <a href="{{ route('super_admin.superCategories-activeInactiveSingle', [$category->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm {{ $category->status == 1 ? 'btn-warning' : 'btn-success' }}"><i class="mdi mdi-stop"></i></a>
                                                 <a href="{{ route('super_admin.superCategories-softDelete', [$category->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
                                                 {{-- <a href="{{ route('super_admin.superCategories-destroy', [$category->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>

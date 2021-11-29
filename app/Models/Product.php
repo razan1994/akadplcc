@@ -43,11 +43,32 @@ class Product extends Model
     // ===================================================================================================================
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
-    // Relation With Category Model
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
+
+
+    // relation with users table
+    // by : Mohammed Salah
+    public function user(){
+        return $this->belongsTo(User::class,'updated_by');
     }
+
+    // relation with super categories table
+    // by : Mohammed Salah
+    public function superCategory(){
+        return $this->belongsTo(SuperCategory::class,'super_category_id');
+    }
+
+    // relation with main categories table
+    // by : Mohammed Salah
+    public function mainCategory(){
+        return $this->belongsTo(MainCategory::class,'main_category_id');
+    }
+
+    // relation with main categories table
+    // by : Mohammed Salah
+    public function subCategory(){
+        return $this->belongsTo(SubCategory::class,'sub_category_id');
+    }
+
 
     // Relation With ProductImage Model :
     public function productImages()

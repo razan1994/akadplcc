@@ -22,4 +22,35 @@ class SuperCategory extends Model
         'status',
     ];
     protected $date = ['deleted_at'];
+
+
+    //=====================================================================================
+    //============================== Relations ============================================
+    //=====================================================================================
+
+
+    // relation with users table
+    // by : Mohammed Salah
+    public function user(){
+        return $this->belongsTo(User::class,'updated_by');
+    }
+
+    // relation with main categories table
+    // by : Mohammed Salah
+    public function mainCategories(){
+        return $this->hasMany(MainCategory::class,'super_category_id');
+    }
+
+    // relation with sub categories table
+    // by : Mohammed Salah
+    public function subCategories(){
+        return $this->hasMany(SubCategory::class,'super_category_id');
+    }
+
+    // relation with products table
+    // by : Mohammed Salah
+    public function products(){
+        return $this->hasMany(Product::class,'super_category_id');
+    }
+
 }

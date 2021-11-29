@@ -36,7 +36,7 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1><i class="fas fa-user-md"></i> All Super Categories Archived</h1>
+                    <h1><i class="fas fa-user-md"></i> All Main Categories Archived</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
@@ -45,12 +45,12 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.superCategories-index') }}">
+                                <a href="{{ route('super_admin.mainCategories-index') }}">
                                     <i class="fas fa-spell-check"></i> All Categories
                                 </a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page"><i
-                                class="mdi mdi-delete"></i> All Super Categories Archived
+                                class="mdi mdi-delete"></i> All Main Categories Archived
                             </li>
                         </ol>
                     </nav>
@@ -70,6 +70,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th><i class="mdi mdi-account"></i> Super Category</th>
                                 <th><i class="mdi mdi-account"></i> Name Ar</th>
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
                                 <th><i class="mdi mdi-email"></i> Desc AR</th>
@@ -80,36 +81,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (isset($superCategories))
-                                @if ($superCategories->count() > 0)
-                                    @foreach ($superCategories as $index => $superCategory)
+                            @if (isset($mainCategories))
+                                @if ($mainCategories->count() > 0)
+                                    @foreach ($mainCategories as $index => $mainCategory)
                                         <tr>
-                                            <td>{!! isset($superCategory->id) ? $superCategory->id : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($superCategory->name_ar) ? $superCategory->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($superCategory->name_en) ? $superCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($superCategory->description_ar) ? $superCategory->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($superCategory->description_en) ? $superCategory->description_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{!! isset($mainCategory->id) ? $mainCategory->id : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td><a href="{{ route('super_admin.superCategories-index') }}">{!! isset($mainCategory->superCategory->name_en) ? $mainCategory->superCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
+                                            <td>{!! isset($mainCategory->name_ar) ? $mainCategory->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{!! isset($mainCategory->name_en) ? $mainCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{!! isset($mainCategory->description_ar) ? $mainCategory->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{!! isset($mainCategory->description_en) ? $mainCategory->description_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>
-                                                @if (isset($superCategory->image) && $superCategory->image && file_exists($superCategory->image))
-                                                    <img src="{{ asset($superCategory->image) }}" width="70" height="70" style="border-radius: 10px; border:solid 1px black;">
+                                                @if (isset($mainCategory->image) && $mainCategory->image && file_exists($mainCategory->image))
+                                                    <img src="{{ asset($mainCategory->image) }}" width="70" height="70" style="border-radius: 10px; border:solid 1px black;">
                                                 @else
                                                     <img src="{{ asset('front_end_style/images/default.png') }}" width="70" height="50">
                                                 @endif
                                             </td>
                                             <td>
-                                                @if (isset($superCategory->status))
-                                                    @if ($superCategory->status == 'Active')
-                                                        <span style="color: green;">{{ isset($superCategory->status) ? $superCategory->status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                @if (isset($mainCategory->status))
+                                                    @if ($mainCategory->status == 'Active')
+                                                        <span style="color: green;">{{ isset($mainCategory->status) ? $mainCategory->status : "<span style='color:red;'>Undefined</span>" }}</span>
                                                     @else
-                                                        <span style="color: red;">{{ isset($superCategory->status) ? $superCategory->status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                        <span style="color: red;">{{ isset($mainCategory->status) ? $mainCategory->status : "<span style='color:red;'>Undefined</span>" }}</span>
                                                     @endif
                                                 @else
                                                     <span style='color:red;'>Undefined</span>
                                                 @endif
                                             </td>
                                             <td style="text-align: center">
-                                                <a href="{{ route('super_admin.superCategories-softDeleteRestore', $superCategory->id) }}" class="unarchive mb-1 btn btn-sm btn-success"><i class="mdi mdi-redo-variant"></i></a>
-                                                <a href="{{ route('super_admin.superCategories-destroy', [$superCategory->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
+                                                <a href="{{ route('super_admin.mainCategories-softDeleteRestore', $mainCategory->id) }}" class="unarchive mb-1 btn btn-sm btn-success"><i class="mdi mdi-redo-variant"></i></a>
+                                                <a href="{{ route('super_admin.mainCategories-destroy', [$mainCategory->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
