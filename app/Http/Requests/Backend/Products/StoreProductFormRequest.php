@@ -28,7 +28,9 @@ class StoreProductFormRequest extends FormRequest
         return [
             'name_ar' => 'required|unique:products',
             'name_en' => 'required|unique:products',
-            'category_id' => 'required|numeric',
+            'super_category_id' => 'required|numeric',
+            'main_category_id' => 'required|numeric',
+            'sub_category_id' => 'required|numeric',
             'sale_price' => 'required|numeric',
             'on_sale_price_status' => 'required|numeric',
             'on_sale_price' => 'required|numeric|lt:sale_price',
@@ -47,15 +49,19 @@ class StoreProductFormRequest extends FormRequest
             'name_en.required' => 'Name EN is Required !!',
             'name_en.unique' => 'This Name EN is Already Registered !!',
 
-            'category_id.required' => 'Category ID is Required !!',
-            'category_id.numeric' => 'Category ID must be numbers only !!',
-            
+            'super_category_id.required' => 'Super Category ID is Required !!',
+            'super_category_id.numeric' => 'Super Category ID must be numbers only !!',
+            'main_category_id.required' => 'Main Category ID is Required !!',
+            'main_category_id.numeric' => 'Main Category ID must be numbers only !!',
+            'sub_category_id.required' => 'Sub Category ID is Required !!',
+            'sub_category_id.numeric' => 'Sub Category ID must be numbers only !!',
+
             'sale_price.required' => 'Sale Price is Required !!',
             'sale_price.numeric' => 'Sale Price must be numbers only !!',
-            
+
             'on_sale_price_status.required' => 'On Sale Price Status is Required !!',
             'on_sale_price_status.numeric' => 'On Sale Price Status must be numbers only !!',
-            
+
             'on_sale_price.required' => 'On Sale Price is Required !!',
             'on_sale_price.numeric' => 'On Sale Price must be numbers only !!',
             'on_sale_price.lt' => 'On Sale Price must be less than Sale Price !!',
@@ -65,7 +71,7 @@ class StoreProductFormRequest extends FormRequest
 
             'status.required' => 'Status is Required !!',
             'status.numeric' => 'Status must be numbers only !!',
-            
+
             'weight_unit.required' => 'Weight Unit is Required !!',
             'weight_unit.numeric' => 'Weight Unit must be numbers only !!',
         ];

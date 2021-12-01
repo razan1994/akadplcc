@@ -47,7 +47,7 @@
                                             id="updateForm" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
-
+                                                <input type="hidden" id="old_main" value="{{ old('main_category_id') ? old('main_category_id') : $subCategory->main_category_id }}">
                                                 {{-- Super Category --}}
                                                 <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -61,7 +61,7 @@
                                                             <span class="input-group-text mdi mdi-account"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <select name="super_category_id" class="form-control" required>
+                                                        <select name="super_category_id" class="form-control" id="super_category_id" required>
 
                                                             <option value="">Select Super Category</option>
                                                             @if(isset($super_categories) && $super_categories->count() > 0)
@@ -85,14 +85,10 @@
                                                             <span class="input-group-text mdi mdi-account"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <select name="main_category_id" class="form-control" required>
+                                                        <select name="main_category_id" id="main_category_id" class="form-control" required>
 
                                                             <option value="">Select Main Category</option>
-                                                            @if(isset($main_categories) && $main_categories->count() > 0)
-                                                            @foreach ($main_categories as $category)
-                                                                <option value="{{ $category->id }}" @if($category->id == $subCategory->main_category_id) selected @endif>{{ $category->name_en }}</option>
-                                                            @endforeach
-                                                            @endif
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -222,5 +218,63 @@
 
     @endsection
     @section('admin_javascript')
+    <script>
+        $(document).ready(function(){
+            super_id = $("#super_category_id").val();
+            if(super_id != ""){
+                setTimeout(() => {
+                    getMainCategories();
+                }, 1000);
+            }
+        });
+
+        $(document).on("change","#super_category_id",function(){
+
+            getMainCategories();
+
+        });
+
+        function getMainCategories(){
+
+            super_category_id = $("#super_category_id").val();
+
+            formData = new FormData();
+            formData.append('super_category_id',super_category_id);
+
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('super_admin.getMainCategories') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data['status'] == true) {
+                    old_main = $("#old_main").val();
+                    // console.log(old_main);
+                    $("#main_category_id").html('');
+                    html = '<option value="">Select Main Category....</option>';
+                    for (let key = 0; key < data.mainCategories.length; key++) {
+                        // console.log(data.mainCategories[key]['id']);
+                        if(old_main == data.mainCategories[key]['id']){
+                            html +='<option value="'+data.mainCategories[key]['id']+'" selected>'+data.mainCategories[key]['name_en']+'</option>';
+                        }
+                        else{
+                            html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                        }
+                    }
+                    $("#main_category_id").html(html);
+
+                }
+            },
+            error: function(data) {
+
+            }
+        });
+        }
+    </script>
 
     @endsection

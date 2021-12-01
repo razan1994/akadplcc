@@ -15,7 +15,9 @@ class Product extends Model
     // ===================================================================================================================
     protected $table = 'products';
     protected $fillable = [
-        'category_id',
+        'super_category_id',
+        'main_category_id',
+        'sub_category_id',
         'name_ar',
         'name_en',
         'main_description_ar',
@@ -30,13 +32,8 @@ class Product extends Model
         'quantity_limit',
         'image',
         'status',
-        'created_by',
-        // Added After Migrate :
+        'updated_by',
         'weight_unit',
-        'ingredient_en',
-        'ingredient_ar',
-        'benefit_en',
-        'benefit_ar',
     ];
 
 

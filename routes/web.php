@@ -199,6 +199,9 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('destroy/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
             Route::post('addImages/{id}', [ProductController::class, 'AddImages'])->name('products-addImages');
             Route::get('deleteImages/{id}', [ProductController::class, 'deleteImages'])->name('products-deleteImages');
+
+
+            Route::post('getSubCategories', [ProductController::class, 'getSubCategories'])->name('getSubCategories');
         });
 
         // Orders Routes :

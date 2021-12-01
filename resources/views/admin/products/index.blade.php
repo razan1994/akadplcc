@@ -66,11 +66,13 @@
                                 <th>#</th>
                                 <th><i class="mdi mdi-account"></i> Name Ar</th>
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
-                                <th><i class="mdi mdi-account"></i> Category</th>
                                 <th><i class="mdi mdi-email"></i> Sale Price</th>
                                 <th><i class="mdi mdi-email"></i> On Sale Price</th>
                                 <th><i class="mdi mdi-image"></i> Image</th>
                                 <th><i class="mdi mdi-account-switch"></i> Status</th>
+                                <th><i class="mdi mdi-account"></i>Super Category</th>
+                                <th><i class="mdi mdi-account"></i>Main Category</th>
+                                <th><i class="mdi mdi-account"></i>Sub Category</th>
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
                             </tr>
                         </thead>
@@ -82,7 +84,6 @@
                                             <td>{!! isset($product->id) ? $product->id : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->name_ar) ? $product->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->name_en) ? $product->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($product->category->name_en) ? $product->category->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->sale_price) ? $product->sale_price : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->on_sale_price) ? $product->on_sale_price : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>
@@ -103,6 +104,9 @@
                                                     <span style='color:red;'>Undefined</span>
                                                 @endif
                                             </td>
+                                            <td><a href="{{ route('super_admin.superCategories-index') }}">{!! isset($product->superCategory->name_en) ? $product->superCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
+                                            <td><a href="{{ route('super_admin.mainCategories-index') }}">{!! isset($product->mainCategory->name_en) ? $product->mainCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
+                                            <td><a href="{{ route('super_admin.subCategories-index') }}">{!! isset($product->subCategory->name_en) ? $product->subCategory->name_en : "<span style='color:red;'>Undefined</span>" !!}</a></td>
                                             <td>
                                                 <a href="{{ route('super_admin.products-show', [$product->id]) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
                                                 <a href="{{ route('super_admin.products-edit', [$product->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>

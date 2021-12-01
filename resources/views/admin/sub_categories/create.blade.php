@@ -43,7 +43,7 @@
                                             enctype="multipart/form-data" id="createForm">
                                             @csrf
                                             <div class="form-row">
-
+                                                <input type="hidden" id="old_main" value="{{ old('main_category_id') }}">
                                                 {{-- Super Category --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -210,10 +210,13 @@
     @section('admin_javascript')
 
         <script>
-            $(document).on('load',function(){
-                setTimeout(() => {
-                    getMainCategories();
-                }, 1000);
+            $(document).ready(function(){
+                super_id = $("#super_category_id").val();
+                if(super_id != ""){
+                    setTimeout(() => {
+                        getMainCategories();
+                    }, 1000);
+                }
             });
 
             $(document).on("change","#super_category_id",function(){
@@ -241,18 +244,25 @@
                 cache: false,
                 success: function(data) {
                     if (data['status'] == true) {
+                        old_main = $("#old_main").val();
+                        // console.log(old_main);
                         $("#main_category_id").html('');
                         html = '<option value="">Select Main Category....</option>';
                         for (let key = 0; key < data.mainCategories.length; key++) {
-
-                            html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                            // console.log(data.mainCategories[key]['id']);
+                            if(old_main == data.mainCategories[key]['id']){
+                                html +='<option value="'+data.mainCategories[key]['id']+'" selected>'+data.mainCategories[key]['name_en']+'</option>';
+                            }
+                            else{
+                                html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                            }
                         }
                         $("#main_category_id").html(html);
 
                     }
                 },
                 error: function(data) {
-                    alert(data.responseText);
+
                 }
             });
             }

@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->longText('sub_description_ar')->nullable();
             $table->longText('sub_description_en')->nullable();
             $table->decimal('weight', 10, 2)->nullable();
+            $table->tinyInteger('weight_unit')->nullable()->comment("1 => G || 2 => KG || 3=> piece");
             $table->decimal('sale_price', 10, 3);
             $table->tinyInteger('on_sale_price_status')->comment = '1 => Active || 2 => Inactive';
             $table->decimal('on_sale_price', 10, 3);
@@ -37,6 +38,9 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
     }
+
+
+
 
     /**
      * Reverse the migrations.

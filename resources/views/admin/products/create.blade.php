@@ -43,7 +43,8 @@
                                             enctype="multipart/form-data" id="createForm">
                                             @csrf
                                             <div class="form-row">
-
+                                                <input type="hidden" id="old_main" value="{{ old('main_category_id') }}">
+                                                <input type="hidden" id="old_sub" value="{{ old('sub_category_id') }}">
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -78,24 +79,64 @@
                                                             value="{{ old('name_en') }}">
                                                     </div>
                                                 </div>
-
-                                                {{-- Category --}}
+                                                {{-- Super Category --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account-switch"></i> Category : <strong class="text-danger"> * @error('category_id') ( {{ $message }} ) @enderror</strong>
+                                                        <i class="mdi mdi-account"></i> Super Category : <strong
+                                                            class="text-danger"> * @error('super_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account-check"></span>
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <select name="category_id" class="custom-select my-1 mr-sm-2 @error('category_id') is-invalid @enderror" id="inlineFormCustomSelectPref">
-                                                            <option value="">Select Category...</option>
-                                                            @if (isset($categories))
-                                                                @foreach ($categories as $category)
-                                                                    <option data-icon="fa fa-sitemap" value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif> {{ $category->name_en }}</option>
-                                                                @endforeach
+                                                        <select name="super_category_id" id="super_category_id" class="form-control" required>
+
+                                                            <option value="">Select Super Category....</option>
+                                                            @if(isset($categories) && $categories->count() > 0)
+                                                            @foreach ($categories as $category)
+                                                            <option value="{{ $category->id }}" @if(old('super_category_id') == $category->id) selected @endif>{{ $category->name_en }}</option>
+                                                            @endforeach
                                                             @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                {{-- Main Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Main Category : <strong
+                                                            class="text-danger"> * @error('main_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="main_category_id" id="main_category_id" class="form-control" required>
+                                                            <option value="">Select Main Category....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Sub Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Sub Category : <strong
+                                                            class="text-danger"> * @error('sub_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="sub_category_id" id="sub_category_id" class="form-control" required>
+                                                            <option value="">Select Sub Category....</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -127,13 +168,13 @@
                                                         </div>
                                                         <select name="weight_unit" class="custom-select my-1 mr-sm-2 @error('weight_unit') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                             <option value="">Select Weight Unit...</option>
-                                                            <option value="1" @if (old('weight_unit') == '1') selected @endif>ML</option>
+                                                            <option value="1" @if (old('weight_unit') == '1') selected @endif>G</option>
                                                             <option value="2" @if (old('weight_unit') == '2') selected @endif>KG</option>
-                                                            <option value="3" @if (old('weight_unit') == '3') selected @endif>G</option>
+                                                            <option value="3" @if (old('weight_unit') == '3') selected @endif>Piece</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{-- Sale Price --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -196,7 +237,7 @@
                                                         placeholder="Available Quantity" value="{{ (old('quantity_available') !== null) ? old('quantity_available') : 0 }}">
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{-- Limit Quantity --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -264,60 +305,6 @@
                                                         <textarea style="width: 90% !important" name="sub_description_en" class="form-control" rows="5">{{ old('sub_description_en') }}</textarea>
                                                     </div>
                                                 </div>
-
-                                                {{-- Ingredient AR --}}
-                                                <div class="col-12">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        Ingredient AR : <strong class="text-danger"> * @error('ingredient_ar') - {{ $message }} @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open" id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea style="width: 90% !important" name="ingredient_ar" class="form-control" rows="5">{{ old('ingredient_ar') }}</textarea>
-                                                    </div>
-                                                </div>
-
-                                                {{-- Ingredient EN --}}
-                                                <div class="col-12">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        Ingredient EN : <strong class="text-danger"> * @error('ingredient_en') - {{ $message }} @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open" id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea style="width: 90% !important" name="ingredient_en" class="form-control " rows="5">{{ old('ingredient_en') }}</textarea>
-                                                    </div>
-                                                </div>
-
-                                                {{-- Benefit AR --}}
-                                                <div class="col-12">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        Benefit AR : <strong class="text-danger"> * @error('benefit_ar') - {{ $message }} @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open" id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea style="width: 90% !important" name="benefit_ar" class="form-control" rows="5">{{ old('benefit_ar') }}</textarea>
-                                                    </div>
-                                                </div>
-
-                                                {{-- Benefit EN --}}
-                                                <div class="col-12">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        Benefit EN : <strong class="text-danger"> * @error('benefit_en') - {{ $message }} @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open" id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea style="width: 90% !important" name="benefit_en" class="form-control" rows="5">{{ old('benefit_en') }}</textarea>
-                                                    </div>
-                                                </div>
-
                                                 {{-- Status --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -366,5 +353,123 @@
     @endsection
 
     @section('admin_javascript')
-      
+    <script>
+        $(document).ready(function(){
+            super_id = $("#super_category_id").val();
+            if(super_id != ""){
+                setTimeout(() => {
+                    getMainCategories();
+                }, 500);
+            }
+
+
+                setTimeout(() => {
+                    main_id = $("#main_category_id").val();
+                    if(main_id !== ""){
+                        getSubCategories();
+                    }
+
+                }, 1000);
+        });
+
+        $(document).on("change","#super_category_id",function(){
+
+            getMainCategories();
+
+        });
+
+        $(document).on("change","#main_category_id",function(){
+
+            getSubCategories();
+
+        });
+
+        function getMainCategories(){
+
+            super_category_id = $("#super_category_id").val();
+
+            formData = new FormData();
+            formData.append('super_category_id',super_category_id);
+
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('super_admin.getMainCategories') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data['status'] == true) {
+                    old_main = $("#old_main").val();
+                    // console.log(old_main);
+                    $("#main_category_id").html('');
+                    html = '<option value="">Select Main Category....</option>';
+                    for (let key = 0; key < data.mainCategories.length; key++) {
+                        // console.log(data.mainCategories[key]['id']);
+                        if(old_main == data.mainCategories[key]['id']){
+                            html +='<option value="'+data.mainCategories[key]['id']+'" selected>'+data.mainCategories[key]['name_en']+'</option>';
+                        }
+                        else{
+                            html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                        }
+                    }
+                    $("#main_category_id").html(html);
+
+                }
+            },
+            error: function(data) {
+
+            }
+        });
+        }
+
+
+        function getSubCategories(){
+
+            main_category_id = $("#main_category_id").val();
+
+            formData = new FormData();
+            formData.append('main_category_id',main_category_id);
+
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('super_admin.getSubCategories') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data['status'] == true) {
+                    old_sub = $("#old_sub").val();
+                    // console.log(old_main);
+                    $("#sub_category_id").html('');
+                    html = '<option value="">Select Sub Category....</option>';
+                    for (let key = 0; key < data.subCategories.length; key++) {
+                        // console.log(data.mainCategories[key]['id']);
+                        if(old_sub == data.subCategories[key]['id']){
+                            html +='<option value="'+data.subCategories[key]['id']+'" selected>'+data.subCategories[key]['name_en']+'</option>';
+                        }
+                        else{
+                            html +='<option value="'+data.subCategories[key]['id']+'">'+data.subCategories[key]['name_en']+'</option>';
+                        }
+                    }
+                    $("#sub_category_id").html(html);
+
+                }
+            },
+            error: function(data) {
+
+            }
+        });
+        }
+    </script>
+
+
+
     @endsection

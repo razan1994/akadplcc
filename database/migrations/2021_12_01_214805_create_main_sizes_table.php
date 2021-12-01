@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPaymentDataToCartSales extends Migration
+class CreateMainSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddPaymentDataToCartSales extends Migration
      */
     public function up()
     {
-        Schema::table('cart_sales', function (Blueprint $table) {
-            $table->longText('invoice_id')->nullable();
-            $table->longText('invoice_url')->nullable();
+        Schema::create('main_sizes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->bigInteger('updated_by');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +29,6 @@ class AddPaymentDataToCartSales extends Migration
      */
     public function down()
     {
-        Schema::table('cart_sales', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('main_sizes');
     }
 }

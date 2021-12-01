@@ -12,6 +12,8 @@ use App\Models\CartSale;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\SubCategory;
+use App\Models\SuperCategory;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
@@ -63,7 +65,7 @@ class ProductController extends Controller
     public function create(Route $route)
     {
         try {
-            $categories = Category::get();
+            $categories = SuperCategory::get();
             return view('admin.products.create', compact('categories'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -107,7 +109,9 @@ class ProductController extends Controller
             }
 
             $created_data = [
-                'category_id' => $request->category_id,
+                'super_category_id' => $request->super_category_id,
+                'main_category_id' => $request->main_category_id,
+                'sub_category_id' => $request->sub_category_id,
                 'name_ar' => $request->name_ar,
                 'name_en' => $request->name_en,
                 'main_description_ar' => $request->main_description_ar,
@@ -122,13 +126,9 @@ class ProductController extends Controller
                 'quantity_limit' => $request->quantity_limit,
                 'image' => $last_image,
                 'status' => $request->status,
-                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
                 // Added After Migrate :
                 'weight_unit' => $request->weight_unit,
-                'ingredient_en' => $request->ingredient_en,
-                'ingredient_ar' => $request->ingredient_ar,
-                'benefit_en' => $request->benefit_en,
-                'benefit_ar' => $request->benefit_ar,
             ];
 
             DB::transaction(function () use ($created_data) {
@@ -223,7 +223,7 @@ class ProductController extends Controller
     public function edit($product_id, Route $route)
     {
         try {
-            $categories = Category::get();
+            $categories = SuperCategory::get();
             $product = Product::find($product_id);
             if ($product) {
                 return view('admin.products.edit', compact('product', 'categories'));
@@ -264,7 +264,9 @@ class ProductController extends Controller
             $product = Product::find($product_id);
             if ($product) {
                 // Standard Updated Data :
-                $update_data['category_id'] = $request->category_id;
+                $update_data['super_category_id'] = $request->super_category_id;
+                $update_data['main_category_id'] = $request->main_category_id;
+                $update_data['sub_category_id'] = $request->sub_category_id;
                 $update_data['name_ar'] = $request->name_ar;
                 $update_data['name_en'] = $request->name_en;
                 $update_data['main_description_ar'] = $request->main_description_ar;
@@ -284,7 +286,6 @@ class ProductController extends Controller
                 $update_data['ingredient_ar'] = $request->ingredient_ar;
                 $update_data['benefit_en'] = $request->benefit_en;
                 $update_data['benefit_ar'] = $request->benefit_ar;
-
                 // Upload Image Section :
                 if (isset($request->image)) {
                     $orginal_image = $request->file('image');
@@ -483,7 +484,7 @@ class ProductController extends Controller
 
     // ========================================================================
     // ========================== Destroy Function ============================
-    // ==================== Created By : Layth Al-Dwairy ======================
+    // ==================== Created By : Mohammed Salah ======================
     // ========================================================================
     public function destroy($category_id, Route $route)
     {
@@ -523,7 +524,7 @@ class ProductController extends Controller
 
     // ========================================================================
     // ====================== Add Other Images Function =======================
-    // ==================== Created By : Layth Al-Dwairy ======================
+    // ==================== Created By : Mohammed Salah ======================
     // ========================================================================
     public function AddImages(StoreImageProductFormRequest $request, $id, Route $route)
     {
@@ -577,7 +578,7 @@ class ProductController extends Controller
     }
     // ========================================================================
     // ==================== Delete Other Images Function ======================
-    // ==================== Created By : Layth Al-Dwairy ======================
+    // ==================== Created By : Mohammed Salah ======================
     // ========================================================================
     public function deleteImages($id, Route $route)
     {
@@ -614,6 +615,28 @@ class ProductController extends Controller
                 $end_error_ticket = $check_old_errors->first();
             }
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    // ========================================================================
+    // ==================== get Sub Categories Function =======================
+    // ==================== Created By : Mohammed Salah ======================
+    // ========================================================================
+    function getSubCategories(Request $request){
+        $request->validate([
+            'main_category_id'=>'required',
+        ]);
+
+        $subCategories = SubCategory::where('main_category_id',$request->main_category_id)->get();
+
+        if($subCategories && $subCategories->count() > 0){
+            return response()->json(['status'=>true,'subCategories'=>$subCategories]);
+        }
+        else{
+
+            return response()->json(['status'=>true,'subCategories'=>[]]);
         }
     }
 }

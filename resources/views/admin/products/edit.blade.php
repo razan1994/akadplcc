@@ -47,7 +47,8 @@
                                             id="updateForm" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
-
+                                                <input type="hidden" id="old_main" value="{{ old('main_category_id') ? old('main_category_id') : $product->main_category_id }}">
+                                                <input type="hidden" id="old_sub" value="{{ old('sub_category_id') ? old('sub_category_id') : $product->sub_category_id }}">
                                                 {{-- Name AR --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
@@ -77,23 +78,60 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- Category --}}
+                                                {{-- Super Category --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account-switch"></i> Category : <strong class="text-danger"> * @error('category_id') ( {{ $message }} ) @enderror</strong>
+                                                        <i class="mdi mdi-account-switch"></i> Super Category : <strong class="text-danger"> * @error('super_category_id') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-check"></span>
                                                         </div>
-                                                        <select name="category_id" class="custom-select my-1 mr-sm-2 @error('category_id') is-invalid @enderror" id="inlineFormCustomSelectPref">
+                                                        <select name="super_category_id" id="super_category_id" class="custom-select my-1 mr-sm-2 @error('super_category_id') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                             <option value="">Select Category...</option>
                                                             @if (isset($categories))
                                                                 @foreach ($categories as $category)
-                                                                    <option data-icon="fa fa-sitemap" value="{{ isset($category->id) ? $category->id : null }}" @if ($product->category_id == $category->id) selected @endif> {{ $category->name_en }}</option>
+                                                                    <option data-icon="fa fa-sitemap" value="{{ $category->id }}" @if ($product->super_category_id == $category->id) selected @endif> {{ $category->name_en }}</option>
                                                                 @endforeach
                                                             @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                {{-- Main Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Main Category : <strong
+                                                            class="text-danger"> * @error('main_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="main_category_id" id="main_category_id" class="form-control" required>
+                                                            <option value="">Select Main Category....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Sub Category --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Sub Category : <strong
+                                                            class="text-danger"> * @error('sub_category_id') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <select name="sub_category_id" id="sub_category_id" class="form-control" required>
+                                                            <option value="">Select Sub Category....</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -125,13 +163,13 @@
                                                         </div>
                                                         <select name="weight_unit" class="custom-select my-1 mr-sm-2 @error('weight_unit') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                             <option value="">Select Weight Unit...</option>
-                                                            <option value="1" @if (isset($product->weight_unit) && $product->weight_unit == 'ML') selected @endif>ML</option>
+                                                            <option value="1" @if (isset($product->weight_unit) && $product->weight_unit == 'G') selected @endif>G</option>
                                                             <option value="2" @if (isset($product->weight_unit) && $product->weight_unit == 'KG') selected @endif>KG</option>
-                                                            <option value="3" @if (isset($product->weight_unit) && $product->weight_unit == 'G') selected @endif>G</option>
+                                                            <option value="3" @if (isset($product->weight_unit) && $product->weight_unit == 'Piece') selected @endif>Piece</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{-- Sale Price --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -194,7 +232,7 @@
                                                         placeholder="Available Quantity" value="{{ $product->quantity_available }}">
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{-- Limit Quantity --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -376,5 +414,120 @@
 
     @endsection
     @section('admin_javascript')
+        <script>
+            $(document).ready(function(){
+                super_id = $("#super_category_id").val();
+                if(super_id != ""){
+                    setTimeout(() => {
+                        getMainCategories();
+                    }, 500);
+                }
 
+
+                    setTimeout(() => {
+                        main_id = $("#main_category_id").val();
+                        if(main_id !== ""){
+                            getSubCategories();
+                        }
+
+                    }, 1000);
+            });
+
+            $(document).on("change","#super_category_id",function(){
+
+                getMainCategories();
+
+            });
+
+            $(document).on("change","#main_category_id",function(){
+
+                getSubCategories();
+
+            });
+
+            function getMainCategories(){
+
+                super_category_id = $("#super_category_id").val();
+
+                formData = new FormData();
+                formData.append('super_category_id',super_category_id);
+
+                $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "{{ route('super_admin.getMainCategories') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data['status'] == true) {
+                        old_main = $("#old_main").val();
+                        // console.log(old_main);
+                        $("#main_category_id").html('');
+                        html = '<option value="">Select Main Category....</option>';
+                        for (let key = 0; key < data.mainCategories.length; key++) {
+                            // console.log(data.mainCategories[key]['id']);
+                            if(old_main == data.mainCategories[key]['id']){
+                                html +='<option value="'+data.mainCategories[key]['id']+'" selected>'+data.mainCategories[key]['name_en']+'</option>';
+                            }
+                            else{
+                                html +='<option value="'+data.mainCategories[key]['id']+'">'+data.mainCategories[key]['name_en']+'</option>';
+                            }
+                        }
+                        $("#main_category_id").html(html);
+
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+            }
+
+
+            function getSubCategories(){
+
+                main_category_id = $("#main_category_id").val();
+
+                formData = new FormData();
+                formData.append('main_category_id',main_category_id);
+
+                $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "{{ route('super_admin.getSubCategories') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data['status'] == true) {
+                        old_sub = $("#old_sub").val();
+                        // console.log(old_main);
+                        $("#sub_category_id").html('');
+                        html = '<option value="">Select Sub Category....</option>';
+                        for (let key = 0; key < data.subCategories.length; key++) {
+                            // console.log(data.mainCategories[key]['id']);
+                            if(old_sub == data.subCategories[key]['id']){
+                                html +='<option value="'+data.subCategories[key]['id']+'" selected>'+data.subCategories[key]['name_en']+'</option>';
+                            }
+                            else{
+                                html +='<option value="'+data.subCategories[key]['id']+'">'+data.subCategories[key]['name_en']+'</option>';
+                            }
+                        }
+                        $("#sub_category_id").html(html);
+
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+            }
+        </script>
     @endsection
