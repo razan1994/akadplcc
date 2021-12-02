@@ -84,6 +84,11 @@
                                 </a>
                             </li>
                             <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.colors-index') }}">
+                                    <span class="nav-text"> <i class="fas fa-magic"></i> Colors </span>
+                                </a>
+                            </li>
+                            <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.orders-index') }}">
                                     <span class="nav-text"> <i class="fas fa-magic"></i> Orders </span>
                                 </a>

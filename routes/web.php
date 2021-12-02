@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\Admin\MainCategoryController;
 use App\Http\Controllers\Backend\Admin\PromoCodeController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Admin\SuperCategoryController;
+use App\Http\Controllers\Backend\Admin\SizeColorController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\FrontEndController;
 
@@ -199,9 +200,16 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('destroy/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
             Route::post('addImages/{id}', [ProductController::class, 'AddImages'])->name('products-addImages');
             Route::get('deleteImages/{id}', [ProductController::class, 'deleteImages'])->name('products-deleteImages');
-
-
             Route::post('getSubCategories', [ProductController::class, 'getSubCategories'])->name('getSubCategories');
+        });
+
+
+        // Colors Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'colors'], function () {
+            Route::get('/coloeIndex', [SizeColorController::class, 'colorIndex'])->name('colors-index');
+            Route::post('/colorStore', [SizeColorController::class, 'colorStore'])->name('color-store');
+
         });
 
         // Orders Routes :

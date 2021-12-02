@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MainSize extends Model
 {
     use HasFactory;
+
+    protected $table = 'main_colors';
+    protected $fillable = [
+        'name_ar',
+        'name_en',
+        'updated_by'
+    ];
+
 }
