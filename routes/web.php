@@ -347,3 +347,12 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
+Route::get('/cart', function () {
+    return view('front_end_inners.cart');
+});
+Route::get('/checkout', function () {
+    return view('front_end_inners.checkout');
+});
