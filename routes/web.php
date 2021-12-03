@@ -201,14 +201,29 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::post('addImages/{id}', [ProductController::class, 'AddImages'])->name('products-addImages');
             Route::get('deleteImages/{id}', [ProductController::class, 'deleteImages'])->name('products-deleteImages');
             Route::post('getSubCategories', [ProductController::class, 'getSubCategories'])->name('getSubCategories');
+            Route::get('properties/{id}', [ProductController::class, 'properties'])->name('products-properties');
+            Route::post('propertiesStore/{id}', [ProductController::class, 'propertiesStore'])->name('properties-store');
         });
 
 
         // Colors Routes :
         // ==============================================================================
         Route::group(['prefix' => 'colors'], function () {
-            Route::get('/coloeIndex', [SizeColorController::class, 'colorIndex'])->name('colors-index');
+            Route::get('/colorIndex', [SizeColorController::class, 'colorIndex'])->name('colors-index');
             Route::post('/colorStore', [SizeColorController::class, 'colorStore'])->name('color-store');
+            Route::post('/colorUpdate', [SizeColorController::class, 'colorUpdate'])->name('color-update');
+            Route::get('/colorDestroy/{id}', [SizeColorController::class, 'colorDestroy'])->name('color-destroy');
+
+        });
+
+
+        // Sizes Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'sizes'], function () {
+            Route::get('/sizeIndex', [SizeColorController::class, 'sizeIndex'])->name('sizes-index');
+            Route::post('/sizeStore', [SizeColorController::class, 'sizeStore'])->name('size-store');
+            Route::post('/sizeUpdate', [SizeColorController::class, 'sizeUpdate'])->name('size-update');
+            Route::get('/sizeDestroy/{id}', [SizeColorController::class, 'sizeDestroy'])->name('size-destroy');
 
         });
 

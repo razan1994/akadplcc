@@ -112,7 +112,7 @@
                                                 <a href="{{ route('super_admin.products-edit', [$product->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
                                                 <a href="{{ route('super_admin.products-activeInactiveSingle', [$product->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
                                                 <a href="{{ route('super_admin.products-softDelete', [$product->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
-                                                {{-- <a href="{{ route('super_admin.products-destroy', [$product->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
+                                                <a href="{{ route('super_admin.products-properties', [$product->id]) }}" class="mb-1 btn btn-sm btn-secondary">Properties</a>
                                             </td>
                                         </tr>
                                     @endforeach

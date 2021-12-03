@@ -19,6 +19,7 @@ class CreateMainColorsTable extends Migration
             $table->string('name_en');
             $table->string('color_code');
             $table->bigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

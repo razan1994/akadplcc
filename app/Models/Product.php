@@ -37,6 +37,9 @@ class Product extends Model
     ];
 
 
+    protected $date = ['deleted_at'];
+
+
     // ===================================================================================================================
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
@@ -97,6 +100,12 @@ class Product extends Model
     public function checkWishlistByAuthUser()
     {
         return $this->hasMany(ProductWishlist::class)->where(['customer_id' => auth()->user()->id]);
+    }
+
+    // Relation With ProdSzeClrRelation Model :
+    public function properties()
+    {
+        return $this->hasMany(ProdSzeClrRelation::class,'product_id');
     }
 
     // ===================================================================================================================

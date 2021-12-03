@@ -20,6 +20,8 @@ class CreateProdSzeClrRelationsTable extends Migration
             $table->bigInteger('product_id');
             $table->integer('quantity');
             $table->decimal('update_price',10,3);
+            $table->tinyInteger('status')->comment('1 => active || 2 => Not Active');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

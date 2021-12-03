@@ -18,6 +18,7 @@ class CreateMainSizesTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->bigInteger('updated_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

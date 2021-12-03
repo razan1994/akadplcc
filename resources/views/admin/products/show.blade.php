@@ -122,12 +122,6 @@
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab_4" role="tab"
                                 aria-controls="profile" aria-selected="false"> Product Reviews</a>
                         </li>
-
-                        {{-- Product properties Tab Title --}}
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tab_5" role="tab"
-                                aria-controls="profile" aria-selected="false"> Product Properties</a>
-                        </li>
                     </ul>
 
                     {{-- ================================================================================================= --}}
@@ -660,52 +654,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        {{-- ============================================================================== --}}
-                        {{-- ========================= Product Properties Tab Body ============================ --}}
-                        {{-- ============================================================================== --}}
-                        <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="mt-5">
-                                <a class="mb-1 btn btn-primary" style="cursor: pointer;color: #fff" data-toggle="modal" data-target="#properties_modal"><i
-                                        class="mdi mdi-playlist-plus"></i> Add New </a>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <table id="hoverable-data-table_3" class="table table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th><i class="mdi mdi-account-question"></i> Post Title</th>
-                                                    <th><i class="mdi mdi-account-question"></i> Post Since</th>
-                                                    <th><i class="mdi mdi-account-question"></i> Post Date/Time
-                                                    </th>
-                                                    <th><i class="mdi mdi-account-question"></i> Post Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {{-- Super Admin --}}
-                                                <tr>
-                                                    <td>{!! isset($activitylog->activity_key_type) ? $activitylog->activity_key_type : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                                    <td>{!! isset($activitylog->created_at) ? $activitylog->created_at->diffForHumans() : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                                    {{-- <td>{!! (isset($activitylog->created_at) ?  date('Y.d.m / h:i A', strtotime($activitylog->created_at)) : "<span style='color:red;'>Undefined</span>") !!}</td> --}}
-                                                    <td>{!! isset($activitylog->created_at) ? $activitylog->created_at : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                                    <td>
-                                                        @if (isset($activitylog->id) && isset($activitylog->related_id) && isset($activitylog->model_name))
-                                                            <a href="{{ route('super_admin.activity_logs-show', [$activitylog->id]) }}"
-                                                                title="Show" class="mb-1 btn btn-sm btn-primary"><i
-                                                                    class="mdi mdi-eye"></i> View
-                                                                Details</a>
-                                                        @endif
-                                                        {{-- {!! isset($activitylog->related_id) && isset($activitylog->model_name) ? $activitylog->related_id : "<span style='color:red;'>Undefined</span>" !!} --}}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
             </div>

@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Products\ProductPropertiesStorFromRequest;
 use App\Http\Requests\Backend\Products\StoreImageProductFormRequest;
 use App\Http\Requests\Backend\Products\StoreProductFormRequest;
 use App\Http\Requests\Backend\Products\UpdateProductFormRequest;
 use App\Models\CartOperation;
 use App\Models\CartSale;
 use App\Models\Category;
+use App\Models\MainColor;
+use App\Models\MainSize;
+use App\Models\ProdSzeClrRelation;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
@@ -638,5 +642,72 @@ class ProductController extends Controller
 
             return response()->json(['status'=>true,'subCategories'=>[]]);
         }
+    }
+
+
+    // ========================================================================
+    // ==================== Get Product Properties Function ===================
+    // ===================== Created By : Mohammed Salah ======================
+    // ========================================================================
+    function properties($id,Route $route){
+
+        try {
+
+            $product = Product::find($id);
+
+            if($product){
+
+                $sizes = MainSize::get();
+                $colors = MainColor::get();
+
+                return view('admin.products.properties',compact('product','colors','sizes'));
+            }
+            else{
+                return redirect()->back()->with('danger','The Record Not Found');
+            }
+
+
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+
+    function propertiesStore(ProductPropertiesStorFromRequest $request,$id,Route $route){
+
+        ProdSzeClrRelation::create([
+            'main_size_id'=>$request->main_size_id,
+            'main_color_id'=>$request->main_color_id,
+            'product_id'=>$request->product_id,
+            'quantity'=>$request->quantity,
+            'update_price'=>$request->update_price,
+            'status'=>1
+        ]);
+
+
+        return redirect()->back();
+
     }
 }

@@ -55,7 +55,7 @@
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#advertising" aria-expanded="false" aria-controls="advertising">
-                        <i class="fas fa-ad"></i>
+                        <i class="fas fa-store"></i>
                         <span class="nav-text" style="font-size: 9pt;">Shop</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="advertising" data-parent="#sidebar-menu">
@@ -80,12 +80,17 @@
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.products-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-magic"></i> Products </span>
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Products </span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.colors-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-magic"></i> Colors </span>
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Colors </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.sizes-index') }}">
+                                    <span class="nav-text"> <i class="fas fa-store"></i> Sizes </span>
                                 </a>
                             </li>
                             <li class="active">
@@ -101,7 +106,7 @@
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#promo_code" aria-expanded="false" aria-controls="promo_code">
-                        <i class="fas fa-ad"></i>
+                        <i class="fas fa-wallet"></i>
                         <span class="nav-text" style="font-size: 9pt;">Promo Codes</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="promo_code" data-parent="#sidebar-menu">
@@ -109,12 +114,12 @@
                             <li class="active">
                                 <a class="sidenav-item-link"
                                     href="{{ route('super_admin.promo_codes-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Promo Codes </span>
+                                    <span class="nav-text"> <i class="fas fa-wallet"></i> Promo Codes </span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.products-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-magic"></i> Used Promo Code </span>
+                                    <span class="nav-text"> <i class="fas fa-wallet"></i> Used Promo Code </span>
                                 </a>
                             </li>
                         </div>
@@ -125,7 +130,7 @@
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#job"
                         aria-expanded="false" aria-controls="job">
-                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-briefcase"> </i>
                         <span class="nav-text" style="font-size: 9pt;"> Website Layout </span> <b
                             class="caret"></b>
                     </a>
@@ -133,32 +138,38 @@
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.about_us-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">About Us </span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> About Us </span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.sliders-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">Slider</span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Slider</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.banners-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">Banners</span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Banners</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.faqs-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">FAQ</span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> FAQ</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.term_and_conditions-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">Term & Conditions</span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Term & Conditions</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.privacy_policies-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">Privacy Policy</span>
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Privacy Policy</span>
                                 </a>
                             </li>
                         </div>
@@ -177,12 +188,14 @@
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.contact_us-index') }}">
-                                    <span class="nav-text" style="font-size: 9pt;">Contact Us Info</span>
+                                    <i class="fas fa-id-card"></i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Contact Us Info</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.contact_us-requests') }}">
-                                    <span class="nav-text">Contact Messages</span>
+                                    <i class="fas fa-id-card"></i>
+                                    <span class="nav-text"> Contact Messages</span>
                                 </a>
                             </li>
                         </div>

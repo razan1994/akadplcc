@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\Colors;
+namespace App\Http\Requests\Backend\Sizes;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class ColorsStorFromRequest extends FormRequest
+class SizesStorFromRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,8 @@ class ColorsStorFromRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required|unique:main_colors',
-            'name_en' => 'required|unique:main_colors',
-            'color_code' => 'required|unique:main_colors',
+            'name_ar' => 'required|unique:main_sizes',
+            'name_en' => 'required|unique:main_sizes',
         ];
     }
 
@@ -40,10 +39,6 @@ class ColorsStorFromRequest extends FormRequest
 
             'name_en.required' => 'Name EN is Required !!',
             'name_en.unique' => 'This Name EN is Already Registered !!',
-
-            'color_code.required' => 'Color is Required !!',
-            'color_code.unique' => 'This Color is Already Registered !!',
-
 
         ];
     }
