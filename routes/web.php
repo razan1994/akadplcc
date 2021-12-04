@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\Admin\ProductController;
 use App\Http\Controllers\Backend\Admin\OrderController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\BannerController;
+use App\Http\Controllers\Backend\Admin\BrandController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\FaqController;
@@ -227,6 +228,19 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 
         });
 
+        // Brands Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'brands'], function () {
+            Route::get('/index', [BrandController::class, 'index'])->name('brands-index');
+            Route::get('/create', [BrandController::class, 'create'])->name('brands-create');
+            Route::post('/store', [BrandController::class, 'store'])->name('brands-store');
+            Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brands-edit');
+            Route::post('/update/{id}', [BrandController::class, 'update'])->name('brands-update');
+            Route::get('/destroy/{id}', [BrandController::class, 'destroy'])->name('brands-destroy');
+            Route::get('activeInactiveSingle/{id}', [BrandController::class, 'activeInactiveSingle'])->name('brands-activeInactiveSingle');
+        });
+
+
         // Orders Routes :
         // ==============================================================================
         Route::group(['prefix' => 'orders'], function () {
@@ -342,6 +356,13 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 });
 
 
+Route::prefix('frontend')->group(function () {
+
+    Route::get('/showCart', [FrontEndController::class, 'showCart'])->name('show-cart');
+
+});
+
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -353,6 +374,31 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/cart', function () {
     return view('front_end_inners.cart');
 });
+
 Route::get('/checkout', function () {
     return view('front_end_inners.checkout');
+});
+
+Route::get('/contact', function () {
+    return view('front_end_inners.contact');
+});
+
+Route::get('/login', function () {
+    return view('front_end_inners.login');
+});
+
+Route::get('/account', function () {
+    return view('front_end_inners.my-account');
+});
+
+Route::get('/productDetails', function () {
+    return view('front_end_inners.product-detail');
+});
+
+Route::get('/productList', function () {
+    return view('front_end_inners.product-list');
+});
+
+Route::get('/wishlist', function () {
+    return view('front_end_inners.wishlist');
 });

@@ -9,7 +9,7 @@
     <meta content="eCommerce HTML Template Free Download" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ asset('front_end_style/img/favicon.ico') }}" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
@@ -18,31 +18,14 @@
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/slick/slick.css" rel="stylesheet">
-    <link href="lib/slick/slick-theme.css" rel="stylesheet">
+    <link href="{{ asset('front_end_style/lib/slick/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('front_end_style/lib/slick/slick-theme.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('front_end_style/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Top bar Start -->
-    <div class="top-bar">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <i class="fa fa-envelope"></i>
-                    support@email.com
-                </div>
-                <div class="col-sm-6">
-                    <i class="fa fa-phone-alt"></i>
-                    +012-345-6789
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Top bar End -->
-
     <!-- Nav Bar Start -->
     <div class="nav">
         <div class="container-fluid">
@@ -57,7 +40,7 @@
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="product-list.html" class="nav-item nav-link">Products</a>
                         <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                        <a href="cart.html" class="nav-item nav-link active">Cart</a>
+                        <a href="{{ route('show-cart') }}" class="nav-item nav-link active">Cart</a>
                         <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                         <a href="my-account.html" class="nav-item nav-link">My Account</a>
                         <div class="nav-item dropdown">
@@ -91,7 +74,7 @@
                 <div class="col-md-3">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="img/logo.png" alt="Logo">
+                            <img src="{{ asset('front_end_style/img/logo.png') }}" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -107,7 +90,7 @@
                             <i class="fa fa-heart"></i>
                             <span>(0)</span>
                         </a>
-                        <a href="cart.html" class="btn cart">
+                        <a href="{{ route('show-cart') }}" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
                             <span>(0)</span>
                         </a>
@@ -187,15 +170,13 @@
                 <div class="col-md-6">
                     <div class="payment-method">
                         <h2>We Accept:</h2>
-                        <img src="img/payment-method.png" alt="Payment Method" />
+                        <img src="{{ asset('front_end_style/img/payment-method.png') }}" alt="Payment Method" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="payment-security">
                         <h2>Secured By:</h2>
-                        <img src="img/godaddy.svg" alt="Payment Security" />
-                        <img src="img/norton.svg" alt="Payment Security" />
-                        <img src="img/ssl.svg" alt="Payment Security" />
+
                     </div>
                 </div>
             </div>
@@ -225,11 +206,11 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/slick/slick.min.js"></script>
+    <script src="{{ asset('front_end_style/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('front_end_style/lib/slick/slick.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('front_end_style/js/main.js') }}"></script>
 </body>
 
 </html>

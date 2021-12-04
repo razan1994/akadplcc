@@ -24,23 +24,6 @@
     </head>
 
     <body>
-        <!-- Top bar Start -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <i class="fa fa-envelope"></i>
-                        support@email.com
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="fa fa-phone-alt"></i>
-                        +012-345-6789
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Top bar End -->
-
         <!-- Nav Bar Start -->
         <div class="nav">
             <div class="container-fluid">
@@ -55,7 +38,7 @@
                             <a href="index.html" class="nav-item nav-link active">Home</a>
                             <a href="product-list.html" class="nav-item nav-link">Products</a>
                             <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="{{ route('show-cart') }}" class="nav-item nav-link">Cart</a>
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
                             <div class="nav-item dropdown">
@@ -105,7 +88,7 @@
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="{{ route('show-cart') }}" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -151,44 +134,81 @@
                         </nav>
                     </div>
                     <div class="col-md-6">
-                        <div class="header-slider normal-slider">
-                            <div class="header-slider-item">
-                                <img src="{{ asset('front_end_style/img/slider-1.jpg') }}" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        <div class="header-slider normal-slider welcome-slider">
+                            @if(isset($sliders) && $sliders->count() > 0)
+                            @foreach ($sliders as $key => $slider)
+                            @if(isset($slider->image) && file_exists($slider->image))
+                                <div class="header-slider-item">
+                                    <img src="{{ asset($slider->image) }}" alt="Slider Image" />
+                                    {{-- <div class="header-slider-caption">
+                                        <p>{{ $slider->description_en }}</p>
+                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    </div> --}}
                                 </div>
-                            </div>
-                            <div class="header-slider-item">
-                                <img src="{{ asset('front_end_style/img/slider-2.jpg') }}" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                            @else
+                                <div class="header-slider-item">
+                                    <img src="{{ asset('front_end_style/img/slider-1.jpg') }}" alt="Slider Image" />
+                                    <div class="header-slider-caption">
+                                        <p>Some text goes here that describes the image</p>
+                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="header-slider-item">
-                                <img src="{{ asset('front_end_style/img/slider-3.jpg') }}" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                            @endif
+                            @endforeach
+                            @else
+                                <div class="header-slider-item">
+                                    <img src="{{ asset('front_end_style/img/slider-1.jpg') }}" alt="Slider Image" />
+                                    <div class="header-slider-caption">
+                                        <p>Some text goes here that describes the image</p>
+                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="header-slider-item">
+                                    <img src="{{ asset('front_end_style/img/slider-2.jpg') }}" alt="Slider Image" />
+                                    <div class="header-slider-caption">
+                                        <p>Some text goes here that describes the image</p>
+                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    </div>
+                                </div>
+                                <div class="header-slider-item">
+                                    <img src="{{ asset('front_end_style/img/slider-3.jpg') }}" alt="Slider Image" />
+                                    <div class="header-slider-caption">
+                                        <p>Some text goes here that describes the image</p>
+                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="header-img">
-                            <div class="img-item">
-                                <img src="{{ asset('front_end_style/img/category-1.jpg') }}" />
-                                <a class="img-text" href="">
-                                    <p>Some text goes here that describes the image</p>
-                                </a>
-                            </div>
-                            <div class="img-item">
-                                <img src="{{ asset('front_end_style/img/category-2.jpg') }}" />
-                                <a class="img-text" href="">
-                                    <p>Some text goes here that describes the image</p>
-                                </a>
-                            </div>
+                            @if(isset($slider_random) && $slider_random->count() > 0)
+                                @foreach ($slider_random as $random)
+                                    <div class="img-item">
+                                        @if(isset($random->image) && file_exists($random->image))
+                                            <img src="{{ asset($random->image) }}" />
+                                        @else
+                                            <img src="{{ asset('front_end_style/img/category-1.jpg') }}" />
+                                        @endif
+                                        {{-- <a class="img-text" href="">
+                                            <p>Some text goes here that describes the image</p>
+                                        </a> --}}
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="img-item">
+                                    <img src="{{ asset('front_end_style/img/category-1.jpg') }}" />
+                                    <a class="img-text" href="">
+                                        <p>Some text goes here that describes the image</p>
+                                    </a>
+                                </div>
+                                <div class="img-item">
+                                    <img src="{{ asset('front_end_style/img/category-2.jpg') }}" />
+                                    <a class="img-text" href="">
+                                        <p>Some text goes here that describes the image</p>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -200,12 +220,21 @@
         <div class="brand">
             <div class="container-fluid">
                 <div class="brand-slider">
+                    @if(isset($brands) && $brands->count() > 0)
+                    @foreach ($brands as $brand)
+                    @if(isset($brand->image) && file_exists($brand->image))
+                    <div class="brand-item"><img src="{{ asset($brand->image) }}" alt=""></div>
+                    @else
+                    <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-1.png') }}" alt=""></div>
+                    @endif
+                    @endforeach
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-1.png') }}" alt=""></div>
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-2.png') }}" alt=""></div>
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-3.png') }}" alt=""></div>
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-4.png') }}" alt=""></div>
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-5.png') }}" alt=""></div>
                     <div class="brand-item"><img src="{{ asset('front_end_style/img/brand-6.png') }}" alt=""></div>
+                    @endif
                 </div>
             </div>
         </div>

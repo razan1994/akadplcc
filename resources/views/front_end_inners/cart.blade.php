@@ -7,7 +7,7 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Products</a></li>
                     <li class="breadcrumb-item active">Cart</li>
                 </ul>
@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="{{ asset('front_end_style/img/product-1.jpg') }}" alt="Image"></a>
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
@@ -54,7 +54,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-2.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="{{ asset('front_end_style/img/product-2.jpg') }}" alt="Image"></a>
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
@@ -72,7 +72,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-3.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="{{ asset('front_end_style/img/product-3.jpg') }}" alt="Image"></a>
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
@@ -90,7 +90,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-4.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="{{ asset('front_end_style/img/product-4.jpg') }}" alt="Image"></a>
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
@@ -108,7 +108,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-5.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="{{ asset('front_end_style/img/product-5.jpg') }}" alt="Image"></a>
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
