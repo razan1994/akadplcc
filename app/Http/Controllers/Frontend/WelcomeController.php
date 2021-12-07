@@ -12,6 +12,7 @@ use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\SharedMethod;
+use Carbon\Carbon;
 
 class WelcomeController extends Controller
 {
@@ -40,6 +41,12 @@ class WelcomeController extends Controller
         // foreach ($bestSellers as $key => $bestSeller) {
         //     return $bestSeller->product;
         // }
-        return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands'));
+
+        $products = Product::where('status',1)->inRandomOrder()->limit(20)->get();
+        $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(20)->get();
+
+
+
+        return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands','products','recent_products'));
     }
 }
