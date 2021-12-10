@@ -1246,12 +1246,6 @@ select {
 .mb-1 {
 	margin-bottom: 0.25rem;
 }
-.mr-auto {
-	margin-right: auto;
-}
-.ml-auto {
-	margin-left: auto;
-}
 .mt-auto {
 	margin-top: auto;
 }

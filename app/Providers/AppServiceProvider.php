@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\CartTemp;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SuperCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $public_user_types = ['Super Admin', 'Customer'];
             $public_products = Product::where('status', 1)->orderBy('created_at', 'asc')->get();
+            $public_super_categories = SuperCategory::where('status', 1)->orderBy('created_at', 'asc')->get();
 
             if (Auth::check() && Auth::guard('customer')->check()) {
                 $public_customer_carts = CartTemp::where(['user_id' => auth()->user()->id, 'user_type' => 'Customer'])->get();
@@ -51,6 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 'public_user_types' => $public_user_types,
                 'public_products' => $public_products,
                 'public_customer_carts' => $public_customer_carts,
+                'public_super_categories'=>$public_super_categories
             ]);
         });
     }

@@ -1,134 +1,86 @@
-@extends('front_end_inners.app_front_end')
+@extends('front_end_inners.app_front_end', ['title' => 'الصفحة الرئيسية'])
+
 @section('content')
 
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-wrap">
-    <div class="container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Products</a></li>
-            <li class="breadcrumb-item active">Wishlist</li>
-        </ul>
-    </div>
-</div>
-<!-- Breadcrumb End -->
+    <!-- catg header banner section -->
+    <section id="aa-catg-head-banner">
+        <img src="img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+        <div class="aa-catg-head-banner-area">
+            <div class="container">
+                <div class="aa-catg-head-banner-content">
+                    <h2>Wishlist Page</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Wishlist</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / catg header banner section -->
 
-<!-- Wishlist Start -->
-<div class="wishlist-page">
-    <div class="container-fluid">
-        <div class="wishlist-page-inner">
+    <!-- Cart view section -->
+    <section id="cart-view">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Add to Cart</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody class="align-middle">
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-6.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td><button class="btn-cart">Add to Cart</button></td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-7.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td><button class="btn-cart">Add to Cart</button></td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-8.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td><button class="btn-cart">Add to Cart</button></td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-9.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td><button class="btn-cart">Add to Cart</button></td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-10.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td><button class="btn-cart">Add to Cart</button></td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="cart-view-area">
+                        <div class="cart-view-table aa-wishlist-table">
+                            <form action="">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Stock Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a class="remove" href="#">
+                                                        <fa class="fa fa-close"></fa>
+                                                    </a></td>
+                                                <td><a href="#"><img src="img/man/polo-shirt-1.png" alt="img"></a></td>
+                                                <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
+                                                <td>$250</td>
+                                                <td>In Stock</td>
+                                                <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="remove" href="#">
+                                                        <fa class="fa fa-close"></fa>
+                                                    </a></td>
+                                                <td><a href="#"><img src="img/man/polo-shirt-2.png" alt="img"></a></td>
+                                                <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
+                                                <td>$150</td>
+                                                <td>In Stock</td>
+                                                <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="remove" href="#">
+                                                        <fa class="fa fa-close"></fa>
+                                                    </a></td>
+                                                <td><a href="#"><img src="img/man/polo-shirt-3.png" alt="img"></a></td>
+                                                <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
+                                                <td>$50</td>
+                                                <td>In Stock</td>
+                                                <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Wishlist End -->
+    </section>
+    <!-- / Cart view section -->
+
 
 @endsection

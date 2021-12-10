@@ -3,103 +3,349 @@
 
 <head>
     <meta charset="utf-8">
-    <title>E Store - eCommerce HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="eCommerce HTML Template Free Download" name="keywords">
-    <meta content="eCommerce HTML Template Free Download" name="description">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JmeGoods | Home</title>
 
-    <!-- Favicon -->
-    <link href="{{ asset('front_end_style/img/favicon.ico') }}" rel="icon">
+    <!-- Font awesome -->
+    <link href="{{ asset('front_end_style/css/font-awesome.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{{ asset('front_end_style/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="{{ asset('front_end_style/css/jquery.smartmenus.bootstrap.css') }}" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front_end_style/css/jquery.simpleLens.css') }}">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front_end_style/css/slick.css') }}">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front_end_style/css/nouislider.css') }}">
+    <!-- Theme color -->
+    <link id="switcher" href="{{ asset('front_end_style/css/theme-color/default-theme.css') }}" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="{{ asset('front_end_style/css/sequence-theme.modern-slide-in.css') }}" rel="stylesheet" media="all">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('front_end_style/lib/slick/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('front_end_style/lib/slick/slick-theme.css') }}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
+    <!-- Main style sheet -->
     <link href="{{ asset('front_end_style/css/style.css') }}" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
 </head>
 
 <body>
-    <!-- Nav Bar Start -->
-    <div class="nav">
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <a href="#" class="navbar-brand">MENU</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="product-list.html" class="nav-item nav-link">Products</a>
-                        <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                        <a href="{{ route('show-cart') }}" class="nav-item nav-link active">Cart</a>
-                        <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                        <a href="my-account.html" class="nav-item nav-link">My Account</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                            <div class="dropdown-menu">
-                                <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                                <a href="login.html" class="dropdown-item">Login & Register</a>
-                                <a href="contact.html" class="dropdown-item">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">Login</a>
-                                <a href="#" class="dropdown-item">Register</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+    <!-- wpf loader Two -->
+    <div id="wpf-loader-two">
+        <div class="wpf-loader-two-inner">
+            <span>Loading</span>
         </div>
     </div>
-    <!-- Nav Bar End -->
+    <!-- / wpf loader Two -->
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
 
-    <!-- Bottom Bar Start -->
-    <div class="bottom-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="{{ asset('front_end_style/img/logo.png') }}" alt="Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="search">
-                        <input type="text" placeholder="Search">
-                        <button><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="user">
-                        <a href="wishlist.html" class="btn wishlist">
-                            <i class="fa fa-heart"></i>
-                            <span>(0)</span>
-                        </a>
-                        <a href="{{ route('show-cart') }}" class="btn cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>(0)</span>
-                        </a>
+
+    <!-- Start header section -->
+    <header id="aa-header">
+        <!-- start header top  -->
+        <div class="aa-header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-top-area">
+                            <!-- start header top left -->
+                            <div class="aa-header-top-left">
+                                <!-- start language -->
+                                <div class="aa-language">
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <img src="{{ asset('front_end_style/img/flag/english.jpg') }} " alt="english flag">ENGLISH
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li>
+                                                <a href="#"><img src="{{ asset('front_end_style/img/flag/french.jpg') }} " alt="">FRENCH</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="{{ asset('front_end_style/img/flag/english.jpg') }} " alt="">ENGLISH</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- / language -->
+
+                                <!-- start currency -->
+                                <div class="aa-currency">
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="fa fa-usd"></i>USD
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#"><i class="fa fa-euro"></i>EURO</a></li>
+                                            <li><a href="#"><i class="fa fa-jpy"></i>YEN</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- / currency -->
+                                <!-- start cellphone -->
+                                <div class="cellphone hidden-xs">
+                                    <p><span class="fa fa-phone"></span>00-62-658-658</p>
+                                </div>
+                                <!-- / cellphone -->
+                            </div>
+                            <!-- / header top left -->
+                            <div class="aa-header-top-right">
+                                <ul class="aa-head-top-nav-right">
+                                    <li><a href="account.html">My Account</a></li>
+                                    <li class="hidden-xs"><a href="{{ route('wishlist') }}">Wishlist</a></li>
+                                    <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
+                                    <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Bottom Bar End -->
+        <!-- / header top  -->
+
+        <!-- start header bottom  -->
+        <div class="aa-header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-bottom-area">
+                            <!-- logo  -->
+                            <div class="aa-logo">
+                                <!-- Text based logo -->
+                                <a href="index.html">
+                                    <span class="fa fa-shopping-cart"></span>
+                                    <p>Jme<strong>Goods</strong> <span>Your Shopping Partner</span></p>
+                                </a>
+                                <!-- img based logo -->
+                            </div>
+                            <!-- / logo  -->
+                            <!-- cart box -->
+                            <div class="aa-cartbox">
+                                <a class="aa-cart-link" href="#">
+                                    <span class="fa fa-shopping-basket"></span>
+                                    <span class="aa-cart-title">SHOPPING CART</span>
+                                    <span class="aa-cart-notify">2</span>
+                                </a>
+                                <div class="aa-cartbox-summary">
+                                    <ul>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="{{ asset('front_end_style/img/woman-small-2.jpg') }} "
+                                                    alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x $250</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span
+                                                    class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="{{ asset('front_end_style/img/woman-small-1.jpg') }} "
+                                                    alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x $250</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span
+                                                    class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <span class="aa-cartbox-total-title">
+                                                Total
+                                            </span>
+                                            <span class="aa-cartbox-total-price">
+                                                $500
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                                </div>
+                            </div>
+                            <!-- / cart box -->
+                            <!-- search box -->
+                            <div class="aa-search-box">
+                                <form action="">
+                                    <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                                    <button type="submit"><span class="fa fa-search"></span></button>
+                                </form>
+                            </div>
+                            <!-- / search box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / header bottom  -->
+    </header>
+    <!-- / header section -->
+    <!-- menu -->
+    <section id="menu">
+        <div class="container">
+            <div class="menu-area">
+                <!-- Navbar -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <!-- Left nav -->
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ route('welcome') }}">Home</a></li>
+                            @if(isset($public_super_categories) && $public_super_categories->count() > 0)
+                                @foreach ($public_super_categories as $super)
+                                    @if(isset($super->mainCategories) && $super->mainCategories->count() > 0)
+                                        <li><a href="#">{{ isset($super->name_en) ? $super->name_en : '--------' }} <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                @foreach ($super->mainCategories as $main)
+                                                    @if(isset($main->subCategories) && $main->subCategories->count() > 0)
+                                                        <li><a href="#">{{ isset($main->name_en) ? $main->name_en : '--------' }} <span class="caret"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                @foreach ($main->subCategories as $sub)
+                                                                <li><a href="#">{{ isset($sub->name_en) ? $sub->name_en : '--------' }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </li>
+                                                    @else
+                                                        <li><a href="#">{{ isset($main->name_en) ? $main->name_en : '--------' }}</a></li>
+                                                    @endif
+                                                @endforeach
+                                                {{-- <li><a href="#">Sports</a></li>
+                                                <li><a href="#">Formal</a></li>
+                                                <li><a href="#">Standard</a></li>
+                                                <li><a href="#">T-Shirts</a></li>
+                                                <li><a href="#">Shirts</a></li>
+                                                <li><a href="#">Jeans</a></li>
+                                                <li><a href="#">Trousers</a></li>
+                                                 --}}
+                                            </ul>
+                                        </li>
+                                    @else
+                                    <li><a href="#">{{ isset($super->name_en) ? $super->name_en : '--------' }}</a></li>
+                                    @endif
+                                @endforeach
+                            @endif
+                            {{-- <li><a href="#">Women <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Kurta & Kurti</a></li>
+                                    <li><a href="#">Trousers</a></li>
+                                    <li><a href="#">Casual</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Formal</a></li>
+                                    <li><a href="#">Sarees</a></li>
+                                    <li><a href="#">Shoes</a></li>
+                                    <li><a href="#">And more.. <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Sleep Wear</a></li>
+                                            <li><a href="#">Sandals</a></li>
+                                            <li><a href="#">Loafers</a></li>
+                                            <li><a href="#">And more.. <span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Rings</a></li>
+                                                    <li><a href="#">Earrings</a></li>
+                                                    <li><a href="#">Jewellery Sets</a></li>
+                                                    <li><a href="#">Lockets</a></li>
+                                                    <li class="disabled"><a class="disabled"
+                                                            href="#">Disabled item</a></li>
+                                                    <li><a href="#">Jeans</a></li>
+                                                    <li><a href="#">Polo T-Shirts</a></li>
+                                                    <li><a href="#">SKirts</a></li>
+                                                    <li><a href="#">Jackets</a></li>
+                                                    <li><a href="#">Tops</a></li>
+                                                    <li><a href="#">Make Up</a></li>
+                                                    <li><a href="#">Hair Care</a></li>
+                                                    <li><a href="#">Perfumes</a></li>
+                                                    <li><a href="#">Skin Care</a></li>
+                                                    <li><a href="#">Hand Bags</a></li>
+                                                    <li><a href="#">Single Bags</a></li>
+                                                    <li><a href="#">Travel Bags</a></li>
+                                                    <li><a href="#">Wallets & Belts</a></li>
+                                                    <li><a href="#">Sunglases</a></li>
+                                                    <li><a href="#">Nail</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Kids <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Casual</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Formal</a></li>
+                                    <li><a href="#">Standard</a></li>
+                                    <li><a href="#">T-Shirts</a></li>
+                                    <li><a href="#">Shirts</a></li>
+                                    <li><a href="#">Jeans</a></li>
+                                    <li><a href="#">Trousers</a></li>
+                                    <li><a href="#">And more.. <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Sleep Wear</a></li>
+                                            <li><a href="#">Sandals</a></li>
+                                            <li><a href="#">Loafers</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li> --}}
+                            <li><a href="#">Sports</a></li>
+                            {{-- <li><a href="#">Digital <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Camera</a></li>
+                                    <li><a href="#">Mobile</a></li>
+                                    <li><a href="#">Tablet</a></li>
+                                    <li><a href="#">Laptop</a></li>
+                                    <li><a href="#">Accesories</a></li>
+                                </ul>
+                            </li> --}}
+                            <li><a href="#">Furniture</a></li>
+                            <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog-archive.html">Blog Style 1</a></li>
+                                    <li><a href="blog-archive-2.html">Blog Style 2</a></li>
+                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Pages <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="product.html">Shop Page</a></li>
+                                    <li><a href="product-detail.html">Shop Single</a></li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / menu -->
     {{-- =================================================================================================================== --}}
     {{-- ============================================== End Mobile Menu Area =============================================== --}}
     {{-- =================================================================================================================== --}}
@@ -111,106 +357,169 @@
     {{-- =================================================================================================================== --}}
     {{-- ================================================== End Content Area =============================================== --}}
     {{-- =================================================================================================================== --}}
-
-
-    <!-- Footer Start -->
-    <div class="footer">
-        <div class="container-fluid">
+    <!-- Subscribe section -->
+    <section id="aa-subscribe">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Get in Touch</h2>
-                        <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                            <p><i class="fa fa-envelope"></i>email@example.com</p>
-                            <p><i class="fa fa-phone"></i>+123-456-7890</p>
-                        </div>
+                <div class="col-md-12">
+                    <div class="aa-subscribe-area">
+                        <h3>Subscribe our newsletter </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!</p>
+                        <form action="" class="aa-subscribe-form">
+                            <input type="email" name="" id="" placeholder="Enter your Email">
+                            <input type="submit" value="Subscribe">
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Subscribe section -->
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Follow Us</h2>
-                        <div class="contact-info">
-                            <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
+    <!-- footer -->
+    <footer id="aa-footer">
+        <!-- footer bottom -->
+        <div class="aa-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-top-area">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <h3>Main Menu</h3>
+                                        <ul class="aa-footer-nav">
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">Our Services</a></li>
+                                            <li><a href="#">Our Products</a></li>
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Knowledge Base</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Delivery</a></li>
+                                                <li><a href="#">Returns</a></li>
+                                                <li><a href="#">Services</a></li>
+                                                <li><a href="#">Discount</a></li>
+                                                <li><a href="#">Special Offer</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Useful Links</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Site Map</a></li>
+                                                <li><a href="#">Search</a></li>
+                                                <li><a href="#">Advanced Search</a></li>
+                                                <li><a href="#">Suppliers</a></li>
+                                                <li><a href="#">FAQ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Contact Us</h3>
+                                            <address>
+                                                <p> 25 Astor Pl, NY 10003, USA</p>
+                                                <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
+                                                <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
+                                            </address>
+                                            <div class="aa-footer-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                                <a href="#"><span class="fa fa-youtube"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Company Info</h2>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Condition</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Purchase Info</h2>
-                        <ul>
-                            <li><a href="#">Pyament Policy</a></li>
-                            <li><a href="#">Shipping Policy</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-
-            <div class="row payment align-items-center">
-                <div class="col-md-6">
-                    <div class="payment-method">
-                        <h2>We Accept:</h2>
-                        <img src="{{ asset('front_end_style/img/payment-method.png') }}" alt="Payment Method" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="payment-security">
-                        <h2>Secured By:</h2>
-
+        </div>
+        <!-- footer-bottom -->
+        <div class="aa-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-bottom-area">
+                            <p>Designed by <a href="http://www.markups.io/">MarkUps.io</a></p>
+                            <div class="aa-footer-payment">
+                                <span class="fa fa-cc-mastercard"></span>
+                                <span class="fa fa-cc-visa"></span>
+                                <span class="fa fa-paypal"></span>
+                                <span class="fa fa-cc-discover"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer End -->
+    </footer>
+    <!-- / footer -->
 
-    <!-- Footer Bottom Start -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 copyright">
-                    <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
-                </div>
-
-                <div class="col-md-6 template-by">
-                    <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                    <h4>Login or Register</h4>
+                    <form class="aa-login-form" action="">
+                        <label for="">Username or Email address<span>*</span></label>
+                        <input type="text" placeholder="Username or email">
+                        <label for="">Password<span>*</span></label>
+                        <input type="password" placeholder="Password">
+                        <button class="aa-browse-btn" type="submit">Login</button>
+                        <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember
+                            me </label>
+                        <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                        <div class="aa-register-now">
+                            Don't have an account?<a href="account.html">Register now!</a>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
     </div>
-    <!-- Footer Bottom End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('front_end_style/js/bootstrap.js') }}"></script>
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="{{ asset('front_end_style/js/jquery.smartmenus.js') }}"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="{{ asset('front_end_style/js/jquery.smartmenus.bootstrap.js') }}"></script>
+    <!-- To Slider JS -->
+    <script src="{{ asset('front_end_style/js/sequence.js') }}"></script>
+    <script src="{{ asset('front_end_style/js/sequence-theme.modern-slide-in.js') }}"></script>
+    <!-- Product view slider -->
+    <script type="text/javascript" src="{{ asset('front_end_style/js/jquery.simpleGallery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front_end_style/js/jquery.simpleLens.js') }}"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="{{ asset('front_end_style/js/slick.js') }}"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="{{ asset('front_end_style/js/nouislider.js') }}"></script>
+    <!-- Custom js -->
+    <script src="{{ asset('front_end_style/js/custom.js') }}"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('front_end_style/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('front_end_style/lib/slick/slick.min.js') }}"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{ asset('front_end_style/js/main.js') }}"></script>
 </body>
 
 </html>

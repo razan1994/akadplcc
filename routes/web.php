@@ -401,4 +401,4 @@ Route::get('/productList', function () {
 
 Route::get('/wishlist', function () {
     return view('front_end_inners.wishlist');
-});
+})->name('wishlist');
