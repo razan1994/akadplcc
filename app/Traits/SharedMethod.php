@@ -33,9 +33,9 @@ trait SharedMethod
         $uses = array_flip(class_uses_recursive(static::class));
         if (isset($uses[DatabaseMigrations::class])) {
             $this->beforeApplicationDestroyed(function () {
-                $this->app->make('db')->connection('wazefate')->disconnect();
+                $this->app->make('db')->connection('jmegoods_v1')->disconnect();
             });
-            DB::disconnect('wazefate');
+            DB::disconnect('jmegoods_v1');
         }
     }
 

@@ -32,7 +32,7 @@ class WelcomeController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('created_at', 'asc')->get();
         $slider_random = Slider::where('status', 1)->inRandomOrder()->limit(2)->get();
 
-        $banner = Banner::first();
+        $banner = Banner::inRandomOrder()->get()->first();
         $brands = Brand::where('status',1)->get();
         $onSaleProducts = Product::where('on_sale_price_status', 1)->get(); // 1 => Active
         // $bestSellers = CartOperation::selectRaw('count(id) as number_of_orders, product_id')
@@ -46,7 +46,7 @@ class WelcomeController extends Controller
 
         $products = Product::where('status',1)->inRandomOrder()->limit(20)->get();
         $main_categories_rand = SuperCategory::where('status',1)->inRandomOrder()->limit(5)->get();
-        $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(20)->get();
+        $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(12)->get();
 
 
 

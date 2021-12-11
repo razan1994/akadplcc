@@ -8,7 +8,6 @@ use App\Http\Requests\Frontend\Carts\AddToCartFormRequest;
 use App\Http\Requests\Frontend\Carts\UpdateCartQuantityFormRequest;
 use App\Http\Requests\Frontend\Carts\CreateApplyPromoCodeFormRequest;
 use App\Http\Requests\Frontend\ContactUsRequests\ContactUsFormRequest;
-use App\Http\Services\FatoorahServices;
 use App\Models\AboutUs;
 use App\Models\CartOperation;
 use App\Models\CartSale;
@@ -39,14 +38,6 @@ class FrontEndController extends Controller
 {
     use UploadImageTrait;
     use SharedMethod;
-
-    private $fatoorahServices;
-
-    public function __construct(FatoorahServices $fatoorahServices)
-    {
-        $this->fatoorahServices = $fatoorahServices;
-    }
-
 
     function showCart(){
         return view('front_end_inners.cart');
