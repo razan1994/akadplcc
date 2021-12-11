@@ -38,19 +38,19 @@ class SuperCategory extends Model
     // relation with main categories table
     // by : Mohammed Salah
     public function mainCategories(){
-        return $this->hasMany(MainCategory::class,'super_category_id');
+        return $this->hasMany(MainCategory::class,'super_category_id')->where('status',1);
     }
 
     // relation with sub categories table
     // by : Mohammed Salah
     public function subCategories(){
-        return $this->hasMany(SubCategory::class,'super_category_id');
+        return $this->hasMany(SubCategory::class,'super_category_id')->where('status',1);
     }
 
     // relation with products table
     // by : Mohammed Salah
     public function products(){
-        return $this->hasMany(Product::class,'super_category_id');
+        return $this->hasMany(Product::class,'super_category_id')->where('status',1);
     }
 
 }

@@ -227,7 +227,17 @@
                                                         <li><a href="#">{{ isset($main->name_en) ? $main->name_en : '--------' }} <span class="caret"></span></a>
                                                             <ul class="dropdown-menu">
                                                                 @foreach ($main->subCategories as $sub)
-                                                                <li><a href="#">{{ isset($sub->name_en) ? $sub->name_en : '--------' }}</a></li>
+                                                                    @if(isset($sub->products) && $sub->products->count() > 0)
+                                                                        <li><a href="#">{{ isset($sub->name_en) ? $sub->name_en : '--------' }} <span class="caret"></span></a>
+                                                                            <ul class="dropdown-menu">
+                                                                                @foreach ($sub->products as $product)
+                                                                                    <li><a href="#">{{ isset($product->name_en) ? $product->name_en : '--------' }}</a></li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </li>
+                                                                    @else
+                                                                        <li><a href="#">{{ isset($sub->name_en) ? $sub->name_en : '--------' }}</a></li>
+                                                                    @endif
                                                                 @endforeach
                                                             </ul>
                                                         </li>
@@ -312,7 +322,7 @@
                                     </li>
                                 </ul>
                             </li> --}}
-                            <li><a href="#">Sports</a></li>
+                            {{-- <li><a href="#">Sports</a></li> --}}
                             {{-- <li><a href="#">Digital <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Camera</a></li>
@@ -322,22 +332,22 @@
                                     <li><a href="#">Accesories</a></li>
                                 </ul>
                             </li> --}}
-                            <li><a href="#">Furniture</a></li>
-                            <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+                            {{-- <li><a href="#">Furniture</a></li> --}}
+                            {{-- <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="blog-archive.html">Blog Style 1</a></li>
                                     <li><a href="blog-archive-2.html">Blog Style 2</a></li>
                                     <li><a href="blog-single.html">Blog Single</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li><a href="contact.html">Contact</a></li>
-                            <li><a href="#">Pages <span class="caret"></span></a>
+                            {{-- <li><a href="#">Pages <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="product.html">Shop Page</a></li>
                                     <li><a href="product-detail.html">Shop Single</a></li>
                                     <li><a href="404.html">404 Page</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <!--/.nav-collapse -->

@@ -43,20 +43,20 @@ class MainCategory extends Model
     // relation with super categories table
     // by : Mohammed Salah
     public function superCategory(){
-        return $this->belongsTo(SuperCategory::class,'super_category_id');
+        return $this->belongsTo(SuperCategory::class,'super_category_id')->where('status',1);
     }
 
     // relation with sub categories table
     // by : Mohammed Salah
     public function subCategories(){
-        return $this->hasMany(SubCategory::class,'main_category_id');
+        return $this->hasMany(SubCategory::class,'main_category_id')->where('status',1);
     }
 
 
     // relation with products table
     // by : Mohammed Salah
     public function products(){
-        return $this->hasMany(Product::class,'main_category_id');
+        return $this->hasMany(Product::class,'main_category_id')->where('status',1);
     }
 
 

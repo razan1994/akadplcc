@@ -7,8 +7,10 @@ use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\CartOperation;
 use App\Models\Category;
+use App\Models\MainCategory;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\SuperCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\SharedMethod;
@@ -43,10 +45,11 @@ class WelcomeController extends Controller
         // }
 
         $products = Product::where('status',1)->inRandomOrder()->limit(20)->get();
+        $main_categories_rand = SuperCategory::where('status',1)->inRandomOrder()->limit(5)->get();
         $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(20)->get();
 
 
 
-        return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands','products','recent_products'));
+        return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands','products','recent_products','main_categories_rand'));
     }
 }
