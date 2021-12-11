@@ -110,7 +110,7 @@
                                     <div class="input-group">
 
                                         <input type="number" name="update_price"
-                                            class="form-control" step="0.01"
+                                            class="form-control" step="0.01" value="0.00"
                                             placeholder="Update Price" value="{{ old('update_price') }}">
                                     </div>
                                 </div>

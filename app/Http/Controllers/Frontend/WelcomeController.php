@@ -44,10 +44,14 @@ class WelcomeController extends Controller
         //     return $bestSeller->product;
         // }
 
-        $products = Product::where('status',1)->inRandomOrder()->limit(20)->get();
+        $products = Product::where('status',1)->with('properties',function($q){
+
+            $q->inRandomOrder()->get();
+
+        })->inRandomOrder()->limit(20)->get();
+
         $main_categories_rand = SuperCategory::where('status',1)->inRandomOrder()->limit(5)->get();
         $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(12)->get();
-
 
 
         return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands','products','recent_products','main_categories_rand'));

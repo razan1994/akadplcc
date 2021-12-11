@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>JmeGoods | Home</title>
 
     <!-- Font awesome -->
@@ -509,6 +510,7 @@
         <!-- /.modal-dialog -->
     </div>
 
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -529,6 +531,7 @@
     <script type="text/javascript" src="{{ asset('front_end_style/js/nouislider.js') }}"></script>
     <!-- Custom js -->
     <script src="{{ asset('front_end_style/js/custom.js') }}"></script>
+
 
 </body>
 

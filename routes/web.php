@@ -101,6 +101,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('/productReview', [CustomerController::class, 'productReview'])->name('productReview');
         });
     });
+
+    Route::prefix('frontend')->group(function () {
+
+        Route::get('/showCart', [FrontEndController::class, 'showCart'])->name('show-cart');
+        Route::post('/getItemDetails', [FrontEndController::class, 'getItemDetails'])->name('getItemDetails');
+
+    });
 });
 
 // ==================================================================================================================
@@ -356,11 +363,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 });
 
 
-Route::prefix('frontend')->group(function () {
 
-    Route::get('/showCart', [FrontEndController::class, 'showCart'])->name('show-cart');
-
-});
 
 
 
