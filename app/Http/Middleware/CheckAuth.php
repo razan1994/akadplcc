@@ -17,7 +17,7 @@ class CheckAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('customer')->check() || Auth::guard('super_admin')->check()) {
+        if (Auth::guard('super_admin')->check()) {
             return redirect()->route('welcomeAuth');
         }
         return $next($request);

@@ -32,28 +32,7 @@ class WelcomeController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('created_at', 'asc')->get();
         $slider_random = Slider::where('status', 1)->inRandomOrder()->limit(2)->get();
 
-        $banner = Banner::inRandomOrder()->get()->first();
-        $brands = Brand::where('status',1)->get();
-        $onSaleProducts = Product::where('on_sale_price_status', 1)->get(); // 1 => Active
-        // $bestSellers = CartOperation::selectRaw('count(id) as number_of_orders, product_id')
-        //     ->groupBy('product_id')
-        //     ->take(20)
-        //     ->orderBy('number_of_orders', 'desc')
-        //     ->get();
-        // foreach ($bestSellers as $key => $bestSeller) {
-        //     return $bestSeller->product;
-        // }
 
-        $products = Product::where('status',1)->with('properties',function($q){
-
-            $q->inRandomOrder()->get();
-
-        })->inRandomOrder()->limit(20)->get();
-
-        $main_categories_rand = SuperCategory::where('status',1)->inRandomOrder()->limit(5)->get();
-        $recent_products = Product::where('status',1)->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString())->inRandomOrder()->limit(12)->get();
-
-
-        return view('welcome', compact('sliders', 'banner', 'onSaleProducts','slider_random','brands','products','recent_products','main_categories_rand'));
+        return view('welcome', compact('sliders','slider_random'));
     }
 }

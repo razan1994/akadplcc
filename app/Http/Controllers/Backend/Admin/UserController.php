@@ -32,10 +32,8 @@ class UserController extends Controller
             $users = new User();
             $users = $users->select('*')->orderBy('created_at', 'asc')->get();
 
-            $customers = new Customer();
-            $customers = $customers->select('*')->orderBy('created_at', 'asc')->get();
 
-            return view('admin.users.index', compact('users', 'customers'));
+            return view('admin.users.index', compact('users'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

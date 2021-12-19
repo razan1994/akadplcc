@@ -3,15 +3,8 @@
         <!-- Aplication Brand -->
         <div class="app-brand">
             <a href="{{ route('super_admin.dashboard') }}" title="Dashboard">
-                {{-- <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
-                    height="33" viewBox="0 0 30 33">
-                    <g fill="none" fill-rule="evenodd">
-                        <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-                        <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                    </g>
-                </svg> --}}
-                {{-- <img height="33" width="30" src="{{ asset('images_default/blueray_logo.jpg') }}" alt=""> --}}
-                <span class="brand-name text-truncate"> JmeGoods </span>
+
+                <span class="brand-name text-truncate"> Rushetta Dashboard </span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -51,85 +44,8 @@
                     </ul>
                 </li>
 
-                {{-- Shop --}}
-                <li class="has-sub active expand">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                        data-target="#advertising" aria-expanded="false" aria-controls="advertising">
-                        <i class="fas fa-store"></i>
-                        <span class="nav-text" style="font-size: 9pt;">Shop</span> <b class="caret"></b>
-                    </a>
-                    <ul class="collapse" id="advertising" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.superCategories-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Super Categories </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.mainCategories-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Main Categories </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.subCategories-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Sub Categories </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.products-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Products </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.colors-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Colors </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.sizes-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Sizes </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.brands-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-store"></i> Brands </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.orders-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-magic"></i> Orders </span>
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
-                </li>
 
-                {{-- Promo Codes --}}
-                <li class="has-sub active expand">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                        data-target="#promo_code" aria-expanded="false" aria-controls="promo_code">
-                        <i class="fas fa-wallet"></i>
-                        <span class="nav-text" style="font-size: 9pt;">Promo Codes</span> <b class="caret"></b>
-                    </a>
-                    <ul class="collapse" id="promo_code" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.promo_codes-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-wallet"></i> Promo Codes </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.products-index') }}">
-                                    <span class="nav-text"> <i class="fas fa-wallet"></i> Used Promo Code </span>
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
-                </li>
+
 
                 {{-- Website Layout --}}
                 <li class="has-sub active expand">
@@ -151,18 +67,6 @@
                                 <a class="sidenav-item-link" href="{{ route('super_admin.sliders-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> Slider</span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.banners-index') }}">
-                                    <i class="fas fa-briefcase"> </i>
-                                    <span class="nav-text" style="font-size: 9pt;"> Banners</span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.faqs-index') }}">
-                                    <i class="fas fa-briefcase"> </i>
-                                    <span class="nav-text" style="font-size: 9pt;"> FAQ</span>
                                 </a>
                             </li>
                             <li class="active">

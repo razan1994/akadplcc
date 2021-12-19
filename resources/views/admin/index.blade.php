@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-xl-6 col-sm-6">
             <div class="card card-mini mb-4">
                 <div class="card-body">
@@ -61,8 +61,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
+    </div> --}}
+    {{-- <div class="row">
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="media widget-media p-4 bg-white border">
                 <div class="icon rounded-circle mr-4 bg-success">
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     {{-- =========================================================== --}}
@@ -176,7 +176,7 @@
         </div>
 
         {{-- New Orders : --}}
-        <div class="col-xl-6">
+        {{-- <div class="col-xl-6">
             <div class="card card-table-border-none" data-scroll-height="580">
                 <div class="card-header justify-content-between " style="background-color: #4c84ff;">
                     <h2 style="color:white;"><i class="mdi mdi-star mdi-spin"></i> New Orders :</h2>
@@ -235,14 +235,14 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 
     {{-- =========================================================== --}}
     {{-- ================= Pending delivery orders ================= --}}
     {{-- =========================================================== --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between " style="background-color: #4c84ff;">
@@ -334,12 +334,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- =========================================================== --}}
     {{-- ================ Products Under The Limit ================= --}}
     {{-- =========================================================== --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between " style="background-color: #4c84ff;">
@@ -366,7 +366,6 @@
                                         <tr>
                                             <td>{!! isset($product->id) ? $product->id : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->name_en) ? $product->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            {{-- <td>{!! isset($product->category->name_en) ? $product->category->name_en : "<span style='color:red;'>Undefined</span>" !!}</td> --}}
                                             <td>{!! isset($product->quantity_available) ? $product->quantity_available : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($product->quantity_limit) ? $product->quantity_limit : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>
@@ -392,7 +391,6 @@
                                                 <a href="{{ route('super_admin.products-edit', [$product->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
                                                 <a href="{{ route('super_admin.products-activeInactiveSingle', [$product->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
                                                 <a href="{{ route('super_admin.products-softDelete', [$product->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
-                                                {{-- <a href="{{ route('super_admin.products-destroy', [$product->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -411,6 +409,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection

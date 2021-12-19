@@ -2,7 +2,7 @@
     <div class="copyright bg-white">
         <p>
             &copy; <span id="copy-year">2021</span> All Right Reserved.
-            <a class="text-primary" href="https://al-mizen.netlify.app/index.html" target="_blank">Almizen</a>.
+            <a class="text-primary" href="#" target="_blank">Target Point Tech | TPT</a>.
         </p>
     </div>
     <script>
