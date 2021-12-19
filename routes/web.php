@@ -10,22 +10,11 @@ use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\SupportTicketController;
-use App\Http\Controllers\Backend\Admin\ProductController;
-use App\Http\Controllers\Backend\Admin\OrderController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
-use App\Http\Controllers\Backend\Admin\BannerController;
-use App\Http\Controllers\Backend\Admin\BrandController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Backend\Admin\FaqController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
-use App\Http\Controllers\Backend\Admin\MainCategoryController;
-use App\Http\Controllers\Backend\Admin\PromoCodeController;
-use App\Http\Controllers\Backend\Admin\SubCategoryController;
-use App\Http\Controllers\Backend\Admin\SuperCategoryController;
-use App\Http\Controllers\Backend\Admin\SizeColorController;
-use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\FrontEndController;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -34,31 +23,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     // ============================================= Shared Auth Routes =================================================
     // ==================================================================================================================
-    Route::group(['middleware' => 'auth:customer,super_admin,web'], function () {
+    Route::group(['middleware' => 'auth:super_admin,web'], function () {
         Route::get('/welcomeAuth', [WelcomeController::class, 'welcome'])->name('welcomeAuth');
-        Route::get('/categoriesAuth', [FrontEndController::class, 'categories'])->name('categoriesAuth');
-        Route::get('/productsAuth', [FrontEndController::class, 'products'])->name('productsAuth');
-        Route::get('/productDetailsAuth/{product_id}', [FrontEndController::class, 'productDetails'])->name('productDetailsAuth');
-        Route::get('/productWishlistStore/{product_id}', [FrontEndController::class, 'productWishlistStore'])->name('productWishlistStore');
-        Route::get('/productWishlistShow', [FrontEndController::class, 'productWishlistShow'])->name('productWishlistShow');
         Route::get('/aboutUsAuth', [FrontEndController::class, 'aboutUs'])->name('aboutUsAuth');
         Route::get('/contactUsAuth', [FrontEndController::class, 'contactUs'])->name('contactUsAuth');
-        Route::get('/faqsAuth', [FrontEndController::class, 'faqs'])->name('faqsAuth');
         Route::get('/privacyPoliciesAuth', [FrontEndController::class, 'privacyPolicies'])->name('privacyPoliciesAuth');
         Route::get('/termsAndConditionsAuth', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditionsAuth');
         Route::post('/contactUsRequestAuth', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequestAuth');
-        Route::get('/addToCartAuth/{product_id}', [FrontEndController::class, 'addToCart'])->name('addToCartAuth');
-        Route::get('/deleteFromCartAuth/{cart_temp_id}', [FrontEndController::class, 'deleteFromCart'])->name('deleteFromCartAuth');
-        Route::get('/cartAuth', [FrontEndController::class, 'cart'])->name('cartAuth');
-        Route::post('/checkoutAuth', [FrontEndController::class, 'checkout'])->name('checkoutAuth');
-        Route::get('/callbackPaymentAuth', [FrontEndController::class, 'callbackPayment'])->name('callbackPaymentAuth');
-        Route::get('/errorPaymentAuth', [FrontEndController::class, 'errorPayment'])->name('errorPaymentAuth');
-        Route::post('/applyPromoCode', [FrontEndController::class, 'applyPromoCode'])->name('applyPromoCode');
-        Route::get('/updateCartQuantityAuth', [FrontEndController::class, 'updateCartQuantity'])->name('updateCartQuantityAuth');
-        Route::get('/showOrderDetailsAuth/{order_id}', [FrontEndController::class, 'showOrderDetails'])->name('showOrderDetailsAuth');
-
-        Route::get('/get_shipping_cities', [FrontEndController::class, 'get_shipping_cities'])->name('get_shipping_cities');
-        Route::get('/get_city_retails', [FrontEndController::class, 'get_city_retails'])->name('get_city_retails');
     });
 
     // ==================================================================================================================
@@ -66,46 +37,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     Route::group(['middleware' => 'checkAuth'], function () {
         Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
-        Route::get('/categories', [FrontEndController::class, 'categories'])->name('categories');
-        Route::get('/products', [FrontEndController::class, 'products'])->name('products');
-        Route::get('/productDetails/{product_id}', [FrontEndController::class, 'productDetails'])->name('productDetails');
-        // Route::get('/wishlist', [FrontEndController::class, 'wishlist'])->name('wishlist');
         Route::get('/aboutUs', [FrontEndController::class, 'aboutUs'])->name('aboutUs');
         Route::get('/contactUs', [FrontEndController::class, 'contactUs'])->name('contactUs');
         Route::post('/contactUsRequest', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequest');
-        Route::get('/faqs', [FrontEndController::class, 'faqs'])->name('faqs');
         Route::get('/privacyPolicies', [FrontEndController::class, 'privacyPolicies'])->name('privacyPolicies');
         Route::get('/termsAndConditions', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditions');
-        Route::get('/addToCart/{product_id}', [FrontEndController::class, 'addToCart'])->name('addToCart');
-        Route::get('/deleteFromCart/{product_id}', [FrontEndController::class, 'deleteFromCart'])->name('deleteFromCart');
-        // Route::get('/cart', [FrontEndController::class, 'cart'])->name('cart');
-
-        Route::post('/checkout', [FrontEndController::class, 'checkout'])->name('checkout');
-        Route::get('/callbackPayment', [FrontEndController::class, 'callbackPayment'])->name('callbackPayment');
-        Route::get('/errorPayment', [FrontEndController::class, 'errorPayment'])->name('errorPayment');
-
-        Route::get('/updateCartQuantity', [FrontEndController::class, 'updateCartQuantity'])->name('updateCartQuantity]');
-        // Route::get('/showOrderDetails/{order_id}', [FrontEndController::class, 'showOrderDetails'])->name('showOrderDetails');
     });
 
-    // ==================================================================================================================
-    // ============================================= Frontend Routes ====================================================
-    // ==================================================================================================================
-    Route::prefix('customer')->name('customer.')->group(function () {
-        Route::get('/loginRegister', [CustomerController::class, 'loginRegister'])->name('loginRegister');
-        Route::post('/login', [CustomerController::class, 'login'])->name('login');
-        Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
-        Route::post('/register', [CustomerController::class, 'register'])->name('register');
-        Route::group(['middleware' => ['auth:customer']], function () {
-            Route::get('/profile', [CustomerController::class, 'profile'])->name('profile');
-            Route::post('/productReview', [CustomerController::class, 'productReview'])->name('productReview');
-        });
-    });
 
     Route::prefix('frontend')->group(function () {
 
-        Route::get('/showCart', [FrontEndController::class, 'showCart'])->name('show-cart');
-        Route::post('/getItemDetails', [FrontEndController::class, 'getItemDetails'])->name('getItemDetails');
 
     });
 });
@@ -142,119 +83,6 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/activeInactiveSingle/{id}/{user_type}', [UserController::class, 'activeInactiveSingle'])->name('users-activeInactiveSingle');
         });
 
-        // Super Category Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'superCategories'], function () {
-            Route::get('/create', [SuperCategoryController::class, 'create'])->name('superCategories-create');
-            Route::post('/store', [SuperCategoryController::class, 'store'])->name('superCategories-store');
-            Route::get('/index', [SuperCategoryController::class, 'index'])->name('superCategories-index');
-            Route::get('show/{id}', [SuperCategoryController::class, 'show'])->name('superCategories-show');
-            Route::get('edit/{id}', [SuperCategoryController::class, 'edit'])->name('superCategories-edit');
-            Route::post('update/{id}', [SuperCategoryController::class, 'update'])->name('superCategories-update');
-            Route::get('activeInactiveSingle/{id}', [SuperCategoryController::class, 'activeInactiveSingle'])->name('superCategories-activeInactiveSingle');
-            Route::get('softDelete/{id}', [SuperCategoryController::class, 'softDelete'])->name('superCategories-softDelete');
-            Route::get('showSoftDelete', [SuperCategoryController::class, 'showSoftDelete'])->name('superCategories-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [SuperCategoryController::class, 'softDeleteRestore'])->name('superCategories-softDeleteRestore');
-            Route::get('destroy/{id}', [SuperCategoryController::class, 'destroy'])->name('superCategories-destroy');
-        });
-
-        // Main Category Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'mainCategories'], function () {
-            Route::get('/create', [MainCategoryController::class, 'create'])->name('mainCategories-create');
-            Route::post('/store', [MainCategoryController::class, 'store'])->name('mainCategories-store');
-            Route::get('/index', [MainCategoryController::class, 'index'])->name('mainCategories-index');
-            Route::get('show/{id}', [MainCategoryController::class, 'show'])->name('mainCategories-show');
-            Route::get('edit/{id}', [MainCategoryController::class, 'edit'])->name('mainCategories-edit');
-            Route::post('update/{id}', [MainCategoryController::class, 'update'])->name('mainCategories-update');
-            Route::get('activeInactiveSingle/{id}', [MainCategoryController::class, 'activeInactiveSingle'])->name('mainCategories-activeInactiveSingle');
-            Route::get('softDelete/{id}', [MainCategoryController::class, 'softDelete'])->name('mainCategories-softDelete');
-            Route::get('showSoftDelete', [MainCategoryController::class, 'showSoftDelete'])->name('mainCategories-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [MainCategoryController::class, 'softDeleteRestore'])->name('mainCategories-softDeleteRestore');
-            Route::get('destroy/{id}', [MainCategoryController::class, 'destroy'])->name('mainCategories-destroy');
-        });
-
-        // Super Category Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'subCategories'], function () {
-            Route::get('/create', [SubCategoryController::class, 'create'])->name('subCategories-create');
-            Route::post('/store', [SubCategoryController::class, 'store'])->name('subCategories-store');
-            Route::get('/index', [SubCategoryController::class, 'index'])->name('subCategories-index');
-            Route::get('show/{id}', [SubCategoryController::class, 'show'])->name('subCategories-show');
-            Route::get('edit/{id}', [SubCategoryController::class, 'edit'])->name('subCategories-edit');
-            Route::post('update/{id}', [SubCategoryController::class, 'update'])->name('subCategories-update');
-            Route::get('activeInactiveSingle/{id}', [SubCategoryController::class, 'activeInactiveSingle'])->name('subCategories-activeInactiveSingle');
-            Route::get('softDelete/{id}', [SubCategoryController::class, 'softDelete'])->name('subCategories-softDelete');
-            Route::get('showSoftDelete', [SubCategoryController::class, 'showSoftDelete'])->name('subCategories-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [SubCategoryController::class, 'softDeleteRestore'])->name('subCategories-softDeleteRestore');
-            Route::get('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subCategories-destroy');
-
-            Route::post('getMainCategories', [SubCategoryController::class, 'getMainCategories'])->name('getMainCategories');
-        });
-
-        // Product Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'products'], function () {
-            Route::get('/create', [ProductController::class, 'create'])->name('products-create');
-            Route::post('/store', [ProductController::class, 'store'])->name('products-store');
-            Route::get('/index', [ProductController::class, 'index'])->name('products-index');
-            Route::get('show/{id}', [ProductController::class, 'show'])->name('products-show');
-            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('products-edit');
-            Route::post('update/{id}', [ProductController::class, 'update'])->name('products-update');
-            Route::get('activeInactiveSingle/{id}', [ProductController::class, 'activeInactiveSingle'])->name('products-activeInactiveSingle');
-            Route::get('softDelete/{id}', [ProductController::class, 'softDelete'])->name('products-softDelete');
-            Route::get('showSoftDelete', [ProductController::class, 'showSoftDelete'])->name('products-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [ProductController::class, 'softDeleteRestore'])->name('products-softDeleteRestore');
-            Route::get('destroy/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
-            Route::post('addImages/{id}', [ProductController::class, 'AddImages'])->name('products-addImages');
-            Route::get('deleteImages/{id}', [ProductController::class, 'deleteImages'])->name('products-deleteImages');
-            Route::post('getSubCategories', [ProductController::class, 'getSubCategories'])->name('getSubCategories');
-            Route::get('properties/{id}', [ProductController::class, 'properties'])->name('products-properties');
-            Route::post('propertiesStore/{id}', [ProductController::class, 'propertiesStore'])->name('properties-store');
-        });
-
-
-        // Colors Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'colors'], function () {
-            Route::get('/colorIndex', [SizeColorController::class, 'colorIndex'])->name('colors-index');
-            Route::post('/colorStore', [SizeColorController::class, 'colorStore'])->name('color-store');
-            Route::post('/colorUpdate', [SizeColorController::class, 'colorUpdate'])->name('color-update');
-            Route::get('/colorDestroy/{id}', [SizeColorController::class, 'colorDestroy'])->name('color-destroy');
-
-        });
-
-
-        // Sizes Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'sizes'], function () {
-            Route::get('/sizeIndex', [SizeColorController::class, 'sizeIndex'])->name('sizes-index');
-            Route::post('/sizeStore', [SizeColorController::class, 'sizeStore'])->name('size-store');
-            Route::post('/sizeUpdate', [SizeColorController::class, 'sizeUpdate'])->name('size-update');
-            Route::get('/sizeDestroy/{id}', [SizeColorController::class, 'sizeDestroy'])->name('size-destroy');
-
-        });
-
-        // Brands Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'brands'], function () {
-            Route::get('/index', [BrandController::class, 'index'])->name('brands-index');
-            Route::get('/create', [BrandController::class, 'create'])->name('brands-create');
-            Route::post('/store', [BrandController::class, 'store'])->name('brands-store');
-            Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brands-edit');
-            Route::post('/update/{id}', [BrandController::class, 'update'])->name('brands-update');
-            Route::get('/destroy/{id}', [BrandController::class, 'destroy'])->name('brands-destroy');
-            Route::get('activeInactiveSingle/{id}', [BrandController::class, 'activeInactiveSingle'])->name('brands-activeInactiveSingle');
-        });
-
-
-        // Orders Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'orders'], function () {
-            Route::get('/index', [OrderController::class, 'index'])->name('orders-index');
-            Route::get('show/{id}', [OrderController::class, 'show'])->name('orders-show');
-            Route::get('sendToDelivery/{id}', [OrderController::class, 'sendToDelivery'])->name('orders-sendToDelivery');
-        });
 
         // About Us Routes :
         // ==============================================================================
@@ -264,13 +92,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::post('update', [AboutUsController::class, 'update'])->name('about_us-update');
         });
 
-        // Banners Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'banners'], function () {
-            Route::get('/index', [BannerController::class, 'index'])->name('banners-index');
-            Route::get('edit', [BannerController::class, 'edit'])->name('banners-edit');
-            Route::post('update', [BannerController::class, 'update'])->name('banners-update');
-        });
+
 
         // Term And Conditions Routes:
         // ==============================================================================
@@ -300,21 +122,6 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('softDeleteRestore/{id}', [PrivacyPolicyController::class, 'softDeleteRestore'])->name('privacy_policies-softDeleteRestore');
         });
 
-        // FAQ Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'faqs'], function () {
-            Route::get('/create', [FaqController::class, 'create'])->name('faqs-create');
-            Route::post('/store', [FaqController::class, 'store'])->name('faqs-store');
-            Route::get('/index', [FaqController::class, 'index'])->name('faqs-index');
-            Route::get('show/{id}', [FaqController::class, 'show'])->name('faqs-show');
-            Route::get('edit/{id}', [FaqController::class, 'edit'])->name('faqs-edit');
-            Route::post('update/{id}', [FaqController::class, 'update'])->name('faqs-update');
-            Route::get('activeInactiveSingle/{id}', [FaqController::class, 'activeInactiveSingle'])->name('faqs-activeInactiveSingle');
-            Route::get('softDelete/{id}', [FaqController::class, 'softDelete'])->name('faqs-softDelete');
-            Route::get('showSoftDelete', [FaqController::class, 'showSoftDelete'])->name('faqs-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [FaqController::class, 'softDeleteRestore'])->name('faqs-softDeleteRestore');
-            Route::get('destroy/{id}', [FaqController::class, 'destroy'])->name('faqs-destroy');
-        });
 
         // Contact Us Routes :
         // ==============================================================================
@@ -344,64 +151,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('destroy/{id}', [SliderController::class, 'destroy'])->name('sliders-destroy');
         });
 
-        // Promo Code Routes :
-        // ==============================================================================
-        Route::group(['prefix' => 'promo_codes'], function () {
-            Route::get('/create', [PromoCodeController::class, 'create'])->name('promo_codes-create');
-            Route::post('/store', [PromoCodeController::class, 'store'])->name('promo_codes-store');
-            Route::get('/index', [PromoCodeController::class, 'index'])->name('promo_codes-index');
-            Route::get('show/{id}', [PromoCodeController::class, 'show'])->name('promo_codes-show');
-            Route::get('edit/{id}', [PromoCodeController::class, 'edit'])->name('promo_codes-edit');
-            Route::post('update/{id}', [PromoCodeController::class, 'update'])->name('promo_codes-update');
-            Route::get('activeInactiveSingle/{id}', [PromoCodeController::class, 'activeInactiveSingle'])->name('promo_codes-activeInactiveSingle');
-            Route::get('softDelete/{id}', [PromoCodeController::class, 'softDelete'])->name('promo_codes-softDelete');
-            Route::get('showSoftDelete', [PromoCodeController::class, 'showSoftDelete'])->name('promo_codes-showSoftDelete');
-            Route::get('softDeleteRestore/{id}', [PromoCodeController::class, 'softDeleteRestore'])->name('promo_codes-softDeleteRestore');
-            Route::get('destroy/{id}', [PromoCodeController::class, 'destroy'])->name('promo_codes-destroy');
-        });
+
     });
 });
 
-
-
-
-
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
-
-Route::get('/cart', function () {
-    return view('front_end_inners.cart');
-});
-
-Route::get('/checkout', function () {
-    return view('front_end_inners.checkout');
-});
-
-Route::get('/contact', function () {
-    return view('front_end_inners.contact');
-});
-
-Route::get('/login', function () {
-    return view('front_end_inners.login');
-});
-
-Route::get('/account', function () {
-    return view('front_end_inners.my-account');
-});
-
-Route::get('/productDetails', function () {
-    return view('front_end_inners.product-detail');
-});
-
-Route::get('/productList', function () {
-    return view('front_end_inners.product-list');
-});
-
-Route::get('/wishlist', function () {
-    return view('front_end_inners.wishlist');
-})->name('wishlist');
