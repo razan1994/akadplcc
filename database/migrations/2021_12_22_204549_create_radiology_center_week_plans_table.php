@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactUsTable extends Migration
+class CreateRadiologyCenterWeekPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateContactUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_us', function (Blueprint $table) {
+        Schema::create('radiology_center_week_plans', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('email');
-            $table->string('phone');
-            $table->longText('address_ar');
-            $table->longText('address_en');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateContactUsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_us');
+        Schema::dropIfExists('radiology_center_week_plans');
     }
 }

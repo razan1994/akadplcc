@@ -14,6 +14,7 @@ class CreatePrivacyPoliciesTable extends Migration
     public function up()
     {
         Schema::create('privacy_policies', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->bigInteger('user_id');
             $table->string('user_type');

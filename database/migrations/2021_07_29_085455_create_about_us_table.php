@@ -14,6 +14,7 @@ class CreateAboutUsTable extends Migration
     public function up()
     {
         Schema::create('about_us', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->longText('about_us_ar');
             $table->longText('about_us_en');

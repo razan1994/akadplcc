@@ -45,10 +45,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
 
-    Route::prefix('frontend')->group(function () {
-
-
-    });
 });
 
 // ==================================================================================================================

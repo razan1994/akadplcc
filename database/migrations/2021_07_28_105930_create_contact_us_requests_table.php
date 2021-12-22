@@ -14,6 +14,7 @@ class CreateContactUsRequestsTable extends Migration
     public function up()
     {
         Schema::create('contact_us_requests', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('full_name');
             $table->string('email');

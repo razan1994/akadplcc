@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PublicCountryPhoneKey;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AboutUsSeeder::class,
             ContactUsSeeder::class,
+            PublicCountrySeeder::class,
+            PublicNationalitySeeder::class,
+            PublicPhoneKeySeeder::class
         ]);
     }
 }

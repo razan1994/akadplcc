@@ -14,6 +14,7 @@ class CreateSlidersTable extends Migration
     public function up()
     {
         Schema::create('sliders', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('title_ar')->unique();
             $table->string('title_en')->unique();

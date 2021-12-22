@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactUsTable extends Migration
+class CreatePublicRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateContactUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_us', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('public_regions', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('phone');
-            $table->longText('address_ar');
-            $table->longText('address_en');
+            $table->foreignId('country_id')->constrained('public_countries')->onDelete('cascade');
+            $table->longText('country_key');
+            $table->longText('name_ar');
+            $table->longText('name_en');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateContactUsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_us');
+        Schema::dropIfExists('public_regions');
     }
 }
