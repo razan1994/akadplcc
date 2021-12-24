@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $public_user_types = ['Super Admin'];
+            $public_user_types = ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin'];
 
             view()->share([
                 'public_user_types' => $public_user_types,

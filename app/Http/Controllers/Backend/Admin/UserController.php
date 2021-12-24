@@ -6,7 +6,15 @@ use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Users\StoreUserFormRequest;
 use App\Http\Requests\Backend\Users\UpdateUserFormRequest;
-use App\Models\Customer;
+use App\Models\Doctor;
+use App\Models\Hospital;
+use App\Models\InsuranceCompany;
+use App\Models\Lab;
+use App\Models\MedicalCenter;
+use App\Models\Patient;
+use App\Models\Pharmacy;
+use App\Models\RadiologyCenter;
+use App\Models\SeoAdmin;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
@@ -106,9 +114,35 @@ class UserController extends Controller
                 $original_name = $orginal_image->getClientOriginalName();
                 if ($request->user_type == 'Super Admin') {
                     $last_image = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                } else {
-                    $last_image = $this->saveFileWithOriginalName('customers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 }
+                 else if($request->user_type == 'Insurance Company'){
+                    $last_image = $this->saveFileWithOriginalName('insurance_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Hospital'){
+                    $last_image = $this->saveFileWithOriginalName('hospitals', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Radiology Center'){
+                    $last_image = $this->saveFileWithOriginalName('radiology_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Medical Center'){
+                    $last_image = $this->saveFileWithOriginalName('medical_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Lab'){
+                    $last_image = $this->saveFileWithOriginalName('labs', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Doctor'){
+                    $last_image = $this->saveFileWithOriginalName('doctors', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Patient'){
+                    $last_image = $this->saveFileWithOriginalName('patients', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'Pharmacy'){
+                    $last_image = $this->saveFileWithOriginalName('pharmacies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+                 else if($request->user_type == 'SEO Admin'){
+                    $last_image = $this->saveFileWithOriginalName('seo_admins', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                }
+
             } else {
                 $last_image = null;
             }
@@ -131,8 +165,33 @@ class UserController extends Controller
                 // =====================================================================
                 if ($created_data['user_type'] == 'Super Admin') {
                     User::create($created_data);
-                } elseif ($created_data['user_type'] == 'Customer') {
-                    Customer::create($created_data);
+                }
+                else if($created_data['user_type'] == 'Insurance Company'){
+                    InsuranceCompany::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Hospital'){
+                     Hospital::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Radiology Center'){
+                    RadiologyCenter::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Medical Center'){
+                    MedicalCenter::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Lab'){
+                    Lab::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Doctor'){
+                    Doctor::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Patient'){
+                    Patient::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'Pharmacy'){
+                    Pharmacy::create($created_data);
+                }
+                 else if($created_data['user_type'] == 'SEO Admin'){
+                    SeoAdmin::create($created_data);
                 }
             });
 
@@ -170,8 +229,6 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 $user = User::find($user_id);
-            } elseif ($user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
@@ -214,8 +271,6 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 $user = User::find($user_id);
-            } elseif ($user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
@@ -259,8 +314,6 @@ class UserController extends Controller
         try {
             if ($request->user_type == 'Super Admin') {
                 $user = User::find($user_id);
-            } elseif ($request->user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
@@ -286,16 +339,12 @@ class UserController extends Controller
                     $original_name = $orginal_image->getClientOriginalName();
                     if ($request->user_type == 'Super Admin') {
                         $update_data['profile_photo_path'] = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                    } else {
-                        $update_data['profile_photo_path'] = $this->saveFileWithOriginalName('customers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                     }
                     File::delete($user->profile_photo_path);
                 }
 
                 if ($request->user_type == 'Super Admin') {
                     DB::table('users')->where('id', $user_id)->update($update_data);
-                } elseif ($request->user_type == 'Customer') {
-                    DB::table('customers')->where('id', $user_id)->update($update_data);
                 }
 
                 return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
@@ -335,25 +384,23 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } elseif ($user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
 
-            if ($user) {
-                if ($user->user_status == 'Pendding') {
-                    $user->user_status = 2;  // 2 => Active
-                    $user->save();
-                    $update_data = $user->toArray();
-                    $update_data['user_status'] = 2;
-                    return redirect()->back()->with('success', 'The process has successfully');
-                } else {
-                    return redirect()->back()->with('danger', 'An unexpected error occurred');
-                }
-            } else {
-                return redirect()->back()->with('danger', 'This record is not in the records');
-            }
+            // if ($user) {
+            //     if ($user->user_status == 'Pendding') {
+            //         $user->user_status = 2;  // 2 => Active
+            //         $user->save();
+            //         $update_data = $user->toArray();
+            //         $update_data['user_status'] = 2;
+            //         return redirect()->back()->with('success', 'The process has successfully');
+            //     } else {
+            //         return redirect()->back()->with('danger', 'An unexpected error occurred');
+            //     }
+            // } else {
+            //     return redirect()->back()->with('danger', 'This record is not in the records');
+            // }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -387,25 +434,23 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } elseif ($user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
 
-            if ($user) {
-                if ($user->user_status == 'Pendding') {
-                    $user->user_status = 3;  // 3 => Inactive
-                    $user->save();
-                    $update_data = $user->toArray();
-                    $update_data['user_status'] = 3;
-                    return redirect()->back()->with('success', 'The process has successfully');
-                } else {
-                    return redirect()->back()->with('danger', 'An unexpected error occurred');
-                }
-            } else {
-                return redirect()->back()->with('danger', 'This record is not in the records');
-            }
+            // if ($user) {
+            //     if ($user->user_status == 'Pendding') {
+            //         $user->user_status = 3;  // 3 => Inactive
+            //         $user->save();
+            //         $update_data = $user->toArray();
+            //         $update_data['user_status'] = 3;
+            //         return redirect()->back()->with('success', 'The process has successfully');
+            //     } else {
+            //         return redirect()->back()->with('danger', 'An unexpected error occurred');
+            //     }
+            // } else {
+            //     return redirect()->back()->with('danger', 'This record is not in the records');
+            // }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -439,30 +484,28 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } elseif ($user_type == 'Customer') {
-                $user = Customer::find($user_id);
             } else {
                 $user = '';
             }
 
-            if ($user) {
-                if ($user->user_status == 'Active') {
-                    $user->user_status = 3;  // 3 => Inactive
-                    $user->save();
-                    $update_data = $user->toArray();
-                    $update_data['user_status'] = 3;
-                } elseif ($user->user_status == 'Inactive') {
-                    $user->user_status = 2;  // 2 => Active
-                    $user->save();
-                    $update_data = $user->toArray();
-                    $update_data['user_status'] = 2;
-                } elseif ($user->user_status == 'Pendding') {
-                    return redirect()->back()->with('danger', 'This user\'s request is still pending, it must be accepted first');
-                }
-                return redirect()->back()->with('success', 'The process has successfully');
-            } else {
-                return redirect()->back()->with('danger', 'This record is not in the records');
-            }
+            // if ($user) {
+            //     if ($user->user_status == 'Active') {
+            //         $user->user_status = 3;  // 3 => Inactive
+            //         $user->save();
+            //         $update_data = $user->toArray();
+            //         $update_data['user_status'] = 3;
+            //     } elseif ($user->user_status == 'Inactive') {
+            //         $user->user_status = 2;  // 2 => Active
+            //         $user->save();
+            //         $update_data = $user->toArray();
+            //         $update_data['user_status'] = 2;
+            //     } elseif ($user->user_status == 'Pendding') {
+            //         return redirect()->back()->with('danger', 'This user\'s request is still pending, it must be accepted first');
+            //     }
+            //     return redirect()->back()->with('success', 'The process has successfully');
+            // } else {
+            //     return redirect()->back()->with('danger', 'This record is not in the records');
+            // }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
