@@ -151,3 +151,10 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
     });
 });
 
+
+
+
+
+Route::get('/index', function () {
+    return view('front_end_inners.index');
+});
