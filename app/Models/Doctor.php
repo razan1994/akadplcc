@@ -31,6 +31,7 @@ class Doctor extends Model
         'address_ar',
         'address_en',
         'player_id',
+        'speciality_id'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -54,5 +55,23 @@ class Doctor extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    // ====================================================================================
+    // ============================== Accessories =========================================
+    // ====================================================================================
+
+    public function getUserStatusAttribute($value)
+    {
+        if ($value == 1) {
+            return 'Pendding';
+        } elseif ($value == 2) {
+            return 'Active';
+        } elseif ($value == 3) {
+            return 'Inactive';
+        }
+    }
+
 
 }

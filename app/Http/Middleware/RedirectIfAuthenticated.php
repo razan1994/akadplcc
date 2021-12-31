@@ -30,6 +30,11 @@ class RedirectIfAuthenticated
         if ($guard == 'super_admin' && Auth::guard($guard)->check()) {
             return redirect()->route('super_admin.dashboard');
         }
+        if ($guard == 'seo_admin' && Auth::guard($guard)->check()) {
+            return redirect()->route('seo.dashboard');
+        }
+
+        // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
 
         if (Auth::guard($guard)->check()) {
             return redirect()->route('welcome');

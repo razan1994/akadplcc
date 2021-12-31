@@ -45,7 +45,7 @@ return [
             'provider' => 'users',
         ],
     ],
-
+// ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -72,7 +72,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+// ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -108,7 +108,7 @@ return [
             'throttle' => 60,
         ],
     ],
-
+// ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout

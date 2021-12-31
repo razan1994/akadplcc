@@ -70,7 +70,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         Route::group(['prefix' => 'users'], function () {
             Route::get('/create', [UserController::class, 'create'])->name('users-create');
             Route::post('/store', [UserController::class, 'store'])->name('users-store');
-            Route::get('/index', [UserController::class, 'index'])->name('users-index');
+            Route::get('/index/{user_type}', [UserController::class, 'index'])->name('users-index');
             Route::get('show/{id}/{user_type}', [UserController::class, 'show'])->name('users-show');
             Route::get('edit/{id}/{user_type}', [UserController::class, 'edit'])->name('users-edit');
             Route::post('update/{id}', [UserController::class, 'update'])->name('users-update');

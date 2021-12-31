@@ -36,13 +36,13 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1><i class="mdi mdi-account-multiple"></i> All Users</h1>
+                    <h1><i class="mdi mdi-account-multiple"></i> All {{ isset($user_type) ? $user_type : 'User' }}s</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi  mdi-home"></i> Dashboard </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Users</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All {{ isset($user_type) ? $user_type : 'User' }}s</li>
                         </ol>
                     </nav>
                 </div>
@@ -84,7 +84,7 @@
                                             <td>{!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>Super Admin</td>
+                                            <td>{{ isset($user_type) ? $user_type : "<span style='color:red;'>Undefined</span>" }}</td>
                                             <td>
                                                 @if (isset($user->user_status))
                                                     @if ($user->user_status == 'Active')
@@ -97,56 +97,26 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('super_admin.users-show', [$user->id, 'Super Admin']) }}"
+                                                @if(isset($user_type))
+                                                <a href="{{ route('super_admin.users-show', [$user->id, $user_type]) }}"
                                                     title="Show" class="mb-1 btn btn-sm btn-info"><i
                                                         class="mdi mdi-eye"></i></a>
-                                                <a href="{{ route('super_admin.users-edit', [$user->id, 'Super Admin']) }}"
+                                                <a href="{{ route('super_admin.users-edit', [$user->id, $user_type]) }}"
                                                     title="Edit" class="mb-1 btn btn-sm btn-primary"><i
                                                         class="mdi mdi-playlist-edit"></i></a>
+                                                @endif
+                                                @if ($user->user_status != 'Pendding')
+                                                    <a href="{{ route('super_admin.users-activeInactiveSingle', [$user->id, $user_type]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
+                                                @else
+                                                    <a href="{{ route('super_admin.users-acceptSingle', [$user->id, $user_type]) }}" title="Accept" class="process mb-1 btn btn-sm btn-success"><i class="mdi mdi-check"></i></a>
+                                                    <a href="{{ route('super_admin.users-rejectSingle', [$user->id, $user_type]) }}" title="Reject" class="process mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
+                                                @endif
                                                 {{-- <a href="" class="mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach
                                 @endif
                             @endif
-
-                            {{-- Customers --}}
-                            @if (isset($customers))
-                                @if ($customers->count() > 0)
-                                    @foreach ($customers as $index => $user)
-                                        <tr>
-                                            <td>{!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>Customer</td>
-                                            <td>
-                                                @if (isset($user->user_status))
-                                                    @if ($user->user_status == 'Active')
-                                                        <span
-                                                            style="color: green;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
-                                                    @else
-                                                        <span
-                                                            style="color: red;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
-                                                    @endif
-                                                @else
-                                                    <span style='color:red;'>Undefined</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('super_admin.users-show', [$user->id, 'Customer']) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
-                                                <a href="{{ route('super_admin.users-edit', [$user->id, 'Customer']) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
-                                                @if ($user->user_status != 'Pendding')
-                                                    <a href="{{ route('super_admin.users-activeInactiveSingle', [$user->id, 'Customer']) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
-                                                @else
-                                                    <a href="{{ route('super_admin.users-acceptSingle', [$user->id, 'Customer']) }}" title="Accept" class="process mb-1 btn btn-sm btn-success"><i class="mdi mdi-check"></i></a>
-                                                    <a href="{{ route('super_admin.users-rejectSingle', [$user->id, 'Customer']) }}" title="Reject" class="process mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            @endif
-
                         </tbody>
                     </table>
                 </div>

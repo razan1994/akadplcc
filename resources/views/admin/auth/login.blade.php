@@ -22,17 +22,6 @@
             </script>
         @endif
     </div>
-    <!-- Breadcrumb Start -->
-    <div class="breadcrumb-wrap">
-        <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Login & Register</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
     <!-- Login Start -->
     <div class="login" style="padding: 10%;background-color: #343a40;color: blanchedalmond;">
         <div class="container-fluid">

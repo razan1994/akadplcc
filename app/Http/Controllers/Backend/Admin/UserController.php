@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Users\StoreUserFormRequest;
 use App\Http\Requests\Backend\Users\UpdateUserFormRequest;
 use App\Models\Doctor;
+use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\InsuranceCompany;
 use App\Models\Lab;
+use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\Patient;
 use App\Models\Pharmacy;
@@ -34,14 +36,74 @@ class UserController extends Controller
     // ================================================================
     // ======================== index Function ========================
     // ================================================================
-    public function index(Request $request, Route $route)
+    public function index(Request $request,$user_type, Route $route)
     {
         try {
-            $users = new User();
-            $users = $users->select('*')->orderBy('created_at', 'asc')->get();
 
+            if($user_type == "Super Admin"){
+                $users = new User();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
 
-            return view('admin.users.index', compact('users'));
+            else if($user_type == "Insurance Company"){
+                $users = new InsuranceCompany();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Hospital"){
+                $users = new Hospital();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Radiology Center"){
+                $users = new RadiologyCenter();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Medical Center"){
+                $users = new MedicalCenter();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Lab"){
+                $users = new Lab();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Doctor"){
+                $users = new Doctor();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Patient"){
+                $users = new Patient();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Pharmacy"){
+                $users = new Pharmacy();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "SEO Admin"){
+                $users = new SeoAdmin();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Gym"){
+                $users = new Gym();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+
+            else if($user_type == "Life Coach"){
+                $users = new LifeCoutch();
+                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+            }
+            else{
+                return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
+            }
+
+            return view('admin.users.index', compact('users','user_type'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -114,35 +176,29 @@ class UserController extends Controller
                 $original_name = $orginal_image->getClientOriginalName();
                 if ($request->user_type == 'Super Admin') {
                     $last_image = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Insurance Company'){
+                } else if ($request->user_type == 'Insurance Company') {
                     $last_image = $this->saveFileWithOriginalName('insurance_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Hospital'){
+                } else if ($request->user_type == 'Hospital') {
                     $last_image = $this->saveFileWithOriginalName('hospitals', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Radiology Center'){
+                } else if ($request->user_type == 'Radiology Center') {
                     $last_image = $this->saveFileWithOriginalName('radiology_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Medical Center'){
+                } else if ($request->user_type == 'Medical Center') {
                     $last_image = $this->saveFileWithOriginalName('medical_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Lab'){
+                } else if ($request->user_type == 'Lab') {
                     $last_image = $this->saveFileWithOriginalName('labs', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Doctor'){
+                } else if ($request->user_type == 'Doctor') {
                     $last_image = $this->saveFileWithOriginalName('doctors', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Patient'){
+                } else if ($request->user_type == 'Patient') {
                     $last_image = $this->saveFileWithOriginalName('patients', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'Pharmacy'){
+                } else if ($request->user_type == 'Pharmacy') {
                     $last_image = $this->saveFileWithOriginalName('pharmacies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
-                }
-                 else if($request->user_type == 'SEO Admin'){
+                } else if ($request->user_type == 'SEO Admin') {
                     $last_image = $this->saveFileWithOriginalName('seo_admins', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                } else if ($request->user_type == 'Life Coach') {
+                    $last_image = $this->saveFileWithOriginalName('life_coaches', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                } else if ($request->user_type == 'Gym') {
+                    $last_image = $this->saveFileWithOriginalName('gyms', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 }
-
             } else {
                 $last_image = null;
             }
@@ -165,33 +221,28 @@ class UserController extends Controller
                 // =====================================================================
                 if ($created_data['user_type'] == 'Super Admin') {
                     User::create($created_data);
-                }
-                else if($created_data['user_type'] == 'Insurance Company'){
+                } else if ($created_data['user_type'] == 'Insurance Company') {
                     InsuranceCompany::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Hospital'){
-                     Hospital::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Radiology Center'){
+                } else if ($created_data['user_type'] == 'Hospital') {
+                    Hospital::create($created_data);
+                } else if ($created_data['user_type'] == 'Radiology Center') {
                     RadiologyCenter::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Medical Center'){
+                } else if ($created_data['user_type'] == 'Medical Center') {
                     MedicalCenter::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Lab'){
+                } else if ($created_data['user_type'] == 'Lab') {
                     Lab::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Doctor'){
+                } else if ($created_data['user_type'] == 'Doctor') {
                     Doctor::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Patient'){
+                } else if ($created_data['user_type'] == 'Patient') {
                     Patient::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'Pharmacy'){
+                } else if ($created_data['user_type'] == 'Pharmacy') {
                     Pharmacy::create($created_data);
-                }
-                 else if($created_data['user_type'] == 'SEO Admin'){
+                } else if ($created_data['user_type'] == 'SEO Admin') {
                     SeoAdmin::create($created_data);
+                } else if ($created_data['user_type'] == 'Life Coach') {
+                    LifeCoutch::create($created_data);
+                } else if ($created_data['user_type'] == 'Gym') {
+                    Gym::create($created_data);
                 }
             });
 
@@ -227,14 +278,59 @@ class UserController extends Controller
     public function show($user_id, $user_type, Route $route)
     {
         try {
-            if ($user_type == 'Super Admin') {
-                $user = User::find($user_id);
-            } else {
-                $user = '';
+            if($user_type == "Super Admin"){
+                $user =User::find($user_id);
             }
+
+            else if($user_type == "Insurance Company"){
+                $user =InsuranceCompany::find($user_id);
+            }
+
+            else if($user_type == "Hospital"){
+                $user =Hospital::find($user_id);;
+                }
+
+            else if($user_type == "Radiology Center"){
+                $user =RadiologyCenter::find($user_id);;
+            }
+
+            else if($user_type == "Medical Center"){
+                $user =MedicalCenter::find($user_id);;
+            }
+
+            else if($user_type == "Lab"){
+                $user =Lab::find($user_id);;
+            }
+
+            else if($user_type == "Doctor"){
+                $user =Doctor::find($user_id);
+            }
+
+            else if($user_type == "Patient"){
+                $user =Patient::find($user_id);
+            }
+
+            else if($user_type == "Pharmacy"){
+                $user =Pharmacy::find($user_id);
+            }
+
+            else if($user_type == "SEO Admin"){
+                $user =SeoAdmin::find($user_id);
+            }
+
+            else if($user_type == "Gym"){
+                $user =Gym::find($user_id);
+            }
+
+            else if($user_type == "Life Coach"){
+                $user =LifeCoutch::find($user_id);
+            }
+            else{
+                return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
+            }
+
             if ($user) {
-                $user['user_type'] = $user_type;
-                return view('admin.users.show', compact('user'));
+                return view('admin.users.show', compact('user','user_type'));
             } else {
                 return redirect()->route('super_admin.users-index')->with('danger', 'This record number is not in the records');
             }
@@ -269,15 +365,59 @@ class UserController extends Controller
     public function edit($user_id, $user_type, Route $route)
     {
         try {
-            if ($user_type == 'Super Admin') {
-                $user = User::find($user_id);
-            } else {
-                $user = '';
+            if($user_type == "Super Admin"){
+                $user =User::find($user_id);
+            }
+
+            else if($user_type == "Insurance Company"){
+                $user =InsuranceCompany::find($user_id);
+            }
+
+            else if($user_type == "Hospital"){
+                $user =Hospital::find($user_id);;
+                }
+
+            else if($user_type == "Radiology Center"){
+                $user =RadiologyCenter::find($user_id);;
+            }
+
+            else if($user_type == "Medical Center"){
+                $user =MedicalCenter::find($user_id);;
+            }
+
+            else if($user_type == "Lab"){
+                $user =Lab::find($user_id);;
+            }
+
+            else if($user_type == "Doctor"){
+                $user =Doctor::find($user_id);
+            }
+
+            else if($user_type == "Patient"){
+                $user =Patient::find($user_id);
+            }
+
+            else if($user_type == "Pharmacy"){
+                $user =Pharmacy::find($user_id);
+            }
+
+            else if($user_type == "SEO Admin"){
+                $user =SeoAdmin::find($user_id);
+            }
+
+            else if($user_type == "Gym"){
+                $user =Gym::find($user_id);
+            }
+
+            else if($user_type == "Life Coach"){
+                $user =LifeCoutch::find($user_id);
+            }
+            else{
+                return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
             }
 
             if ($user) {
-                $user['user_type'] = $user_type;
-                return view('admin.users.edit', compact('user'));
+                return view('admin.users.edit', compact('user','user_type'));
             } else {
                 return redirect()->route('super_admin.users-index')->with('danger', 'This record is not in the records');
             }
@@ -309,13 +449,58 @@ class UserController extends Controller
     // ================================================================
     // ======================= Update Function ========================
     // ================================================================
-    public function update($user_id, UpdateUserFormRequest $request, Route $route)
+    public function update($user_id, UpdateUserFormRequest $request,$user_type,Route $route)
     {
         try {
-            if ($request->user_type == 'Super Admin') {
-                $user = User::find($user_id);
-            } else {
-                $user = '';
+            if($user_type == "Super Admin"){
+                $user =User::find($user_id);
+            }
+
+            else if($user_type == "Insurance Company"){
+                $user =InsuranceCompany::find($user_id);
+            }
+
+            else if($user_type == "Hospital"){
+                $user =Hospital::find($user_id);;
+                }
+
+            else if($user_type == "Radiology Center"){
+                $user =RadiologyCenter::find($user_id);;
+            }
+
+            else if($user_type == "Medical Center"){
+                $user =MedicalCenter::find($user_id);;
+            }
+
+            else if($user_type == "Lab"){
+                $user =Lab::find($user_id);;
+            }
+
+            else if($user_type == "Doctor"){
+                $user =Doctor::find($user_id);
+            }
+
+            else if($user_type == "Patient"){
+                $user =Patient::find($user_id);
+            }
+
+            else if($user_type == "Pharmacy"){
+                $user =Pharmacy::find($user_id);
+            }
+
+            else if($user_type == "SEO Admin"){
+                $user =SeoAdmin::find($user_id);
+            }
+
+            else if($user_type == "Gym"){
+                $user =Gym::find($user_id);
+            }
+
+            else if($user_type == "Life Coach"){
+                $user =LifeCoutch::find($user_id);
+            }
+            else{
+                return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
             }
 
             if ($user) {
@@ -338,13 +523,37 @@ class UserController extends Controller
                     $upload_location = 'storage/profile-photos/';
                     $original_name = $orginal_image->getClientOriginalName();
                     if ($request->user_type == 'Super Admin') {
-                        $update_data['profile_photo_path'] = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                        $last_image = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Insurance Company') {
+                        $last_image = $this->saveFileWithOriginalName('insurance_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Hospital') {
+                        $last_image = $this->saveFileWithOriginalName('hospitals', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Radiology Center') {
+                        $last_image = $this->saveFileWithOriginalName('radiology_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Medical Center') {
+                        $last_image = $this->saveFileWithOriginalName('medical_centers', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Lab') {
+                        $last_image = $this->saveFileWithOriginalName('labs', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Doctor') {
+                        $last_image = $this->saveFileWithOriginalName('doctors', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Patient') {
+                        $last_image = $this->saveFileWithOriginalName('patients', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Pharmacy') {
+                        $last_image = $this->saveFileWithOriginalName('pharmacies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'SEO Admin') {
+                        $last_image = $this->saveFileWithOriginalName('seo_admins', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Life Coach') {
+                        $last_image = $this->saveFileWithOriginalName('life_coaches', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    } else if ($request->user_type == 'Gym') {
+                        $last_image = $this->saveFileWithOriginalName('gyms', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                     }
                     File::delete($user->profile_photo_path);
                 }
 
-                if ($request->user_type == 'Super Admin') {
-                    DB::table('users')->where('id', $user_id)->update($update_data);
+                if ($user){
+                    $user->update($update_data);
+                }else{
+                    return redirect()->back()->with('danger','User Not Found !!!!');
                 }
 
                 return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
@@ -384,23 +593,66 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } else {
-                $user = '';
             }
+                else if($user_type == "Insurance Company"){
+                    $user =InsuranceCompany::find($user_id);
+                }
 
-            // if ($user) {
-            //     if ($user->user_status == 'Pendding') {
-            //         $user->user_status = 2;  // 2 => Active
-            //         $user->save();
-            //         $update_data = $user->toArray();
-            //         $update_data['user_status'] = 2;
-            //         return redirect()->back()->with('success', 'The process has successfully');
-            //     } else {
-            //         return redirect()->back()->with('danger', 'An unexpected error occurred');
-            //     }
-            // } else {
-            //     return redirect()->back()->with('danger', 'This record is not in the records');
-            // }
+                else if($user_type == "Hospital"){
+                    $user =Hospital::find($user_id);;
+                    }
+
+                else if($user_type == "Radiology Center"){
+                    $user =RadiologyCenter::find($user_id);;
+                }
+
+                else if($user_type == "Medical Center"){
+                    $user =MedicalCenter::find($user_id);;
+                }
+
+                else if($user_type == "Lab"){
+                    $user =Lab::find($user_id);;
+                }
+
+                else if($user_type == "Doctor"){
+                    $user =Doctor::find($user_id);
+                }
+
+                else if($user_type == "Patient"){
+                    $user =Patient::find($user_id);
+                }
+
+                else if($user_type == "Pharmacy"){
+                    $user =Pharmacy::find($user_id);
+                }
+
+                else if($user_type == "SEO Admin"){
+                    $user =SeoAdmin::find($user_id);
+                }
+
+                else if($user_type == "Gym"){
+                    $user =Gym::find($user_id);
+                }
+
+                else if($user_type == "Life Coach"){
+                    $user =LifeCoutch::find($user_id);
+                }
+                else{
+                    return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
+                }
+            if ($user) {
+                if ($user->user_status == 'Pendding') {
+                    $user->user_status = 2;  // 2 => Active
+                    $user->save();
+                    $update_data = $user->toArray();
+                    $update_data['user_status'] = 2;
+                    return redirect()->back()->with('success', 'The process has successfully');
+                } else {
+                    return redirect()->back()->with('danger', 'An unexpected error occurred');
+                }
+            } else {
+                return redirect()->back()->with('danger', 'This record is not in the records');
+            }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -434,23 +686,66 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } else {
-                $user = '';
             }
+                else if($user_type == "Insurance Company"){
+                    $user =InsuranceCompany::find($user_id);
+                }
 
-            // if ($user) {
-            //     if ($user->user_status == 'Pendding') {
-            //         $user->user_status = 3;  // 3 => Inactive
-            //         $user->save();
-            //         $update_data = $user->toArray();
-            //         $update_data['user_status'] = 3;
-            //         return redirect()->back()->with('success', 'The process has successfully');
-            //     } else {
-            //         return redirect()->back()->with('danger', 'An unexpected error occurred');
-            //     }
-            // } else {
-            //     return redirect()->back()->with('danger', 'This record is not in the records');
-            // }
+                else if($user_type == "Hospital"){
+                    $user =Hospital::find($user_id);;
+                    }
+
+                else if($user_type == "Radiology Center"){
+                    $user =RadiologyCenter::find($user_id);;
+                }
+
+                else if($user_type == "Medical Center"){
+                    $user =MedicalCenter::find($user_id);;
+                }
+
+                else if($user_type == "Lab"){
+                    $user =Lab::find($user_id);;
+                }
+
+                else if($user_type == "Doctor"){
+                    $user =Doctor::find($user_id);
+                }
+
+                else if($user_type == "Patient"){
+                    $user =Patient::find($user_id);
+                }
+
+                else if($user_type == "Pharmacy"){
+                    $user =Pharmacy::find($user_id);
+                }
+
+                else if($user_type == "SEO Admin"){
+                    $user =SeoAdmin::find($user_id);
+                }
+
+                else if($user_type == "Gym"){
+                    $user =Gym::find($user_id);
+                }
+
+                else if($user_type == "Life Coach"){
+                    $user =LifeCoutch::find($user_id);
+                }
+                else{
+                    return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
+                }
+            if ($user) {
+                if ($user->user_status == 'Pendding') {
+                    $user->user_status = 3;  // 3 => Blocked
+                    $user->save();
+                    $update_data = $user->toArray();
+                    $update_data['user_status'] = 3;
+                    return redirect()->back()->with('success', 'The process has successfully');
+                } else {
+                    return redirect()->back()->with('danger', 'An unexpected error occurred');
+                }
+            } else {
+                return redirect()->back()->with('danger', 'This record is not in the records');
+            }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -484,28 +779,72 @@ class UserController extends Controller
         try {
             if ($user_type == 'Super Admin') {
                 return redirect()->back()->with('danger', 'This action is not allowed on the super admin');
-            } else {
-                $user = '';
             }
+                else if($user_type == "Insurance Company"){
+                    $user =InsuranceCompany::find($user_id);
+                }
 
-            // if ($user) {
-            //     if ($user->user_status == 'Active') {
-            //         $user->user_status = 3;  // 3 => Inactive
-            //         $user->save();
-            //         $update_data = $user->toArray();
-            //         $update_data['user_status'] = 3;
-            //     } elseif ($user->user_status == 'Inactive') {
-            //         $user->user_status = 2;  // 2 => Active
-            //         $user->save();
-            //         $update_data = $user->toArray();
-            //         $update_data['user_status'] = 2;
-            //     } elseif ($user->user_status == 'Pendding') {
-            //         return redirect()->back()->with('danger', 'This user\'s request is still pending, it must be accepted first');
-            //     }
-            //     return redirect()->back()->with('success', 'The process has successfully');
-            // } else {
-            //     return redirect()->back()->with('danger', 'This record is not in the records');
-            // }
+                else if($user_type == "Hospital"){
+                    $user =Hospital::find($user_id);;
+                    }
+
+                else if($user_type == "Radiology Center"){
+                    $user =RadiologyCenter::find($user_id);;
+                }
+
+                else if($user_type == "Medical Center"){
+                    $user =MedicalCenter::find($user_id);;
+                }
+
+                else if($user_type == "Lab"){
+                    $user =Lab::find($user_id);;
+                }
+
+                else if($user_type == "Doctor"){
+                    $user =Doctor::find($user_id);
+                }
+
+                else if($user_type == "Patient"){
+                    $user =Patient::find($user_id);
+                }
+
+                else if($user_type == "Pharmacy"){
+                    $user =Pharmacy::find($user_id);
+                }
+
+                else if($user_type == "SEO Admin"){
+                    $user =SeoAdmin::find($user_id);
+                }
+
+                else if($user_type == "Gym"){
+                    $user =Gym::find($user_id);
+                }
+
+                else if($user_type == "Life Coach"){
+                    $user =LifeCoutch::find($user_id);
+                }
+                else{
+                    return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
+                }
+
+            if ($user) {
+                if ($user->user_status == 'Active') {
+                    $user->user_status = 3;  // 3 => Inactive
+                    $user->save();
+                    $update_data = $user->toArray();
+                    $update_data['user_status'] = 3;
+                } elseif ($user->user_status == 'Inactive') {
+                    $user->user_status = 2;  // 2 => Active
+                    $user->save();
+                    $update_data = $user->toArray();
+                    $update_data['user_status'] = 2;
+                } elseif ($user->user_status == 'Pendding') {
+                    return redirect()->back()->with('danger', 'This user\'s request is still pending, it must be accepted first');
+                }
+                return redirect()->back()->with('success', 'The process has successfully');
+            } else {
+                return redirect()->back()->with('danger', 'This record is not in the records');
+            }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -530,4 +869,6 @@ class UserController extends Controller
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
     }
+
+
 }

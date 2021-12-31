@@ -54,4 +54,19 @@ class Lab extends Model
         'email_verified_at' => 'datetime',
     ];
 
+
+    // ====================================================================================
+    // ============================== Accessories =========================================
+    // ====================================================================================
+
+    public function getUserStatusAttribute($value)
+    {
+        if ($value == 1) {
+            return 'Pendding';
+        } elseif ($value == 2) {
+            return 'Active';
+        } elseif ($value == 3) {
+            return 'Inactive';
+        }
+    }
 }

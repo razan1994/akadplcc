@@ -13,7 +13,7 @@
                 {{-- ================== Header ==================== --}}
                 {{-- ============================================== --}}
                 <div>
-                    <h1><i class="mdi mdi-playlist-edit"></i> Update User Information</h1>
+                    <h1><i class="mdi mdi-playlist-edit"></i> Update {{ isset($user_type) ? $user_type : 'User' }} Information</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
@@ -21,11 +21,13 @@
                                     <i class="mdi mdi-home"></i> Dashboard
                                 </a>
                             </li>
+                            @if(isset($user_type))
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.users-index') }}">
-                                    <i class="mdi mdi-account-group"></i> All Users
+                                <a href="{{ route('super_admin.users-index',$user_type) }}">
+                                    <i class="mdi mdi-account-group"></i> All {{ isset($user_type) ? $user_type : 'User' }}s
                                 </a>
                             </li>
+                            @endif
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-edit"></i> Edit</li>
                         </ol>
                     </nav>
@@ -301,5 +303,5 @@
 
     @endsection
     @section('admin_javascript')
-      
+
     @endsection

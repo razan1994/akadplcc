@@ -22,11 +22,11 @@
                                     <i class="mdi mdi-home"></i> Dashboard
                                 </a>
                             </li>
-                            <li class="breadcrumb-item">
+                            {{-- <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.users-index') }}">
                                     <i class="mdi mdi-account-group"></i> All Users
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New
                                 User</li>
                         </ol>
@@ -284,5 +284,5 @@
     @endsection
 
     @section('admin_javascript')
-      
+
     @endsection
