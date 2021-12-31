@@ -22,13 +22,15 @@
                                     <i class="mdi mdi-home"></i> Dashboard
                                 </a>
                             </li>
-                            {{-- <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.users-index') }}">
-                                    <i class="mdi mdi-account-group"></i> All Users
+                            @if(isset($user_type))
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('super_admin.users-index',$user_type) }}">
+                                    <i class="mdi mdi-account-group"></i> All {{ $user_type }}s
                                 </a>
-                            </li> --}}
+                            </li>
+                            @endif
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New
-                                User</li>
+                                {{ isset($user_type) ? $user_type : 'User' }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -48,7 +50,7 @@
                                             enctype="multipart/form-data" id="createForm">
                                             @csrf
                                             <div class="form-row">
-
+                                                <input type="hidden" name="user_type" value="{{ isset($user_type) ? $user_type : 'Undefined' }}">
                                                 {{-- User ID --}}
                                                 {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">User Id :</label>
@@ -159,37 +161,34 @@
                                                             value="{{ old('phone') }}">
                                                     </div>
                                                 </div>
-
-                                                {{-- User Type --}}
+                                                @if(isset($user_type) && $user_type == "Doctor")
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account-question"></i> User Type : <strong
-                                                            class="text-danger"> * @error('user_type') (
+                                                        <i class="mdi mdi-account-question"></i> Doctor Speciality : <strong
+                                                            class="text-danger"> * @error('speciality_id') (
                                                             {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-question"></span>
                                                         </div>
-                                                        <select name="user_type"
-                                                            class="custom-select my-1 mr-sm-2 @error('user_type') is-invalid @enderror"
+                                                        <select name="speciality_id"
+                                                            class="custom-select my-1 mr-sm-2 @error('speciality_id') is-invalid @enderror"
                                                             id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Select User Type...</option>
-                                                            @if (isset($public_user_types))
-                                                                @foreach ($public_user_types as $user_type)
-                                                                    @if ($user_type != 'Super Admin')
-                                                                        <option value="{{ $user_type }}"
-                                                                            @if (old('user_type') == $user_type) selected @endif>{{ $user_type }}
+                                                            <option value="" selected>Select Doctor Speciality...</option>
+                                                            @if (isset($specialities))
+                                                                @foreach ($specialities as $speciality)
+                                                                        <option value="{{ $speciality->id }}"
+                                                                            @if (old('speciality_id') == $speciality) selected @endif>{{ $speciality->name_en }}
                                                                         </option>
-                                                                    @endif
                                                                 @endforeach
                                                             @endif
                                                             </option>
                                                         </select>
                                                     </div>
                                                 </div>
-
+                                                @endif
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"

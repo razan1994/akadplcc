@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\FrontEndController;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -68,7 +69,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         // User Routes :
         // ==============================================================================
         Route::group(['prefix' => 'users'], function () {
-            Route::get('/create', [UserController::class, 'create'])->name('users-create');
+            Route::get('/create/{user_type}', [UserController::class, 'create'])->name('users-create');
             Route::post('/store', [UserController::class, 'store'])->name('users-store');
             Route::get('/index/{user_type}', [UserController::class, 'index'])->name('users-index');
             Route::get('show/{id}/{user_type}', [UserController::class, 'show'])->name('users-show');
@@ -145,6 +146,18 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('showSoftDelete', [SliderController::class, 'showSoftDelete'])->name('sliders-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [SliderController::class, 'softDeleteRestore'])->name('sliders-softDeleteRestore');
             Route::get('destroy/{id}', [SliderController::class, 'destroy'])->name('sliders-destroy');
+        });
+
+
+        // Specialities Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'specialities'], function () {
+            Route::get('/create', [SpecialityController::class, 'create'])->name('specialities-create');
+            Route::post('/store', [SpecialityController::class, 'store'])->name('specialities-store');
+            Route::get('/index', [SpecialityController::class, 'index'])->name('specialities-index');
+            Route::get('edit/{id}', [SpecialityController::class, 'edit'])->name('specialities-edit');
+            Route::post('update/{id}', [SpecialityController::class, 'update'])->name('specialities-update');
+            Route::get('destroy/{id}', [SpecialityController::class, 'destroy'])->name('specialities-destroy');
         });
 
 

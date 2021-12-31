@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Users\StoreUserFormRequest;
 use App\Http\Requests\Backend\Users\UpdateUserFormRequest;
 use App\Models\Doctor;
+use App\Models\DoctorSpeciality;
 use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\InsuranceCompany;
@@ -132,10 +133,16 @@ class UserController extends Controller
     // ================================================================
     // ======================= Create Function ========================
     // ================================================================
-    public function create(Route $route)
+    public function create(Route $route,$user_type)
     {
         try {
-            return view('admin.users.create');
+
+            if($user_type == "Undefined"){
+                return redirect()->back()->with('danger','Please Dont Change The Request Data !!!!!');
+            }
+
+            $specialities = DoctorSpeciality::get();
+            return view('admin.users.create',compact('specialities','user_type'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

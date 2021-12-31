@@ -147,41 +147,34 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- User Type --}}
+                                                @if(isset($user_type) && $user_type == "Doctor")
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account-question"></i> User Type : <strong
-                                                            class="text-danger"> * @error('user_type') (
+                                                        <i class="mdi mdi-account-question"></i> Doctor Speciality : <strong
+                                                            class="text-danger"> * @error('speciality_id') (
                                                             {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-question"></span>
                                                         </div>
-
-                                                        @if (isset($user->user_type))
-                                                            @if ($user->user_type == 'Super Admin')
-                                                                <input type="hidden" name="user_type" value="Super Admin">
-                                                            @elseif($user->user_type == 'Customer')
-                                                                <input type="hidden" name="user_type" value="Customer">
-                                                            @endif
-                                                        @endif
-
-                                                        <select disabled class="custom-select my-1 mr-sm-2 @error('user_type') is-invalid @enderror" id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Choose User Type...</option>
-                                                            @if (isset($user->user_type))
-                                                                @if (isset($public_user_types))
-                                                                    @foreach ($public_user_types as $user_type)
-                                                                        <option value="{{ $user_type }}"
-                                                                            @if ($user->user_type == $user_type) selected @endif>{{ $user_type }}
+                                                        <select name="speciality_id"
+                                                            class="custom-select my-1 mr-sm-2 @error('speciality_id') is-invalid @enderror"
+                                                            id="inlineFormCustomSelectPref">
+                                                            <option value="" selected>Select Doctor Speciality...</option>
+                                                            @if (isset($specialities))
+                                                                @foreach ($specialities as $speciality)
+                                                                        <option value="{{ $speciality->id }}"
+                                                                            @if ($user->speciality_id == $speciality) selected @endif>{{ $speciality->name_en }}
                                                                         </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @endforeach
                                                             @endif
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
+                                                @endif
 
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">

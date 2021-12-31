@@ -15,6 +15,9 @@ class CreateDoctorSpecialitiesTable extends Migration
     {
         Schema::create('doctor_specialities', function (Blueprint $table) {
             $table->id();
+            $table->string('name_en');
+            $table->string('name_ar');
+            $table->bigInteger('updated_by');
             $table->timestamps();
         });
     }

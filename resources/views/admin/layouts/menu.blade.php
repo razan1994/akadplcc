@@ -26,6 +26,26 @@
                     </a>
                 </li>
 
+                {{-- Contact Us --}}
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                        data-target="#linkages" aria-expanded="false" aria-controls="contactUs">
+                        <i class="fas fa-id-card"></i>
+                        <span class="nav-text" style="font-size: 9pt;"> Linkages</span> <b
+                            class="caret"></b>
+                    </a>
+                    <ul class="collapse" id="linkages" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.specialities-index') }}">
+                                    <i class="fas fa-id-card"></i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Doctor Specialities</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+
                 {{-- Users --}}
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#user"

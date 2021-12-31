@@ -46,8 +46,9 @@
                         </ol>
                     </nav>
                 </div>
+
                 <div>
-                    <a href="{{ route('super_admin.users-create') }}" class="mb-1 btn btn-primary"><i class="mdi mdi-playlist-plus"></i> Add New </a>
+                    <a href="{{ route('super_admin.users-create',isset($user_type) ? $user_type : 'Undefined') }}" class="mb-1 btn btn-primary"><i class="mdi mdi-playlist-plus"></i> Add New </a>
                 </div>
             </div>
 
