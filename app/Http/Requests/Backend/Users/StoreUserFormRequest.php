@@ -25,16 +25,18 @@ class StoreUserFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+
+     return [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'username' => 'required|unique:users|unique:insurance_companies|unique:hospitals|unique:radiology_centers|unique:pharmacies|unique:labs|unique:doctors|unique:seo_admins|unique:life_coutches|unique:gyms',
-            'email' => 'required|unique:users|unique:insurance_companies|unique:hospitals|unique:radiology_centers|unique:pharmacies|unique:labs|unique:doctors|unique:seo_admins|unique:life_coutches|unique:gyms',
-            'phone' => 'required|unique:users|unique:insurance_companies|unique:hospitals|unique:radiology_centers|unique:pharmacies|unique:labs|unique:doctors|unique:seo_admins|unique:life_coutches|unique:gyms',
+            'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username',
+            'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email',
+            'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone',
             'password' => 'required|min:8|confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
             'user_type' => 'required',
             'user_status' => 'required',
+            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''
         ];
     }
 

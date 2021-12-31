@@ -34,6 +34,7 @@ class UpdateUserFormRequest extends FormRequest
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif|max:4048',
             'user_type' => 'required',
             'user_status' => 'required',
+            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''
         ];
     }
 

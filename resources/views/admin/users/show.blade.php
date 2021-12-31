@@ -34,7 +34,7 @@
             </nav>
         </div>
         <div>
-            <a href="{{ route('super_admin.users-create') }}" class="mb-1 btn btn-primary"><i
+            <a href="{{ route('super_admin.users-create',isset($user_type) ? $user_type : 'Undefined') }}" class="mb-1 btn btn-primary"><i
                     class="mdi mdi-playlist-plus"></i> Add New </a>
         </div>
     </div>
@@ -176,6 +176,15 @@
                                                     Registration : <span style="color:blue;">{!! isset($user->created_at) ? date('Y.d.m / h:i A', strtotime($user->created_at)) : '<span style="color:red;">Undefined</span>' !!}</span>
                                                 </th>
                                             </tr>
+                                            @if(isset($user_type) && $user_type == "Doctor")
+                                            <tr>
+                                                <th><i class="mdi mdi-clock-outline mdi-spin"></i> Speciality : <span
+                                                        style="color:blue;">{!! isset($user->speciality->name_en) ? $user->speciality->name_en : '<span style="color:red;">Undefined</span>' !!}</span></th>
+                                                <th>
+                                                    {{-- empty th --}}
+                                                </th>
+                                            </tr>
+                                            @endif
                                         </thead>
                                     </table>
                                 </div>

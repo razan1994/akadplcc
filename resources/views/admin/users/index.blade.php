@@ -68,9 +68,11 @@
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
                                 <th><i class="mdi mdi-email"></i> Email</th>
                                 <th><i class="mdi mdi-phone"></i> Phone</th>
+                                @if(isset($user_type) && $user_type == "Doctor")
+                                <th><i class="mdi mdi-image"></i>Speciality</th>
+                                @endif
                                 <th><i class="mdi mdi-account-question"></i> User Type</th>
                                 <th><i class="mdi mdi-account-switch"></i> User Status</th>
-                                {{-- <th><i class="mdi mdi-image"></i> صورة</th> --}}
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
                             </tr>
                         </thead>
@@ -85,6 +87,9 @@
                                             <td>{!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            @if(isset($user_type) && $user_type == "Doctor")
+                                            <td>{!! isset($user->speciality->name_en) ? $user->speciality->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            @endif
                                             <td>{{ isset($user_type) ? $user_type : "<span style='color:red;'>Undefined</span>" }}</td>
                                             <td>
                                                 @if (isset($user->user_status))

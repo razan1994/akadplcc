@@ -223,6 +223,10 @@ class UserController extends Controller
                 'created_by' => auth()->user()->id,
             ];
 
+            if($request->user_type == "Doctor"){
+                $created_data['speciality_id']=$request->speciality_id;
+            }
+
             DB::transaction(function () use ($created_data) {
                 // Save Main User Information Section :
                 // =====================================================================
@@ -253,7 +257,7 @@ class UserController extends Controller
                 }
             });
 
-            return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
+            return redirect()->route('super_admin.users-index',$request->user_type)->with('success', 'The data has been successfully updated');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -339,7 +343,7 @@ class UserController extends Controller
             if ($user) {
                 return view('admin.users.show', compact('user','user_type'));
             } else {
-                return redirect()->route('super_admin.users-index')->with('danger', 'This record number is not in the records');
+                return redirect()->route('super_admin.users-index',$user_type)->with('danger', 'This record number is not in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -424,9 +428,10 @@ class UserController extends Controller
             }
 
             if ($user) {
-                return view('admin.users.edit', compact('user','user_type'));
+                $specialities = DoctorSpeciality::get();
+                return view('admin.users.edit', compact('user','user_type','specialities'));
             } else {
-                return redirect()->route('super_admin.users-index')->with('danger', 'This record is not in the records');
+                return redirect()->route('super_admin.users-index',$user_type)->with('danger', 'This record is not in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -563,9 +568,9 @@ class UserController extends Controller
                     return redirect()->back()->with('danger','User Not Found !!!!');
                 }
 
-                return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
+                return redirect()->route('super_admin.users-index',$user_type)->with('success', 'The data has been successfully updated');
             } else {
-                return redirect()->route('super_admin.users-index')->with('danger', 'This record does not exist in the records');
+                return redirect()->route('super_admin.users-index',$user_type)->with('danger', 'This record does not exist in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();

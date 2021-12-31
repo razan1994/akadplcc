@@ -10,13 +10,12 @@
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="appointments, booking, bootstrap list template,  directory listing html template,  directory website template, doctor directory, doctor search, health template, healthcare directory, hospital,  html css templates, html directory listing, listing, medical bootstrap template, medical directory, medical html template , medical template,  medical web templates, medical website templates, pharma website templates, responsive html template,template html css, online directory website,  html5 template, themeforest html,  online directory, simple html templates ">
-
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" type="image/x-icon') }}" />
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" />
 
     <!-- Title -->
-    <title>Medz - Medical Directory HTML Template</title>
+    <title>Rushetta | Home</title>
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('front_end_style/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -1840,3 +1839,5 @@
 </body>
 
 </html>
+
+

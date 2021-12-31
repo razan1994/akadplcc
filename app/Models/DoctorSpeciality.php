@@ -27,4 +27,10 @@ class DoctorSpeciality extends Model
     }
 
 
+
+    public function doctors(){
+        return $this->hasMany(Doctor::class , 'speciality_id');
+    }
+
+
 }

@@ -166,7 +166,7 @@
                                                             @if (isset($specialities))
                                                                 @foreach ($specialities as $speciality)
                                                                         <option value="{{ $speciality->id }}"
-                                                                            @if ($user->speciality_id == $speciality) selected @endif>{{ $speciality->name_en }}
+                                                                            @if ($user->speciality_id == $speciality->id) selected @endif>{{ $speciality->name_en }}
                                                                         </option>
                                                                 @endforeach
                                                             @endif
