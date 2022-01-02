@@ -58,7 +58,7 @@
         <div class="top-bar">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-8 col-lg-8 col-sm-4 col-7">
+                    <div class="col-xl-6 col-lg-6 col-sm-4 col-7">
                         <div class="top-bar-left d-flex">
                             <div class="clearfix">
                                 <ul class="socials">
@@ -512,7 +512,7 @@
                                             <a class="dropdown-item" href="#">Vehiclenish</a>
                                         </div>
                                     </li>
-                                    <li class="dropdown">
+                                    {{-- <li class="dropdown">
                                         <a class="text-dark" data-toggle="dropdown" href="#"><span>Currency <i
                                                     class="fa fa-caret-down text-muted"></i></span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -521,21 +521,36 @@
                                             <a class="dropdown-item" href="#">INR</a>
                                             <a class="dropdown-item" href="#">GBP</a>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-8 col-5">
+                    <div class="col-xl-6 col-lg-6 col-sm-8 col-5">
                         <div class="top-bar-right">
                             <ul class="custom">
                                 <li>
                                     <a class="text-dark" href="register.html"><i class="fa fa-user mr-1"></i>
-                                        <span>Register</span></a>
+                                        <span>Register/Login</span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="text-dark" href="login.html"><i class="fa fa-sign-in mr-1"></i>
                                         <span>Login</span></a>
+                                </li> --}}
+                                <li class="dropdown">
+                                    <a class="text-dark" data-toggle="dropdown" href="#"><i
+                                            class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
+                                        <a class="dropdown-item" href="mydash.html"><i
+                                                class="dropdown-icon icon icon-user"></i> My Profile</a> <a
+                                            class="dropdown-item" href="#"><i
+                                                class="dropdown-icon icon icon-speech"></i> Inbox</a> <a
+                                            class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>
+                                            Notifications</a> <a class="dropdown-item" href="mydash.html"><i
+                                                class="dropdown-icon icon icon-settings"></i> Account Settings</a> <a
+                                            class="dropdown-item" href="#"><i
+                                                class="dropdown-icon icon icon-power"></i> Log out</a>
+                                    </div>
                                 </li>
                                 <li class="dropdown">
                                     <a class="text-dark" data-toggle="dropdown" href="#"><i
@@ -583,8 +598,8 @@
                     <nav class="horizontalMenu clearfix d-md-flex">
                         <ul class="horizontalMenu-list">
                             <li aria-haspopup="true">
-                                <a href="#">Home <span class="fe fe-chevron-down"></span></a>
-                                <ul class="sub-menu">
+                                <a href="{{ route('welcome') }}">Home <span class="fe fe-chevron-down"></span></a>
+                                {{-- <ul class="sub-menu">
                                     <li aria-haspopup="true"><a href="index.html">Home-Default</a></li>
                                     <li aria-haspopup="true"><a href="index-text.html">Home Text</a></li>
                                     <li aria-haspopup="true"><a href="index-slides.html">Home Slides</a></li>
@@ -594,15 +609,15 @@
                                     <li aria-haspopup="true"><a href="index-intro-page.html">Home Intro Page</a></li>
                                     <li aria-haspopup="true"><a href="index-popup-login.html">Home Pop-up login</a></li>
                                     <li aria-haspopup="true"><a href="index-banner.html">Home Banner</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li aria-haspopup="true">
-                                <a href="about.html">About Us</a>
+                                <a href="{{ route('aboutUs') }}">About Us</a>
                             </li>
-                            <li aria-haspopup="true">
+                            {{-- <li aria-haspopup="true">
                                 <a href="widgets.html">Widgets</a>
-                            </li>
-                            <li aria-haspopup="true">
+                            </li> --}}
+                            {{-- <li aria-haspopup="true">
                                 <a class="active" href="#">Pages <span class="fe fe-chevron-down"></span></a>
                                 <div class="horizontal-megamenu clearfix">
                                     <div class="container">
@@ -661,63 +676,70 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li aria-haspopup="true">
                                 <a href="#">Categories <span class="fe fe-chevron-down"></span></a>
                                 <ul class="sub-menu">
                                     <li aria-haspopup="true">
-                                        <a href="#">Hospitals <i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
+                                        <a href="#">Doctors</a>
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="hospitals-list.html">Hospital List</a></li>
                                             <li><a href="hospitals-list-right.html">Hospital List Right</a></li>
                                             <li><a href="hospital-details.html">Hospital Details</a></li>
                                             <li><a href="hospital-details-02.html">Hospital Details 02</a></li>
                                             <li><a href="hospital-details-right.html">Hospital Details Right</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="#">Doctors <i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
+                                        <a href="#">Hospitals</a>
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="doctors-list.html">Doctors List</a></li>
                                             <li><a href="doctors-list-right.html">Doctors List Right</a></li>
                                             <li><a href="doctor-details.html">Doctor Details</a></li>
                                             <li><a href="doctor-details2.html">Doctor Details 2</a></li>
                                             <li><a href="doctor-details-right.html">Doctor Details Right</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="#">FitnessCenter<i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
+                                        <a href="#">Medical Centers</a>
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="fitness-list.html">Fitness List</a></li>
                                             <li><a href="fitness-list-right.html">Fitness List Right</a></li>
                                             <li><a href="fitness-details.html">Fitness Details</a></li>
                                             <li><a href="fitness-details2.html">Fitness Details02</a></li>
                                             <li><a href="fitness-details-right.html">Fitness Details Right</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="#">Pharmacy<i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
+                                        <a href="#">Radiology Centers</a>
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="pharmacy-list.html">Pharmacy List</a></li>
                                             <li><a href="pharmacy-list-right.html">Pharmacy List Right</a></li>
                                             <li><a href="pharmacy-details.html">Pharmacy Details</a></li>
                                             <li><a href="pharmacy-details2.html">Pharmacy Details02</a></li>
                                             <li><a href="pharmacy-details-right.html">Pharmacy Details Right</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="#">BloodBank<i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
+                                        <a href="#">Labs</a>
+                                        {{-- <ul class="sub-menu">
                                             <li><a href="bloodbank-list.html">BloodBank List</a></li>
                                             <li><a href="bloodbank-list-right.html">BloodBank List Right</a></li>
                                             <li><a href="bloodbank-details.html">BloodBank Details</a></li>
                                             <li><a href="bloodbank-details-right.html">BloodBank Details Right</a></li>
-                                        </ul>
+                                        </ul> --}}
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="#">Insurance Companies</a>
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="#">Pharmacies</a>
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="#">Gyms</a>
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="#">Life Coaches</a>
                                     </li>
                                 </ul>
                             </li>
@@ -768,21 +790,21 @@
                             <li aria-haspopup="true">
                                 <a href="contact.html">Contact Us </a>
                             </li>
-                            <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
+                            {{-- <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
                                 <span>
                                     <a href="ad-posts.html" class="btn btn-secondary btn-block mb-lg-0"><i
                                             class="icon icon-plus mr-1 text-white"></i>Add Your Post</a>
                                 </span>
-                            </li>
+                            </li> --}}
                         </ul>
-                        <ul class="mb-0">
+                        {{-- <ul class="mb-0">
                             <li aria-haspopup="true" class="d-none d-lg-block ">
                                 <span>
                                     <a href="ad-posts.html" class="btn btn-danger btn-block mb-lg-0"><i
                                             class="fe fe-plus-circle mr-1 text-white"></i>Add Your Post</a>
                                 </span>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </nav>
                 </div>
             </div>
@@ -791,7 +813,6 @@
 
     </div>
     <!-- /Header-main -->
-
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"

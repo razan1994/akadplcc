@@ -22,29 +22,21 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     // ==================================================================================================================
-    // ============================================= Shared Auth Routes =================================================
-    // ==================================================================================================================
-    Route::group(['middleware' => 'auth:super_admin,web'], function () {
-        Route::get('/welcomeAuth', [WelcomeController::class, 'welcome'])->name('welcomeAuth');
-        Route::get('/aboutUsAuth', [FrontEndController::class, 'aboutUs'])->name('aboutUsAuth');
-        Route::get('/contactUsAuth', [FrontEndController::class, 'contactUs'])->name('contactUsAuth');
-        Route::get('/privacyPoliciesAuth', [FrontEndController::class, 'privacyPolicies'])->name('privacyPoliciesAuth');
-        Route::get('/termsAndConditionsAuth', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditionsAuth');
-        Route::post('/contactUsRequestAuth', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequestAuth');
-    });
+    // ============================================= Shared Routes ======================================================
 
-    // ==================================================================================================================
-    // ============================================= Shared Guest Routes ================================================
-    // ==================================================================================================================
-    Route::group(['middleware' => 'checkAuth'], function () {
         Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
         Route::get('/aboutUs', [FrontEndController::class, 'aboutUs'])->name('aboutUs');
         Route::get('/contactUs', [FrontEndController::class, 'contactUs'])->name('contactUs');
         Route::post('/contactUsRequest', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequest');
         Route::get('/privacyPolicies', [FrontEndController::class, 'privacyPolicies'])->name('privacyPolicies');
         Route::get('/termsAndConditions', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditions');
-    });
 
+    // ==================================================================================================================
+    // ============================================= End Shared Routes ==================================================
+
+
+    // ==================================================================================================================
+    // ============================================= Auth Routes ========================================================
 
 });
 
