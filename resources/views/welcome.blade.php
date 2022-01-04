@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Hospitals</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">45</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_hospitals) ? $public_hospitals->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Doctors</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">32</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_doctors) ? $public_doctors->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
