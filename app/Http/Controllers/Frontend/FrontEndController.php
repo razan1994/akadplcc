@@ -14,27 +14,8 @@ class FrontEndController extends Controller
     use UploadImageTrait;
     use SharedMethod;
 
-    function showCart(){
-        return view('front_end_inners.cart');
-    }
-
-
-    function getItemDetails(Request $request){
-
-        $request->validate([
-            'item_id'=>'required|numeric'
-        ]);
-
-        $item_id = $request->item_id;
-        $product = Product::find($item_id);
-        $size_colors = ProdSzeClrRelation::where('product_id',$item_id)->get();
-
-        if($product){
-            return response()->json(['status'=>true,'product'=>$product]);
-        }else{
-
-        }
-
+    function aboutUs(){
+        return view('front_end_inners.about_us');
     }
 
 }

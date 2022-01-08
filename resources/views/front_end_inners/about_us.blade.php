@@ -1,0 +1,371 @@
+@extends('front_end_inners.app_front_end', ['title' => 'About Us'])
+
+@section('content')
+
+
+		<!--Breadcrumb-->
+		<section>
+			<div class="bannerimg cover-image bg-background3 sptb-2" data-image-src="{{ asset('front_end_style/assets/images/banners/banner2.jpg') }}">
+				<div class="header-text mb-0">
+					<div class="container">
+						<div class="text-center text-white ">
+							<h1 class="">About Us</h1>
+							<ol class="breadcrumb text-center">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/Breadcrumb-->
+
+		<!--Section-->
+		<section class="sptb section-bg">
+			<div class="container">
+				<div class="text-justify">
+					<h2 class="mb-4">Why Medical Directory?</h2>
+					<h4 class="leading-Automatic">Majority have suffered alteration in some form, by injected humor</h4>
+					<p class="leading-Automatic">There are many variations of passages of Lorem Ipsum available, but the majority have suffered  by injected humour, or randomised words which don't look even slightly believable.
+					If you are going to use a passage of Lorem Ipsum, you need to as necessary All the Lorem Ipsum generators on the Internet tend to repeat</p>
+					<p class="leading-Automatic">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less Automatic distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+					<p class="leading-Automatic mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+		</section>
+		<!--/Section-->
+
+		<!--Section-->
+		<section class="sptb cover-image sptb bg-background-color">
+			<div class="container about-container">
+				<div class="section-title center-block text-center">
+					<h2 class="text-white">How It Works?</h2>
+					<p>Excepteur sint occaecat cupidatat  proident deserunt mollit  laborum</p>
+				</div>
+				<div class="row ">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="">
+							<div class="mb-lg-0 mb-4">
+								<div class="service-card text-center">
+									<div class="icon-bg box-shadow icon-service text-primary about bg-white">
+										<i class="fe fe-user-plus"></i>
+									</div>
+									<div class="servic-data mt-3">
+										<h4 class="font-weight-semibold mb-2">Register</h4>
+										<p class="mb-0">Nam libero tempore, cum soluta nobis est eligendi cumque facere possimus</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="">
+							<div class="mb-sm-0 mb-4">
+								<div class="service-card text-center">
+									<div class="icon-bg box-shadow icon-service text-secondary about bg-white">
+										<i class="fe fe-map-pin"></i>
+									</div>
+									<div class="servic-data mt-3">
+										<h4 class="font-weight-semibold mb-2">Claim Listing</h4>
+										<p class="mb-0">Nam libero tempore, cum soluta nobis est eligendi cumque facere possimus</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="">
+							<div class="mb-sm-0 mb-4">
+								<div class="service-card text-center">
+									<div class="icon-bg box-shadow icon-service text-danger about bg-white">
+										<i class="fe fe-aperture"></i>
+									</div>
+									<div class="servic-data mt-3">
+										<h4 class="font-weight-semibold mb-2">Get Exposure</h4>
+										<p class="mb-0">Nam libero tempore, cum soluta nobis est eligendi cumque facere possimus</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="">
+							<div class="">
+								<div class="service-card text-center">
+									<div class="icon-bg box-shadow icon-service text-success about bg-white">
+										<i class="fe fe-trending-up"></i>
+									</div>
+									<div class="servic-data mt-3">
+										<h4 class="font-weight-semibold mb-2">Grow Business & Earnings</h4>
+										<p class="mb-0">Nam libero tempore, cum soluta nobis est eligendi cumque facere possimus</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/Section-->
+
+		<!--Section-->
+		{{-- <section>
+			<div class="cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner4.jpg">
+				<div class="content-text mb-0">
+					<div class="container">
+						<div class="text-center text-white ">
+							<h2 class="mb-2 display-5">Are you ready for the posting you ads on this Site?</h2>
+							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							<div class="mt-5">
+								<a href="ad-posts.html" class="btn btn-secondary btn-lg">Add Your Post</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> --}}
+		<!--/Section-->
+
+		<!--Section-->
+		<section class="sptb">
+			<div class="container">
+				<div class="section-title center-block text-center">
+					<h2>Why Choose Us?</h2>
+					<p>Excepteur sint occaecat cupidatat  proident deserunt mollit  laborum</p>
+				</div>
+				<div class="row ">
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg  fea-icon bg-success mb-3">
+										<i class="fa fa-user-md  text-white"></i>
+									</div>
+									<h3>Certified Doctors</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg fea-icon bg-primary mb-3">
+										<i class="fa fa-heartbeat text-white"></i>
+									</div>
+									<h3>High Quality Equipment</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg  fea-icon bg-secondary mb-3">
+										<i class="fa fa-medkit text-white"></i>
+									</div>
+									<h3>Profissional Services</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card mb-lg-0">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg  fea-icon bg-warning mb-3">
+										<i class="fa fa-flask text-white"></i>
+									</div>
+									<h3>Modren Technology</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card mb-lg-0 mb-md-0">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg  fea-icon bg-danger mb-3">
+										<i class="fa fa-handshake-o   text-white"></i>
+									</div>
+									<h3>Advanced Treatment</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 features">
+						<div class="card mb-0">
+							<div class="card-body text-center">
+								<div class="feature">
+									<div class="fa-stack fa-lg  fea-icon bg-info mb-3">
+										<i class="fa fa-phone  text-white"></i>
+									</div>
+									<h3>24/7 Support</h3>
+									<p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/Section-->
+
+		<!--Statistics-->
+		{{-- <section>
+			<div class="about-1 cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner4.jpg">
+				<div class="content-text mb-0 text-white info">
+					<div class="container">
+						<div class="row text-center">
+							<div class="col-lg-3 col-md-6">
+								<div class="counter-status md-mb-0">
+									<div class="counter-icon">
+										<i class="icon icon-trophy"></i>
+									</div>
+									<h5 class="font-weight-normal">Total Awards</h5>
+									<h2 class="counter mb-0">569</h2>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="counter-status status-1 md-mb-0">
+									<div class="counter-icon text-warning">
+										<i class="icon icon-people"></i>
+									</div>
+									<h5 class="font-weight-normal">Total Experts</h5>
+									<h2 class="counter mb-0">1765</h2>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="counter-status status md-mb-0">
+									<div class="counter-icon text-primary">
+										<i class="icon icon-globe"></i>
+									</div>
+									<h5 class="font-weight-normal">Total Countries</h5>
+									<h2 class="counter mb-0">1846</h2>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="counter-status status">
+									<div class="counter-icon text-success">
+										<i class="icon icon-emotsmile"></i>
+									</div>
+									<h5 class="font-weight-normal">Happy Customers</h5>
+									<h2 class="counter mb-0">7253</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> --}}
+		<!--/Statistics-->
+
+        		<!--section-->
+		<section class="sptb cover-image sptb bg-background-color">
+			<div class="container about-our-team">
+				<div class="section-title center-block text-center text-white">
+					<h2>Our Team</h2>
+					<p>Excepteur sint occaecat cupidatat  proident deserunt mollit  laborum</p>
+				</div>
+				<div class="row">
+					<div class="col-xl-4 col-lg-4 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="team-section text-center">
+									<div class="team-img">
+										<img src="{{ asset('front_end_style/assets/images/users/male/5.jpg') }}" class="img-thumbnail rounded-circle alt=" alt="">
+									</div>
+									<h4 class="font-weight-bold dark-grey-text mt-4">Tracey	Poole</h4>
+									<p class="font-weight-Automatic dark-grey-text">
+									<i class="fa fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.</p>
+									<div class="text-warning">
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star-half-full"> </i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-4 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="team-section text-center">
+									<div class="team-img">
+										<img src="{{ asset('front_end_style/assets/images/users/female/2.jpg') }}" class="img-thumbnail rounded-circle alt=" alt="">
+									</div>
+									<h4 class="font-weight-bold dark-grey-text mt-4">Harry	Walker</h4>
+									<p class="font-weight-Automatic dark-grey-text">
+									<i class="fa fa-quote-left pr-2"></i>Ut enim ad minima veniam, quis nostrum exercitationem ullam quis nostrum  corporis suscipit laboriosam, nisi ut aliquid commodi.</p>
+									<div class="text-warning">
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-4 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="team-section text-center">
+									<div class="team-img">
+										<img src="{{ asset('front_end_style/assets/images/users/male/3.jpg') }}" class="img-thumbnail rounded-circle alt=" alt="">
+									</div>
+									<h4 class="font-weight-bold dark-grey-text mt-4">Paul White</h4>
+									<p class="font-weight-Automatic dark-grey-text">
+									<i class="fa fa-quote-left pr-2"></i>Ut enim ad minima veniam, quis nostrum exercitationem ullam quis nostrum  corporis suscipit laboriosam, nisi ut aliquid commodi.</p>
+									<div class="text-warning">
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star"> </i>
+										<i class="fa fa-star-o"> </i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/section-->
+
+		<!-- Newsletter-->
+		<section class="sptb section-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 col-xl-6 col-md-12">
+						<div class="sub-newsletter">
+							<h3 class="mb-2"><i class="fa fa-paper-plane-o mr-2"></i> Subscribe To Our Newsletter</h3>
+							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+						</div>
+					</div>
+					<div class="col-lg-5 col-xl-6 col-md-12">
+						<div class="input-group sub-input mt-1">
+							<input type="text" class="form-control input-lg " placeholder="Enter your Email">
+							<div class="input-group-append ">
+								<button type="button" class="btn btn-primary btn-lg br-tr-3  br-br-3">
+									Subscribe
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/Newsletter-->
+
+@endsection

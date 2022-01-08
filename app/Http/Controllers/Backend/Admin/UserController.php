@@ -43,62 +43,62 @@ class UserController extends Controller
 
             if($user_type == "Super Admin"){
                 $users = new User();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Insurance Company"){
                 $users = new InsuranceCompany();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Hospital"){
                 $users = new Hospital();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Radiology Center"){
                 $users = new RadiologyCenter();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Medical Center"){
                 $users = new MedicalCenter();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Lab"){
                 $users = new Lab();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Doctor"){
                 $users = new Doctor();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Patient"){
                 $users = new Patient();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Pharmacy"){
                 $users = new Pharmacy();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "SEO Admin"){
                 $users = new SeoAdmin();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Gym"){
                 $users = new Gym();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
 
             else if($user_type == "Life Coach"){
                 $users = new LifeCoutch();
-                $users = $users->select('*')->orderBy('created_at', 'asc')->get();
+                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
             }
             else{
                 return redirect()->back()->with('danger','Please Dont Change The URL !!!!');

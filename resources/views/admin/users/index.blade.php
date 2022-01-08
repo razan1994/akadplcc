@@ -63,7 +63,7 @@
                     <table id="hoverable-data-table" class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                {{-- <th>#</th> --}}
+                                <th>#</th>
                                 {{-- <th><i class="mdi mdi-account"></i> Name AR</th> --}}
                                 <th><i class="mdi mdi-account"></i> Name EN</th>
                                 <th><i class="mdi mdi-email"></i> Email</th>
@@ -82,7 +82,7 @@
                                 @if ($users->count() > 0)
                                     @foreach ($users as $index => $user)
                                         <tr>
-                                            {{-- <td>{!! isset($user->id) ? $user->id : "<span style='color:red;'>Undefined</span>" !!}</td> --}}
+                                            <td>{{ $index + 1 }}</td>
                                             {{-- <td>{!! isset($user->name_ar) ? $user->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td> --}}
                                             <td>{!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</td>
@@ -138,7 +138,8 @@
             jQuery('#hoverable-data-table').DataTable({
                 "aLengthMenu": [
                     [20, 30, 50, 75, -1],
-                    [20, 30, 50, 75, "All"]
+                    [20, 30, 50, 75, "All"],
+                    "order": [[ 0, "asc" ]]
                 ],
                 "pageLength": 20,
                 "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'

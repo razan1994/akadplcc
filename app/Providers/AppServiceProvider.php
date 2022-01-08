@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             $public_radiology_centers = RadiologyCenter::where('user_status',2)->get();
             $public_medical_centers = MedicalCenter::where('user_status',2)->get();
             $public_labs = Lab::where('user_status',2)->get();
-            $public_doctors = Doctor::where('user_status',2)->get();
+            $public_doctors = Doctor::where('user_status',2)->inRandomOrder()->get();
             $public_pharmacies = Pharmacy::where('user_status',2)->get();
             $public_gyms = Gym::where('user_status',2)->get();
             $public_life_coaches = LifeCoutch::where('user_status',2)->get();

@@ -1,6 +1,679 @@
 @extends('front_end_inners.app_front_end', ['title' => 'Home'])
 
 @section('content')
+
+    <!--Section-->
+    <section>
+        <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
+            data-image-src="{{ asset('front_end_style/assets/images/banners/banner1.jpg') }}">
+            <div class="header-text mb-0">
+                <div class="container">
+                    <div class="text-center text-white">
+                        <h1 class="mb-1">Find the Nearest Medical Facility</h1>
+                        <p>It is a long established fact that a reader will be distracted by the when looking at its
+                            layout.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                            <div class="item-search-tabs">
+                                <div class="item-search-menu">
+                                    <ul class="nav">
+                                        <li class="">
+                                            <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab2">Doctors</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab3">FitnesCenters</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab4">Pharmacies</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab5">Clinics</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Blood Banks</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content index-search-select">
+                                    <div class="tab-pane active" id="tab1">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <input class="form-control border" placeholder="Search Location"
+                                                        type="text">
+                                                    <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Type Of Hospitals
+                                                            </option>
+                                                            <option value="1">
+                                                                Women's hospitals
+                                                            </option>
+                                                            <option value="2">
+                                                                Children's hospitals
+                                                            </option>
+                                                            <option value="4">
+                                                                Cardiac hospitals.
+                                                            </option>
+                                                            <option value="5">
+                                                                Cancer Hosptals
+                                                            </option>
+                                                            <option value="5">
+                                                                Diagnostic centers
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Max Fees
+                                                            </option>
+                                                            <option value="1">
+                                                                $10k
+                                                            </option>
+                                                            <option value="2">
+                                                                $10k-$20K
+                                                            </option>
+                                                            <option value="3">
+                                                                $20K-$30K
+                                                            </option>
+                                                            <option value="4">
+                                                                $30K-$40K
+                                                            </option>
+                                                            <option value="5">
+                                                                $40K-$50K
+                                                            </option>
+                                                            <option value="6">
+                                                                $50K-$60K
+                                                            </option>
+                                                            <option value="7">
+                                                                $60K-$70K
+                                                            </option>
+                                                            <option value="8">
+                                                                $70k-$80K
+                                                            </option>
+                                                            <option value="9">
+                                                                $80K &lt; Above
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab2">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text"> <span><i
+                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Type Of Doctors
+                                                            </option>
+                                                            <option value="1">
+                                                                Dentist
+                                                            </option>
+                                                            <option value="2">
+                                                                Gynecologist
+                                                            </option>
+                                                            <option value="4">
+                                                                Physiotherapist
+                                                            </option>
+                                                            <option value="5">
+                                                                Neurosurgeon
+                                                            </option>
+                                                            <option value="5">
+                                                                Neurologist
+                                                            </option>
+                                                            <option value="5">
+                                                                Infertility Specialist
+                                                            </option>
+                                                            <option value="5">
+                                                                Cardiologist
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Max Fees
+                                                            </option>
+                                                            <option value="1">
+                                                                $10k
+                                                            </option>
+                                                            <option value="2">
+                                                                $10k-$20K
+                                                            </option>
+                                                            <option value="3">
+                                                                $20K-$30K
+                                                            </option>
+                                                            <option value="4">
+                                                                $30K-$40K
+                                                            </option>
+                                                            <option value="5">
+                                                                $40K-$50K
+                                                            </option>
+                                                            <option value="6">
+                                                                $50K-$60K
+                                                            </option>
+                                                            <option value="7">
+                                                                $60K-$70K
+                                                            </option>
+                                                            <option value="8">
+                                                                $70k-$80K
+                                                            </option>
+                                                            <option value="9">
+                                                                $80K &lt; Above
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab3">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text"> <span><i
+                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Fitness Centers
+                                                            </option>
+                                                            <option value="1">
+                                                                Aerobic Centers
+                                                            </option>
+                                                            <option value="2">
+                                                                Yoga Centers
+                                                            </option>
+                                                            <option value="4">
+                                                                Dance Centers
+                                                            </option>
+                                                            <option value="5">
+                                                                Pilates Centers
+                                                            </option>
+                                                            <option value="5">
+                                                                Gyms
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Max Fees
+                                                            </option>
+                                                            <option value="1">
+                                                                $10k
+                                                            </option>
+                                                            <option value="2">
+                                                                $10k-$20K
+                                                            </option>
+                                                            <option value="3">
+                                                                $20K-$30K
+                                                            </option>
+                                                            <option value="4">
+                                                                $30K-$40K
+                                                            </option>
+                                                            <option value="5">
+                                                                $40K-$50K
+                                                            </option>
+                                                            <option value="6">
+                                                                $50K-$60K
+                                                            </option>
+                                                            <option value="7">
+                                                                $60K-$70K
+                                                            </option>
+                                                            <option value="8">
+                                                                $70k-$80K
+                                                            </option>
+                                                            <option value="9">
+                                                                $80K &lt; Above
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab4">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text"> <span><i
+                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Pharmacies
+                                                            </option>
+                                                            <option value="1">
+                                                                Retail pharmacy
+                                                            </option>
+                                                            <option value="2">
+                                                                Hospital pharmacy
+                                                            </option>
+                                                            <option value="4">
+                                                                Clinic pharmacy
+                                                            </option>
+                                                            <option value="5">
+                                                                Home care pharmacy
+                                                            </option>
+                                                            <option value="5">
+                                                                Mail order pharmacy
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Max price
+                                                            </option>
+                                                            <option value="1">
+                                                                $10k
+                                                            </option>
+                                                            <option value="2">
+                                                                $10k-$20K
+                                                            </option>
+                                                            <option value="3">
+                                                                $20K-$30K
+                                                            </option>
+                                                            <option value="4">
+                                                                $30K-$40K
+                                                            </option>
+                                                            <option value="5">
+                                                                $40K-$50K
+                                                            </option>
+                                                            <option value="6">
+                                                                $50K-$60K
+                                                            </option>
+                                                            <option value="7">
+                                                                $60K-$70K
+                                                            </option>
+                                                            <option value="8">
+                                                                $70k-$80K
+                                                            </option>
+                                                            <option value="9">
+                                                                $80K &lt; Above
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab5">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text"> <span><i
+                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Clinics
+                                                            </option>
+                                                            <option value="1">
+                                                                Physiotherapy Clinics
+                                                            </option>
+                                                            <option value="2">
+                                                                Dental Clinics
+                                                            </option>
+                                                            <option value="4">
+                                                                Walk-in Urgent Care Clinics
+                                                            </option>
+                                                            <option value="5">
+                                                                Chiropractor Clinics
+                                                            </option>
+                                                            <option value="5">
+                                                                Rehabilitation Clinics
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Max Fees
+                                                            </option>
+                                                            <option value="1">
+                                                                $10k
+                                                            </option>
+                                                            <option value="2">
+                                                                $10k-$20K
+                                                            </option>
+                                                            <option value="3">
+                                                                $20K-$30K
+                                                            </option>
+                                                            <option value="4">
+                                                                $30K-$40K
+                                                            </option>
+                                                            <option value="5">
+                                                                $40K-$50K
+                                                            </option>
+                                                            <option value="6">
+                                                                $50K-$60K
+                                                            </option>
+                                                            <option value="7">
+                                                                $60K-$70K
+                                                            </option>
+                                                            <option value="8">
+                                                                $70k-$80K
+                                                            </option>
+                                                            <option value="9">
+                                                                $80K &lt; Above
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab6">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text"> <span><i
+                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Blood Banks
+                                                            </option>
+                                                            <option value="1">
+                                                                Central Blood Center
+                                                            </option>
+                                                            <option value="2">
+                                                                San Diego Blood Bank
+                                                            </option>
+                                                            <option value="4">
+                                                                Delta Blood Bank
+                                                            </option>
+                                                            <option value="5">
+                                                                Heartland Blood Centers
+                                                            </option>
+                                                            <option value="5">
+                                                                Florida’s Blood Centers
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="">
+                                                            <option>
+                                                                Distance
+                                                            </option>
+                                                            <option value="1">
+                                                                3km
+                                                            </option>
+                                                            <option value="2">
+                                                                6km
+                                                            </option>
+                                                            <option value="3">
+                                                                9km
+                                                            </option>
+                                                            <option value="4">
+                                                                10km
+                                                            </option>
+                                                            <option value="5">
+                                                                20km
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                        data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>
+                                                                Available Bloodgroups
+                                                            </option>
+                                                            <option value="1">
+                                                                A negative
+                                                            </option>
+                                                            <option value="2">
+                                                                A positive
+                                                            </option>
+                                                            <option value="3">
+                                                                B negative
+                                                            </option>
+                                                            <option value="4">
+                                                                B positive
+                                                            </option>
+                                                            <option value="5">
+                                                                AB negative
+                                                            </option>
+                                                            <option value="6">
+                                                                AB positive
+                                                            </option>
+                                                            <option value="7">
+                                                                O negative
+                                                            </option>
+                                                            <option value="8">
+                                                                O positive
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/Section-->
+
     <!--Section-->
     <section class="sptb">
         <div class="container">
@@ -14,12 +687,30 @@
                         <div class="card-body">
                             <div class="cat-item text-center">
                                 <a href="page-list.html"></a>
+                                <div class="cat-icon bg-warning-transparent brround text-warning">
+                                    <i class="fa fa-tasks"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h5 class="mb-2">Specialties</h5>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_specialities) ? $public_specialities->count() : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-primary-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
                                 <div class="cat-icon bg-primary-transparent brround text-primary">
                                     <i class="fa fa-hospital-o"></i>
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Hospitals</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_hospitals) ? $public_hospitals->count() : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_hospitals) ? $public_hospitals->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +726,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Doctors</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_doctors) ? $public_doctors->count() : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_doctors) ? $public_doctors->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -47,11 +739,27 @@
                             <div class="cat-item text-center">
                                 <a href="page-list.html"></a>
                                 <div class="cat-icon bg-info-transparent brround text-info">
+                                    <i class="fa fa-stethoscope"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h5 class="mb-2">Medical Centers</h5>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_medical_centers) ? $public_medical_centers->count() : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-success-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
+                                <div class="cat-icon bg-success-transparent brround text-success">
                                     <i class="fa fa-building-o"></i>
                                 </div>
                                 <div class="cat-desc">
-                                    <h5 class="mb-2">FitnesCenters</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">19</p>
+                                    <h6 class="mb-2">Radiology Centers</h6>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_radiology_centers) ? $public_radiology_centers->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +775,55 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Pharmacies</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">25</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_pharmacies) ? $public_pharmacies->count() : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-warning-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
+                                <div class="cat-icon bg-primary-transparent brround text-primary">
+                                    <i class="fa fa-flask"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h5 class="mb-2">Labs</h5>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_labs) ? $public_labs->count() : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-success-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
+                                <div class="cat-icon bg-danger-transparent brround text-danger">
+                                    <i class="fa fa-building-o"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h6 class="mb-2">Gyms</h6>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_gyms) ? $public_gyms->count() : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-warning-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
+                                <div class="cat-icon bg-info-transparent brround text-info">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h5 class="mb-2">Life Coaches</h5>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_life_coaches) ? $public_life_coaches->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,27 +835,11 @@
                             <div class="cat-item text-center">
                                 <a href="page-list.html"></a>
                                 <div class="cat-icon bg-success-transparent brround text-success">
-                                    <i class="fa fa-stethoscope"></i>
+                                    <i class="fa fa-building-o"></i>
                                 </div>
                                 <div class="cat-desc">
-                                    <h5 class="mb-2">Clinics</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">23</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-sm-6">
-                    <div class="card bg-card-light bg-warning-card bg-white">
-                        <div class="card-body">
-                            <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
-                                <div class="cat-icon bg-warning-transparent brround text-warning">
-                                    <i class="fa fa-heartbeat"></i>
-                                </div>
-                                <div class="cat-desc">
-                                    <h5 class="mb-2">Bloodbanks</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">52</p>
+                                    <h5 class="mb-2">Insurances</h5>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_insurance_companies) ? $public_insurance_companies->count() : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -111,436 +851,618 @@
     <!--/Section-->
 
     <!--Section-->
-    <section class="sptb section-bg">
+    {{-- <section class="sptb section-bg">
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>New Registerd</h2>
                 <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="owl-carousel owl-carousel-icons2" id="myCarousel1">
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="power-ribbon power-ribbon-top-left text-warning">
-                            <span class="bg-warning"><i class="fa fa-bolt"></i></span>
-                        </div>
-                        <div class="item-card2-img">
-                            <a href="doctor-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart-o"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">PHYSIOLOGIST</small>
-                                <a class="text-dark" href="doctor-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">Dr.K.Mary..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="5">
-                                    <div class="rating-stars-container mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>5.0
+                @if(isset($public_doctors) && $public_doctors->count() > 0)
+                    @foreach ($public_doctors->take(20) as $key => $doctor)
+                        <div class="item">
+                            <div class="card mb-0">
+                                <div class="power-ribbon power-ribbon-top-left text-warning">
+                                    <span class="bg-warning"><i class="fa fa-bolt"></i></span>
                                 </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
-                                        <li><span class="text-muted "><i class="fa fa-briefcase mr-1"></i>3 yrs
-                                                Exp</span></li>
-                                    </ul>
+                                <div class="item-card2-img">
+                                    <a href="doctor-details.html"></a>
+                                    <img alt="img" class="cover-image"
+                                        src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                </div>
+                                <div class="item-card2-icons">
+                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                            class="fa fa fa-heart-o"></i></a>
+                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="item-card2">
+                                        <small class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
+                                        <a class="text-dark" href="doctor-details.html">
+                                            <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
+                                                <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                            </h4>
+                                        </a>
+                                        <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
+                                        <div class="rating-stars d-inline-flex mb-1">
+                                            <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                                type="number" value="5">
+                                            <div class="rating-stars-container mr-2">
+                                                <div class="rating-star sm ">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm ">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm ">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm ">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>5.0
+                                        </div>
+                                        <div class="mb-0 mt-0">
+                                            <ul class="item-card-features mb-0">
+                                                <li class="mb-0"><span class="text-muted"><i
+                                                            class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                                <li><span class="text-muted "><i class="fa fa-briefcase mr-1"></i>3 yrs
+                                                        Exp</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer p-0 btn-appointment">
+                                    <div class="btn-group w-100">
+                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                            href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
+                                            href="#" data-target="#exampleModal" data-toggle="modal"><i
+                                                class="fe fe-phone mr-1"></i> Appointment</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
-                                    href="#" data-target="#exampleModal" data-toggle="modal"><i
-                                        class="fe fe-phone mr-1"></i> Appointment</a>
+                    @endforeach
+                @else
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="power-ribbon power-ribbon-top-left text-warning">
+                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="item-card2-img">
+                                <a href="doctor-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart-o"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">PHYSIOLOGIST</small>
+                                    <a class="text-dark" href="doctor-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">Dr.K.Mary..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="5">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>5.0
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                            <li><span class="text-muted "><i class="fa fa-briefcase mr-1"></i>3 yrs
+                                                    Exp</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
+                                        href="#" data-target="#exampleModal" data-toggle="modal"><i
+                                            class="fe fe-phone mr-1"></i> Appointment</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="power-ribbon power-ribbon-top-left text-warning">
-                            <span class="bg-warning"><i class="fa fa-bolt"></i></span>
-                        </div>
-                        <div class="item-card2-img">
-                            <a href="fitness-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-30.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart-o"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">FITNESS CENTER</small>
-                                <a class="text-dark" href="fitness-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">Fit Race Club..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>8:00 Am - 11:00 Am
-                                </p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="3">
-                                    <div class="rating-stars-container mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>3.0
-                                </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
-                                        <li><span class="text-muted "><i class="fa fa fa-calendar-o mr-1"></i> Mon-
-                                                Fri</span></li>
-                                    </ul>
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="power-ribbon power-ribbon-top-left text-warning">
+                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="item-card2-img">
+                                <a href="fitness-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-30.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart-o"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">FITNESS CENTER</small>
+                                    <a class="text-dark" href="fitness-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">Fit Race Club..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>8:00 Am - 11:00 Am
+                                    </p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="3">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>3.0
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                            <li><span class="text-muted "><i class="fa fa fa-calendar-o mr-1"></i> Mon-
+                                                    Fri</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="fitness-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a
-                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                    <div class="call-btn-1">
-                                        <i class="fe fe-phone mr-1"></i> Call
-                                    </div>
-                                    <div class="call-number">
-                                        +65 847596 82
-                                    </div>
-                                </a>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="fitness-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a
+                                        class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                        <div class="call-btn-1">
+                                            <i class="fe fe-phone mr-1"></i> Call
+                                        </div>
+                                        <div class="call-number">
+                                            +65 847596 82
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item-card2-img">
-                            <a href="hospital-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-21.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart text-danger"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">HOSPITAL</small>
-                                <a class="text-dark" href="hospital-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">Madlife Hospital..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
-                                </p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="5">
-                                    <div class="rating-stars-container mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>5.0
-                                </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
-                                        <li><span class="text-muted "><i class="fa fa-user-md mr-1"></i>154
-                                                Doctors</span></li>
-                                    </ul>
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="item-card2-img">
+                                <a href="hospital-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-21.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart text-danger"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">HOSPITAL</small>
+                                    <a class="text-dark" href="hospital-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">Madlife Hospital..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
+                                    </p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="5">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>5.0
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                            <li><span class="text-muted "><i class="fa fa-user-md mr-1"></i>154
+                                                    Doctors</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a
-                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                    <div class="call-btn-1">
-                                        <i class="fe fe-phone mr-1"></i> Call
-                                    </div>
-                                    <div class="call-number">
-                                        +65 847596 82
-                                    </div>
-                                </a>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a
+                                        class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                        <div class="call-btn-1">
+                                            <i class="fe fe-phone mr-1"></i> Call
+                                        </div>
+                                        <div class="call-number">
+                                            +65 847596 82
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item-card2-img">
-                            <a href="pharmacy-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-14.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart-o"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">PHARMACY</small>
-                                <a class="text-dark" href="pharmacy-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">Brett Pharma..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
-                                </p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="4">
-                                    <div class="rating-stars-container mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>4.3
-                                </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
-                                    </ul>
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="item-card2-img">
+                                <a href="pharmacy-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-14.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart-o"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">PHARMACY</small>
+                                    <a class="text-dark" href="pharmacy-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">Brett Pharma..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
+                                    </p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="4">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>4.3
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="pharmacy-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a
-                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                    <div class="call-btn-1">
-                                        <i class="fe fe-phone mr-1"></i> Call
-                                    </div>
-                                    <div class="call-number">
-                                        +65 847596 82
-                                    </div>
-                                </a>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="pharmacy-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a
+                                        class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                        <div class="call-btn-1">
+                                            <i class="fe fe-phone mr-1"></i> Call
+                                        </div>
+                                        <div class="call-number">
+                                            +65 847596 82
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="power-ribbon power-ribbon-top-left text-warning">
-                            <span class="bg-warning"><i class="fa fa-bolt"></i></span>
-                        </div>
-                        <div class="item-card2-img">
-                            <a href="hospital-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-15.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart text-danger"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">CLINIC</small>
-                                <a class="text-dark" href="hospital-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">Aesthetic Clinic..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
-                                </p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="4">
-                                    <div class="rating-stars-container mb-1 mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>4.0
-                                </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Banglore</span></li>
-                                    </ul>
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="power-ribbon power-ribbon-top-left text-warning">
+                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="item-card2-img">
+                                <a href="hospital-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-15.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart text-danger"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">CLINIC</small>
+                                    <a class="text-dark" href="hospital-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">Aesthetic Clinic..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 7:00 Pm
+                                    </p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="4">
+                                        <div class="rating-stars-container mb-1 mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>4.0
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Banglore</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a
-                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                    <div class="call-btn-1">
-                                        <i class="fe fe-phone mr-1"></i> Call
-                                    </div>
-                                    <div class="call-number">
-                                        +65 847596 82
-                                    </div>
-                                </a>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a
+                                        class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                        <div class="call-btn-1">
+                                            <i class="fe fe-phone mr-1"></i> Call
+                                        </div>
+                                        <div class="call-number">
+                                            +65 847596 82
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="item">
+                        <div class="card mb-0">
+                            <div class="power-ribbon power-ribbon-top-left text-warning">
+                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="item-card2-img">
+                                <a href="bloodbank-details.html"></a>
+                                <img alt="img" class="cover-image"
+                                    src="{{ asset('front_end_style/assets/images/media/0-1.jpg') }}">
+                            </div>
+                            <div class="item-card2-icons">
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                        class="fa fa fa-heart text-danger"></i></a>
+                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card2">
+                                    <small class="text-muted">BLOODBANK</small>
+                                    <a class="text-dark" href="bloodbank-details.html">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">City Blood Bank..
+                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>
+                                    <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 6:00 Pm
+                                    </p>
+                                    <div class="rating-stars d-inline-flex mb-1">
+                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                            type="number" value="4">
+                                        <div class="rating-stars-container mb-1 mr-2">
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm ">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>4.0
+                                    </div>
+                                    <div class="mb-0 mt-0">
+                                        <ul class="item-card-features mb-0">
+                                            <li class="mb-0"><span class="text-muted"><i
+                                                        class="fa fa-map-marker mr-1"></i> Chennai</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer p-0 btn-appointment">
+                                <div class="btn-group w-100">
+                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                        href="bloodbank-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                    <a
+                                        class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                        <div class="call-btn-1">
+                                            <i class="fe fe-phone mr-1"></i> Call
+                                        </div>
+                                        <div class="call-number">
+                                            +65 847596 82
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section> --}}
+    <!--Section-->
+
+        <!--Section-->
+        <section class="sptb section-bg">
+            <div class="container">
+                <div class="section-title center-block text-center">
+                    <h2>Find your doctor by speciality</h2>
+                    <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
                 </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="power-ribbon power-ribbon-top-left text-warning">
-                            <span class="bg-warning"><i class="fa fa-bolt"></i></span>
-                        </div>
-                        <div class="item-card2-img">
-                            <a href="bloodbank-details.html"></a>
-                            <img alt="img" class="cover-image" src="{{ asset('front_end_style/assets/images/media/0-1.jpg') }}">
-                        </div>
-                        <div class="item-card2-icons">
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa fa-heart text-danger"></i></a>
-                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                    class="fa fa-share-alt"></i></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card2">
-                                <small class="text-muted">BLOODBANK</small>
-                                <a class="text-dark" href="bloodbank-details.html">
-                                    <h4 class="font-weight-semibold mt-1 mb-1">City Blood Bank..
-                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                    </h4>
-                                </a>
-                                <p class="text-muted fs-13 mb-1"><i class="fa fa-clock-o mr-1"></i>9:00 Am - 6:00 Pm
-                                </p>
-                                <div class="rating-stars d-inline-flex mb-1">
-                                    <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                        type="number" value="4">
-                                    <div class="rating-stars-container mb-1 mr-2">
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm ">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>4.0
-                                </div>
-                                <div class="mb-0 mt-0">
-                                    <ul class="item-card-features mb-0">
-                                        <li class="mb-0"><span class="text-muted"><i
-                                                    class="fa fa-map-marker mr-1"></i> Chennai</span></li>
-                                    </ul>
-                                </div>
+                <div class="items-gallery">
+                    <div class="items-blog-tab text-center">
+                        <div class="items-blog-tab-heading row">
+                            <div class="col-12">
+                                <ul class="nav items-blog-tab-menu">
+                                    @if(isset($public_specialities) && $public_specialities->count() > 0)
+                                        @foreach ($public_specialities->take(8) as $key => $speciality)
+                                            <li class="">
+                                                <a class="{{ $key == 0 ? 'active show' : ''}}" data-toggle="tab" href="#tab-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
                             </div>
                         </div>
-                        <div class="card-footer p-0 btn-appointment">
-                            <div class="btn-group w-100">
-                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                    href="bloodbank-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                <a
-                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                    <div class="call-btn-1">
-                                        <i class="fe fe-phone mr-1"></i> Call
+                        <div class="tab-content">
+                            @if(isset($public_specialities) && $public_specialities->count() > 0)
+                                @foreach ($public_specialities->take(8) as $index => $specialityTab)
+                                    <div class="tab-pane {{ $index == 0 ? 'active' : ''}} " id="tab-{{ $specialityTab->id }}">
+                                        <div class="owl-carousel owl-carousel-icons2" id="myCarousel{{ $specialityTab->id }}">
+                                            @if(isset($specialityTab->doctors) && $specialityTab->doctors->count() > 0)
+                                                @foreach ($specialityTab->doctors->take(20) as $counter => $doctor)
+                                                    <div class="item">
+                                                        <div class="card mb-0">
+                                                            <div class="power-ribbon power-ribbon-top-left text-warning">
+                                                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
+                                                            </div>
+                                                            <div class="item-card2-img">
+                                                                <a href="doctor-details.html"></a>
+                                                                @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
+                                                                    <img alt="img" class="cover-image"
+                                                                        src="{{ asset($doctor->profile_photo_path) }}">
+                                                                @else
+                                                                    <img alt="img" class="cover-image"
+                                                                        src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                                @endif
+                                                            </div>
+                                                            <div class="item-card2-icons">
+                                                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                                        class="fa fa fa-heart-o"></i></a>
+                                                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="item-card2">
+                                                                    <small class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
+                                                                    <a class="text-dark" href="doctor-details.html">
+                                                                        <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
+                                                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                        </h4>
+                                                                    </a>
+                                                                    <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
+                                                                    <div class="rating-stars d-inline-flex mb-1">
+                                                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                                                            type="number" value="5">
+                                                                        <div class="rating-stars-container mr-2">
+                                                                            <div class="rating-star sm ">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                            <div class="rating-star sm ">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                            <div class="rating-star sm ">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                            <div class="rating-star sm ">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                            <div class="rating-star sm">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                        </div>5.0
+                                                                    </div>
+                                                                    <div class="mb-0 mt-0">
+                                                                        <ul class="item-card-features mb-0">
+                                                                            <li class="mb-0"><span class="text-muted"><i
+                                                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer p-0 btn-appointment">
+                                                                <div class="btn-group w-100">
+                                                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                                        href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
+                                                                        href="#" data-target="#exampleModal" data-toggle="modal"><i
+                                                                            class="fe fe-phone mr-1"></i> Appointment</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="call-number">
-                                        +65 847596 82
-                                    </div>
-                                </a>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--Section-->
+        </section>
+        <!--/Section-->
 
     <!--Section-->
     <section class="sptb">
@@ -1331,8 +2253,8 @@
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
-                                            <a class="item-card2-icons-l bg-dark-transparent"
-                                                href="classified.html"><i class="fa fa-share-alt"></i></a>
+                                            <a class="item-card2-icons-l bg-dark-transparent" href="classified.html"><i
+                                                    class="fa fa-share-alt"></i></a>
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
                                                     class="fa fa fa-heart-o"></i></a>
                                         </div>
@@ -3151,7 +4073,8 @@
                     <div class="card">
                         <div class="item7-card-img">
                             <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/1.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/1.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <a href="articles.html" class="text-dark">
@@ -3175,7 +4098,8 @@
                     <div class="card">
                         <div class="item7-card-img">
                             <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/2.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/2.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <a href="articles.html" class="text-dark">
@@ -3199,7 +4123,8 @@
                     <div class="card">
                         <div class="item7-card-img">
                             <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/3.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/3.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <a href="articles.html" class="text-dark">
@@ -3254,8 +4179,8 @@
                                         </div>
                                         <h3 class="title">Elizabeth</h3>
                                         <div class="rating-stars mb-3">
-                                            <input class="rating-value star" name="rating-stars-value"
-                                                readonly="readonly" type="number" value="4">
+                                            <input class="rating-value star" name="rating-stars-value" readonly="readonly"
+                                                type="number" value="4">
                                             <div class="rating-stars-container">
                                                 <div class="rating-star sm ">
                                                     <i class="fa fa-star"></i>
@@ -3467,12 +4392,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/3.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/3.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 689 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                689 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">44,327<span class="item-subtext"><i
@@ -3489,12 +4414,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/6.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/6.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 491 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                491 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">52,145<span class="item-subtext"><i
@@ -3511,12 +4436,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/1.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/1.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 729 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                729 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">63,263<span class="item-subtext"><i
@@ -3533,12 +4458,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/2.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/2.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 567 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                567 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">36,485<span class="item-subtext"><i
@@ -3559,12 +4484,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/8.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/8.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 209 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                209 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">64,825<span class="item-subtext"><i
@@ -3581,12 +4506,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/5.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/5.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 567 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                567 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">73,5345<span class="item-subtext"><i
@@ -3603,12 +4528,12 @@
                                     <a href="#"></a>
                                     <div class="card overflow-hidden border-0">
                                         <div class="card-img">
-                                            <img src="{{ asset('front_end_style/assets/images/media/locations/7.jpg') }}" alt="img"
-                                                class="cover-image">
+                                            <img src="{{ asset('front_end_style/assets/images/media/locations/7.jpg') }}"
+                                                alt="img" class="cover-image">
                                         </div>
                                         <div class="item-tags">
-                                            <div class="bg-secondary tag-option"><i
-                                                    class="fa fa fa-heart-o mr-1"></i> 567 </div>
+                                            <div class="bg-secondary tag-option"><i class="fa fa fa-heart-o mr-1"></i>
+                                                567 </div>
                                         </div>
                                         <div class="item-card-text">
                                             <h4 class="">64,825<span class="item-subtext"><i
@@ -3638,7 +4563,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/11.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/11.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3653,8 +4579,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/5.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/male/5.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Joanne Nash</a>
                                     <small class="d-block text-muted">1 day ago</small>
@@ -3673,7 +4599,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/12.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/12.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3688,8 +4615,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/7.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/male/7.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Tanner Mallari</a>
                                     <small class="d-block text-muted">2 days ago</small>
@@ -3708,7 +4635,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/13.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/13.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3723,8 +4651,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/female/15.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/female/15.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Aracely Bashore</a>
                                     <small class="d-block text-muted">5 days ago</small>
@@ -3743,7 +4671,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/14.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/14.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3758,8 +4687,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/15.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/male/15.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Royal Hamblin</a>
                                     <small class="d-block text-muted">10 days ago</small>
@@ -3778,7 +4707,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/15.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/15.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3793,8 +4723,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/female/5.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/female/5.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Rosita Chatmon</a>
                                     <small class="d-block text-muted">10 days ago</small>
@@ -3813,7 +4743,8 @@
                     <div class="card mb-0">
                         <div class="item7-card-img">
                             <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/16.jpg') }}" alt="img" class="cover-image">
+                            <img src="{{ asset('front_end_style/assets/images/media/photos/16.jpg') }}" alt="img"
+                                class="cover-image">
                         </div>
                         <div class="card-body p-4">
                             <div class="item7-card-desc d-flex mb-2">
@@ -3828,8 +4759,8 @@
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum </p>
                             <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/6.jpg') }}" class="avatar brround avatar-md mr-3"
-                                    alt="avatar-img">
+                                <img src="{{ asset('front_end_style/assets/images/users/male/6.jpg') }}"
+                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
                                 <div>
                                     <a href="profile.html" class="text-default">Loyd Nolf</a>
                                     <small class="d-block text-muted">15 days ago</small>

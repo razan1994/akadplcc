@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             ContactUsSeeder::class,
             PublicCountrySeeder::class,
             PublicNationalitySeeder::class,
-            PublicPhoneKeySeeder::class
+            PublicPhoneKeySeeder::class,
+            SpecialitySeeder::class,
+            DoctorSeeder::class
         ]);
     }
 }
