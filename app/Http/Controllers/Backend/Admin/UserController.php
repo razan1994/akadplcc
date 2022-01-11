@@ -298,19 +298,19 @@ class UserController extends Controller
             }
 
             else if($user_type == "Hospital"){
-                $user =Hospital::find($user_id);;
+                $user =Hospital::find($user_id);
                 }
 
             else if($user_type == "Radiology Center"){
-                $user =RadiologyCenter::find($user_id);;
+                $user =RadiologyCenter::find($user_id);
             }
 
             else if($user_type == "Medical Center"){
-                $user =MedicalCenter::find($user_id);;
+                $user =MedicalCenter::find($user_id);
             }
 
             else if($user_type == "Lab"){
-                $user =Lab::find($user_id);;
+                $user =Lab::find($user_id);
             }
 
             else if($user_type == "Doctor"){
@@ -385,19 +385,19 @@ class UserController extends Controller
             }
 
             else if($user_type == "Hospital"){
-                $user =Hospital::find($user_id);;
+                $user =Hospital::find($user_id);
                 }
 
             else if($user_type == "Radiology Center"){
-                $user =RadiologyCenter::find($user_id);;
+                $user =RadiologyCenter::find($user_id);
             }
 
             else if($user_type == "Medical Center"){
-                $user =MedicalCenter::find($user_id);;
+                $user =MedicalCenter::find($user_id);
             }
 
             else if($user_type == "Lab"){
-                $user =Lab::find($user_id);;
+                $user =Lab::find($user_id);
             }
 
             else if($user_type == "Doctor"){
@@ -461,54 +461,54 @@ class UserController extends Controller
     // ================================================================
     // ======================= Update Function ========================
     // ================================================================
-    public function update($user_id, UpdateUserFormRequest $request,$user_type,Route $route)
+    public function update($user_id, UpdateUserFormRequest $request,Route $route)
     {
         try {
-            if($user_type == "Super Admin"){
+            if($request->user_type == "Super Admin"){
                 $user =User::find($user_id);
             }
 
-            else if($user_type == "Insurance Company"){
+            else if($request->user_type == "Insurance Company"){
                 $user =InsuranceCompany::find($user_id);
             }
 
-            else if($user_type == "Hospital"){
-                $user =Hospital::find($user_id);;
+            else if($request->user_type == "Hospital"){
+                $user =Hospital::find($user_id);
                 }
 
-            else if($user_type == "Radiology Center"){
-                $user =RadiologyCenter::find($user_id);;
+            else if($request->user_type == "Radiology Center"){
+                $user =RadiologyCenter::find($user_id);
             }
 
-            else if($user_type == "Medical Center"){
-                $user =MedicalCenter::find($user_id);;
+            else if($request->user_type == "Medical Center"){
+                $user =MedicalCenter::find($user_id);
             }
 
-            else if($user_type == "Lab"){
-                $user =Lab::find($user_id);;
+            else if($request->user_type == "Lab"){
+                $user =Lab::find($user_id);
             }
 
-            else if($user_type == "Doctor"){
+            else if($request->user_type == "Doctor"){
                 $user =Doctor::find($user_id);
             }
 
-            else if($user_type == "Patient"){
+            else if($request->user_type == "Patient"){
                 $user =Patient::find($user_id);
             }
 
-            else if($user_type == "Pharmacy"){
+            else if($request->user_type == "Pharmacy"){
                 $user =Pharmacy::find($user_id);
             }
 
-            else if($user_type == "SEO Admin"){
+            else if($request->user_type == "SEO Admin"){
                 $user =SeoAdmin::find($user_id);
             }
 
-            else if($user_type == "Gym"){
+            else if($request->user_type == "Gym"){
                 $user =Gym::find($user_id);
             }
 
-            else if($user_type == "Life Coach"){
+            else if($request->user_type == "Life Coach"){
                 $user =LifeCoutch::find($user_id);
             }
             else{
@@ -559,6 +559,7 @@ class UserController extends Controller
                     } else if ($request->user_type == 'Gym') {
                         $last_image = $this->saveFileWithOriginalName('gyms', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                     }
+                    $update_data['profile_photo_path']= $last_image;
                     File::delete($user->profile_photo_path);
                 }
 
@@ -568,9 +569,9 @@ class UserController extends Controller
                     return redirect()->back()->with('danger','User Not Found !!!!');
                 }
 
-                return redirect()->route('super_admin.users-index',$user_type)->with('success', 'The data has been successfully updated');
+                return redirect()->route('super_admin.users-index',$request->user_type)->with('success', 'The data has been successfully updated');
             } else {
-                return redirect()->route('super_admin.users-index',$user_type)->with('danger', 'This record does not exist in the records');
+                return redirect()->route('super_admin.users-index',$request->user_type)->with('danger', 'This record does not exist in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -611,19 +612,19 @@ class UserController extends Controller
                 }
 
                 else if($user_type == "Hospital"){
-                    $user =Hospital::find($user_id);;
+                    $user =Hospital::find($user_id);
                     }
 
                 else if($user_type == "Radiology Center"){
-                    $user =RadiologyCenter::find($user_id);;
+                    $user =RadiologyCenter::find($user_id);
                 }
 
                 else if($user_type == "Medical Center"){
-                    $user =MedicalCenter::find($user_id);;
+                    $user =MedicalCenter::find($user_id);
                 }
 
                 else if($user_type == "Lab"){
-                    $user =Lab::find($user_id);;
+                    $user =Lab::find($user_id);
                 }
 
                 else if($user_type == "Doctor"){
@@ -704,19 +705,19 @@ class UserController extends Controller
                 }
 
                 else if($user_type == "Hospital"){
-                    $user =Hospital::find($user_id);;
+                    $user =Hospital::find($user_id);
                     }
 
                 else if($user_type == "Radiology Center"){
-                    $user =RadiologyCenter::find($user_id);;
+                    $user =RadiologyCenter::find($user_id);
                 }
 
                 else if($user_type == "Medical Center"){
-                    $user =MedicalCenter::find($user_id);;
+                    $user =MedicalCenter::find($user_id);
                 }
 
                 else if($user_type == "Lab"){
-                    $user =Lab::find($user_id);;
+                    $user =Lab::find($user_id);
                 }
 
                 else if($user_type == "Doctor"){
@@ -797,19 +798,19 @@ class UserController extends Controller
                 }
 
                 else if($user_type == "Hospital"){
-                    $user =Hospital::find($user_id);;
+                    $user =Hospital::find($user_id);
                     }
 
                 else if($user_type == "Radiology Center"){
-                    $user =RadiologyCenter::find($user_id);;
+                    $user =RadiologyCenter::find($user_id);
                 }
 
                 else if($user_type == "Medical Center"){
-                    $user =MedicalCenter::find($user_id);;
+                    $user =MedicalCenter::find($user_id);
                 }
 
                 else if($user_type == "Lab"){
-                    $user =Lab::find($user_id);;
+                    $user =Lab::find($user_id);
                 }
 
                 else if($user_type == "Doctor"){

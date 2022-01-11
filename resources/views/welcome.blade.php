@@ -1368,7 +1368,7 @@
                                     @if(isset($public_specialities) && $public_specialities->count() > 0)
                                         @foreach ($public_specialities->take(8) as $key => $speciality)
                                             <li class="">
-                                                <a class="{{ $key == 0 ? 'active show' : ''}}" data-toggle="tab" href="#tab-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>
+                                                <a class="{{ $key == 0 ? 'active show' : ''}}" data-toggle="tab" href="#tab1-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>
                                             </li>
                                         @endforeach
                                     @endif
@@ -1378,7 +1378,7 @@
                         <div class="tab-content">
                             @if(isset($public_specialities) && $public_specialities->count() > 0)
                                 @foreach ($public_specialities->take(8) as $index => $specialityTab)
-                                    <div class="tab-pane {{ $index == 0 ? 'active' : ''}} " id="tab-{{ $specialityTab->id }}">
+                                    <div class="tab-pane {{ $index == 0 ? 'active' : ''}} " id="tab1-{{ $specialityTab->id }}">
                                         <div class="owl-carousel owl-carousel-icons2" id="myCarousel{{ $specialityTab->id }}">
                                             @if(isset($specialityTab->doctors) && $specialityTab->doctors->count() > 0)
                                                 @foreach ($specialityTab->doctors->take(20) as $counter => $doctor)
@@ -1390,10 +1390,10 @@
                                                             <div class="item-card2-img">
                                                                 <a href="doctor-details.html"></a>
                                                                 @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
-                                                                    <img alt="img" class="cover-image"
+                                                                    <img alt="img" class="cover-image spec-doc-img"
                                                                         src="{{ asset($doctor->profile_photo_path) }}">
                                                                 @else
-                                                                    <img alt="img" class="cover-image"
+                                                                    <img alt="img" class="cover-image spec-doc-img"
                                                                         src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                                 @endif
                                                             </div>
@@ -1477,28 +1477,37 @@
                         <div class="col-12">
                             <ul class="nav items-blog-tab-menu">
                                 <li class="">
-                                    <a class="active show" data-toggle="tab" href="#tab-1">Doctors</a>
+                                    <a class="active show" data-toggle="tab" href="#tab-doctors">Doctors</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-2">Hospitals</a>
+                                    <a class="" data-toggle="tab" href="#tab-hospitals">Hospitals</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-3">FitnesCenters</a>
+                                    <a class="" data-toggle="tab" href="#tab-medicals">Medical Center</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-4">Pharmacies</a>
+                                    <a class="" data-toggle="tab" href="#tab-radiology">Radiology Center</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-5">Clinics</a>
+                                    <a class="" data-toggle="tab" href="#tab-labs">Labs</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-6">BloodBanks</a>
+                                    <a class="" data-toggle="tab" href="#tab-insurances">Insurance Companies</a>
+                                </li>
+                                <li>
+                                    <a class="" data-toggle="tab" href="#tab-pharmacies">Pharmacies</a>
+                                </li>
+                                <li>
+                                    <a class="" data-toggle="tab" href="#tab-gyms">Gyms</a>
+                                </li>
+                                <li>
+                                    <a class="" data-toggle="tab" href="#tab-life_couches">Life Coaches</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="tab-content list-container">
-                        <div class="tab-pane active " id="tab-1">
+                        <div class="tab-pane active " id="tab-doctors">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -1856,7 +1865,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-2">
+                        <div class="tab-pane" id="tab-hospitals">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -2240,7 +2249,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-3">
+                        <div class="tab-pane" id="tab-medicals">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -2852,7 +2861,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-4">
+                        <div class="tab-pane" id="tab-radiology">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -3236,7 +3245,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-5">
+                        <div class="tab-pane" id="tab-labs">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -3620,7 +3629,1159 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-6">
+                        <div class="tab-pane" id="tab-insurances">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="bloodbank-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-16.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">BloodBank</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="bloodbank-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Delta Blood Bank..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590.....</p>
+                                                <div class="rating-stars d-inline-flex mb-1 mr-3">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="5">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>5.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 5 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="bloodbank-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-1.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">BloodBank</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="bloodbank-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">BloodSource..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">323 Fifth Ave. Canandaigua, NY
+                                                    14424......</p>
+                                                <div class="rating-stars d-inline-flex mb-1 mr-3">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>11 Am - 6 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="bloodbank-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-2.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">BloodBank</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="bloodbank-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Florida Blood Center..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 4 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="bloodbank-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-3.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">BloodBank</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="bloodbank-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Central Blood Bank...
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">714 Bowman Street. North Miami Beach,
+                                                    FL 33160.....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>10 Am - 5 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="bloodbank-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-4.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">BloodBank</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="bloodbank-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Regional Blood Bank...
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">323 Fifth Ave. Canandaigua, NY
+                                                    14424...</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>10 Am - 5 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-pharmacies">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="pharmacy-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-14.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="pharmacy-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Craft Pharmacy..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">714 Bowman Street. North Miami Beach,
+                                                    FL 33160....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>8 Am - 4 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="pharmacy-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-17.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="pharmacy-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Vista Pharmacy..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Banglore</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>10 Am - 7 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="pharmacy-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-18.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="pharmacy-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Pharma Street..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">323 Fifth Ave. Canandaigua, NY
+                                                    14424....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="3">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>3.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 6 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="pharmacy-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-19.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="pharmacy-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">IHC Pharmacy..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">935 Ridgewood St. Piscataway, NJ
+                                                    08854.....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container  mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>11 Am - 6 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="pharmacy-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-20.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="pharmacy-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Madico Pharmacy..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Banglore</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>10 Am - 7 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-gyms">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="hospital-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-5.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Clinic</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="hospital-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Grace Clinic..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">935 Ridgewood St. Piscataway, NJ
+                                                    08854.....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>11 Am - 6 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="hospital-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-6.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Clinic</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="hospital-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Stonefield clinic..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">323 Fifth Ave. Canandaigua, NY
+                                                    14424....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="3">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>3.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 6 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="hospital-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-7.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Clinic</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="hospital-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">Happy space’s Clinic..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Banglore</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>10 Am - 7 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="hospital-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-15.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Clinic</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="hospital-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">LifeShades Clinic..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">714 Bowman Street. North Miami Beach,
+                                                    FL 33160....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="4">
+                                                    <div class="rating-stars-container mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>4.7
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                        </li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>8 Am - 4 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    <div class="card">
+                                        <div class="item-card7-imgs">
+                                            <a href="hospital-details.html"></a>
+                                            <img alt="img" class="cover-image"
+                                                src="{{ asset('front_end_style/assets/images/media/0-8.jpg') }}">
+                                            <div class="tag-text">
+                                                <span class="bg-dark tag-option">Clinic</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-card2-icons">
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa fa-heart-o"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="item-card2">
+                                                <a class="text-dark" href="hospital-details.html">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">WishyWave Clinic..
+                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                    </h4>
+                                                </a>
+                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
+                                                    53590.....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
+                                                    <input class="rating-value star" name="rating-stars-value"
+                                                        readonly="readonly" type="number" value="5">
+                                                    <div class="rating-stars-container  mr-2">
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm ">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="rating-star sm">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>5.0
+                                                </div>
+                                                <div class="mb-0 mt-0">
+                                                    <ul class="item-card-features mb-0">
+                                                        <li class="mb-0"><span class="text-muted"><i
+                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                Hyderabad</span></li>
+                                                        <li><span class="text-muted "><i
+                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 5 Pm</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-0 btn-appointment">
+                                            <div class="btn-group w-100">
+                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                    href="hospital-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    Website</a>
+                                                <a
+                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                    <div class="call-btn-1">
+                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    </div>
+                                                    <div class="call-number">
+                                                        +65 847596 82
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-life_couches">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">

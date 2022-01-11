@@ -48,6 +48,7 @@
                                         <form action="{{ route('super_admin.users-update', [$user->id]) }}" method="POST"
                                             id="updateForm" enctype="multipart/form-data">
                                             @csrf
+                                            <input type="hidden" name="user_type" value="{{ isset($user_type) ? $user_type : '--------' }}">
                                             <div class="form-row">
 
                                                 {{-- Name in Arabic --}}
@@ -226,18 +227,18 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-switch"></span>
                                                         </div>
-                                                        @if (isset($user->user_type))
-                                                            @if ($user->user_type == 'Super Admin')
+                                                        @if (isset($user_type))
+                                                            @if ($user_type == 'Super Admin')
                                                                 <input type="hidden" name="user_status" value="2">
                                                                 <!-- 2 => Active -->
                                                             @endif
                                                             <select
-                                                                {{ $user->user_type == 'Super Admin' ? 'disabled' : '' }}
+                                                                {{ $user_type == 'Super Admin' ? 'disabled' : '' }}
                                                                 name="user_status"
                                                                 class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror"
                                                                 id="inlineFormCustomSelectPref">
                                                                 <option value="" selected>Choose User Status...</option>
-                                                                @if (isset($user->user_type))
+                                                                @if (isset($user_type))
                                                                     <option value="1" @if (isset($user->user_status) && $user->user_status == 'Pendding') selected @endif>Pendding
                                                                     </option>
                                                                     <option value="2" @if (isset($user->user_status) && $user->user_status == 'Active') selected @endif>Active
