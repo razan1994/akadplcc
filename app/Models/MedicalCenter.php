@@ -31,6 +31,8 @@ class MedicalCenter extends Model
         'address_ar',
         'address_en',
         'player_id',
+        'alias_name_en',
+        'alias_name_ar'
     ];
     /**
      * The attributes that should be hidden for arrays.

@@ -89,7 +89,9 @@ class SpecialityController extends Controller
             $created_data = [
                 'name_ar' => $request->name_ar,
                 'name_en' => $request->name_en,
-                'updated_by' => auth()->user()->id
+                'updated_by' => auth()->user()->id,
+                'alias_name_en'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_en),
+                'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar)
             ];
 
             DB::transaction(function () use ($created_data) {
@@ -172,7 +174,8 @@ class SpecialityController extends Controller
                 $update_data['name_ar'] = $request->name_ar;
                 $update_data['name_en'] = $request->name_en;
                 $update_data['updated_by'] = auth()->user()->id;
-
+                $update_data['alias_name_en'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_en']);
+                $update_data['alias_name_ar'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_ar']);
 
                 DB::table('doctor_specialities')->where('id', $speciality_id)->update($update_data);
 

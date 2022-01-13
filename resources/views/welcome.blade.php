@@ -1380,8 +1380,8 @@
                                 @foreach ($public_specialities->take(8) as $index => $specialityTab)
                                     <div class="tab-pane {{ $index == 0 ? 'active' : ''}} " id="tab1-{{ $specialityTab->id }}">
                                         <div class="owl-carousel owl-carousel-icons2" id="myCarousel{{ $specialityTab->id }}">
-                                            @if(isset($specialityTab->doctors) && $specialityTab->doctors->count() > 0)
-                                                @foreach ($specialityTab->doctors->take(20) as $counter => $doctor)
+                                            @if(isset($specialityTab->doctorsRandomTwelve) && $specialityTab->doctorsRandomTwelve->count() > 0)
+                                                @foreach ($specialityTab->doctorsRandomTwelve as $counter => $doctor)
                                                     <div class="item">
                                                         <div class="card mb-0">
                                                             <div class="power-ribbon power-ribbon-top-left text-warning">

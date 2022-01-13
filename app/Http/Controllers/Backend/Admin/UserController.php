@@ -221,6 +221,8 @@ class UserController extends Controller
                 'user_status' => $request->user_status,
                 'profile_photo_path' => $last_image,
                 'created_by' => auth()->user()->id,
+                'alias_name_en'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_en),
+                'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar)
             ];
 
             if($request->user_type == "Doctor"){
@@ -524,6 +526,8 @@ class UserController extends Controller
                 $update_data['phone'] = $request->phone;
                 $update_data['user_status'] = $request->user_status;
 
+                $update_data['alias_name_en'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_en']);
+                $update_data['alias_name_ar'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_ar']);
                 // Add Password to updated date if exist :
                 if (isset($request->password)) {
                     $update_data['password'] = Hash::make($request->password);

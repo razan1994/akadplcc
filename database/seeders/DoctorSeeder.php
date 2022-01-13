@@ -21,6 +21,8 @@ class DoctorSeeder extends Seeder
                 Doctor::create([
                     'name_ar'=>'طبيب_'.$i.'_'.$j,
                     'name_en'=>'doctor_'.$i.'_'.$j,
+                    'alias_name_ar'=>'طبيب-'.$i.'-'.$j,
+                    'alias_name_en'=>'doctor-'.$i.'-'.$j,
                     'username'=>'doctor_'.$i.'_'.$j,
                     'email'=>'doctor_'.$i.'_'.$j.'@rushetta.com',
                     'phone'=>'0799998'.$i.'_'.$j,

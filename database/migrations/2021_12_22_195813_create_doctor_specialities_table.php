@@ -17,6 +17,8 @@ class CreateDoctorSpecialitiesTable extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
+            $table->longText('alias_name_ar');
+            $table->longText('alias_name_en');
             $table->bigInteger('updated_by');
             $table->timestamps();
         });

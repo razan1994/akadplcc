@@ -26,8 +26,9 @@ class UpdateUserFormRequest extends FormRequest
     {
 
         if($this->user_type == "Super Admin"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return[
+            'name_ar' => 'required|unique:users,name_ar,'.$this->id.'|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en,'.$this->id.'|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username,'.$this->id.'|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email,'.$this->id.'|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone,'.$this->id.'|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -39,8 +40,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Insurance Company"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar,'.$this->id.'|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en,'.$this->id.'|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username,'.$this->id.'|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email,'.$this->id.'|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone,'.$this->id.'|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -52,8 +53,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Hospital"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' =>  'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar,'.$this->id.'|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en,'.$this->id.'|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username,'.$this->id.'|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email,'.$this->id.'|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone,'.$this->id.'|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -65,8 +66,8 @@ class UpdateUserFormRequest extends FormRequest
             }
 
         else if($this->user_type == "Radiology Center"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar,'.$this->id.'|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en,'.$this->id.'|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username,'.$this->id.'|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email,'.$this->id.'|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone,'.$this->id.'|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -78,8 +79,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Medical Center"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar,'.$this->id.'|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en,'.$this->id.'|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username,'.$this->id.'|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email,'.$this->id.'|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone,'.$this->id.'|unique:patients,phone',
@@ -91,8 +92,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Lab"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar,'.$this->id.'|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en,'.$this->id.'|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username,'.$this->id.'|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email,'.$this->id.'|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone,'.$this->id.'|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -104,8 +105,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Doctor"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar,'.$this->id.'|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en,'.$this->id.'|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username,'.$this->id.'|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email,'.$this->id.'|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone,'.$this->id.'|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -117,8 +118,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Patient"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar,'.$this->id,
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en,'.$this->id,
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username,'.$this->id,
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email,'.$this->id,
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone,'.$this->id,
@@ -130,8 +131,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Pharmacy"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar,'.$this->id.'|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en,'.$this->id.'|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username,'.$this->id.'|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email,'.$this->id.'|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone,'.$this->id.'|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -143,8 +144,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "SEO Admin"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar,'.$this->id.'|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en,'.$this->id.'|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username,'.$this->id.'|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email,'.$this->id.'|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone,'.$this->id.'|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -156,8 +157,8 @@ class UpdateUserFormRequest extends FormRequest
         }
 
         else if($this->user_type == "Gym"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar,'.$this->id.'|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en,'.$this->id.'|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username,'.$this->id.'|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email,'.$this->id.'|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone,'.$this->id.'|unique:medical_centers,phone|unique:patients,phone',
@@ -168,9 +169,10 @@ class UpdateUserFormRequest extends FormRequest
             'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
         }
 
+
         else if($this->user_type == "Life Coach"){
-            return['name_ar' => 'required',
-            'name_en' => 'required',
+            return['name_ar' => 'required|unique:users,name_ar,|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar,'.$this->id.'|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar',
+            'name_en' => 'required|unique:users,name_en,|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en,'.$this->id.'|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en',
             'username' => 'required|unique:users,username,|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username,'.$this->id.'|unique:gyms,username|unique:medical_centers,username|unique:patients,username',
             'email' => 'required|unique:users,email,|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email,'.$this->id.'|unique:gyms,email|unique:medical_centers,email|unique:patients,email',
             'phone' => 'required|unique:users,phone,|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone,'.$this->id.'|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
@@ -200,6 +202,8 @@ class UpdateUserFormRequest extends FormRequest
 
             'username.required' => trans('custom_validation.username_required'),
             'username.unique' => trans('custom_validation.username_unique'),
+            'name_ar.unique' => trans('custom_validation.name_ar_unique'),
+            'name_en.unique' => trans('custom_validation.name_en_unique'),
 
             'email.required' => trans('custom_validation.email_required'),
             'email.unique' => trans('custom_validation.email_unique'),

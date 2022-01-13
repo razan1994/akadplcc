@@ -18,6 +18,8 @@ class SpecialitySeeder extends Seeder
             DoctorSpeciality::create([
                 'name_ar'=>'تخصص_'.$i,
                 'name_en'=>'speciality_'.$i,
+                'alias_name_ar'=>'تخصص-'.$i,
+                'alias_name_en'=>'speciality-'.$i,
                 'updated_by'=>1,
             ]);
 

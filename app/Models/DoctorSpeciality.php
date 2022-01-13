@@ -14,7 +14,9 @@ class DoctorSpeciality extends Model
     protected $fillable = [
         'name_ar',
         'name_en',
-        'updated_by'
+        'updated_by',
+        'alias_name_en',
+        'alias_name_ar'
     ];
 
 
@@ -31,6 +33,15 @@ class DoctorSpeciality extends Model
     public function doctors(){
         return $this->hasMany(Doctor::class , 'speciality_id');
     }
+
+
+
+    public function doctorsRandomTwelve(){
+        return $this->doctors()->inRandomOrder()->take(12);
+    }
+
+
+
 
 
 }

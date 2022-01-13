@@ -20,6 +20,8 @@ class CreateHospitalsTable extends Migration
             $table->id();
             $table->longText('name_ar');
             $table->longText('name_en');
+            $table->longText('alias_name_ar');
+            $table->longText('alias_name_en');
             $table->longText('username')->unique();
             $table->longText('email')->unique();
             $table->longText('phone')->nullable();
