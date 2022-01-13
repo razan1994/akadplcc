@@ -866,7 +866,7 @@
                                     <span class="bg-warning"><i class="fa fa-bolt"></i></span>
                                 </div>
                                 <div class="item-card2-img">
-                                    <a href="doctor-details.html"></a>
+                                    <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                     <img alt="img" class="cover-image"
                                         src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                 </div>
@@ -878,7 +878,7 @@
                                 <div class="card-body">
                                     <div class="item-card2">
                                         <small class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
-                                        <a class="text-dark" href="doctor-details.html">
+                                        <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                             <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
                                                 <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                             </h4>
@@ -918,7 +918,7 @@
                                 <div class="card-footer p-0 btn-appointment">
                                     <div class="btn-group w-100">
                                         <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                            href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                            href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit Website</a>
                                         <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                             href="#" data-target="#exampleModal" data-toggle="modal"><i
                                                 class="fe fe-phone mr-1"></i> Appointment</a>
@@ -934,7 +934,7 @@
                                 <span class="bg-warning"><i class="fa fa-bolt"></i></span>
                             </div>
                             <div class="item-card2-img">
-                                <a href="doctor-details.html"></a>
+                                <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                 <img alt="img" class="cover-image"
                                     src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                             </div>
@@ -946,7 +946,7 @@
                             <div class="card-body">
                                 <div class="item-card2">
                                     <small class="text-muted">PHYSIOLOGIST</small>
-                                    <a class="text-dark" href="doctor-details.html">
+                                    <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                         <h4 class="font-weight-semibold mt-1 mb-1">Dr.K.Mary..
                                             <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                         </h4>
@@ -986,7 +986,7 @@
                             <div class="card-footer p-0 btn-appointment">
                                 <div class="btn-group w-100">
                                     <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                        href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                        href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit Website</a>
                                     <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                         href="#" data-target="#exampleModal" data-toggle="modal"><i
                                             class="fe fe-phone mr-1"></i> Appointment</a>
@@ -1388,7 +1388,7 @@
                                                                 <span class="bg-warning"><i class="fa fa-bolt"></i></span>
                                                             </div>
                                                             <div class="item-card2-img">
-                                                                <a href="doctor-details.html"></a>
+                                                                <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                                                 @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
                                                                     <img alt="img" class="cover-image spec-doc-img"
                                                                         src="{{ asset($doctor->profile_photo_path) }}">
@@ -1405,7 +1405,7 @@
                                                             <div class="card-body">
                                                                 <div class="item-card2">
                                                                     <small class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
-                                                                    <a class="text-dark" href="doctor-details.html">
+                                                                    <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                                         <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
                                                                             <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                                         </h4>
@@ -1443,7 +1443,7 @@
                                                             <div class="card-footer p-0 btn-appointment">
                                                                 <div class="btn-group w-100">
                                                                     <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                                        href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit Website</a>
+                                                                        href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit Website</a>
                                                                     <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                                         href="#" data-target="#exampleModal" data-toggle="modal"><i
                                                                             class="fe fe-phone mr-1"></i> Appointment</a>
@@ -1512,7 +1512,7 @@
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="doctor-details.html"></a>
+                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                             <img alt="img" class="cover-image"
                                                 src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                             <div class="tag-text">
@@ -1527,7 +1527,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="doctor-details.html">
+                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                     <h4 class="font-weight-semibold mt-1 mb-1">Dr.S.Ashley..
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
@@ -1571,7 +1571,7 @@
                                         <div class="card-footer p-0 btn-appointment">
                                             <div class="btn-group w-100">
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
                                                     Website</a>
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                     href="#" data-target="#exampleModal" data-toggle="modal"><i
@@ -1583,7 +1583,7 @@
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="doctor-details.html"></a>
+                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                             <img alt="img" class="cover-image"
                                                 src="{{ asset('front_end_style/assets/images/media/0-34.jpg') }}">
                                             <div class="tag-text">
@@ -1598,7 +1598,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="doctor-details.html">
+                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                     <h4 class="font-weight-semibold mt-1 mb-1">Dr.S.Mary..
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
@@ -1641,7 +1641,7 @@
                                         <div class="card-footer p-0 btn-appointment">
                                             <div class="btn-group w-100">
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
                                                     Website</a>
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                     href="#" data-target="#exampleModal" data-toggle="modal"><i
@@ -1653,7 +1653,7 @@
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="doctor-details.html"></a>
+                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                             <img alt="img" class="cover-image"
                                                 src="{{ asset('front_end_style/assets/images/media/0-35.jpg') }}">
                                             <div class="tag-text">
@@ -1668,7 +1668,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="doctor-details.html">
+                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                     <h4 class="font-weight-semibold mt-1 mb-1">Dr.M.Julia..
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
@@ -1712,7 +1712,7 @@
                                         <div class="card-footer p-0 btn-appointment">
                                             <div class="btn-group w-100">
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
                                                     Website</a>
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                     href="#" data-target="#exampleModal" data-toggle="modal"><i
@@ -1724,7 +1724,7 @@
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="doctor-details.html"></a>
+                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                             <img alt="img" class="cover-image"
                                                 src="{{ asset('front_end_style/assets/images/media/0-36.jpg') }}">
                                             <div class="tag-text">
@@ -1739,7 +1739,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="doctor-details.html">
+                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                     <h4 class="font-weight-semibold mt-1 mb-1">Dr.M.Angela..
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
@@ -1783,7 +1783,7 @@
                                         <div class="card-footer p-0 btn-appointment">
                                             <div class="btn-group w-100">
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
                                                     Website</a>
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                     href="#" data-target="#exampleModal" data-toggle="modal"><i
@@ -1795,7 +1795,7 @@
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="doctor-details.html"></a>
+                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
                                             <img alt="img" class="cover-image"
                                                 src="{{ asset('front_end_style/assets/images/media/0-37.jpg') }}">
                                             <div class="tag-text">
@@ -1810,7 +1810,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="doctor-details.html">
+                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
                                                     <h4 class="font-weight-semibold mt-1 mb-1">Dr.B.Diana..
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
@@ -1854,7 +1854,7 @@
                                         <div class="card-footer p-0 btn-appointment">
                                             <div class="btn-group w-100">
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="doctor-details.html"><i class="fe fe-eye mr-1"></i> Visit
+                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
                                                     Website</a>
                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                     href="#" data-target="#exampleModal" data-toggle="modal"><i

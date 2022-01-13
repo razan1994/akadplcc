@@ -30,6 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('/contactUsRequest', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequest');
         Route::get('/privacyPolicies', [FrontEndController::class, 'privacyPolicies'])->name('privacyPolicies');
         Route::get('/termsAndConditions', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditions');
+        Route::get('/doctors/{alias_name}', [FrontEndController::class, 'doctorDetails'])->name('doctorDetails');
 
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================

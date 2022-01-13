@@ -18,4 +18,9 @@ class FrontEndController extends Controller
         return view('front_end_inners.about_us');
     }
 
+
+    function doctorDetails($alias_name){
+        return view('front_end_inners.doctor-details');
+    }
+
 }
