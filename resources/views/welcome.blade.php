@@ -712,7 +712,7 @@
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Hospitals</h5>
                                     <p class="badge badge-pill badge-light font-weight-semibold mb-0">
-                                        {{ isset($public_hospitals) ? $public_hospitals->count() : 0 }}</p>
+                                        {{ isset($public_hospitals_count) ? $public_hospitals_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -729,7 +729,7 @@
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Doctors</h5>
                                     <p class="badge badge-pill badge-light font-weight-semibold mb-0">
-                                        {{ isset($public_doctors) ? $public_doctors->count() : 0 }}</p>
+                                        {{ isset($public_doctors_count) ? $public_doctors_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -745,7 +745,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Medical Centers</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_medical_centers) ? $public_medical_centers->count() : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_medical_centers_count) ? $public_medical_centers_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -761,7 +761,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h6 class="mb-2">Radiology Centers</h6>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_radiology_centers) ? $public_radiology_centers->count() : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_radiology_centers_count) ? $public_radiology_centers_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -777,7 +777,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Pharmacies</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_pharmacies) ? $public_pharmacies->count() : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_pharmacies_count) ? $public_pharmacies_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -793,7 +793,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Labs</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_labs) ? $public_labs->count() : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_labs_count) ? $public_labs_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -809,7 +809,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h6 class="mb-2">Gyms</h6>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_gyms) ? $public_gyms->count() : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_gyms_count) ? $public_gyms_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -825,7 +825,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Life Coaches</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_life_coaches) ? $public_life_coaches->count() : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_life_coaches_count) ? $public_life_coaches_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -841,7 +841,7 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Insurances</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_insurance_companies) ? $public_insurance_companies->count() : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_insurance_companies_count) ? $public_insurance_companies_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -1511,78 +1511,87 @@
                     <div class="tab-content list-container">
                         <div class="tab-pane active " id="tab-doctors">
                             <div class="row">
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Dermatologist</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart-o"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('doctorDetails',$doctor->alias_name_en) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Dr.S.Ashley..
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1"><i
-                                                        class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM, Ph.D
-                                                </p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="3">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>3.2
+                                @if(isset($public_doctors) && $public_doctors->count() > 0)
+                                    @foreach ($public_doctors as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a href="{{ route('doctorDetails',$category->alias_name_en) }}"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Doctor</span>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i> Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-briefcase mr-1"></i>2 yrs Exp</span>
-                                                        </li>
-                                                    </ul>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart-o"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1"><i
+                                                                class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM, Ph.D
+                                                        </p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="3">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>3.2
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i> Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-briefcase mr-1"></i>2 yrs Exp</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('doctorDetails',$category->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
+                                                            href="#" data-target="#exampleModal" data-toggle="modal"><i
+                                                                class="fe fe-phone mr-1"></i> Appointment</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('doctorDetails',$doctor->alias_name_en) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
-                                                    href="#" data-target="#exampleModal" data-toggle="modal"><i
-                                                        class="fe fe-phone mr-1"></i> Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                    @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="{{ route('doctorDetails',$doctor->alias_name_en) }}"></a>
@@ -1864,17 +1873,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-hospitals">
                             <div class="row">
+                                @if(isset($public_hospitals) && $public_hospitals->count() > 0)
+                                @foreach ($public_hospitals as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-23.jpg') }}">
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
                                                 <span class="bg-dark tag-option">Hospital</span>
                                             </div>
@@ -1887,8 +1903,8 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="hospital-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Safewest Hospital..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
@@ -1945,7 +1961,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
@@ -2248,39 +2266,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-medicals">
                             <div class="row">
+                                @if(isset($public_medical_centers) && $public_medical_centers->count() > 0)
+                                @foreach ($public_medical_centers as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="fitness-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-26.jpg') }}">
+                                            <a href="hospital-details.html"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">Fitness Center</span>
+                                                <span class="bg-dark tag-option">Medical Center</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
-                                            <a class="item-card2-icons-l bg-dark-transparent" href="classified.html"><i
-                                                    class="fa fa-share-alt"></i></a>
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart-o"></i></a>
+                                                    class="fa fa fa-heart text-danger"></i></a>
+                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                    class="fa fa-share-alt"></i></a>
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="fitness-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Fit Race Club..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">273 Tailwater St. Wadsworth, OH
-                                                    44281.</p>
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
                                                 <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="3">
+                                                        readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
                                                         <div class="rating-star sm ">
                                                             <i class="fa fa-star"></i>
@@ -2297,15 +2322,15 @@
                                                         <div class="rating-star sm">
                                                             <i class="fa fa-star"></i>
                                                         </div>
-                                                    </div>3.0
+                                                    </div>5.0
                                                 </div>
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>
-                                                                Hyderabad</span></li>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                        </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa fa-calendar-o mr-1"></i>Mon-Fri</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -2329,7 +2354,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="fitness-details.html"></a>
@@ -2860,19 +2887,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-radiology">
                             <div class="row">
+                                @if(isset($public_radiology_centers) && $public_radiology_centers->count() > 0)
+                                @foreach ($public_radiology_centers as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="pharmacy-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-14.jpg') }}">
+                                            <a href="hospital-details.html"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">Pharmacy</span>
+                                                <span class="bg-dark tag-option">Radiology Center</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
@@ -2883,16 +2917,16 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="pharmacy-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Craft Pharmacy..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">714 Bowman Street. North Miami Beach,
-                                                    FL 33160....</p>
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
                                                 <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="4">
+                                                        readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
                                                         <div class="rating-star sm ">
                                                             <i class="fa fa-star"></i>
@@ -2909,15 +2943,15 @@
                                                         <div class="rating-star sm">
                                                             <i class="fa fa-star"></i>
                                                         </div>
-                                                    </div>4.7
+                                                    </div>5.0
                                                 </div>
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
                                                         </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>8 Am - 4 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -2941,7 +2975,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="pharmacy-details.html"></a>
@@ -3244,39 +3280,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-labs">
                             <div class="row">
+                                @if(isset($public_labs) && $public_labs->count() > 0)
+                                @foreach ($public_labs as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-5.jpg') }}">
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">Clinic</span>
+                                                <span class="bg-dark tag-option">Lab</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart-o"></i></a>
+                                                    class="fa fa fa-heart text-danger"></i></a>
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
                                                     class="fa fa-share-alt"></i></a>
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="hospital-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Grace Clinic..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">935 Ridgewood St. Piscataway, NJ
-                                                    08854.....</p>
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
                                                 <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="4">
+                                                        readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
                                                         <div class="rating-star sm ">
                                                             <i class="fa fa-star"></i>
@@ -3293,15 +3336,15 @@
                                                         <div class="rating-star sm">
                                                             <i class="fa fa-star"></i>
                                                         </div>
-                                                    </div>4.0
+                                                    </div>5.0
                                                 </div>
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
                                                         </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>11 Am - 6 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -3325,7 +3368,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
@@ -3628,19 +3673,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-insurances">
                             <div class="row">
+                                @if(isset($public_insurance_companies) && $public_insurance_companies->count() > 0)
+                                @foreach ($public_insurance_companies as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="bloodbank-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-16.jpg') }}">
+                                            <a href="hospital-details.html"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">BloodBank</span>
+                                                <span class="bg-dark tag-option">Insurance Company</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
@@ -3651,14 +3703,14 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="bloodbank-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Delta Blood Bank..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
-                                                    53590.....</p>
-                                                <div class="rating-stars d-inline-flex mb-1 mr-3">
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
                                                         readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
@@ -3682,10 +3734,10 @@
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>
-                                                                Hyderabad</span></li>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                        </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 5 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -3709,7 +3761,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="bloodbank-details.html"></a>
@@ -4012,17 +4066,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-pharmacies">
                             <div class="row">
+                                @if(isset($public_pharmacies) && $public_pharmacies->count() > 0)
+                                @foreach ($public_pharmacies as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="pharmacy-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-14.jpg') }}">
+                                            <a href="hospital-details.html"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
                                                 <span class="bg-dark tag-option">Pharmacy</span>
                                             </div>
@@ -4035,16 +4096,16 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="pharmacy-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Craft Pharmacy..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">714 Bowman Street. North Miami Beach,
-                                                    FL 33160....</p>
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
                                                 <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="4">
+                                                        readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
                                                         <div class="rating-star sm ">
                                                             <i class="fa fa-star"></i>
@@ -4061,15 +4122,15 @@
                                                         <div class="rating-star sm">
                                                             <i class="fa fa-star"></i>
                                                         </div>
-                                                    </div>4.7
+                                                    </div>5.0
                                                 </div>
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
                                                         </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>8 Am - 4 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -4093,7 +4154,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="pharmacy-details.html"></a>
@@ -4396,39 +4459,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-gyms">
                             <div class="row">
+                                @if(isset($public_gyms) && $public_gyms->count() > 0)
+                                @foreach ($public_gyms as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-5.jpg') }}">
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">Clinic</span>
+                                                <span class="bg-dark tag-option">Gym</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart-o"></i></a>
+                                                    class="fa fa fa-heart text-danger"></i></a>
                                             <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
                                                     class="fa fa-share-alt"></i></a>
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="hospital-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Grace Clinic..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">935 Ridgewood St. Piscataway, NJ
-                                                    08854.....</p>
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
                                                 <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="4">
+                                                        readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
                                                         <div class="rating-star sm ">
                                                             <i class="fa fa-star"></i>
@@ -4445,15 +4515,15 @@
                                                         <div class="rating-star sm">
                                                             <i class="fa fa-star"></i>
                                                         </div>
-                                                    </div>4.0
+                                                    </div>5.0
                                                 </div>
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i> Chennai</span>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
                                                         </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>11 Am - 6 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -4477,7 +4547,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="hospital-details.html"></a>
@@ -4780,19 +4852,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-life_couches">
                             <div class="row">
+                                @if(isset($public_life_coaches) && $public_life_coaches->count() > 0)
+                                @foreach ($public_life_coaches as $index => $category)
                                 <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
-                                            <a href="bloodbank-details.html"></a>
-                                            <img alt="img" class="cover-image"
-                                                src="{{ asset('front_end_style/assets/images/media/0-16.jpg') }}">
+                                            <a href="hospital-details.html"></a>
+                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset($category->profile_photo_path) }}">
+                                                    @else
+                                                        <img alt="img" class="cover-image spec-doc-img"
+                                                            src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                    @endif
                                             <div class="tag-text">
-                                                <span class="bg-dark tag-option">BloodBank</span>
+                                                <span class="bg-dark tag-option">Life Coach</span>
                                             </div>
                                         </div>
                                         <div class="item-card2-icons">
@@ -4803,14 +4882,14 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="item-card2">
-                                                <a class="text-dark" href="bloodbank-details.html">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">Delta Blood Bank..
+                                                <a class="text-dark" href="{{ route('doctorDetails',$category->alias_name_en) }}">
+                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
                                                         <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                     </h4>
                                                 </a>
-                                                <p class="text-muted fs-13 mb-1">82 Clinton Street. Sun Prairie, WI
-                                                    53590.....</p>
-                                                <div class="rating-stars d-inline-flex mb-1 mr-3">
+                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
+                                                    02132....</p>
+                                                <div class="rating-stars d-inline-flex mb-1">
                                                     <input class="rating-value star" name="rating-stars-value"
                                                         readonly="readonly" type="number" value="5">
                                                     <div class="rating-stars-container mr-2">
@@ -4834,10 +4913,10 @@
                                                 <div class="mb-0 mt-0">
                                                     <ul class="item-card-features mb-0">
                                                         <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>
-                                                                Hyderabad</span></li>
+                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                        </li>
                                                         <li><span class="text-muted "><i
-                                                                    class="fa fa-clock-o mr-1"></i>9 Am - 5 Pm</span>
+                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -4861,7 +4940,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-xl-3">
+                                @endforeach
+                                @endif
+                                {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
                                         <div class="item-card7-imgs">
                                             <a href="bloodbank-details.html"></a>
@@ -5164,7 +5245,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

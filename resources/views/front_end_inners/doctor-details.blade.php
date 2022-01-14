@@ -695,7 +695,11 @@
 						<div class="card">
 							<div class="item-user">
 								<div class="profile-pic wideget-user-img mb-0 pt-3">
-									<img src="{{ asset('front_end_style/assets/images/media/doctors/2.jpg') }}" class="w-150 h-150 br-2" alt="user">
+                                    @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
+                                        <img src="{{ asset($profile_photo_path) }}" class="w-150 h-150 br-2" alt="user">
+                                    @else
+                                        <img src="{{ asset('front_end_style/assets/images/media/doctors/2.jpg') }}" class="w-150 h-150 br-2" alt="user">
+                                    @endif
 								</div>
 							</div>
 							<div class="card-body item-user text-center">
