@@ -33,6 +33,9 @@ class CreateDoctorsTable extends Migration
             $table->longText('player_id')->nullable();
             $table->longText('address_ar')->nullable();
             $table->longText('address_en')->nullable();
+            $table->longText('user_description_en')->nullable();
+            $table->longText('user_description_ar')->nullable();
+            $table->bigInteger('view_counter')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             // Relations:

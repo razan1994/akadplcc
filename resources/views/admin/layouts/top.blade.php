@@ -81,6 +81,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     @yield('admin_css')
+
+    {{-- ========================================================== --}}
+    {{-- =============== Live Select Search Section =============== --}}
+    {{-- ========================================================== --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    {{-- ========================================================== --}}
+    {{-- =============== Live Select Search Section =============== --}}
+    {{-- ========================================================== --}}
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

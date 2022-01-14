@@ -173,9 +173,9 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-question"></span>
                                                         </div>
-                                                        <select name="speciality_id"
-                                                            class="custom-select my-1 mr-sm-2 @error('speciality_id') is-invalid @enderror"
-                                                            id="inlineFormCustomSelectPref">
+                                                        <select name="speciality_id" class="selectpicker"
+                                                        data-live-search="true" data-width="88%"
+                                                        id="inlineFormCustomSelectPref">
                                                             <option value="" selected>Select Doctor Speciality...</option>
                                                             @if (isset($specialities))
                                                                 @foreach ($specialities as $speciality)
@@ -228,7 +228,7 @@
                                                 </div>
 
                                                 {{-- User Status --}}
-                                                <div class="col-md-6 mb-3">
+                                                <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         <i class="mdi mdi-account-switch"></i> User Status : <strong
@@ -249,6 +249,78 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">Country : <strong class="text-danger">
+                                                            * @error('country_id') - {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+
+                                                        <select id="country_id" name="country_id" class="selectpicker"
+                                                            data-live-search="true" data-width="88%"
+                                                            id="inlineFormCustomSelectPref">
+                                                            <option value="" selected>Choose a country...</option>
+                                                            @if (isset($public_countries))
+                                                                @foreach ($public_countries as $public_country)
+                                                                    <option value="{{ $public_country->id }}"@if (old('country_id') != null)@if (old('country_id') == $public_country->id) selected @endif @else @if ($public_country->id == '111') selected @endif @endif>
+                                                                @if (Config::get('app.locale') == 'ar')
+                                                                        {{ $public_country->name_ar }}
+                                                                @elseif ( Config::get('app.locale') == 'en' )
+                                                                        {{ $public_country->name_en }}
+                                                                @endif
+                                                                </option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">City : <strong class="text-danger">
+                                                            * @error('region_id') - {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <input type="hidden" value="{{ old('region_id') }}"
+                                                            id="region_id_old_value">
+                                                        <select name="region_id" id="region_id" class="selectpicker"
+                                                            data-live-search="true" data-width="88%">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @if(isset($user_type) && $user_type == "Doctor")
+                                                <div class="col-6">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">User Description AR   <strong
+                                                            class="text-danger">
+                                                            * @error('user_description_en') - {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-book-open"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <textarea name="user_description_ar"
+                                                            class="form-control "
+                                                            rows="10">{{ old('user_description_ar') != null ? old('user_description_ar') : null }} </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">User Description EN   <strong
+                                                            class="text-danger">
+                                                            * @error('user_description_en') - {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-book-open"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <textarea name="user_description_en"
+                                                            class="form-control "
+                                                            rows="10">{{ old('user_description_en') != null ? old('user_description_en') : null }} </textarea>
+                                                    </div>
+                                                </div>
+                                                @endif
 
                                                 {{-- User Image --}}
                                                 <div class="col-md-6 mb-3">
@@ -283,5 +355,69 @@
     @endsection
 
     @section('admin_javascript')
+    <script src="https://cdn.tiny.cloud/1/uze3r9dfhut169wyk3qp6lvudqwpac0rbkigzudv9qfhahqx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
+    <script>
+        $(document).ready(function() {
+            getRegions();
+        });
 
+        $("#country_id").change(function() {
+            getRegions();
+        });
+
+        function getRegions() {
+            var formData = new FormData($('#createForm')[0]);
+            $.ajax({
+                type: 'post',
+                url: "{{ route('super_admin.getRegions') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data.status == true) {
+                        var selectRegions = '<option value="">Choose the region ... </option>';
+                        for (var key in data.regions) {
+                            // skip loop if the property is from prototype
+                            if (!data.regions.hasOwnProperty(key)) continue;
+
+                            var obj = data.regions[key];
+                            // alert(obj.id);
+                            for (var prop in obj) {
+                                // skip loop if the property is from prototype
+                                if (!obj.hasOwnProperty(prop)) continue;
+
+                                // your code
+                                var region_id_old_value = $("#region_id_old_value").val();
+                                if (region_id_old_value) {
+                                    if (obj.id == region_id_old_value) {
+                                        selectRegions += '<option value="' + obj.id + '" selected>' + obj
+                                            .name_ar + '</option>';
+                                    } else {
+                                        selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                                            '</option>';
+                                    }
+                                } else {
+                                    selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                                        '</option>';
+                                }
+                                break;
+                            }
+                        }
+                        $('#region_id').html(selectRegions);
+
+                        $('.selectpicker').selectpicker('refresh');
+                    }
+
+                },
+                error: function(reject) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    });
+                }
+            });
+        }
+    </script>
     @endsection

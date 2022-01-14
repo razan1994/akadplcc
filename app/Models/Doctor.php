@@ -33,7 +33,9 @@ class Doctor extends Model
         'player_id',
         'speciality_id',
         'alias_name_en',
-        'alias_name_ar'
+        'alias_name_ar',
+        'user_description_en',
+        'user_description_ar'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -63,6 +65,21 @@ class Doctor extends Model
     // ===================================================================================================================
     public function speciality(){
         return $this->belongsTo(DoctorSpeciality::class , 'speciality_id');
+    }
+
+
+    // Relation With Public Country Table
+    // Created By : Mohammed Salah
+    public function country()
+    {
+        return $this->belongsTo(PublicCountry::class);
+    }
+
+    // Relation With Public Region Table
+    // Created By : Mohammed Salah
+    public function region()
+    {
+        return $this->belongsTo(PublicRegion::class, 'region_id');
     }
 
     // ====================================================================================

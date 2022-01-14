@@ -19,7 +19,7 @@
                 </div>
 
                 <span class="right-sidebar-2-subtitle">Sidebar Layout</span>
-                <div class="no-col-space">
+                <div class="selectpicker">
                     <select class="right-sidebar-2-select" id="sidebar-option-select">
                         <option value="sidebar-fixed">Fixed Default</option>
                         <option value="sidebar-fixed-minified">Fixed Minified</option>

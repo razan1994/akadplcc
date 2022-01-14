@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('page_title') Rushetta | Home @endsection
+
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"

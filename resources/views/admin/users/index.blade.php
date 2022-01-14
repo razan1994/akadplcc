@@ -139,10 +139,10 @@
                 "aLengthMenu": [
                     [20, 30, 50, 75, -1],
                     [20, 30, 50, 75, "All"],
-                    "order": [[ 0, "asc" ]]
                 ],
                 "pageLength": 20,
-                "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'
+                "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
+                "order": [[ 0, "asc" ]]
             });
         });
     </script>

@@ -71,6 +71,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/acceptSingle/{id}/{user_type}', [UserController::class, 'acceptSingle'])->name('users-acceptSingle');
             Route::get('/rejectSingle/{id}/{user_type}', [UserController::class, 'rejectSingle'])->name('users-rejectSingle');
             Route::get('/activeInactiveSingle/{id}/{user_type}', [UserController::class, 'activeInactiveSingle'])->name('users-activeInactiveSingle');
+            Route::post('/getRegions', [UserController::class, 'getRegions'])->name('getRegions');
         });
 
 

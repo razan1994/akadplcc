@@ -16,6 +16,8 @@ use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\Patient;
 use App\Models\Pharmacy;
+use App\Models\PublicCountry;
+use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
 use App\Models\SupportTicket;
@@ -140,9 +142,9 @@ class UserController extends Controller
             if($user_type == "Undefined"){
                 return redirect()->back()->with('danger','Please Dont Change The Request Data !!!!!');
             }
-
+            $public_countries = PublicCountry::get();
             $specialities = DoctorSpeciality::get();
-            return view('admin.users.create',compact('specialities','user_type'));
+            return view('admin.users.create',compact('specialities','user_type','public_countries'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -222,9 +224,14 @@ class UserController extends Controller
                 'profile_photo_path' => $last_image,
                 'created_by' => auth()->user()->id,
                 'alias_name_en'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_en),
-                'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar)
+                'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar),
+                'country_id'=>$request->country_id,
+                'region_id'=>$request->region_id,
             ];
-
+            if($request->user_type == "Doctor"){
+                $created_data['user_description_en'] = $request->user_description_en;
+                $created_data['user_description_ar'] = $request->user_description_ar;
+            }
             if($request->user_type == "Doctor"){
                 $created_data['speciality_id']=$request->speciality_id;
             }
@@ -431,7 +438,8 @@ class UserController extends Controller
 
             if ($user) {
                 $specialities = DoctorSpeciality::get();
-                return view('admin.users.edit', compact('user','user_type','specialities'));
+                $public_countries = PublicCountry::get();
+                return view('admin.users.edit', compact('user','user_type','specialities','public_countries'));
             } else {
                 return redirect()->route('super_admin.users-index',$user_type)->with('danger', 'This record is not in the records');
             }
@@ -525,7 +533,12 @@ class UserController extends Controller
                 $update_data['email'] = $request->email;
                 $update_data['phone'] = $request->phone;
                 $update_data['user_status'] = $request->user_status;
-
+                $update_data['country_id'] = $request->country_id;
+                $update_data['region_id'] = $request->region_id;
+                if($request->user_type == "Doctor"){
+                $update_data['user_description_ar'] = $request->user_description_ar;
+                $update_data['user_description_en'] = $request->user_description_en;
+                }
                 $update_data['alias_name_en'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_en']);
                 $update_data['alias_name_ar'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_ar']);
                 // Add Password to updated date if exist :
@@ -887,5 +900,24 @@ class UserController extends Controller
         }
     }
 
+
+        // ========================================================================
+    // ================ Fetch Regions By Country ID (AJAX) ====================
+    // ========================================================================
+    public function getRegions(Request $request)
+    {
+        if (!isset($request->country_id)) {
+            $regions = "";
+        } else {
+            $regions = new PublicRegion();
+            $regions = $regions->select("id", 'name_' . config('app.locale') . ' as name_ar');
+            $regions = $regions->where("country_id", "=", "{$request->country_id}");
+            $regions = $regions->get();
+        }
+        return response()->json([
+            'status' => true,
+            'regions' => $regions,
+        ]);
+    }
 
 }

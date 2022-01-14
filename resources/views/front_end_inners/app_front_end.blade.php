@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" />
 
     <!-- Title -->
-    <title>Rushetta | Home</title>
+    <title>@yield('page_title')</title>
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('front_end_style/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">

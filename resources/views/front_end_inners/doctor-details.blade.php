@@ -1,7 +1,7 @@
 @extends('front_end_inners.app_front_end', ['title' => 'About Us'])
 
 @section('content')
-
+@section('page_title') {{ isset($doctor->name_en) ? 'Rushetta | '.$doctor->name_en : 'Rushetta | Doctor' }} @endsection
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
@@ -679,9 +679,8 @@
 				<div class="page-header">
 					<h4 class="page-title">Doctors</h4>
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Categories</a></li>
 						<li class="breadcrumb-item"><a href="#">Doctors</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Doctors Details2</li>
+						<li class="breadcrumb-item active" aria-current="page">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}</li>
 					</ol>
 				</div>
 			</div>
@@ -702,10 +701,10 @@
 							<div class="card-body item-user text-center">
 								 <div class="ml-1">
 									<a href="#" class="text-dark">
-									   <h4 class="mt-0 mb-2 font-weight-bold">Dr. Julia<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
+									   <h4 class="mt-0 mb-2 font-weight-bold">{{ isset($doctor->username) ? $doctor->username : '--------' }}<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
 									</a>
-									<span class="text-gray">Gynecologist</span><br>
-									<span class="text-muted">Member Since November 2010</span><br>
+									<span class="text-gray">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</span><br>
+									<span class="text-muted">Member Since {{ isset($doctor->created_at) ? $doctor->created_at->diffForHumans() : '--------' }}</span><br>
 									<div class="rating-stars d-inline-flex mb-2 mr-3">
 										<input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="4">
 										<div class="rating-stars-container mr-2">
@@ -715,33 +714,32 @@
 											<div class="rating-star sm "> <i class="fa fa-star"></i> </div>
 											<div class="rating-star sm"> <i class="fa fa-star"></i> </div>
 										</div>
-										4.0
 									</div>
 									<h6 class="mt-2 mb-0 btn-list">
-										<a href="#" class="btn btn-secondary btn-sm">1245 Views</a>
-										<a href="#" class="btn btn-info btn-sm">850 Patients</a>
+										<a href="#" class="btn btn-secondary btn-sm">{{ isset($doctor->view_counter) ? $doctor->view_counter : '0' }} Views</a>
+										{{-- <a href="#" class="btn btn-info btn-sm">850 Patients</a> --}}
 									</h6>
 								 </div>
 							</div>
 							<div class="card-body item-user">
-								<h4 class="mb-4">Contact Info</h4>
+								<h4 class="mb-4">Doctor Info</h4>
 								<div>
-									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> 7981 Aspen,  USA</a></h6>
-									<h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a href="#" class="text-body"> smith@yourdomain.com</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> {{ isset($doctor->country->name_en) ? $doctor->country->name_en : '--------' }} / {{ isset($doctor->region->name_en) ? $doctor->region->name_en : '--------' }}</a></h6>
+									{{-- <h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a href="#" class="text-body"> smith@yourdomain.com</a></h6>
 									<h6><span class="font-weight-semibold"><i class="fa fa-phone mr-3  mb-2"></i></span><a href="#" class="text-body"> 0-235-657-24587</a></h6>
-									<h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a href="#" class="text-body">http://spruko.com/</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a href="#" class="text-body">http://spruko.com/</a></h6> --}}
 								</div>
 								<div class=" item-user-icons mt-4">
-									<a href="#" class="facebook-bg mt-0"><i class="fa fa-facebook"></i></a>
+									{{-- <a href="#" class="facebook-bg mt-0"><i class="fa fa-facebook"></i></a>
 									<a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
 									<a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-									<a href="#" class="dribbble-bg"><i class="fa fa-dribbble"></i></a>
+									<a href="#" class="dribbble-bg"><i class="fa fa-dribbble"></i></a> --}}
 								</div>
 							</div>
 							<div class="card-footer">
 								<div class="btn-list text-left">
-									<a href="#" class="btn  btn-primary"><i class="fa fa-envelope"></i> Chat</a>
-									<a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#contact"><i class="fa fa-user"></i> Contact Me</a>
+									{{-- <a href="#" class="btn  btn-primary"><i class="fa fa-envelope"></i> Chat</a>
+									<a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#contact"><i class="fa fa-user"></i> Contact Me</a> --}}
 								</div>
 							</div>
 						</div>
@@ -764,32 +762,7 @@
 								<div class="tab-content  border-left border-right details-tab-content bg-white">
 									<div class="tab-pane active" id="tab-5">
 										<div class=" p-5">
-											<div class="mb-4">
-												<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atcorrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-												<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoraliz the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble thena bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
-											</div>
-											<h3 class="card-title mb-3">Specifications</h3>
-											<div class="row">
-												<div class="col-xl-12 col-md-12">
-													<ul class="list-unstyled widget-spec mb-0">
-														<li class="">
-															<a href="#" class="text-dark"><i class="fa fa-caret-right mr-2"></i>Maternal-fetal medicine</a>
-														</li>
-														<li class="">
-															<a href="#" class="text-dark"><i class="fa fa-caret-right mr-2"></i>Female pelvic medicine and reconstructive surgery</a>
-														</li>
-														<li class="">
-															<a href="#" class="text-dark"><i class="fa fa-caret-right mr-2"></i>Reproductive endocrinology and infertility</a>
-														</li>
-														<li class="">
-															<a href="#" class="text-dark"><i class="fa fa-caret-right mr-2"></i>Menopausal</a>
-														</li>
-														<li class="">
-															<a href="#" class="text-dark"><i class="fa fa-caret-right mr-2"></i>Laparoscopic surgery</a>
-														</li>
-													</ul>
-												</div>
-											</div>
+											<p>{!! isset($doctor->user_description_en) ? $doctor->user_description_en : null !!}</p>
 										</div>
 									</div>
 									<div class="tab-pane userprof-tab" id="tab-6">
@@ -974,13 +947,20 @@
 								</div>
 								<div class="form-group">
 									<label class="form-label">Fix Appointemnt Date</label>
-									<input class="form-control fc-datepicker" placeholder="Appointment Date" type="text">
-								</div>
+									<input class="form-control" name="appointment_date" placeholder="Appointment Date" type="text" id="appointmentDate">
+									<input type="hidden" class="allowed" value="2022-01-02">
+									<input type="hidden" class="allowed" value="2022-01-06">
+									<input type="hidden" class="allowed" value="2022-01-08">
+									<input type="hidden" class="allowed" value="2022-01-12">
+									<input type="hidden" class="allowed" value="2022-01-16">
+									<input type="hidden" class="allowed" value="2022-01-18">
+									<input type="hidden" class="allowed" value="2022-01-22">
+                                </div>
 								<div class="form-group">
 									<label class="form-label">Time</label>
 									<div class="row gutters-xs">
 										<div class="col-6">
-											<select name="user[hour]" class="form-control select2">
+											<select name="appointment_hour" class="form-control select2">
 												<option value="">0</option>
 												<option value="0">1</option>
 												<option value="1">2</option>
@@ -1226,6 +1206,43 @@
 
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
+        <script>
+            // var enabledDates = new Array('2020-01-12', '2020-01-16', '2020-01-18', '2020-01-30', '2020-02-05', '2020-02-10');
+            // var enabledDates = new Array($("#allowed").val());
+            var enabledDates = $('.allowed').map(function(){
+                return $(this).val()
+            }).get();
+
+            $(document).ready(function() {
+            $(function() {
+                $("#appointmentDate").datepicker({
+                todayHighlight: true,
+                dateFormat: 'yy-mm-dd',
+                multidate: true,
+                startDate: new Date(),
+                minDate: 0,
+                beforeShowDay: enableAllTheseDays
+                });
+            });
+
+            function enableAllTheseDays(date) {
+                var sdate = moment(date).format('YYYY-MM-DD');
+
+                if ($.inArray(sdate, enabledDates) !== -1) {
+                return [true];
+                }
+
+                return [false];
+            }
+            })
+        </script>
 
     @endsection
 
