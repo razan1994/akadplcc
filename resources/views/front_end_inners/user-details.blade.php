@@ -1,7 +1,7 @@
 @extends('front_end_inners.app_front_end', ['title' => 'About Us'])
+@section('page_title') {{ isset($doctor->name_en) ? 'Rushetta | '.$doctor->name_en : 'Rushetta | Doctor' }} @endsection
 
 @section('content')
-@section('page_title') {{ isset($doctor->name_en) ? 'Rushetta | '.$doctor->name_en : 'Rushetta | Doctor' }} @endsection
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
@@ -696,7 +696,7 @@
 							<div class="item-user">
 								<div class="profile-pic wideget-user-img mb-0 pt-3">
                                     @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
-                                        <img src="{{ asset($profile_photo_path) }}" class="w-150 h-150 br-2" alt="user">
+                                        <img src="{{ asset($doctor->profile_photo_path) }}" class="w-150 h-150 br-2" alt="user">
                                     @else
                                         <img src="{{ asset('front_end_style/assets/images/media/doctors/2.jpg') }}" class="w-150 h-150 br-2" alt="user">
                                     @endif

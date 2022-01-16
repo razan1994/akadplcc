@@ -16,26 +16,26 @@ class DoctorSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 10; $i++){
-            for($j = 1; $j <= 10 ; $j++){
+        for ($i = 1; $i <= 10; $i++) {
+            for ($j = 1; $j <= 10; $j++) {
                 Doctor::create([
-                    'name_ar'=>'طبيب_'.$i.'_'.$j,
-                    'name_en'=>'doctor_'.$i.'_'.$j,
-                    'alias_name_ar'=>'طبيب-'.$i.'-'.$j,
-                    'alias_name_en'=>'doctor-'.$i.'-'.$j,
-                    'username'=>'doctor_'.$i.'_'.$j,
-                    'email'=>'doctor_'.$i.'_'.$j.'@rushetta.com',
-                    'phone'=>'0799998'.$i.'_'.$j,
-                    'speciality_id'=>$i,
+                    'name_ar' => 'طبيب_' . $i . '_' . $j,
+                    'name_en' => 'doctor_' . $i . '_' . $j,
+                    'alias_name_ar' => 'طبيب-' . $i . '-' . $j,
+                    'alias_name_en' => 'doctor-' . $i . '-' . $j,
+                    'username' => 'doctor_' . $i . '_' . $j,
+                    'email' => 'doctor_' . $i . '_' . $j . '@rushetta.com',
+                    'phone' => '0799998' . $i . '_' . $j,
+                    'speciality_id' => $i,
                     'password' => Hash::make('12345678'),
+                    'country_id' => 111,
+                    'region_id' => 1422,
+                    'profile_photo_path' => 'storage/profile-photos/monster.webp',
                     'user_status' => 2, // Active
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'created_by' => 1,
                 ]);
-
             }
-
-
         }
     }
 }
