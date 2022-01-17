@@ -20,7 +20,7 @@
                                         <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
                                     </li>
                                     <li>
-                                        <a data-toggle="tab" href="#tab2">Doctors</a>
+                                        <a data-toggle="tab" href="#tab2">{{ ucfirst($user_type) }}</a>
                                     </li>
                                     <li>
                                         <a data-toggle="tab" href="#tab3">FitnesCenters</a>
@@ -148,7 +148,7 @@
                                                 <select class="form-control select2-show-search border-bottom-0 w-100" data-placeholder="Select">
                                                         <optgroup label="Categories">
                                                             <option>
-                                                                Type Of Doctors
+                                                                Type Of {{ ucfirst($user_type) }}
                                                             </option>
                                                             <option value="1">
                                                                 Dentist
@@ -651,11 +651,11 @@
 <div class="bg-white border-bottom">
     <div class="container">
         <div class="page-header">
-            <h4 class="page-title">Doctor List</h4>
+            <h4 class="page-title">{{ ucfirst($user_type) }} List</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Categories</a></li>
-                <li class="breadcrumb-item"><a href="#">Doctors</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Doctor List</li>
+                <li class="breadcrumb-item"><a href="#">{{ ucfirst($user_type) }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($user_type) }} List</li>
             </ol>
         </div>
     </div>
@@ -741,7 +741,7 @@
                                                     <div class="card border-0 mb-0">
                                                         <div class="card-body">
                                                             <div class="item-card9">
-                                                                <span class="badge badge-dark fs-12 mb-2">Doctors</span>
+                                                                <span class="badge badge-dark fs-12 mb-2">{{ ucfirst($user_type) }}</span>
                                                                 <a class="text-dark" href="{{ route('user-details',[isset($user_type) ? $user_type : '--------',$user->alias_name_en]) }}">
                                                                     <h4 class="font-weight-bold mt-1 mb-1">{{ isset($user->name_en) ? $user->name_en : '--------' }}<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
                                                                 </a>
@@ -756,7 +756,7 @@
                                                         <div class="card-footer p-0">
                                                             <div class="item-card9-footer btn-appointment">
                                                                 <div class="btn-group w-100">
-                                                                    {{-- <a href="#" class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"><i class="fe fe-help-circle mr-1"></i>Ask a Doctor</a> --}}
+                                                                    {{-- <a href="#" class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"><i class="fe fe-help-circle mr-1"></i>Ask a {{ ucfirst($user_type) }}</a> --}}
                                                                     <a href="{{ route('user-details',[isset($user_type) ? $user_type : '--------',$user->alias_name_en]) }}" class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i class="fe fe-eye  mr-1"></i>View Profile</a>
                                                                     <a href="#" class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0" data-target="#exampleModal" data-toggle="modal"><i class="fe fe-phone  mr-1"></i>Appointment</a>
                                                                 </div>
@@ -809,7 +809,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="item-overly-trans">
-                                                                <span class="badge badge-dark">Doctors</span>
+                                                                <span class="badge badge-dark">{{ ucfirst($user_type) }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="card-body">

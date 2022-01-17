@@ -58,6 +58,23 @@ class Hospital extends Model
     ];
 
 
+    // ===================================================================================================================
+    // =========================================== Relationship Section ==================================================
+    // ===================================================================================================================
+
+    // Relation With Public Country Table
+    // Created By : Mohammed Salah
+    public function country()
+    {
+        return $this->belongsTo(PublicCountry::class);
+    }
+
+    // Relation With Public Region Table
+    // Created By : Mohammed Salah
+    public function region()
+    {
+        return $this->belongsTo(PublicRegion::class, 'region_id');
+    }
 
     // ====================================================================================
     // ============================== Accessories =========================================

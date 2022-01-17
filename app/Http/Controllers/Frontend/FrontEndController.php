@@ -31,27 +31,47 @@ class FrontEndController extends Controller
     }
 
 
-    function doctorDetails($user_type,$alias_name){
+    function userDetails($user_type,$alias_name){
 
-
-        $doctor = Doctor::where('alias_name_en',$alias_name)->get()->first();
-        if($doctor){
-
-
-            if (!Cookie::get('view_doctor' . $doctor->id)) {
-
-                DB::table('doctors')
-                    ->where('id', $doctor->id)
-                    ->update([
-                        'view_counter' => $doctor->view_counter + 1,
-                    ]);
-
-                Cookie::queue('view_doctor' . $doctor->id, 'view_doctor' . $doctor->id, 60);
-            }
-
-            return view('front_end_inners.doctor-details',compact('doctor'));
+        if ($user_type == 'insurances') {
+            $user = InsuranceCompany::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'hospitals') {
+            $user = Hospital::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'radiology-centers') {
+            $user = RadiologyCenter::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'medical-centers') {
+            $user = MedicalCenter::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'labs') {
+            $user = Lab::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'doctors') {
+            $user = Doctor::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'pharmacies') {
+            $user = Pharmacy::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'life-coaches') {
+            $user = LifeCoutch::where('alias_name_en',$alias_name)->get()->first();
+        } else if ($user_type == 'fitness-centers') {
+            $user = Gym::where('alias_name_en',$alias_name)->get()->first();
         }else{
-            return redirect()->back()->with('danger','Doctor Not Found In Records');
+            return redirect()->back()->with('danger','Not Found');
+        }
+
+        if($user){
+
+
+            // if (!Cookie::get('view_doctor' . $user->id)) {
+
+            //     DB::table('doctors')
+            //         ->where('id', $user->id)
+            //         ->update([
+            //             'view_counter' => $user->view_counter + 1,
+            //         ]);
+
+            //     Cookie::queue('view_doctor' . $user->id, 'view_doctor' . $user->id, 60);
+            // }
+
+            return view('front_end_inners.user-details',compact('user','user_type'));
+        }else{
+            return redirect()->back()->with('danger','Not Found');
         }
 
     }
@@ -60,9 +80,7 @@ class FrontEndController extends Controller
 
     function usersList($user_type){
 
-        if($user_type == 'hospitals'){
-            $users = Doctor::where('user_status',2)->get();
-        }else if ($user_type == 'insurances') {
+        if ($user_type == 'insurances') {
             $users = InsuranceCompany::where('user_status',2)->get();
         } else if ($user_type == 'hospitals') {
             $users = Hospital::where('user_status',2)->get();
@@ -83,7 +101,10 @@ class FrontEndController extends Controller
         }else{
             return redirect()->back()->with('danger','Not Found');
         }
-        return view('front_end_inners.users-list',compact('users','user_type'));
+        // $users = Hospital::where('user_status',2)->get();
+
+
+        return view('front_end_inners.list-users',compact('users','user_type'));
     }
 
 }

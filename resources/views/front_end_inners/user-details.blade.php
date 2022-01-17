@@ -1,5 +1,5 @@
 @extends('front_end_inners.app_front_end', ['title' => 'About Us'])
-@section('page_title') {{ isset($doctor->name_en) ? 'Rushetta | '.$doctor->name_en : 'Rushetta | Doctor' }} @endsection
+@section('page_title') {{ 'Rushetta | '.isset($user->name_en) ? $user->name_en : '--------' }} @endsection
 
 @section('content')
     <!--Section-->
@@ -22,7 +22,7 @@
                                             <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab2">Doctors</a>
+                                            <a data-toggle="tab" href="#tab2">{{ ucfirst($user_type) }}</a>
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#tab3">FitnesCenters</a>
@@ -156,7 +156,7 @@
                                                         data-placeholder="Select">
                                                         <optgroup label="Categories">
                                                             <option>
-                                                                Type Of Doctors
+                                                                Type Of {{ ucfirst($user_type) }}
                                                             </option>
                                                             <option value="1">
                                                                 Dentist
@@ -677,10 +677,10 @@
 		<div class="bg-white border-bottom">
 			<div class="container">
 				<div class="page-header">
-					<h4 class="page-title">Doctors</h4>
+					<h4 class="page-title">{{ ucfirst($user_type) }}</h4>
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Doctors</a></li>
-						<li class="breadcrumb-item active" aria-current="page">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}</li>
+						<li class="breadcrumb-item"><a href="#">{{ ucfirst($user_type) }}</a></li>
+						<li class="breadcrumb-item active" aria-current="page">{{ isset($user->name_en) ? $user->name_en : '--------' }}</li>
 					</ol>
 				</div>
 			</div>
@@ -695,8 +695,8 @@
 						<div class="card">
 							<div class="item-user">
 								<div class="profile-pic wideget-user-img mb-0 pt-3">
-                                    @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
-                                        <img src="{{ asset($doctor->profile_photo_path) }}" class="w-150 h-150 br-2" alt="user">
+                                    @if(isset($user->profile_photo_path) && file_exists($user->profile_photo_path))
+                                        <img src="{{ asset($user->profile_photo_path) }}" class="w-150 h-150 br-2" alt="user">
                                     @else
                                         <img src="{{ asset('front_end_style/assets/images/media/doctors/2.jpg') }}" class="w-150 h-150 br-2" alt="user">
                                     @endif
@@ -705,10 +705,10 @@
 							<div class="card-body item-user text-center">
 								 <div class="ml-1">
 									<a href="#" class="text-dark">
-									   <h4 class="mt-0 mb-2 font-weight-bold">{{ isset($doctor->username) ? $doctor->username : '--------' }}<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
+									   <h4 class="mt-0 mb-2 font-weight-bold">{{ isset($user->username) ? $user->username : '--------' }}<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
 									</a>
-									<span class="text-gray">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</span><br>
-									<span class="text-muted">Member Since {{ isset($doctor->created_at) ? $doctor->created_at->diffForHumans() : '--------' }}</span><br>
+									<span class="text-gray">{{ isset($user->speciality->name_en) ? $user->speciality->name_en : '--------' }}</span><br>
+									<span class="text-muted">Member Since {{ isset($user->created_at) ? $user->created_at->diffForHumans() : '--------' }}</span><br>
 									<div class="rating-stars d-inline-flex mb-2 mr-3">
 										<input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="4">
 										<div class="rating-stars-container mr-2">
@@ -720,15 +720,15 @@
 										</div>
 									</div>
 									<h6 class="mt-2 mb-0 btn-list">
-										<a href="#" class="btn btn-secondary btn-sm">{{ isset($doctor->view_counter) ? $doctor->view_counter : '0' }} Views</a>
+										<a href="#" class="btn btn-secondary btn-sm">{{ isset($user->view_counter) ? $user->view_counter : '0' }} Views</a>
 										{{-- <a href="#" class="btn btn-info btn-sm">850 Patients</a> --}}
 									</h6>
 								 </div>
 							</div>
 							<div class="card-body item-user">
-								<h4 class="mb-4">Doctor Info</h4>
+								<h4 class="mb-4">{{ ucfirst($user_type) }} Info</h4>
 								<div>
-									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> {{ isset($doctor->country->name_en) ? $doctor->country->name_en : '--------' }} / {{ isset($doctor->region->name_en) ? $doctor->region->name_en : '--------' }}</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> {{ isset($user->country->name_en) ? $user->country->name_en : '--------' }} / {{ isset($user->region->name_en) ? $user->region->name_en : '--------' }}</a></h6>
 									{{-- <h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a href="#" class="text-body"> smith@yourdomain.com</a></h6>
 									<h6><span class="font-weight-semibold"><i class="fa fa-phone mr-3  mb-2"></i></span><a href="#" class="text-body"> 0-235-657-24587</a></h6>
 									<h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a href="#" class="text-body">http://spruko.com/</a></h6> --}}
@@ -766,7 +766,7 @@
 								<div class="tab-content  border-left border-right details-tab-content bg-white">
 									<div class="tab-pane active" id="tab-5">
 										<div class=" p-5">
-											<p>{!! isset($doctor->user_description_en) ? $doctor->user_description_en : null !!}</p>
+											<p>{!! isset($user->user_description_en) ? $user->user_description_en : null !!}</p>
 										</div>
 									</div>
 									<div class="tab-pane userprof-tab" id="tab-6">
