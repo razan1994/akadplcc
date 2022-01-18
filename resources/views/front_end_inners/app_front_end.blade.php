@@ -530,7 +530,7 @@
                         <div class="top-bar-right">
                             <ul class="custom">
                                 <li>
-                                    <a class="text-dark" href="register.html"><i class="fa fa-user mr-1"></i>
+                                    <a class="text-dark" data-target="#loginRegisterModal" data-toggle="modal" style="cursor: pointer;"><i class="fa fa-user mr-1"></i>
                                         <span>Register/Login</span></a>
                                 </li>
                                 {{-- <li>
@@ -1097,6 +1097,105 @@
                 <div class="modal-footer">
                     <div class="">
                         <a class="btn btn-orange btn-block" href="#">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="loginRegisterModal">
+        <div class="modal-dialog modal-lg modal-appoint" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register/Login</h5><button
+                        aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-md-12 register-right">
+                            <ul class="nav nav-tabs nav-justified mb-5 p-2 border" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active m-1" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link m-1" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="single-page  w-100  p-0">
+                                        <div class="wrapper wrapper2">
+                                            <div class="card-body">
+                                                <div class="btn-list text-center">
+                                                    <a href="https://www.facebook.com/" class="btn btn-icon btn-facebook">
+                                                        <span class="fa fa-facebook "></span>
+                                                    </a>
+                                                    <a href="https://www.google.com/gmail/" class="btn btn-icon btn-google">
+                                                        <span class="fa fa-google bg-google"></span>
+                                                    </a>
+                                                    <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
+                                                        <span class="fa fa-twitter bg-twitter"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <hr class="divider">
+                                            <form id="login" class="card-body" tabindex="500">
+                                                <div class="mail">
+                                                    <input type="email" name="mail">
+                                                    <label>Mail or Username</label>
+                                                </div>
+                                                <div class="passwd">
+                                                    <input type="password" name="password">
+                                                    <label>Password</label>
+                                                </div>
+                                                <div class="submit">
+                                                    <a class="btn btn-primary btn-block" href="#">Login</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="single-page w-100  p-0">
+                                        <div class="wrapper wrapper2">
+                                            <div class="card-body">
+                                                <div class="btn-list text-center">
+                                                    <a href="https://www.facebook.com/" class="btn btn-icon btn-facebook">
+                                                        <span class="fa fa-facebook "></span>
+                                                    </a>
+                                                    <a href="https://www.google.com/gmail/" class="btn btn-icon btn-google">
+                                                        <span class="fa fa-google bg-google"></span>
+                                                    </a>
+                                                    <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
+                                                        <span class="fa fa-twitter bg-twitter"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <hr class="divider">
+                                            <form id="Register" class="card-body" tabindex="500">
+                                                <div class="name">
+                                                    <input type="text" name="name">
+                                                    <label>Name</label>
+                                                </div>
+                                                <div class="mail">
+                                                    <input type="email" name="mail">
+                                                    <label>Mail or Username</label>
+                                                </div>
+                                                <div class="passwd">
+                                                    <input type="password" name="password">
+                                                    <label>Password</label>
+                                                </div>
+                                                <div class="submit">
+                                                    <a class="btn btn-primary btn-block" href="#">Register</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
