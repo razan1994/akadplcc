@@ -18,6 +18,7 @@ use App\Models\SeoAdmin;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,47 @@ class FrontEndController extends Controller
 {
     use UploadImageTrait;
     use SharedMethod;
+
+    function frontLogin(Request $request){
+                // Validate form data
+                $this->validate($request, [
+                    'email' => 'required',
+                    'password' => 'required|min:6'
+                ]);
+                // التحقق اذا كان الدخول عن طريق رقم الهاتف او الايميل
+                if (is_numeric($request->get('email'))) {
+                    // Attempt to log the patient in
+                    if (Auth::guard('patient')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        Auth::guard('patient')->user();
+                        return "logged in Patient";
+
+                        // return redirect()->intended(route('doctor.doctorProfile'));
+                        // Attempt to log the doctor in
+                    } else if (Auth::guard('doctor')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('doctor')->user();
+                        return "logged in Doctor";
+
+                    }
+                } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+                    // Attempt to log the patient in
+                    if (Auth::guard('patient')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        Auth::guard('patient')->user();
+                        return "logged in Patient";
+                        // Attempt to log the doctor in
+                    } else if (Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('doctor')->user();
+                        return "logged in Doctor";
+                    }
+                }
+
+                return 'Errors';
+                // if unsuccessful
+                // $errors = [
+                //     'username' => 'email or phone or password is incorrect',
+                // ];
+                // return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
+    }
+
 
     function aboutUs(){
         return view('front_end_inners.about_us');

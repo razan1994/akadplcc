@@ -1141,17 +1141,18 @@
                                                 </div>
                                             </div>
                                             <hr class="divider">
-                                            <form id="login" class="card-body" tabindex="500">
+                                            <form action="{{ route('front-login') }}" method="POST" enctype="multipart/form-data" id="login" class="card-body" tabindex="500">
+                                                @csrf
                                                 <div class="mail">
-                                                    <input type="email" name="mail">
-                                                    <label>Mail or Username</label>
+                                                    <input type="email" name="email">
+                                                    <label>Mail or Phone</label>
                                                 </div>
                                                 <div class="passwd">
                                                     <input type="password" name="password">
                                                     <label>Password</label>
                                                 </div>
                                                 <div class="submit">
-                                                    <a class="btn btn-primary btn-block" href="#">Login</a>
+                                                    <button class="btn btn-primary btn-block" type="submit">Login</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -1175,6 +1176,17 @@
                                             </div>
                                             <hr class="divider">
                                             <form id="Register" class="card-body" tabindex="500">
+                                                <div class="col-md-12 row">
+                                                    <div class="col-md-6 row">
+                                                        <label for="#patient" style="cursor: pointer;font-size:12pt">Patient</label>
+                                                        <input type="radio" name="user_type" value="1" id="patient" style="height:20px;margin-top: -2%;">
+                                                    </div>
+                                                    <div class="col-md-6 row">
+                                                        <label for="#institution" style="cursor: pointer;font-size:12pt">Institution</label>
+                                                        <input type="radio" name="user_type" value="2" id="institution" style="height:20px;margin-left: 28%;margin-top: -2%;">
+                                                    </div>
+                                                </div>
+                                                <hr style="font-weight: 900">
                                                 <div class="name">
                                                     <input type="text" name="name">
                                                     <label>Name</label>
@@ -1267,6 +1279,22 @@
 
     <!-- Custom Js-->
     <script src="{{ asset('front_end_style/assets/js/custom.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#patient, #institution").change(function () {
+                if ($("#patient").is(":checked")) {
+                    alert('eeeeeeee');
+                }
+                else if ($("#institution").is(":checked")) {
+                    alert('bbbbbbbbb');
+                }
+                else
+                    alert('NaaaaaaaaaaaaN');
+            });
+        });
+    </script>
 </body>
 
 </html>
