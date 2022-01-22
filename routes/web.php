@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\SpecialityController;
+use App\Http\Controllers\Frontend\Doctor\DoctorController;
 use App\Http\Controllers\Frontend\FrontEndController;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -24,22 +25,32 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     // ============================================= Shared Routes ======================================================
 
-        Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
-        Route::get('/aboutUs', [FrontEndController::class, 'aboutUs'])->name('aboutUs');
-        Route::get('/contactUs', [FrontEndController::class, 'contactUs'])->name('contactUs');
-        Route::post('/contactUsRequest', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequest');
-        Route::get('/privacyPolicies', [FrontEndController::class, 'privacyPolicies'])->name('privacyPolicies');
-        Route::get('/termsAndConditions', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditions');
-        Route::get('details/{user_type}/{alias_name}', [FrontEndController::class, 'userDetails'])->name('user-details');
-        Route::get('list/{user_type}', [FrontEndController::class, 'usersList'])->name('users-list');
+    Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+    Route::get('/aboutUs', [FrontEndController::class, 'aboutUs'])->name('aboutUs');
+    Route::get('/contactUs', [FrontEndController::class, 'contactUs'])->name('contactUs');
+    Route::post('/contactUsRequest', [FrontEndController::class, 'contactUsRequest'])->name('contactUsRequest');
+    Route::get('/privacyPolicies', [FrontEndController::class, 'privacyPolicies'])->name('privacyPolicies');
+    Route::get('/termsAndConditions', [FrontEndController::class, 'termsAndConditions'])->name('termsAndConditions');
+    Route::get('details/{user_type}/{alias_name}', [FrontEndController::class, 'userDetails'])->name('user-details');
+    Route::get('list/{user_type}', [FrontEndController::class, 'usersList'])->name('users-list');
 
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 
-        Route::post('/frontLogin', [FrontEndController::class, 'frontLogin'])->name('front-login');
+    Route::post('/frontLogin', [FrontEndController::class, 'frontLogin'])->name('front-login');
+    Route::post('/frontGetRegions', [FrontEndController::class, 'frontGetRegions'])->name('frontGetRegions');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
+
+
+    Route::prefix('doctor')->name('doctor.')->group(function () {
+
+        Route::group(['middleware' => 'auth:doctor'], function () {
+            Route::get('/dashboard', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
+            Route::get('/test', [DoctorController::class, 'test'])->name('test');
+        });
+    });
 
 });
 

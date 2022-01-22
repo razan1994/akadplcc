@@ -11,6 +11,8 @@ use App\Models\Lab;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\Pharmacy;
+use App\Models\PublicCountry;
+use App\Models\PublicLanguage;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
 use Illuminate\Database\Eloquent\Collection;
@@ -74,6 +76,9 @@ class AppServiceProvider extends ServiceProvider
             $public_life_coaches_count = LifeCoutch::count();
             $public_doctors_count = Doctor::count();
 
+            $public_countries = PublicCountry::get();
+            $public_languages = PublicLanguage::get();
+
             view()->share([
                 'public_user_types' => $public_user_types,
                 'public_insurance_companies' => $public_insurance_companies,
@@ -96,6 +101,8 @@ class AppServiceProvider extends ServiceProvider
                 'public_pharmacies_count' => $public_pharmacies_count,
                 'public_gyms_count' => $public_gyms_count,
                 'public_life_coaches_count' => $public_life_coaches_count,
+                'public_countries' => $public_countries,
+                'public_languages' => $public_languages
 
             ]);
         });

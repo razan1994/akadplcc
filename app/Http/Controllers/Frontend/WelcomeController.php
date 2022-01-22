@@ -25,6 +25,9 @@ class WelcomeController extends Controller
     // ========================================================================
     public function welcome()
     {
+        // $startDate = Carbon::now();
+        // $endDate = Carbon::today()->addDays(7);
+        // return $startDate;
         // Super Admin
         if (Auth::guard('super_admin')->check()) {
             return redirect()->route('super_admin.dashboard');

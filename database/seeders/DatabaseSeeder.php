@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AboutUsSeeder::class,
             ContactUsSeeder::class,
             PublicCountrySeeder::class,
+            PublicLanguageSeeder::class,
             PublicNationalitySeeder::class,
             PublicPhoneKeySeeder::class,
             SpecialitySeeder::class,

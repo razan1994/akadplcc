@@ -13,6 +13,7 @@ use App\Models\MedicalCenter;
 use App\Models\Pharmacy;
 use App\Models\ProdSzeClrRelation;
 use App\Models\Product;
+use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
 use App\Traits\UploadImageTrait;
@@ -44,7 +45,7 @@ class FrontEndController extends Controller
                         // Attempt to log the doctor in
                     } else if (Auth::guard('doctor')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('doctor')->user();
-                        return "logged in Doctor";
+                        return view('front_end_inners.doctors.doctor_dashboard',compact('auth'));
 
                     }
                 } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
@@ -55,7 +56,7 @@ class FrontEndController extends Controller
                         // Attempt to log the doctor in
                     } else if (Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('doctor')->user();
-                        return "logged in Doctor";
+                        return view('front_end_inners.doctors.doctor_dashboard',compact('auth'));
                     }
                 }
 
@@ -147,6 +148,23 @@ class FrontEndController extends Controller
 
 
         return view('front_end_inners.list-users',compact('users','user_type'));
+    }
+
+
+
+    function frontGetRegions(Request $request){
+        if (!isset($request->country_id)) {
+            $regions = "";
+        } else {
+            $regions = new PublicRegion();
+            $regions = $regions->select("id", 'name_' . config('app.locale') . ' as name_ar');
+            $regions = $regions->where("country_id", "=", "{$request->country_id}");
+            $regions = $regions->get();
+        }
+        return response()->json([
+            'status' => true,
+            'regions' => $regions,
+        ]);
     }
 
 }
