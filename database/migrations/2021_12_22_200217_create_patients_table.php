@@ -22,8 +22,8 @@ class CreatePatientsTable extends Migration
             $table->longText('name_en');
             $table->longText('alias_name_ar');
             $table->longText('alias_name_en');
-            $table->longText('username')->unique();
-            $table->longText('email')->unique();
+            $table->longText('username');
+            $table->longText('email');
             $table->longText('phone')->nullable();
             $table->longText('password')->nullable();
             $table->longText('profile_photo_path')->nullable();
