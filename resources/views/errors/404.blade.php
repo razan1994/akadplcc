@@ -57,7 +57,7 @@
 					<div class="display-1 text-white mb-5">400</div>
 					<h1 class="h2 text-white  mb-3">Page Not Found</h1>
 					<p class="h4 font-weight-Automatic mb-7 leading-Automatic text-white">Oops!!!! you tried to access a page which is not available. go back to Vehicle</p>
-					<a class="btn btn-orange" href="index.html">
+					<a class="btn btn-orange" href="{{ route('welcome') }}">
 						Back To Home
 					</a>
 				</div>
