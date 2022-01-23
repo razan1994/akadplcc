@@ -12,7 +12,7 @@
 						<div class="text-center text-white">
 							<h1 class="">My Dashboard</h1>
 							<ol class="breadcrumb text-center">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
 								<li class="breadcrumb-item active text-white" aria-current="page">My Dashboard</li>
 							</ol>
 						</div>
@@ -41,7 +41,7 @@
                                             <img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround" alt="user">
                                         @endif
 									</div>
-									<a href="userprofile.html" class="text-dark"><h4 class="mt-3 mb-0 font-weight-semibold">{{ $auth->name_en }}</h4></a>
+									<a href="{{ route('doctor.doctor-dashboard') }}" class="text-dark"><h4 class="mt-3 mb-0 font-weight-semibold">{{ $auth->name_en }}</h4></a>
 								</div>
 							</div>
 							<aside class="app-sidebar doc-sidebar my-dash">
@@ -217,7 +217,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="saterday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="saterday" id="saterday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="saterday">
                                                                 Saterday
                                                             </label>
@@ -226,13 +226,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="saterday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="saterday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -247,7 +247,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="sunday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="sunday" id="sunday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="sunday">
                                                                 Sunday
                                                             </label>
@@ -256,13 +256,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="sunday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="sunday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -277,7 +277,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="monday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="monday" id="monday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="monday">
                                                                 Monday
                                                             </label>
@@ -286,13 +286,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="monday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="monday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -307,7 +307,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="tuseday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="tuseday" id="tuseday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="tuseday">
                                                                 Tuseday
                                                             </label>
@@ -316,13 +316,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="tuseday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="tuseday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -337,7 +337,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="wednsday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="wednsday" id="wednsday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="wednsday">
                                                                 Wednsday
                                                             </label>
@@ -346,13 +346,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="wednsday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="wednsday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -367,7 +367,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="thursday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="thursday" id="thursday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="thursday">
                                                                 Thursday
                                                             </label>
@@ -376,13 +376,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="thursday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="thursday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
@@ -397,7 +397,7 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="friday">
+                                                            <input class="form-check-input" name="week_plan[]" type="checkbox" value="friday" id="friday">
                                                             <label class="form-check-label" style="cursor:pointer;" for="friday">
                                                                 Friday
                                                             </label>
@@ -406,13 +406,13 @@
                                                     <div class="col-md-12 row" style="margin-top: 1%">
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="friday_from"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="appt"
-                                                                min="09:00" max="24:00" value="08:00" required>
+                                                            <input class="form-control" type="time" id="appt" name="friday_to"
+                                                                min="08:00" max="24:00" value="08:00" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
