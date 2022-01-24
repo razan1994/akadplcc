@@ -236,7 +236,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_saterday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -266,7 +266,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_sunday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -296,7 +296,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_monday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -326,7 +326,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_tuseday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -356,7 +356,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_wednsday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -386,7 +386,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_thursday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
@@ -416,7 +416,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
-                                                            <select class="form-control" name="every" id="every">
+                                                            <select class="form-control" name="every_friday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
                                                                 @endfor
