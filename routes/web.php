@@ -47,8 +47,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::prefix('doctor')->name('doctor.')->group(function () {
 
         Route::group(['middleware' => 'auth:doctor'], function () {
-            Route::get('/dashboard', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
-            Route::get('/test', [DoctorController::class, 'test'])->name('test');
+            Route::get('/dashboard/{active?}', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
+            Route::post('/doctorUpdateProfile/{id}', [DoctorController::class, 'doctorUpdateProfile'])->name('doctor-update-profile');
+            Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
         });
     });
 

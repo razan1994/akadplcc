@@ -45,7 +45,7 @@ class FrontEndController extends Controller
                         // Attempt to log the doctor in
                     } else if (Auth::guard('doctor')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('doctor')->user();
-                        return view('front_end_inners.doctors.doctor_dashboard',compact('auth'));
+                        return redirect()->route('doctor.doctor-dashboard');
 
                     }
                 } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
@@ -56,7 +56,7 @@ class FrontEndController extends Controller
                         // Attempt to log the doctor in
                     } else if (Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('doctor')->user();
-                        return view('front_end_inners.doctors.doctor_dashboard',compact('auth'));
+                        return redirect()->route('doctor.doctor-dashboard');
                     }
                 }
 

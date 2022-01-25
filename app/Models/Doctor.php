@@ -44,7 +44,9 @@ class Doctor extends Authenticatable
         'alias_name_en',
         'alias_name_ar',
         'user_description_en',
-        'user_description_ar'
+        'user_description_ar',
+        'gender',
+        'languages'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -89,6 +91,12 @@ class Doctor extends Authenticatable
     public function region()
     {
         return $this->belongsTo(PublicRegion::class, 'region_id');
+    }
+
+    // Relation With Doctor Week Plan Table
+    // Created By : Mohammed Salah
+    public function weekPlan(){
+        return $this->hasOne(DoctorWeekPlan::class,'doctor_id');
     }
 
     // ====================================================================================

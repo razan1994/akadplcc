@@ -36,6 +36,8 @@ class CreateDoctorsTable extends Migration
             $table->longText('user_description_en')->nullable();
             $table->longText('user_description_ar')->nullable();
             $table->bigInteger('view_counter')->default(0);
+            $table->tinyInteger('gender')->nullable()->comment = '1 => Male || 2 => Female';
+            $table->longText('languages')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             // Relations:

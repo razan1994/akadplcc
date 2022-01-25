@@ -12,7 +12,8 @@
         content="appointments, booking, bootstrap list template,  directory listing html template,  directory website template, doctor directory, doctor search, health template, healthcare directory, hospital,  html css templates, html directory listing, listing, medical bootstrap template, medical directory, medical html template , medical template,  medical web templates, medical website templates, pharma website templates, responsive html template,template html css, online directory website,  html5 template, themeforest html,  online directory, simple html templates ">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" type="image/x-icon') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" />
 
     <!-- Title -->
     <title>@yield('page_title')</title>
@@ -36,10 +37,12 @@
     <link href="{{ asset('front_end_style/assets/plugins/date-picker/spectrum.css') }}" rel="stylesheet" />
 
     <!-- Custom scroll bar css-->
-    <link href="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css') }}"
+        rel="stylesheet">
 
     <!--Color-Skin Css -->
-    <link href="{{ asset('front_end_style/assets/color-skins/color10.css') }}" id="theme" media="all" rel="stylesheet">
+    <link href="{{ asset('front_end_style/assets/color-skins/color10.css') }}" id="theme" media="all"
+        rel="stylesheet">
 
 </head>
 
@@ -530,7 +533,8 @@
                         <div class="top-bar-right">
                             <ul class="custom">
                                 <li>
-                                    <a class="text-dark" data-target="#loginRegisterModal" data-toggle="modal" style="cursor: pointer;"><i class="fa fa-user mr-1"></i>
+                                    <a class="text-dark" data-target="#loginRegisterModal" data-toggle="modal"
+                                        style="cursor: pointer;"><i class="fa fa-user mr-1"></i>
                                         <span>Register/Login</span></a>
                                 </li>
                                 {{-- <li>
@@ -538,33 +542,24 @@
                                         <span>Login</span></a>
                                 </li> --}}
                                 <li class="dropdown">
-                                    <a class="text-dark" data-toggle="dropdown" href="#"><i
-                                            class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
+                                    <a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
-                                        <a class="dropdown-item" href="mydash.html"><i
-                                                class="dropdown-icon icon icon-user"></i> My Profile</a> <a
-                                            class="dropdown-item" href="#"><i
-                                                class="dropdown-icon icon icon-speech"></i> Inbox</a> <a
-                                            class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>
-                                            Notifications</a> <a class="dropdown-item" href="mydash.html"><i
-                                                class="dropdown-icon icon icon-settings"></i> Account Settings</a> <a
-                                            class="dropdown-item" href="#"><i
-                                                class="dropdown-icon icon icon-power"></i> Log out</a>
+                                        <a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-speech"></i> Inbox</a>
+                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i> Notifications</a>
+                                        {{-- <a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-settings"></i> Account Settings</a> --}}
+                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
                                     </div>
                                 </li>
                                 <li class="dropdown">
-                                    <a class="text-dark" data-toggle="dropdown" href="#"><i
-                                            class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
+                                    <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="mydash.html"><i
-                                                class="dropdown-icon icon icon-user"></i> My Profile</a> <a
-                                            class="dropdown-item" href="#"><i
-                                                class="dropdown-icon icon icon-speech"></i> Inbox</a> <a
-                                            class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>
-                                            Notifications</a> <a class="dropdown-item" href="mydash.html"><i
-                                                class="dropdown-icon icon icon-settings"></i> Account Settings</a> <a
-                                            class="dropdown-item" href="#"><i
-                                                class="dropdown-icon icon icon-power"></i> Log out</a>
+                                        @if(Auth::guard('doctor')->check())
+                                            <a class="dropdown-item" href="{{ route('doctor.doctor-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-speech"></i> Inbox</a>
+                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                        @endif
                                     </div>
                                 </li>
                             </ul>
@@ -590,10 +585,12 @@
             <div class="horizontal-main clearfix">
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
-                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}" alt=""></a>
+                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}"
+                                alt=""></a>
                     </div>
                     <div class="desktoplogo-1">
-                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}" alt=""></a>
+                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}"
+                                alt=""></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">
                         <ul class="horizontalMenu-list">
@@ -681,7 +678,7 @@
                                 <a href="#">Categories <span class="fe fe-chevron-down"></span></a>
                                 <ul class="sub-menu">
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','hospitals') }}">Hospitals</a>
+                                        <a href="{{ route('users-list', 'hospitals') }}">Hospitals</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="doctors-list.html">Doctors List</a></li>
                                             <li><a href="doctors-list-right.html">Doctors List Right</a></li>
@@ -691,7 +688,7 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','doctors') }}">Doctors</a>
+                                        <a href="{{ route('users-list', 'doctors') }}">Doctors</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="hospitals-list.html">Hospital List</a></li>
                                             <li><a href="hospitals-list-right.html">Hospital List Right</a></li>
@@ -701,7 +698,7 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','medical-centers') }}">Medical Centers</a>
+                                        <a href="{{ route('users-list', 'medical-centers') }}">Medical Centers</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="fitness-list.html">Fitness List</a></li>
                                             <li><a href="fitness-list-right.html">Fitness List Right</a></li>
@@ -711,7 +708,7 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','radiology-centers') }}">Radiology Centers</a>
+                                        <a href="{{ route('users-list', 'radiology-centers') }}">Radiology Centers</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="pharmacy-list.html">Pharmacy List</a></li>
                                             <li><a href="pharmacy-list-right.html">Pharmacy List Right</a></li>
@@ -721,7 +718,7 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','labs') }}">Labs</a>
+                                        <a href="{{ route('users-list', 'labs') }}">Labs</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="bloodbank-list.html">BloodBank List</a></li>
                                             <li><a href="bloodbank-list-right.html">BloodBank List Right</a></li>
@@ -730,16 +727,16 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','insurances') }}">Insurance Companies</a>
+                                        <a href="{{ route('users-list', 'insurances') }}">Insurance Companies</a>
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','pharmacies') }}">Pharmacies</a>
+                                        <a href="{{ route('users-list', 'pharmacies') }}">Pharmacies</a>
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','fitness-centers') }}">Gyms</a>
+                                        <a href="{{ route('users-list', 'fitness-centers') }}">Gyms</a>
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list','life-coaches') }}">Life Coaches</a>
+                                        <a href="{{ route('users-list', 'life-coaches') }}">Life Coaches</a>
                                     </li>
                                 </ul>
                             </li>
@@ -1108,8 +1105,8 @@
         <div class="modal-dialog modal-lg modal-appoint" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Register/Login</h5><button
-                        aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                    <h5 class="modal-title" id="exampleModalLabel">Register/Login</h5><button aria-label="Close"
+                        class="close" data-dismiss="modal" type="button"><span
                             aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
@@ -1117,22 +1114,27 @@
                         <div class="col-xl-12 col-md-12 col-md-12 register-right">
                             <ul class="nav nav-tabs nav-justified mb-5 p-2 border" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active m-1" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+                                    <a class="nav-link active m-1" id="home-tab" data-toggle="tab" href="#home"
+                                        role="tab" aria-controls="home" aria-selected="true">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link m-1" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                                    <a class="nav-link m-1" id="profile-tab" data-toggle="tab" href="#profile"
+                                        role="tab" aria-controls="profile" aria-selected="false">Register</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                    aria-labelledby="home-tab">
                                     <div class="single-page  w-100  p-0">
                                         <div class="wrapper wrapper2">
                                             <div class="card-body">
                                                 <div class="btn-list text-center">
-                                                    <a href="https://www.facebook.com/" class="btn btn-icon btn-facebook">
+                                                    <a href="https://www.facebook.com/"
+                                                        class="btn btn-icon btn-facebook">
                                                         <span class="fa fa-facebook "></span>
                                                     </a>
-                                                    <a href="https://www.google.com/gmail/" class="btn btn-icon btn-google">
+                                                    <a href="https://www.google.com/gmail/"
+                                                        class="btn btn-icon btn-google">
                                                         <span class="fa fa-google bg-google"></span>
                                                     </a>
                                                     <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
@@ -1141,7 +1143,9 @@
                                                 </div>
                                             </div>
                                             <hr class="divider">
-                                            <form action="{{ route('front-login') }}" method="POST" enctype="multipart/form-data" id="login" class="card-body" tabindex="500">
+                                            <form action="{{ route('front-login') }}" method="POST"
+                                                enctype="multipart/form-data" id="login" class="card-body"
+                                                tabindex="500">
                                                 @csrf
                                                 <div class="mail">
                                                     <input type="email" name="email">
@@ -1152,21 +1156,25 @@
                                                     <label>Password</label>
                                                 </div>
                                                 <div class="submit">
-                                                    <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                                    <button class="btn btn-primary btn-block"
+                                                        type="submit">Login</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade show" id="profile" role="tabpanel"
+                                    aria-labelledby="profile-tab">
                                     <div class="single-page w-100  p-0">
                                         <div class="wrapper wrapper2">
                                             <div class="card-body">
                                                 <div class="btn-list text-center">
-                                                    <a href="https://www.facebook.com/" class="btn btn-icon btn-facebook">
+                                                    <a href="https://www.facebook.com/"
+                                                        class="btn btn-icon btn-facebook">
                                                         <span class="fa fa-facebook "></span>
                                                     </a>
-                                                    <a href="https://www.google.com/gmail/" class="btn btn-icon btn-google">
+                                                    <a href="https://www.google.com/gmail/"
+                                                        class="btn btn-icon btn-google">
                                                         <span class="fa fa-google bg-google"></span>
                                                     </a>
                                                     <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
@@ -1178,12 +1186,16 @@
                                             <form id="Register" class="card-body" tabindex="500">
                                                 <div class="col-md-12 row">
                                                     <div class="col-md-6 row">
-                                                        <label for="#patient" style="cursor: pointer;font-size:12pt">Patient</label>
-                                                        <input type="radio" name="user_type" value="1" id="patient" style="height:20px;margin-top: -2%;">
+                                                        <label for="#patient"
+                                                            style="cursor: pointer;font-size:12pt">Patient</label>
+                                                        <input type="radio" name="user_type" value="1" id="patient"
+                                                            style="height:20px;margin-top: -2%;">
                                                     </div>
                                                     <div class="col-md-6 row">
-                                                        <label for="#institution" style="cursor: pointer;font-size:12pt">Institution</label>
-                                                        <input type="radio" name="user_type" value="2" id="institution" style="height:20px;margin-left: 28%;margin-top: -2%;">
+                                                        <label for="#institution"
+                                                            style="cursor: pointer;font-size:12pt">Institution</label>
+                                                        <input type="radio" name="user_type" value="2" id="institution"
+                                                            style="height:20px;margin-left: 28%;margin-top: -2%;">
                                                     </div>
                                                 </div>
                                                 <hr style="font-weight: 900">
@@ -1265,7 +1277,8 @@
     <script src="{{ asset('front_end_style/assets/plugins/cookie/cookie.js') }}"></script>
 
     <!-- Custom scroll bar Js-->
-    <script src="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js') }}">
+    </script>
 
     <!--Showmore Js-->
     <script src="{{ asset('front_end_style/assets/js/jquery.showmore.js') }}"></script>
@@ -1282,15 +1295,13 @@
 
 
     <script>
-        $(document).ready(function () {
-            $("#patient, #institution").change(function () {
+        $(document).ready(function() {
+            $("#patient, #institution").change(function() {
                 if ($("#patient").is(":checked")) {
                     alert('eeeeeeee');
-                }
-                else if ($("#institution").is(":checked")) {
+                } else if ($("#institution").is(":checked")) {
                     alert('bbbbbbbbb');
-                }
-                else
+                } else
                     alert('NaaaaaaaaaaaaN');
             });
         });
@@ -1298,5 +1309,3 @@
 </body>
 
 </html>
-
-
