@@ -54,7 +54,7 @@
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Week Plan</span></a>
 										</li>
 
-                                        <li data-toggle="tab" href="#certificatetab" style="cursor: pointer">
+                                        <li data-toggle="tab" href="#certificatetab" @if(isset($active))@if($active == "doctorCertificates") class="active" @endif @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Certificates</span></a>
 										</li>
 
@@ -67,7 +67,7 @@
 						</div>
 					</div>
                     <div class="tab-content col-xl-9 col-lg-12 col-md-12">
-                        <div id="profiletab" class="tab-pane fade in active">
+                        <div id="profiletab" class="tab-pane fade @if(isset($active))@if($active == "doctorUpdateProfile" || $active == null) active in @endif @else active in @endif">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="weekPlantab" class="tab-pane fade">
+                        <div id="weekPlantab" class="tab-pane fade @if(isset($active))@if($active == "doctorWeekPlan") active in @endif @endif">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
@@ -230,33 +230,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="saterday" id="saterday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('saterday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="saterday" id="saterday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="saterday" id="saterday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="saterday" id="saterday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="saterday">
                                                                 Saterday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
-                                                        <span style="color: red">@error('saterday_from') {{ $message }} @enderror</span>
-                                                        <br>
-                                                        <span style="color: red">@error('saterday_to') {{ $message }} @enderror</span>
                                                         <br>
                                                         <span style="color: red">@error('every_saterday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From : </label>
-                                                            <input class="form-control" type="time" id="appt" name="saterday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('saterday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="saterday_from"
+                                                                    value="{{ isset($auth->weekPlan->saterday_from) ? $auth->weekPlan->saterday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="saterday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To : </label>
-                                                            <input class="form-control" type="time" id="appt" name="saterday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('saterday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="saterday_to"
+                                                                    value="{{ isset($auth->weekPlan->saterday_to) ? $auth->weekPlan->saterday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="saterday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_saterday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_saterday) && $auth->weekPlan->every_saterday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -265,28 +284,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="sunday" id="sunday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('sunday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="sunday" id="sunday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="sunday" id="sunday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="sunday" id="sunday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="sunday">
-                                                                Sunday
+                                                                Sunday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_sunday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="sunday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('sunday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="sunday_from"
+                                                                    value="{{ isset($auth->weekPlan->sunday_from) ? $auth->weekPlan->sunday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="sunday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="sunday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('sunday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="sunday_to"
+                                                                    value="{{ isset($auth->weekPlan->sunday_to) ? $auth->weekPlan->sunday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="sunday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_sunday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_sunday) && $auth->weekPlan->every_sunday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -295,28 +338,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="monday" id="monday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('monday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="monday" id="monday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="monday" id="monday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="monday" id="monday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="monday">
-                                                                Monday
+                                                                Monday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_monday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="monday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('monday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="monday_from"
+                                                                    value="{{ isset($auth->weekPlan->monday_from) ? $auth->weekPlan->monday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="monday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="monday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('monday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="monday_to"
+                                                                    value="{{ isset($auth->weekPlan->monday_to) ? $auth->weekPlan->monday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="monday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_monday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_monday) && $auth->weekPlan->every_monday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -325,28 +392,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="tuseday" id="tuseday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('tuseday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="tuseday" id="tuseday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="tuseday" id="tuseday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="tuseday" id="tuseday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="tuseday">
-                                                                Tuseday
+                                                                Tuseday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_tuseday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="tuseday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('tuseday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="tuseday_from"
+                                                                    value="{{ isset($auth->weekPlan->tuseday_from) ? $auth->weekPlan->tuseday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="tuseday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="tuseday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('tuseday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="tuseday_to"
+                                                                    value="{{ isset($auth->weekPlan->tuseday_to) ? $auth->weekPlan->tuseday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="tuseday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_tuseday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_tuseday) && $auth->weekPlan->every_tuseday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -355,28 +446,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="wednsday" id="wednsday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('wednsday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="wednsday" id="wednsday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="wednsday" id="wednsday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="wednsday" id="wednsday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="wednsday">
-                                                                Wednsday
+                                                                Wednsday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_wednsday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="wednsday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('wednsday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="wednsday_from"
+                                                                    value="{{ isset($auth->weekPlan->wednsday_from) ? $auth->weekPlan->wednsday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="wednsday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="wednsday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('wednsday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="wednsday_to"
+                                                                    value="{{ isset($auth->weekPlan->wednsday_to) ? $auth->weekPlan->wednsday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="wednsday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_wednsday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_wednsday) && $auth->weekPlan->every_wednsday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -385,28 +500,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="thursday" id="thursday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('thursday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="thursday" id="thursday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="thursday" id="thursday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="thursday" id="thursday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="thursday">
-                                                                Thursday
+                                                                Thursday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_thursday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="thursday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('thursday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="thursday_from"
+                                                                    value="{{ isset($auth->weekPlan->thursday_from) ? $auth->weekPlan->thursday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="thursday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="thursday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('thursday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="thursday_to"
+                                                                    value="{{ isset($auth->weekPlan->thursday_to) ? $auth->weekPlan->thursday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="thursday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_thursday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_thursday) && $auth->weekPlan->every_thursday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -415,28 +554,52 @@
                                                 <div class="col-sm-12 col-md-12 row">
                                                     <div class="col-md-12">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" name="active_days[]" type="checkbox" value="friday" id="friday">
+                                                            @if(isset($auth->weekPlan))
+                                                                @if(isset($auth->weekPlan->active_days) && in_array('friday',explode(',',$auth->weekPlan->active_days)))
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="friday" id="friday" checked>
+                                                                @else
+                                                                    <input class="form-check-input" name="active_days[]" type="checkbox" value="friday" id="friday">
+                                                                @endif
+                                                            @else
+                                                                <input class="form-check-input" name="active_days[]" type="checkbox" value="friday" id="friday">
+                                                            @endif
                                                             <label class="form-check-label" style="cursor:pointer;" for="friday">
-                                                                Friday
+                                                                Friday <span style="color: red">@error('active_days') {{ $message }} @enderror</span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 row" style="margin-top: 1%">
+                                                        <br>
+                                                        <span style="color: red">@error('every_friday') {{ $message }} @enderror</span>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">From :</label>
-                                                            <input class="form-control" type="time" id="appt" name="friday_from"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">From : <span style="color: red">@error('friday_from') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="friday_from"
+                                                                    value="{{ isset($auth->weekPlan->friday_from) ? $auth->weekPlan->friday_from : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="friday_from"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="appt">To :</label>
-                                                            <input class="form-control" type="time" id="appt" name="friday_to"
-                                                                min="08:00" max="24:00" value="08:00" required>
+                                                            <label for="appt">To : <span style="color: red">@error('friday_to') {{ $message }} @enderror</span></label>
+                                                            @if(isset($auth->weekPlan))
+                                                                <input class="form-control" type="time" id="appt" name="friday_to"
+                                                                    value="{{ isset($auth->weekPlan->friday_to) ? $auth->weekPlan->friday_to : '08:00'}}" required>
+                                                            @else
+                                                                <input class="form-control" type="time" id="appt" name="friday_to"
+                                                                     value="08:00" required>
+                                                            @endif
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label for="appt">Every :</label>
                                                             <select class="form-control" name="every_friday" id="every">
                                                                 @for($i = 10; $i <= 120 ; $i +=10)
+                                                                @if(isset($auth->weekPlan))
+                                                                    <option value="{{ $i }}" @if(isset($auth->weekPlan->every_friday) && $auth->weekPlan->every_friday == $i) selected @endif >{{ $i }} Minutes</option>
+                                                                @else
                                                                     <option value="{{ $i }}">{{ $i }} Minutes</option>
+                                                                @endif
                                                                 @endfor
                                                             </select>
                                                         </div>
@@ -451,32 +614,70 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="certificatetab" class="tab-pane fade">
+                        <div id="certificatetab" class="tab-pane fade @if(isset($active))@if($active == "doctorCertificates") active in @endif @endif">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
                                         <h3 class="card-title">Certificates</h3>
                                     </div>
-                                    <form action="" id="createForm">
+                                    <form action="{{ route('doctor.doctor-store-certificate') }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name AR</label>
                                                         <input type="text" name="name_ar" class="form-control" placeholder="Doctor Name In Arabic">
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name EN</label>
                                                         <input type="text" name="name_en" class="form-control" placeholder="Doctor Name In English">
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Institution Name AR</label>
+                                                        <input type="text" name="institution_name_ar" class="form-control" placeholder="Institution Name In Arabic">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Institution Name EN</label>
+                                                        <input type="text" name="institution_name_en" class="form-control" placeholder="Institution Name In English">
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <button type="submit" class="btn btn-primary">Add Certificate</button>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Add Certificate</button>
+                                            @if(isset($auth->certificates) && $auth->certificates->count() > 0)
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Name AR</th>
+                                                            <th>Name EN</th>
+                                                            <th>Institution AR</th>
+                                                            <th>Institution EN</th>
+                                                            <th>Control</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($auth->certificates as $certificate)
+                                                            <tr>
+                                                                <td>{{ $certificate->name_ar }}</td>
+                                                                <td>{{ $certificate->name_en }}</td>
+                                                                <td>{{ $certificate->institution_name_ar }}</td>
+                                                                <td>{{ $certificate->institution_name_en }}</td>
+                                                                <td><a class="btn btn-danger btn-sm" href="{{ route('doctor.doctor-delete-certificate',$certificate->id) }}"><i class="fa fa-trash"></i></a></td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @else
+                                            <h3 class="text-danger">No Certificates</h3>
+                                            @endif
                                         </div>
                                     </form>
                                 </div>

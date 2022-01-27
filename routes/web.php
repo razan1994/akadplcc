@@ -50,6 +50,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/dashboard/{active?}', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
             Route::post('/doctorUpdateProfile/{id}', [DoctorController::class, 'doctorUpdateProfile'])->name('doctor-update-profile');
             Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
+            Route::post('/doctorStoreCertificate', [DoctorController::class, 'doctorStoreCertificate'])->name('doctor-store-certificate');
+            Route::get('/doctorDeleteCertificate/{id}', [DoctorController::class, 'doctorDeleteCertificate'])->name('doctor-delete-certificate');
         });
     });
 

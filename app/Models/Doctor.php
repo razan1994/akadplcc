@@ -99,6 +99,12 @@ class Doctor extends Authenticatable
         return $this->hasOne(DoctorWeekPlan::class,'doctor_id');
     }
 
+    // Relation With Doctor certificates Table
+    // Created By : Mohammed Salah
+    public function certificates(){
+        return $this->hasMany(DoctorCertificate::class,'doctor_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================
