@@ -57,9 +57,8 @@
                                         <li data-toggle="tab" href="#certificatetab" @if(isset($active))@if($active == "doctorCertificates") class="active" @endif @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Certificates</span></a>
 										</li>
-
-										<li data-toggle="tab" href="#tab4" style="cursor: pointer">
-											<a class="side-menu__item" ><i class="icon icon-power"></i><span class="side-menu__label ml-2">Logout</span></a>
+										<li>
+											<a href="{{ route('front-logout') }}" class="side-menu__item" ><i class="icon icon-power"></i><span class="side-menu__label ml-2">Logout</span></a>
 										</li>
 									</ul>
 								</div>

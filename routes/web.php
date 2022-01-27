@@ -38,6 +38,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ============================================= End Shared Routes ==================================================
 
     Route::post('/frontLogin', [FrontEndController::class, 'frontLogin'])->name('front-login');
+    Route::get('/frontLogout', [FrontEndController::class, 'frontLogout'])->name('front-logout');
     Route::post('/frontGetRegions', [FrontEndController::class, 'frontGetRegions'])->name('frontGetRegions');
 
     // ==================================================================================================================

@@ -68,6 +68,13 @@ class FrontEndController extends Controller
                 // return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
     }
 
+    public function frontLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect(route('welcome'));
+    }
+
 
     function aboutUs(){
         return view('front_end_inners.about_us');
