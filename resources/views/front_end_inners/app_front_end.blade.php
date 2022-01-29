@@ -537,36 +537,40 @@
                     <div class="col-xl-6 col-lg-6 col-sm-8 col-5">
                         <div class="top-bar-right">
                             <ul class="custom">
-                                <li>
-                                    <a class="text-dark" data-target="#loginRegisterModal" data-toggle="modal"
-                                        style="cursor: pointer;"><i class="fa fa-user mr-1"></i>
-                                        <span>Register/Login</span></a>
-                                </li>
-                                {{-- <li>
-                                    <a class="text-dark" href="login.html"><i class="fa fa-sign-in mr-1"></i>
-                                        <span>Login</span></a>
-                                </li> --}}
-                                <li class="dropdown">
-                                    <a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
-                                        <a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-speech"></i> Inbox</a>
-                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i> Notifications</a>
-                                        {{-- <a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-settings"></i> Account Settings</a> --}}
-                                        <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
-                                    </div>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        @if(Auth::guard('doctor')->check())
-                                            <a class="dropdown-item" href="{{ route('doctor.doctor-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-speech"></i> Inbox</a>
-                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                            <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
-                                        @endif
-                                    </div>
-                                </li>
+
+                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check())
+                                    <li>
+                                        <a href="{{ route('front-logout') }}" class="text-dark" style="cursor: pointer;"><i class="icon icon-power"></i>
+                                            <span>Logout</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
+                                            {{-- @if(isset(auth()->user()->notifications) && auth()->user()->notifications->count() > 0)
+                                            @else
+                                                <div class="col-md-12" style="text-align: center">
+                                                    <h3 class="text-danger"> No Notifications...</h3>
+                                                </div>
+                                            @endif --}}
+                                        </div>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            @if(Auth::guard('doctor')->check())
+                                                <a class="dropdown-item" href="{{ route('doctor.doctor-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                        </div>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="text-dark" data-target="#loginRegisterModal" data-toggle="modal"
+                                            style="cursor: pointer;"><i class="fa fa-user mr-1"></i>
+                                            <span>Register/Login</span></a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

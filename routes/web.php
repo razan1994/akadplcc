@@ -18,7 +18,8 @@ use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\Doctor\DoctorController;
 use App\Http\Controllers\Frontend\FrontEndController;
-
+use App\Http\Controllers\Frontend\Hospital\HospitalController;
+use App\Http\Controllers\Frontend\Radiology\RadiologyController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
@@ -53,6 +54,28 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
             Route::post('/doctorStoreCertificate', [DoctorController::class, 'doctorStoreCertificate'])->name('doctor-store-certificate');
             Route::get('/doctorDeleteCertificate/{id}', [DoctorController::class, 'doctorDeleteCertificate'])->name('doctor-delete-certificate');
+        });
+    });
+
+    Route::prefix('hospital')->name('hospital.')->group(function () {
+
+        Route::group(['middleware' => 'auth:hospital'], function () {
+            Route::get('/dashboard/{active?}', [HospitalController::class, 'dashboard'])->name('hospital-dashboard');
+            Route::post('/hospitalUpdateProfile/{id}', [HospitalController::class, 'hospitalUpdateProfile'])->name('hospital-update-profile');
+            Route::post('/updateHospitalWeekPlan/{id}', [HospitalController::class, 'updateHospitalWeekPlan'])->name('update-hospital-week-plan');
+            Route::post('/hospitalStoreImages', [HospitalController::class, 'hospitalStoreImages'])->name('hospital-store-images');
+            Route::get('/hospitalDeleteImage/{id}', [HospitalController::class, 'hospitalDeleteImage'])->name('hospital-delete-image');
+        });
+    });
+
+    Route::prefix('radiologyCenter')->name('radiology_center.')->group(function () {
+
+        Route::group(['middleware' => 'auth:radiology_center'], function () {
+            Route::get('/dashboard/{active?}', [RadiologyController::class, 'dashboard'])->name('radiology-dashboard');
+            Route::post('/radiologyUpdateProfile/{id}', [RadiologyController::class, 'radiologyUpdateProfile'])->name('radiology-update-profile');
+            Route::post('/updateRadiologyWeekPlan/{id}', [RadiologyController::class, 'updateRadiologyWeekPlan'])->name('update-radiology-week-plan');
+            Route::post('/radiologyStoreImages', [RadiologyController::class, 'radiologyStoreImages'])->name('radiology-store-images');
+            Route::get('/radiologyDeleteImage/{id}', [RadiologyController::class, 'radiologyDeleteImage'])->name('radiology-delete-image');
         });
     });
 

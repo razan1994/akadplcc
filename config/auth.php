@@ -52,6 +52,38 @@ return [
             'driver' => 'session',
             'provider' => 'doctors',
         ],
+        'hospital' => [
+            'driver' => 'session',
+            'provider' => 'hospitals',
+        ],
+        'radiology_center' => [
+            'driver' => 'session',
+            'provider' => 'radiology_centers',
+        ],
+        'medical_center' => [
+            'driver' => 'session',
+            'provider' => 'medical_centers',
+        ],
+        'lab' => [
+            'driver' => 'session',
+            'provider' => 'labs',
+        ],
+        'pharmacy' => [
+            'driver' => 'session',
+            'provider' => 'pharmacies',
+        ],
+        'seo_admin' => [
+            'driver' => 'session',
+            'provider' => 'seo_admins',
+        ],
+        'gym' => [
+            'driver' => 'session',
+            'provider' => 'gyms',
+        ],
+        'life_coach' => [
+            'driver' => 'session',
+            'provider' => 'life_coutches',
+        ]
     ],
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
     /*
@@ -88,6 +120,38 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
         ],
+        'hospitals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Hospital::class,
+        ],
+        'radiology_centers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\RadiologyCenter::class,
+        ],
+        'medical_centers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MedicalCenter::class,
+        ],
+        'labs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Lab::class,
+        ],
+        'pharmacies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pharmacy::class,
+        ],
+        'seo_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SeoAdmin::class,
+        ],
+        'gyms' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Gym::class,
+        ],
+        'life_coutches' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\LifeCoutch::class,
+        ]
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
         // 'users' => [
         //     'driver' => 'database',
@@ -135,6 +199,54 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'hospitals' => [
+            'provider' => 'hospitals',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'radiology_centers' => [
+            'provider' => 'radiology_centers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'medical_centers' => [
+            'provider' => 'medical_centers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'labs' => [
+            'provider' => 'labs',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'pharmacies' => [
+            'provider' => 'pharmacies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'seo_admins' => [
+            'provider' => 'seo_admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'gyms' => [
+            'provider' => 'gyms',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'life_coutches' => [
+            'provider' => 'life_coutches',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
     /*

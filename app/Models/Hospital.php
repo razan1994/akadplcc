@@ -4,8 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
-class Hospital extends Model
+class Hospital extends Authenticatable
 {
     use HasFactory;
 
@@ -74,6 +79,18 @@ class Hospital extends Model
     public function region()
     {
         return $this->belongsTo(PublicRegion::class, 'region_id');
+    }
+
+    // Relation With Hospital Week Plan Table
+    // Created By : Mohammed Salah
+    public function weekPlan(){
+        return $this->hasOne(HospitalWeekPlan::class,'hospital_id');
+    }
+
+    // Relation With Hospital Hospital Gallery Table
+    // Created By : Mohammed Salah
+    public function images(){
+        return $this->hasMany(HospitalGallery::class,'hospital_id');
     }
 
     // ====================================================================================

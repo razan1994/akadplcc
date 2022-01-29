@@ -8,4 +8,36 @@ use Illuminate\Database\Eloquent\Model;
 class HospitalWeekPlan extends Model
 {
     use HasFactory;
+
+    protected $table = 'hospital_week_plans';
+    protected $fillable = [
+        'hospital_id',
+        'active_days',
+        'saterday_from',
+        'saterday_to',
+        'every_saterday',
+        'sunday_from',
+        'sunday_to',
+        'every_sunday',
+        'monday_from',
+        'monday_to',
+        'every_monday',
+        'tuseday_from',
+        'tuseday_to',
+        'every_tuseday',
+        'wednsday_from',
+        'wednsday_to',
+        'every_wednsday',
+        'thursday_from',
+        'thursday_to',
+        'every_thursday',
+        'friday_from',
+        'friday_to',
+        'every_friday',
+    ];
+
+
+    public function hospital(){
+        return $this->belongsTo(Hospital::class,'hospital_id');
+    }
 }

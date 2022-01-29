@@ -17,9 +17,9 @@ class CheckAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return redirect()->route('welcomeAuth');
-        }
+        // if (Auth::check()) {
+        //     return redirect()->route('welcomeAuth');
+        // }
         return $next($request);
     }
 }

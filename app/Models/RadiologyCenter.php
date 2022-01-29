@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
-class RadiologyCenter extends Model
+class RadiologyCenter extends Authenticatable
 {
     use HasFactory;
 
@@ -73,6 +77,18 @@ class RadiologyCenter extends Model
     public function region()
     {
         return $this->belongsTo(PublicRegion::class, 'region_id');
+    }
+
+    // Relation With Radiology Center Week Plan Table
+    // Created By : Mohammed Salah
+    public function weekPlan(){
+        return $this->hasOne(RadiologyCenterWeekPlan::class,'radiology_center_id');
+    }
+
+    // Relation With Radiology Center Gallery Table
+    // Created By : Mohammed Salah
+    public function images(){
+        return $this->hasMany(RadiologyCenterGallery::class,'radiology_center_id');
     }
 
     // ====================================================================================

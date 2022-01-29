@@ -28,6 +28,18 @@ class FrontEndController extends Controller
     use UploadImageTrait;
     use SharedMethod;
 
+    // [
+    // 'doctor',
+    // 'patient',
+    // 'hospital',
+    // 'radiology_center',
+    // 'medical_center',
+    // 'lab',
+    // 'pharmacy',
+    // 'seo_admin',
+    // 'gym',
+    // 'life_coach'
+    // ]
     function frontLogin(Request $request){
                 // Validate form data
                 $this->validate($request, [
@@ -47,6 +59,14 @@ class FrontEndController extends Controller
                         $auth = Auth::guard('doctor')->user();
                         return redirect()->route('doctor.doctor-dashboard');
 
+                        // Attempt to log the hospital in
+                    } else if (Auth::guard('hospital')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('hospital')->user();
+                        return redirect()->route('hospital.hospital-dashboard');
+
+                    } else if (Auth::guard('radiology_center')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('radiology_center')->user();
+                        return redirect()->route('radiology_center.radiology-dashboard');
                     }
                 } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
                     // Attempt to log the patient in
@@ -57,15 +77,22 @@ class FrontEndController extends Controller
                     } else if (Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('doctor')->user();
                         return redirect()->route('doctor.doctor-dashboard');
+
+                    } else if (Auth::guard('hospital')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('hospital')->user();
+                        return redirect()->route('hospital.hospital-dashboard');
+
+                    } else if (Auth::guard('radiology_center')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('radiology_center')->user();
+                        return redirect()->route('radiology_center.radiology-dashboard');
                     }
                 }
 
-                return 'Errors';
                 // if unsuccessful
-                // $errors = [
-                //     'username' => 'email or phone or password is incorrect',
-                // ];
-                // return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
+                $errors = [
+                    'username' => 'email or phone or password is incorrect',
+                ];
+                return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
     }
 
     public function frontLogout(Request $request)
@@ -175,3 +202,8 @@ class FrontEndController extends Controller
     }
 
 }
+
+
+
+
+
