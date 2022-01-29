@@ -67,6 +67,10 @@ class FrontEndController extends Controller
                     } else if (Auth::guard('radiology_center')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('radiology_center')->user();
                         return redirect()->route('radiology_center.radiology-dashboard');
+
+                    } else if (Auth::guard('medical_center')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('medical_center')->user();
+                        return redirect()->route('medical_center.medical-dashboard');
                     }
                 } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
                     // Attempt to log the patient in
@@ -85,6 +89,10 @@ class FrontEndController extends Controller
                     } else if (Auth::guard('radiology_center')->attempt(['email' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('radiology_center')->user();
                         return redirect()->route('radiology_center.radiology-dashboard');
+
+                    } else if (Auth::guard('medical_center')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('medical_center')->user();
+                        return redirect()->route('medical_center.medical-dashboard');
                     }
                 }
 

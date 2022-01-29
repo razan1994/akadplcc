@@ -41,16 +41,16 @@
                                             <img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround" alt="user">
                                         @endif
 									</div>
-									<a href="{{ route('radiology_center.radiology-dashboard') }}" class="text-dark"><h4 class="mt-3 mb-0 font-weight-semibold">{{ $auth->name_en }}</h4></a>
+									<a href="{{ route('medical_center.medical-dashboard') }}" class="text-dark"><h4 class="mt-3 mb-0 font-weight-semibold">{{ $auth->name_en }}</h4></a>
 								</div>
 							</div>
 							<aside class="app-sidebar doc-sidebar my-dash">
 								<div class="app-sidebar__user clearfix">
 									<ul class="side-menu">
-										<li data-toggle="tab" href="#profiletab" @if(isset($active))@if($active == "radiologyUpdateProfile" || $active == null) class="active" @endif @else class="active" @endif style="cursor: pointer">
+										<li data-toggle="tab" href="#profiletab" @if(isset($active))@if($active == "medicalUpdateProfile" || $active == null) class="active" @endif @else class="active" @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Edit Profile</span></a>
 										</li>
-										<li data-toggle="tab" href="#weekPlantab" @if(isset($active))@if($active == "radiologyWeekPlan") class="active" @endif @endif style="cursor: pointer">
+										<li data-toggle="tab" href="#weekPlantab" @if(isset($active))@if($active == "medicalWeekPlan") class="active" @endif @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Week Plan</span></a>
 										</li>
                                         <li data-toggle="tab" href="#gallery" @if(isset($active))@if($active == "gallery") class="active" @endif @endif style="cursor: pointer">
@@ -65,13 +65,13 @@
 						</div>
 					</div>
                     <div class="tab-content col-xl-9 col-lg-12 col-md-12">
-                        <div id="profiletab" class="tab-pane fade @if(isset($active))@if($active == "radiologyUpdateProfile" || $active == null) active in @endif @else active in @endif">
+                        <div id="profiletab" class="tab-pane fade @if(isset($active))@if($active == "medicalUpdateProfile" || $active == null) active in @endif @else active in @endif">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
                                         <h3 class="card-title">Edit Profile</h3>
                                     </div>
-                                    <form action="{{ route('radiology_center.radiology-update-profile',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
+                                    <form action="{{ route('medical_center.medical-update-profile',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <input type="hidden" name="" id="region_id_old_value" value="{{ $auth->region_id }}">
                                         <div class="card-body">
@@ -79,13 +79,13 @@
                                                 <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name AR <span class="text-danger">* @error('name_ar'){{ $message }}@enderror</span></label>
-                                                        <input type="text" name="name_ar" class="form-control" placeholder="radiology Name In Arabic" value="{{ $auth->name_ar }}">
+                                                        <input type="text" name="name_ar" class="form-control" placeholder="medical Name In Arabic" value="{{ $auth->name_ar }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name EN <span class="text-danger">* @error('name_en'){{ $message }}@enderror</span></label>
-                                                        <input type="text" name="name_en" class="form-control" placeholder="radiology Name In English" value="{{ $auth->name_en }}">
+                                                        <input type="text" name="name_en" class="form-control" placeholder="medical Name In English" value="{{ $auth->name_en }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
@@ -176,13 +176,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="weekPlantab" class="tab-pane fade @if(isset($active))@if($active == "radiologyWeekPlan") active in @endif @endif">
+                        <div id="weekPlantab" class="tab-pane fade @if(isset($active))@if($active == "medicalWeekPlan") active in @endif @endif">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
                                         <h3 class="card-title">Week Plan</h3>
                                     </div>
-                                    <form action="{{ route('radiology_center.update-radiology-week-plan',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
+                                    <form action="{{ route('medical_center.update-medical-week-plan',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <div class="card-body">
                                             <div class="row">
@@ -579,7 +579,7 @@
                                     <div class="card-header">
                                         <h3 class="card-title">Gallery</h3>
                                     </div>
-                                    <form action="{{ route('radiology_center.radiology-store-images') }}" method="POST" enctype="multipart/form-data" id="createForm">
+                                    <form action="{{ route('medical_center.medical-store-images') }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <div class="card-body">
                                             <div class="row">
@@ -599,7 +599,7 @@
                                                         @if(isset($image->image) && file_exists($image->image))
                                                             <div class="col-md-4" style="height: 250px;padding:2%">
                                                                 <img src="{{ asset($image->image) }}" style="width: 100%;height: 90%;" alt="">
-                                                                    <a href="{{ route('radiology_center.radiology-delete-image',$image->id) }}" class="btn btn-danger btn-md" style="width: 100%"><i class="fa fa-trash"></i></a>
+                                                                    <a href="{{ route('medical_center.medical-delete-image',$image->id) }}" class="btn btn-danger btn-md" style="width: 100%"><i class="fa fa-trash"></i></a>
                                                             </div>
                                                         @endif
                                                     @endforeach

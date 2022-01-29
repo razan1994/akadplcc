@@ -79,6 +79,19 @@ class MedicalCenter extends Authenticatable
         return $this->belongsTo(PublicRegion::class, 'region_id');
     }
 
+    // Relation With Radiology Center Week Plan Table
+    // Created By : Mohammed Salah
+    public function weekPlan(){
+        return $this->hasOne(MedicalCenterWeekPlan::class,'medical_center_id');
+    }
+
+    // Relation With Radiology Center Gallery Table
+    // Created By : Mohammed Salah
+    public function images(){
+        return $this->hasMany(MedicalCenterGallery::class,'medical_center_id');
+    }
+
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

@@ -597,7 +597,7 @@
                                                 <div class="col-md-12 row">
                                                     @foreach ($auth->images as $image)
                                                         @if(isset($image->image) && file_exists($image->image))
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-4" style="height: 250px;padding:2%">
                                                                 <img src="{{ asset($image->image) }}" style="width: 100%;height: 90%;" alt="">
                                                                     <a href="{{ route('hospital.hospital-delete-image',$image->id) }}" class="btn btn-danger btn-md" style="width: 100%"><i class="fa fa-trash"></i></a>
                                                             </div>

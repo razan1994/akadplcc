@@ -38,6 +38,6 @@ class RadiologyCenterWeekPlan extends Model
 
 
     public function radiology(){
-        return $this->belongsTo(Hospital::class,'radiology_center_id');
+        return $this->belongsTo(RadiologyCenter::class,'radiology_center_id');
     }
 }

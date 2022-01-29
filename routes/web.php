@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\Doctor\DoctorController;
 use App\Http\Controllers\Frontend\FrontEndController;
 use App\Http\Controllers\Frontend\Hospital\HospitalController;
+use App\Http\Controllers\Frontend\Medical\MedicalController;
 use App\Http\Controllers\Frontend\Radiology\RadiologyController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -76,6 +77,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('/updateRadiologyWeekPlan/{id}', [RadiologyController::class, 'updateRadiologyWeekPlan'])->name('update-radiology-week-plan');
             Route::post('/radiologyStoreImages', [RadiologyController::class, 'radiologyStoreImages'])->name('radiology-store-images');
             Route::get('/radiologyDeleteImage/{id}', [RadiologyController::class, 'radiologyDeleteImage'])->name('radiology-delete-image');
+        });
+    });
+
+    Route::prefix('medicalCenter')->name('medical_center.')->group(function () {
+
+        Route::group(['middleware' => 'auth:medical_center'], function () {
+            Route::get('/dashboard/{active?}', [MedicalController::class, 'dashboard'])->name('medical-dashboard');
+            Route::post('/medicalUpdateProfile/{id}', [MedicalController::class, 'medicalUpdateProfile'])->name('medical-update-profile');
+            Route::post('/updateMedicalWeekPlan/{id}', [MedicalController::class, 'updateMedicalWeekPlan'])->name('update-medical-week-plan');
+            Route::post('/medicalStoreImages', [MedicalController::class, 'medicalStoreImages'])->name('medical-store-images');
+            Route::get('/medicalDeleteImage/{id}', [MedicalController::class, 'medicalDeleteImage'])->name('medical-delete-image');
         });
     });
 
