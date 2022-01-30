@@ -80,8 +80,8 @@ class DoctorController extends Controller
             'address_ar'=>$request->address_ar,
             'address_en'=>$request->address_en,
             'speciality_id'=>$request->speciality_id,
-            'alias_name_en'=>str_replace(' ','',$request->name_en),
-            'alias_name_ar'=>str_replace(' ','',$request->name_en),
+            'alias_name_en'=>str_replace(' ','-',$request->name_en),
+            'alias_name_ar'=>str_replace(' ','-',$request->name_en),
             'user_description_en'=>$request->overview_en,
             'user_description_ar'=>$request->overview_en,
             'gender'=>$request->gender,
@@ -306,5 +306,5 @@ class DoctorController extends Controller
     }
 
 
-    
+
 }
