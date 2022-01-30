@@ -680,14 +680,13 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>Categories</h2>
-                <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="row">
                 <div class="col-xl-2 col-sm-6">
                     <div class="card bg-card-light bg-primary-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a></a>
                                 <div class="cat-icon bg-warning-transparent brround text-warning">
                                     <i class="fa fa-tasks"></i>
                                 </div>
@@ -704,7 +703,7 @@
                     <div class="card bg-card-light bg-secondary-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'doctors') }}"></a>
                                 <div class="cat-icon bg-secondary-transparent brround text-secondary">
                                     <i class="fa fa-user-md"></i>
                                 </div>
@@ -721,7 +720,7 @@
                     <div class="card bg-card-light bg-primary-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'hospitals') }}"></a>
                                 <div class="cat-icon bg-primary-transparent brround text-primary">
                                     <i class="fa fa-hospital-o"></i>
                                 </div>
@@ -738,7 +737,7 @@
                     <div class="card bg-card-light bg-info-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'medical-centers') }}"></a>
                                 <div class="cat-icon bg-info-transparent brround text-info">
                                     <i class="fa fa-stethoscope"></i>
                                 </div>
@@ -754,7 +753,7 @@
                     <div class="card bg-card-light bg-success-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'radiology-centers') }}"></a>
                                 <div class="cat-icon bg-success-transparent brround text-success">
                                     <i class="fa fa-building-o"></i>
                                 </div>
@@ -770,7 +769,7 @@
                     <div class="card bg-card-light bg-danger-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'pharmacies') }}"></a>
                                 <div class="cat-icon bg-danger-transparent brround text-danger">
                                     <i class="fa fa-medkit"></i>
                                 </div>
@@ -786,7 +785,7 @@
                     <div class="card bg-card-light bg-warning-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'labs') }}"></a>
                                 <div class="cat-icon bg-primary-transparent brround text-primary">
                                     <i class="fa fa-flask"></i>
                                 </div>
@@ -802,7 +801,7 @@
                     <div class="card bg-card-light bg-success-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'fitness-centers') }}"></a>
                                 <div class="cat-icon bg-danger-transparent brround text-danger">
                                     <i class="fa fa-building-o"></i>
                                 </div>
@@ -818,7 +817,7 @@
                     <div class="card bg-card-light bg-warning-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'life-coaches') }}"></a>
                                 <div class="cat-icon bg-info-transparent brround text-info">
                                     <i class="fa fa-users"></i>
                                 </div>
@@ -834,7 +833,7 @@
                     <div class="card bg-card-light bg-success-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
+                                <a href="{{ route('users-list', 'insurances') }}"></a>
                                 <div class="cat-icon bg-success-transparent brround text-success">
                                     <i class="fa fa-building-o"></i>
                                 </div>
@@ -1359,7 +1358,6 @@
             <div class="container">
                 <div class="section-title center-block text-center">
                     <h2>Find your doctor by speciality</h2>
-                    <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
                 </div>
                 <div class="items-gallery">
                     <div class="items-blog-tab text-center">
@@ -1470,7 +1468,6 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>Top Rated List</h2>
-                <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="items-gallery">
                 <div class="items-blog-tab text-center">
@@ -2670,7 +2667,6 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>Latest Articles</h2>
-                <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-xl-4">
@@ -2758,8 +2754,7 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2 class="text-white position-relative">Testimonials</h2>
-                <p class="text-white position-relative">Excepteur sint occaecat cupidatat proident deserunt mollit
-                    laborum</p>
+
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -2932,7 +2927,6 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>Our Clinets</h2>
-                <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div id="small-categories" class="owl-carousel client-carousel">
                 <div class="item">
@@ -2985,7 +2979,6 @@
         <div class="container">
             <div class="section-title center-block text-center">
                 <h2>Best Rated Locations</h2>
-                <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12 col-xl-6">
