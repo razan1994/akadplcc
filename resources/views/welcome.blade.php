@@ -12,8 +12,7 @@
                 <div class="container">
                     <div class="text-center text-white">
                         <h1 class="mb-1">Find the Nearest Medical Facility</h1>
-                        <p>It is a long established fact that a reader will be distracted by the when looking at its
-                            layout.</p>
+
                     </div>
                     <div class="row">
                         <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
