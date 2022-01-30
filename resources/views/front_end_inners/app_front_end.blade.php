@@ -702,16 +702,6 @@
                                 <a href="#">Categories <span class="fe fe-chevron-down"></span></a>
                                 <ul class="sub-menu">
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list', 'hospitals') }}">Hospitals</a>
-                                        {{-- <ul class="sub-menu">
-                                            <li><a href="doctors-list.html">Doctors List</a></li>
-                                            <li><a href="doctors-list-right.html">Doctors List Right</a></li>
-                                            <li><a href="doctor-details.html">Doctor Details</a></li>
-                                            <li><a href="doctor-details2.html">Doctor Details 2</a></li>
-                                            <li><a href="doctor-details-right.html">Doctor Details Right</a></li>
-                                        </ul> --}}
-                                    </li>
-                                    <li aria-haspopup="true">
                                         <a href="{{ route('users-list', 'doctors') }}">Doctors</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="hospitals-list.html">Hospital List</a></li>
@@ -719,6 +709,16 @@
                                             <li><a href="hospital-details.html">Hospital Details</a></li>
                                             <li><a href="hospital-details-02.html">Hospital Details 02</a></li>
                                             <li><a href="hospital-details-right.html">Hospital Details Right</a></li>
+                                        </ul> --}}
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="{{ route('users-list', 'hospitals') }}">Hospitals</a>
+                                        {{-- <ul class="sub-menu">
+                                            <li><a href="doctors-list.html">Doctors List</a></li>
+                                            <li><a href="doctors-list-right.html">Doctors List Right</a></li>
+                                            <li><a href="doctor-details.html">Doctor Details</a></li>
+                                            <li><a href="doctor-details2.html">Doctor Details 2</a></li>
+                                            <li><a href="doctor-details-right.html">Doctor Details Right</a></li>
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
@@ -757,7 +757,7 @@
                                         <a href="{{ route('users-list', 'pharmacies') }}">Pharmacies</a>
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list', 'fitness-centers') }}">Gyms</a>
+                                        <a href="{{ route('users-list', 'fitness-centers') }}">Healthy Gyms</a>
                                     </li>
                                     <li aria-haspopup="true">
                                         <a href="{{ route('users-list', 'life-coaches') }}">Life Coaches</a>

@@ -702,23 +702,6 @@
                     </div>
                 </div>
                 <div class="col-xl-2 col-sm-6">
-                    <div class="card bg-card-light bg-primary-card bg-white">
-                        <div class="card-body">
-                            <div class="cat-item text-center">
-                                <a href="page-list.html"></a>
-                                <div class="cat-icon bg-primary-transparent brround text-primary">
-                                    <i class="fa fa-hospital-o"></i>
-                                </div>
-                                <div class="cat-desc">
-                                    <h5 class="mb-2">Hospitals</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
-                                        {{ isset($public_hospitals_count) ? $public_hospitals_count : 0 }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-sm-6">
                     <div class="card bg-card-light bg-secondary-card bg-white">
                         <div class="card-body">
                             <div class="cat-item text-center">
@@ -730,6 +713,23 @@
                                     <h5 class="mb-2">Doctors</h5>
                                     <p class="badge badge-pill badge-light font-weight-semibold mb-0">
                                         {{ isset($public_doctors_count) ? $public_doctors_count : 0 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-card-light bg-primary-card bg-white">
+                        <div class="card-body">
+                            <div class="cat-item text-center">
+                                <a href="page-list.html"></a>
+                                <div class="cat-icon bg-primary-transparent brround text-primary">
+                                    <i class="fa fa-hospital-o"></i>
+                                </div>
+                                <div class="cat-desc">
+                                    <h5 class="mb-2">Hospitals</h5>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_hospitals_count) ? $public_hospitals_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -808,7 +808,7 @@
                                     <i class="fa fa-building-o"></i>
                                 </div>
                                 <div class="cat-desc">
-                                    <h6 class="mb-2">Gyms</h6>
+                                    <h6 class="mb-2">Healthy Gyms</h6>
                                     <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_gyms_count) ? $public_gyms_count : 0 }}</p>
                                 </div>
                             </div>
