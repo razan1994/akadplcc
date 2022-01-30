@@ -13,6 +13,7 @@ use App\Models\MedicalCenter;
 use App\Models\Pharmacy;
 use App\Models\ProdSzeClrRelation;
 use App\Models\Product;
+use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
@@ -71,6 +72,10 @@ class FrontEndController extends Controller
                     } else if (Auth::guard('medical_center')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('medical_center')->user();
                         return redirect()->route('medical_center.medical-dashboard');
+
+                    } else if (Auth::guard('lab')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('lab')->user();
+                        return redirect()->route('lab.lab-dashboard');
                     }
                 } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
                     // Attempt to log the patient in
@@ -93,6 +98,10 @@ class FrontEndController extends Controller
                     } else if (Auth::guard('medical_center')->attempt(['email' => $request->email, 'password' => $request->password])) {
                         $auth = Auth::guard('medical_center')->user();
                         return redirect()->route('medical_center.medical-dashboard');
+
+                    } else if (Auth::guard('lab')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        $auth = Auth::guard('lab')->user();
+                        return redirect()->route('lab.lab-dashboard');
                     }
                 }
 
@@ -153,8 +162,22 @@ class FrontEndController extends Controller
 
             //     Cookie::queue('view_doctor' . $user->id, 'view_doctor' . $user->id, 60);
             // }
+            $languages = [];
+            if(isset($user->languages)){
+                foreach(explode(',',$user->languages) as $lang){
+                    $public_lang = PublicLanguage::find($lang);
+                    if($public_lang){
+                        array_push($languages,$public_lang->name_en);
+                    }
+                }
+            }
 
-            return view('front_end_inners.user-details',compact('user','user_type'));
+            if($user_type == 'doctors'){
+                return view('front_end_inners.user-details',compact('user','user_type','languages'));
+            }
+            else{
+                return view('front_end_inners.institution_details',compact('user','user_type'));
+            }
         }else{
             return redirect()->back()->with('danger','Not Found');
         }

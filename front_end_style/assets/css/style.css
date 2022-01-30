@@ -10638,6 +10638,7 @@ License        :   Licensed under ThemeForest License
             padding: 1.25rem 0;
             margin: 0;
             float: left;
+            width: 15%;
         }
         .desktoplogo-1,
         .sticky-wrapper.is-sticky .desktoplogo {
@@ -19603,6 +19604,7 @@ License        :   Licensed under ThemeForest License
     
     .header-style1 .desktoplogo {
         padding: 0.35rem 0;
+        width: 15%;
     }
     
     .header-style1 .horizontalMenu>.horizontalMenu-list>li {
@@ -19616,6 +19618,7 @@ License        :   Licensed under ThemeForest License
     @media (min-width: 992px) {
         .header-style1 .sticky-wrapper.is-sticky .desktoplogo-1 {
             padding: 0.75rem 0;
+            width: 15%;
         }
         .header-style1 .sticky-wrapper.is-sticky .horizontal-main:after {
             display: none;

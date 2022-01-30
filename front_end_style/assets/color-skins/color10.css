@@ -1,6 +1,11 @@
 /*Color variables*/
+
+
 /*white variables*/
+
+
 /*black variables*/
+
 .horizontalMenu>.horizontalMenu-list>li>ul.sub-menu>li>a.active,
 .horizontalMenu>.horizontalMenu-list>li>ul.sub-menu>li>ul.sub-menu>li>a.active {
     color: #1c46c5;
@@ -1147,7 +1152,6 @@ a.text-secondary:hover {
         background-color: #fff;
         color: #1c46c5;
     }
-
     .sticky-wrapper.is-sticky .horizontal-main {
         box-shadow: 0 0 0 1px rgba(162, 169, 204, 0.12), 0 8px 16px 0 rgba(162, 169, 204, 0.24);
     }
@@ -1544,7 +1548,7 @@ button#ihavecookiesBtn {
 }
 
 .header-search-logo .header-brand-img {
-    background: url(../images/brand/logos/logo-10.png);
+    background: url(../images/brand/logos/head.png);
     display: block;
     width: 150px;
     height: 40px;
@@ -1571,7 +1575,7 @@ button#ihavecookiesBtn {
 
 @media only screen and (max-width: 991px) {
     .smllogo.mobile-logo {
-        background: url(../images/brand/logos/logo-10.png);
+        background: url(../images/brand/logos/head.png);
         width: 150px;
         height: 40px;
         background-repeat: no-repeat;
@@ -1579,7 +1583,6 @@ button#ihavecookiesBtn {
         text-align: center;
         margin-top: 8px !important;
     }
-
     .color-horizontalmenu .horizontalMenu>.horizontalMenu-list {
         background: linear-gradient(86deg, #42aaf3 0%, #1c46c5 100%);
     }
@@ -1590,5 +1593,6 @@ button#ihavecookiesBtn {
     color: #1c46c5;
     border-right: 2px solid #1c46c5;
 }
+
 
 /*# sourceMappingURL=color10.css.map */

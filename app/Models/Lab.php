@@ -78,6 +78,18 @@ class Lab extends Authenticatable
         return $this->belongsTo(PublicRegion::class, 'region_id');
     }
 
+    // Relation With Lab Week Plan Table
+    // Created By : Mohammed Salah
+    public function weekPlan(){
+        return $this->hasOne(LabWeekPlan::class,'lab_id');
+    }
+
+    // Relation With Lab Gallery Table
+    // Created By : Mohammed Salah
+    public function images(){
+        return $this->hasMany(LabGallery::class,'lab_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

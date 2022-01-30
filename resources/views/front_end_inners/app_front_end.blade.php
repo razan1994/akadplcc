@@ -52,7 +52,22 @@
 </head>
 
 <body>
-
+    <div>
+        @if (session()->has('success'))
+            <script>
+                swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
+                    button: "OK",
+                });
+            </script>
+        @endif
+        @if (session()->has('danger'))
+            <script>
+                swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
+                    button: "Close",
+                });
+            </script>
+        @endif
+    </div>
     <!--Loader-->
     <div id="global-loader">
         <img alt="" class="loader-img" src="{{ asset('front_end_style/assets/images/loader.svg') }}">
@@ -538,7 +553,7 @@
                         <div class="top-bar-right">
                             <ul class="custom">
 
-                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check())
+                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check())
                                     <li>
                                         <a href="{{ route('front-logout') }}" class="text-dark" style="cursor: pointer;"><i class="icon icon-power"></i>
                                             <span>Logout</span></a>
@@ -594,11 +609,11 @@
             <div class="horizontal-main clearfix">
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
-                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}"
+                        <a href="index.html"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
                                 alt=""></a>
                     </div>
                     <div class="desktoplogo-1">
-                        <a href="index.html"><img src="{{ asset('front_end_style/assets/images/brand/logo1.png') }}"
+                        <a href="index.html"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
                                 alt=""></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">
