@@ -75,6 +75,12 @@
                                     <form action="{{ route('doctor.doctor-update-profile',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <input type="hidden" name="" id="region_id_old_value" value="{{ $auth->region_id }}">
+                                        <input type="hidden" name="" id="speciality_id_old_value" value="{{ $auth->speciality_id }}">
+                                        @if(old('sub_speciality_id') != null)
+                                            @foreach(old('sub_speciality_id') as $old)
+                                                <input type="hidden" class="old_sub_speciality_id" value="{{ $old }}">
+                                            @endforeach
+                                        @endif
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-12">
@@ -86,7 +92,21 @@
                                                                     <option value="{{ $speciality->id }}" @if($auth->speciality_id == $speciality->id) selected @endif>{{ $speciality->name_en }}</option>
                                                                 @endforeach
                                                         </select>
-
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Sub Specialities <span class="text-danger"> @error('sub_speciality_id'){{ $message }}@enderror</span></label>
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100 select2-show-search" name="sub_speciality_id[]" id="sub_speciality_id" data-placeholder="Select" multiple>
+                                                                <option>--Select--</option>
+                                                                @if(isset($auth->speciality))
+                                                                    @if(isset($auth->speciality->subSpecialities))
+                                                                        @foreach ($auth->speciality->subSpecialities as $subSpeciality)
+                                                                            <option value="{{ $subSpeciality->id }}">{{ $subSpeciality->name_en }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                @endif
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
@@ -728,6 +748,7 @@
 
             $(document).ready(function() {
                     setTimeout(() => {
+                        getSubSpecialities();
                         getRegions();
                     }, 500);
 
@@ -735,6 +756,11 @@
                 $(document.body).on("change","#country_id",function(){
                     // console.log('foooooooooooo');
                     getRegions();
+                });
+
+                $(document.body).on("change","#speciality_id",function(){
+                    // console.log('foooooooooooo');
+                    getSubSpecialities();
                 });
 
             });
@@ -798,6 +824,72 @@
                         });
                     }
                 });
+            }
+
+
+
+            function getSubSpecialities() {
+
+                var old_sub = $('.old_sub_speciality_id').map(function(){
+                    return $(this).val()
+                }).get();
+
+                // var formData = new FormData($('#createForm')[0]);
+                // $.ajax({
+                //     type: 'post',
+                //     url: "{{ route('frontGetRegions') }}",
+                //     data: formData,
+                //     processData: false,
+                //     contentType: false,
+                //     cache: false,
+                //     success: function(data) {
+                //         if (data.status == true) {
+                //             var selectRegions = '<option value="">Choose the region ... </option>';
+                //             var name ="Nothing Selected..";
+                //             for (var key in data.regions) {
+                //                 // skip loop if the property is from prototype
+                //                 if (!data.regions.hasOwnProperty(key)) continue;
+
+                //                 var obj = data.regions[key];
+                //                 // alert(obj.id);
+                //                 for (var prop in obj) {
+                //                     // skip loop if the property is from prototype
+                //                     if (!obj.hasOwnProperty(prop)) continue;
+
+                //                     // your code
+                //                     var region_id_old_value = $("#region_id_old_value").val();
+
+                //                     if (region_id_old_value) {
+                //                         if (obj.id == region_id_old_value) {
+                //                             name = obj.name_ar;
+                //                             selectRegions += '<option value="' + obj.id + '" selected>' + obj.name_ar + '</option>';
+                //                         } else {
+                //                             selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                //                                 '</option>';
+                //                         }
+                //                     } else {
+                //                         selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                //                             '</option>';
+                //                     }
+                //                     break;
+                //                 }
+                //             }
+                //             $('#region_id').html(selectRegions);
+
+                //             // $('.selectpicker').selectpicker('refresh');
+                //             // $selected_value = $("#region_id_div").find('.filter-option-inner-inner');
+                //             // // alert(name);
+                //             // $selected_value.text(name);
+                //         }
+
+                //     },
+                //     error: function(reject) {
+                //         var response = $.parseJSON(reject.responseText);
+                //         $.each(response.errors, function(key, val) {
+                //             $("#" + key + "_error").text(val[0]);
+                //         });
+                //     }
+                // });
             }
         </script>
 

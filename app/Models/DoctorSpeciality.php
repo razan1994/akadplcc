@@ -12,6 +12,7 @@ class DoctorSpeciality extends Model
     protected $table = 'doctor_specialities';
 
     protected $fillable = [
+        'id',
         'name_ar',
         'name_en',
         'updated_by',
@@ -40,7 +41,10 @@ class DoctorSpeciality extends Model
         return $this->doctors()->inRandomOrder()->take(12);
     }
 
-
+    // sub Specialities tAble Relation
+    public function subSpecialities(){
+        return $this->hasMany(SubSpeciality::class , 'speciality_id');
+    }
 
 
 

@@ -105,6 +105,12 @@ class Doctor extends Authenticatable
         return $this->hasMany(DoctorCertificate::class,'doctor_id');
     }
 
+
+    // Doctor Sub Speciality tAble Relation
+    public function DocotorSubSpecialities(){
+        return $this->hasMany(DoctorSubSpeciality::class , 'doctor_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================
