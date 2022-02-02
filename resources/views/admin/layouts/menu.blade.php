@@ -133,6 +133,12 @@
                     <ul class="collapse" id="job" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.news_blogs-index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Blogs </span>
+                                </a>
+                            </li>
+                            <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.about_us-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> About Us </span>

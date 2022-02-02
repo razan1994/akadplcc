@@ -1172,10 +1172,12 @@
                                                 tabindex="500">
                                                 @csrf
                                                 <div class="mail">
-                                                    <input type="email" name="email">
+                                                    <small class="text-danger">@error('email') {{ $message }} @enderror</small>
+                                                    <input type="text" name="email">
                                                     <label>Mail or Phone</label>
                                                 </div>
                                                 <div class="passwd">
+                                                    <small class="text-danger">@error('password') {{ $message }} @enderror</small>
                                                     <input type="password" name="password">
                                                     <label>Password</label>
                                                 </div>
@@ -1207,8 +1209,10 @@
                                                 </div>
                                             </div>
                                             <hr class="divider">
-                                            <form id="Register" class="card-body" tabindex="500">
+                                            <form action="{{ route('front-register') }}" method="POST" enctype="multipart/form-data" id="Register" class="card-body" tabindex="500">
+                                                @csrf
                                                 <div class="col-md-12 row">
+                                                    <small class="text-danger">@error('user_type') {{ $message }} @enderror</small>
                                                     <div class="col-md-6 row">
                                                         <label for="#patient"
                                                             style="cursor: pointer;font-size:12pt">Patient</label>
@@ -1222,21 +1226,41 @@
                                                             style="height:20px;margin-left: 28%;margin-top: -2%;">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12" style="padding: 0;top:10px;display:none" id="select_type_div">
+                                                    <small class="text-danger">@error('institution_type') {{ $message }} @enderror</small>
+                                                    <label for="#institution_type"
+                                                        style="cursor: pointer;">Institution Type</label>
+                                                    <select name="institution_type" class="form-control" id="institution_type">
+                                                        <option value="Doctor">Doctor</option>
+                                                        <option value="Hospital">Hospital</option>
+                                                        <option value="Medical Center">Medical Center</option>
+                                                        <option value="Radiology Center">Radiology Center</option>
+                                                        <option value="Lab">Lab</option>
+                                                    </select>
+                                                </div>
                                                 <hr style="font-weight: 900">
                                                 <div class="name">
+                                                    <small class="text-danger">@error('name') {{ $message }} @enderror</small>
                                                     <input type="text" name="name">
                                                     <label>Name</label>
                                                 </div>
                                                 <div class="mail">
-                                                    <input type="email" name="mail">
-                                                    <label>Mail or Username</label>
+                                                    <small class="text-danger">@error('email') {{ $message }} @enderror</small>
+                                                    <input type="text" name="email">
+                                                    <label>Mail or Phone</label>
                                                 </div>
                                                 <div class="passwd">
+                                                    <small class="text-danger">@error('password') {{ $message }} @enderror</small>
                                                     <input type="password" name="password">
                                                     <label>Password</label>
                                                 </div>
+                                                <div class="passwd">
+                                                    <input type="password" name="password_confirmation">
+                                                    <label>Confirm Password</label>
+                                                </div>
                                                 <div class="submit">
-                                                    <a class="btn btn-primary btn-block" href="#">Register</a>
+                                                    <button class="btn btn-primary btn-block"
+                                                        type="submit">Register</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -1322,11 +1346,10 @@
         $(document).ready(function() {
             $("#patient, #institution").change(function() {
                 if ($("#patient").is(":checked")) {
-                    alert('eeeeeeee');
+                    $("#select_type_div").css('display','none');
                 } else if ($("#institution").is(":checked")) {
-                    alert('bbbbbbbbb');
-                } else
-                    alert('NaaaaaaaaaaaaN');
+                    $("#select_type_div").css('display','');
+                }
             });
         });
     </script>

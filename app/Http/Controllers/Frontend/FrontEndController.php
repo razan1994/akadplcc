@@ -10,6 +10,7 @@ use App\Models\InsuranceCompany;
 use App\Models\Lab;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
+use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\ProdSzeClrRelation;
 use App\Models\Product;
@@ -17,12 +18,14 @@ use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
+use App\Models\SubSpeciality;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class FrontEndController extends Controller
 {
@@ -110,6 +113,102 @@ class FrontEndController extends Controller
                     'username' => 'email or phone or password is incorrect',
                 ];
                 return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
+    }
+
+
+
+
+    function frontRegister(Request $request){
+                // Validate form data
+                $this->validate($request, [
+                    'name' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar',
+                    'name' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en',
+                    'email' => 'required',
+                    'password' => 'required|confirmed|min:8',
+                    'user_type'=> 'required|numeric'
+                ]);
+
+                if(is_numeric($request->email)){
+                    $this->validate($request,[
+                        'name' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar',
+                        'name' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en',
+                        'email'=>'required|numeric|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone',
+                        'password' => 'required|confirmed|min:8',
+                        'user_type'=> 'required|numeric'
+                    ]);
+                    $email = null;
+                    $phone = $request->email;
+                }
+                else{
+                    $this->validate($request,[
+                        'name' => 'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar',
+                        'name' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en',
+                        'email'=>'required|email|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email',
+                        'password' => 'required|confirmed|min:8',
+                        'user_type'=> 'required|numeric'
+                    ]);
+                    $email = $request->email;
+                    $phone = null;
+                }
+
+
+                $created_data = [
+                    'name_ar' => $request->name,
+                    'name_en' => $request->name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'password' => Hash::make($request->password),
+                    'created_by' => 1,
+                    'alias_name_en'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_en),
+                    'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar)
+                ];
+
+                if($request->user_type == 1){
+                    $created_data['user_status'] = 2; // Active
+                    $user = Patient::create($created_data);
+
+                    Auth::guard('patient')->login($user);
+
+
+                } else {
+                    $created_data['user_status'] = 1; // Pendding
+
+                    $this->validate($request,[
+                        'institution_type'=>'required'
+                    ]);
+
+                    if($request->institution_type == "Doctor"){
+                        $user = Doctor::create($created_data);
+                        Auth::guard('doctor')->login($user);
+
+                        return redirect()->route('doctor.doctor-dashboard');
+                    }
+                    else if($request->institution_type == "Hospital"){
+                        $user = Hospital::create($created_data);
+                        Auth::guard('hospital')->login($user);
+
+                        return redirect()->route('hospital.hospital-dashboard');
+                    }
+                    else if($request->institution_type == "Radiology Center"){
+                        $user = RadiologyCenter::create($created_data);
+                        Auth::guard('radiology_center')->login($user);
+
+                        return redirect()->route('radiology_center.radiology-dashboard');
+                    }
+                    else if($request->institution_type == "Medical Center"){
+                        $user = MedicalCenter::create($created_data);
+                        Auth::guard('medical_center')->login($user);
+
+                        return redirect()->route('medical_center.medical-dashboard');
+                    }
+                    else if($request->institution_type == "Lab"){
+                        $user = MedicalCenter::create($created_data);
+                        Auth::guard('lab')->login($user);
+
+                        return redirect()->route('lab.lab-dashboard');
+                    }
+
+                }
     }
 
     public function frontLogout(Request $request)
@@ -229,6 +328,23 @@ class FrontEndController extends Controller
         return response()->json([
             'status' => true,
             'regions' => $regions,
+        ]);
+    }
+
+
+
+    function frontGetSpecialities(Request $request){
+        if (!isset($request->speciality_id)) {
+            $subs = "";
+        } else {
+            $subs = new SubSpeciality();
+            $subs = $subs->select("id", 'name_' . config('app.locale') . ' as name_ar');
+            $subs = $subs->where("speciality_id", "=", "{$request->speciality_id}");
+            $subs = $subs->get();
+        }
+        return response()->json([
+            'status' => true,
+            'subs' => $subs,
         ]);
     }
 

@@ -75,11 +75,17 @@
                                     <form action="{{ route('doctor.doctor-update-profile',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
                                         @csrf
                                         <input type="hidden" name="" id="region_id_old_value" value="{{ $auth->region_id }}">
-                                        <input type="hidden" name="" id="speciality_id_old_value" value="{{ $auth->speciality_id }}">
-                                        @if(old('sub_speciality_id') != null)
-                                            @foreach(old('sub_speciality_id') as $old)
-                                                <input type="hidden" class="old_sub_speciality_id" value="{{ $old }}">
-                                            @endforeach
+                                        <input type="hidden" name="speciality_id_old_value" id="speciality_id_old_value" value="{{ old('speciality_id') != null ? old('speciality_id') : (isset($auth->speciality_id) ? $auth->speciality_id : null) }}">
+                                        @if(isset($auth->DocotorSubSpecialities) && $auth->DocotorSubSpecialities->count() > 0)
+                                                @foreach ($auth->DocotorSubSpecialities as $subSpeciality)
+                                                    <input type="hidden" class="old_sub_speciality_id" value="{{ $subSpeciality->sub_speciality_id }}">
+                                                @endforeach
+                                        @else
+                                            @if(old('sub_speciality_id') != null)
+                                                @foreach(old('sub_speciality_id') as $old)
+                                                    <input type="hidden" class="old_sub_speciality_id" value="{{ $old }}">
+                                                @endforeach
+                                            @endif
                                         @endif
                                         <div class="card-body">
                                             <div class="row">
@@ -89,7 +95,12 @@
                                                         <select class="form-control select2-show-search border-bottom-0 w-100 select2-show-search" name="speciality_id" id="speciality_id" data-placeholder="Select">
                                                                 <option value="">--Select--</option>
                                                                 @foreach ($public_specialities as $speciality)
-                                                                    <option value="{{ $speciality->id }}" @if($auth->speciality_id == $speciality->id) selected @endif>{{ $speciality->name_en }}</option>
+                                                                    <option value="{{ $speciality->id }}"
+                                                                        @if(old('speciality_id') != null)
+                                                                            @if(old('speciality_id') == $speciality->id) selected @endif
+                                                                        @else
+                                                                            @if($auth->speciality_id == $speciality->id) selected @endif
+                                                                        @endif>{{ $speciality->name_en }}</option>
                                                                 @endforeach
                                                         </select>
                                                     </div>
@@ -830,66 +841,68 @@
 
             function getSubSpecialities() {
 
-                var old_sub = $('.old_sub_speciality_id').map(function(){
-                    return $(this).val()
+                var olds = $('.old_sub_speciality_id').map(function(){
+                    return $(this).val();
                 }).get();
 
-                // var formData = new FormData($('#createForm')[0]);
-                // $.ajax({
-                //     type: 'post',
-                //     url: "{{ route('frontGetRegions') }}",
-                //     data: formData,
-                //     processData: false,
-                //     contentType: false,
-                //     cache: false,
-                //     success: function(data) {
-                //         if (data.status == true) {
-                //             var selectRegions = '<option value="">Choose the region ... </option>';
-                //             var name ="Nothing Selected..";
-                //             for (var key in data.regions) {
-                //                 // skip loop if the property is from prototype
-                //                 if (!data.regions.hasOwnProperty(key)) continue;
+                old_sub = olds.map(Number);
 
-                //                 var obj = data.regions[key];
-                //                 // alert(obj.id);
-                //                 for (var prop in obj) {
-                //                     // skip loop if the property is from prototype
-                //                     if (!obj.hasOwnProperty(prop)) continue;
+                // console.log(old_sub);
+                var formData = new FormData($('#createForm')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('frontGetSpecialities') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(data) {
+                        if (data.status == true) {
+                            var selectSubs = '<option value="">Choose the sub speciality ... </option>';
+                            var name ="Nothing Selected..";
+                            for (var key in data.subs) {
+                                // skip loop if the property is from prototype
+                                if (!data.subs.hasOwnProperty(key)) continue;
 
-                //                     // your code
-                //                     var region_id_old_value = $("#region_id_old_value").val();
+                                var obj = data.subs[key];
+                                // alert(obj.id);
+                                for (var prop in obj) {
+                                    // skip loop if the property is from prototype
+                                    if (!obj.hasOwnProperty(prop)) continue;
 
-                //                     if (region_id_old_value) {
-                //                         if (obj.id == region_id_old_value) {
-                //                             name = obj.name_ar;
-                //                             selectRegions += '<option value="' + obj.id + '" selected>' + obj.name_ar + '</option>';
-                //                         } else {
-                //                             selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
-                //                                 '</option>';
-                //                         }
-                //                     } else {
-                //                         selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
-                //                             '</option>';
-                //                     }
-                //                     break;
-                //                 }
-                //             }
-                //             $('#region_id').html(selectRegions);
+                                    // your code
 
-                //             // $('.selectpicker').selectpicker('refresh');
-                //             // $selected_value = $("#region_id_div").find('.filter-option-inner-inner');
-                //             // // alert(name);
-                //             // $selected_value.text(name);
-                //         }
+                                    if (typeof old_sub !== 'undefined' && old_sub.length > 0) {
+                                        if ($.inArray(obj.id,old_sub) !== -1) {
+                                            name = obj.name_ar;
+                                            selectSubs += '<option value="' + obj.id + '" selected>' + obj.name_ar + '</option>';
+                                        } else {
+                                            selectSubs += '<option value="' + obj.id + '">' + obj.name_ar +
+                                                '</option>';
+                                        }
+                                    } else {
+                                        selectSubs += '<option value="' + obj.id + '">' + obj.name_ar +
+                                            '</option>';
+                                    }
+                                    break;
+                                }
+                            }
+                            $('#sub_speciality_id').html(selectSubs);
 
-                //     },
-                //     error: function(reject) {
-                //         var response = $.parseJSON(reject.responseText);
-                //         $.each(response.errors, function(key, val) {
-                //             $("#" + key + "_error").text(val[0]);
-                //         });
-                //     }
-                // });
+                            // $('.selectpicker').selectpicker('refresh');
+                            // $selected_value = $("#sub_speciality_id_div").find('.filter-option-inner-inner');
+                            // // alert(name);
+                            // $selected_value.text(name);
+                        }
+
+                    },
+                    error: function(reject) {
+                        var response = $.parseJSON(reject.responseText);
+                        $.each(response.errors, function(key, val) {
+                            $("#" + key + "_error").text(val[0]);
+                        });
+                    }
+                });
             }
         </script>
 

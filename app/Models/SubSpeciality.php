@@ -21,7 +21,6 @@ class SubSpeciality extends Model
     ];
 
 
-
     // Doctor tAble Relation
     public function speciality(){
         return $this->belongsTo(DoctorSpeciality::class , 'speciality_id');

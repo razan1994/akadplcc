@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\Doctor\DoctorController;
 use App\Http\Controllers\Frontend\FrontEndController;
@@ -40,67 +41,74 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 
+    Route::post('/frontRegister', [FrontEndController::class, 'frontRegister'])->name('front-register');
     Route::post('/frontLogin', [FrontEndController::class, 'frontLogin'])->name('front-login');
+
     Route::get('/frontLogout', [FrontEndController::class, 'frontLogout'])->name('front-logout');
+
     Route::post('/frontGetRegions', [FrontEndController::class, 'frontGetRegions'])->name('frontGetRegions');
+    Route::post('/frontGetSpecialities', [FrontEndController::class, 'frontGetSpecialities'])->name('frontGetSpecialities');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
 
+    Route::group(['middleware' => ['checkAuth','checkActiveInactiveUser']], function () {
 
-    Route::prefix('doctor')->name('doctor.')->group(function () {
+        Route::prefix('doctor')->name('doctor.')->group(function () {
 
-        Route::group(['middleware' => 'auth:doctor'], function () {
-            Route::get('/dashboard/{active?}', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
-            Route::post('/doctorUpdateProfile/{id}', [DoctorController::class, 'doctorUpdateProfile'])->name('doctor-update-profile');
-            Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
-            Route::post('/doctorStoreCertificate', [DoctorController::class, 'doctorStoreCertificate'])->name('doctor-store-certificate');
-            Route::get('/doctorDeleteCertificate/{id}', [DoctorController::class, 'doctorDeleteCertificate'])->name('doctor-delete-certificate');
+            Route::group(['middleware' => 'auth:doctor'], function () {
+                Route::get('/dashboard/{active?}', [DoctorController::class, 'dashboard'])->name('doctor-dashboard');
+                Route::post('/doctorUpdateProfile/{id}', [DoctorController::class, 'doctorUpdateProfile'])->name('doctor-update-profile');
+                Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
+                Route::post('/doctorStoreCertificate', [DoctorController::class, 'doctorStoreCertificate'])->name('doctor-store-certificate');
+                Route::get('/doctorDeleteCertificate/{id}', [DoctorController::class, 'doctorDeleteCertificate'])->name('doctor-delete-certificate');
+            });
         });
-    });
 
-    Route::prefix('hospital')->name('hospital.')->group(function () {
+        Route::prefix('hospital')->name('hospital.')->group(function () {
 
-        Route::group(['middleware' => 'auth:hospital'], function () {
-            Route::get('/dashboard/{active?}', [HospitalController::class, 'dashboard'])->name('hospital-dashboard');
-            Route::post('/hospitalUpdateProfile/{id}', [HospitalController::class, 'hospitalUpdateProfile'])->name('hospital-update-profile');
-            Route::post('/updateHospitalWeekPlan/{id}', [HospitalController::class, 'updateHospitalWeekPlan'])->name('update-hospital-week-plan');
-            Route::post('/hospitalStoreImages', [HospitalController::class, 'hospitalStoreImages'])->name('hospital-store-images');
-            Route::get('/hospitalDeleteImage/{id}', [HospitalController::class, 'hospitalDeleteImage'])->name('hospital-delete-image');
+            Route::group(['middleware' => 'auth:hospital'], function () {
+                Route::get('/dashboard/{active?}', [HospitalController::class, 'dashboard'])->name('hospital-dashboard');
+                Route::post('/hospitalUpdateProfile/{id}', [HospitalController::class, 'hospitalUpdateProfile'])->name('hospital-update-profile');
+                Route::post('/updateHospitalWeekPlan/{id}', [HospitalController::class, 'updateHospitalWeekPlan'])->name('update-hospital-week-plan');
+                Route::post('/hospitalStoreImages', [HospitalController::class, 'hospitalStoreImages'])->name('hospital-store-images');
+                Route::get('/hospitalDeleteImage/{id}', [HospitalController::class, 'hospitalDeleteImage'])->name('hospital-delete-image');
+            });
         });
-    });
 
-    Route::prefix('radiologyCenter')->name('radiology_center.')->group(function () {
+        Route::prefix('radiologyCenter')->name('radiology_center.')->group(function () {
 
-        Route::group(['middleware' => 'auth:radiology_center'], function () {
-            Route::get('/dashboard/{active?}', [RadiologyController::class, 'dashboard'])->name('radiology-dashboard');
-            Route::post('/radiologyUpdateProfile/{id}', [RadiologyController::class, 'radiologyUpdateProfile'])->name('radiology-update-profile');
-            Route::post('/updateRadiologyWeekPlan/{id}', [RadiologyController::class, 'updateRadiologyWeekPlan'])->name('update-radiology-week-plan');
-            Route::post('/radiologyStoreImages', [RadiologyController::class, 'radiologyStoreImages'])->name('radiology-store-images');
-            Route::get('/radiologyDeleteImage/{id}', [RadiologyController::class, 'radiologyDeleteImage'])->name('radiology-delete-image');
+            Route::group(['middleware' => 'auth:radiology_center'], function () {
+                Route::get('/dashboard/{active?}', [RadiologyController::class, 'dashboard'])->name('radiology-dashboard');
+                Route::post('/radiologyUpdateProfile/{id}', [RadiologyController::class, 'radiologyUpdateProfile'])->name('radiology-update-profile');
+                Route::post('/updateRadiologyWeekPlan/{id}', [RadiologyController::class, 'updateRadiologyWeekPlan'])->name('update-radiology-week-plan');
+                Route::post('/radiologyStoreImages', [RadiologyController::class, 'radiologyStoreImages'])->name('radiology-store-images');
+                Route::get('/radiologyDeleteImage/{id}', [RadiologyController::class, 'radiologyDeleteImage'])->name('radiology-delete-image');
+            });
         });
-    });
 
-    Route::prefix('medicalCenter')->name('medical_center.')->group(function () {
+        Route::prefix('medicalCenter')->name('medical_center.')->group(function () {
 
-        Route::group(['middleware' => 'auth:medical_center'], function () {
-            Route::get('/dashboard/{active?}', [MedicalController::class, 'dashboard'])->name('medical-dashboard');
-            Route::post('/medicalUpdateProfile/{id}', [MedicalController::class, 'medicalUpdateProfile'])->name('medical-update-profile');
-            Route::post('/updateMedicalWeekPlan/{id}', [MedicalController::class, 'updateMedicalWeekPlan'])->name('update-medical-week-plan');
-            Route::post('/medicalStoreImages', [MedicalController::class, 'medicalStoreImages'])->name('medical-store-images');
-            Route::get('/medicalDeleteImage/{id}', [MedicalController::class, 'medicalDeleteImage'])->name('medical-delete-image');
+            Route::group(['middleware' => 'auth:medical_center'], function () {
+                Route::get('/dashboard/{active?}', [MedicalController::class, 'dashboard'])->name('medical-dashboard');
+                Route::post('/medicalUpdateProfile/{id}', [MedicalController::class, 'medicalUpdateProfile'])->name('medical-update-profile');
+                Route::post('/updateMedicalWeekPlan/{id}', [MedicalController::class, 'updateMedicalWeekPlan'])->name('update-medical-week-plan');
+                Route::post('/medicalStoreImages', [MedicalController::class, 'medicalStoreImages'])->name('medical-store-images');
+                Route::get('/medicalDeleteImage/{id}', [MedicalController::class, 'medicalDeleteImage'])->name('medical-delete-image');
+            });
         });
-    });
 
-    Route::prefix('lab')->name('lab.')->group(function () {
+        Route::prefix('lab')->name('lab.')->group(function () {
 
-        Route::group(['middleware' => 'auth:lab'], function () {
-            Route::get('/dashboard/{active?}', [LabController::class, 'dashboard'])->name('lab-dashboard');
-            Route::post('/labUpdateProfile/{id}', [LabController::class, 'labUpdateProfile'])->name('lab-update-profile');
-            Route::post('/updateLabWeekPlan/{id}', [LabController::class, 'updateLabWeekPlan'])->name('update-lab-week-plan');
-            Route::post('/labStoreImages', [LabController::class, 'labStoreImages'])->name('lab-store-images');
-            Route::get('/labDeleteImage/{id}', [LabController::class, 'labDeleteImage'])->name('lab-delete-image');
+            Route::group(['middleware' => 'auth:lab'], function () {
+                Route::get('/dashboard/{active?}', [LabController::class, 'dashboard'])->name('lab-dashboard');
+                Route::post('/labUpdateProfile/{id}', [LabController::class, 'labUpdateProfile'])->name('lab-update-profile');
+                Route::post('/updateLabWeekPlan/{id}', [LabController::class, 'updateLabWeekPlan'])->name('update-lab-week-plan');
+                Route::post('/labStoreImages', [LabController::class, 'labStoreImages'])->name('lab-store-images');
+                Route::get('/labDeleteImage/{id}', [LabController::class, 'labDeleteImage'])->name('lab-delete-image');
+            });
         });
+
     });
 
 });
@@ -219,6 +227,23 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         });
 
 
+        // Blog Routes:
+        //Created By :Mohammed Salah
+        // ==============================================================================
+        Route::group(['prefix' => 'blogs'], function () {
+            Route::get('/index', [NewsBlogController::class, 'index'])->name('news_blogs-index');
+            Route::get('/create', [NewsBlogController::class, 'create'])->name('news_blogs-create');
+            Route::post('/store', [NewsBlogController::class, 'store'])->name('news_blogs-store');
+            Route::get('show/{id}', [NewsBlogController::class, 'show'])->name('news_blogs-show');
+            Route::get('edit/{id}', [NewsBlogController::class, 'edit'])->name('news_blogs-edit');
+            Route::post('update/{id}', [NewsBlogController::class, 'update'])->name('news_blogs-update');
+            Route::get('softDelete/{id}', [NewsBlogController::class, 'softDelete'])->name('news_blogs-softDelete');
+            Route::get('/showSoftDelete', [NewsBlogController::class, 'showSoftDelete'])->name('news_blogs-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [NewsBlogController::class, 'softDeleteRestore'])->name('news_blogs-softDeleteRestore');
+
+        });
+
+
     });
 });
 
@@ -226,6 +251,9 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 
 
 
-// Route::get('/index', function () {
-//     return view('front_end_inners.index');
-// });
+Route::get('/error-inactive', function () {
+    return view('errors.error_inactive');
+})->name('error-inactive');
+Route::get('/error-pendding', function () {
+    return view('errors.error_pendding');
+})->name('error-pendding');

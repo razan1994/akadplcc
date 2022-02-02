@@ -18,7 +18,10 @@ class CheckActiveInactiveUser
     public function handle(Request $request, Closure $next)
     {
         if (auth()->user()->user_status == 'Inactive') {
-
+            return redirect('error-inactive');
+        }
+        else if(auth()->user()->user_status == 'Pendding'){
+            return redirect('error-pendding');
         }
         return $next($request);
         // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']

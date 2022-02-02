@@ -8,8 +8,7 @@
             <div class="container">
                 <div class="text-center text-white">
                     <h1 class="mb-1">Find the Nearest Medical Facility</h1>
-                    <p>It is a long established fact that a reader will be distracted by the when looking at its layout.
-                    </p>
+
                 </div>
                 <div class="row">
                     <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
@@ -745,11 +744,14 @@
                                                                 <a class="text-dark" href="{{ route('user-details',[isset($user_type) ? $user_type : '--------',$user->alias_name_en]) }}">
                                                                     <h4 class="font-weight-bold mt-1 mb-1">{{ isset($user->name_en) ? $user->name_en : '--------' }}<i class="ion-checkmark-circled  text-success fs-14 ml-1"></i></h4>
                                                                 </a>
-                                                                <span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM, Ph.D</span>
+                                                                @if($user_type == 'doctors')
+                                                                    <span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted mr-2"></i>{{ isset($user->speciality_id) ? $user->speciality->name_en : 'Not Set' }}</span>
+                                                                @endif
                                                                 <div class="item-card9-desc mb-0 mt-2">
                                                                     <span class="mr-4"><i class="fa fa-map-marker text-muted mr-1"></i> {{ isset($user->country_id) ? $user->country->name_en : 'Not Set' }} / {{ isset($user->region_id) ? $user->region->name_en : 'Not Set' }}</span>
-                                                                    <span class="mr-4"><i class="fe fe-briefcase text-muted mr-1"></i>5 Years Experience</span>
-                                                                    <li><span><i class="fa fa-calendar-o mr-1 text-muted"></i>Mon - Fri </span></li>
+                                                                    @if(isset($user->weekPlan->active_days) && count(explode(',',$user->weekPlan->active_days)) > 0)
+                                                                    <li style="list-style-type: none;"><span><i class="fa fa-calendar-o mr-1 text-muted"></i>{{ explode(',',$user->weekPlan->active_days)[0] }} | {{ explode(',',$user->weekPlan->active_days)[count(explode(',',$user->weekPlan->active_days)) - 1] }}</span></li>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>

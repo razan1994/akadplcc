@@ -8,7 +8,9 @@ use App\Http\Requests\Frontend\Doctor\DoctorUpdateProfileFormRequest;
 use App\Http\Requests\Frontend\Doctor\DoctorUpdateWeekPlanFormRequest;
 use App\Models\Doctor;
 use App\Models\DoctorCertificate;
+use App\Models\DoctorSubSpeciality;
 use App\Models\DoctorWeekPlan;
+use App\Models\SubSpeciality;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -101,8 +103,17 @@ class DoctorController extends Controller
                 File::delete($user->profile_photo_path);
             }
 
-            DB::transaction(function () use ($created_data, $user) {
+            DB::transaction(function () use ($created_data, $user , $request) {
                 $user->update($created_data);
+                if(isset($request->sub_speciality_id)){
+                    DoctorSubSpeciality::where('doctor_id',$user->id)->delete();
+                    foreach($request->sub_speciality_id as $sub){
+                        DoctorSubSpeciality::create([
+                            'doctor_id'=>$user->id,
+                            'sub_speciality_id'=>$sub
+                        ]);
+                    }
+                }
             });
 
             return redirect()->route('doctor.doctor-dashboard','doctorUpdateProfile')->with('success','updated successfully');
