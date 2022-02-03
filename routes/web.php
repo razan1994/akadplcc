@@ -38,6 +38,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('details/{user_type}/{alias_name}', [FrontEndController::class, 'userDetails'])->name('user-details');
     Route::get('list/{user_type}', [FrontEndController::class, 'usersList'])->name('users-list');
 
+    Route::get('/blogs', [FrontEndController::class, 'blogs'])->name('blogs-list');
+
+    Route::get('blogs/{alias_name}', [FrontEndController::class, 'blogsDetails'])->name('blogs-details');
+
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 

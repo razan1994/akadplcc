@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('page_title') Rushetta | Home @endsection
+    @section('page_title') Rushetta | Home @endsection
 
     <!--Section-->
     <section>
@@ -743,7 +743,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Medical Centers</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_medical_centers_count) ? $public_medical_centers_count : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_medical_centers_count) ? $public_medical_centers_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -759,7 +760,9 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h6 class="mb-2">Radiology Centers</h6>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_radiology_centers_count) ? $public_radiology_centers_count : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_radiology_centers_count) ? $public_radiology_centers_count : 0 }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -775,7 +778,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Pharmacies</h5>
-                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">{{ isset($public_pharmacies_count) ? $public_pharmacies_count : 0 }}</p>
+                                    <p class="badge badge-pill badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_pharmacies_count) ? $public_pharmacies_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -791,7 +795,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Labs</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_labs_count) ? $public_labs_count : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_labs_count) ? $public_labs_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -807,7 +812,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h6 class="mb-2">Healthy Gyms</h6>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_gyms_count) ? $public_gyms_count : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_gyms_count) ? $public_gyms_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -823,7 +829,8 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Life Coaches</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_life_coaches_count) ? $public_life_coaches_count : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_life_coaches_count) ? $public_life_coaches_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -839,7 +846,9 @@
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Insurances</h5>
-                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">{{ isset($public_insurance_companies_count) ? $public_insurance_companies_count : 0 }}</p>
+                                    <p class="badge badge-pill  badge-light font-weight-semibold mb-0">
+                                        {{ isset($public_insurance_companies_count) ? $public_insurance_companies_count : 0 }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -858,7 +867,7 @@
                 <p>Excepteur sint occaecat cupidatat proident deserunt mollit laborum</p>
             </div>
             <div class="owl-carousel owl-carousel-icons2" id="myCarousel1">
-                @if(isset($public_doctors) && $public_doctors->count() > 0)
+                @if (isset($public_doctors) && $public_doctors->count() > 0)
                     @foreach ($public_doctors->take(20) as $key => $doctor)
                         <div class="item">
                             <div class="card mb-0">
@@ -1353,115 +1362,130 @@
     </section> --}}
     <!--Section-->
 
-        <!--Section-->
-        <section class="sptb section-bg">
-            <div class="container">
-                <div class="section-title center-block text-center">
-                    <h2>Find your doctor by speciality</h2>
-                </div>
-                <div class="items-gallery">
-                    <div class="items-blog-tab text-center">
-                        <div class="items-blog-tab-heading row">
-                            <div class="col-12">
-                                <ul class="nav items-blog-tab-menu">
-                                    @if(isset($public_specialities) && $public_specialities->count() > 0)
-                                        @foreach ($public_specialities->take(8) as $key => $speciality)
-                                            <li class="">
-                                                <a class="{{ $key == 0 ? 'active show' : ''}}" data-toggle="tab" href="#tab1-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>
-                                            </li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
+    <!--Section-->
+    <section class="sptb section-bg">
+        <div class="container">
+            <div class="section-title center-block text-center">
+                <h2>Find your doctor by speciality</h2>
+            </div>
+            <div class="items-gallery">
+                <div class="items-blog-tab text-center">
+                    <div class="items-blog-tab-heading row">
+                        <div class="col-12">
+                            <ul class="nav items-blog-tab-menu">
+                                @if (isset($public_specialities) && $public_specialities->count() > 0)
+                                    @foreach ($public_specialities->take(8) as $key => $speciality)
+                                        <li class="">
+                                            <a class="{{ $key == 0 ? 'active show' : '' }}" data-toggle="tab"
+                                                href="#tab1-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </div>
-                        <div class="tab-content">
-                            @if(isset($public_specialities) && $public_specialities->count() > 0)
-                                @foreach ($public_specialities->take(8) as $index => $specialityTab)
-                                    <div class="tab-pane {{ $index == 0 ? 'active' : ''}} " id="tab1-{{ $specialityTab->id }}">
-                                        <div class="owl-carousel owl-carousel-icons2" id="myCarousel{{ $specialityTab->id }}">
-                                            @if(isset($specialityTab->doctorsRandomTwelve) && $specialityTab->doctorsRandomTwelve->count() > 0)
-                                                @foreach ($specialityTab->doctorsRandomTwelve as $counter => $doctor)
-                                                    <div class="item">
-                                                        <div class="card mb-0">
-                                                            <div class="power-ribbon power-ribbon-top-left text-warning">
-                                                                <span class="bg-warning"><i class="fa fa-bolt"></i></span>
-                                                            </div>
-                                                            <div class="item-card2-img">
-                                                                <a href="{{ route('user-details',['doctors',$doctor->alias_name_en]) }}"></a>
-                                                                @if(isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
-                                                                    <img alt="img" class="cover-image spec-doc-img"
-                                                                        src="{{ asset($doctor->profile_photo_path) }}">
-                                                                @else
-                                                                    <img alt="img" class="cover-image spec-doc-img"
-                                                                        src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
-                                                                @endif
-                                                            </div>
-                                                            <div class="item-card2-icons">
-                                                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                                        class="fa fa fa-heart-o"></i></a>
-                                                                <a class="item-card2-icons-r bg-dark-transparent" href="#"><i class="fa fa-share-alt"></i></a>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div class="item-card2">
-                                                                    <small class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
-                                                                    <a class="text-dark" href="{{ route('user-details',['doctors',$doctor->alias_name_en]) }}">
-                                                                        <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
-                                                                            <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                                        </h4>
-                                                                    </a>
-                                                                    <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
-                                                                    <div class="rating-stars d-inline-flex mb-1">
-                                                                        <input class="rating-value star" name="rating-stars-value" readonly="readonly"
-                                                                            type="number" value="5">
-                                                                        <div class="rating-stars-container mr-2">
-                                                                            <div class="rating-star sm ">
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                            <div class="rating-star sm ">
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                            <div class="rating-star sm ">
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                            <div class="rating-star sm ">
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                            <div class="rating-star sm">
-                                                                                <i class="fa fa-star"></i>
-                                                                            </div>
-                                                                        </div>5.0
-                                                                    </div>
-                                                                    <div class="mb-0 mt-0">
-                                                                        <ul class="item-card-features mb-0">
-                                                                            <li class="mb-0"><span class="text-muted"><i
-                                                                                        class="fa fa-map-marker mr-1"></i> Hyderabad</span></li>
-                                                                        </ul>
-                                                                    </div>
+                    </div>
+                    <div class="tab-content">
+                        @if (isset($public_specialities) && $public_specialities->count() > 0)
+                            @foreach ($public_specialities->take(8) as $index => $specialityTab)
+                                <div class="tab-pane {{ $index == 0 ? 'active' : '' }} "
+                                    id="tab1-{{ $specialityTab->id }}">
+                                    <div class="owl-carousel owl-carousel-icons2"
+                                        id="myCarousel{{ $specialityTab->id }}">
+                                        @if (isset($specialityTab->doctorsRandomTwelve) && $specialityTab->doctorsRandomTwelve->count() > 0)
+                                            @foreach ($specialityTab->doctorsRandomTwelve as $counter => $doctor)
+                                                <div class="item">
+                                                    <div class="card mb-0">
+                                                        <div class="power-ribbon power-ribbon-top-left text-warning">
+                                                            <span class="bg-warning"><i
+                                                                    class="fa fa-bolt"></i></span>
+                                                        </div>
+                                                        <div class="item-card2-img">
+                                                            <a
+                                                                href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}"></a>
+                                                            @if (isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
+                                                                <img alt="img" class="cover-image spec-doc-img"
+                                                                    src="{{ asset($doctor->profile_photo_path) }}">
+                                                            @else
+                                                                <img alt="img" class="cover-image spec-doc-img"
+                                                                    src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
+                                                            @endif
+                                                        </div>
+                                                        <div class="item-card2-icons">
+                                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                                    class="fa fa fa-heart-o"></i></a>
+                                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                                    class="fa fa-share-alt"></i></a>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="item-card2">
+                                                                <small
+                                                                    class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
+                                                                <a class="text-dark"
+                                                                    href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}">
+                                                                    <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                        {{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
+                                                                        <i
+                                                                            class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                                    </h4>
+                                                                </a>
+                                                                <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
+                                                                <div class="rating-stars d-inline-flex mb-1">
+                                                                    <input class="rating-value star"
+                                                                        name="rating-stars-value" readonly="readonly"
+                                                                        type="number" value="5">
+                                                                    <div class="rating-stars-container mr-2">
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                    </div>5.0
                                                                 </div>
-                                                            </div>
-                                                            <div class="card-footer p-0 btn-appointment">
-                                                                <div class="btn-group w-100">
-                                                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                                        href="{{ route('user-details',['doctors',$doctor->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit Website</a>
-                                                                    <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
-                                                                        href="#" data-target="#exampleModal" data-toggle="modal"><i
-                                                                            class="fe fe-phone mr-1"></i> Appointment</a>
+                                                                <div class="mb-0 mt-0">
+                                                                    <ul class="item-card-features mb-0">
+                                                                        <li class="mb-0"><span
+                                                                                class="text-muted"><i
+                                                                                    class="fa fa-map-marker mr-1"></i>
+                                                                                Hyderabad</span></li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="card-footer p-0 btn-appointment">
+                                                            <div class="btn-group w-100">
+                                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                                    href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}"><i
+                                                                        class="fe fe-eye mr-1"></i> Visit Website</a>
+                                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
+                                                                    href="#" data-target="#exampleModal"
+                                                                    data-toggle="modal"><i class="fe fe-phone mr-1"></i>
+                                                                    Appointment</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                @endforeach
-                                            @endif
-                                        </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
-        </section>
-        <!--/Section-->
+        </div>
+    </section>
+    <!--/Section-->
 
     <!--Section-->
     <section class="sptb">
@@ -1490,7 +1514,8 @@
                                     <a class="" data-toggle="tab" href="#tab-labs">Labs</a>
                                 </li>
                                 <li>
-                                    <a class="" data-toggle="tab" href="#tab-insurances">Insurance Companies</a>
+                                    <a class="" data-toggle="tab" href="#tab-insurances">Insurance
+                                        Companies</a>
                                 </li>
                                 <li>
                                     <a class="" data-toggle="tab" href="#tab-pharmacies">Pharmacies</a>
@@ -1507,13 +1532,14 @@
                     <div class="tab-content list-container">
                         <div class="tab-pane active " id="tab-doctors">
                             <div class="row">
-                                @if(isset($public_doctors) && $public_doctors->count() > 0)
+                                @if (isset($public_doctors) && $public_doctors->count() > 0)
                                     @foreach ($public_doctors as $index => $category)
                                         <div class="col-lg-6 col-md-12 col-xl-3">
                                             <div class="card">
                                                 <div class="item-card7-imgs">
-                                                    <a href="{{ route('user-details',['doctors',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                                    <a
+                                                        href="{{ route('user-details', ['doctors', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
@@ -1532,13 +1558,17 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="item-card2">
-                                                        <a class="text-dark" href="{{ route('user-details',['doctors',$category->alias_name_en]) }}">
-                                                            <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                                <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['doctors', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                             </h4>
                                                         </a>
                                                         <p class="text-muted fs-13 mb-1"><i
-                                                                class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM, Ph.D
+                                                                class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM,
+                                                            Ph.D
                                                         </p>
                                                         <div class="rating-stars d-inline-flex mb-1">
                                                             <input class="rating-value star" name="rating-stars-value"
@@ -1564,10 +1594,12 @@
                                                         <div class="mb-0 mt-0">
                                                             <ul class="item-card-features mb-0">
                                                                 <li class="mb-0"><span class="text-muted"><i
-                                                                            class="fa fa-map-marker mr-1"></i> Hyderabad</span>
+                                                                            class="fa fa-map-marker mr-1"></i>
+                                                                        Hyderabad</span>
                                                                 </li>
                                                                 <li><span class="text-muted "><i
-                                                                            class="fa fa-briefcase mr-1"></i>2 yrs Exp</span>
+                                                                            class="fa fa-briefcase mr-1"></i>2 yrs
+                                                                        Exp</span>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1576,7 +1608,8 @@
                                                 <div class="card-footer p-0 btn-appointment">
                                                     <div class="btn-group w-100">
                                                         <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                            href="{{ route('user-details',['doctors',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
+                                                            href="{{ route('user-details', ['doctors', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
                                                             Website</a>
                                                         <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                             href="#" data-target="#exampleModal" data-toggle="modal"><i
@@ -1591,713 +1624,769 @@
                         </div>
                         <div class="tab-pane" id="tab-hospitals">
                             <div class="row">
-                                @if(isset($public_hospitals) && $public_hospitals->count() > 0)
-                                @foreach ($public_hospitals as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['hospitals',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_hospitals) && $public_hospitals->count() > 0)
+                                    @foreach ($public_hospitals as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['hospitals', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Hospital</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['hospitals',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['hospitals',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Hospital</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['hospitals', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['hospitals', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-medicals">
                             <div class="row">
-                                @if(isset($public_medical_centers) && $public_medical_centers->count() > 0)
-                                @foreach ($public_medical_centers as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['medical-centers',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_medical_centers) && $public_medical_centers->count() > 0)
+                                    @foreach ($public_medical_centers as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['medical-centers', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Medical Center</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['medical-centers',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['medical-centers',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Medical Center</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['medical-centers', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['medical-centers', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-radiology">
                             <div class="row">
-                                @if(isset($public_radiology_centers) && $public_radiology_centers->count() > 0)
-                                @foreach ($public_radiology_centers as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['radiology-centers',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_radiology_centers) && $public_radiology_centers->count() > 0)
+                                    @foreach ($public_radiology_centers as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['radiology-centers', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Radiology Center</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['radiology-centers',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['radiology-centers',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Radiology Center</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['radiology-centers', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['radiology-centers', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-labs">
                             <div class="row">
-                                @if(isset($public_labs) && $public_labs->count() > 0)
-                                @foreach ($public_labs as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['labs',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_labs) && $public_labs->count() > 0)
+                                    @foreach ($public_labs as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['labs', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Lab</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['labs',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['labs',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Lab</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['labs', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['labs', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-insurances">
                             <div class="row">
-                                @if(isset($public_insurance_companies) && $public_insurance_companies->count() > 0)
-                                @foreach ($public_insurance_companies as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['insurances',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_insurance_companies) && $public_insurance_companies->count() > 0)
+                                    @foreach ($public_insurance_companies as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['insurances', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Insurance Company</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['insurances',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['insurances',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Insurance Company</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['insurances', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['insurances', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-pharmacies">
                             <div class="row">
-                                @if(isset($public_pharmacies) && $public_pharmacies->count() > 0)
-                                @foreach ($public_pharmacies as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['pharmacies',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_pharmacies) && $public_pharmacies->count() > 0)
+                                    @foreach ($public_pharmacies as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['pharmacies', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Pharmacy</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['pharmacies',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['pharmacies',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Pharmacy</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['pharmacies', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['pharmacies', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-gyms">
                             <div class="row">
-                                @if(isset($public_gyms) && $public_gyms->count() > 0)
-                                @foreach ($public_gyms as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['fitness-centers',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_gyms) && $public_gyms->count() > 0)
+                                    @foreach ($public_gyms as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['fitness-centers', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Gym</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['fitness-centers',$category->alias_name_en]) }}) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['fitness-centers',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Gym</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['fitness-centers', $category->alias_name_en]) }}) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['fitness-centers', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane" id="tab-life_couches">
                             <div class="row">
-                                @if(isset($public_life_coaches) && $public_life_coaches->count() > 0)
-                                @foreach ($public_life_coaches as $index => $category)
-                                <div class="col-lg-6 col-md-12 col-xl-3">
-                                    <div class="card">
-                                        <div class="item-card7-imgs">
-                                            <a href="{{ route('user-details',['life-coaches',$category->alias_name_en]) }}"></a>
-                                                    @if(isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
+                                @if (isset($public_life_coaches) && $public_life_coaches->count() > 0)
+                                    @foreach ($public_life_coaches as $index => $category)
+                                        <div class="col-lg-6 col-md-12 col-xl-3">
+                                            <div class="card">
+                                                <div class="item-card7-imgs">
+                                                    <a
+                                                        href="{{ route('user-details', ['life-coaches', $category->alias_name_en]) }}"></a>
+                                                    @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset($category->profile_photo_path) }}">
                                                     @else
                                                         <img alt="img" class="cover-image spec-doc-img"
                                                             src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
                                                     @endif
-                                            <div class="tag-text">
-                                                <span class="bg-dark tag-option">Life Coach</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-card2-icons">
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa fa-heart text-danger"></i></a>
-                                            <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
-                                                    class="fa fa-share-alt"></i></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="item-card2">
-                                                <a class="text-dark" href="{{ route('user-details',['life-coaches',$category->alias_name_en]) }}">
-                                                    <h4 class="font-weight-semibold mt-1 mb-1">{{ isset($category->name_en) ? $category->name_en : '--------' }}
-                                                        <i class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-                                                    </h4>
-                                                </a>
-                                                <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury, MA
-                                                    02132....</p>
-                                                <div class="rating-stars d-inline-flex mb-1">
-                                                    <input class="rating-value star" name="rating-stars-value"
-                                                        readonly="readonly" type="number" value="5">
-                                                    <div class="rating-stars-container mr-2">
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm ">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="rating-star sm">
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>5.0
-                                                </div>
-                                                <div class="mb-0 mt-0">
-                                                    <ul class="item-card-features mb-0">
-                                                        <li class="mb-0"><span class="text-muted"><i
-                                                                    class="fa fa-map-marker mr-1"></i>Hyderabad</span>
-                                                        </li>
-                                                        <li><span class="text-muted "><i
-                                                                    class="fa fa-user-md mr-1"></i>154 Doctors</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-0 btn-appointment">
-                                            <div class="btn-group w-100">
-                                                <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                    href="{{ route('user-details',['life-coaches',$category->alias_name_en]) }}"><i class="fe fe-eye mr-1"></i> Visit
-                                                    Website</a>
-                                                <a
-                                                    class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
-                                                    <div class="call-btn-1">
-                                                        <i class="fe fe-phone mr-1"></i> Call
+                                                    <div class="tag-text">
+                                                        <span class="bg-dark tag-option">Life Coach</span>
                                                     </div>
-                                                    <div class="call-number">
-                                                        +65 847596 82
+                                                </div>
+                                                <div class="item-card2-icons">
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa fa-heart text-danger"></i></a>
+                                                    <a class="item-card2-icons-r bg-dark-transparent" href="#"><i
+                                                            class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="item-card2">
+                                                        <a class="text-dark"
+                                                            href="{{ route('user-details', ['life-coaches', $category->alias_name_en]) }}">
+                                                            <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                {{ isset($category->name_en) ? $category->name_en : '--------' }}
+                                                                <i
+                                                                    class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                                            </h4>
+                                                        </a>
+                                                        <p class="text-muted fs-13 mb-1">359 N. Edgefield Dr. West Roxbury,
+                                                            MA
+                                                            02132....</p>
+                                                        <div class="rating-stars d-inline-flex mb-1">
+                                                            <input class="rating-value star" name="rating-stars-value"
+                                                                readonly="readonly" type="number" value="5">
+                                                            <div class="rating-stars-container mr-2">
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm ">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <div class="rating-star sm">
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>5.0
+                                                        </div>
+                                                        <div class="mb-0 mt-0">
+                                                            <ul class="item-card-features mb-0">
+                                                                <li class="mb-0"><span class="text-muted"><i
+                                                                            class="fa fa-map-marker mr-1"></i>Hyderabad</span>
+                                                                </li>
+                                                                <li><span class="text-muted "><i
+                                                                            class="fa fa-user-md mr-1"></i>154
+                                                                        Doctors</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
+                                                <div class="card-footer p-0 btn-appointment">
+                                                    <div class="btn-group w-100">
+                                                        <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
+                                                            href="{{ route('user-details', ['life-coaches', $category->alias_name_en]) }}"><i
+                                                                class="fe fe-eye mr-1"></i> Visit
+                                                            Website</a>
+                                                        <a
+                                                            class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0 call-btn">
+                                                            <div class="call-btn-1">
+                                                                <i class="fe fe-phone mr-1"></i> Call
+                                                            </div>
+                                                            <div class="call-number">
+                                                                +65 847596 82
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                                 {{-- <div class="col-lg-6 col-md-12 col-xl-3">
                                     <div class="card">
@@ -2669,81 +2758,96 @@
                 <h2>Latest Articles</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-12 col-xl-4">
-                    <div class="card">
-                        <div class="item7-card-img">
-                            <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/1.jpg') }}" alt="img"
-                                class="cover-image">
+                @if(isset($blogs) && $blogs->count() > 0)
+                    @foreach ($blogs as $blog)
+                        <div class="col-lg-4 col-md-12 col-xl-4">
+                            <div class="card">
+                                <div class="item7-card-img">
+                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                    @if(isset($blog->image) && file_exists($blog->image))
+                                        <img src="{{ asset($blog->image) }}" alt="img"
+                                        class="cover-image">
+                                    @else
+                                        <img src="{{ asset('front_end_style/assets/images/media/photos/1.jpg') }}" alt="img"
+                                        class="cover-image">
+                                    @endif
+                                </div>
+                                <div class="card-body p-4">
+                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark">
+                                        <h4>{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4>
+                                    </a>
+                                    <p>{!! \Illuminate\Support\Str::limit(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------', 70, $end='...') !!}
+                                        @if (\Illuminate\Support\Str::length(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------') > 70)
+                                            {{-- <span id="dots">...</span> --}}
+                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-primary font-weight-bold">more</a>
+                                        @endif</p>
+                                    {{-- <div class="d-flex">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
+                                                class="fe fe-heart text-muted mr-2"></i>0</a>
+                                        <div class="ml-auto">
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
+                                                    class="fe fe-share-2 text-muted mr-2"></i></a>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body p-4">
-                            <a href="articles.html" class="text-dark">
-                                <h4>Spminal Papers in Spinal Surgery</h4>
-                            </a>
-                            <p class="fs-13 text-muted">Dr.S.Ashley. Orthopedic surgeon</p>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex">
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
-                                        class="fe fe-heart text-muted mr-2"></i>0</a>
-                                <div class="ml-auto">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
-                                            class="fe fe-share-2 text-muted mr-2"></i></a>
+                    @endforeach
+                @else
+                    <div class="col-lg-4 col-md-12 col-xl-4">
+                        <div class="card">
+                            <div class="item7-card-img">
+                                <a href="articles.html"></a>
+                                <img src="{{ asset('front_end_style/assets/images/media/photos/2.jpg') }}" alt="img"
+                                    class="cover-image">
+                            </div>
+                            <div class="card-body p-4">
+                                <a href="articles.html" class="text-dark">
+                                    <h4>Exercise Fit for a good health</h4>
+                                </a>
+                                <p class="fs-13 text-muted">Gym Trainer</p>
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                    voluptatum </p>
+                                <div class="d-flex">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
+                                            class="fe fe-heart text-muted mr-2"></i>8</a>
+                                    <div class="ml-auto">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
+                                                class="fe fe-share-2 text-muted mr-2"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-xl-4">
-                    <div class="card">
-                        <div class="item7-card-img">
-                            <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/2.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <a href="articles.html" class="text-dark">
-                                <h4>Exercise Fit for a good health</h4>
-                            </a>
-                            <p class="fs-13 text-muted">Gym Trainer</p>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex">
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
-                                        class="fe fe-heart text-muted mr-2"></i>8</a>
-                                <div class="ml-auto">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
-                                            class="fe fe-share-2 text-muted mr-2"></i></a>
+                    <div class="col-lg-4 col-md-12 col-xl-4">
+                        <div class="card">
+                            <div class="item7-card-img">
+                                <a href="articles.html"></a>
+                                <img src="{{ asset('front_end_style/assets/images/media/photos/3.jpg') }}" alt="img"
+                                    class="cover-image">
+                            </div>
+                            <div class="card-body p-4">
+                                <a href="articles.html" class="text-dark">
+                                    <h4>Skin Crae and Repair , Healthy Skin</h4>
+                                </a>
+                                <p class="fs-13 text-muted">Dr.Dr.M.Angela. Dermatologist</p>
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                    voluptatum </p>
+                                <div class="d-flex">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
+                                            class="fe fe-heart text-muted mr-2"></i>5</a>
+                                    <div class="ml-auto">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
+                                                class="fe fe-share-2 text-muted mr-2"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-xl-4">
-                    <div class="card">
-                        <div class="item7-card-img">
-                            <a href="articles.html"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/3.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <a href="articles.html" class="text-dark">
-                                <h4>Skin Crae and Repair , Healthy Skin</h4>
-                            </a>
-                            <p class="fs-13 text-muted">Dr.Dr.M.Angela. Dermatologist</p>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex">
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i
-                                        class="fe fe-heart text-muted mr-2"></i>5</a>
-                                <div class="ml-auto">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="share"><i
-                                            class="fe fe-share-2 text-muted mr-2"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <a href="{{ route('blogs-list') }}" class="btn btn-primary">Show More <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

@@ -36,7 +36,9 @@ class Pharmacy extends Authenticatable
         'address_en',
         'player_id',
         'alias_name_en',
-        'alias_name_ar'
+        'alias_name_ar',
+        'user_description_en',
+        'user_description_ar',
     ];
     /**
      * The attributes that should be hidden for arrays.

@@ -338,6 +338,7 @@ class NewsBlogController extends Controller
         try {
             $news_blogs = new Blog();
             $news_blogs = $news_blogs->onlyTrashed()->select('*')->orderBy('created_at', 'asc')->get();
+            // return $news_blogs;
             return view('admin.news_blogs.trashed', compact(
                 'news_blogs',
             ));

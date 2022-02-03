@@ -696,13 +696,13 @@
 						<div class="card overflow-hidden">
 							<div class="card-body">
 								<div class="item-det mb-4">
-									<a href="#" class="text-dark"><h3 >New Life Hospital</h3></a>
+									<a href="#" class="text-dark"><h3 >{{ isset($user->name_en) ? $user->name_en : '--------' }}</h3></a>
 									<div class=" d-flex">
 										<ul class="d-flex mb-0">
-											<li class="mr-5"><a href="#" class="icons"><i class="fa fa-hospital-o text-muted mr-1"></i>Hospital</a></li>
-											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li>
-											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>
+											<li class="mr-5"><a href="#" class="icons"><i class="fa fa-hospital-o text-muted mr-1"></i>{{ ucfirst($user_type) }}</a></li>
+											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i>{{ isset($user->country) ? $user->country->name_en : '--------' }} | {{ isset($user->region) ? $user->region->name_en : '--------' }}</a></li>
+											{{-- <li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li> --}}
+											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> {{ isset($user->view_counter) ? $user->view_counter : 0 }}</a></li>
 										</ul>
 										<div class="rating-stars d-flex mr-5">
 											<input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" id="rating-stars-value" value="4">
@@ -724,19 +724,31 @@
 												</div>
 											</div> 4.0
 										</div>
-										<div class="d-flex">
+										{{-- <div class="d-flex">
 											<span><i class="fa fa-heart text-danger mr-1"></i>135</span>
-										</div>
+										</div> --}}
 									</div>
 								</div>
 								<div class="product-slider">
 									<div id="carousel" class="carousel slide" data-ride="carousel">
 										<div class="carousel-inner">
-											<div class="carousel-item active"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/1.jpg') }}" alt="img"> </div>
-											<div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/2.jpg') }}" alt="img"> </div>
-											<div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/3.jpg') }}" alt="img"> </div>
-											<div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/4.jpg') }}" alt="img"> </div>
-											<div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/5.jpg') }}" alt="img"> </div>
+                                            @if(isset($user->images) && $user->images->count() > 0)
+                                                @foreach ($user->images as $key => $image)
+                                                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                                        @if(isset($image->image) && file_exists($image->image))
+                                                            <img src="{{ asset($image->image) }}" alt="img" style="height: 600px;">
+                                                        @else
+                                                            <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/1.jpg') }}" alt="img">
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <div class="carousel-item active"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/1.jpg') }}" alt="img"> </div>
+                                                <div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/2.jpg') }}" alt="img"> </div>
+                                                <div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/3.jpg') }}" alt="img"> </div>
+                                                <div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/4.jpg') }}" alt="img"> </div>
+                                                <div class="carousel-item"> <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/5.jpg') }}" alt="img"> </div>
+                                            @endif
 										</div>
 										<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
 											<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -748,20 +760,36 @@
 									<div class="clearfix">
 										<div id="thumbcarousel" class="carousel slide" data-interval="false">
 											<div class="carousel-inner">
-												<div class="carousel-item active">
-													<div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/01.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/02.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/03.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/04.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/05.jpg') }}" alt="img"></div>
-												</div>
-												<div class="carousel-item">
-													<div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/01.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/02.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/03.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/04.jpg') }}" alt="img"></div>
-													<div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/05.jpg') }}" alt="img"></div>
-												</div>
+                                                @if(isset($user->images) && $user->images->count() > 0)
+                                                    @foreach ($user->images->chunk(5) as $key => $images)
+                                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                                            @foreach ($images as $index => $image)
+                                                            <div data-target="#carousel" data-slide-to="{{ $index }}" class="thumb">
+                                                                @if(isset($image->image) && file_exists($image->image))
+                                                                    <img src="{{ asset($image->image) }}" alt="img" style="height: 175px;">
+                                                                @else
+                                                                    <img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/01.jpg') }}" alt="img">
+                                                                @endif
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div class="carousel-item active">
+                                                        <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/01.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/02.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/03.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/04.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/05.jpg') }}" alt="img"></div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/01.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/02.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/03.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/04.jpg') }}" alt="img"></div>
+                                                        <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ asset('front_end_style/assets/images/media/gallery/hosiptals/05.jpg') }}" alt="img"></div>
+                                                    </div>
+                                                @endif
 											</div>
 											<a class="carousel-control-prev" href="#thumbcarousel" role="button" data-slide="prev">
 												<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -780,8 +808,8 @@
 							</div>
 							<div class="card-body">
 								<div class="mb-4">
-									<p>Porsche odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atcorrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-									<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoraliz the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble thena bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
+									<p>{!! isset($user->user_description_en) ? $user->user_description_en : '--------' !!}</p>
+
 								</div>
 								<h4 class="mb-2 mt-5">Specifications</h4>
 								<div class="row">
@@ -815,7 +843,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="pt-4 pb-4 pl-5 pr-5 border-top border-top">
+							{{-- <div class="pt-4 pb-4 pl-5 pr-5 border-top border-top">
 								<div class="list-id">
 									<div class="row">
 										<div class="col">
@@ -826,7 +854,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 							<div class="card-footer">
 								<div class="btn-list">
 									<a href="#" class="btn btn-danger icons" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
@@ -963,26 +991,30 @@
 					<!--Right Side Content-->
 					<div class="col-xl-4 col-lg-4 col-md-12">
 						<div class="card">
-							<div class="card-header">
+							{{-- <div class="card-header">
 								<h3 class="card-title">Posted By</h3>
-							</div>
+							</div> --}}
 							<div class="card-body  item-user">
 								<div class="profile-pic mb-0">
-									<img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround avatar-xxl" alt="user">
+                                    @if(isset($user->profile_photo_path) && file_exists($user->profile_photo_path))
+									    <img src="{{ asset($user->profile_photo_path) }}" class="brround avatar-xxl" alt="user">
+                                    @else
+									    <img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround avatar-xxl" alt="user">
+                                    @endif
 									<div>
-										<a href="userprofile.html" class="text-dark"><h4 class="mt-3 mb-1 font-weight-semibold">Mariane Galeon</h4></a>
-										<span class="text-muted">Member Since November 2008</span>
-										<h6 class="mt-2 mb-0"><a href="userprofile.html" class="btn btn-primary btn-sm">See All Ads</a></h6>
+										<a href="userprofile.html" class="text-dark"><h4 class="mt-3 mb-1 font-weight-semibold">{{ isset($user->name_en) ? $user->name_en : '--------' }}</h4></a>
+										<span class="text-muted">Member Since {{ isset($user->created_at) ? $user->created_at->diffForHumans() : '--------' }}</span>
+										{{-- <h6 class="mt-2 mb-0"><a href="userprofile.html" class="btn btn-primary btn-sm">See All Ads</a></h6> --}}
 									</div>
 								</div>
 							</div>
 							<div class="card-body item-user">
 								<h4 class="mb-4">Contact Info</h4>
 								<div>
-									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> 7981 Aspen Ave. Hammonton,  USA</a></h6>
-									<h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a href="#" class="text-body"> galeon456@gmail.com</a></h6>
-									<h6><span class="font-weight-semibold"><i class="fa fa-phone mr-3  mb-2"></i></span><a href="#" class="text-body"> 0-235-657-24587</a></h6>
-									<h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a href="#" class="text-body">http://spruko.com/</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-map-marker mr-2 mb-2"></i></span><a href="#" class="text-body"> {{ isset($user->address_en) ? $user->address_en : '--------' }}</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-envelope mr-3 mb-2"></i></span><a href="#" class="text-body"> {{ isset($user->email) ? $user->email : '--------' }}</a></h6>
+									<h6><span class="font-weight-semibold"><i class="fa fa-phone mr-3  mb-2"></i></span><a href="#" class="text-body">{{ isset($user->phone) ? $user->phone : '--------' }}</a></h6>
+									{{-- <h6><span class="font-weight-semibold"><i class="fa fa-link mr-3 "></i></span><a href="#" class="text-body">http://spruko.com/</a></h6> --}}
 								</div>
 								<div class=" item-user-icons mt-4">
 									<a href="#" class="facebook-bg mt-0"><i class="fa fa-facebook"></i></a>

@@ -25,8 +25,8 @@ class StoreBlogFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_ar' => 'required',
-            'title_en' => 'required',
+            'title_ar' => 'required|unique:blogs,title_ar',
+            'title_en' => 'required|unique:blogs,title_en',
             'desc_ar' => 'required',
             'desc_en' => 'required',
             'image' => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',

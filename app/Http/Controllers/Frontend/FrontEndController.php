@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\Gym;
 use App\Models\Hospital;
@@ -347,6 +348,27 @@ class FrontEndController extends Controller
             'subs' => $subs,
         ]);
     }
+
+
+
+    function blogs(){
+        $blogs = Blog::where('status',1)->get();
+        return view('front_end_inners.blog-list',compact('blogs'));
+    }
+
+
+
+    function blogsDetails($alias_name){
+        $blog = Blog::where('alias_name_en',$alias_name)->get()->first();
+
+        if($blog){
+            return view('front_end_inners.blog-details',compact('blog'));
+        }
+        else{
+            return redirect()->back()->with('danger','Blog Not Found !!!');
+        }
+    }
+
 
 }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\CartOperation;
 use App\Models\Category;
@@ -32,10 +33,10 @@ class WelcomeController extends Controller
         if (Auth::guard('super_admin')->check()) {
             return redirect()->route('super_admin.dashboard');
         }
-        $sliders = Slider::where('status', 1)->orderBy('created_at', 'asc')->get();
-        $slider_random = Slider::where('status', 1)->inRandomOrder()->limit(2)->get();
+
+        $blogs = Blog::where('status',1)->inRandomOrder()->limit(3)->get();
 
 
-        return view('welcome', compact('sliders','slider_random'));
+        return view('welcome', compact('blogs'));
     }
 }
