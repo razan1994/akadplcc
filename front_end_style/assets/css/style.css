@@ -161,6 +161,10 @@ License        :   Licensed under ThemeForest License
         display: block;
     }
     
+    .flex.justify-between.flex-1.sm\:hidden {
+        display: none;
+    }
+    
     .secondlevel ul {
         background: 0 0 !important;
         margin-left: 5px !important;

@@ -693,7 +693,7 @@
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Specialties</h5>
                                     <p class="badge badge-pill badge-light font-weight-semibold mb-0">
-                                        {{ isset($public_specialities) ? $public_specialities->count() : 0 }}</p>
+                                        {{ isset($public_specialities_count) ? $public_specialities_count : 0 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -1372,9 +1372,9 @@
                 <div class="items-blog-tab text-center">
                     <div class="items-blog-tab-heading row">
                         <div class="col-12">
-                            <ul class="nav items-blog-tab-menu">
+                            <ul class="nav items-blog-tab-menu specialities-ul">
                                 @if (isset($public_specialities) && $public_specialities->count() > 0)
-                                    @foreach ($public_specialities->take(8) as $key => $speciality)
+                                    @foreach ($public_specialities as $key => $speciality)
                                         <li class="">
                                             <a class="{{ $key == 0 ? 'active show' : '' }}" data-toggle="tab"
                                                 href="#tab1-{{ $speciality->id }}">{{ isset($speciality->name_en) ? $speciality->name_en : '--------' }}</a>

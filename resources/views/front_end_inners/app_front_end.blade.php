@@ -48,6 +48,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
 
@@ -810,6 +811,9 @@
                             </li>
                             <li aria-haspopup="true">
                                 <a href="contact.html">Contact Us </a>
+                            </li>
+                            <li aria-haspopup="true" id="search_btn" style="display: none;">
+                                <a href="#search_collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search_collapse"><i class="fa fa-search"></i></a>
                             </li>
                             {{-- <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
                                 <span>

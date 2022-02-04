@@ -42,6 +42,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('blogs/{alias_name}', [FrontEndController::class, 'blogsDetails'])->name('blogs-details');
 
+    Route::post('/searchUser', [FrontEndController::class, 'searchUser'])->name('searchUser');
+
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 

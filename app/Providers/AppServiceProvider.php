@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             $public_pharmacies = Pharmacy::where('user_status',2)->inRandomOrder()->take(8)->get();
             $public_gyms = Gym::where('user_status',2)->inRandomOrder()->take(8)->get();
             $public_life_coaches = LifeCoutch::where('user_status',2)->inRandomOrder()->take(8)->get();
-            $public_specialities = DoctorSpeciality::get();
+            $public_specialities = DoctorSpeciality::take(6)->get();
 
             $public_insurance_companies_count = InsuranceCompany::count();
             $public_hospitals_count = Hospital::count();
@@ -76,6 +76,7 @@ class AppServiceProvider extends ServiceProvider
             $public_gyms_count = Gym::count();
             $public_life_coaches_count = LifeCoutch::count();
             $public_doctors_count = Doctor::count();
+            $public_specialities_count = DoctorSpeciality::count();
 
             $public_countries = PublicCountry::get();
             $public_languages = PublicLanguage::get();
@@ -103,7 +104,8 @@ class AppServiceProvider extends ServiceProvider
                 'public_gyms_count' => $public_gyms_count,
                 'public_life_coaches_count' => $public_life_coaches_count,
                 'public_countries' => $public_countries,
-                'public_languages' => $public_languages
+                'public_languages' => $public_languages,
+                'public_specialities_count' => $public_specialities_count
 
             ]);
         });
