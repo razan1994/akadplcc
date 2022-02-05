@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContactUsRequests\ContactUsFormRequest;
 use App\Models\Blog;
+use App\Models\ContactUs;
+use App\Models\ContactUsRequest;
 use App\Models\Doctor;
 use App\Models\Gym;
 use App\Models\Hospital;
@@ -537,6 +540,34 @@ class FrontEndController extends Controller
 
 
             return response()->json(['status'=>true,'output'=>$output]);
+
+    }
+
+
+    function contactUs(){
+        $contact = ContactUs::first();
+
+        return view('front_end_inners.contact_us',compact('contact'));
+    }
+
+
+
+    function contactUsRequest(ContactUsFormRequest $request){
+
+        $data =[
+            'full_name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'subject'=>$request->subject,
+            'message'=>$request->message,
+        ];
+
+        DB::transaction(function () use ($data,) {
+            ContactUsRequest::create($data);
+        });
+
+
+        return redirect()->back()->with('success','Message Sent Successfully');
 
     }
 }

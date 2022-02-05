@@ -97,6 +97,22 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- fax --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Fax : <strong class="text-danger"> * @error('fax') ( {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cellphone"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="fax" class="form-control"
+                                                            id="validationServer01" placeholder="Fax"
+                                                            value="{!! isset($contact->fax) ? $contact->fax : "<span style='color:red;'>Undefined</span>" !!}">
+                                                    </div>
+                                                </div>
+
                                                 {{-- Address EN --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">

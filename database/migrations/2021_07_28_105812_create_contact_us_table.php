@@ -18,6 +18,7 @@ class CreateContactUsTable extends Migration
             $table->id();
             $table->string('email');
             $table->string('phone');
+            $table->string('fax');
             $table->longText('address_ar');
             $table->longText('address_en');
             $table->timestamps();

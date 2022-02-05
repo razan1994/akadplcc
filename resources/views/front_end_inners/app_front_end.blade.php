@@ -104,9 +104,9 @@
                                 <ul class="contact">
                                     <li class="d-lg-none">
                                         <a class="callnumber text-dark" href="#"><span><i class="fa fa-phone mr-1"></i>:
-                                                +425 345 8765</span></a>
+                                                {{ isset($public_contact->phone) ? $public_contact->phone : '--------' }}</span></a>
                                     </li>
-                                    <li class="select-country">
+                                    {{-- <li class="select-country">
                                         <select class="form-control select2-flag-search"
                                             data-placeholder="Select Country">
                                             <option value="UM">
@@ -524,16 +524,16 @@
                                                 Zimbabwe
                                             </option>
                                         </select>
-                                    </li>
+                                    </li> --}}
                                     <li class="dropdown">
                                         <a class="text-dark" data-toggle="dropdown" href="#"><span>Language <i
                                                     class="fa fa-caret-down text-muted"></i></span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="#">English</a>
                                             <a class="dropdown-item" href="#">Arabic</a>
-                                            <a class="dropdown-item" href="#">German</a>
+                                            {{-- <a class="dropdown-item" href="#">German</a>
                                             <a class="dropdown-item" href="#">Greek</a>
-                                            <a class="dropdown-item" href="#">Vehiclenish</a>
+                                            <a class="dropdown-item" href="#">Vehiclenish</a> --}}
                                         </div>
                                     </li>
                                     {{-- <li class="dropdown">
@@ -810,7 +810,7 @@
                                 </ul>
                             </li>
                             <li aria-haspopup="true">
-                                <a href="contact.html">Contact Us </a>
+                                <a href="{{ route('contactUs') }}">Contact Us </a>
                             </li>
                             <li aria-haspopup="true" id="search_btn" style="display: none;">
                                 <a href="#search_collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search_collapse"><i class="fa fa-search"></i></a>
@@ -945,17 +945,16 @@
                             <hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">
                             <ul class="list-unstyled mb-0 contact-footer">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> 22 S. Rock Creek StreetSan Carlos, Uniontown CA
-                                    94070, USA
+                                    <i class="fa fa-map-marker"></i> {{ isset($public_contact->address_en) ? $public_contact->address_en : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope "></i>info12323@example.com
+                                    <i class="fa fa-envelope "></i>{{ isset($public_contact->email) ? $public_contact->email : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i>+ 01 234 567 88
+                                    <i class="fa fa-phone"></i>+ {{ isset($public_contact->phone) ? $public_contact->phone : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-print"></i>+ 01 234 567 89
+                                    <i class="fa fa-print"></i>+ {{ isset($public_contact->fax) ? $public_contact->fax : '--------' }}
                                 </li>
                             </ul>
                         </div>

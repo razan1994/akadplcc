@@ -26,7 +26,7 @@ class ContactUsFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'full_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             "phone" => 'required|numeric',
             'subject' => 'required',
@@ -37,7 +37,7 @@ class ContactUsFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'full_name.required' => 'Full Name is Required !!',
+            'name.required' => 'Full Name is Required !!',
 
             'email.required' => 'Email is Required !!',
 

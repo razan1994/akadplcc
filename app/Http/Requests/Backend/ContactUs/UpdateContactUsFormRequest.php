@@ -27,6 +27,7 @@ class UpdateContactUsFormRequest extends FormRequest
         return [
             'email' => 'required',
             'phone' => 'required',
+            'fax' => 'required',
             'address_ar' => 'required',
             'address_en' => 'required',
 

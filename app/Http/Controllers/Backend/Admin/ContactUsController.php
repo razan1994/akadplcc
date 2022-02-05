@@ -92,6 +92,7 @@ class ContactUsController extends Controller
                 $update_data = [
                     'email' => $request->email,
                     'phone' => $request->phone,
+                    'fax' => $request->fax,
                     'address_en' => $request->address_en,
                     'address_ar' => $request->address_ar,
                 ];

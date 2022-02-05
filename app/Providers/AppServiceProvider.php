@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ContactUs;
 use App\Models\Doctor;
 use App\Models\DoctorSpeciality;
 use App\Models\Gym;
@@ -81,6 +82,8 @@ class AppServiceProvider extends ServiceProvider
             $public_countries = PublicCountry::get();
             $public_languages = PublicLanguage::get();
 
+            $public_contact = ContactUs::first();
+
             view()->share([
                 'public_user_types' => $public_user_types,
                 'public_insurance_companies' => $public_insurance_companies,
@@ -105,7 +108,8 @@ class AppServiceProvider extends ServiceProvider
                 'public_life_coaches_count' => $public_life_coaches_count,
                 'public_countries' => $public_countries,
                 'public_languages' => $public_languages,
-                'public_specialities_count' => $public_specialities_count
+                'public_specialities_count' => $public_specialities_count,
+                'public_contact' => $public_contact
 
             ]);
         });
