@@ -322,25 +322,6 @@ class FrontEndController extends Controller
     }
 
 
-
-    function frontGetSpecialities(Request $request)
-    {
-        if (!isset($request->speciality_id)) {
-            $subs = "";
-        } else {
-            $subs = new SubSpeciality();
-            $subs = $subs->select("id", 'name_' . config('app.locale') . ' as name_ar');
-            $subs = $subs->where("speciality_id", "=", "{$request->speciality_id}");
-            $subs = $subs->get();
-        }
-        return response()->json([
-            'status' => true,
-            'subs' => $subs,
-        ]);
-    }
-
-
-
     function blogs()
     {
         $blogs = Blog::where('status', 1)->get();
@@ -361,201 +342,201 @@ class FrontEndController extends Controller
     }
 
 
-    // function searchUser(Request $request)
-    // {
+    function searchUser(Request $request)
+    {
 
-    //     $user_type = $request->user_type;
-    //     $grid = $request->grid;
-    //     $search = $request->search;
+        $user_type = $request->user_type;
+        $grid = $request->grid;
+        $search = $request->search;
 
-    //     if ($user_type == 'insurances') {
-    //         $users = InsuranceCompany::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'hospitals') {
-    //         $users = Hospital::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'radiology-centers') {
-    //         $users = RadiologyCenter::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'medical-centers') {
-    //         $users = MedicalCenter::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'labs') {
-    //         $users = Lab::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'doctors') {
-    //         $users = Doctor::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'pharmacies') {
-    //         $users = Pharmacy::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'life-coaches') {
-    //         $users = LifeCoutch::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     } else if ($user_type == 'fitness-centers') {
-    //         $users = Gym::where([
-    //             ['user_status', 2],
-    //             ['name_ar', 'like', '%' . $search . '%']
-    //         ])->orWhere([
-    //             ['user_status', 2],
-    //             ['name_en', 'like', '%' . $search . '%']
-    //         ])->get();
-    //     }
+        if ($user_type == 'insurances') {
+            $users = InsuranceCompany::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'hospitals') {
+            $users = Hospital::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'radiology-centers') {
+            $users = RadiologyCenter::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'medical-centers') {
+            $users = MedicalCenter::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'labs') {
+            $users = Lab::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'doctors') {
+            $users = Doctor::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'pharmacies') {
+            $users = Pharmacy::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'life-coaches') {
+            $users = LifeCoutch::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        } else if ($user_type == 'fitness-centers') {
+            $users = Gym::where([
+                ['user_status', 2],
+                ['name_ar', 'like', '%' . $search . '%']
+            ])->orWhere([
+                ['user_status', 2],
+                ['name_en', 'like', '%' . $search . '%']
+            ])->get();
+        }
 
-    //         $output ='';
+            $output ='';
 
-    //         if(isset($users) && $users->count() > 0){
-    //         foreach ($users as $key => $user){
-    //             $output .='<div class="card overflow-hidden">
-    //                 <div class="d-md-flex">
-    //                     <div class="item-card9-img doctor-details">
-    //                         <div class="item-card9-imgs doctors">
-    //                             <a
-    //                                 href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'"></a>
-    //                             <div class="power-ribbon power-ribbon-top-left text-warning">
-    //                                 <span class="bg-warning"><i class="fa fa-bolt"></i></span></div>';
-    //                             if (isset($user->profile_photo_path) && file_exists($user->profile_photo_path)){
-    //                             $output .='<img alt="img" class="cover-image h-200"
-    //                                     src="'.asset($user->profile_photo_path).'">';
-    //                             }else{
-    //                                 $output .='<img alt="img" class="cover-image h-200"
-    //                                     src="'.asset('front_end_style/assets/images/media/doctors/2.jpg').'">';
-    //                             }
-    //                             $output .='</div>
-    //                         <div class="item-card9-icons">
-    //                             <a href="#" class="item-card9-icons1 item-icon-bg"
-    //                                 data-toggle="tooltip" title=""
-    //                                 data-original-title="wishlist"><i
-    //                                     class="fa fa fa-heart-o"></i></a>
-    //                             <a href="#" class="item-card9-icons1 bg-purple"
-    //                                 data-toggle="tooltip" title=""
-    //                                 data-original-title="Share"><i
-    //                                     class="fa fa-share-alt"></i></a>
-    //                         </div>
-    //                         <div class="item-overly-trans">
-    //                             <div class="rating-stars d-flex">
-    //                                 <span class="text-white mr-1"></span> <input
-    //                                     class="rating-value star" name="rating-stars-value"
-    //                                     readonly="readonly" type="number" value="3">
-    //                                 <div class="rating-stars-container">
-    //                                     <div class="rating-star sm">
-    //                                         <i class="fa fa-star"></i>
-    //                                     </div>
-    //                                     <div class="rating-star sm">
-    //                                         <i class="fa fa-star"></i>
-    //                                     </div>
-    //                                     <div class="rating-star sm">
-    //                                         <i class="fa fa-star"></i>
-    //                                     </div>
-    //                                     <div class="rating-star sm">
-    //                                         <i class="fa fa-star"></i>
-    //                                     </div>
-    //                                     <div class="rating-star sm">
-    //                                         <i class="fa fa-star"></i>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                     <div class="card border-0 mb-0">
-    //                         <div class="card-body">
-    //                             <div class="item-card9">
-    //                                 <span
-    //                                     class="badge badge-dark fs-12 mb-2">'. ucfirst($user_type) .'</span>
-    //                                 <a class="text-dark"
-    //                                     href="'. route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]) .'">
-    //                                     <h4 class="font-weight-bold mt-1 mb-1">
-    //                                         '. isset($user->name_en) ? $user->name_en : '--------' .'<i
-    //                                             class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
-    //                                     </h4>
-    //                                 </a>';
-    //                                 if ($user_type == 'doctors'){
-    //                                     $output ='<span class="text-muted fs-13 mt-0"><i
-    //                                             class="fa fa-user-md text-muted mr-2"></i>'. isset($user->speciality_id) ? $user->speciality->name_en : 'Not Set' .'</span>';
-    //                                 }
-    //                                 $output ='<div class="item-card9-desc mb-0 mt-2">
-    //                                     <span class="mr-4"><i
-    //                                             class="fa fa-map-marker text-muted mr-1"></i>';
-    //                                         if(isset($user->country_id)){$output .=$user->country->name_en;}else{$output .='Not Set';}
-    //                                         $output .='/';
-    //                                         if(isset($user->region_id)){$output .=$user->region->name_en;}else{$output .='Not Set';}
-    //                                     if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0){
-    //                                         $output ='<li style="list-style-type: none;"><span><i
-    //                                                     class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'
-    //                                                 |
-    //                                                 '. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
-    //                                         </li>';
-    //                                     }
-    //                                     $output ='</div>
-    //                             </div>
-    //                         </div>
-    //                         <div class="card-footer p-0">
-    //                             <div class="item-card9-footer btn-appointment">
-    //                                 <div class="btn-group w-100">
-    //                                     <a href="'. route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]) .'"
-    //                                         class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
-    //                                             class="fe fe-eye  mr-1"></i>View
-    //                                         Profile</a>
-    //                                     <a href="#"
-    //                                         class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"
-    //                                         data-target="#exampleModal"
-    //                                         data-toggle="modal"><i
-    //                                             class="fe fe-phone  mr-1"></i>Appointment</a>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>';
-    //         }
-    //         }else{
-    //             $output .='<h2 class="text-danger">No Data Found ...</h2>';
-    //         }
-
-
+            if(isset($users) && $users->count() > 0){
+            foreach ($users as $key => $user){
+                $output .='<div class="card overflow-hidden">
+                    <div class="d-md-flex">
+                        <div class="item-card9-img doctor-details">
+                            <div class="item-card9-imgs doctors">
+                                <a
+                                    href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'"></a>
+                                <div
+                                    class="power-ribbon power-ribbon-top-left text-warning">
+                                    <span class="bg-warning"><i
+                                            class="fa fa-bolt"></i></span></div>';
+                                    if (isset($user->profile_photo_path) && file_exists($user->profile_photo_path)){
+                                        $output .='<img alt="img" class="cover-image h-200"
+                                            src="'.asset($user->profile_photo_path).'">';
+                                    }else{
+                                    $output .='<img alt="img" class="cover-image h-200"
+                                            src="'.asset('front_end_style/assets/images/media/doctors/2.jpg').'">';
+                                    }
+                                $output .='</div>
+                            <div class="item-card9-icons">
+                                <a href="#" class="item-card9-icons1 item-icon-bg"
+                                    data-toggle="tooltip" title=""
+                                    data-original-title="wishlist"><i
+                                        class="fa fa fa-heart-o"></i></a>
+                                <a href="#" class="item-card9-icons1 bg-purple"
+                                    data-toggle="tooltip" title=""
+                                    data-original-title="Share"><i
+                                        class="fa fa-share-alt"></i></a>
+                            </div>
+                            <div class="item-overly-trans">
+                                <div class="rating-stars d-flex">
+                                    <span class="text-white mr-1"></span> <input
+                                        class="rating-value star" name="rating-stars-value"
+                                        readonly="readonly" type="number" value="3">
+                                    <div class="rating-stars-container">
+                                        <div class="rating-star sm">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="rating-star sm">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="rating-star sm">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="rating-star sm">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="rating-star sm">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-0">
+                            <div class="card-body">
+                                <div class="item-card9">
+                                    <span
+                                        class="badge badge-dark fs-12 mb-2">'. ucfirst($user_type) .'</span>
+                                    <a class="text-dark"
+                                        href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'">
+                                        <h4 class="font-weight-bold mt-1 mb-1">
+                                            '. $user->name_en .'<i
+                                                class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                        </h4>
+                                    </a>';
+                                    if ($user_type == 'doctors'){
+                                        $output .='<span class="text-muted fs-13 mt-0"><i
+                                                class="fa fa-user-md text-muted mr-2"></i>'.isset($user->speciality_id) ? $user->speciality->name_en : "Not Set".'</span>';
+                                    }
+                                    $output .='<div class="item-card9-desc mb-0 mt-2">
+                                        <span class="mr-4"><i
+                                                class="fa fa-map-marker text-muted mr-1"></i>
+                                            '.$user->country->name_en.'/'.$user->region->name_en.'</span>';
+                                        if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0){
+                                            $output .='<li style="list-style-type: none;"><span><i
+                                                        class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'
+                                                    |
+                                                    '. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
+                                            </li>';
+                                        }
+                                        $output .='</div>
+                                </div>
+                            </div>
+                            <div class="card-footer p-0">
+                                <div class="item-card9-footer btn-appointment">
+                                    <div class="btn-group w-100">
+                                        <a href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'"
+                                            class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                                class="fe fe-eye  mr-1"></i>View
+                                            Profile</a>
+                                        <a href="#"
+                                            class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"
+                                            data-target="#exampleModal"
+                                            data-toggle="modal"><i
+                                                class="fe fe-phone  mr-1"></i>Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+            }
+            }else{
+                $output .='<h2 class="text-danger">No Data Found ...</h2>';
+            }
 
 
-    //         return response()->json(['status'=>true,'output'=>$output]);
 
-    // }
+
+            return response()->json(['status'=>true,'output'=>$output]);
+
+    }
 }

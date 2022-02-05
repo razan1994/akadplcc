@@ -26,7 +26,6 @@ class DoctorSeeder extends Seeder
                     'username' => 'doctor_' . $i . '_' . $j,
                     'email' => 'doctor_' . $i . '_' . $j . '@rushetta.com',
                     'phone' => '0799998' . $i . '_' . $j,
-                    'speciality_id' => $i,
                     'password' => Hash::make('12345678'),
                     'country_id' => 111,
                     'region_id' => 1422,

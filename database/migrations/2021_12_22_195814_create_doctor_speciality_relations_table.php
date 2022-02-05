@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorSubSpecialitiesTable extends Migration
+class CreateDoctorSpecialityRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDoctorSubSpecialitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_sub_specialities', function (Blueprint $table) {
+        Schema::create('doctor_speciality_relations', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('doctor_id');
-            $table->bigInteger('sub_speciality_id');
+            $table->bigInteger('speciality_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDoctorSubSpecialitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_sub_specialities');
+        Schema::dropIfExists('doctor_speciality_relations');
     }
 }

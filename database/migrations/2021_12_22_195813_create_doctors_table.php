@@ -42,7 +42,6 @@ class CreateDoctorsTable extends Migration
             $table->rememberToken();
             // Relations:
             // ================================================================
-            $table->bigInteger('speciality_id')->nullable();
             $table->bigInteger('country_id')->nullable();
             $table->bigInteger('region_id')->nullable();
             $table->bigInteger('created_by')->nullable();

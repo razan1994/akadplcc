@@ -74,8 +74,8 @@ class Doctor extends Authenticatable
     // ===================================================================================================================
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
-    public function speciality(){
-        return $this->belongsTo(DoctorSpeciality::class , 'speciality_id');
+    public function specialities(){
+        return $this->hasMany(DoctorSpecialityRelation::class , 'doctor_id');
     }
 
 
@@ -106,10 +106,7 @@ class Doctor extends Authenticatable
     }
 
 
-    // Doctor Sub Speciality tAble Relation
-    public function DocotorSubSpecialities(){
-        return $this->hasMany(DoctorSubSpeciality::class , 'doctor_id');
-    }
+
 
     // ====================================================================================
     // ============================== Accessories =========================================

@@ -261,10 +261,7 @@ class SpecialitySeeder extends Seeder
                 49,
                 "رعاية تطفلية",
                 "intrusive care"
-            ]
-        ];
-
-        $subs = [
+            ],
             [
                 1,
                 "جلدية كبار",
@@ -1086,7 +1083,6 @@ class SpecialitySeeder extends Seeder
 
         foreach ($speciality as $spec) {
             DoctorSpeciality::create([
-                'id'=>$spec[0],
                 'name_ar' => $spec[1],
                 'name_en' => $spec[2],
                 'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$spec[1]),
@@ -1095,16 +1091,6 @@ class SpecialitySeeder extends Seeder
             ]);
         }
 
-        foreach ($subs as $sub) {
-            SubSpeciality::create([
-                'speciality_id'=>$sub[0],
-                'name_ar' => $sub[1],
-                'name_en' => $sub[2],
-                'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$sub[1]),
-                'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$sub[2]),
-                'updated_by' => 1,
-            ]);
-        }
     }
 }
 

@@ -32,7 +32,7 @@ class DoctorSpeciality extends Model
 
 
     public function doctors(){
-        return $this->hasMany(Doctor::class , 'speciality_id');
+        return $this->hasMany(DoctorSpecialityRelation::class , 'speciality_id');
     }
 
 
@@ -41,10 +41,7 @@ class DoctorSpeciality extends Model
         return $this->doctors()->inRandomOrder()->take(12);
     }
 
-    // sub Specialities tAble Relation
-    public function subSpecialities(){
-        return $this->hasMany(SubSpeciality::class , 'speciality_id');
-    }
+
 
 
 

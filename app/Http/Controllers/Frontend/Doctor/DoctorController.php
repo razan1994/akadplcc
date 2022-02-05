@@ -8,6 +8,8 @@ use App\Http\Requests\Frontend\Doctor\DoctorUpdateProfileFormRequest;
 use App\Http\Requests\Frontend\Doctor\DoctorUpdateWeekPlanFormRequest;
 use App\Models\Doctor;
 use App\Models\DoctorCertificate;
+use App\Models\DoctorSpeciality;
+use App\Models\DoctorSpecialityRelation;
 use App\Models\DoctorSubSpeciality;
 use App\Models\DoctorWeekPlan;
 use App\Models\SubSpeciality;
@@ -34,8 +36,9 @@ class DoctorController extends Controller
             }
 
             $auth = Auth::guard('doctor')->user();
+            $specialities = DoctorSpeciality::get();
 
-            return view('front_end_inners.doctors.doctor_dashboard', compact('auth','active'));
+            return view('front_end_inners.doctors.doctor_dashboard', compact('auth','active','specialities'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -81,7 +84,6 @@ class DoctorController extends Controller
             'region_id'=>$request->region_id,
             'address_ar'=>$request->address_ar,
             'address_en'=>$request->address_en,
-            'speciality_id'=>$request->speciality_id,
             'alias_name_en'=>str_replace(' ','-',$request->name_en),
             'alias_name_ar'=>str_replace(' ','-',$request->name_en),
             'user_description_en'=>$request->overview_en,
@@ -105,12 +107,12 @@ class DoctorController extends Controller
 
             DB::transaction(function () use ($created_data, $user , $request) {
                 $user->update($created_data);
-                if(isset($request->sub_speciality_id)){
-                    DoctorSubSpeciality::where('doctor_id',$user->id)->delete();
-                    foreach($request->sub_speciality_id as $sub){
-                        DoctorSubSpeciality::create([
+                if(isset($request->speciality_id)){
+                    DoctorSpecialityRelation::where('doctor_id',$user->id)->delete();
+                    foreach($request->speciality_id as $sub){
+                        DoctorSpecialityRelation::create([
                             'doctor_id'=>$user->id,
-                            'sub_speciality_id'=>$sub
+                            'speciality_id'=>$sub
                         ]);
                     }
                 }

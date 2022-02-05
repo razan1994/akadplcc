@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DoctorSubSpeciality extends Model
+class DoctorSpecialityRelation extends Model
 {
     use HasFactory;
 
-    protected $table = 'doctor_sub_specialities';
+    protected $table = 'doctor_speciality_relations';
 
     protected $fillable = [
         'doctor_id',
-        'sub_speciality_id',
+        'speciality_id',
     ];
 
 
@@ -23,8 +23,8 @@ class DoctorSubSpeciality extends Model
     }
 
     // sub Speciality tAble Relation
-    public function subSpeciality(){
-        return $this->belongsTo(SubSpeciality::class , 'sub_speciality_id');
+    public function speciality(){
+        return $this->belongsTo(DoctorSpeciality::class , 'speciality_id');
     }
 
 }

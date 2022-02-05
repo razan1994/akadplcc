@@ -800,8 +800,12 @@
                                                                         </h4>
                                                                     </a>
                                                                     @if ($user_type == 'doctors')
-                                                                        <span class="text-muted fs-13 mt-0"><i
-                                                                                class="fa fa-user-md text-muted mr-2"></i>{{ isset($user->speciality_id) ? $user->speciality->name_en : 'Not Set' }}</span>
+                                                                        @if(isset($user->specialities) && $user->specialities->count() > 0)
+                                                                        @foreach ($user->specialities->take(3) as $speciality)
+                                                                            <span class="text-muted fs-13 mt-0"><i
+                                                                                class="fa fa-user-md text-muted mr-2"></i>{{ isset($speciality->speciality->name_en) ? $speciality->speciality->name_en : '--------' }}</span>
+                                                                            @endforeach
+                                                                        @endif
                                                                     @endif
                                                                     <div class="item-card9-desc mb-0 mt-2">
                                                                         <span class="mr-4"><i
@@ -843,7 +847,7 @@
                                             <div class="row">
                                                 @foreach ($users as $key => $user)
                                                     <div class="col-lg-6 col-md-6 col-xl-4">
-                                                        <div class="card overflow-hidden">
+                                                        <div class="card overflow-hidden" style="height: 96%;">
                                                             <div class="item-card9-img">
                                                                 <div class="item-card9-imgs">
                                                                     <a
@@ -909,9 +913,14 @@
                                                                                 class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                                         </h4>
                                                                     </a>
-                                                                    <span class="text-muted fs-13 mt-0"><i
-                                                                            class="fa fa-user-md text-muted mr-2"></i>MBBS,
-                                                                        Ph.D</span>
+                                                                    @if ($user_type == 'doctors')
+                                                                        @if(isset($user->specialities) && $user->specialities->count() > 0)
+                                                                        @foreach ($user->specialities->take(3) as $speciality)
+                                                                            <p class="text-muted fs-13 mt-0"><i
+                                                                                class="fa fa-user-md text-muted mr-2"></i>{{ isset($speciality->speciality->name_en) ? $speciality->speciality->name_en : '--------' }}</p>
+                                                                            @endforeach
+                                                                        @endif
+                                                                    @endif
                                                                     <div class="mb-0 mt-2">
                                                                         <ul class="item-card-features mb-0">
                                                                             <li><span><i
@@ -920,12 +929,14 @@
                                                                                     /
                                                                                     {{ isset($user->region_id) ? $user->region->name_en : 'Not Set' }}</span>
                                                                             </li>
-                                                                            <li><span><i
-                                                                                        class="fe fe-briefcase mr-1 text-muted"></i>5yrs
-                                                                                    Exp</span></li>
-                                                                            <li><span><i
-                                                                                        class="fa fa-calendar-o mr-1 text-muted"></i>Mon
-                                                                                    - Fri </span></li>
+                                                                            @if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0)
+                                                                                <li><span><i
+                                                                                            class="fa fa-calendar-o mr-1 text-muted"></i>{{ explode(',', $user->weekPlan->active_days)[0] }}
+                                                                                        |
+                                                                                        {{ explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] }}</span>
+                                                                                </li>
+                                                                            @endif
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -970,128 +981,130 @@
                 <!--Right Side Content-->
                 <div class="col-xl-3 col-lg-4 col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Specialities</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="" id="container">
-                                <div class="filter-product-checkboxs">
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox1"
-                                            value="option1">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Cardiologist<span
-                                                    class="label label-light float-right">14</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox2"
-                                            value="option2">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Gynecologist<span
-                                                    class="label label-light float-right">22</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox3"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">physiologist<span
-                                                    class="label label-light float-right">78</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox4"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Neurologist<span
-                                                    class="label label-light float-right">35</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox5"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Neurosurgeon<span
-                                                    class="label label-light float-right">23</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox6"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Dermatologist<span
-                                                    class="label label-light float-right">14</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox7"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Dentist<span
-                                                    class="label label-light float-right">45</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox7"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">ENT surgeon<span
-                                                    class="label label-light float-right">34</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox7"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Infertility Spacialist<span
-                                                    class="label label-light float-right">12</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox7"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Orthopedic surgeon<span
-                                                    class="label label-light float-right">18</span></span>
-                                        </span>
-                                    </label>
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" name="checkbox7"
-                                            value="option3">
-                                        <span class="custom-control-label">
-                                            <span class="text-dark">Epidemiologist<span
-                                                    class="label label-light float-right">02</span></span>
-                                        </span>
-                                    </label>
+                        <form>
+                            <div class="card-header">
+                                <h3 class="card-title">Specialities</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="" id="container">
+                                    <div class="filter-product-checkboxs">
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox1"
+                                                value="option1">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Cardiologist<span
+                                                        class="label label-light float-right">14</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox2"
+                                                value="option2">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Gynecologist<span
+                                                        class="label label-light float-right">22</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox3"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">physiologist<span
+                                                        class="label label-light float-right">78</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox4"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Neurologist<span
+                                                        class="label label-light float-right">35</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox5"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Neurosurgeon<span
+                                                        class="label label-light float-right">23</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox6"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Dermatologist<span
+                                                        class="label label-light float-right">14</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Dentist<span
+                                                        class="label label-light float-right">45</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">ENT surgeon<span
+                                                        class="label label-light float-right">34</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Infertility Spacialist<span
+                                                        class="label label-light float-right">12</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Orthopedic surgeon<span
+                                                        class="label label-light float-right">18</span></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" name="checkbox7"
+                                                value="option3">
+                                            <span class="custom-control-label">
+                                                <span class="text-dark">Epidemiologist<span
+                                                        class="label label-light float-right">02</span></span>
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header border-top">
-                            <h3 class="card-title">Rating</h3>
-                        </div>
-                        <div class="card-body">
-                            <select id="inputState" class="form-control nice-select">
-                                <option>1 Star and higher</option>
-                                <option>2 Star and higher</option>
-                                <option>3 Star and higher</option>
-                                <option>4 Star and higher</option>
-                                <option>5 Star and higher</option>
-                            </select>
-                        </div>
-                        <div class="card-header border-top">
-                            <h3 class="card-title">Fees Range</h3>
-                        </div>
-                        <div class="card-body">
-                            <h6>
-                                <label for="price">Fees Range:</label>
-                                <input type="text" id="price">
-                            </h6>
-                            <div id="mySlider"></div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-secondary btn-block">Apply Filter</a>
-                        </div>
+                            <div class="card-header border-top">
+                                <h3 class="card-title">Rating</h3>
+                            </div>
+                            <div class="card-body">
+                                <select id="inputState" class="form-control nice-select">
+                                    <option>1 Star and higher</option>
+                                    <option>2 Star and higher</option>
+                                    <option>3 Star and higher</option>
+                                    <option>4 Star and higher</option>
+                                    <option>5 Star and higher</option>
+                                </select>
+                            </div>
+                            <div class="card-header border-top">
+                                <h3 class="card-title">Fees Range</h3>
+                            </div>
+                            <div class="card-body">
+                                <h6>
+                                    <label for="price">Fees Range:</label>
+                                    <input type="text" id="price">
+                                </h6>
+                                <div id="mySlider"></div>
+                            </div>
+                            <div class="card-footer">
+                                <button href="#" class="btn btn-secondary btn-block">Apply Filter</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="card mb-0">
                         <div class="card-header">
@@ -1173,6 +1186,18 @@
                         if (data.status == true) {
                             $("#tab-11").html('');
                             $("#tab-11").html(data.output);
+
+                            var ratingOptions = {
+                                selectors: {
+                                    starsSelector: '.rating-stars',
+                                    starSelector: '.rating-star',
+                                    starActiveClass: 'is--active',
+                                    starHoverClass: 'is--hover',
+                                    starNoHoverClass: 'is--no-hover',
+                                    targetFormElementSelector: '.rating-value'
+                                }
+                            };
+                            $(".rating-stars").ratingStars(ratingOptions);
                         }
                     },
                     error: function(reject) {

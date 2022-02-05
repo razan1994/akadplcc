@@ -1401,10 +1401,10 @@
                                                         </div>
                                                         <div class="item-card2-img">
                                                             <a
-                                                                href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}"></a>
-                                                            @if (isset($doctor->profile_photo_path) && file_exists($doctor->profile_photo_path))
+                                                                href="{{ route('user-details', ['doctors', $doctor->doctor->alias_name_en]) }}"></a>
+                                                            @if (isset($doctor->doctor->profile_photo_path) && file_exists($doctor->doctor->profile_photo_path))
                                                                 <img alt="img" class="cover-image spec-doc-img"
-                                                                    src="{{ asset($doctor->profile_photo_path) }}">
+                                                                    src="{{ asset($doctor->doctor->profile_photo_path) }}">
                                                             @else
                                                                 <img alt="img" class="cover-image spec-doc-img"
                                                                     src="{{ asset('front_end_style/assets/images/media/0-33.jpg') }}">
@@ -1419,11 +1419,11 @@
                                                         <div class="card-body">
                                                             <div class="item-card2">
                                                                 <small
-                                                                    class="text-muted">{{ isset($doctor->speciality->name_en) ? $doctor->speciality->name_en : '--------' }}</small>
+                                                                    class="text-muted">{{ isset($doctor->doctor->speciality->name_en) ? $doctor->doctor->speciality->name_en : '--------' }}</small>
                                                                 <a class="text-dark"
-                                                                    href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}">
+                                                                    href="{{ route('user-details', ['doctors', $doctor->doctor->alias_name_en]) }}">
                                                                     <h4 class="font-weight-semibold mt-1 mb-1">
-                                                                        {{ isset($doctor->name_en) ? $doctor->name_en : '--------' }}
+                                                                        {{ isset($doctor->doctor->name_en) ? $doctor->doctor->name_en : '--------' }}
                                                                         <i
                                                                             class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                                     </h4>
@@ -1464,7 +1464,7 @@
                                                         <div class="card-footer p-0 btn-appointment">
                                                             <div class="btn-group w-100">
                                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0"
-                                                                    href="{{ route('user-details', ['doctors', $doctor->alias_name_en]) }}"><i
+                                                                    href="{{ route('user-details', ['doctors', $doctor->doctor->alias_name_en]) }}"><i
                                                                         class="fe fe-eye mr-1"></i> Visit Website</a>
                                                                 <a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-right-0"
                                                                     href="#" data-target="#exampleModal"

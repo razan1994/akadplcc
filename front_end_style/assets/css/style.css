@@ -172,14 +172,15 @@ License        :   Licensed under ThemeForest License
     }
     
     *::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
+        width: 15px;
+        height: 100%;
         -webkit-transition: .3s background;
         transition: .3s background;
     }
     
      ::-webkit-scrollbar-thumb {
-        background: #e1e6f1;
+        height: 96px;
+        background: #001b44;
     }
     
     *:hover::-webkit-scrollbar-thumb {
@@ -22457,7 +22458,7 @@ License        :   Licensed under ThemeForest License
     }
     
     .item-card-features li {
-        width: 50%;
+        width: 100%;
         float: left;
         margin-right: 0 !important;
         margin-bottom: .5rem;
