@@ -496,13 +496,17 @@ class FrontEndController extends Controller
                                         </h4>
                                     </a>';
                                     if ($user_type == 'doctors'){
-                                        $output .='<span class="text-muted fs-13 mt-0"><i
-                                                class="fa fa-user-md text-muted mr-2"></i>'.isset($user->speciality_id) ? $user->speciality->name_en : "Not Set".'</span>';
+                                        if(isset($user->specialities) && $user->specialities->count() > 0){
+                                            foreach($user->specialities->take(3) as $spaciality){
+                                                $output .='<span class="text-muted fs-13 mt-0"><i
+                                                        class="fa fa-user-md text-muted mr-2"></i>'. isset($spaciality->speciality->name_en) ? $spaciality->speciality->name_en : "Not Set".'</span>';
+                                            }
+                                        }
                                     }
                                     $output .='<div class="item-card9-desc mb-0 mt-2">
                                         <span class="mr-4"><i
                                                 class="fa fa-map-marker text-muted mr-1"></i>
-                                            '.$user->country->name_en.'/'.$user->region->name_en.'</span>';
+                                            '.isset($user->country->name_en) ? $user->country->name_en : "--------" .'/'.$user->region->name_en.'</span>';
                                         if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0){
                                             $output .='<li style="list-style-type: none;"><span><i
                                                         class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'
