@@ -22,7 +22,21 @@ class Blog extends Model
         'alias_name_ar',
         'alias_name_en',
         'image',
-        'status'
+        'status',
+        'alt_text_ar',
+        'alt_text_en',
+        'image_title_text_ar',
+        'image_title_text_en',
+        'h2_ar',
+        'h2_en',
+        'seo_title_ar',
+        'seo_title_en',
+        'keywords_ar',
+        'keywords_en',
+        'redirect_301_ar',
+        'redirect_301_en',
+        'meta_desc_ar',
+        'meta_desc_en',
     ];
 
     protected $date = ['deleted_at'];

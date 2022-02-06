@@ -1,5 +1,8 @@
 @extends('front_end_inners.app_front_end', ['title' => 'Blogs'])
 @section('page_title') {{ 'Rushetta | Blogs' }} @endsection
+@section('meta_title'){!! isset($blog->seo_title_en) ? $blog->seo_title_en : 'Rushetta website' !!}@endsection
+@section('meta_desc'){!! isset($blog->meta_desc_ar) ? $blog->meta_desc_ar : 'rushetta website find your doctor' !!}@endsection
+@section('meta_keywords'){{ isset($blog->keywords_en) ? $blog->keywords_en : 'rushetta,docotors,dctor' }}@endsection
 @section('content')
     <!--Section-->
     <section>
@@ -667,10 +670,13 @@
 				<div class="row">
 					<div class="col-xl-10 col-lg-10 col-md-12 d-block mx-auto">
 						<div class="card">
+                            <div class="cart-title col-xl-12 p-3"><a class="text-dark" href="#">
+								<h1 class="font-weight-semibold">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h1></a></div>
 							<div class="card-body">
 								<div class="item7-card-img">
                                     @if(isset($blog->image) && file_exists($blog->image))
-									    <img alt="img" class="w-100" src="{{ asset($blog->image) }}">
+									    <img alt="img" class="w-100" src="{{ asset($blog->image) }}" alt="{{ isset($blog->alt_text_en) ? $blog->alt_text_ar : 'image' }}"
+                                            title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : 'image' }}">
                                     @else
 									    <img alt="img" class="w-100" src="{{ asset('front_end_style/assets/images/media/28.jpg') }}">
                                     @endif
@@ -683,8 +689,8 @@
 									{{-- <div class="ml-auto">
 										<a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>2 Comments</a>
 									</div> --}}
-								</div><a class="text-dark" href="#">
-								<h2 class="font-weight-semibold">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h2></a>
+								</div>
+                                <h2 class="font-weight-semibold">{{ isset($blog->h2_en) ? $blog->h2_en : '--------' }}</h2></a>
 								<p>{!! isset($blog->desc_en) ? $blog->desc_en : '--------' !!}</p>
 							</div>
 						</div>

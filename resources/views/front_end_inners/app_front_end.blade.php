@@ -6,10 +6,13 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Medz - Medical Directory HTML Template">
-    <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="appointments, booking, bootstrap list template,  directory listing html template,  directory website template, doctor directory, doctor search, health template, healthcare directory, hospital,  html css templates, html directory listing, listing, medical bootstrap template, medical directory, medical html template , medical template,  medical web templates, medical website templates, pharma website templates, responsive html template,template html css, online directory website,  html5 template, themeforest html,  online directory, simple html templates ">
+    <meta name="title" content="@yield('meta_title')">
+    <meta name="description" content="@yield('meta_desc')">
+    <meta name="keywords" content="@yield('meta_keywords')">
+    <meta property="title" content="@yield('meta_title')">
+    <meta property="description" content="@yield('meta_desc')">
+    <meta property="keywords" content="@yield('meta_keywords')">
+    <meta name="author" content="Target Point TPT">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" type="image/x-icon') }}" />
     <link rel="shortcut icon" type="image/x-icon"

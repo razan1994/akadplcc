@@ -6,6 +6,29 @@
 @section('content')
     <div class="content-wrapper">
         <div class="content">
+            {{-- =========================================================== --}}
+            {{-- ================== Sweet Alert Section ==================== --}}
+            {{-- =========================================================== --}}
+            <div>
+                @if (session()->has('success'))
+                    <script>
+                        swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
+                            button: "OK",
+                        });
+
+                    </script>
+                @endif
+                @if (session()->has('danger'))
+                    <script>
+                        swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
+                            button: "Close",
+                        });
+
+                    </script>
+                @endif
+            </div>
+
+
 
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 {{-- ============================================== --}}
@@ -99,7 +122,7 @@
                                                 </div>
 
                                                 {{-- Status --}}
-                                                <div class="col-md-12 mb-3">
+                                                <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"> Status
                                                         <strong class="text-danger"> * @error('status') - {{ $message }} @enderror</strong></label>
                                                     <div class="input-group">
@@ -115,8 +138,26 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- alt text Ar --}}
-                                                <div class="col-md-6 mb-3">
+
+
+                                                {{-- @lang('front_end.News_Blog_Details_AR') --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details AR :
+                                                        <strong class="text-danger"> * @error('desc_ar') - {{ $message }} @enderror</strong>
+                                                    </label>
+                                                    <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ old('desc_ar') }}</textarea>
+                                                </div>
+
+                                                {{-- @lang('front_end.News_Blog_Details_EN') --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details EN :
+                                                        <strong class="text-danger">* @error('desc_en') - {{ $message }}@enderror</strong>
+                                                    </label>
+                                                    <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ old('desc_en') }}</textarea>
+                                                </div>
+
+                                                 {{-- alt text Ar --}}
+                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Alt Text Ar <strong
                                                             class="text-danger"> * @error('alt_text_ar') -
@@ -164,6 +205,7 @@
                                                         <input type="text" name="image_title_text_ar" class="form-control @error('image_title_text_ar') is-invalid @enderror"
                                                             id="validationServer01" placeholder="Image Titl Text Ar"
                                                             value="{{ old('image_title_text_ar') }}">
+
                                                     </div>
                                                 </div>
                                                 {{-- image title text En --}}
@@ -183,22 +225,118 @@
                                                             value="{{ old('image_title_text_en') }}">
                                                     </div>
                                                 </div>
-
+                                                {{-- H2 Ar --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">H2 AR <strong
+                                                            class="text-danger"> * @error('h2_ar') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="h2_ar" class="form-control @error('h2_ar') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="H2 AR"
+                                                            value="{{ old('h2_ar') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- H2 EN --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">H2 EN <strong
+                                                            class="text-danger"> * @error('h2_en') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="h2_en" class="form-control @error('h2_en') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="H2 AR"
+                                                            value="{{ old('h2_en') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- seo title AR --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">SEO Title AR <strong
+                                                            class="text-danger"> * @error('seo_title_ar') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="seo_title_ar" class="form-control @error('seo_title_ar') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="SEO Titl AR"
+                                                            value="{{ old('seo_title_ar') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- seo title En --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">SEO Title En <strong
+                                                            class="text-danger"> * @error('seo_title_en') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="seo_title_en" class="form-control @error('seo_title_en') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="SEO Titl En"
+                                                            value="{{ old('seo_title_en') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- SEO Meta data AR --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" > keywords AR :
+                                                        <strong class="text-danger"> * @error('keywords_ar') - {{ $message }} @enderror</strong>
+                                                    </label>
+                                                    <textarea name="keywords_ar" class="form-control" placeholder="Kewords AR">{{ old('keywords_ar') }}</textarea>
+                                                </div>
+                                                {{-- SEO Meta data EN --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" > keywords EN :
+                                                        <strong class="text-danger"> * @error('keywords_en') - {{ $message }} @enderror</strong>
+                                                    </label>
+                                                    <textarea name="keywords_en" class="form-control" placeholder="Kewords EN">{{ old('keywords_en') }}</textarea>
+                                                </div>
+                                                {{-- Redirect 301 AR --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"> Redirect 301 AR :
+                                                        <strong class="text-danger"> * @error('redirect_301_ar') - {{ $message }} @enderror</strong>
+                                                    </label>
+                                                    <textarea name="redirect_301_ar" class="form-control" placeholder="Redirect 301 AR">{{ old('redirect_301_ar') }}</textarea>
+                                                </div>
+                                                {{-- Redirect 301 EN --}}
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" > Redirect 301 EN :
+                                                        <strong class="text-danger"> * @error('redirect_301_en') - {{ $message }} @enderror</strong>
+                                                    </label>
+                                                    <textarea name="redirect_301_en" class="form-control" placeholder="Redirect 301 EN">{{ old('redirect_301_en') }}</textarea>
+                                                </div>
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details AR :
-                                                        <strong class="text-danger"> * @error('desc_ar') - {{ $message }} @enderror</strong>
+                                                    <label class="text-dark font-weight-medium mb-3" > Meta Desc AR :
+                                                        <strong class="text-danger"> * @error('meta_desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
-                                                    <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ old('desc_ar') }}</textarea>
+                                                    <textarea  name="meta_desc_ar" rows="10" class="form-control" placeholder="Meta Desc AR">{{ old('meta_desc_ar') }}</textarea>
                                                 </div>
 
                                                 {{-- @lang('front_end.News_Blog_Details_EN') --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details EN :
-                                                        <strong class="text-danger">* @error('desc_en') - {{ $message }}@enderror</strong>
+                                                    <label class="text-dark font-weight-medium mb-3" > Meta Desc EN :
+                                                        <strong class="text-danger">* @error('meta_desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
-                                                    <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ old('desc_en') }}</textarea>
+                                                    <textarea name="meta_desc_en" class="form-control" rows="10" placeholder="Meta Desc EN">{{ old('meta_desc_en') }}</textarea>
                                                 </div>
+
 
                                                 <div class="col-md-12 mb-3">
                                                     <div class="input-group">
@@ -218,16 +356,22 @@
         </div>
     </div>
 
-    {{-- ========================================================== --}}
-    {{-- ================ Advance Text Area Section =============== --}}
-    {{-- ========================================================== --}}
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+        {{-- ========================================================== --}}
+        {{-- ================ Advance Text Area Section =============== --}}
+        {{-- ========================================================== --}}
+        <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
-    <script>
-            CKEDITOR.replace( 'desc_ar');
-            CKEDITOR.replace( 'desc_en');
-    </script>
-    {{-- ========================================================== --}}
-    {{-- ================ Advance Text Area Section =============== --}}
-    {{-- ========================================================== --}}
+        <script>
+                CKEDITOR.replace( 'desc_ar',{
+                    fullPage: true,
+                    allowedContent: true
+                });
+                CKEDITOR.replace( 'desc_en',{
+                    fullPage: true,
+                    allowedContent: true
+                });
+        </script>
+        {{-- ========================================================== --}}
+        {{-- ================ Advance Text Area Section =============== --}}
+        {{-- ========================================================== --}}
 @endsection

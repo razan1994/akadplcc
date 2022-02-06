@@ -23,10 +23,25 @@ class CreateBlogsTable extends Migration
             $table->longText('desc_en');
             $table->longText('alias_name_ar');
             $table->longText('alias_name_en');
+            $table->longText('alt_text_ar')->nullable();
+            $table->longText('alt_text_en')->nullable();
+            $table->longText('image_title_text_ar')->nullable();
+            $table->longText('image_title_text_en')->nullable();
+            $table->longText('meta_desc_ar')->nullable();
+            $table->longText('meta_desc_en')->nullable();
+            $table->longText('h2_ar')->nullable();
+            $table->longText('h2_en')->nullable();
+            $table->longText('seo_title_ar')->nullable();
+            $table->longText('seo_title_en')->nullable();
+            $table->longText('keywords_ar')->nullable();
+            $table->longText('keywords_en')->nullable();
+            $table->longText('redirect_301_ar')->nullable();
+            $table->longText('redirect_301_en')->nullable();
             $table->longText('image');
             $table->tinyInteger('status')->comment = '1 => Active  || 2 => Not Active ';
             $table->softDeletes();
             $table->timestamps();
+
         });
     }
 

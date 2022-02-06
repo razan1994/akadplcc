@@ -2763,7 +2763,11 @@
                         <div class="col-lg-4 col-md-12 col-xl-4">
                             <div class="card">
                                 <div class="item7-card-img">
-                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                    @if(isset($blog->redirect_301_en))
+                                        <a href="{{ $blog->redirect_301_en }}"></a>
+                                    @else
+                                        <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                    @endif
                                     @if(isset($blog->image) && file_exists($blog->image))
                                         <img src="{{ asset($blog->image) }}" alt="img"
                                         class="cover-image">
@@ -2773,13 +2777,21 @@
                                     @endif
                                 </div>
                                 <div class="card-body p-4">
-                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark">
+                                    @if(isset($blog->redirect_301_en))
+                                        <a href="{{ $blog->redirect_301_en }}" class="text-dark">
+                                    @else
+                                        <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark">
+                                    @endif
                                         <h4>{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4>
                                     </a>
                                     <p>{!! \Illuminate\Support\Str::limit(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------', 70, $end='...') !!}
                                         @if (\Illuminate\Support\Str::length(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------') > 70)
                                             {{-- <span id="dots">...</span> --}}
-                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-primary font-weight-bold">more</a>
+                                            @if(isset($blog->redirect_301_en))
+                                                <a href="{{ $blog->redirect_301_en }}" class="text-primary font-weight-bold">more</a>
+                                            @else
+                                                <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-primary font-weight-bold">more</a>
+                                            @endif
                                         @endif</p>
                                     {{-- <div class="d-flex">
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="likes"><i

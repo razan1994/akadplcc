@@ -117,13 +117,27 @@ class NewsBlogController extends Controller
                 'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_ar),
                 'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_en),
                 'image' => $news_blog_main_image,
+                'alt_text_ar'=> $request->alt_text_ar,
+                'alt_text_en'=> $request->alt_text_en,
+                'image_title_text_ar'=> $request->image_title_text_ar,
+                'image_title_text_en'=> $request->image_title_text_en,
+                'h2_ar'=> $request->h2_ar,
+                'h2_en'=> $request->h2_en,
+                'seo_title_ar'=> $request->seo_title_ar,
+                'seo_title_en'=> $request->seo_title_en,
+                'keywords_ar'=> str_replace(' ',',',$request->keywords_ar),
+                'keywords_en'=> str_replace(' ',',',$request->keywords_en),
+                'redirect_301_ar'=> $request->redirect_301_ar,
+                'redirect_301_en'=> $request->redirect_301_en,
+                'meta_desc_ar' => $request->meta_desc_ar,
+                'meta_desc_en' => $request->meta_desc_en
             ];
 
             DB::transaction(function () use ($created_data) {
                 $base = Blog::create($created_data);
             });
 
-            return redirect()->route('super_admin.news_blogs-index')->with('success', 'Data has been added successfully');
+            return redirect()->back()->with('success', 'Data has been added successfully');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -246,6 +260,20 @@ class NewsBlogController extends Controller
                     'desc_en' => $request->desc_en,
                     'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_ar),
                     'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_en),
+                    'alt_text_ar'=> $request->alt_text_ar,
+                    'alt_text_en'=> $request->alt_text_en,
+                    'image_title_text_ar'=> $request->image_title_text_ar,
+                    'image_title_text_en'=> $request->image_title_text_en,
+                    'h2_ar'=> $request->h2_ar,
+                    'h2_en'=> $request->h2_en,
+                    'seo_title_ar'=> $request->seo_title_ar,
+                    'seo_title_en'=> $request->seo_title_en,
+                    'keywords_ar'=> str_replace(' ',',',$request->keywords_ar),
+                    'keywords_en'=> str_replace(' ',',',$request->keywords_en),
+                    'redirect_301_ar'=> $request->redirect_301_ar,
+                    'redirect_301_en'=> $request->redirect_301_en,
+                    'meta_desc_ar' => $request->meta_desc_ar,
+                    'meta_desc_en' => $request->meta_desc_en
                 ];
                 // Upload Image Section :
                 if (isset($request->image)) {
@@ -259,7 +287,7 @@ class NewsBlogController extends Controller
                 DB::transaction(function () use ($update_data, $id) {
                     Blog::find($id)->update($update_data);
                 });
-                return redirect()->route('super_admin.news_blogs-index')->with('success', 'The data has been successfully updated');
+                return redirect()->back()->with('success', 'The data has been successfully updated');
             } else {
                 return redirect()->route('super_admin.news_blogs-index')->with('danger', 'This record does not exist in the records');
             }

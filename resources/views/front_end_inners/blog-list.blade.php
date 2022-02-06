@@ -674,7 +674,11 @@
                                             <div class="row no-gutters blog-list">
                                                 <div class="col-xl-4 col-lg-12 col-md-12">
                                                     <div class="item7-card-img">
-                                                        <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                                        @if(isset($blog->redirect_301_en))
+                                                            <a href="{{ $blog->redirect_301_en }}"></a>
+                                                        @else
+                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                                        @endif
                                                         @if(isset($blog->image) && file_exists($blog->image))
                                                             <img src="{{ asset($blog->image) }}" alt="img"
                                                             class="cover-image">
@@ -695,12 +699,20 @@
                                                                 <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
                                                             </div> --}}
                                                         </div>
-                                                        <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
+                                                        @if(isset($blog->redirect_301_en))
+                                                            <a href="{{ $blog->redirect_301_en }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
+                                                        @else
+                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
+                                                        @endif
                                                         <p class="mb-1">{!! \Illuminate\Support\Str::limit(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------', 150, $end='...') !!}
                                                         </p>
                                                             @if (\Illuminate\Support\Str::length(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------') > 150)
                                                                 {{-- <span id="dots">...</span> --}}
-                                                                <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="btn btn-primary btn-sm mt-4">Read More</a>
+                                                                @if(isset($blog->redirect_301_en))
+                                                                    <a href="{{ $blog->redirect_301_en }}" class="btn btn-primary btn-sm mt-4">Read More</a>
+                                                                @else
+                                                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="btn btn-primary btn-sm mt-4">Read More</a>
+                                                                @endif
                                                             @endif
                                                     </div>
                                                 </div>
