@@ -115,6 +115,75 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- alt text Ar --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">Alt Text Ar <strong
+                                                            class="text-danger"> * @error('alt_text_ar') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="alt_text_ar" class="form-control @error('alt_text_ar') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Alt Text Ar"
+                                                            value="{{ old('alt_text_ar') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- alt text En --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">Alt Text En <strong
+                                                            class="text-danger"> * @error('alt_text_en') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="alt_text_en" class="form-control @error('alt_text_en') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Alt Text EN"
+                                                            value="{{ old('alt_text_en') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- image title text Ar --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">Image Title Text AR <strong
+                                                            class="text-danger"> * @error('image_title_text_ar') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="image_title_text_ar" class="form-control @error('image_title_text_ar') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Image Titl Text Ar"
+                                                            value="{{ old('image_title_text_ar') }}">
+                                                    </div>
+                                                </div>
+                                                {{-- image title text En --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">Image Title Text En <strong
+                                                            class="text-danger"> * @error('image_title_text_en') -
+                                                                {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="image_title_text_en" class="form-control @error('image_title_text_en') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Image Titl Text En"
+                                                            value="{{ old('image_title_text_en') }}">
+                                                    </div>
+                                                </div>
+
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
                                                 <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > Blog Details AR :
