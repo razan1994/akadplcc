@@ -16,1083 +16,1068 @@ class SpecialitySeeder extends Seeder
     public function run()
     {
 
-        $speciality = [
+        $array = [
             [
-                1,
-                "جلدية و تناسلية",
-                " Dermatology "
+            "جلدية و تناسلية",
+            " Dermatology ",
             ],
             [
-                2,
-                "اسنان",
-                " Dentistry (Teeth)"
+            "جلدية كبار",
+            "Adult Dermatology"
             ],
             [
-                3,
-                "أورام",
-                "Oncology (Tumor)"
+            "امراض الاطفال الجلدية",
+            "Pediatric Dermatology"
             ],
             [
-                4,
-                "باطني",
-                "Internal Medicine "
+            "الجلدية التجميلية والليزر",
+            "Cosmetic Dermatology and Laser"
             ],
             [
-                5,
-                "جراحة أطفال",
-                " Pediatric Surgery "
+            "متابعة الامراض الجلدية",
+            "Dermatology Follow Up"
             ],
             [
-                6,
-                "جراحة أوعية دموية",
-                "Vascular Surgery (Arteries and Vein Surgery)"
+            "الأمراض الجلدية التناسلية",
+            "Genital Dermatology"
             ],
             [
-                7,
-                "جراحة عامة",
-                "General Surgery "
+            "حساسية الجلد",
+            "Skin Allergy"
             ],
             [
-                8,
-                "جراحة عمود فقري",
-                "Spinal Surgery "
+            "اسنان",
+            " Dentistry "
             ],
             [
-                9,
-                "جهاز هضمي وتنظير",
-                " Gastroenterology and Endoscopy "
+            "جراحة الوجه والفكين",
+            "Oral and Maxillofacial Surgery"
             ],
             [
-                10,
-                "حساسية ومناعة",
-                "Allergy and immunity"
+            "تقويم الأسنان",
+            "orthodontics"
             ],
             [
-                11,
-                "حقن مجهري وأطفال أنابيب",
-                "IVF and Infertility "
+            "طب اسنان اطفال",
+            "Pediatric Dentistry"
             ],
             [
-                12,
-                "ذكورة وعقم",
-                " Andrology and Male Infertility "
+            "طب الأسنان التجميلي",
+            "Cosmetic Dentistry"
             ],
             [
-                13,
-                "روماتيزم ومفاصل",
-                "rheumatism"
+            "حشو وعلاج الجذور والاعصاب",
+            "Filling and treatment of roots and nerves"
             ],
             [
-                14,
-                "سكر وغدد صماء",
-                "Diabetes and Endocrinology "
+            "اشعة الاسنان",
+            "dental x-rays"
             ],
             [
-                15,
-                "سمعيات ",
-                "Audiology "
+            "أمراض الفم",
+            "Oral diseases"
             ],
             [
-                16,
-                "تغذية وحمية",
-                "Dietitian and Nutrition "
+            "علاج اللثة",
+            "gum treatment"
             ],
             [
-                17,
-                "صدر وجهاز تنفسي",
-                "Chest and Respiratory "
+            "طب أسنان الكبار",
+            "Adult Dentistry "
             ],
             [
-                18,
-                "طب الاسرة",
-                "Family Medicine "
+            "طب أسنان كبار السن",
+            "Elder Dentistry"
             ],
             [
-                19,
-                "طب الطوارئ و الحوادث ",
-                "Emergency and Accidents Medicine "
+            "تجميل الأسنان بالليزر",
+            "Cosmetic Dentistry By Laser"
             ],
             [
-                20,
-                "علاج طبيعي واصابات ملاعب",
-                "Physiotherapy and sports injuries"
+            "طب الأسنان الوقائي",
+            "Preventive Dentistry"
             ],
             [
-                21,
-                "عيون",
-                " Ophthalmology (Eyes)"
+            "تركيبات اسنان",
+            "dental implants"
             ],
             [
-                22,
-                "كبد",
-                "Hepatology (Liver Doctor)"
+            "أورام",
+            "Oncology (Tumor)"
             ],
             [
-                23,
-                "كلى",
-                "Nephrology "
+            "الاشعة العلاجية",
+            "therapeutic radiology"
             ],
             [
-                24,
-                "مسالك بولية",
-                "Urology (Urinary System)"
+            "اورام كبار",
+            "Adult Oncology"
             ],
             [
-                25,
-                "أشعة",
-                "rays"
+            "اورام اطفال",
+            "Pediatric Oncology"
             ],
             [
-                26,
-                "أطفال وحديثي الولادة",
-                "Babies and newborns"
+            "علاج اورام بالإشعاع",
+            "Radiation Oncology"
             ],
             [
-                27,
-                "جراحة التجميل",
-                "plastic surgery"
+            "جراحة اورام المخ",
+            "brain tumor surgery"
             ],
             [
-                28,
-                "نطق و تخاطب ",
-                "Phoniatrics (Speech)"
+            "جراحة اورام القولون",
+            "Colon tumor surgery"
             ],
             [
-                29,
-                "أمراض الدم",
-                "Blood diseases"
+            "جراحة اورام الكبد",
+            "Liver tumor surgery"
             ],
             [
-                30,
-                "امراض دم اطفال",
-                "Pediatric hematology"
+            "جراحة اورام الرئة",
+            "Lung tumor surgery"
             ],
             [
-                31,
-                "أنف وأذن وحنجرة",
-                "Ear, Nose and Throat"
+            "جراحة اورام العظام",
+            "Orthopedic surgery"
             ],
             [
-                32,
-                "جراحة الدماغ و الأعصاب",
-                "Brain and Neurosurgery"
+            "جراحة اورام البروستاتا",
+            "Prostate tumor surgery"
             ],
             [
-                33,
-                "جراحة القلب",
-                "Heart Surgery"
+            "جراحة اورام كبار",
+            "Adult Oncology Surgery"
             ],
             [
-                34,
-                "جراحة السمنة وتخفيف الوزن",
-                "Bariatric surgery and weight loss"
+            "أمراض الدم",
+            "Hematology "
             ],
             [
-                35,
-                "جراحة الصدر",
-                "Thoracic surgery"
+            "جراحة اورام المعدة",
+            "stomach tumor surgery"
             ],
             [
-                36,
-                "التخدير والعناية المركزة",
-                "Anesthesia and intensive care"
+            "جراحة المخ",
+            "Neurosurgery"
             ],
             [
-                37,
-                "التربية الخاصة",
-                "Special Education"
+            "طب جراحة العمود الفقري والعناية الحرجة",
+            "Medicine Spine Surgery Critical Care"
             ],
             [
-                38,
-                "العلاج الوظيفي",
-                "Occupational Therapy"
+            "باطني",
+            "Internal Medicine "
             ],
             [
-                39,
-                "العناية الحرجة",
-                "critical care"
+            "امراض سارية و معدية",
+            "Communicable and contagious diseases"
             ],
             [
-                40,
-                "تجميل و ليزر",
-                "Cosmetic and laser"
+            "باطني كبار",
+            "Adult Internal Medicine"
             ],
             [
-                41,
-                "طب عام",
-                "General Medicine"
+            "باطني اطفال",
+            "Pediatric Internal Medicine"
             ],
             [
-                42,
-                "دماغ وأعصاب",
-                "brain and nerves"
+            "امراض الكلى",
+            "Nephrology "
             ],
             [
-                43,
-                "طب نووي",
-                "nuclear medicine"
+            "امراض الكلى بالغين",
+            "Adult Nephrology "
             ],
             [
-                44,
-                "عظام",
-                "bones"
+            "جهاز هضمي وتنظير",
+            "Gastroenterology and Endoscopy"
             ],
             [
-                45,
-                "علاج الألم",
-                "Pain treatment"
+            "الطب الباطني",
+            "Internal Medicine"
             ],
             [
-                46,
-                "قلب وشرايين",
-                "heart and arteries"
+            "جهاز هضمي وتنظير بالغين",
+            " Adult Gastroenterology and Endoscopy"
             ],
             [
-                47,
-                "نسائية وتوليد",
-                "Obstetrics and Gynecology"
+            "الطب الباطني للبالغين",
+            "Adult Internal Medicine"
             ],
             [
-                48,
-                "نفسي",
-                "mental illness"
+            "الطب الباطني",
+            "Internal Medicine"
             ],
             [
-                49,
-                "رعاية تطفلية",
-                "intrusive care"
+            "أمراض الرئة",
+            "Pulmonology "
             ],
             [
-                1,
-                "جلدية كبار",
-                "Adult Dermatology"
+            "جراحة أطفال",
+            " Pediatric Surgery "
             ],
             [
-                1,
-                "امراض الاطفال الجلدية",
-                "Pediatric Dermatology"
+            "جراحة قلب الأطفال",
+            "Pediatric Heart Surgery"
             ],
             [
-                1,
-                "الجلدية التجميلية والليزر",
-                "Cosmetic Dermatology and Laser"
+            "جراحة عامة اطفال",
+            "Pediatric general surgery"
             ],
             [
-                1,
-                "متابعة الامراض الجلدية",
-                "Dermatology Follow Up"
+            "جراحة تشوهات اطفال وعيوب خلقية",
+            "Pediatric malformations and birth defects surgery"
             ],
             [
-                1,
-                "الأمراض الجلدية التناسلية",
-                "Genital Dermatology"
+            "جراحة اورام اطفال",
+            "Pediatric oncology surgery"
             ],
-
             [
-                2,
-                "جراحة الوجه والفكين",
-                "Oral and Maxillofacial Surgery"
+            "جراحة انف و اذن و حنجرة اطفال",
+            "Pediatric Ear Nose and throat Surgery"
             ],
             [
-                2,
-                "تقويم الأسنان",
-                "orthodontics"
+            "جراحة أعصاب الأطفال",
+            "Pediatric Neurosurgery"
             ],
             [
-                2,
-                "طب اسنان اطفال",
-                "Pediatric Dentistry"
+            "جراحة الأوعية الدموية للأطفال",
+            "Pediatric Vascular Surgery"
             ],
             [
-                2,
-                "طب الأسنان التجميلي",
-                "Cosmetic Dentistry"
+            "جراحة جهاز هضمي وتنظير اطفال",
+            "Pediatric gastrointestinal surgery and endoscopy"
             ],
             [
-                2,
-                "حشو وعلاج الجذور والاعصاب",
-                "Filling and treatment of roots and nerves"
+            "جراحة مسالك بولية ",
+            "Pediatric Urology Surgery"
             ],
             [
-                2,
-                "اشعة الاسنان",
-                "dental x-rays"
+            "جراحة تشوهات الأطفال والعيوب الخلقية",
+            "Pediatric Deformities and Birth Defects Surgery"
             ],
             [
-                2,
-                "أمراض الفم",
-                "Oral diseases"
+            "جراحة أوعية دموية",
+            "Vascular Surgery (Arteries and Vein Surgery)"
             ],
             [
-                2,
-                "علاج اللثة",
-                "gum treatment"
+            "جراحة اوعية دموية كبار",
+            "Adult Vascular Surgery"
             ],
             [
-                2,
-                "طب أسنان الكبار",
-                "Adult Dentistry "
+            "جراحة اوعية دموية اطفال",
+            "Pediatric Vascular Surgery"
             ],
             [
-                2,
-                "طب أسنان كبار السن",
-                "Elder Dentistry"
+            "علاج قدم سكري",
+            "diabetic foot treatment"
             ],
             [
-                2,
-                "تجميل الأسنان بالليزر",
-                "Cosmetic Dentistry By Laser"
+            "علاج دوالي الساق",
+            "Varicose veins treatment"
             ],
             [
-                2,
-                "طب الأسنان الوقائي",
-                "Preventive Dentistry"
+            "جراحة عامة",
+            "General Surgery "
             ],
             [
-                2,
-                "تركيبات اسنان",
-                "dental implants"
+            "جراحة المنظار",
+            "Endoscopic Surgery"
             ],
-
             [
-                3,
-                "الاشعة العلاجية",
-                "therapeutic radiology"
+            "جراحة اورام الثدي",
+            "Breast tumor surgery"
             ],
             [
-                3,
-                "اورام كبار",
-                "Adult Oncology"
+            "جراحة عامة كبار",
+            "Adult General Surgery"
             ],
             [
-                3,
-                "اورام اطفال",
-                "Pediatric Oncology"
+            "جراحة عامة للاطفال",
+            "Pediatric General Surgery"
             ],
             [
-                3,
-                "علاج اورام بالإشعاع",
-                "Radiation Oncology"
+            "جراحة بطن",
+            "Abdominal surgery"
             ],
             [
-                3,
-                "جراحة اورام المخ",
-                "brain tumor surgery"
+            "جراحة غدد صماء",
+            "Endocrine surgery"
             ],
             [
-                3,
-                "جراحة اورام القولون",
-                "Colon tumor surgery"
+            "جراحة جهاز هضمي و تنظير كبار",
+            "Adult Gastrointestinal and Endoscopic Surgery"
             ],
             [
-                3,
-                "جراحة اورام الكبد",
-                "Liver tumor surgery"
+            "جراحة اصابات وحوادث",
+            "Trauma and accident surgery"
             ],
             [
-                3,
-                "جراحة اورام الرئة",
-                "Lung tumor surgery"
+            "جراحة البطن",
+            "Abdominal Surgery"
             ],
             [
-                3,
-                "جراحة اورام العظام",
-                "Orthopedic surgery"
+            "جراحة الغدد الصماء ",
+            "Endocrinal Surgery"
             ],
             [
-                3,
-                "جراحة اورام البروستاتا",
-                "Prostate tumor surgery"
+            "جراحة القولون والشرج",
+            "Colon and Anal surgery"
             ],
             [
-                3,
-                "جراحة اورام كبار",
-                "Adult Oncology Surgery"
+            "جراحة السمنة والمناظير",
+            "Obesity and Laparoscopic Surgery"
             ],
             [
-                3,
-                "جراحة اورام المعدة",
-                "stomach tumor surgery"
+            "ورم الثدي",
+            "Breast Tumor"
             ],
-
             [
-                4,
-                "امراض سارية و معدية",
-                "Communicable and contagious diseases"
+            "جراحة السمنة",
+            " Obesity Surgery"
             ],
             [
-                4,
-                "باطني كبار",
-                "Adult Internal Medicine"
+            "جراحة الحوادث و الرضوض",
+            "Trauma and Accident Surgery Adult "
             ],
             [
-                4,
-                "باطني اطفال",
-                "Pediatric Internal Medicine"
+            "جراحة عمود فقري",
+            "Spinal Surgery "
             ],
-
             [
-                5,
-                "جراحة قلب الأطفال",
-                "Pediatric Heart Surgery"
+            "جراحة عمود فقري كبار",
+            "Adult "
             ],
             [
-                5,
-                "جراحة عامة اطفال",
-                "Pediatric general surgery"
+            "جراحة دمج الفقرات",
+            "Spinal fusion surgery"
             ],
             [
-                5,
-                "جراحة تشوهات اطفال وعيوب خلقية",
-                "Pediatric malformations and birth defects surgery"
+            "جراحة تضيق العمود الفقري",
+            "Spinal stenosis surgery"
             ],
             [
-                5,
-                "جراحة اورام اطفال",
-                "Pediatric oncology surgery"
+            "جراحة عمود فقري صغار",
+            "Pediatric"
             ],
             [
-                5,
-                "جراحة انف و اذن و حنجرة اطفال",
-                "Pediatric Ear Nose and throat Surgery"
+            "جراحة الاعصاب",
+            "Neurosurgery"
             ],
             [
-                5,
-                "جراحة أعصاب الأطفال",
-                "Pediatric Neurosurgery"
+            "جهاز هضمي وتنظير",
+            " Gastroenterology and Endoscopy "
             ],
             [
-                5,
-                "جراحة الأوعية الدموية للأطفال",
-                "Pediatric Vascular Surgery"
+            "جهاز هضمي وتنظير كبار",
+            "Adult Gastroenterology and Endoscopy"
             ],
             [
-                5,
-                "جراحة جهاز هضمي وتنظير اطفال",
-                "Pediatric gastrointestinal surgery and endoscopy"
+            "جهاز هضمي وتنظير صغار",
+            "Pediatric Gastroenterology and Endoscopy"
             ],
-
             [
-                6,
-                "جراحة اوعية دموية كبار",
-                "Adult Vascular Surgery"
+            "حساسية ومناعة",
+            "Allergy and immunity"
             ],
             [
-                6,
-                "جراحة اوعية دموية اطفال",
-                "Pediatric Vascular Surgery"
+            "حساسية ومناعة كبار",
+            "Adult Allergy and Immunology"
             ],
             [
-                6,
-                "علاج قدم سكري",
-                "diabetic foot treatment"
+            "حساسية ومناعة صغار",
+            "Pediatric Allergy and Immunology"
             ],
             [
-                6,
-                "علاج دوالي الساق",
-                "Varicose veins treatment"
+            "حساسية الجهاز التنفسي",
+            "Respiratory Tract Allergy"
             ],
-
             [
-                7,
-                "جراحة المنظار",
-                "Endoscopic Surgery"
+            "حساسية المناعة الذاتية",
+            "Autoimmune Allergy"
             ],
             [
-                7,
-                "جراحة اورام الثدي",
-                "Breast tumor surgery"
+            "حساسية الجلد",
+            "Nutrition allergy"
             ],
             [
-                7,
-                "جراحة عامة كبار",
-                "Adult General Surgery"
+            "متابعة الحساسية",
+            "Allergy Follow Up"
             ],
             [
-                7,
-                "جراحة عامة للاطفال",
-                "Pediatric General Surgery"
+            "اختبار الحساسية",
+            "Allergy testing"
             ],
             [
-                7,
-                "جراحة بطن",
-                "Abdominal surgery"
+            "وصفات أدوية الحساسية",
+            "Allergy Medication Prescriptions"
             ],
             [
-                7,
-                "جراحة غدد صماء",
-                "Endocrine surgery"
+            "العلاج المناعي لعلاج الحساسية",
+            "Immunotherapy for Treatment of Allergy"
             ],
             [
-                7,
-                "جراحة جهاز هضمي و تنظير كبار",
-                "Adult Gastrointestinal and Endoscopic Surgery"
+            "حساسية الصدر",
+            "Chest Allergy"
             ],
             [
-                7,
-                "جراحة اصابات وحوادث",
-                "Trauma and accident surgery"
+            " حساسية الدواء",
+            "Medicine Allergy"
             ],
-
             [
-                8,
-                "جراحة عمود فقري كبار",
-                "Adult "
+            "حساسية التغذية",
+            "Nutrition Allergy"
             ],
             [
-                8,
-                "جراحة دمج الفقرات",
-                "Spinal fusion surgery"
+            "حساسية العيون",
+            "Eye Allergy"
             ],
             [
-                8,
-                "جراحة تضيق العمود الفقري",
-                "Spinal stenosis surgery"
+            "حقن مجهري وأطفال أنابيب",
+            "IVF and Infertility "
             ],
             [
-                8,
-                "جراحة عمود فقري صغار",
-                "Pediatric"
+            "أمراض النساء والعقم",
+            "Gynecology and Infertility "
             ],
-
             [
-                9,
-                "جهاز هضمي وتنظير كبار",
-                "Adult Gastroenterology and Endoscopy"
+            "أمراض النساء",
+            " Gynecology "
             ],
             [
-                9,
-                "جهاز هضمي وتنظير صغار",
-                "Pediatric Gastroenterology and Endoscopy"
+            "اطفال انابيب",
+            "IVF "
             ],
-
             [
-                10,
-                "حساسية ومناعة كبار",
-                "Adult Allergy and Immunology"
+            "طب الأورام النسائية",
+            "Gynaecologic Oncological "
             ],
             [
-                10,
-                "حساسية ومناعة صغار",
-                "Pediatric Allergy and Immunology"
+            "جراحة عقم النساء",
+            "Surgery Female Infertility"
             ],
             [
-                10,
-                "حساسية الجهاز التنفسي",
-                "Respiratory Tract Allergy"
+            "سلس البول",
+            "Urinary Incontinence"
             ],
             [
-                10,
-                "حساسية المناعة الذاتية",
-                "Autoimmune Allergy"
+            "جراحة الأورام النسائية",
+            "Gynaecologic Oncological Surgery"
             ],
             [
-                10,
-                "حساسية الجلد",
-                "Nutrition allergy"
+            "أطفال الأنابيب والعقم",
+            "IVF and Infertility"
             ],
             [
-                10,
-                "متابعة الحساسية",
-                "Allergy Follow Up"
+            "عقم النساء",
+            "Female Infertility"
             ],
             [
-                10,
-                "اختبار الحساسية",
-                "Allergy testing"
+            "ذكورة وعقم",
+            " Andrology and Male Infertility "
             ],
             [
-                10,
-                "وصفات أدوية الحساسية",
-                "Allergy Medication Prescriptions"
+            "امراض ذكورة",
+            "Andrology Diseases"
             ],
             [
-                10,
-                "العلاج المناعي لعلاج الحساسية",
-                "Immunotherapy for Treatment of Allergy"
+            "عقم ذكور",
+            "male infertility"
             ],
             [
-                10,
-                "حساسية الصدر",
-                "Chest Allergy"
+            "دوالي الخصية",
+            "Varicocele"
             ],
             [
-                10,
-                " حساسية الدواء",
-                "Medicine Allergy"
+            "دعامة الانتصاب",
+            "erection prop"
             ],
             [
-                10,
-                "حساسية التغذية",
-                "Nutrition Allergy"
+            "أمراض الذكورة والعقم عند الذكور",
+            "Andrology and Male Infertility"
             ],
             [
-                10,
-                "حساسية العيون",
-                "Eye Allergy"
+            "جراحة المسالك البولية للبالغين",
+            "Adult Urology"
             ],
-
             [
-                 12,
-                "امراض ذكورة",
-                "Andrology Diseases"
+            "جراحة المسالك البولية لدى الأطفال",
+            "Pediatric Urology"
             ],
             [
-                 12,
-                "عقم ذكور",
-                "male infertility"
+            "الذكورة",
+            "Andrology"
             ],
             [
-                 12,
-                "دوالي الخصية",
-                "Varicocele"
+            "جراحة المسالك البولية",
+            "Urology"
             ],
             [
-                 12,
-                "دعامة الانتصاب",
-                "erection prop"
+            "جراحة الكلى الكبار",
+            "Adult Kidney Surgery"
             ],
-
             [
-                13,
-                "روماتيزم كبار",
-                "Adult rheumatism"
+            "روماتيزم ومفاصل",
+            "rheumatism"
             ],
             [
-                13,
-                "روماتيزم صغار",
-                "Pediatric rheumatism"
+            "طب القلب",
+            "Cardiology"
             ],
-
             [
-                14,
-                "سكر وغدد صماء اطفال",
-                "Pediatric Diabetes and Endocrinology"
+            "روماتيزم كبار",
+            "Adult rheumatism"
             ],
             [
-                14,
-                "سكر وغدد صماء كبار",
-                "Adult Diabetes and Endocrinology"
+            "أمراض القلب للبالغين",
+            "Adult Cardiology"
             ],
-
             [
-                16,
-                "تغذية كبار",
-                "Adult Dietitian and Nutrition"
+            "روماتيزم صغار",
+            "Pediatric rheumatism"
             ],
             [
-                16,
-                "تغذية اطفال",
-                "Pediatric  Dietitian and Nutrition"
+            "أمراض الأوعية الدموية عند البالغين",
+            "Adult Vascular Diseases"
             ],
-
             [
-                17,
-                "صدرية و جهاز تنفسي اطفال",
-                "Pediatric  Chest and Respiratory"
+            "الطب الباطني",
+            "Internal Medicine"
             ],
             [
-                17,
-                "صدرية و جهاز تنفسي كبار",
-                "Adult Chest and Respiratory"
+            "الطب الباطني للبالغين",
+            "Adult Internal Medicine"
             ],
-
             [
-                20,
-                "كبار ",
-                "Adult Physiotherapy and sports injuries"
+            "طب الغدد الصماء",
+            "Endocrinology"
             ],
             [
-                20,
-                "صغار",
-                " Pediatric Physiotherapy and sports injuries"
+            "سكر وغدد صماء",
+            "Diabetes and Endocrinology "
             ],
             [
-                20,
-                "اصابات رياضية",
-                "sports injuries"
+            "سكر وغدد صماء اطفال",
+            "Pediatric Diabetes and Endocrinology"
             ],
-
             [
-                21,
-                "عيون أطفال",
-                " Pediatric Ophthalmology"
+            "سكر وغدد صماء كبار",
+            "Adult Diabetes and Endocrinology"
             ],
             [
-                21,
-                "عيون كبار",
-                "Adult Ophthalmology"
+            "طب الغدد الصماء",
+            "Endocrinology"
             ],
             [
-                21,
-                "ليزك وتصحيح الابصار",
-                "Lasik and vision correction"
+            "السكري والغدد الصماء",
+            "Diabetes and Endocrinology"
             ],
             [
-                21,
-                "جراحة شبكية وجسم زجاجي",
-                "Retinal and vitreous surgery"
+            "سمعيات ",
+            "Audiology "
             ],
             [
-                21,
-                "تاهيل بصري",
-                "visual rehabilitation"
+            "تغذية وحمية",
+            "Dietitian and Nutrition "
             ],
             [
-                21,
-                "المياه البيضاء",
-                "eye white water"
+            "تغذية كبار",
+            "Adult Dietitian and Nutrition"
             ],
             [
-                21,
-                "زراعة القرنية",
-                "corneal transplant"
+            "تغذية اطفال",
+            "Pediatric  Dietitian and Nutrition"
             ],
             [
-                21,
-                "علاج الشبكية بالليزر",
-                "Retinal laser treatment"
+            "صدر وجهاز تنفسي",
+            "Chest and Respiratory "
             ],
             [
-                21,
-                "حول",
-                "eye disease"
+            "صدرية و جهاز تنفسي اطفال",
+            "Pediatric  Chest and Respiratory"
             ],
-
             [
-                22,
-                "كبد كبار",
-                "Adult Hepatology"
+            "صدرية و جهاز تنفسي كبار",
+            "Adult Chest and Respiratory"
             ],
             [
-                22,
-                "كبد صغار",
-                " Pediatric Hepatology"
+            "طب الاسرة",
+            "Family Medicine "
             ],
             [
-                22,
-                "زراعة كبد",
-                "Liver transplant"
+            "الممارسة العامة",
+            "General Practice"
             ],
             [
-                23,
-                "كلى اطفال",
-                "Pediatric Nephrology "
+            "طب الأسرة",
+            "Family Medicine"
             ],
             [
-                23,
-                "كلى كبار",
-                "Adult Nephrology "
+            "طب الأطفال العام",
+            "Pediatric General Practice"
             ],
             [
-                23,
-                "زراعة كلى",
-                "Kidney transplant"
+            "طب الطوارئ و الحوادث ",
+            "Emergency and Accidents Medicine "
             ],
-
             [
-                24,
-                "مسالك بولية كبار",
-                "Adult Urology"
+            "علاج طبيعي واصابات ملاعب",
+            "Physiotherapy and sports injuries"
             ],
             [
-                24,
-                "متابعة جراحة المسالك البولية",
-                "Urology Follow Up"
+            "كبار ",
+            "Adult Physiotherapy and sports injuries"
             ],
             [
-                24,
-                "مسالك بولية اطفال",
-                "Pediatric Neurology"
+            "صغار",
+            " Pediatric Physiotherapy and sports injuries"
             ],
-
             [
-                25,
-                "الأشعة التداخلية",
-                "Interventional Radiology"
+            "اصابات رياضية",
+            "sports injuries"
             ],
             [
-                25,
-                "الاشعة التشخيصية",
-                "diagnostic radiology"
+            "إدارة الألم",
+            "Pain Management"
             ],
-
             [
-                26,
-                "حديثي الولادة",
-                "new born"
+            "عيون",
+            " Ophthalmology (Eyes)"
             ],
             [
-                26,
-                "اطفال",
-                "Pediatric"
+            "عيون أطفال",
+            " Pediatric Ophthalmology"
             ],
             [
-                26,
-                "رضاعة طبيعية",
-                "Breast feeding"
+            "عيون كبار",
+            "Adult Ophthalmology"
             ],
             [
-                26,
-                "طهور اطفال",
-                "purification of Pediatric "
+            "ليزك وتصحيح الابصار",
+            "Lasik and vision correction"
             ],
-
             [
-                27,
-                "جراحة تجميل الوجه",
-                "Facial plastic surgery"
+            "جراحة شبكية وجسم زجاجي",
+            "Retinal and vitreous surgery"
             ],
             [
-                27,
-                "جراحة تجميل الحروق",
-                "Burn plastic surgery"
+            "تاهيل بصري",
+            "visual rehabilitation"
             ],
             [
-                27,
-                "جراحة تجميل العيون",
-                "Eye plastic surgery"
+            "المياه البيضاء",
+            "eye white water"
             ],
             [
-                27,
-                "جراحة تجميل اليد",
-                "hand plastic surgery"
+            "زراعة القرنية",
+            "corneal transplant"
             ],
             [
-                27,
-                "جراحة تجميل الانف",
-                "rhinoplasty surgery"
+            "علاج الشبكية بالليزر",
+            "Retinal laser treatment"
             ],
             [
-                27,
-                "جراحة تجميل الثدي",
-                "Breast plastic surgery"
+            "حول",
+            "eye disease"
             ],
             [
-                27,
-                "الجراحة التجميلية للمهبل مع اعادة الجسم الصلب",
-                "Vaginal plastic surgery with hard body restoration"
+            "جراحة الشبكية",
+            "Vitreous Body and Retinal Surgery"
             ],
-
             [
-                30,
-                "امراض دم كبار",
-                "Adult  blood diseases"
+            "الحول",
+            "Strabismus"
             ],
             [
-                30,
-                "زرع خلايا جذعية",
-                "stem cell transplant"
+            "زرع قرنية",
+            "CorniaTrsnplant"
             ],
-
             [
-                31,
-                "جراحة الوجه والرقبة",
-                "Face and neck surgery"
+            "علاج الشبكية بالليزر",
+            "Retinal Laser Treatment"
             ],
             [
-                31,
-                "انف واذن وحنجرة كبار",
-                "Adult  ear, nose and throat"
+            "إعتمام عدسة العين",
+            "Cataract"
             ],
             [
-                31,
-                "انف و اذن و حنجرة اطفال",
-                "Pediatric ear, nose and throat"
+            "كبد",
+            "Hepatology (Liver Doctor)"
             ],
             [
-                31,
-                "اضطراب السمع و التوازن",
-                "Hearing and balance disorder"
+            "كبد كبار",
+            "Adult Hepatology"
             ],
             [
-                31,
-                "جراحة انف و اذن و حنجرة كبار",
-                "Adult Ear, Nose and Throat Surgery"
+            "كبد صغار",
+            " Pediatric Hepatology"
             ],
             [
-                31,
-                "جراحة انف و اذن و حنجرة اطفال",
-                "Pediatric ear, nose and throat surgery"
+            "زراعة كبد",
+            "Liver transplant"
             ],
-
             [
-                32,
-                "جراحة دماغ و اعصاب كبار",
-                "Adult  brain and neurosurgery"
+            "كلى",
+            "Nephrology "
             ],
             [
-                32,
-                "جراحة دماغ و اعصاب اطفال",
-                "Pediatric brain and neurosurgery"
+            "كلى اطفال",
+            "Pediatric Nephrology "
             ],
             [
-                33,
-                "جراحة قلب كبار",
-                "Adult  heart surgery"
+            "كلى كبار",
+            "Adult Nephrology "
             ],
             [
-                33,
-                "جراحة قلب اطفال",
-                "Pediatric heart surgery"
+            "زراعة كلى",
+            "Kidney transplant"
             ],
             [
-                35,
-                "جراحة صدر كبار",
-                "Adult thoracic surgery"
+            "دوالي",
+            "Varicocele"
             ],
             [
-                35,
-                "جراحة صدر اطفال",
-                "Pediatric chest surgery"
+            "مسالك بولية",
+            "Urology (Urinary System)"
             ],
-
             [
-                41,
-                "طب عام كبار",
-                "Adult  general medicine"
+            "مسالك بولية كبار",
+            "Adult Urology"
             ],
             [
-                41,
-                "طب عام صغار",
-                "Pediatric general medicine"
+            "متابعة جراحة المسالك البولية",
+            "Urology Follow Up"
             ],
-
             [
-                42,
-                "دماغ واعصاب اطفال",
-                "Pediatric brain and nerves"
+            "مسالك بولية اطفال",
+            "Pediatric Neurology"
             ],
             [
-                42,
-                "دماغ واعصاب كبار",
-                "Adult  brain and nerves"
+            "أشعة",
+            "rays"
             ],
             [
-                44,
-                "عظام كبار",
-                "Adult bones"
+            "الأشعة التداخلية",
+            "Interventional Radiology"
             ],
             [
-                44,
-                "عظام اطفال",
-                "Pediatric bones"
+            "الاشعة التشخيصية",
+            "diagnostic radiology"
             ],
             [
-                44,
-                "جراحة عظام كبار",
-                "Adult  orthopedic surgery"
+            "أطفال وحديثي الولادة",
+            "Babies and newborns"
             ],
             [
-                44,
-                "جراحة عظام اطفال",
-                "Pediatric orthopedic surgery"
+            "حديثي الولادة",
+            "new born"
             ],
             [
-                44,
-                "تشوهات عظام",
-                "bone deformities"
+            "اطفال",
+            "Pediatric"
             ],
             [
-                44,
-                "عظام اليد والكتف",
-                "Hand and shoulder bones"
+            "رضاعة طبيعية",
+            "Breast feeding"
             ],
             [
-                44,
-                "عظام القدم والكاحل",
-                "Foot and ankle bones"
+            "طهور اطفال",
+            "purification of Pediatric "
             ],
             [
-                44,
-                "تغيير المفاصل",
-                "change joints"
+            "جراحة التجميل",
+            "plastic surgery"
             ],
             [
-                44,
-                "جراحة الاعصاب الطرفية",
-                "Peripheral nerve surgery"
+            "جراحة تجميل الوجه",
+            "Facial plastic surgery"
             ],
             [
-                44,
-                "تقويم عظام",
-                "orthotics"
+            "جراحة تجميل الحروق",
+            "Burn plastic surgery"
             ],
             [
-                44,
-                "اصابات ملاعب وتنظير مفاصل",
-                "Sports injuries and arthroscopy"
+            "جراحة تجميل العيون",
+            "Eye plastic surgery"
             ],
             [
-                45,
-                "كبار ",
-                "Adult "
+            "جراحة تجميل اليد",
+            "hand plastic surgery"
             ],
             [
-                45,
-                "صغار",
-                "Pediatric"
+            "جراحة تجميل الانف",
+            "rhinoplasty surgery"
             ],
             [
-                46,
-                "قلب اطفال",
-                "kids heart"
+            "جراحة تجميل الثدي",
+            "Breast plastic surgery"
             ],
             [
-                46,
-                "قلب كبار",
-                "Adult heart"
+            "الجراحة التجميلية للمهبل مع اعادة الجسم الصلب",
+            "Vaginal plastic surgery with hard body restoration"
             ],
             [
-                46,
-                "شرايين اطفال",
-                "children's arteries"
+            "نطق و تخاطب ",
+            "Phoniatrics (Speech)"
             ],
             [
-                46,
-                "شرايين كبار",
-                "Adult  arteries"
+            "أمراض الدم",
+            "Blood diseases"
             ],
             [
-                48,
-                "نفسي كبار",
-                "Adult  mental illness"
+            "امراض دم اطفال",
+            "Pediatric hematology"
             ],
             [
-                48,
-                "نفسي صغار",
-                "mental illness"
+            "امراض دم كبار",
+            "Adult  blood diseases"
             ],
             [
-                48,
-                "علاج الادمان",
-                "addiction cure"
+            "زرع خلايا جذعية",
+            "stem cell transplant"
             ],
             [
-                48,
-                "علاج السموم",
-                "Toxin treatment"
+            "أنف وأذن وحنجرة",
+            "Ear, Nose and Throat"
             ],
             [
-                48,
-                "استشارات اسرية",
-                "family counseling"
+            "جراحة الوجه والرقبة",
+            "Face and neck surgery"
             ],
+            [
+            "انف واذن وحنجرة كبار",
+            "Adult  ear, nose and throat"
+            ],
+            [
+            "انف و اذن و حنجرة اطفال",
+            "Pediatric ear, nose and throat"
+            ],
+            [
+            "اضطراب السمع و التوازن",
+            "Hearing and balance disorder"
+            ],
+            [
+            "جراحة انف و اذن و حنجرة كبار",
+            "Adult Ear, Nose and Throat Surgery"
+            ],
+            [
+            "جراحة انف و اذن و حنجرة اطفال",
+            "Pediatric ear, nose and throat surgery"
+            ],
+            [
+            "جراحة الدماغ و الأعصاب",
+            "Brain and Neurosurgery"
+            ],
+            [
+            "جراحة دماغ و اعصاب كبار",
+            "Adult  brain and neurosurgery"
+            ],
+            [
+            "جراحة دماغ و اعصاب اطفال",
+            "Pediatric brain and neurosurgery"
+            ],
+            [
+            "جراحة القلب",
+            "Heart Surgery"
+            ],
+            [
+            "جراحة قلب كبار",
+            "Adult  heart surgery"
+            ],
+            [
+            "جراحة قلب اطفال",
+            "Pediatric heart surgery"
+            ],
+            [
+            "جراحة السمنة وتخفيف الوزن",
+            "Bariatric surgery and weight loss"
+            ],
+            [
+            "جراحة الصدر",
+            "Thoracic surgery"
+            ],
+            [
+            "جراحة صدر كبار",
+            "Adult thoracic surgery"
+            ],
+            [
+            "جراحة صدر اطفال",
+            "Pediatric chest surgery"
+            ],
+            [
+            "التخدير والعناية المركزة",
+            "Anesthesia and intensive care"
+            ],
+            [
+            "التربية الخاصة",
+            "Special Education"
+            ],
+            [
+            "العلاج الوظيفي",
+            "Occupational Therapy"
+            ],
+            [
+            "العناية الحرجة",
+            "critical care"
+            ],
+            [
+            "تجميل و ليزر",
+            "Cosmetic and laser"
+            ],
+            [
+            "طب عام",
+            "General Medicine"
+            ],
+            [
+            "طب عام كبار",
+            "Adult  general medicine"
+            ],
+            [
+            "طب عام صغار",
+            "Pediatric general medicine"
+            ],
+            [
+            "دماغ وأعصاب",
+            "brain and nerves"
+            ],
+            [
+            "دماغ واعصاب اطفال",
+            "Pediatric brain and nerves"
+            ],
+            [
+            "دماغ واعصاب كبار",
+            "Adult  brain and nerves"
+            ],
+            [
+            "طب نووي",
+            "nuclear medicine"
+            ],
+            [
+            "عظام",
+            "bones"
+            ],
+            [
+            "عظام كبار",
+            "Adult bones"
+            ],
+            [
+            "عظام اطفال",
+            "Pediatric bones"
+            ],
+            [
+            "جراحة عظام كبار",
+            "Adult  orthopedic surgery"
+            ],
+            [
+            "جراحة عظام اطفال",
+            "Pediatric orthopedic surgery"
+            ],
+            [
+            "تشوهات عظام",
+            "bone deformities"
+            ],
+            [
+            "عظام اليد والكتف",
+            "Hand and shoulder bones"
+            ],
+            [
+            "عظام القدم والكاحل",
+            "Foot and ankle bones"
+            ],
+            [
+            "تغيير المفاصل",
+            "change joints"
+            ],
+            [
+            "جراحة الاعصاب الطرفية",
+            "Peripheral nerve surgery"
+            ],
+            [
+            "تقويم عظام",
+            "orthotics"
+            ],
+            [
+            "اصابات ملاعب وتنظير مفاصل",
+            "Sports injuries and arthroscopy"
+            ],
+            [
+            "علاج الألم",
+            "Pain treatment"
+            ],
+            [
+            "كبار ",
+            "Adult "
+            ],
+            [
+            "صغار",
+            "Pediatric"
+            ],
+            [
+            "قلب وشرايين",
+            "heart and arteries"
+            ],
+            [
+            "قلب اطفال",
+            "kids heart"
+            ],
+            [
+            "قلب كبار",
+            "Adult heart"
+            ],
+            [
+            "شرايين اطفال",
+            "children's arteries"
+            ],
+            [
+            "شرايين كبار",
+            "Adult  arteries"
+            ],
+            [
+            "نسائية وتوليد",
+            "Obstetrics and Gynecology"
+            ],
+            [
+            "نفسي",
+            "mental illness"
+            ],
+            [
+            "نفسي كبار",
+            "Adult  mental illness"
+            ],
+            [
+            "نفسي صغار",
+            "mental illness"
+            ],
+            [
+            "علاج الادمان",
+            "addiction cure"
+            ],
+            [
+            "علاج السموم",
+            "Toxin treatment"
+            ],
+            [
+            "استشارات اسرية",
+            "family counseling"
+            ],
+            [
+            "رعاية تطفلية",
+            "intrusive care"
+            ]
         ];
 
 
-        foreach ($speciality as $spec) {
+        foreach ($array as $spec) {
             DoctorSpeciality::create([
-                'name_ar' => $spec[1],
-                'name_en' => $spec[2],
-                'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$spec[1]),
-                'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$spec[2]),
+                'name_ar' => $spec[0],
+                'name_en' => $spec[1],
+                'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$spec[0]),
+                'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$spec[1]),
                 'updated_by' => 1,
             ]);
         }
 
     }
 }
-
-
 

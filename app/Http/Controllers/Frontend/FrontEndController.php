@@ -25,11 +25,14 @@ use App\Models\SeoAdmin;
 use App\Models\SubSpeciality;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
+use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Weidner\Goutte\GoutteFacade;
 
 class FrontEndController extends Controller
 {
@@ -574,4 +577,14 @@ class FrontEndController extends Controller
         return redirect()->back()->with('success','Message Sent Successfully');
 
     }
+
+
+
+    function crawler(){
+        $date = today()->timezone('Asia/Amman');
+        $d    = new DateTime($date);
+
+        return $d->format('l');
+    }
+
 }

@@ -263,3 +263,7 @@ Route::get('/error-inactive', function () {
 Route::get('/error-pendding', function () {
     return view('errors.error_pendding');
 })->name('error-pendding');
+
+
+
+Route::get('crawler', [FrontEndController::class, 'crawler'])->name('crawler');
