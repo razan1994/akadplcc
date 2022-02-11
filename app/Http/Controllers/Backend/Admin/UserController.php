@@ -473,6 +473,7 @@ class UserController extends Controller
     // ================================================================
     public function update($user_id, UpdateUserFormRequest $request,Route $route)
     {
+
         try {
             if($request->user_type == "Super Admin"){
                 $user =User::find($user_id);

@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\FrontEndController;
 use App\Http\Controllers\Frontend\Hospital\HospitalController;
 use App\Http\Controllers\Frontend\Lab\LabController;
 use App\Http\Controllers\Frontend\Medical\MedicalController;
+use App\Http\Controllers\Frontend\Patient\PatientController;
 use App\Http\Controllers\Frontend\Radiology\RadiologyController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -59,6 +60,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ============================================= Auth Routes ========================================================
 
     Route::group(['middleware' => ['checkAuth','checkActiveInactiveUser']], function () {
+
+        Route::prefix('patient')->name('patient.')->group(function () {
+
+            Route::group(['middleware' => 'auth:patient'], function () {
+                Route::get('/profile/{active?}', [PatientController::class, 'profile'])->name('patient-profile');
+                Route::post('/patientUpdateProfile/{id}', [PatientController::class, 'patientUpdateProfile'])->name('patient-update-profile');
+            });
+        });
+
 
         Route::prefix('doctor')->name('doctor.')->group(function () {
 

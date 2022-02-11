@@ -64,8 +64,8 @@ class FrontEndController extends Controller
             if (Auth::guard('patient')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                 Auth::guard('patient')->user();
                 return "logged in Patient";
+                return redirect()->route('patient.patient-profile');
 
-                // return redirect()->intended(route('doctor.doctorProfile'));
                 // Attempt to log the doctor in
             } else if (Auth::guard('doctor')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                 $auth = Auth::guard('doctor')->user();
@@ -89,7 +89,8 @@ class FrontEndController extends Controller
             // Attempt to log the patient in
             if (Auth::guard('patient')->attempt(['email' => $request->email, 'password' => $request->password])) {
                 Auth::guard('patient')->user();
-                return "logged in Patient";
+                return redirect()->route('patient.patient-profile');
+
                 // Attempt to log the doctor in
             } else if (Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])) {
                 $auth = Auth::guard('doctor')->user();

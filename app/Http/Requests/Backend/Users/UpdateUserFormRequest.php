@@ -34,7 +34,6 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone,'.$this->id.'|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
             'user_status' => 'required'
         ];
         }
@@ -47,7 +46,6 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone,'.$this->id.'|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
             'user_status' => 'required',
         ];
         }
@@ -60,7 +58,6 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone,'.$this->id.'|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
             'user_status' => 'required',
         ];
             }
@@ -73,7 +70,6 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone,'.$this->id.'|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
             'user_status' => 'required',
         ];
         }
@@ -86,9 +82,8 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone,'.$this->id.'|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
 
         else if($this->user_type == "Lab"){
@@ -99,7 +94,6 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone,'.$this->id.'|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
             'user_status' => 'required',
         ];
         }
@@ -112,22 +106,22 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone,'.$this->id.'|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
+
             'user_status' => 'required',
             'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
         }
 
         else if($this->user_type == "Patient"){
-            return['required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar,'.$this->id,
+            return[
+            'name_ar'=>'required|unique:users,name_ar|unique:insurance_companies,name_ar|unique:hospitals,name_ar|unique:radiology_centers,name_ar|unique:pharmacies,name_ar|unique:labs,name_ar|unique:doctors,name_ar|unique:seo_admins,name_ar|unique:life_coutches,name_ar|unique:gyms,name_ar|unique:medical_centers,name_ar|unique:patients,name_ar,'.$this->id,
             'name_en' => 'required|unique:users,name_en|unique:insurance_companies,name_en|unique:hospitals,name_en|unique:radiology_centers,name_en|unique:pharmacies,name_en|unique:labs,name_en|unique:doctors,name_en|unique:seo_admins,name_en|unique:life_coutches,name_en|unique:gyms,name_en|unique:medical_centers,name_en|unique:patients,name_en,'.$this->id,
             'username' => 'required|unique:users,username|unique:insurance_companies,username|unique:hospitals,username|unique:radiology_centers,username|unique:pharmacies,username|unique:labs,username|unique:doctors,username|unique:seo_admins,username|unique:life_coutches,username|unique:gyms,username|unique:medical_centers,username|unique:patients,username,'.$this->id,
             'email' => 'required|unique:users,email|unique:insurance_companies,email|unique:hospitals,email|unique:radiology_centers,email|unique:pharmacies,email|unique:labs,email|unique:doctors,email|unique:seo_admins,email|unique:life_coutches,email|unique:gyms,email|unique:medical_centers,email|unique:patients,email,'.$this->id,
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone,'.$this->id,
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
 
         else if($this->user_type == "Pharmacy"){
@@ -138,9 +132,8 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone,'.$this->id.'|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
 
         else if($this->user_type == "SEO Admin"){
@@ -151,9 +144,8 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone,'.$this->id.'|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
 
         else if($this->user_type == "Gym"){
@@ -164,9 +156,8 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone,'.$this->id.'|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
 
 
@@ -178,15 +169,10 @@ class UpdateUserFormRequest extends FormRequest
             'phone' => 'required|unique:users,phone,|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone|unique:seo_admins,phone|unique:life_coutches,phone,'.$this->id.'|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
             'password' => 'confirmed',
             "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'user_type' => 'required',
-            'user_status' => 'required',
-            'speciality_id'=>$this->user_type == "Doctor" ? 'required' : ''];
+            'user_status' => 'required'
+        ];
         }
-        else{
-            return[
-                'user_type' => 'required',
-            ];
-        }
+
 
 
     }
