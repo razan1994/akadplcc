@@ -430,6 +430,42 @@ class FrontEndController extends Controller
         }
 
             $output ='';
+            $output_second = '';
+            $output_therd = '<div class="item-card9-icons">
+            <a href="#" class="item-card9-icons1 item-icon-bg"
+                data-toggle="tooltip" title=""
+                data-original-title="wishlist"><i
+                    class="fa fa fa-heart-o"></i></a>
+            <a href="#" class="item-card9-icons1 bg-purple"
+                data-toggle="tooltip" title=""
+                data-original-title="Share"><i
+                    class="fa fa-share-alt"></i></a>
+        </div>
+        <div class="item-overly-trans">
+            <div class="rating-stars d-flex">
+                <span class="text-white mr-1">3.3</span> <input
+                    class="rating-value star"
+                    name="rating-stars-value" readonly="readonly"
+                    type="number" value="3">
+                <div class="rating-stars-container">
+                    <div class="rating-star sm ">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="rating-star sm ">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="rating-star sm ">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="rating-star sm ">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="rating-star sm ">
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>';
 
             if(isset($users) && $users->count() > 0){
             foreach ($users as $key => $user){
@@ -463,7 +499,8 @@ class FrontEndController extends Controller
                             </div>
                             <div class="item-overly-trans">
                                 <div class="rating-stars d-flex">
-                                    <span class="text-white mr-1"></span> <input
+                                    <span class="text-white mr-1"></span>
+                                    <input
                                         class="rating-value star" name="rating-stars-value"
                                         readonly="readonly" type="number" value="3">
                                     <div class="rating-stars-container">
@@ -509,7 +546,7 @@ class FrontEndController extends Controller
                                     $output .='<div class="item-card9-desc mb-0 mt-2">
                                         <span class="mr-4"><i
                                                 class="fa fa-map-marker text-muted mr-1"></i>
-                                            '.isset($user->country->name_en) ? $user->country->name_en : "--------" .'/'.$user->region->name_en.'</span>';
+                                            '.isset($user->country->name_en) ? $user->country->name_en : "--------" .'/'.(isset($user->region->name_en) ? $user->region->name_en : "--------").'</span>';
                                         if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0){
                                             $output .='<li style="list-style-type: none;"><span><i
                                                         class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'
@@ -517,7 +554,7 @@ class FrontEndController extends Controller
                                                     '. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
                                             </li>';
                                         }
-                                        $output .='</div>
+                                    $output .='</div>
                                 </div>
                             </div>
                             <div class="card-footer p-0">
@@ -538,15 +575,116 @@ class FrontEndController extends Controller
                         </div>
                     </div>
                 </div>';
+
+
+
+                $output_second .='<div class="col-lg-6 col-md-6 col-xl-4">
+                <div class="card overflow-hidden" style="height: 96%;">
+                    <div class="item-card9-img">
+                        <div class="item-card9-imgs">
+                            <a href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'"></a>
+                            <div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>';
+                            if (isset($user->profile_photo_path) && file_exists($user->profile_photo_path)){
+                                $output_second .='<img alt="img" class="cover-image" src="'.asset($user->profile_photo_path).'"></div>';
+                            }else{
+                                $output_second .='<img alt="img" class="cover-image" src="'.asset('front_end_style/assets/images/media/doctors/2.jpg').'"></div>';
+                            }
+                        $output_second .='<div class="item-card9-icons">
+                            <a href="#" class="item-card9-icons1 item-icon-bg"
+                                data-toggle="tooltip" title=""
+                                data-original-title="wishlist"><i
+                                    class="fa fa fa-heart-o"></i></a>
+                            <a href="#" class="item-card9-icons1 bg-purple"
+                                data-toggle="tooltip" title=""
+                                data-original-title="Share"><i
+                                    class="fa fa-share-alt"></i></a>
+                        </div>
+                        <div class="item-overly-trans">
+                            <div class="rating-stars d-flex">
+                                <span class="text-white mr-1">3.3</span> <input
+                                    class="rating-value star"
+                                    name="rating-stars-value" readonly="readonly"
+                                    type="number" value="3">
+                                <div class="rating-stars-container">
+                                    <div class="rating-star sm ">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="rating-star sm ">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="rating-star sm ">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="rating-star sm ">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="rating-star sm ">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-overly-trans">
+                            <span
+                                class="badge badge-dark">'.ucfirst($user_type).'</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="item-card9">
+                            <a class="text-dark" href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'">
+                                <h4 class="font-weight-bold mb-1">
+                                    '.$user->name_en.'<i
+                                        class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
+                                </h4>
+                            </a>';
+                            if ($user_type == 'doctors'){
+                                if(isset($user->specialities) && $user->specialities->count() > 0){
+                                    foreach ($user->specialities->take(3) as $speciality){
+                                        $output_second .='<p class="text-muted fs-13 mt-0"><i
+                                            class="fa fa-user-md text-muted mr-2"></i>'.isset($speciality->speciality->name_en) ? $speciality->speciality->name_en : '--------'.'</p>';
+                                    }
+                                }
+                            }
+                            $output_second .='<div class="mb-0 mt-2">
+                                <ul class="item-card-features mb-0">
+                                    <li><span class="mr-4"><i
+                                    class="fa fa-map-marker text-muted mr-1"></i>
+                                        '.isset($user->country->name_en) ? $user->country->name_en : "--------" .'/'.(isset($user->region->name_en) ? $user->region->name_en : "--------").'</span>
+                                    </li>';
+                                    if (isset($user->weekPlan->active_days) && count(explode(',', $user->weekPlan->active_days)) > 0){
+                                        $output_second .='<li><span><i class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'|'. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
+                                        </li>';
+                                    }
+                                $output_second .='</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 btn-appointment">
+                        <div class="btn-group w-100">
+                            <a href="'.route('user-details', [isset($user_type) ? $user_type : '--------', $user->alias_name_en]).'"
+                                class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
+                                    class="fe fe-eye  mr-1"></i>View Profile</a>
+                            <a href="#"
+                                class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"
+                                data-target="#exampleModal" data-toggle="modal"><i
+                                    class="fe fe-phone  mr-1"></i>Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+
+
             }
             }else{
                 $output .='<h2 class="text-danger">No Data Found ...</h2>';
+                $output_second .='<h2 class="text-danger">No Data Found ...</h2>';
             }
 
 
 
 
-            return response()->json(['status'=>true,'output'=>$output]);
+            return response()->json(['status'=>true,'output'=>$output,'output_second'=>$output_second]);
+            // return response()->json(['status'=>true,'output_therd'=>$output_therd]);
 
     }
 

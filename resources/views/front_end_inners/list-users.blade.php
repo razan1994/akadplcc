@@ -844,7 +844,7 @@
                                             @endforeach
                                         </div>
                                         <div class="tab-pane" id="tab-12">
-                                            <div class="row">
+                                            <div class="row" id="tabRow-12">
                                                 @foreach ($users as $key => $user)
                                                     <div class="col-lg-6 col-md-6 col-xl-4">
                                                         <div class="card overflow-hidden" style="height: 96%;">
@@ -1185,7 +1185,10 @@
                     success: function(data) {
                         if (data.status == true) {
                             $("#tab-11").html('');
+                            $("#tabRow-12").html('');
+
                             $("#tab-11").html(data.output);
+                            $("#tabRow-12").html(data.output_second);
 
                             var ratingOptions = {
                                 selectors: {
