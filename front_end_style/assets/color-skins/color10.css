@@ -17,7 +17,7 @@
 
 .bg-background2:before,
 .bg-background1:before {
-    background: linear-gradient(86deg, rgba(43, 165, 251, 0.8) 0%, rgba(28, 70, 197, 0.9) 100%);
+    background: linear-gradient(86deg, rgba(67, 105, 133, 0.8) 68%, rgba(28, 70, 197, 0.9) 100%);
 }
 
 a:hover {

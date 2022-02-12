@@ -74,7 +74,7 @@
     </div>
     <!--Loader-->
     <div id="global-loader">
-        <img alt="" class="loader-img" src="{{ asset('front_end_style/assets/images/loader.svg') }}">
+        <img alt="loader" class="loader-img" src="{{ asset('front_end_style/assets/images/loader.svg') }}">
     </div>
     <!--/Loader-->
 
@@ -557,7 +557,7 @@
                         <div class="top-bar-right">
                             <ul class="custom">
 
-                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check())
+                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check() || Auth::guard('patient')->check())
                                     <li>
                                         <a href="{{ route('front-logout') }}" class="text-dark" style="cursor: pointer;"><i class="icon icon-power"></i>
                                             <span>Logout</span></a>
@@ -574,10 +574,35 @@
                                         </div>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Dashboard</span></a>
+                                        <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Profile</span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             @if(Auth::guard('doctor')->check())
                                                 <a class="dropdown-item" href="{{ route('doctor.doctor-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                            @if(Auth::guard('patient')->check())
+                                                <a class="dropdown-item" href="{{ route('patient.patient-profile') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                            @if(Auth::guard('hospital')->check())
+                                                <a class="dropdown-item" href="{{ route('hospital.hospital-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                            @if(Auth::guard('radiology_center')->check())
+                                                <a class="dropdown-item" href="{{ route('radiology_center.radiology-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                            @if(Auth::guard('medical_center')->check())
+                                                <a class="dropdown-item" href="{{ route('medical_center.medical-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @endif
+                                            @if(Auth::guard('lab')->check())
+                                                <a class="dropdown-item" href="{{ route('lab.lab-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
                                                 <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
                                                 <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
@@ -613,12 +638,12 @@
             <div class="horizontal-main clearfix">
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
-                        <a href="index.html"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
-                                alt=""></a>
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
+                                alt="header"></a>
                     </div>
                     <div class="desktoplogo-1">
-                        <a href="index.html"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
-                                alt=""></a>
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
+                                alt="header"></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">
                         <ul class="horizontalMenu-list">
@@ -781,36 +806,8 @@
                                 </ul>
                             </li>
                             <li aria-haspopup="true">
-                                <a href="#">Blog <span class="fe fe-chevron-down"></span></a>
-                                <ul class="sub-menu">
-                                    <li aria-haspopup="true">
-                                        <a href="#">Blog Grid <i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid.html">Blog Grid Left</a></li>
-                                            <li><a href="blog-grid-right.html">Blog Grid Right</a></li>
-                                            <li><a href="blog-grid-center.html">Blog Grid Center</a></li>
-                                        </ul>
-                                    </li>
-                                    <li aria-haspopup="true">
-                                        <a href="#">Blog List <i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-list.html">Blog List Left</a></li>
-                                            <li><a href="blog-list-right.html">Blog List Right</a></li>
-                                            <li><a href="blog-list-center.html">Blog List Center</a></li>
-                                        </ul>
-                                    </li>
-                                    <li aria-haspopup="true">
-                                        <a href="#">Blog Details <i
-                                                class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-details.html">Blog Details Left</a></li>
-                                            <li><a href="blog-details-right.html">Blog Details Right</a></li>
-                                            <li><a href="blog-details-center.html">Blog Details Center</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <a href="{{ route('blogs-list') }}">Blogs </a>
+
                             </li>
                             <li aria-haspopup="true">
                                 <a href="{{ route('contactUs') }}">Contact Us </a>

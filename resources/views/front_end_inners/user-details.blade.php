@@ -2,664 +2,664 @@
 @section('page_title') {{ 'Rushetta | '.isset($user->name_en) ? $user->name_en : '--------' }} @endsection
 
 @section('content')
-    <!--Section-->
-    <section>
-        <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/assets/images/banners/banner1.jpg') }}">
-            <div class="header-text mb-0">
-                <div class="container">
-                    <div class="text-center text-white">
-                        <h1 class="mb-1">Find the Nearest Medical Facility</h1>
-                        <p>It is a long established fact that a reader will be distracted by the when looking at its
-                            layout.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                            <div class="item-search-tabs">
-                                <div class="item-search-menu">
-                                    <ul class="nav">
-                                        <li class="">
-                                            <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab2">{{ ucfirst($user_type) }}</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab3">FitnesCenters</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab4">Pharmacies</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab5">Clinics</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab6">Blood Banks</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-content index-search-select">
-                                    <div class="tab-pane active" id="tab1">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <input class="form-control border" placeholder="Search Location"
-                                                        type="text">
-                                                    <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Type Of Hospitals
-                                                            </option>
-                                                            <option value="1">
-                                                                Women's hospitals
-                                                            </option>
-                                                            <option value="2">
-                                                                Children's hospitals
-                                                            </option>
-                                                            <option value="4">
-                                                                Cardiac hospitals.
-                                                            </option>
-                                                            <option value="5">
-                                                                Cancer Hosptals
-                                                            </option>
-                                                            <option value="5">
-                                                                Diagnostic centers
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Max Fees
-                                                            </option>
-                                                            <option value="1">
-                                                                $10k
-                                                            </option>
-                                                            <option value="2">
-                                                                $10k-$20K
-                                                            </option>
-                                                            <option value="3">
-                                                                $20K-$30K
-                                                            </option>
-                                                            <option value="4">
-                                                                $30K-$40K
-                                                            </option>
-                                                            <option value="5">
-                                                                $40K-$50K
-                                                            </option>
-                                                            <option value="6">
-                                                                $50K-$60K
-                                                            </option>
-                                                            <option value="7">
-                                                                $60K-$70K
-                                                            </option>
-                                                            <option value="8">
-                                                                $70k-$80K
-                                                            </option>
-                                                            <option value="9">
-                                                                $80K &lt; Above
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+        <!--Section-->
+        <section>
+            <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section collapse" id="search_collapse"
+                data-image-src="{{ asset('front_end_style/rushetta_images/head_2.jpg') }}">
+                <div class="header-text mb-0">
+                    <div class="container">
+                        <div class="text-center text-white">
+                            <h1 class="mb-1">Find the Nearest Medical Facility</h1>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                                <div class="item-search-tabs">
+                                    <div class="item-search-menu">
+                                        <ul class="nav">
+                                            <li class="">
+                                                <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab2">{{ ucfirst($user_type) }}</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab3">FitnesCenters</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab4">Pharmacies</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab5">Clinics</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab6">Blood Banks</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content index-search-select">
+                                        <div class="tab-pane active" id="tab1">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <input class="form-control border" placeholder="Search Location"
+                                                            type="text">
+                                                        <span><i class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Type Of Hospitals
+                                                                </option>
+                                                                <option value="1">
+                                                                    Women's hospitals
+                                                                </option>
+                                                                <option value="2">
+                                                                    Children's hospitals
+                                                                </option>
+                                                                <option value="4">
+                                                                    Cardiac hospitals.
+                                                                </option>
+                                                                <option value="5">
+                                                                    Cancer Hosptals
+                                                                </option>
+                                                                <option value="5">
+                                                                    Diagnostic centers
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Max Fees
+                                                                </option>
+                                                                <option value="1">
+                                                                    $10k
+                                                                </option>
+                                                                <option value="2">
+                                                                    $10k-$20K
+                                                                </option>
+                                                                <option value="3">
+                                                                    $20K-$30K
+                                                                </option>
+                                                                <option value="4">
+                                                                    $30K-$40K
+                                                                </option>
+                                                                <option value="5">
+                                                                    $40K-$50K
+                                                                </option>
+                                                                <option value="6">
+                                                                    $50K-$60K
+                                                                </option>
+                                                                <option value="7">
+                                                                    $60K-$70K
+                                                                </option>
+                                                                <option value="8">
+                                                                    $70k-$80K
+                                                                </option>
+                                                                <option value="9">
+                                                                    $80K &lt; Above
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab2">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control border" placeholder="Search Location"
-                                                            type="text"> <span><i
-                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                        <div class="tab-pane" id="tab2">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control border" placeholder="Search Location"
+                                                                type="text"> <span><i
+                                                                    class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Type Of {{ ucfirst($user_type) }}
-                                                            </option>
-                                                            <option value="1">
-                                                                Dentist
-                                                            </option>
-                                                            <option value="2">
-                                                                Gynecologist
-                                                            </option>
-                                                            <option value="4">
-                                                                Physiotherapist
-                                                            </option>
-                                                            <option value="5">
-                                                                Neurosurgeon
-                                                            </option>
-                                                            <option value="5">
-                                                                Neurologist
-                                                            </option>
-                                                            <option value="5">
-                                                                Infertility Specialist
-                                                            </option>
-                                                            <option value="5">
-                                                                Cardiologist
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Max Fees
-                                                            </option>
-                                                            <option value="1">
-                                                                $10k
-                                                            </option>
-                                                            <option value="2">
-                                                                $10k-$20K
-                                                            </option>
-                                                            <option value="3">
-                                                                $20K-$30K
-                                                            </option>
-                                                            <option value="4">
-                                                                $30K-$40K
-                                                            </option>
-                                                            <option value="5">
-                                                                $40K-$50K
-                                                            </option>
-                                                            <option value="6">
-                                                                $50K-$60K
-                                                            </option>
-                                                            <option value="7">
-                                                                $60K-$70K
-                                                            </option>
-                                                            <option value="8">
-                                                                $70k-$80K
-                                                            </option>
-                                                            <option value="9">
-                                                                $80K &lt; Above
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Type Of {{ ucfirst($user_type) }}
+                                                                </option>
+                                                                <option value="1">
+                                                                    Dentist
+                                                                </option>
+                                                                <option value="2">
+                                                                    Gynecologist
+                                                                </option>
+                                                                <option value="4">
+                                                                    Physiotherapist
+                                                                </option>
+                                                                <option value="5">
+                                                                    Neurosurgeon
+                                                                </option>
+                                                                <option value="5">
+                                                                    Neurologist
+                                                                </option>
+                                                                <option value="5">
+                                                                    Infertility Specialist
+                                                                </option>
+                                                                <option value="5">
+                                                                    Cardiologist
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Max Fees
+                                                                </option>
+                                                                <option value="1">
+                                                                    $10k
+                                                                </option>
+                                                                <option value="2">
+                                                                    $10k-$20K
+                                                                </option>
+                                                                <option value="3">
+                                                                    $20K-$30K
+                                                                </option>
+                                                                <option value="4">
+                                                                    $30K-$40K
+                                                                </option>
+                                                                <option value="5">
+                                                                    $40K-$50K
+                                                                </option>
+                                                                <option value="6">
+                                                                    $50K-$60K
+                                                                </option>
+                                                                <option value="7">
+                                                                    $60K-$70K
+                                                                </option>
+                                                                <option value="8">
+                                                                    $70k-$80K
+                                                                </option>
+                                                                <option value="9">
+                                                                    $80K &lt; Above
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab3">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control border" placeholder="Search Location"
-                                                            type="text"> <span><i
-                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                        <div class="tab-pane" id="tab3">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control border" placeholder="Search Location"
+                                                                type="text"> <span><i
+                                                                    class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Fitness Centers
-                                                            </option>
-                                                            <option value="1">
-                                                                Aerobic Centers
-                                                            </option>
-                                                            <option value="2">
-                                                                Yoga Centers
-                                                            </option>
-                                                            <option value="4">
-                                                                Dance Centers
-                                                            </option>
-                                                            <option value="5">
-                                                                Pilates Centers
-                                                            </option>
-                                                            <option value="5">
-                                                                Gyms
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Max Fees
-                                                            </option>
-                                                            <option value="1">
-                                                                $10k
-                                                            </option>
-                                                            <option value="2">
-                                                                $10k-$20K
-                                                            </option>
-                                                            <option value="3">
-                                                                $20K-$30K
-                                                            </option>
-                                                            <option value="4">
-                                                                $30K-$40K
-                                                            </option>
-                                                            <option value="5">
-                                                                $40K-$50K
-                                                            </option>
-                                                            <option value="6">
-                                                                $50K-$60K
-                                                            </option>
-                                                            <option value="7">
-                                                                $60K-$70K
-                                                            </option>
-                                                            <option value="8">
-                                                                $70k-$80K
-                                                            </option>
-                                                            <option value="9">
-                                                                $80K &lt; Above
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Fitness Centers
+                                                                </option>
+                                                                <option value="1">
+                                                                    Aerobic Centers
+                                                                </option>
+                                                                <option value="2">
+                                                                    Yoga Centers
+                                                                </option>
+                                                                <option value="4">
+                                                                    Dance Centers
+                                                                </option>
+                                                                <option value="5">
+                                                                    Pilates Centers
+                                                                </option>
+                                                                <option value="5">
+                                                                    Gyms
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Max Fees
+                                                                </option>
+                                                                <option value="1">
+                                                                    $10k
+                                                                </option>
+                                                                <option value="2">
+                                                                    $10k-$20K
+                                                                </option>
+                                                                <option value="3">
+                                                                    $20K-$30K
+                                                                </option>
+                                                                <option value="4">
+                                                                    $30K-$40K
+                                                                </option>
+                                                                <option value="5">
+                                                                    $40K-$50K
+                                                                </option>
+                                                                <option value="6">
+                                                                    $50K-$60K
+                                                                </option>
+                                                                <option value="7">
+                                                                    $60K-$70K
+                                                                </option>
+                                                                <option value="8">
+                                                                    $70k-$80K
+                                                                </option>
+                                                                <option value="9">
+                                                                    $80K &lt; Above
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab4">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control border" placeholder="Search Location"
-                                                            type="text"> <span><i
-                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                        <div class="tab-pane" id="tab4">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control border" placeholder="Search Location"
+                                                                type="text"> <span><i
+                                                                    class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Pharmacies
-                                                            </option>
-                                                            <option value="1">
-                                                                Retail pharmacy
-                                                            </option>
-                                                            <option value="2">
-                                                                Hospital pharmacy
-                                                            </option>
-                                                            <option value="4">
-                                                                Clinic pharmacy
-                                                            </option>
-                                                            <option value="5">
-                                                                Home care pharmacy
-                                                            </option>
-                                                            <option value="5">
-                                                                Mail order pharmacy
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Max price
-                                                            </option>
-                                                            <option value="1">
-                                                                $10k
-                                                            </option>
-                                                            <option value="2">
-                                                                $10k-$20K
-                                                            </option>
-                                                            <option value="3">
-                                                                $20K-$30K
-                                                            </option>
-                                                            <option value="4">
-                                                                $30K-$40K
-                                                            </option>
-                                                            <option value="5">
-                                                                $40K-$50K
-                                                            </option>
-                                                            <option value="6">
-                                                                $50K-$60K
-                                                            </option>
-                                                            <option value="7">
-                                                                $60K-$70K
-                                                            </option>
-                                                            <option value="8">
-                                                                $70k-$80K
-                                                            </option>
-                                                            <option value="9">
-                                                                $80K &lt; Above
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Pharmacies
+                                                                </option>
+                                                                <option value="1">
+                                                                    Retail pharmacy
+                                                                </option>
+                                                                <option value="2">
+                                                                    Hospital pharmacy
+                                                                </option>
+                                                                <option value="4">
+                                                                    Clinic pharmacy
+                                                                </option>
+                                                                <option value="5">
+                                                                    Home care pharmacy
+                                                                </option>
+                                                                <option value="5">
+                                                                    Mail order pharmacy
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Max price
+                                                                </option>
+                                                                <option value="1">
+                                                                    $10k
+                                                                </option>
+                                                                <option value="2">
+                                                                    $10k-$20K
+                                                                </option>
+                                                                <option value="3">
+                                                                    $20K-$30K
+                                                                </option>
+                                                                <option value="4">
+                                                                    $30K-$40K
+                                                                </option>
+                                                                <option value="5">
+                                                                    $40K-$50K
+                                                                </option>
+                                                                <option value="6">
+                                                                    $50K-$60K
+                                                                </option>
+                                                                <option value="7">
+                                                                    $60K-$70K
+                                                                </option>
+                                                                <option value="8">
+                                                                    $70k-$80K
+                                                                </option>
+                                                                <option value="9">
+                                                                    $80K &lt; Above
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab5">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control border" placeholder="Search Location"
-                                                            type="text"> <span><i
-                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                        <div class="tab-pane" id="tab5">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control border" placeholder="Search Location"
+                                                                type="text"> <span><i
+                                                                    class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Clinics
-                                                            </option>
-                                                            <option value="1">
-                                                                Physiotherapy Clinics
-                                                            </option>
-                                                            <option value="2">
-                                                                Dental Clinics
-                                                            </option>
-                                                            <option value="4">
-                                                                Walk-in Urgent Care Clinics
-                                                            </option>
-                                                            <option value="5">
-                                                                Chiropractor Clinics
-                                                            </option>
-                                                            <option value="5">
-                                                                Rehabilitation Clinics
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Max Fees
-                                                            </option>
-                                                            <option value="1">
-                                                                $10k
-                                                            </option>
-                                                            <option value="2">
-                                                                $10k-$20K
-                                                            </option>
-                                                            <option value="3">
-                                                                $20K-$30K
-                                                            </option>
-                                                            <option value="4">
-                                                                $30K-$40K
-                                                            </option>
-                                                            <option value="5">
-                                                                $40K-$50K
-                                                            </option>
-                                                            <option value="6">
-                                                                $50K-$60K
-                                                            </option>
-                                                            <option value="7">
-                                                                $60K-$70K
-                                                            </option>
-                                                            <option value="8">
-                                                                $70k-$80K
-                                                            </option>
-                                                            <option value="9">
-                                                                $80K &lt; Above
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Clinics
+                                                                </option>
+                                                                <option value="1">
+                                                                    Physiotherapy Clinics
+                                                                </option>
+                                                                <option value="2">
+                                                                    Dental Clinics
+                                                                </option>
+                                                                <option value="4">
+                                                                    Walk-in Urgent Care Clinics
+                                                                </option>
+                                                                <option value="5">
+                                                                    Chiropractor Clinics
+                                                                </option>
+                                                                <option value="5">
+                                                                    Rehabilitation Clinics
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Max Fees
+                                                                </option>
+                                                                <option value="1">
+                                                                    $10k
+                                                                </option>
+                                                                <option value="2">
+                                                                    $10k-$20K
+                                                                </option>
+                                                                <option value="3">
+                                                                    $20K-$30K
+                                                                </option>
+                                                                <option value="4">
+                                                                    $30K-$40K
+                                                                </option>
+                                                                <option value="5">
+                                                                    $40K-$50K
+                                                                </option>
+                                                                <option value="6">
+                                                                    $50K-$60K
+                                                                </option>
+                                                                <option value="7">
+                                                                    $60K-$70K
+                                                                </option>
+                                                                <option value="8">
+                                                                    $70k-$80K
+                                                                </option>
+                                                                <option value="9">
+                                                                    $80K &lt; Above
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab6">
-                                        <div class="search-background">
-                                            <div class="form row no-gutters">
-                                                <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control border" placeholder="Search Location"
-                                                            type="text"> <span><i
-                                                                class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                        <div class="tab-pane" id="tab6">
+                                            <div class="search-background">
+                                                <div class="form row no-gutters">
+                                                    <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control border" placeholder="Search Location"
+                                                                type="text"> <span><i
+                                                                    class="fa fa-crosshairs  location-gps mr-1"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Blood Banks
-                                                            </option>
-                                                            <option value="1">
-                                                                Central Blood Center
-                                                            </option>
-                                                            <option value="2">
-                                                                San Diego Blood Bank
-                                                            </option>
-                                                            <option value="4">
-                                                                Delta Blood Bank
-                                                            </option>
-                                                            <option value="5">
-                                                                Heartland Blood Centers
-                                                            </option>
-                                                            <option value="5">
-                                                                Florida’s Blood Centers
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="">
-                                                            <option>
-                                                                Distance
-                                                            </option>
-                                                            <option value="1">
-                                                                3km
-                                                            </option>
-                                                            <option value="2">
-                                                                6km
-                                                            </option>
-                                                            <option value="3">
-                                                                9km
-                                                            </option>
-                                                            <option value="4">
-                                                                10km
-                                                            </option>
-                                                            <option value="5">
-                                                                20km
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <select class="form-control select2-show-search border-bottom-0 w-100"
-                                                        data-placeholder="Select">
-                                                        <optgroup label="Categories">
-                                                            <option>
-                                                                Available Bloodgroups
-                                                            </option>
-                                                            <option value="1">
-                                                                A negative
-                                                            </option>
-                                                            <option value="2">
-                                                                A positive
-                                                            </option>
-                                                            <option value="3">
-                                                                B negative
-                                                            </option>
-                                                            <option value="4">
-                                                                B positive
-                                                            </option>
-                                                            <option value="5">
-                                                                AB negative
-                                                            </option>
-                                                            <option value="6">
-                                                                AB positive
-                                                            </option>
-                                                            <option value="7">
-                                                                O negative
-                                                            </option>
-                                                            <option value="8">
-                                                                O positive
-                                                            </option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
-                                                    <a class="btn btn-block btn-orange fs-14" href="#"><i
-                                                            class="fa fa-search"></i> Search</a>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Blood Banks
+                                                                </option>
+                                                                <option value="1">
+                                                                    Central Blood Center
+                                                                </option>
+                                                                <option value="2">
+                                                                    San Diego Blood Bank
+                                                                </option>
+                                                                <option value="4">
+                                                                    Delta Blood Bank
+                                                                </option>
+                                                                <option value="5">
+                                                                    Heartland Blood Centers
+                                                                </option>
+                                                                <option value="5">
+                                                                    Florida’s Blood Centers
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="">
+                                                                <option>
+                                                                    Distance
+                                                                </option>
+                                                                <option value="1">
+                                                                    3km
+                                                                </option>
+                                                                <option value="2">
+                                                                    6km
+                                                                </option>
+                                                                <option value="3">
+                                                                    9km
+                                                                </option>
+                                                                <option value="4">
+                                                                    10km
+                                                                </option>
+                                                                <option value="5">
+                                                                    20km
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <select class="form-control select2-show-search border-bottom-0 w-100"
+                                                            data-placeholder="Select">
+                                                            <optgroup label="Categories">
+                                                                <option>
+                                                                    Available Bloodgroups
+                                                                </option>
+                                                                <option value="1">
+                                                                    A negative
+                                                                </option>
+                                                                <option value="2">
+                                                                    A positive
+                                                                </option>
+                                                                <option value="3">
+                                                                    B negative
+                                                                </option>
+                                                                <option value="4">
+                                                                    B positive
+                                                                </option>
+                                                                <option value="5">
+                                                                    AB negative
+                                                                </option>
+                                                                <option value="6">
+                                                                    AB positive
+                                                                </option>
+                                                                <option value="7">
+                                                                    O negative
+                                                                </option>
+                                                                <option value="8">
+                                                                    O positive
+                                                                </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-xl-2 col-lg-2 col-md-12 mb-0">
+                                                        <a class="btn btn-block btn-orange fs-14" href="#"><i
+                                                                class="fa fa-search"></i> Search</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -670,9 +670,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--/Section-->
+        </section>
+        <!--/Section-->
 		<!--Breadcrumb-->
 		<div class="bg-white border-bottom">
 			<div class="container">
@@ -982,18 +981,18 @@
 								<div class="form-group">
 									<label class="form-label">Fix Appointemnt Date</label>
 									<input class="form-control" name="appointment_date" placeholder="Appointment Date" type="text" id="appointmentDate">
-									<input type="hidden" class="allowed" value="2022-01-02">
+									{{-- <input type="hidden" class="allowed" value="2022-01-02">
 									<input type="hidden" class="allowed" value="2022-01-06">
 									<input type="hidden" class="allowed" value="2022-01-08">
 									<input type="hidden" class="allowed" value="2022-01-12">
 									<input type="hidden" class="allowed" value="2022-01-16">
 									<input type="hidden" class="allowed" value="2022-01-18">
-									<input type="hidden" class="allowed" value="2022-01-22">
+									<input type="hidden" class="allowed" value="2022-01-22"> --}}
                                 </div>
 								<div class="form-group">
 									<label class="form-label">Time</label>
 									<div class="row gutters-xs">
-										<div class="col-6">
+										{{-- <div class="col-6">
 											<select name="appointment_hour" class="form-control select2">
 												<option value="">0</option>
 												<option value="0">1</option>
@@ -1085,7 +1084,18 @@
 												<option value="58">58</option>
 												<option value="59">59</option>
 											</select>
-										</div>
+										</div> --}}
+                                        <div>
+
+                                            <div class="swiper-container">
+                                                <div class="swiper-wrapper">
+                                                <div class="swiper-slide">Slide 1</div>
+                                                <div class="swiper-slide">Slide 2</div>
+                                                <div class="swiper-slide">Slide 3</div>
+                                                <div class="swiper-slide">Slide 4</div>
+                                                </div>
+                                            </div>
+                                        </div>
 									</div>
 								</div>
 								<div class="form-group">
@@ -1261,22 +1271,38 @@
                 dateFormat: 'yy-mm-dd',
                 multidate: true,
                 startDate: new Date(),
-                minDate: 0,
+                minDate: 3,
                 beforeShowDay: enableAllTheseDays
                 });
+
             });
 
+
             function enableAllTheseDays(date) {
-                var sdate = moment(date).format('YYYY-MM-DD');
-
-                if ($.inArray(sdate, enabledDates) !== -1) {
-                return [true];
-                }
-
-                return [false];
+                arr = [1,2,3];
+                var day = date.getDay();
+                return [(arr.indexOf(day) != -1)];
             }
             })
         </script>
 
-    @endsection
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+
+            $("#search_btn").css('display', '');
+        });
+            var swiper = new Swiper('.swiper-container', {
+
+            direction: 'vertical',
+            mousewheelControl: true,
+            slidesPerView: 1,
+            // freeMode: true,
+            // freeModeSticky: true
+            });
+        </script>
+
+@endsection
 

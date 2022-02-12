@@ -28,6 +28,7 @@ class CreatePatientsTable extends Migration
             $table->longText('password')->nullable();
             $table->longText('profile_photo_path')->nullable();
             $table->tinyInteger('user_status')->default(1)->comment = '1 => Pendding || 2 => Active || 3 => Inactive';
+            $table->tinyInteger('gender')->nullable()->comment = '1 => Male || 2 => Female';
             // Other Fields :
             // ================================================================
             $table->longText('player_id')->nullable();

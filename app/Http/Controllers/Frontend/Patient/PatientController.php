@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Frontend\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Patient\PatientUpdateProfileFormRequest;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
@@ -50,14 +54,14 @@ class PatientController extends Controller
     }
 
 
-    function doctorUpdateProfile(DoctorUpdateProfileFormRequest $request,$id,Route $route)
+    function patientUpdateProfile(PatientUpdateProfileFormRequest $request,$id,Route $route)
     {
         try {
-            if(!Auth::guard('doctor')->check()){
+            if(!Auth::guard('patient')->check()){
                 return redirect()->route('welcome')->with('danger','You Are Not Autherized');
             }
 
-            $user = Auth::guard('doctor')->user();
+            $user = Auth::guard('patient')->user();
 
             $created_data =[
             'name_ar'=>$request->name_ar,
@@ -71,10 +75,7 @@ class PatientController extends Controller
             'address_en'=>$request->address_en,
             'alias_name_en'=>str_replace(' ','-',$request->name_en),
             'alias_name_ar'=>str_replace(' ','-',$request->name_en),
-            'user_description_en'=>$request->overview_en,
-            'user_description_ar'=>$request->overview_en,
             'gender'=>$request->gender,
-            'languages'=>isset($request->language_id) ? implode(',',$request->language_id) : null
             ];
 
             if (isset($request->password)) {
@@ -85,25 +86,16 @@ class PatientController extends Controller
                 $orginal_image = $request->file('profile_photo_path');
                 $upload_location = 'storage/profile-photos/';
                 $original_name = $orginal_image->getClientOriginalName();
-                $last_image = $this->saveFileWithOriginalName('doctors', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                $last_image = $this->saveFileWithOriginalName('patients', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 $created_data['profile_photo_path']= $last_image;
                 File::delete($user->profile_photo_path);
             }
 
             DB::transaction(function () use ($created_data, $user , $request) {
                 $user->update($created_data);
-                if(isset($request->speciality_id)){
-                    DoctorSpecialityRelation::where('doctor_id',$user->id)->delete();
-                    foreach($request->speciality_id as $sub){
-                        DoctorSpecialityRelation::create([
-                            'doctor_id'=>$user->id,
-                            'speciality_id'=>$sub
-                        ]);
-                    }
-                }
             });
 
-            return redirect()->route('doctor.doctor-dashboard','doctorUpdateProfile')->with('success','updated successfully');
+            return redirect()->route('patient.patient-profile','patientUpdateProfile')->with('success','updated successfully');
 
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();

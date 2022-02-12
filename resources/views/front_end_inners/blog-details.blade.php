@@ -1,8 +1,8 @@
 @extends('front_end_inners.app_front_end', ['title' => 'Blogs'])
-@section('page_title') {{ 'Rushetta | Blogs' }} @endsection
-@section('meta_title'){!! isset($blog->seo_title_en) ? $blog->seo_title_en : 'Rushetta website' !!}@endsection
-@section('meta_desc'){!! isset($blog->meta_desc_ar) ? $blog->meta_desc_ar : 'rushetta website find your doctor' !!}@endsection
-@section('meta_keywords'){{ isset($blog->keywords_en) ? $blog->keywords_en : 'rushetta,docotors,dctor' }}@endsection
+@section('page_title') {{ isset($blog->title_en) ? $blog->title_en : null }} @endsection
+@section('meta_title'){!! isset($blog->seo_title_en) ? $blog->seo_title_en : 'Roshiita website' !!}@endsection
+@section('meta_desc'){!! isset($blog->meta_desc_ar) ? $blog->meta_desc_ar : 'roshiita website find your doctor' !!}@endsection
+@section('meta_keywords'){{ isset($blog->keywords_en) ? $blog->keywords_en : 'roshiita,docotors,doctor' }}@endsection
 @section('content')
     <!--Section-->
     <section>
@@ -676,7 +676,7 @@
 								<div class="item7-card-img">
                                     @if(isset($blog->image) && file_exists($blog->image))
 									    <img alt="img" class="w-100" src="{{ asset($blog->image) }}" alt="{{ isset($blog->alt_text_en) ? $blog->alt_text_ar : 'image' }}"
-                                            title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : 'image' }}">
+                                            title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : $blog->title_en }}">
                                     @else
 									    <img alt="img" class="w-100" src="{{ asset('front_end_style/assets/images/media/28.jpg') }}">
                                     @endif

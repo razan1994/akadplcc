@@ -57,15 +57,15 @@
                         <div class="tab-menu-heading">
                             <div class="tabs-menu1">
                                 <ul class="nav">
-                                    <li class=""><a href="#tab-5" class="active" data-toggle="tab">Reservations</a></li>
-                                    <li><a href="#tab-6" data-toggle="tab" class="">Edit Profile</a></li>
+                                    <li class=""><a href="#tab-5" class="@if(!isset($active)) active @endif" data-toggle="tab">Reservations</a></li>
+                                    <li><a href="#tab-6" data-toggle="tab"  @if(isset($active))@if($active == "patientUpdateProfile") class="active" @endif @endif>Edit Profile</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="border-0">
                         <div class="tab-content  border-left border-right details-tab-content bg-white">
-                            <div class="tab-pane active" id="tab-5">
+                            <div class="tab-pane @if(!isset($active)) active @endif" id="tab-5">
                                 <div class=" p-5">
                                     <h3 class="card-title mb-3">Personal Details</h3>
                                     <ul class="usertab-list mb-4">
@@ -85,95 +85,111 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane userprof-tab" id="tab-6">
+                            <div class="tab-pane userprof-tab @if(isset($active))@if($active == "patientUpdateProfile") active @endif @endif" id="tab-6">
+                                <form action="{{ route('patient.patient-update-profile',$auth->id) }}" method="POST" enctype="multipart/form-data" id="createForm">
+                                    @csrf
                                 <div class=" p-5">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label">First Name</label>
-                                                <input type="text" class="form-control" placeholder="First Name">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Name AR <span class="text-danger">* @error('name_ar'){{ $message }}@enderror</span></label>
+                                                    <input type="text" name="name_ar" class="form-control" placeholder="lab Name In Arabic" value="{{ $auth->name_ar }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Name EN <span class="text-danger">* @error('name_en'){{ $message }}@enderror</span></label>
+                                                    <input type="text" name="name_en" class="form-control" placeholder="lab Name In English" value="{{ $auth->name_en }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Email address <span class="text-danger">* @error('email'){{ $message }}@enderror</span></label>
+                                                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $auth->email }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label">Phone Number</label>
-                                                <input type="number" class="form-control" placeholder="Number">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Phone Number <span class="text-danger">* @error('phone'){{ $message }}@enderror</span></label>
+                                                    <input type="number" name="phone" class="form-control" placeholder="Number" value="{{ $auth->phone }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Password <span class="text-danger"> @error('password'){{ $message }}@enderror</span></label>
+                                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div class="form-group">
-                                                <label class="form-label">City</label>
-                                                <input type="text" class="form-control" placeholder="City">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Confirm Password <span class="text-danger"> @error('password'){{ $message }}@enderror</span></label>
+                                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-3">
-                                            <div class="form-group">
-                                                <label class="form-label">Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Country <span class="text-danger"> @error('country_id'){{ $message }}@enderror</span></label>
+                                                    <select class="form-control select2-show-search border-bottom-0 w-100 select2-show-search" name="country_id" id="country_id" data-placeholder="Select">
+                                                            <option value="">--Select--</option>
+                                                            @foreach ($public_countries as $country)
+                                                                <option value="{{ $country->id }}" @if($auth->country_id == $country->id) selected @endif>{{ $country->name_en }}</option>
+                                                            @endforeach
+                                                    </select>
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="form-label">Country</label>
-                                                <select class="form-control select2-show-search border-bottom-0 w-100 select2-show-search" data-placeholder="Select">
-															<optgroup label="Categories">
-																<option>--Select--</option>
-																<option value="1">Germany</option>
-																<option value="2">2BHK Homes</option>
-																<option value="3">Canada</option>
-																<option value="4">Usa</option>
-																<option value="5">Afghanistan</option>
-																<option value="6">Albania</option>
-																<option value="7">China</option>
-																<option value="8">Denmark</option>
-																<option value="9">Finland</option>
-																<option value="10">India</option>
-																<option value="11">Kiribati</option>
-																<option value="12">Kuwait</option>
-																<option value="13">Mexico</option>
-																<option value="14">Pakistan</option>
-															</optgroup>
-														</select>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Region <span class="text-danger"> @error('region_id'){{ $message }}@enderror</span></label>
+                                                    <select class="form-control select2 select2-show-search border-bottom-0 w-100 select2-show-search" name="region_id" id="region_id" data-placeholder="Select">
+                                                        <optgroup label="Categories">
+                                                            <option>--Select--</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-label">About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Enter About your description"></textarea>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Address AR <span class="text-danger"> @error('address_ar'){{ $message }}@enderror</span></label>
+                                                    <input type="text" name="address_ar" class="form-control" placeholder="Address In Arabic" value="{{ $auth->address_ar }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Upload Image</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="example-file-input-custom">
-                                                    <label class="custom-file-label">Choose file</label>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Address EN <span class="text-danger"> @error('address_en'){{ $message }}@enderror</span></label>
+                                                    <input type="text" name="address_en" class="form-control" placeholder="Address In English" value="{{ $auth->address_en }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Gender <span class="text-danger"> @error('gender'){{ $message }}@enderror</span></label>
+                                                    <div class="radio-group">
+                                                        <div class="row col-md-12">
+                                                        <label for="male" style="width: 25%;cursor:pointer">Male
+                                                            <input type="radio" name="gender" value="1" id="male" placeholder="Number" @if($auth->gender == 1) checked @endif>
+                                                        </label>
+                                                        <label for="female" style="width: 25%;cursor:pointer">Female
+                                                            <input type="radio" name="gender" value="2" id="female" placeholder="Number" @if($auth->gender == 2) checked @endif>
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-0">
+                                                    <label class="form-label">Upload Image <span class="text-danger"> @error('profile_photo_path'){{ $message }}@enderror</span></label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" name="profile_photo_path">
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary">Update Profile</button>
-                                        </div>
                                     </div>
-                                </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-secondary">Updated Profile</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="tab-pane" id="tab-7">
                                 <div class="media mt-0 p-5">
@@ -266,14 +282,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-white br-bl-2 br-br-2 border-left border-right border-bottom">
-                            <div class="icons">
-                                <a href="#" class="btn btn-info icons"><i class="icon icon-share mr-1"></i> Share</a>
-                                <a href="#" class="btn btn-danger icons" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
-                                <a href="#" class="btn btn-primary icons"><i class="icon icon-heart  mr-1"></i> 678</a>
-                                <a href="#" class="btn btn-secondary icons"><i class="icon icon-printer  mr-1"></i> Print</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -307,4 +316,85 @@
 </section>
 <!--/Newsletter-->
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+                    setTimeout(() => {
+                        getRegions();
+                    }, 500);
+
+
+                $(document.body).on("change","#country_id",function(){
+                    // console.log('foooooooooooo');
+                    getRegions();
+                });
+
+            });
+
+
+
+            function getRegions() {
+                var formData = new FormData($('#createForm')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('frontGetRegions') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(data) {
+                        if (data.status == true) {
+                            var selectRegions = '<option value="">Choose the region ... </option>';
+                            var name ="Nothing Selected..";
+                            for (var key in data.regions) {
+                                // skip loop if the property is from prototype
+                                if (!data.regions.hasOwnProperty(key)) continue;
+
+                                var obj = data.regions[key];
+                                // alert(obj.id);
+                                for (var prop in obj) {
+                                    // skip loop if the property is from prototype
+                                    if (!obj.hasOwnProperty(prop)) continue;
+
+                                    // your code
+                                    var region_id_old_value = $("#region_id_old_value").val();
+
+                                    if (region_id_old_value) {
+                                        if (obj.id == region_id_old_value) {
+                                            name = obj.name_ar;
+                                            selectRegions += '<option value="' + obj.id + '" selected>' + obj.name_ar + '</option>';
+                                        } else {
+                                            selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                                                '</option>';
+                                        }
+                                    } else {
+                                        selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                                            '</option>';
+                                    }
+                                    break;
+                                }
+                            }
+                            $('#region_id').html(selectRegions);
+
+                            // $('.selectpicker').selectpicker('refresh');
+                            // $selected_value = $("#region_id_div").find('.filter-option-inner-inner');
+                            // // alert(name);
+                            // $selected_value.text(name);
+                        }
+
+                    },
+                    error: function(reject) {
+                        var response = $.parseJSON(reject.responseText);
+                        $.each(response.errors, function(key, val) {
+                            $("#" + key + "_error").text(val[0]);
+                        });
+                    }
+                });
+            }
+</script>
 @endsection

@@ -41,7 +41,8 @@ class Patient extends Authenticatable
         'address_en',
         'player_id',
         'alias_name_en',
-        'alias_name_ar'
+        'alias_name_ar',
+        'gender'
     ];
     /**
      * The attributes that should be hidden for arrays.

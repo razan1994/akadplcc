@@ -680,8 +680,8 @@
                                                             <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
                                                         @endif
                                                         @if(isset($blog->image) && file_exists($blog->image))
-                                                            <img src="{{ asset($blog->image) }}" alt="img"
-                                                            class="cover-image">
+                                                            <img src="{{ asset($blog->image) }}" alt="{{ isset($blog->alt_text_en) ? $blog->alt_text_en : 'image' }}"
+                                                            class="cover-image" title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : $blog->title_en }}">
                                                         @else
                                                             <img src="{{ asset('front_end_style/assets/images/media/12.jpg') }}" alt="img" class="cover-image">
                                                         @endif

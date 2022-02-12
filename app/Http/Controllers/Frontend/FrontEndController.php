@@ -720,10 +720,24 @@ class FrontEndController extends Controller
 
 
     function crawler(){
-        $date = today()->timezone('Asia/Amman');
-        $d    = new DateTime($date);
+        // $date = today()->timezone('Asia/Amman');
+        // $d    = new DateTime($date);
 
-        return $d->format('l');
+        // return $d->format('l');
+
+
+        
+
+        $month  = date('m');
+        $year  = date('Y');
+        $days = cal_days_in_month(CAL_GREGORIAN, $month,$year);
+            for($i = 1; $i<= $days; $i++){
+            $day  = date('Y-m-'.$i);
+            $result = strtolower(date("l", strtotime($day)));
+                if($result == "sunday"){
+                echo date("Y-m-d", strtotime($day)). " ".$result."<br>";
+                }
+            }
     }
 
 }

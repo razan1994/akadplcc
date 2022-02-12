@@ -19604,7 +19604,7 @@ License        :   Licensed under ThemeForest License
     /* Header-style1*/
     
     .header-style1 .horizontal-main {
-        background: #001b44;
+        background: #032e6e;
     }
     
     .header-style1 .desktoplogo {
@@ -34009,4 +34009,21 @@ License        :   Licensed under ThemeForest License
     
     .spec-doc-img {
         height: 100% !important;
+    }
+    
+    .swiper-container,
+    .swiper-wrapper,
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
