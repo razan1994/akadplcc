@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Weidner\Goutte\GoutteFacade;
 
 class FrontEndController extends Controller
 {
@@ -726,7 +725,7 @@ class FrontEndController extends Controller
         // return $d->format('l');
 
 
-        
+
 
         $month  = date('m');
         $year  = date('Y');
