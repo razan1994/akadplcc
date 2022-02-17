@@ -34011,19 +34011,57 @@ License        :   Licensed under ThemeForest License
         height: 100% !important;
     }
     
-    .swiper-container,
-    .swiper-wrapper,
-    .swiper-slide {
-        width: 100%;
-        height: 100%;
+    .swiper-container {
+        overflow: hidden;
+        /* width: 50%; */
+        /* margin-left: auto;
+    margin-right: auto; */
+        height: 31%;
+    }
+    
+    @media (min-width: 480px) {
+        .swiper-container {
+            height: 31%;
+        }
+    }
+    
+    .swiper-container-wrapper {
+        display: flex;
+        flex-flow: column nowrap;
+        height: 31%;
+        width: 100vw;
+    }
+    
+    @media (min-width: 480px) {
+        .swiper-container-wrapper {
+            flex-flow: row nowrap;
+        }
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000;
     }
     
     .swiper-slide {
         text-align: center;
-        font-size: 18px;
-        background: #fff;
+        background-size: cover;
+        background-position: center;
+        background-color: #fff;
         /* Center slide text vertically */
         display: flex;
+        flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
+        height: 20%;
+        cursor: pointer;
+        /* Slide content */
+    }
+    
+    .time-date {
+        width: 100%;
+    }
+    
+    .swiper-slide-active {
+        background-color: #b9b9b9;
     }
