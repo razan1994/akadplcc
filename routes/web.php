@@ -66,6 +66,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::group(['middleware' => 'auth:patient'], function () {
                 Route::get('/profile/{active?}', [PatientController::class, 'profile'])->name('patient-profile');
                 Route::post('/patientUpdateProfile/{id}', [PatientController::class, 'patientUpdateProfile'])->name('patient-update-profile');
+                Route::post('/book-appointment', [PatientController::class, 'bookAppointment'])->name('book-appointment');
             });
         });
 

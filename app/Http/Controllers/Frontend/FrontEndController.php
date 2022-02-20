@@ -16,15 +16,12 @@ use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\Patient;
 use App\Models\Pharmacy;
-use App\Models\ProdSzeClrRelation;
-use App\Models\Product;
 use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
-use App\Models\SeoAdmin;
-use App\Models\SubSpeciality;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -246,17 +243,72 @@ class FrontEndController extends Controller
 
         if ($user) {
 
+                    // return $user;
+            if (!Cookie::get('view_'. $user_type . '_' . $user->id)) {
 
-            // if (!Cookie::get('view_doctor' . $user->id)) {
+                $user->update([
+                    'view_counter' => $user->view_counter + 1,
+                ]);
 
-            //     DB::table('doctors')
-            //         ->where('id', $user->id)
-            //         ->update([
-            //             'view_counter' => $user->view_counter + 1,
-            //         ]);
+                Cookie::queue('view_'. $user_type . '_' . $user->id,'view_'. $user_type . '_' . $user->id, 60);
+            }
 
-            //     Cookie::queue('view_doctor' . $user->id, 'view_doctor' . $user->id, 60);
-            // }
+            if(isset($user->weekPlan)){
+                if($user->weekPlan->active_days != null){
+                $collection = new Collection();
+                $week_plan = $user->weekPlan;
+                $days_arr = explode(',',$user->weekPlan->active_days);
+                $end = new DateTime(date('Y-m-d'));
+                $end = $end->modify('+60 day');
+                $date = Carbon::parse(date('Y-m-d'))->toDateString();
+                $begin = new DateTime($date);
+                $days = [];
+                foreach($days_arr as $single_day){
+                    $day_split = null;
+                    if($single_day == "saterday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::SATURDAY);
+                        $day_split = "Sat";
+                    }
+                    if($single_day == "sunday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::SUNDAY);
+                        $day_split = "Sun";
+                    }
+                    if($single_day == "monday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::MONDAY);
+                        $day_split = "Mon";
+                    }
+                    if($single_day == "tuseday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::TUESDAY);
+                        $day_split = "Tues";
+                    }
+                    if($single_day == "wednsday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::WEDNESDAY);
+                        $day_split = "Wed";
+                    }
+                    if($single_day == "thursday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::THURSDAY);
+                        $day_split = "Thu";
+                    }
+                    if($single_day == "friday"){
+                        $startDate = Carbon::parse($begin)->next(Carbon::FRIDAY);
+                        $day_split = "Fri";
+                    }
+                    $endDate = Carbon::parse($end);
+
+                    $from_var = $single_day."_from";
+                    $to_var = $single_day."_to";
+                    $every_var = "every_".$single_day;
+                    for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+                        $days[] = ['day'=>$day_split,'date'=>$date->format('Y-m-d'),'from'=>$week_plan->$from_var,'to'=>$week_plan->$to_var,'every'=>$week_plan->$every_var];
+                    }
+
+                }
+                $sorted_plan = collect($days)->sortBy('date')->values();
+                $day_chunks = array_chunk($sorted_plan->toArray(),3);
+                $user->chunked_plan = $day_chunks;
+            }
+        }
+
             $languages = [];
             if (isset($user->languages)) {
                 foreach (explode(',', $user->languages) as $lang) {
@@ -719,24 +771,66 @@ class FrontEndController extends Controller
 
 
     function crawler(){
-        // $date = today()->timezone('Asia/Amman');
-        // $d    = new DateTime($date);
 
-        // return $d->format('l');
-
-
-
-
-        $month  = date('m');
-        $year  = date('Y');
-        $days = cal_days_in_month(CAL_GREGORIAN, $month,$year);
-            for($i = 1; $i<= $days; $i++){
-            $day  = date('Y-m-'.$i);
-            $result = strtolower(date("l", strtotime($day)));
-                if($result == "sunday"){
-                echo date("Y-m-d", strtotime($day)). " ".$result."<br>";
-                }
+        $doctor = Doctor::find(1);
+        $collection = new Collection();
+        $week_plan = $doctor->weekPlan;
+        $days_arr = explode(',',$doctor->weekPlan->active_days);
+        $end = new DateTime(date('Y-m-d'));
+        $end = $end->modify('+30 day');
+        $date = Carbon::parse(date('Y-m-d'))->toDateString();
+        $begin = new DateTime($date);
+        $days = [];
+        foreach($days_arr as $single_day){
+            if($single_day == "saterday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::SATURDAY);
             }
+            if($single_day == "sunday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::SUNDAY);
+            }
+            if($single_day == "monday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::MONDAY);
+            }
+            if($single_day == "tuseday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::TUESDAY);
+            }
+            if($single_day == "wednsday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::WEDNESDAY);
+            }
+            if($single_day == "thursday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::THURSDAY);
+            }
+            if($single_day == "friday"){
+                $startDate = Carbon::parse($begin)->next(Carbon::FRIDAY);
+            }
+            $endDate = Carbon::parse($end);
+
+            $from_var = $single_day."_from";
+            $to_var = $single_day."_to";
+            $every_var = "every_".$single_day;
+            for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+                $days[] = ['day'=>$single_day,'date'=>$date->format('Y-m-d'),'from'=>$week_plan->$from_var,'to'=>$week_plan->$to_var,'every'=>$week_plan->$every_var];
+            }
+
+        }
+        $sortedArr = collect($days)->sortBy('date')->values();
+        $new = $sortedArr->toArray();
+        $chunks = array_chunk($new,3);
+        return $chunks;
+
+        $t = $sortedArr[0]['from'];
+        for ($i = 0 ; $i < 1440 ; $i+= $sortedArr[0]['every']){
+            echo $t;
+            echo "\n";
+           $t = date("H:i:s", strtotime($sortedArr[0]['every']." Minutes", strtotime($t)));
+        }
+
+        // return $t;
+
     }
+
+
+
+
 
 }

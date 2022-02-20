@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Patient\BookAppointmentFormRequest;
 use App\Http\Requests\Frontend\Patient\PatientUpdateProfileFormRequest;
+use App\Models\Doctor;
+use App\Models\DoctorReservation;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
@@ -121,4 +124,67 @@ class PatientController extends Controller
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
     }
+
+
+    function bookAppointment(Route $route,BookAppointmentFormRequest $request){
+    try{
+
+        $user_id = decrypt($request->user_id);
+
+        $user_type = $request->user_type;
+
+        if($user_type == 'doctors'){
+            $user = Doctor::find($user_id);
+        }
+
+        if($user){
+            $created_data = [
+                'doctor_id'=>$user_id,
+                'patient_id'=>auth()->user()->id,
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'phone'=>$request->phone,
+                'age'=>$request->age,
+                'time'=>$request->time
+            ];
+
+            DB::transaction(function () use ($created_data,$user_type) {
+                if($user_type == 'doctors'){
+                    DoctorReservation::create($created_data);
+                }
+            });
+
+
+            return redirect()->back()->with('success','Appoitment Booked Successfully ...');
+
+        }
+
+
+
+    } catch (\Throwable $th) {
+        $function_name =  $route->getActionName();
+        $check_old_errors = new SupportTicket();
+        $check_old_errors = $check_old_errors->select('*')->where([
+            'error_location' => $th->getFile(),
+            'error_description' => $th->getMessage(),
+            'function_name' => $function_name,
+            'error_line' => $th->getLine(),
+        ])->get();
+
+        if ($check_old_errors->count() == 0) {
+            $new_error_ticket = SupportTicket::create([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' =>  $th->getLine(),
+            ]);
+            $end_error_ticket = $new_error_ticket;
+        } else {
+            $end_error_ticket = $check_old_errors->first();
+        }
+        return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+    }
+    }
+
+
 }

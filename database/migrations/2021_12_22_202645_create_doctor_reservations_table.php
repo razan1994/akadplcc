@@ -16,6 +16,13 @@ class CreateDoctorReservationsTable extends Migration
         Schema::create('doctor_reservations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->bigInteger('doctor_id');
+            $table->bigInteger('patient_id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
+            $table->integer('age');
+            $table->longText('time');
             $table->timestamps();
         });
     }

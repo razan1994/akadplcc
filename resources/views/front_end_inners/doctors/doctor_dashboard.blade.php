@@ -50,6 +50,9 @@
 										<li data-toggle="tab" href="#profiletab" @if(isset($active))@if($active == "doctorUpdateProfile" || $active == null) class="active" @endif @else class="active" @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Edit Profile</span></a>
 										</li>
+										<li data-toggle="tab" href="#appoinmentstab" @if(isset($active))@if($active == "doctorAppointments") class="active" @endif @endif style="cursor: pointer">
+											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Appointments</span></a>
+										</li>
 										<li data-toggle="tab" href="#weekPlantab" @if(isset($active))@if($active == "doctorWeekPlan") class="active" @endif @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Week Plan</span></a>
 										</li>
@@ -214,6 +217,43 @@
                                             <button type="submit" class="btn btn-secondary">Updated Profile</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="appoinmentstab" class="tab-pane fade @if(isset($active))@if($active == "doctorAppointments") active in @endif @endif">
+                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                <div class="card mb-0">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Appointments</h3>
+                                    </div>
+                                        <div class="card-footer">
+                                            @if(isset($auth->appointments) && $auth->appointments->count() > 0)
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>First Name</th>
+                                                            <th>Last Namr</th>
+                                                            <th>Age</th>
+                                                            <th>Phone</th>
+                                                            <th>Date / Time</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($auth->appointments as $appointment)
+                                                            <tr>
+                                                                <td>{{ $appointment->first_name }}</td>
+                                                                <td>{{ $appointment->last_name }}</td>
+                                                                <td>{{ $appointment->age }}</td>
+                                                                <td>{{ $appointment->phone }}</td>
+                                                                <td>{{ $appointment->time }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @else
+                                            <h3 class="text-danger">No Appointments</h3>
+                                            @endif
+                                        </div>
                                 </div>
                             </div>
                         </div>

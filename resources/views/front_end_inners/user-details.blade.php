@@ -788,6 +788,9 @@
                                         <li><a href="#tab-7" data-toggle="tab" class="">Consultation Fees</a>
                                         </li>
                                         <li><a href="#tab-8" data-toggle="tab" class="">Reviews</a></li>
+                                        @if(Auth::guard('patient')->check())
+                                        <li><a href="#tab-9" data-toggle="tab" class="">Book Appointment</a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -1012,6 +1015,128 @@
                                         <a href="#" class="btn btn-primary">Send Reply</a>
                                     </div>
                                 </div>
+                                @if(Auth::guard('patient')->check())
+                                <div class="tab-pane" id="tab-9">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Book a Visit</h3>
+                                        </div>
+                                        <form action="{{ route('patient.book-appointment') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ encrypt($user->id) }}">
+                                            <input type="hidden" name="user_type" value="{{ $user_type }}">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label class="form-label">First Name</label>
+                                                    <input type="text" name="first_name" class="form-control" placeholder="Enter Your Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Last Name</label>
+                                                    <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Age</label>
+                                                    <input type="number" name="age" class="form-control" placeholder="Enter your age">
+                                                </div>
+                                                {{-- <div class="form-group">
+                                                    <label class="form-label">Email</label>
+                                                    <input type="email" class="form-control" placeholder="Enter your Email">
+                                                </div> --}}
+                                                <div class="form-group">
+                                                    <label class="form-label">Phone Number</label>
+                                                    <input type="text" name="phone" class="form-control" placeholder="Enter your Phone Number">
+                                                </div>
+                                                <div class="form-group">
+                                                    <style>
+                                                        .carousel-item {
+                                                        transition-duration: 0.3s !important;
+                                                        }
+                                                    </style>
+                                                    <label class="form-label">Date / Time</label>
+                                                    <div class="row gutters-xs">
+                                                        <div class="col-md-12 row d-flex justify-content-center">
+                                                            <div id="carouselExampleIndicators" class="carousel slide carousel-multi-item" data-wrap="false" data-ride="carousel" data-interval="false" touch="true">
+                                                                <ol class="carousel-indicators">
+                                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                                </ol>
+                                                                <div class="carousel-inner" role="listbox">
+                                                                    @if(isset($user->chunked_plan) && count($user->chunked_plan) > 0)
+                                                                        @foreach ($user->chunked_plan as $index => $chunked_days)
+                                                                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                                                                <div class="row" style="height: 70%;">
+                                                                                    @foreach ($chunked_days as $key => $day)
+                                                                                    @if(count($chunked_days) == 4)
+                                                                                    <div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">
+                                                                                        @elseif(count($chunked_days) == 3)
+                                                                                        <div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">
+                                                                                            @elseif(count($chunked_days) == 2)
+                                                                                            <div class="col-xs-12 col-sm-6 col-md-6" style="height: 100%;;">
+                                                                                            @elseif(count($chunked_days) == 1)
+                                                                                            <div class="col-xs-12 col-sm-6 col-md-12" style="height: 100%;">
+                                                                                            @endif
+                                                                                            <a class="btn btn-success time-date rs-btn">{{ $day['day'] }} {{ date('m-d',strtotime($day['date'])) }}</a>
+                                                                                            <div class="swiper-container">
+                                                                                                <button class="swiper-button-prev"><i class="fa-solid fa-angle-down"></i></button>
+                                                                                                <div class="swiper-wrapper">
+                                                                                                    @php
+                                                                                                    $start_time = $day['from'];
+                                                                                                    $diff1 =strtotime($day['from']);
+                                                                                                    $diff2 =strtotime($day['to']);
+                                                                                                    $diff3 = $diff2 - $diff1;
+                                                                                                    @endphp
+                                                                                                    @for ($i = 0 ; $i < $diff3 ; $i+=$day['every'])
+                                                                                                        <div class="swiper-slide slide_{{ $index }}_{{ $key }}_{{ $i }}">
+                                                                                                            <input type="radio" class="btn-check" name="time" data-selector="{{ $index }}_{{ $key }}_{{ $i }}" id="success-outlined_{{ $index }}_{{ $key }}_{{ $i }}" value="{{ date('Y-m-d',strtotime($day['date'])) }} {{ date("h:i A",strtotime($start_time)) }}" autocomplete="off" style="display: none">
+                                                                                                            <label class="btn rd-btn c_labelbreord" for="success-outlined_{{ $index }}_{{ $key }}_{{ $i }}">
+                                                                                                                {{ date("h:i A",strtotime($start_time)) }}
+                                                                                                                @php
+                                                                                                                $start_time = date("H:i:s", strtotime($day['every']." Minutes", strtotime($start_time)));
+                                                                                                                @endphp
+
+                                                                                                            </label>
+                                                                                                        </div>
+                                                                                                        @if($start_time >= $day['to'])
+                                                                                                            @break
+                                                                                                        @endif
+                                                                                                    @endfor
+                                                                                                </div>
+                                                                                                <button class="swiper-button-next"><i class="fa-solid fa-angle-up"></i></button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </div>
+                                                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                                <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                                </a>
+                                                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                                <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                                </a>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="">
+                                                    <a href="#" class="btn  btn-primary">Fix Appointment</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                             <div class="card-footer bg-white br-bl-2 br-br-2 border-left border-right border-bottom">
                                 <div class="btn-list">
@@ -1028,277 +1153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Book a Visit</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Name">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Last Name">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Age</label>
-                                <input type="text" class="form-control" placeholder="Enter your age">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" placeholder="Enter your Email">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Phone Number</label>
-                                <input type="number" class="form-control" placeholder="Enter your Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Fix Appointemnt Date</label>
-                                <input class="form-control" name="appointment_date" placeholder="Appointment Date"
-                                    type="text" id="appointmentDate">
-                                {{-- <input type="hidden" class="allowed" value="2022-01-02">
-									<input type="hidden" class="allowed" value="2022-01-06">
-									<input type="hidden" class="allowed" value="2022-01-08">
-									<input type="hidden" class="allowed" value="2022-01-12">
-									<input type="hidden" class="allowed" value="2022-01-16">
-									<input type="hidden" class="allowed" value="2022-01-18">
-									<input type="hidden" class="allowed" value="2022-01-22"> --}}
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Time</label>
-                                <div class="row gutters-xs">
-                                    {{-- <div class="col-6">
-											<select name="appointment_hour" class="form-control select2">
-												<option value="">0</option>
-												<option value="0">1</option>
-												<option value="1">2</option>
-												<option value="2">3</option>
-												<option value="3">4</option>
-												<option value="4">5</option>
-												<option value="5">6</option>
-												<option selected="selected" value="6">7</option>
-												<option value="7">8</option>
-												<option value="8">9</option>
-												<option value="9">10</option>
-												<option value="10">11</option>
-												<option value="11">12</option>
-												<option value="12">13</option>
-												<option value="13">14</option>
-												<option value="14">15</option>
-												<option value="15">16</option>
-												<option value="16">17</option>
-												<option value="17">18</option>
-												<option value="18">19</option>
-												<option value="19">20</option>
-												<option value="20">21</option>
-												<option value="21">22</option>
-												<option value="22">23</option>
-											</select>
-										</div>
-										<div class="col-6">
-											<select name="user[minute]" class="form-control select2">
-												<option value="">Minutes</option>
-												<option value="0">00</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-												<option value="6">6</option>
-												<option value="7">7</option>
-												<option value="8">8</option>
-												<option value="9">9</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-												<option value="13">13</option>
-												<option value="14">14</option>
-												<option value="15">15</option>
-												<option value="16">16</option>
-												<option value="17">17</option>
-												<option value="18">18</option>
-												<option value="19">19</option>
-												<option selected="selected" value="20">20</option>
-												<option value="21">21</option>
-												<option value="22">22</option>
-												<option value="23">23</option>
-												<option value="24">24</option>
-												<option value="25">25</option>
-												<option value="26">26</option>
-												<option value="27">27</option>
-												<option value="28">28</option>
-												<option value="29">29</option>
-												<option value="30">30</option>
-												<option value="31">31</option>
-												<option value="32">32</option>
-												<option value="33">33</option>
-												<option value="34">34</option>
-												<option value="35">35</option>
-												<option value="36">36</option>
-												<option value="37">37</option>
-												<option value="38">38</option>
-												<option value="39">39</option>
-												<option value="40">40</option>
-												<option value="41">41</option>
-												<option value="42">42</option>
-												<option value="43">43</option>
-												<option value="44">44</option>
-												<option value="45">45</option>
-												<option value="46">46</option>
-												<option value="47">47</option>
-												<option value="48">48</option>
-												<option value="49">49</option>
-												<option value="50">50</option>
-												<option value="51">51</option>
-												<option value="52">52</option>
-												<option value="53">53</option>
-												<option value="54">54</option>
-												<option value="55">55</option>
-												<option value="56">56</option>
-												<option value="57">57</option>
-												<option value="58">58</option>
-												<option value="59">59</option>
-											</select>
-										</div> --}}
-                                    <div class="col-md-12 row d-flex justify-content-center">
 
-
-                                        <div class="col-md-2" style="height: auto; width: auto">
-                                            <a class="btn btn-success time-date">Sat 06/02</a>
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide slide_1">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined1" value="1" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined1">
-                                                            01:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_2">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined2" value="2" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined2">
-                                                            02:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_3">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined3" value="3" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined3">
-                                                            03:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_4">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined4" value="4" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined4">
-                                                            04:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_5">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined5" value="5" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined5">
-                                                            05:15 AM
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2" style="height: auto; width: auto">
-                                            <a class="btn btn-success time-date">Sat 06/02</a>
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide slide_6">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined6" value="6" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined6">
-                                                            01:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_7">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined7" value="7" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined7">
-                                                            02:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_8">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined8" value="8" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined8">
-                                                            03:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_9">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined9" value="9" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined9">
-                                                            04:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_10">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined10" value="10" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined10">
-                                                            05:15 AM
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2" style="height: auto; width: auto">
-                                            <a class="btn btn-success time-date">Sat 06/02</a>
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide slide_11">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined11" value="11" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined11">
-                                                            01:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_12">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined12" value="12" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined12">
-                                                            02:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_13">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined13" value="13" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined13">
-                                                            03:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_14">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined14" value="14" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined14">
-                                                            04:15 AM
-                                                        </label>
-                                                    </div>
-                                                    <div class="swiper-slide slide_15">
-                                                        <input type="radio" class="btn-check" name="time" id="success-outlined15" value="15" autocomplete="off" style="display: none">
-                                                        <label class="btn rd-btn c_labelbreord" for="success-outlined15">
-                                                            05:15 AM
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <select name="country" id="select-countries"
-                                    class="form-control custom-select select2-show-search">
-                                    <option value="0" selected> All Categories</option>
-                                    <option value="1"> Out Patient</option>
-                                    <option value="11"> General Checkup</option>
-                                    <option value="2"> Maternal-fetal medicine</option>
-                                    <option value="3"> Reproductive endocrinology and infertility</option>
-                                    <option value="4"> Female pelvic medicine and reconstructive surgery</option>
-                                    <option value="5"> Menopausal</option>
-                                    <option value="6"> Laparoscopic surgery</option>
-                                    <option value="7"> Pediatric and adolescent gynecology</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="">
-                                <a href="#" class="btn  btn-primary">Fix Appointment</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1477,17 +1332,22 @@
     <script>
         const swiper = new Swiper(".swiper-container", {
             direction: 'vertical',
+            navigation: {
+                nextEl: '.swiper-button-prev',
+                prevEl: '.swiper-button-next'
+            },
             effect: "coverflow",
             scrollbar: '.swiper-scrollbar',
+            initialSlide : 3,
             scrollbarHide: true,
-            slidesPerView: 5,
+            slidesPerView: 7,
             centeredSlides: true,
             freeMode: true,
             spaceBetween: 1,
             slideToClickedSlide: true,
-            loop: true,
+            loop: false,
             mousewheel:true,
-            speed:100,
+            speed:600,
 
             // autoplay: {
             //     delay: 3000
@@ -1503,13 +1363,13 @@
 
             breakpoints: {
                 320: {
-                    slidesPerView: 5
+                    slidesPerView: 7
                 },
                 560: {
-                    slidesPerView: 5
+                    slidesPerView: 7
                 },
                 990: {
-                    slidesPerView: 5
+                    slidesPerView: 7
                 }
             },
 
@@ -1616,11 +1476,11 @@
         $('.btn-check').change(function(){
 
         slide = $(this).val();
-
+        selector = $(this).data('selector');
         radio = $('input[name=time]:checked').val();
             if(radio != undefined && radio != null && radio != ""){
                 $('.swiper-slide').css('background','#b9b9b9');
-                $('.slide_'+slide).css('background','blue');
+                $('.slide_'+selector).css('background','blue');
             }
         });
     </script>

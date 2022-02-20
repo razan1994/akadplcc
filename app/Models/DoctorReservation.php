@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class DoctorReservation extends Model
 {
     use HasFactory;
+
+    protected $table = 'doctor_reservations';
+    protected $fillable = [
+        'doctor_id',
+        'patient_id',
+        'first_name',
+        'last_name',
+        'phone',
+        'age',
+        'time'
+    ];
+
+
+
+    public function doctor(){
+        return $this->belongsTo(Doctor::class , 'doctor_id');
+    }
+
+
 }

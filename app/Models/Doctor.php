@@ -107,6 +107,11 @@ class Doctor extends Authenticatable
 
 
 
+    // Relation With Doctor Reservations Table
+    // Created By : Mohammed Salah
+    public function appointments(){
+        return $this->hasMany(DoctorReservation::class , 'doctor_id');
+    }
 
     // ====================================================================================
     // ============================== Accessories =========================================
