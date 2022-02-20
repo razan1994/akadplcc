@@ -1130,7 +1130,7 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="">
-                                                    <a href="#" class="btn  btn-primary">Fix Appointment</a>
+                                                    <button type="submit" class="btn  btn-primary">Fix Appointment</button>
                                                 </div>
                                             </div>
                                         </form>
