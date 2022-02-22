@@ -643,11 +643,11 @@
             <div class="horizontal-main clearfix">
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
                                 alt="header"></a>
                     </div>
                     <div class="desktoplogo-1">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/new_header_1.png') }}"
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
                                 alt="header"></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">

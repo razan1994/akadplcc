@@ -7,11 +7,11 @@
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/rushetta_images/last_header.png') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/header_image_new.jpeg') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">
-                        <h1 class="mb-1">Find the Nearest Medical Facility</h1>
+                        <h1 style="color: #1d1f35;" class="mb-1">Find the Nearest Medical Facility</h1>
 
                     </div>
                     <div class="row">
@@ -19,11 +19,11 @@
                             <div class="item-search-tabs">
                                 <div class="item-search-menu">
                                     <ul class="nav">
-                                        <li class="">
-                                            <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
-                                        </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab2">Doctors</a>
+                                            <a class="active" data-toggle="tab" href="#tab2">Doctors</a>
+                                        </li>
+                                        <li class="">
+                                            <a class="" data-toggle="tab" href="#tab1">Hospitals</a>
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#tab3">FitnesCenters</a>
@@ -40,7 +40,7 @@
                                     </ul>
                                 </div>
                                 <div class="tab-content index-search-select">
-                                    <div class="tab-pane active" id="tab1">
+                                    <div class="tab-pane" id="tab1">
                                         <div class="search-background">
                                             <div class="form row no-gutters">
                                                 <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="tab2">
+                                    <div class="tab-pane active" id="tab2">
                                         <div class="search-background">
                                             <div class="form row no-gutters">
                                                 <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">

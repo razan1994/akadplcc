@@ -19642,7 +19642,7 @@ body.fixed-header .header {
 /* Header-style1*/
 
 .header-style1 .horizontal-main {
-    background: #032e6e;
+    background: #1d1f35;
 }
 
 .header-style1 .desktoplogo {
@@ -21677,12 +21677,13 @@ video {
 
 .item-search-menu ul li a {
     padding: 8px 15px;
-    color: #fff;
+    color: #1d1f35;
     text-align: center;
     letter-spacing: .5px;
     background: 0 0;
     margin: 0 5px;
     border-radius: 2px 2px 0 0;
+    font-weight: 600;
 }
 
 .item-search-tabs .tab-content {
