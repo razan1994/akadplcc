@@ -1,5 +1,5 @@
-@extends('front_end_inners.app_front_end', ['title' => 'Blogs'])
-@section('page_title') {{ 'Rushetta | Blogs' }} @endsection
+@extends('front_end_inners.app_front_end', ['title' => 'Latest News'])
+@section('page_title') {{ 'Rushetta | Latest News' }} @endsection
 @section('content')
     <!--Section-->
     <section>
@@ -650,10 +650,10 @@
     <div class="bg-white border-bottom">
         <div class="container">
             <div class="page-header">
-                <h4 class="page-title">Blogs List</h4>
+                <h4 class="page-title">Latest News List</h4>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Blogs List</li>
+                    <li class="breadcrumb-item"><a href="#">Latest News</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Latest News List</li>
                 </ol>
             </div>
         </div>
@@ -667,21 +667,21 @@
 					<div class="col-xl-10 col-lg-10 col-md-12 d-block mx-auto">
 						<!--Add lists-->
 						<div class="row">
-							@if(isset($blogs) && $blogs->count() > 0)
-                                @foreach ($blogs as $blog)
+							@if(isset($news) && $news->count() > 0)
+                                @foreach ($news as $new)
                                     <div class="col-xl-12 col-lg-12 col-md-12">
                                         <div class="card overflow-hidden">
                                             <div class="row no-gutters blog-list">
                                                 <div class="col-xl-4 col-lg-12 col-md-12">
                                                     <div class="item7-card-img">
-                                                        @if(isset($blog->redirect_301_en))
-                                                            <a href="{{ $blog->redirect_301_en }}"></a>
+                                                        @if(isset($new->redirect_301_en))
+                                                            <a href="{{ $new->redirect_301_en }}"></a>
                                                         @else
-                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
+                                                            <a href="{{ route('news-details',$new->alias_name_en) }}"></a>
                                                         @endif
-                                                        @if(isset($blog->image) && file_exists($blog->image))
-                                                            <img src="{{ asset($blog->image) }}" alt="{{ isset($blog->alt_text_en) ? $blog->alt_text_en : 'image' }}"
-                                                            class="cover-image" title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : $blog->title_en }}">
+                                                        @if(isset($new->image) && file_exists($new->image))
+                                                            <img src="{{ asset($new->image) }}" alt="{{ isset($new->alt_text_en) ? $new->alt_text_en : 'image' }}"
+                                                            class="cover-image" title="{{ isset($new->image_title_text_en) ? $new->image_title_text_en : $new->title_en }}">
                                                         @else
                                                             <img src="{{ asset('front_end_style/assets/images/media/12.jpg') }}" alt="img" class="cover-image">
                                                         @endif
@@ -693,25 +693,25 @@
                                                 <div class="col-xl-8 col-lg-12 col-md-12">
                                                     <div class="card-body">
                                                         <div class="item7-card-desc d-flex mb-1">
-                                                            <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>{{ date('Y-m-d',strtotime($blog->created_at)) }}</a>
+                                                            <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>{{ date('Y-m-d',strtotime($new->created_at)) }}</a>
                                                             {{-- <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a> --}}
                                                             {{-- <div class="ml-auto">
                                                                 <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
                                                             </div> --}}
                                                         </div>
-                                                        @if(isset($blog->redirect_301_en))
-                                                            <a href="{{ $blog->redirect_301_en }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
+                                                        @if(isset($new->redirect_301_en))
+                                                            <a href="{{ $new->redirect_301_en }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($new->title_en) ? $new->title_en : '--------' }}</h4></a>
                                                         @else
-                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
+                                                            <a href="{{ route('news-details',$new->alias_name_en) }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($new->title_en) ? $new->title_en : '--------' }}</h4></a>
                                                         @endif
-                                                        <p class="mb-1">{!! \Illuminate\Support\Str::limit(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------', 150, $end='...') !!}
+                                                        <p class="mb-1">{!! \Illuminate\Support\Str::limit(isset($new->desc_en) ? str_replace("&nbsp;",' ',$new->desc_en) : '--------', 150, $end='...') !!}
                                                         </p>
-                                                            @if (\Illuminate\Support\Str::length(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------') > 150)
+                                                            @if (\Illuminate\Support\Str::length(isset($new->desc_en) ? str_replace("&nbsp;",' ',$new->desc_en) : '--------') > 150)
                                                                 {{-- <span id="dots">...</span> --}}
-                                                                @if(isset($blog->redirect_301_en))
-                                                                    <a href="{{ $blog->redirect_301_en }}" class="btn btn-primary btn-sm mt-4">Read More</a>
+                                                                @if(isset($new->redirect_301_en))
+                                                                    <a href="{{ $new->redirect_301_en }}" class="btn btn-primary btn-sm mt-4">Read More</a>
                                                                 @else
-                                                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="btn btn-primary btn-sm mt-4">Read More</a>
+                                                                    <a href="{{ route('news-details',$new->alias_name_en) }}" class="btn btn-primary btn-sm mt-4">Read More</a>
                                                                 @endif
                                                             @endif
                                                     </div>
@@ -957,7 +957,7 @@
 						</div>
 						<div class="card mb-0">
 							<div class="card-header">
-								<h3 class="card-title">Blog Authors</h3>
+								<h3 class="card-title">New Authors</h3>
 							</div>
 							<div class="card-body p-0">
 								<ul class="vertical-scroll">

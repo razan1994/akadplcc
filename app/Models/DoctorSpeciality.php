@@ -17,7 +17,9 @@ class DoctorSpeciality extends Model
         'name_en',
         'updated_by',
         'alias_name_en',
-        'alias_name_ar'
+        'alias_name_ar',
+        'type',
+        'main_id'
     ];
 
 
@@ -39,6 +41,16 @@ class DoctorSpeciality extends Model
 
     public function doctorsRandomTwelve(){
         return $this->doctors()->inRandomOrder()->take(12);
+    }
+
+
+    public function subSpecialities(){
+        return $this->hasMany(DoctorSpeciality::class , 'main_id');
+    }
+
+
+    public function mainSpeciality(){
+        return $this->belongsTo(DoctorSpeciality::class , 'main_id');
     }
 
 

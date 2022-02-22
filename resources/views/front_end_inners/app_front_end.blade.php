@@ -95,16 +95,16 @@
                             <div class="clearfix">
                                 <ul class="socials">
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa fa-facebook"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-facebook"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa fa-twitter"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-twitter"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-google"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -798,7 +798,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li aria-haspopup="true">
+                            {{-- <li aria-haspopup="true">
                                 <a href="#">Custom Pages <span class="fe fe-chevron-down"></span></a>
                                 <ul class="sub-menu">
                                     <li><a href="register.html">Register</a></li>
@@ -809,10 +809,13 @@
                                     <li><a href="underconstruction.html">UnderConstruction</a></li>
                                     <li><a href="404.html">404</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li aria-haspopup="true">
                                 <a href="{{ route('blogs-list') }}">Blogs </a>
 
+                            </li>
+                            <li aria-haspopup="true">
+                                <a href="{{ route('news-list') }}">Latest News </a>
                             </li>
                             <li aria-haspopup="true">
                                 <a href="{{ route('contactUs') }}">Contact Us </a>
@@ -977,16 +980,16 @@
                             <hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">
                             <ul class="list-unstyled list-inline follow-footer">
                                 <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm"><i class="fa fa-facebook"></i></a>
+                                    <a class="btn-floating btn-sm"><i class="fa-brands fa-facebook"></i></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm"><i class="fa fa-twitter"></i></a>
+                                    <a class="btn-floating btn-sm"><i class="fa-brands fa-twitter"></i></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm"><i class="fa fa-google-plus"></i></a>
+                                    <a class="btn-floating btn-sm"><i class="fa-brands fa-google"></i></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm"><i class="fa fa-linkedin"></i></a>
+                                    <a class="btn-floating btn-sm"><i class="fa-brands fa-linkedin-in"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -1163,14 +1166,14 @@
                                                 <div class="btn-list text-center">
                                                     <a href="https://www.facebook.com/"
                                                         class="btn btn-icon btn-facebook">
-                                                        <span class="fa fa-facebook "></span>
+                                                        <span class="fa-brands fa-facebook"></span>
                                                     </a>
                                                     <a href="https://www.google.com/gmail/"
                                                         class="btn btn-icon btn-google">
                                                         <span class="fa fa-google bg-google"></span>
                                                     </a>
                                                     <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
-                                                        <span class="fa fa-twitter bg-twitter"></span>
+                                                        <span class="fa-brands fa-twitter bg-twitter"></span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -1205,14 +1208,14 @@
                                                 <div class="btn-list text-center">
                                                     <a href="https://www.facebook.com/"
                                                         class="btn btn-icon btn-facebook">
-                                                        <span class="fa fa-facebook "></span>
+                                                        <span class="fa-brands fa-facebook"></span>
                                                     </a>
                                                     <a href="https://www.google.com/gmail/"
                                                         class="btn btn-icon btn-google">
                                                         <span class="fa fa-google bg-google"></span>
                                                     </a>
                                                     <a href="https://twitter.com/" class="btn  btn-icon btn-twitter">
-                                                        <span class="fa fa-twitter bg-twitter"></span>
+                                                        <span class="fa-brands fa-twitter bg-twitter"></span>
                                                     </a>
                                                 </div>
                                             </div>

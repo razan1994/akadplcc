@@ -12,6 +12,7 @@ use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\InsuranceCompany;
 use App\Models\Lab;
+use App\Models\LatestNew;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\Patient;
@@ -396,6 +397,26 @@ class FrontEndController extends Controller
             return view('front_end_inners.blog-details', compact('blog'));
         } else {
             return redirect()->back()->with('danger', 'Blog Not Found !!!');
+        }
+    }
+
+
+    function news()
+    {
+        $news = LatestNew::where('status', 1)->get();
+        return view('front_end_inners.news-list', compact('news'));
+    }
+
+
+
+    function newsDetails($alias_name)
+    {
+        $new = LatestNew::where('alias_name_en', $alias_name)->get()->first();
+
+        if ($new) {
+            return view('front_end_inners.news-details', compact('new'));
+        } else {
+            return redirect()->back()->with('danger', 'News Not Found !!!');
         }
     }
 

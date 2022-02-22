@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\CartOperation;
 use App\Models\Category;
+use App\Models\LatestNew;
 use App\Models\MainCategory;
 use App\Models\Product;
 use App\Models\Slider;
@@ -35,8 +36,9 @@ class WelcomeController extends Controller
         }
 
         $blogs = Blog::where('status',1)->inRandomOrder()->limit(3)->get();
+        $news = LatestNew::where('status',1)->inRandomOrder()->limit(9)->get();
 
 
-        return view('welcome', compact('blogs'));
+        return view('welcome', compact('blogs','news'));
     }
 }

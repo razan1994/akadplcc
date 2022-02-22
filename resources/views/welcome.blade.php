@@ -7,7 +7,7 @@
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/rushetta_images/head_2.jpg') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/last_header.png') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">
@@ -3268,226 +3268,64 @@
     <section class="sptb">
         <div class="container">
             <div class="section-title center-block text-center">
-                <h2>News & Latest Posts</h2>
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <h2>Latest News</h2>
             </div>
             <div id="defaultCarousel" class="owl-carousel Card-owlcarousel owl-carousel-icons">
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/11.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Dec-03-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
+                @if(isset($news) && $news->count() > 0)
+                    @foreach ($news as $new)
+                        <div class="item">
+                            <div class="card mb-0">
+                                <div class="item7-card-img">
+                                    @if(isset($new->redirect_301_en))
+                                        <a href="{{ $new->redirect_301_en }}"></a>
+                                    @else
+                                        <a href="{{ route('news-details',$new->alias_name_en) }}"></a>
+                                    @endif
+                                    @if(isset($new->redirect_301_en))
+                                        <a href="{{ $new->redirect_301_en }}"></a>
+                                    @else
+                                        <a href="{{ route('news-details',$new->alias_name_en) }}"></a>
+                                    @endif
+                                    @if(isset($new->image) && file_exists($new->image))
+                                        <img src="{{ asset($new->image) }}" alt="img"
+                                        class="cover-image">
+                                    @else
+                                        <img src="{{ asset('front_end_style/assets/images/media/photos/1.jpg') }}" alt="img"
+                                        class="cover-image">
+                                    @endif
                                 </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4>Duis aute irure reprehenderit</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/5.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Joanne Nash</a>
-                                    <small class="d-block text-muted">1 day ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/12.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-28-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>2 Comments</a>
-                                </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4>Nam libero tempore soluta</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/7.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Tanner Mallari</a>
-                                    <small class="d-block text-muted">2 days ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
+                                <div class="card-body p-4">
+                                    <div class="item7-card-desc d-flex mb-2">
+                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>{{ date('Y-m-d',strtotime($new->created_at)) }}</a>
+                                        {{-- <div class="ml-auto">
+                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
+                                        </div> --}}
+                                    </div>
+                                    @if(isset($new->redirect_301_en))
+                                        <a href="{{ $new->redirect_301_en }}" class="text-dark">
+                                    @else
+                                        <a href="{{ route('news-details',$new->alias_name_en) }}" class="text-dark">
+                                    @endif
+                                        <h4>{{ isset($new->title_en) ? $new->title_en : '--------' }}</h4>
+                                    </a>
+                                    <p>{!! \Illuminate\Support\Str::limit(isset($new->desc_en) ? str_replace("&nbsp;",' ',$new->desc_en) : '--------', 70, $end='...') !!}
+                                        @if (\Illuminate\Support\Str::length(isset($new->desc_en) ? str_replace("&nbsp;",' ',$new->desc_en) : '--------') > 70)
+                                            {{-- <span id="dots">...</span> --}}
+                                            @if(isset($new->redirect_301_en))
+                                                <a href="{{ $new->redirect_301_en }}" class="text-primary font-weight-bold">more</a>
+                                            @else
+                                                <a href="{{ route('news-details',$new->alias_name_en) }}" class="text-primary font-weight-bold">more</a>
+                                            @endif
+                                        @endif</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/13.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-19-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>8 Comments</a>
-                                </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4>At vero eos et accusamus et iusto</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/female/15.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Aracely Bashore</a>
-                                    <small class="d-block text-muted">5 days ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/14.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Dec-03-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
-                                </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4 class="font-weight-semibold">Et harum quidem rerum facilis est</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/15.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Royal Hamblin</a>
-                                    <small class="d-block text-muted">10 days ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/15.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-28-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>2 Comments</a>
-                                </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4 class="font-weight-semibold">Sed ut perspiciatis unde omnis iste</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/female/5.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Rosita Chatmon</a>
-                                    <small class="d-block text-muted">10 days ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0">
-                        <div class="item7-card-img">
-                            <a href="#"></a>
-                            <img src="{{ asset('front_end_style/assets/images/media/photos/16.jpg') }}" alt="img"
-                                class="cover-image">
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="item7-card-desc d-flex mb-2">
-                                <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-19-2019</a>
-                                <div class="ml-auto">
-                                    <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>8 Comments</a>
-                                </div>
-                            </div>
-                            <a href="blog-details.html" class="text-dark">
-                                <h4 class="font-weight-semibold">At vero eos et accusamus et iusto</h4>
-                            </a>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum </p>
-                            <div class="d-flex align-items-center pt-2 mt-auto">
-                                <img src="{{ asset('front_end_style/assets/images/users/male/6.jpg') }}"
-                                    class="avatar brround avatar-md mr-3" alt="avatar-img">
-                                <div>
-                                    <a href="profile.html" class="text-default">Loyd Nolf</a>
-                                    <small class="d-block text-muted">15 days ago</small>
-                                </div>
-                                <div class="ml-auto text-muted">
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fe fe-heart mr-1"></i></a>
-                                    <a href="javascript:void(0)" class="icon d-none d-md-inline-block ml-3"><i
-                                            class="fa fa-thumbs-o-up"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <a href="{{ route('news-list') }}" class="btn btn-primary">Show More <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

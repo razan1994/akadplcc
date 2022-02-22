@@ -1,5 +1,8 @@
-@extends('front_end_inners.app_front_end', ['title' => 'Blogs'])
-@section('page_title') {{ 'Rushetta | Blogs' }} @endsection
+@extends('front_end_inners.app_front_end', ['title' => 'News'])
+@section('page_title') {{ isset($new->title_en) ? $new->title_en : null }} @endsection
+@section('meta_title'){!! isset($new->seo_title_en) ? $new->seo_title_en : 'Roshiita website' !!}@endsection
+@section('meta_desc'){!! isset($new->meta_desc_ar) ? $new->meta_desc_ar : 'roshiita website find your doctor' !!}@endsection
+@section('meta_keywords'){{ isset($new->keywords_en) ? $new->keywords_en : 'roshiita,docotors,doctor' }}@endsection
 @section('content')
     <!--Section-->
     <section>
@@ -650,10 +653,11 @@
     <div class="bg-white border-bottom">
         <div class="container">
             <div class="page-header">
-                <h4 class="page-title">Blogs List</h4>
+                <h4 class="page-title">Latest News Details</h4>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Blogs List</li>
+                    <li class="breadcrumb-item"><a href="{{ route('news-list') }}">Latest News</a></li>
+                    <li class="breadcrumb-item">Latest News Details</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ isset($new->title_en) ? $new->title_en : '--------' }}</li>
                 </ol>
             </div>
         </div>
@@ -665,231 +669,94 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-10 col-lg-10 col-md-12 d-block mx-auto">
-						<!--Add lists-->
-						<div class="row">
-							@if(isset($blogs) && $blogs->count() > 0)
-                                @foreach ($blogs as $blog)
-                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                        <div class="card overflow-hidden">
-                                            <div class="row no-gutters blog-list">
-                                                <div class="col-xl-4 col-lg-12 col-md-12">
-                                                    <div class="item7-card-img">
-                                                        @if(isset($blog->redirect_301_en))
-                                                            <a href="{{ $blog->redirect_301_en }}"></a>
-                                                        @else
-                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}"></a>
-                                                        @endif
-                                                        @if(isset($blog->image) && file_exists($blog->image))
-                                                            <img src="{{ asset($blog->image) }}" alt="{{ isset($blog->alt_text_en) ? $blog->alt_text_en : 'image' }}"
-                                                            class="cover-image" title="{{ isset($blog->image_title_text_en) ? $blog->image_title_text_en : $blog->title_en }}">
-                                                        @else
-                                                            <img src="{{ asset('front_end_style/assets/images/media/12.jpg') }}" alt="img" class="cover-image">
-                                                        @endif
-                                                        {{-- <div class="item7-card-text">
-                                                            <span class="badge badge-success">Hospital</span>
-                                                        </div> --}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-8 col-lg-12 col-md-12">
-                                                    <div class="card-body">
-                                                        <div class="item7-card-desc d-flex mb-1">
-                                                            <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>{{ date('Y-m-d',strtotime($blog->created_at)) }}</a>
-                                                            {{-- <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a> --}}
-                                                            {{-- <div class="ml-auto">
-                                                                <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>4 Comments</a>
-                                                            </div> --}}
-                                                        </div>
-                                                        @if(isset($blog->redirect_301_en))
-                                                            <a href="{{ $blog->redirect_301_en }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
-                                                        @else
-                                                            <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="text-dark"><h4 class="font-weight-semibold mb-3">{{ isset($blog->title_en) ? $blog->title_en : '--------' }}</h4></a>
-                                                        @endif
-                                                        <p class="mb-1">{!! \Illuminate\Support\Str::limit(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------', 150, $end='...') !!}
-                                                        </p>
-                                                            @if (\Illuminate\Support\Str::length(isset($blog->desc_en) ? str_replace("&nbsp;",' ',$blog->desc_en) : '--------') > 150)
-                                                                {{-- <span id="dots">...</span> --}}
-                                                                @if(isset($blog->redirect_301_en))
-                                                                    <a href="{{ $blog->redirect_301_en }}" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                                @else
-                                                                    <a href="{{ route('blogs-details',$blog->alias_name_en) }}" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                                @endif
-                                                            @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card">
-                                        <div class="row no-gutters blog-list">
-                                            <div class="col-xl-4 col-lg-12 col-md-12">
-                                                <div class="item7-card-img">
-                                                    <a href="classified.html"></a>
-                                                    <img src="{{ asset('front_end_style/assets/images/media/1.jpg') }}" alt="img" class="cover-image">
-                                                    <div class="item7-card-text">
-                                                        <span class="badge badge-info">Doctor</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-12">
-                                                <div class="card-body">
-                                                    <div class="item7-card-desc d-flex mb-1">
-                                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-28-2019</a>
-                                                        <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a>
-                                                        <div class="ml-auto">
-                                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>2 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-dark"><h4 class="font-weight-semibold mb-4">Certain circumstances the claims</h4></a>
-                                                    <p class="mb-1">Ut enim ad minima veniam, quis nostrum exercitationem,Ut enim minima veniam, quis nostrum exercitationem
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card overflow-hidden">
-                                        <div class="row no-gutters blog-list">
-                                            <div class="col-xl-4 col-lg-12 col-md-12">
-                                                <div class="item7-card-img">
-                                                    <a href="classified.html"></a>
-                                                    <img src="{{ asset('front_end_style/assets/images/media/3.jpg') }}" alt="img" class="cover-image">
-                                                    <div class="item7-card-text">
-                                                        <span class="badge badge-success ">FitnessCenter</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-12">
-                                                <div class="card-body">
-                                                    <div class="item7-card-desc d-flex mb-1">
-                                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-19-2019</a>
-                                                        <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a>
-                                                        <div class="ml-auto">
-                                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>8 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-dark"><h4 class="font-weight-semibold mb-4">At vero eos et accusamus iusto</h4></a>
-                                                    <p class="mb-1">Ut enim ad minima veniam, quis nostrum exercitationem,Ut enim minima veniam, quis nostrum exercitationem
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card">
-                                        <div class="row no-gutters blog-list">
-                                            <div class="col-xl-4 col-lg-12 col-md-12">
-                                                <div class="item7-card-img">
-                                                    <a href="classified.html"></a>
-                                                    <img src="{{ asset('front_end_style/assets/images/media/28.jpg') }}" alt="img" class="cover-image">
-                                                    <div class="item7-card-text">
-                                                        <span class="badge badge-warning">Pharmacy</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-12">
-                                                <div class="card-body">
-                                                    <div class="item7-card-desc d-flex mb-1">
-                                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-13-2019</a>
-                                                        <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a>
-                                                        <div class="ml-auto">
-                                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>7 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-dark"><h4 class="font-weight-semibold mb-4">  Nam libero tempore, cum soluta</h4> </a>
-                                                    <p class="mb-1">Ut enim ad minima veniam, quis nostrum exercitationem,Ut enim minima veniam, quis nostrum exercitationem
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card">
-                                        <div class="row no-gutters blog-list">
-                                            <div class="col-xl-4 col-lg-12 col-md-12">
-                                                <div class="item7-card-img">
-                                                    <a href="classified.html"></a>
-                                                    <img src="{{ asset('front_end_style/assets/images/media/2.jpg') }}" alt="img" class="cover-image">
-                                                    <div class="item7-card-text">
-                                                        <span class="badge badge-secondary"> Clinic</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-12">
-                                                <div class="card-body ">
-                                                    <div class="item7-card-desc d-flex mb-1">
-                                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Dec-10-2019</a>
-                                                        <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a>
-                                                        <div class="ml-auto">
-                                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>1 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-dark"><h4 class="font-weight-semibold mb-4">  Sed ut perspiciatis unde omnis</h4></a>
-                                                    <p class="mb-1">Ut enim ad minima veniam, quis nostrum exercitationem,Ut enim minima veniam, quis nostrum exercitationem
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card overflow-hidden">
-                                        <div class="row no-gutters blog-list">
-                                            <div class="col-xl-4 col-lg-12 col-md-12">
-                                                <div class="item7-card-img">
-                                                    <a href="classified.html"></a>
-                                                    <img src="{{ asset('front_end_style/assets/images/media/bb1.jpg') }}" alt="img" class="cover-image">
-                                                    <div class="item7-card-text">
-                                                        <span class="badge badge-danger">Bloodbank</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-12">
-                                                <div class="card-body">
-                                                    <div class="item7-card-desc d-flex mb-1">
-                                                        <a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>Nov-01-2019</a>
-                                                        <a href="#"><i class="fa fa-user text-muted mr-2"></i>Nissy Sten</a>
-                                                        <div class="ml-auto">
-                                                            <a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>5 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="text-dark"><h4 class="font-weight-semibold mb-4">Et harum quidem rerum facilis est</h4></a>
-                                                    <p class="mb-1">Ut enim ad minima veniam, quis nostrum exercitationem,Ut enim minima veniam, quis nostrum exercitationem
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary btn-sm mt-4">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
+						<div class="card">
+                            <div class="cart-title col-xl-12 p-3"><a class="text-dark" href="#">
+								<h1 class="font-weight-semibold">{{ isset($new->title_en) ? $new->title_en : '--------' }}</h1></a></div>
+							<div class="card-body">
+								<div class="item7-card-img">
+                                    @if(isset($new->image) && file_exists($new->image))
+									    <img alt="img" class="w-100" src="{{ asset($new->image) }}" alt="{{ isset($new->alt_text_en) ? $new->alt_text_ar : 'image' }}"
+                                            title="{{ isset($new->image_title_text_en) ? $new->image_title_text_en : $new->title_en }}">
+                                    @else
+									    <img alt="img" class="w-100" src="{{ asset('front_end_style/assets/images/media/28.jpg') }}">
+                                    @endif
+									{{-- <div class="item7-card-text">
+										<span class="badge badge-info">Doctor</span>
+									</div> --}}
+								</div>
+								<div class="item7-card-desc d-flex mb-2 mt-3">
+									<a href="#"><i class="fa fa-calendar-o text-muted mr-2"></i>{{ date('Y-m-d',strtotime($new->created_at)) }}</a>
+									{{-- <div class="ml-auto">
+										<a href="#"><i class="fa fa-comment-o text-muted mr-2"></i>2 Comments</a>
+									</div> --}}
+								</div>
+                                <h2 class="font-weight-semibold">{{ isset($new->h2_en) ? $new->h2_en : '--------' }}</h2></a>
+								<p>{!! isset($new->desc_en) ? $new->desc_en : '--------' !!}</p>
+							</div>
 						</div>
-						<div class="center-block text-center">
-							<ul class="pagination mb-5 mb-lg-0">
-								<li class="page-item page-prev disabled">
-									<a class="page-link" href="#" tabindex="-1">Prev</a>
-								</li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item page-next">
-									<a class="page-link" href="#">Next</a>
-								</li>
-							</ul>
+						{{-- <div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Comments</h3>
+							</div>
+							<div class="card-body p-0">
+								<div class="media mt-0 p-5">
+									<div class="d-flex mr-3">
+										<a href="#"><img alt="64x64" class="media-object brround" src="{{ asset('front_end_style/assets/images/users/male/1.jpg') }}"></a>
+									</div>
+									<div class="media-body">
+										<h5 class="mt-0 mb-1 font-weight-semibold">Joanne Scott <span class="fs-14 ml-0" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-check-circle-o text-success"></i></span> <span class="fs-14 ml-2">4.5 <i class="fa fa-star text-yellow"></i></span></h5><small class="text-muted"><i class="fa fa-calendar"></i> Dec 21st <i class=" ml-3 fa fa-clock-o"></i> 13.00 <i class=" ml-3 fa fa-map-marker"></i> Brezil</small>
+										<p class="font-13 mb-2 mt-2">Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et nostrud exercitation ullamco laboris commodo consequat.</p><a class="mr-2" href="#"><span class="badge badge-primary">Helpful</span></a> <a class="mr-2" data-target="#Comment" data-toggle="modal" href=""><span class="">Comment</span></a> <a class="mr-2" data-target="#report" data-toggle="modal" href=""><span class="">Report</span></a>
+										<div class="media mt-5">
+											<div class="d-flex mr-3">
+												<a href="#"><img alt="64x64" class="media-object brround" src="{{ asset('front_end_style/assets/images/users/female/2.jpg') }}"></a>
+											</div>
+											<div class="media-body">
+												<h5 class="mt-0 mb-1 font-weight-semibold">Rose Slater <span class="fs-14 ml-0" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-check-circle-o text-success"></i></span></h5><small class="text-muted"><i class="fa fa-calendar"></i> Dec 22st <i class=" ml-3 fa fa-clock-o"></i> 6.00 <i class=" ml-3 fa fa-map-marker"></i> Brezil</small>
+												<p class="font-13 mb-2 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris commodo Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur consequat.</p><a data-target="#Comment" data-toggle="modal" href=""><span class="badge badge-default">Comment</span></a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="media p-5 border-top mt-0">
+									<div class="d-flex mr-3">
+										<a href="#"><img alt="64x64" class="media-object brround" src="{{ asset('front_end_style/assets/images/users/male/3.jpg') }}"></a>
+									</div>
+									<div class="media-body">
+										<h5 class="mt-0 mb-1 font-weight-semibold">Edward <span class="fs-14 ml-0" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-check-circle-o text-success"></i></span> <span class="fs-14 ml-2">4 <i class="fa fa-star text-yellow"></i></span></h5><small class="text-muted"><i class="fa fa-calendar"></i> Dec 21st <i class=" ml-3 fa fa-clock-o"></i> 16.35 <i class=" ml-3 fa fa-map-marker"></i> UK</small>
+										<p class="font-13 mb-2 mt-2">Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et nostrud exercitation ullamco laboris commodo consequat.</p><a class="mr-2" href="#"><span class="badge badge-primary">Helpful</span></a> <a class="mr-2" data-target="#Comment" data-toggle="modal" href=""><span class="">Comment</span></a> <a class="mr-2" data-target="#report" data-toggle="modal" href=""><span class="">Report</span></a>
+									</div>
+								</div>
+							</div>
 						</div>
-						<!--/Add lists-->
+						<div class="card mb-lg-0">
+							<div class="card-header">
+								<h3 class="card-title">Write Your Comments</h3>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<input class="form-control" id="name1" placeholder="Your Name" type="text">
+								</div>
+								<div class="form-group">
+									<input class="form-control" id="email" placeholder="Email Address" type="email">
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" name="example-textarea-input" placeholder="Write Your Comment" rows="6"></textarea>
+								</div><a class="btn btn-primary" href="#">Submit</a>
+							</div>
+						</div> --}}
 					</div>
-					{{-- <!--Right Side Content-->
+					{{-- <!--Rightside Content-->
 					<div class="col-xl-4 col-lg-4 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="input-group">
+									<input class="form-control br-tl-3 br-bl-3" placeholder="Search" type="text">
+									<div class="input-group-append">
+										<button class="btn btn-primary br-tr-3 br-br-3" type="button">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="card">
 							<div class="card-header">
 								<h3 class="card-title">Categories</h3>
@@ -899,38 +766,22 @@
 									<div class="item-list">
 										<ul class="list-group mb-0">
 											<li class="list-group-item">
-												<a href="#" class="text-dark">
-													<i class="fa fa-hospital-o bg-primary text-primary"></i> Hospitals<span class="badgetext badge badge-pill badge-light mb-0 mt-1 mt-1">14</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-hospital-o bg-primary text-primary"></i> Hospitals<span class="badgetext badge badge-pill badge-light mb-0 mt-1 mt-1">14</span></a>
 											</li>
 											<li class="list-group-item">
-												<a href="#" class="text-dark">
-													<i class="fa fa-user-md bg-info text-info"></i> Doctors<span class="badgetext badge badge-pill badge-light mb-0 mt-1">25</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-user-md bg-info text-info"></i> Doctors<span class="badgetext badge badge-pill badge-light mb-0 mt-1">25</span></a>
 											</li>
 											<li class="list-group-item">
-												<a href="#" class="text-dark">
-													<i class="fa fa-building-o bg-warning text-warning"></i> FitnessCenters
-													<span class="badgetext badge badge-pill badge-light mb-0 mt-1">74</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-building-o bg-warning text-warning"></i> FitnessCenters <span class="badgetext badge badge-pill badge-light mb-0 mt-1">74</span></a>
 											</li>
 											<li class="list-group-item">
-												<a href="#" class="text-dark">
-													<i class="fa fa-medkit bg-danger text-danger"></i> Pharmacies
-													<span class="badgetext badge badge-pill badge-light mb-0 mt-1">18</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-medkit bg-danger text-danger"></i> Pharmacies <span class="badgetext badge badge-pill badge-light mb-0 mt-1">18</span></a>
 											</li>
 											<li class="list-group-item">
-												<a href="#" class="text-dark">
-													<i class="fa fa-stethoscope bg-blue text-blue"></i> Clinics
-													<span class="badgetext badge badge-pill badge-light mb-0 mt-1">32</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-stethoscope bg-blue text-blue"></i> Clinics <span class="badgetext badge badge-pill badge-light mb-0 mt-1">32</span></a>
 											</li>
 											<li class="list-group-item border-bottom-0">
-												<a href="#" class="text-dark">
-													<i class="fa fa-heartbeat  bg-pink text-pink"></i> Bloodbanks
-													<span class="badgetext badge badge-pill badge-light mb-0 mt-1">08</span>
-												</a>
+												<a class="text-dark" href="#"><i class="fa fa-heartbeat bg-pink text-pink"></i> Bloodbanks <span class="badgetext badge badge-pill badge-light mb-0 mt-1">08</span></a>
 											</li>
 										</ul>
 									</div>
@@ -944,87 +795,92 @@
 							<div class="card-body">
 								<div class="product-tags clearfix">
 									<ul class="list-unstyled mb-0">
-										<li><a href="#">Treatment</a></li>
-										<li><a href="#">Medicine</a></li>
-										<li><a href="#">patient</a></li>
-										<li><a href="#">Health</a></li>
-										<li><a href="#">Medical Care</a></li>
-										<li><a href="#">Health Care Manegement</a></li>
-										<li><a href="#">Health Care Plans</a></li>
+										<li>
+											<a href="#">Treatment</a>
+										</li>
+										<li>
+											<a href="#">Medicine</a>
+										</li>
+										<li>
+											<a href="#">patient</a>
+										</li>
+										<li>
+											<a href="#">Health</a>
+										</li>
+										<li>
+											<a href="#">Medical Care</a>
+										</li>
+										<li>
+											<a href="#">Health Care Manegement</a>
+										</li>
+										<li>
+											<a href="#">Health Care Plans</a>
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="card mb-0">
 							<div class="card-header">
-								<h3 class="card-title">Blog Authors</h3>
+								<h3 class="card-title">new Authors</h3>
 							</div>
 							<div class="card-body p-0">
 								<ul class="vertical-scroll">
 									<li class="item2">
 										<div class="footerimg d-flex mt-0 mb-0">
 											<div class="d-flex footerimg-l mb-0">
-												<img src="{{ asset('front_end_style/assets/images/users/female/18.jpg') }}" alt="image" class="avatar brround  mr-2">
-												<a href="#" class="time-title p-0 leading-Automatic mt-2">Boris	Nash <i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></a>
+												<img alt="image" class="avatar brround mr-2" src="{{ asset('front_end_style/assets/images/users/female/18.jpg') }}"> <a class="time-title p-0 leading-Automatic mt-2" href="#">Boris Nash <i class="icon icon-check text-success fs-12 ml-1" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""></i></a>
 											</div>
 											<div class="mt-2 footerimg-r ml-auto">
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Articles"><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 16</span></a>
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Likes"><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 36</span></a>
+												<a data-original-title="Articles" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 16</span></a> <a data-original-title="Likes" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 36</span></a>
 											</div>
 										</div>
 									</li>
 									<li class="item2">
 										<div class="footerimg d-flex mt-0 mb-0">
 											<div class="d-flex footerimg-l mb-0">
-												<img src="{{ asset('front_end_style/assets/images/users/female/10.jpg') }}" alt="image" class="avatar brround  mr-2">
-												<a href="#" class="time-title p-0 leading-Automatic mt-2">Lorean Mccants <i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></a>
+												<img alt="image" class="avatar brround mr-2" src="{{ asset('front_end_style/assets/images/users/female/10.jpg') }}"> <a class="time-title p-0 leading-Automatic mt-2" href="#">Lorean Mccants <i class="icon icon-check text-success fs-12 ml-1" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""></i></a>
 											</div>
 											<div class="mt-2 footerimg-r ml-auto">
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Articles"><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 43</span></a>
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Likes"><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 23</span></a>
+												<a data-original-title="Articles" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 43</span></a> <a data-original-title="Likes" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 23</span></a>
 											</div>
 										</div>
 									</li>
 									<li class="item2">
 										<div class="footerimg d-flex mt-0 mb-0">
 											<div class="d-flex footerimg-l mb-0">
-												<img src="{{ asset('front_end_style/assets/images/users/male/18.jpg') }}" alt="image" class="avatar brround  mr-2">
-												<a href="#" class="time-title p-0 leading-Automatic mt-2">Dewitt Hennessey <i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></a>
+												<img alt="image" class="avatar brround mr-2" src="{{ asset('front_end_style/assets/images/users/male/18.jpg') }}"> <a class="time-title p-0 leading-Automatic mt-2" href="#">Dewitt Hennessey <i class="icon icon-check text-success fs-12 ml-1" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""></i></a>
 											</div>
 											<div class="mt-2 footerimg-r ml-auto">
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Articles"><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 34</span></a>
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Likes"><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 12</span></a>
+												<a data-original-title="Articles" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 34</span></a> <a data-original-title="Likes" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 12</span></a>
 											</div>
 										</div>
 									</li>
 									<li class="item2">
 										<div class="footerimg d-flex mt-0 mb-0">
 											<div class="d-flex footerimg-l mb-0">
-												<img src="{{ asset('front_end_style/assets/images/users/male/8.jpg') }}" alt="image" class="avatar brround  mr-2">
-												<a href="#" class="time-title p-0 leading-Automatic mt-2">Archie Overturf <i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></a>
+												<img alt="image" class="avatar brround mr-2" src="{{ asset('front_end_style/assets/images/users/male/8.jpg') }}"> <a class="time-title p-0 leading-Automatic mt-2" href="#">Archie Overturf <i class="icon icon-check text-success fs-12 ml-1" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""></i></a>
 											</div>
 											<div class="mt-2 footerimg-r ml-auto">
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Articles"><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 12</span></a>
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Likes"><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 32</span></a>
+												<a data-original-title="Articles" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 12</span></a> <a data-original-title="Likes" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 32</span></a>
 											</div>
 										</div>
 									</li>
 									<li class="item2">
 										<div class="footerimg d-flex mt-0 mb-0">
 											<div class="d-flex footerimg-l mb-0">
-												<img src="{{ asset('front_end_style/assets/images/users/female/21.jpg') }}" alt="image" class="avatar brround  mr-2">
-												<a href="#" class="time-title p-0 leading-Automatic mt-2">Barbra Flegle <i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></a>
+												<img alt="image" class="avatar brround mr-2" src="{{ asset('front_end_style/assets/images/users/female/21.jpg') }}"> <a class="time-title p-0 leading-Automatic mt-2" href="#">Barbra Flegle <i class="icon icon-check text-success fs-12 ml-1" data-original-title="verified" data-placement="top" data-toggle="tooltip" title=""></i></a>
 											</div>
 											<div class="mt-2 footerimg-r ml-auto">
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Articles"><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 21</span></a>
-												<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Likes"><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 32</span></a>
+												<a data-original-title="Articles" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted mr-2"><i class="fa fa-comment-o"></i> 21</span></a> <a data-original-title="Likes" data-placement="top" data-toggle="tooltip" href="#" title=""><span class="text-muted"><i class="fa fa-thumbs-o-up"></i> 32</span></a>
 											</div>
 										</div>
 									</li>
 								</ul>
 							</div>
 						</div>
-					</div><!--/Right Side Content--> --}}
+					</div>
+					<!--/Rightside Content--> --}}
 				</div>
 			</div>
 		</section>
@@ -1042,11 +898,9 @@
 					</div>
 					<div class="col-lg-5 col-xl-6 col-md-12">
 						<div class="input-group sub-input mt-1">
-							<input type="text" class="form-control input-lg " placeholder="Enter your Email">
-							<div class="input-group-append ">
-								<button type="button" class="btn btn-primary btn-lg br-tr-3  br-br-3">
-									Subscribe
-								</button>
+							<input class="form-control input-lg" placeholder="Enter your Email" type="text">
+							<div class="input-group-append">
+								<button class="btn btn-primary btn-lg br-tr-3 br-br-3" type="button">Subscribe</button>
 							</div>
 						</div>
 					</div>

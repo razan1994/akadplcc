@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\Doctor\DoctorController;
@@ -42,6 +43,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/blogs', [FrontEndController::class, 'blogs'])->name('blogs-list');
 
     Route::get('blogs/{alias_name}', [FrontEndController::class, 'blogsDetails'])->name('blogs-details');
+
+    Route::get('/news', [FrontEndController::class, 'news'])->name('news-list');
+
+    Route::get('news/{alias_name}', [FrontEndController::class, 'newsDetails'])->name('news-details');
 
     Route::post('/searchUser', [FrontEndController::class, 'searchUser'])->name('searchUser');
 
@@ -257,6 +262,22 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('softDelete/{id}', [NewsBlogController::class, 'softDelete'])->name('news_blogs-softDelete');
             Route::get('/showSoftDelete', [NewsBlogController::class, 'showSoftDelete'])->name('news_blogs-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [NewsBlogController::class, 'softDeleteRestore'])->name('news_blogs-softDeleteRestore');
+
+        });
+
+        // Latest NEws Routes:
+        //Created By :Mohammed Salah
+        // ==============================================================================
+        Route::group(['prefix' => 'news'], function () {
+            Route::get('/index', [LatestNewsController::class, 'index'])->name('latest_news-index');
+            Route::get('/create', [LatestNewsController::class, 'create'])->name('latest_news-create');
+            Route::post('/store', [LatestNewsController::class, 'store'])->name('latest_news-store');
+            Route::get('show/{id}', [LatestNewsController::class, 'show'])->name('latest_news-show');
+            Route::get('edit/{id}', [LatestNewsController::class, 'edit'])->name('latest_news-edit');
+            Route::post('update/{id}', [LatestNewsController::class, 'update'])->name('latest_news-update');
+            Route::get('softDelete/{id}', [LatestNewsController::class, 'softDelete'])->name('latest_news-softDelete');
+            Route::get('/showSoftDelete', [LatestNewsController::class, 'showSoftDelete'])->name('latest_news-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [LatestNewsController::class, 'softDeleteRestore'])->name('latest_news-softDeleteRestore');
 
         });
 
