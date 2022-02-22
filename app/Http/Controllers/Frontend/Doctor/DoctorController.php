@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend\Doctor;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Doctor\DoctorStoreCertificateFormRequest;
+use App\Http\Requests\Frontend\Doctor\DoctorStoreConsultantFormRequest;
 use App\Http\Requests\Frontend\Doctor\DoctorUpdateProfileFormRequest;
 use App\Http\Requests\Frontend\Doctor\DoctorUpdateWeekPlanFormRequest;
 use App\Models\Doctor;
 use App\Models\DoctorCertificate;
+use App\Models\DoctorConsultant;
 use App\Models\DoctorSpeciality;
 use App\Models\DoctorSpecialityRelation;
 use App\Models\DoctorSubSpeciality;
@@ -89,6 +91,7 @@ class DoctorController extends Controller
             'user_description_en'=>$request->overview_en,
             'user_description_ar'=>$request->overview_en,
             'gender'=>$request->gender,
+            'visit_fees'=>$request->visit_fees,
             'languages'=>isset($request->language_id) ? implode(',',$request->language_id) : null
             ];
 
@@ -292,6 +295,102 @@ class DoctorController extends Controller
 
 
             return redirect()->route('doctor.doctor-dashboard','doctorCertificates')->with('success','Removed Succesfully');
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function doctorStoreConsultant(DoctorStoreConsultantFormRequest $request,Route $route){
+        try {
+
+            if(!Auth::guard('doctor')->check()){
+                return redirect()->route('welcome')->with('danger','You Are Not Autherized');
+            }
+
+            $data=[
+                'doctor_id'=>Auth::guard('doctor')->user()->id,
+                'name_en'=>$request->name_en,
+                'name_ar'=>$request->name_ar,
+                'consultant_fees'=>$request->consultant_fees
+            ];
+
+            DB::transaction(function () use ($data) {
+                DoctorConsultant::create($data);
+            });
+
+            return redirect()->route('doctor.doctor-dashboard','doctorConsultants')->with('success','Added Succesfully');
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function doctorDeleteConsultant($id,Route $route){
+        try {
+
+            if(!Auth::guard('doctor')->check()){
+                return redirect()->route('welcome')->with('danger','You Are Not Autherized');
+            }
+
+            $doctor = Auth::guard('doctor')->user();
+            $doctorConsultants = DoctorConsultant::find($id);
+
+            if($doctorConsultants){
+                if($doctorConsultants->doctor_id != $doctor->id){
+                    return redirect()->route('doctor.doctor-dashboard','doctorConsultants')->with('danger','Unautherized!!!!');
+                }
+                DB::transaction(function () use ($doctorConsultants) {
+                    $doctorConsultants->delete();
+                });
+            }
+
+
+            return redirect()->route('doctor.doctor-dashboard','doctorConsultants')->with('success','Removed Succesfully');
 
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();

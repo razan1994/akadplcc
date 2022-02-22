@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Patient;
+namespace App\Http\Requests\Frontend\Guest;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class BookAppointmentFormRequest extends FormRequest
+class BookAppointmentGuestFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class BookAppointmentFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -27,6 +26,9 @@ class BookAppointmentFormRequest extends FormRequest
         return [
             'user_id'=>'required',
             'user_type'=>'required',
+            'name'=>'required',
+            'phone'=>'required|numeric',
+            'age'=>'required|numeric',
             'time'=>'required'
         ];
     }

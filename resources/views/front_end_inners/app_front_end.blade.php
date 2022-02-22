@@ -1012,7 +1012,7 @@
     <!--Footer Section-->
 
     <!-- Popup Login-->
-    <div class="modal" id="exampleModal">
+    <div class="modal" id="book_visit_modal">
         <div class="modal-dialog modal-lg modal-appoint" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1020,115 +1020,39 @@
                         aria-label="Close" class="close" data-dismiss="modal" type="button"><span
                             aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Your Name</label>
-                                <input class="form-control" placeholder="Enter Your Name" type="text">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Your Email</label>
-                                <input class="form-control" placeholder="Enter your Email" type="email">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Your Number</label>
-                                <input class="form-control" placeholder="Enter your Phone Number" type="number">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Select Gender</label>
-                                <select class="form-control select2" name="user[hour]">
-                                    <option value="">Male</option>
-                                    <option value="0">Female</option>
-                                    <option value="1">Others</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Select Date</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
-                                        </div>
-                                    </div><input class="form-control fc-datepicker" placeholder="MM/DD/YYYY"
-                                        type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Select City</label>
-                                <select class="form-control custom-select select2-show-search" name="city">
-                                    <option selected value="0">Select City</option>
-                                    <option value="1">Hyderabad</option>
-                                    <option value="2">Mumbai</option>
-                                    <option value="3">Delhi</option>
-                                    <option value="4">Bangalore</option>
-                                    <option value="5">Ahmedabad</option>
-                                    <option value="6">Chennai</option>
-                                    <option value="7">Kolkata</option>
-                                    <option value="8">Lucknow</option>
-                                    <option value="9">Jaipur</option>
-                                    <option value="10">Bhopal</option>
-                                    <option value="11">Visakhapatnam</option>
-                                    <option value="12">Patna</option>
-                                    <option value="13">Srinagar</option>
-                                    <option value="14">Lucknow</option>
-                                    <option value="15">Bhubaneswar</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Select Hospital</label>
-                                <select class="form-control custom-select select2-show-search" name="Hospital">
-                                    <option selected value="0">Select Hospital</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Select Specialist</label>
-                                <select class="form-control custom-select select2-show-search" name="Specialist">
-                                    <option selected value="0">Select Specialist</option>
-                                    <option value="1">Cardiologist</option>
-                                    <option value="2">Neurosurgeon</option>
-                                    <option value="3">Orthopaedic Surgeon</option>
-                                    <option value="4">Oncologist</option>
-                                    <option value="5">Neurologist</option>
-                                    <option value="6">Gastroenterologist</option>
-                                    <option value="7">ENT</option>
-                                    <option value="8">Dentist</option>
-                                    <option value="9">Psychiatrist</option>
-                                    <option value="10">Urologist</option>
-                                    <option value="11">Gynecologist</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label">Select Slot</label>
-                                <select class="form-control custom-select select2-show-search" name="Slot">
-                                    <option selected value="0">Select Hospital</option>
-                                    <option value="1">Moring</option>
-                                    <option value="2">Afternoon</option>
-                                    <option value="3">Evening</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body" id="appointment_body">
+
                 </div>
-                <div class="modal-footer">
+                {{-- <div class="modal-footer">
                     <div class="">
                         <a class="btn btn-orange btn-block" href="#">Book Appointment</a>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="rating_modal">
+        <div class="modal-dialog modal-lg modal-appoint" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Rating</h5><button
+                        aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <div class="rating-stars d-inline-flex mb-2 mr-3">
+                        <input type="number" readonly="readonly" class="rating-value star"
+                            name="rating_value" value="4">
+                        <div class="rating-stars-container mr-2 modal-stars">
+                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm"> <i class="fa fa-star"></i> </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1303,7 +1227,7 @@
     <script src="{{ asset('front_end_style/assets/js/circle-progress.min.js') }}"></script>
 
     <!-- Star Rating Js-->
-    <script src="{{ asset('front_end_style/assets/plugins/rating/jquery.rating-stars.js') }}"></script>
+    {{-- <script src="{{ asset('front_end_style/assets/plugins/rating/jquery.rating-stars.js') }}"></script> --}}
 
     <!--Counters -->
     <script src="{{ asset('front_end_style/assets/plugins/counters/counterup.min.js') }}"></script>
@@ -1353,6 +1277,7 @@
     <script src="{{ asset('front_end_style/assets/js/custom.js') }}"></script>
 
 
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#patient, #institution").change(function() {
@@ -1362,6 +1287,265 @@
                     $("#select_type_div").css('display','');
                 }
             });
+        });
+
+
+        $(document).on('click','.book_appointment_cls',function(){
+
+            user_id = $(this).data('id');
+            user_type = $(this).data('type');
+
+            var formData = new FormData();
+                formData.append('user_type', user_type);
+                formData.append('user_id', user_id);
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'post',
+                    url: "{{ route('appointmentData') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(data) {
+                        if (data.status == true) {
+                            $("#appointment_body").html('');
+                            $("#appointment_body").html(data.output);
+
+
+                            const swiper = new Swiper(".swiper-container", {
+                                direction: 'vertical',
+                                navigation: {
+                                    nextEl: '.swiper-button-prev',
+                                    prevEl: '.swiper-button-next'
+                                },
+                                effect: "coverflow",
+                                scrollbar: '.swiper-scrollbar',
+                                initialSlide : 3,
+                                scrollbarHide: true,
+                                slidesPerView: 7,
+                                centeredSlides: true,
+                                freeMode: true,
+                                spaceBetween: 1,
+                                slideToClickedSlide: true,
+                                loop: false,
+                                mousewheel:true,
+                                speed:600,
+
+                                // autoplay: {
+                                //     delay: 3000
+                                // },
+
+                                coverflowEffect: {
+                                    rotate: 10,
+                                    stretch: 0,
+                                    depth: 20,
+                                    modifier: 1,
+                                    slideShadows: true
+                                },
+
+                                breakpoints: {
+                                    320: {
+                                        slidesPerView: 7
+                                    },
+                                    560: {
+                                        slidesPerView: 7
+                                    },
+                                    990: {
+                                        slidesPerView: 7
+                                    }
+                                },
+
+                                // pagination: {
+                                //     el: ".swiper-pagination",
+                                //     clickable: true
+                                // },
+
+                                // navigation: {
+                                //     nextEl: ".swiper-button-next",
+                                //     prevEl: ".swiper-button-prev"
+                                // }
+
+
+                            });
+
+
+                            $("#book_visit_modal").modal('show');
+
+                        }
+                    },
+                    error: function(reject) {
+                        var response = $.parseJSON(reject.responseText);
+                        $.each(response.errors, function(key, val) {
+                            $("#" + key + "_error").text(val[0]);
+                        });
+                    }
+                });
+
+        });
+    </script>
+
+    <script>
+        const swiper = new Swiper(".swiper-container", {
+            direction: 'vertical',
+            navigation: {
+                nextEl: '.swiper-button-prev',
+                prevEl: '.swiper-button-next'
+            },
+            effect: "coverflow",
+            scrollbar: '.swiper-scrollbar',
+            initialSlide : 3,
+            scrollbarHide: true,
+            slidesPerView: 7,
+            centeredSlides: true,
+            freeMode: true,
+            spaceBetween: 1,
+            slideToClickedSlide: true,
+            loop: false,
+            mousewheel:true,
+            speed:600,
+
+            // autoplay: {
+            //     delay: 3000
+            // },
+
+            coverflowEffect: {
+                rotate: 10,
+                stretch: 0,
+                depth: 20,
+                modifier: 1,
+                slideShadows: true
+            },
+
+            breakpoints: {
+                320: {
+                    slidesPerView: 7
+                },
+                560: {
+                    slidesPerView: 7
+                },
+                990: {
+                    slidesPerView: 7
+                }
+            },
+
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true
+            // },
+
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev"
+            // }
+
+
+        });
+
+
+            // $('.swiper-slide').click(function(){
+            //     $('.swiper-slide').css('background','#b9b9b9');
+            //     $(this).css('background','blue');
+            // });
+
+            // swiper.on('transitionEnd', function(e) {
+            //     // alert(this.activeIndex);
+            //     $('.swiper-slide').css('background','');
+            //     if (this.activeIndex == 1) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 2) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 3) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 4) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 5) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 6) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 7) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 8) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 9) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 10) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            //     if (this.activeIndex == 11) {
+            //         $('.swiper-slide-active').css('background','green');
+            //     }
+            // });
+
+
+        const swiper2 = new Swiper(".swiper-container-main", {
+            direction: 'horizontal',
+            // effect: "coverflow",
+            centeredSlides: true,
+            // slidesPerView: 1,
+            loop: true,
+            speed: 600,
+
+            autoplay: {
+                delay: 3000
+            },
+
+            // coverflowEffect: {
+            //     rotate: 50,
+            //     stretch: 0,
+            //     // depth: 100,
+            //     modifier: 1,
+            //     slideShadows: true
+            // },
+
+            breakpoints: {
+                320: {
+                    slidesPerView: 3
+                },
+                560: {
+                    slidesPerView: 3
+                },
+                990: {
+                    slidesPerView: 3
+                }
+            },
+
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true
+            // },
+
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev"
+            // }
+        });
+        $('.btn-check').change(function(){
+
+        slide = $(this).val();
+        selector = $(this).data('selector');
+        radio = $('input[name=time]:checked').val();
+            if(radio != undefined && radio != null && radio != ""){
+                $('.swiper-slide').css('background','#b9b9b9');
+                $('.slide_'+selector).css('background','blue');
+            }
+        });
+
+
+
+        $(document).on('click','.rating-stars',function(){
+            $("#rating_modal").modal('show');
         });
     </script>
 </body>

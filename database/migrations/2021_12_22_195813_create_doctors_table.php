@@ -38,6 +38,7 @@ class CreateDoctorsTable extends Migration
             $table->bigInteger('view_counter')->default(0);
             $table->tinyInteger('gender')->nullable()->comment = '1 => Male || 2 => Female';
             $table->longText('languages')->nullable();
+            $table->decimal('visit_fees',10,2)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             // Relations:

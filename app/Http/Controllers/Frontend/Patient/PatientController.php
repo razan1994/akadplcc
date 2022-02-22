@@ -79,6 +79,7 @@ class PatientController extends Controller
             'alias_name_en'=>str_replace(' ','-',$request->name_en),
             'alias_name_ar'=>str_replace(' ','-',$request->name_en),
             'gender'=>$request->gender,
+            'date_of_birth'=>$request->date_of_birth
             ];
 
             if (isset($request->password)) {
@@ -127,63 +128,62 @@ class PatientController extends Controller
 
 
     function bookAppointment(Route $route,BookAppointmentFormRequest $request){
-    try{
+        try{
 
-        $user_id = decrypt($request->user_id);
+            $user_id = decrypt($request->user_id);
 
-        $user_type = $request->user_type;
+            $user_type = $request->user_type;
 
-        if($user_type == 'doctors'){
-            $user = Doctor::find($user_id);
-        }
+            if($user_type == 'doctors'){
+                $user = Doctor::find($user_id);
+            }
 
-        if($user){
-            $created_data = [
-                'doctor_id'=>$user_id,
-                'patient_id'=>auth()->user()->id,
-                'first_name'=>$request->first_name,
-                'last_name'=>$request->last_name,
-                'phone'=>$request->phone,
-                'age'=>$request->age,
-                'time'=>$request->time
-            ];
+            if($user){
+                $created_data = [
+                    'doctor_id'=>$user_id,
+                    'patient_id'=>auth()->user()->id,
+                    'name'=>auth()->user()->name_en,
+                    'phone'=>auth()->user()->phone,
+                    'age'=>auth()->user()->date_of_birth != null ? today()->diffInYears(auth()->user()->date_of_birth) : null,
+                    'time'=>$request->time
+                ];
 
-            DB::transaction(function () use ($created_data,$user_type) {
-                if($user_type == 'doctors'){
-                    DoctorReservation::create($created_data);
-                }
-            });
-
-
-            return redirect()->back()->with('success','Appoitment Booked Successfully ...');
-
-        }
+                DB::transaction(function () use ($created_data,$user_type) {
+                    if($user_type == 'doctors'){
+                        DoctorReservation::create($created_data);
+                    }
+                });
 
 
+                return redirect()->back()->with('success','Appoitment Booked Successfully ...');
 
-    } catch (\Throwable $th) {
-        $function_name =  $route->getActionName();
-        $check_old_errors = new SupportTicket();
-        $check_old_errors = $check_old_errors->select('*')->where([
-            'error_location' => $th->getFile(),
-            'error_description' => $th->getMessage(),
-            'function_name' => $function_name,
-            'error_line' => $th->getLine(),
-        ])->get();
+            }
 
-        if ($check_old_errors->count() == 0) {
-            $new_error_ticket = SupportTicket::create([
+
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
                 'error_location' => $th->getFile(),
                 'error_description' => $th->getMessage(),
                 'function_name' => $function_name,
-                'error_line' =>  $th->getLine(),
-            ]);
-            $end_error_ticket = $new_error_ticket;
-        } else {
-            $end_error_ticket = $check_old_errors->first();
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
-        return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-    }
     }
 
 

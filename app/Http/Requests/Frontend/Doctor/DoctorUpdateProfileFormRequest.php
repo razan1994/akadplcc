@@ -39,6 +39,7 @@ class DoctorUpdateProfileFormRequest extends FormRequest
         'phone' => 'required|unique:users,phone|unique:insurance_companies,phone|unique:hospitals,phone|unique:radiology_centers,phone|unique:pharmacies,phone|unique:labs,phone|unique:doctors,phone,'.$this->id.'|unique:seo_admins,phone|unique:life_coutches,phone|unique:gyms,phone|unique:medical_centers,phone|unique:patients,phone',
         'password' => 'confirmed',
         "profile_photo_path" => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
+        "visit_fees" => 'required|numeric|min:0.01',
     ];
     }
 

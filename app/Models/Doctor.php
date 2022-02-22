@@ -46,7 +46,8 @@ class Doctor extends Authenticatable
         'user_description_en',
         'user_description_ar',
         'gender',
-        'languages'
+        'languages',
+        'visit_fees'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -111,6 +112,12 @@ class Doctor extends Authenticatable
     // Created By : Mohammed Salah
     public function appointments(){
         return $this->hasMany(DoctorReservation::class , 'doctor_id');
+    }
+
+    // Relation With Doctor Consultants Table
+    // Created By : Mohammed Salah
+    public function consultants(){
+        return $this->hasMany(DoctorConsultant::class,'doctor_id');
     }
 
     // ====================================================================================

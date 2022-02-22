@@ -50,6 +50,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::post('/searchUser', [FrontEndController::class, 'searchUser'])->name('searchUser');
 
+    Route::post('/bookAppointmentGuest', [FrontEndController::class, 'bookAppointmentGuest'])->name('book-appointment-guest');
+    
+    Route::post('/appointmentData', [FrontEndController::class, 'appointmentData'])->name('appointmentData');
+
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 
@@ -84,6 +88,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::post('/updateDoctorWeekPlan/{id}', [DoctorController::class, 'updateDoctorWeekPlan'])->name('update-doctor-week-plan');
                 Route::post('/doctorStoreCertificate', [DoctorController::class, 'doctorStoreCertificate'])->name('doctor-store-certificate');
                 Route::get('/doctorDeleteCertificate/{id}', [DoctorController::class, 'doctorDeleteCertificate'])->name('doctor-delete-certificate');
+                Route::post('/doctorStoreConsultant', [DoctorController::class, 'doctorStoreConsultant'])->name('doctor-store-consultant');
+                Route::get('/doctorDeleteConsultant/{id}', [DoctorController::class, 'doctorDeleteConsultant'])->name('doctor-delete-consultant');
             });
         });
 

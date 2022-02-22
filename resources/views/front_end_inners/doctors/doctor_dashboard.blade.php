@@ -36,9 +36,9 @@
 									<div class="profile-pic-img">
 										<span class="bg-success dots" data-toggle="tooltip" data-placement="top" title="online"></span>
                                         @if(isset($auth->profile_photo_path) && file_exists($auth->profile_photo_path))
-	    									<img src="{{ asset($auth->profile_photo_path) }}" class="brround" alt="user">
+	    									<img src="{{ asset($auth->profile_photo_path) }}" class="brround" alt="user" style="width: 100%;height:100%;">
 										@else
-                                            <img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround" alt="user">
+                                            <img src="{{ asset('front_end_style/assets/images/users/female/17.jpg') }}" class="brround" alt="user" style="width: 100%;height:100%;">
                                         @endif
 									</div>
 									<a href="{{ route('doctor.doctor-dashboard') }}" class="text-dark"><h4 class="mt-3 mb-0 font-weight-semibold">{{ $auth->name_en }}</h4></a>
@@ -59,6 +59,9 @@
 
                                         <li data-toggle="tab" href="#certificatetab" @if(isset($active))@if($active == "doctorCertificates") class="active" @endif @endif style="cursor: pointer">
 											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Certificates</span></a>
+										</li>
+                                        <li data-toggle="tab" href="#consultanttab" @if(isset($active))@if($active == "doctorConsultants") class="active" @endif @endif style="cursor: pointer">
+											<a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Consultants</span></a>
 										</li>
 										<li>
 											<a href="{{ route('front-logout') }}" class="side-menu__item" ><i class="icon icon-power"></i><span class="side-menu__label ml-2">Logout</span></a>
@@ -202,7 +205,13 @@
                                                         <textarea rows="5" class="form-control" name="overview_en" placeholder="Enter Overviw In English">{!! $auth->user_description_ar !!}</textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Visit Fees <span class="text-danger"> @error('visit_fees'){{ $message }}@enderror</span></label>
+                                                        <input type="number" class="form-control" name="visit_fees" value="{{ $auth->visit_fees }}" min="0.01" step="0.01">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="form-group mb-0">
                                                         <label class="form-label">Upload Image <span class="text-danger"> @error('profile_photo_path'){{ $message }}@enderror</span></label>
                                                         <div class="custom-file">
@@ -231,8 +240,7 @@
                                                 <table class="table">
                                                     <thead class="thead-dark">
                                                         <tr>
-                                                            <th>First Name</th>
-                                                            <th>Last Namr</th>
+                                                            <th>Patient Name</th>
                                                             <th>Age</th>
                                                             <th>Phone</th>
                                                             <th>Date / Time</th>
@@ -241,8 +249,7 @@
                                                     <tbody>
                                                         @foreach ($auth->appointments as $appointment)
                                                             <tr>
-                                                                <td>{{ $appointment->first_name }}</td>
-                                                                <td>{{ $appointment->last_name }}</td>
+                                                                <td>{{ $appointment->name }}</td>
                                                                 <td>{{ $appointment->age }}</td>
                                                                 <td>{{ $appointment->phone }}</td>
                                                                 <td>{{ $appointment->time }}</td>
@@ -667,13 +674,13 @@
                                                 <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name AR</label>
-                                                        <input type="text" name="name_ar" class="form-control" placeholder="Doctor Name In Arabic">
+                                                        <input type="text" name="name_ar" class="form-control" placeholder="Certificate Name In Arabic">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Name EN</label>
-                                                        <input type="text" name="name_en" class="form-control" placeholder="Doctor Name In English">
+                                                        <input type="text" name="name_en" class="form-control" placeholder="Certificate Name In English">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
@@ -723,9 +730,65 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="tab4" class="tab-pane fade">
+                        <div id="consultanttab" class="tab-pane fade @if(isset($active))@if($active == "doctorConsultants") active in @endif @endif" >
                             <div class="col-xl-9 col-lg-12 col-md-12">
-                                nnnnnnnnnnnnnnnnnn
+                                <div class="card mb-0">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Consultants</h3>
+                                    </div>
+                                    <form action="{{ route('doctor.doctor-store-consultant') }}" method="POST" enctype="multipart/form-data" id="createForm">
+                                        @csrf
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Name AR</label>
+                                                        <input type="text" name="name_ar" class="form-control" placeholder="Consultant Name In Arabic">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Name EN</label>
+                                                        <input type="text" name="name_en" class="form-control" placeholder="Consultant Name In English">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Consultant Fees</label>
+                                                        <input type="number" value="0.01" min="0.01" step="0.01" name="consultant_fees" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Add Consultant</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            @if(isset($auth->consultants) && $auth->consultants->count() > 0)
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Name AR</th>
+                                                            <th>Name EN</th>
+                                                            <th>Consultant Fees</th>
+                                                            <th>Control</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($auth->consultants as $consultant)
+                                                            <tr>
+                                                                <td>{{ $consultant->name_ar }}</td>
+                                                                <td>{{ $consultant->name_en }}</td>
+                                                                <td>{{ $consultant->consultant_fees }}</td>
+                                                                <td><a class="btn btn-danger btn-sm" href="{{ route('doctor.doctor-delete-consultant',$consultant->id) }}"><i class="fa fa-trash"></i></a></td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @else
+                                            <h3 class="text-danger">No Consultants</h3>
+                                            @endif
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

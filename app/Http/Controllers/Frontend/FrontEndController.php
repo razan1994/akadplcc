@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ContactUsRequests\ContactUsFormRequest;
+use App\Http\Requests\Frontend\Guest\BookAppointmentFormRequest;
+use App\Http\Requests\Frontend\Guest\BookAppointmentGuestFormRequest;
 use App\Models\Blog;
 use App\Models\ContactUs;
 use App\Models\ContactUsRequest;
 use App\Models\Doctor;
+use App\Models\DoctorReservation;
+use App\Models\DoctorSpeciality;
 use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\InsuranceCompany;
@@ -20,12 +24,14 @@ use App\Models\Pharmacy;
 use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
+use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use App\Traits\SharedMethod;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -335,6 +341,7 @@ class FrontEndController extends Controller
     function usersList($user_type)
     {
 
+        $specialities = null;
         if ($user_type == 'insurances') {
             $users = InsuranceCompany::where('user_status', 2)->paginate(20)->onEachSide(2);
         } else if ($user_type == 'hospitals') {
@@ -347,6 +354,7 @@ class FrontEndController extends Controller
             $users = Lab::where('user_status', 2)->paginate(20)->onEachSide(2);
         } else if ($user_type == 'doctors') {
             $users = Doctor::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $specialities = DoctorSpeciality::where('type','main')->get();
         } else if ($user_type == 'pharmacies') {
             $users = Pharmacy::where('user_status', 2)->paginate(20)->onEachSide(2);
         } else if ($user_type == 'life-coaches') {
@@ -359,7 +367,7 @@ class FrontEndController extends Controller
         // $users = Hospital::where('user_status',2)->get();
 
 
-        return view('front_end_inners.list-users', compact('users', 'user_type'));
+        return view('front_end_inners.list-users', compact('users', 'user_type','specialities'));
     }
 
 
@@ -627,6 +635,12 @@ class FrontEndController extends Controller
                                                     '. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
                                             </li>';
                                         }
+                                        if(isset($user->visit_fees) && $user->visit_fees != null){
+                                            $output .='<li style="list-style-type: none;"><span>
+                                            <i class="fa fa-money"></i> Fees : '. $user->visit_fees .' <span class="text-primary">(Does not include procedures)</span>
+                                            </span>
+                                            </li>';
+                                        }
                                     $output .='</div>
                                 </div>
                             </div>
@@ -728,6 +742,12 @@ class FrontEndController extends Controller
                                         $output_second .='<li><span><i class="fa fa-calendar-o mr-1 text-muted"></i>'. explode(',', $user->weekPlan->active_days)[0] .'|'. explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] .'</span>
                                         </li>';
                                     }
+                                    if(isset($user->visit_fees) && $user->visit_fees != null){
+                                        $output_second .='<li style="list-style-type: none;"><span>
+                                        <i class="fa fa-money"></i> Fees : '. $user->visit_fees .' <span class="text-primary">(Does not include procedures)</span>
+                                        </span>
+                                        </li>';
+                                    }
                                 $output_second .='</ul>
                             </div>
                         </div>
@@ -789,6 +809,375 @@ class FrontEndController extends Controller
 
     }
 
+
+
+    function bookAppointmentGuest(Route $route,BookAppointmentGuestFormRequest $request){
+        try{
+
+            $user_id = decrypt($request->user_id);
+
+            $user_type = $request->user_type;
+
+            if($user_type == 'doctors'){
+                $user = Doctor::find($user_id);
+            }
+
+            if($user){
+                $created_data = [
+                    'doctor_id'=>$user_id,
+                    'patient_id'=>null,
+                    'name'=>$request->name,
+                    'phone'=>$request->phone,
+                    'age'=>$request->age,
+                    'time'=>$request->time
+                ];
+
+                DB::transaction(function () use ($created_data,$user_type) {
+                    if($user_type == 'doctors'){
+                        DoctorReservation::create($created_data);
+                    }
+                });
+
+
+                return redirect()->back()->with('success','Appoitment Booked Successfully ...');
+
+            }
+
+
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function appointmentData(Request $request){
+
+        $request->validate([
+            'user_id'=>'required',
+            'user_type'=>'required'
+        ]);
+
+        $user_type = decrypt($request->user_type);
+        $user_id = decrypt($request->user_id);
+
+        if ($user_type == 'hospitals') {
+            $user = Hospital::find($user_id);
+        } else if ($user_type == 'radiology-centers') {
+            $user = RadiologyCenter::find($user_id);
+        } else if ($user_type == 'medical-centers') {
+            $user = MedicalCenter::find($user_id);
+        } else if ($user_type == 'labs') {
+            $user = Lab::find($user_id);
+        } else if ($user_type == 'doctors') {
+            $user = Doctor::find($user_id);
+        } else if ($user_type == 'pharmacies') {
+            $user = Pharmacy::find($user_id);
+        } else if ($user_type == 'life-coaches') {
+            $user = LifeCoutch::find($user_id);
+        } else if ($user_type == 'fitness-centers') {
+            $user = Gym::find($user_id);
+        } else {
+            return response()->json(['status'=>false,'msg'=>'User Not Found !!!']);
+        }
+
+        if ($user) {
+
+
+            if(isset($user->weekPlan)){
+                if($user->weekPlan->active_days != null){
+                    $collection = new Collection();
+                    $week_plan = $user->weekPlan;
+                    $days_arr = explode(',',$user->weekPlan->active_days);
+                    $end = new DateTime(date('Y-m-d'));
+                    $end = $end->modify('+60 day');
+                    $date = Carbon::parse(date('Y-m-d'))->toDateString();
+                    $begin = new DateTime($date);
+                    $days = [];
+                    foreach($days_arr as $single_day){
+                        $day_split = null;
+                        if($single_day == "saterday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::SATURDAY);
+                            $day_split = "Sat";
+                        }
+                        if($single_day == "sunday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::SUNDAY);
+                            $day_split = "Sun";
+                        }
+                        if($single_day == "monday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::MONDAY);
+                            $day_split = "Mon";
+                        }
+                        if($single_day == "tuseday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::TUESDAY);
+                            $day_split = "Tues";
+                        }
+                        if($single_day == "wednsday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::WEDNESDAY);
+                            $day_split = "Wed";
+                        }
+                        if($single_day == "thursday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::THURSDAY);
+                            $day_split = "Thu";
+                        }
+                        if($single_day == "friday"){
+                            $startDate = Carbon::parse($begin)->next(Carbon::FRIDAY);
+                            $day_split = "Fri";
+                        }
+                        $endDate = Carbon::parse($end);
+
+                        $from_var = $single_day."_from";
+                        $to_var = $single_day."_to";
+                        $every_var = "every_".$single_day;
+                        for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+                            $days[] = ['day'=>$day_split,'date'=>$date->format('Y-m-d'),'from'=>$week_plan->$from_var,'to'=>$week_plan->$to_var,'every'=>$week_plan->$every_var];
+                        }
+
+                    }
+                    $sorted_plan = collect($days)->sortBy('date')->values();
+                    $day_chunks = array_chunk($sorted_plan->toArray(),3);
+                    $user->chunked_plan = $day_chunks;
+                }
+            }
+
+                $output = '';
+
+                if(Auth::guard('patient')->check()){
+
+                    $output .='<div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Book a Visit</h3>
+                        </div>
+                        <form action="'.route('patient.book-appointment').'" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="'.csrf_token().'" />
+                            <input type="hidden" name="user_id" value="'.encrypt($user->id).'">
+                            <input type="hidden" name="user_type" value="'.$user_type.'">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <style>
+                                        .carousel-item {
+                                        transition-duration: 0.3s !important;
+                                        }
+                                    </style>
+                                    <label class="form-label">Date / Time</label>
+                                    <div class="row gutters-xs">
+                                        <div class="col-md-12 row d-flex justify-content-center">
+                                            <div id="carouselExampleIndicators" class="carousel slide carousel-multi-item" data-wrap="false" data-ride="carousel" data-interval="false" touch="true">
+                                                <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                </ol>
+                                                <div class="carousel-inner" role="listbox" style="height:300px;">';
+                                                    if(isset($user->chunked_plan) && count($user->chunked_plan) > 0){
+                                                        foreach ($user->chunked_plan as $index => $chunked_days){
+                                                            if($index == 0){
+                                                                $output .='<div class="carousel-item active">';
+                                                            }else{
+                                                                $output .='<div class="carousel-item">';
+                                                            }
+                                                            $output .='<div class="row" style="height: 70%;">';
+                                                                    foreach ($chunked_days as $key => $day){
+                                                                        if(count($chunked_days) == 4){
+                                                                            $output .='<div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">';
+                                                                        }else if(count($chunked_days) == 3){
+                                                                            $output .='<div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">';
+                                                                        }else if(count($chunked_days) == 2){
+                                                                            $output .='<div class="col-xs-12 col-sm-6 col-md-6" style="height: 100%;;">';
+                                                                        }else if(count($chunked_days) == 1){
+                                                                            $output .='<div class="col-xs-12 col-sm-6 col-md-12" style="height: 100%;">';
+                                                                        }
+                                                                        $output .='<a class="btn btn-success time-date rs-btn">'. $day['day'] .' '. date('m-d',strtotime($day['date'])) .'</a>
+                                                                                <div class="swiper-container">
+                                                                                    <button class="swiper-button-prev"><i class="fa-solid fa-angle-down"></i></button>
+                                                                                    <div class="swiper-wrapper">';
+
+                                                                                        $start_time = $day['from'];
+                                                                                        $diff1 =strtotime($day['from']);
+                                                                                        $diff2 =strtotime($day['to']);
+                                                                                        $diff3 = $diff2 - $diff1;
+
+                                                                                        for ($i = 0 ; $i < $diff3 ; $i+=$day['every']){
+                                                                                            $output .='<div class="swiper-slide slide_'. $index .'_'. $key .'_'. $i .'">
+                                                                                                <input type="radio" class="btn-check" name="time" data-selector="'. $index .'_'. $key .'_'. $i .'" id="success-outlined_'. $index .'_'. $key .'_'. $i .'" value="'. date('Y-m-d',strtotime($day['date'])) .'|'. date("h:i A",strtotime($start_time)) .'" autocomplete="off" style="display: none">
+                                                                                                <label class="btn rd-btn c_labelbreord" for="success-outlined_'. $index .'_'. $key .'_'. $i .'">
+                                                                                                    '. date("h:i A",strtotime($start_time)) .'
+                                                                                                    </label>';
+                                                                                                    $start_time = date("H:i:s", strtotime($day['every']." Minutes", strtotime($start_time)));
+                                                                                            $output .='</div>';
+                                                                                            if($start_time >= $day['to']){
+                                                                                                break;
+                                                                                            }
+                                                                                        }
+                                                                                    $output .='</div>
+                                                                                    <button class="swiper-button-next"><i class="fa-solid fa-angle-up"></i></button>
+                                                                                </div>
+                                                                        </div>';
+                                                                    }
+                                                                $output .='</div>
+                                                            </div>';
+                                                        }
+                                                    }
+                                                $output .='</div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="">
+                                    <button type="submit" class="btn  btn-primary">Fix Appointment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>';
+                }
+                else if(!Auth::check()){
+                    $output .='<div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Book a Visit</h3>
+                    </div>
+                    <form action="'.route('patient.book-appointment').'" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="'.csrf_token().'" />
+                        <input type="hidden" name="user_id" value="'.encrypt($user->id).'">
+                        <input type="hidden" name="user_type" value="'.$user_type.'">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Age</label>
+                                <input type="number" name="age" class="form-control" placeholder="Enter your age">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="text" name="phone" class="form-control" placeholder="Enter your Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <style>
+                                    .carousel-item {
+                                    transition-duration: 0.3s !important;
+                                    }
+                                </style>
+                                <label class="form-label">Date / Time</label>
+                                <div class="row gutters-xs">
+                                    <div class="col-md-12 row d-flex justify-content-center">
+                                        <div id="carouselExampleIndicators" class="carousel slide carousel-multi-item" data-wrap="false" data-ride="carousel" data-interval="false" touch="true">
+                                            <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox" style="height:300px;">';
+                                                if(isset($user->chunked_plan) && count($user->chunked_plan) > 0){
+                                                    foreach ($user->chunked_plan as $index => $chunked_days){
+                                                        if($index == 0){
+                                                            $output .='<div class="carousel-item active">';
+                                                        }else{
+                                                            $output .='<div class="carousel-item">';
+                                                        }
+                                                        $output .='<div class="row" style="height: 70%;">';
+                                                                foreach ($chunked_days as $key => $day){
+                                                                    if(count($chunked_days) == 4){
+                                                                        $output .='<div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">';
+                                                                    }else if(count($chunked_days) == 3){
+                                                                        $output .='<div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">';
+                                                                    }else if(count($chunked_days) == 2){
+                                                                        $output .='<div class="col-xs-12 col-sm-6 col-md-6" style="height: 100%;;">';
+                                                                    }else if(count($chunked_days) == 1){
+                                                                        $output .='<div class="col-xs-12 col-sm-6 col-md-12" style="height: 100%;">';
+                                                                    }
+                                                                    $output .='<a class="btn btn-success time-date rs-btn">'. $day['day'] .' '. date('m-d',strtotime($day['date'])) .'</a>
+                                                                            <div class="swiper-container">
+                                                                                <button class="swiper-button-prev"><i class="fa-solid fa-angle-down"></i></button>
+                                                                                <div class="swiper-wrapper">';
+
+                                                                                    $start_time = $day['from'];
+                                                                                    $diff1 =strtotime($day['from']);
+                                                                                    $diff2 =strtotime($day['to']);
+                                                                                    $diff3 = $diff2 - $diff1;
+
+                                                                                    for ($i = 0 ; $i < $diff3 ; $i+=$day['every']){
+                                                                                        $output .='<div class="swiper-slide slide_'. $index .'_'. $key .'_'. $i .'">
+                                                                                            <input type="radio" class="btn-check" name="time" data-selector="'. $index .'_'. $key .'_'. $i .'" id="success-outlined_'. $index .'_'. $key .'_'. $i .'" value="'. date('Y-m-d',strtotime($day['date'])) .'|'. date("h:i A",strtotime($start_time)) .'" autocomplete="off" style="display: none">
+                                                                                            <label class="btn rd-btn c_labelbreord" for="success-outlined_'. $index .'_'. $key .'_'. $i .'">
+                                                                                                '. date("h:i A",strtotime($start_time)) .'
+                                                                                                </label>';
+                                                                                                $start_time = date("H:i:s", strtotime($day['every']." Minutes", strtotime($start_time)));
+                                                                                        $output .='</div>';
+                                                                                        if($start_time >= $day['to']){
+                                                                                            break;
+                                                                                        }
+                                                                                    }
+                                                                                $output .='</div>
+                                                                                <button class="swiper-button-next"><i class="fa-solid fa-angle-up"></i></button>
+                                                                            </div>
+                                                                    </div>';
+                                                                }
+                                                            $output .='</div>
+                                                        </div>';
+                                                    }
+                                                }
+                                            $output .='</div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="">
+                                <button type="submit" class="btn  btn-primary">Fix Appointment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>';
+                }
+
+                    return response()->json(['status'=>true,'output'=>$output]);
+
+
+        }
+    }
 
 
     function crawler(){

@@ -20160,7 +20160,7 @@ video {
     position: absolute;
     top: 54px;
     z-index: 1000;
-    margin: 0px;
+    margin: -5px;
     padding: 5px 0;
     min-width: 190px;
     background-color: #fff;
@@ -34187,4 +34187,8 @@ a.text-light:hover {
 .rs-btn {
     font-size: 11pt;
     font-weight: 500;
+}
+
+.modal-stars .rating-star {
+    font-size: 30pt !important;
 }

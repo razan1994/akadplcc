@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorReservationsTable extends Migration
+class CreateDoctorConsultantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateDoctorReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_reservations', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('doctor_consultants', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('doctor_id');
-            $table->bigInteger('patient_id')->nullable();
-            $table->string('name');
-            $table->string('phone');
-            $table->integer('age')->nullable();
-            $table->longText('time');
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->decimal('consultant_fees',10,2);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateDoctorReservationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_reservations');
+        Schema::dropIfExists('doctor_consultants');
     }
 }

@@ -165,17 +165,23 @@
                                                     <label class="form-label">Gender <span class="text-danger"> @error('gender'){{ $message }}@enderror</span></label>
                                                     <div class="radio-group">
                                                         <div class="row col-md-12">
-                                                        <label for="male" style="width: 25%;cursor:pointer">Male
+                                                            <label for="male" style="width: 25%;cursor:pointer">Male
                                                             <input type="radio" name="gender" value="1" id="male" placeholder="Number" @if($auth->gender == 1) checked @endif>
                                                         </label>
                                                         <label for="female" style="width: 25%;cursor:pointer">Female
                                                             <input type="radio" name="gender" value="2" id="female" placeholder="Number" @if($auth->gender == 2) checked @endif>
                                                         </label>
-                                                        </div>
+                                                    </div>
                                                     </div>
                                                 </div>
                                                 </div>
-                                            <div class="col-md-6">
+                                                <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Date Of Birth <span class="text-danger"> @error('date_of_birth'){{ $message }}@enderror</span></label>
+                                                        <input type="date" name="date_of_birth" class="form-control" placeholder="Date Of Birth" value="{{ $auth->date_of_birth }}">
+                                                </div>
+                                                </div>
+                                            <div class="col-md-12">
                                                 <div class="form-group mb-0">
                                                     <label class="form-label">Upload Image <span class="text-danger"> @error('profile_photo_path'){{ $message }}@enderror</span></label>
                                                     <div class="custom-file">

@@ -35,6 +35,7 @@ class CreatePatientsTable extends Migration
             $table->longText('address_ar')->nullable();
             $table->longText('address_en')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->rememberToken();
             // Relations:
             // ================================================================

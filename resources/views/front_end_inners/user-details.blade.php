@@ -744,22 +744,28 @@
                                         {{ isset($user->country->name_en) ? $user->country->name_en : '--------' }} /
                                         {{ isset($user->region->name_en) ? $user->region->name_en : '--------' }}</a>
                                 </h6>
+                                @if (isset($languages) && count($languages) > 0)
                                 <h4><span class="font-weight-semibold"><i class="fa fa-book mr-3 mb-2"></i></span><a
-                                        href="#" class="text-body">Languages :</a></h4>
+                                    href="#" class="text-body">Languages :</a></h4>
                                 <div class="card-body product-filter-desc" style="padding: 0 !important;">
                                     <div class="product-tags clearfix">
                                         <ul class="list-unstyled mb-0">
-                                            @if (isset($languages) && count($languages) > 0)
-                                                @foreach ($languages as $lang)
-                                                    <li>
-                                                        <a>{{ $lang }}</a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
+                                            @foreach ($languages as $lang)
+                                            <li>
+                                                <a>{{ $lang }}</a>
+                                            </li>
+                                            @endforeach
 
                                         </ul>
                                     </div>
                                 </div>
+                                @endif
+                                @if(isset($user->visit_fees) && $user->visit_fees != null)
+                                    <h6><span class="font-weight-semibold"><i class="fa fa-money mr-2 mb-2"></i></span><a
+                                            href="#" class="text-body">
+                                            {{ $user->visit_fees }}</a>
+                                    </h6>
+                                @endif
                             </div>
                             <div class=" item-user-icons mt-4">
                                 {{-- <a href="#" class="facebook-bg mt-0"><i class="fa fa-facebook"></i></a>
@@ -782,13 +788,18 @@
                             <div class="tab-menu-heading">
                                 <div class="tabs-menu1">
                                     <ul class="nav">
-                                        <li class=""><a href="#tab-5" class="active"
+                                        @if ($user_type == 'doctors')
+                                        <li><a href="#tab-7" data-toggle="tab" class="active">Consultation Fees</a>
+                                        </li>
+                                        @endif
+                                        <li class=""><a href="#tab-5" class="{{ $user_type != 'doctors' ? 'active' : '' }}"
                                                 data-toggle="tab">Informations</a></li>
                                         <li><a href="#tab-6" data-toggle="tab" class="">Education</a></li>
-                                        <li><a href="#tab-7" data-toggle="tab" class="">Consultation Fees</a>
-                                        </li>
+
                                         <li><a href="#tab-8" data-toggle="tab" class="">Reviews</a></li>
                                         @if(Auth::guard('patient')->check())
+                                        <li><a href="#tab-9" data-toggle="tab" class="">Book Appointment</a></li>
+                                        @elseif(!Auth::check())
                                         <li><a href="#tab-9" data-toggle="tab" class="">Book Appointment</a></li>
                                         @endif
                                     </ul>
@@ -797,7 +808,7 @@
                         </div>
                         <div class="border-0">
                             <div class="tab-content  border-left border-right details-tab-content bg-white">
-                                <div class="tab-pane active" id="tab-5">
+                                <div class="tab-pane {{ $user_type != 'doctors' ? 'active' : '' }}" id="tab-5">
                                     <div class=" p-5">
                                         <div class="mb-4">
                                             <p>{!! isset($user->user_description_en) ? $user->user_description_en : null !!}</p>
@@ -855,7 +866,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane userprof-tab" id="tab-7">
+                                @if ($user_type == 'doctors')
+                                <div class="tab-pane userprof-tab active" id="tab-7">
                                     <div class=" p-5">
                                         <div class="list-id">
                                             <div class="row">
@@ -864,36 +876,23 @@
                                                         <table class="table table-bordered border-top mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Service Visit</th>
-                                                                    <th>Price</th>
+                                                                    <th>Consultant Name</th>
+                                                                    <th>Fees</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @if(isset($user->consultants) && $user->consultants->count() > 0)
+                                                                @foreach ($user->consultants as $consultant)
                                                                 <tr>
-                                                                    <td>Maternal-fetal medicine</td>
-                                                                    <td>$15</td>
+                                                                    <td>{{ isset($consultant->name_en) ? $consultant->name_en : '--------' }}</td>
+                                                                    <td>{{ isset($consultant->consultant_fees) ? $consultant->consultant_fees : '--------' }}</td>
                                                                 </tr>
+                                                                @endforeach
+                                                                @else
                                                                 <tr>
-                                                                    <td>Reproductive endocrinology and infertility</td>
-                                                                    <td>$18</td>
+                                                                    <td colspan="2"><h3 class="text-danger">No Consultants Added</h3></td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>Female pelvic medicine and reconstructive surgery
-                                                                    </td>
-                                                                    <td>$18</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Menopausal</td>
-                                                                    <td>$21</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Laparoscopic surgery</td>
-                                                                    <td>$17</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Pediatric and adolescent gynecology</td>
-                                                                    <td>$15</td>
-                                                                </tr>
+                                                                @endif
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -902,6 +901,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="tab-pane" id="tab-8">
                                     <div class="media mt-0 p-5">
                                         <div class="d-flex mr-3">
@@ -1027,26 +1027,6 @@
                                             <input type="hidden" name="user_type" value="{{ $user_type }}">
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label class="form-label">First Name</label>
-                                                    <input type="text" name="first_name" class="form-control" placeholder="Enter Your Name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Last Name</label>
-                                                    <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Age</label>
-                                                    <input type="number" name="age" class="form-control" placeholder="Enter your age">
-                                                </div>
-                                                {{-- <div class="form-group">
-                                                    <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" placeholder="Enter your Email">
-                                                </div> --}}
-                                                <div class="form-group">
-                                                    <label class="form-label">Phone Number</label>
-                                                    <input type="text" name="phone" class="form-control" placeholder="Enter your Phone Number">
-                                                </div>
-                                                <div class="form-group">
                                                     <style>
                                                         .carousel-item {
                                                         transition-duration: 0.3s !important;
@@ -1136,19 +1116,143 @@
                                         </form>
                                     </div>
                                 </div>
+                                @elseif(!Auth::check())
+                                <div class="tab-pane" id="tab-9">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Book a Visit</h3>
+                                        </div>
+                                        <div class="tab-pane" id="tab-9">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Book a Visit</h3>
+                                                </div>
+                                                <form action="{{ route('book-appointment-guest') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="user_id" value="{{ encrypt($user->id) }}">
+                                                    <input type="hidden" name="user_type" value="{{ $user_type }}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Name</label>
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-label">Age</label>
+                                                            <input type="number" name="age" class="form-control" placeholder="Enter your age">
+                                                        </div>
+                                                        {{-- <div class="form-group">
+                                                            <label class="form-label">Email</label>
+                                                            <input type="email" class="form-control" placeholder="Enter your Email">
+                                                        </div> --}}
+                                                        <div class="form-group">
+                                                            <label class="form-label">Phone Number</label>
+                                                            <input type="text" name="phone" class="form-control" placeholder="Enter your Phone Number">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <style>
+                                                                .carousel-item {
+                                                                transition-duration: 0.3s !important;
+                                                                }
+                                                            </style>
+                                                            <label class="form-label">Date / Time</label>
+                                                            <div class="row gutters-xs">
+                                                                <div class="col-md-12 row d-flex justify-content-center">
+                                                                    <div id="carouselExampleIndicators" class="carousel slide carousel-multi-item" data-wrap="false" data-ride="carousel" data-interval="false" touch="true">
+                                                                        <ol class="carousel-indicators">
+                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                                        </ol>
+                                                                        <div class="carousel-inner" role="listbox">
+                                                                            @if(isset($user->chunked_plan) && count($user->chunked_plan) > 0)
+                                                                                @foreach ($user->chunked_plan as $index => $chunked_days)
+                                                                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                                                                        <div class="row" style="height: 70%;">
+                                                                                            @foreach ($chunked_days as $key => $day)
+                                                                                            @if(count($chunked_days) == 4)
+                                                                                            <div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">
+                                                                                                @elseif(count($chunked_days) == 3)
+                                                                                                <div class="col-xs-12 col-sm-6 col-md-4" style="height: 100%;">
+                                                                                                    @elseif(count($chunked_days) == 2)
+                                                                                                    <div class="col-xs-12 col-sm-6 col-md-6" style="height: 100%;;">
+                                                                                                    @elseif(count($chunked_days) == 1)
+                                                                                                    <div class="col-xs-12 col-sm-6 col-md-12" style="height: 100%;">
+                                                                                                    @endif
+                                                                                                    <a class="btn btn-success time-date rs-btn">{{ $day['day'] }} {{ date('m-d',strtotime($day['date'])) }}</a>
+                                                                                                    <div class="swiper-container">
+                                                                                                        <button class="swiper-button-prev"><i class="fa-solid fa-angle-down"></i></button>
+                                                                                                        <div class="swiper-wrapper">
+                                                                                                            @php
+                                                                                                            $start_time = $day['from'];
+                                                                                                            $diff1 =strtotime($day['from']);
+                                                                                                            $diff2 =strtotime($day['to']);
+                                                                                                            $diff3 = $diff2 - $diff1;
+                                                                                                            @endphp
+                                                                                                            @for ($i = 0 ; $i < $diff3 ; $i+=$day['every'])
+                                                                                                                <div class="swiper-slide slide_{{ $index }}_{{ $key }}_{{ $i }}">
+                                                                                                                    <input type="radio" class="btn-check" name="time" data-selector="{{ $index }}_{{ $key }}_{{ $i }}" id="success-outlined_{{ $index }}_{{ $key }}_{{ $i }}" value="{{ date('Y-m-d',strtotime($day['date'])) }} {{ date("h:i A",strtotime($start_time)) }}" autocomplete="off" style="display: none">
+                                                                                                                    <label class="btn rd-btn c_labelbreord" for="success-outlined_{{ $index }}_{{ $key }}_{{ $i }}">
+                                                                                                                        {{ date("h:i A",strtotime($start_time)) }}
+                                                                                                                        @php
+                                                                                                                        $start_time = date("H:i:s", strtotime($day['every']." Minutes", strtotime($start_time)));
+                                                                                                                        @endphp
+
+                                                                                                                    </label>
+                                                                                                                </div>
+                                                                                                                @if($start_time >= $day['to'])
+                                                                                                                    @break
+                                                                                                                @endif
+                                                                                                            @endfor
+                                                                                                        </div>
+                                                                                                        <button class="swiper-button-next"><i class="fa-solid fa-angle-up"></i></button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            @endif
+                                                                        </div>
+                                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                                        <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+                                                                        <span class="sr-only">Previous</span>
+                                                                        </a>
+                                                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                                        <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+                                                                        <span class="sr-only">Next</span>
+                                                                        </a>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="">
+                                                            <button type="submit" class="btn  btn-primary">Fix Appointment</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
                             </div>
                             <div class="card-footer bg-white br-bl-2 br-br-2 border-left border-right border-bottom">
                                 <div class="btn-list">
-                                    <a href="#" class="btn btn-success icons"><i class="icon icon-note mr-1"></i> Book A
-                                        Visit</a>
-                                    <a href="#" class="btn btn-info icons"><i class="icon icon-share mr-1"></i> Share</a>
+                                    <a class="btn btn-success icons book_appointment_cls" data-type="{{ encrypt($user_type) }}" data-id="{{ encrypt($user->id) }}" style="cursor: pointer">
+                                        <i class="icon icon-note mr-1"></i> Book A Visit</a>
+                                    {{-- <a href="#" class="btn btn-info icons"><i class="icon icon-share mr-1"></i> Share</a> --}}
                                     <a href="#" class="btn btn-danger icons" data-toggle="modal" data-target="#report"><i
                                             class="icon icon-exclamation mr-1"></i> Report Abuse</a>
-                                    <a href="#" class="btn btn-primary icons"><i class="icon icon-heart  mr-1"></i>
-                                        678</a>
-                                    <a href="#" class="btn btn-secondary icons"><i class="icon icon-printer  mr-1"></i>
-                                        Print</a>
+                                    {{-- <a href="#" class="btn btn-primary icons"><i class="icon icon-heart  mr-1"></i>
+                                        678</a> --}}
+                                    {{-- <a href="#" class="btn btn-secondary icons"><i class="icon icon-printer  mr-1"></i>
+                                        Print</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -1185,7 +1289,7 @@
     </section>
     <!--/Newsletter-->
 
-    <!-- Message Modal -->
+    {{-- <!-- Message Modal -->
     <div class="modal" id="contact" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1214,9 +1318,9 @@
             </div>
         </div>
     </div>
-    <!-- /Message Modal -->
+    <!-- /Message Modal --> --}}
 
-    <!--Comment Modal -->
+    {{-- <!--Comment Modal -->
     <div class="modal" id="Comment" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1245,7 +1349,7 @@
             </div>
         </div>
     </div>
-    <!--/Comment Modal -->
+    <!--/Comment Modal --> --}}
 
     <!-- Report Modal -->
     <div class="modal" id="report" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1328,161 +1432,6 @@
     </script>
 
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper(".swiper-container", {
-            direction: 'vertical',
-            navigation: {
-                nextEl: '.swiper-button-prev',
-                prevEl: '.swiper-button-next'
-            },
-            effect: "coverflow",
-            scrollbar: '.swiper-scrollbar',
-            initialSlide : 3,
-            scrollbarHide: true,
-            slidesPerView: 7,
-            centeredSlides: true,
-            freeMode: true,
-            spaceBetween: 1,
-            slideToClickedSlide: true,
-            loop: false,
-            mousewheel:true,
-            speed:600,
 
-            // autoplay: {
-            //     delay: 3000
-            // },
-
-            coverflowEffect: {
-                rotate: 10,
-                stretch: 0,
-                depth: 20,
-                modifier: 1,
-                slideShadows: true
-            },
-
-            breakpoints: {
-                320: {
-                    slidesPerView: 7
-                },
-                560: {
-                    slidesPerView: 7
-                },
-                990: {
-                    slidesPerView: 7
-                }
-            },
-
-            // pagination: {
-            //     el: ".swiper-pagination",
-            //     clickable: true
-            // },
-
-            // navigation: {
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev"
-            // }
-
-
-        });
-
-
-            // $('.swiper-slide').click(function(){
-            //     $('.swiper-slide').css('background','#b9b9b9');
-            //     $(this).css('background','blue');
-            // });
-
-            // swiper.on('transitionEnd', function(e) {
-            //     // alert(this.activeIndex);
-            //     $('.swiper-slide').css('background','');
-            //     if (this.activeIndex == 1) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 2) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 3) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 4) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 5) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 6) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 7) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 8) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 9) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 10) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 11) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            // });
-
-
-        const swiper2 = new Swiper(".swiper-container-main", {
-            direction: 'horizontal',
-            // effect: "coverflow",
-            centeredSlides: true,
-            // slidesPerView: 1,
-            loop: true,
-            speed: 600,
-
-            autoplay: {
-                delay: 3000
-            },
-
-            // coverflowEffect: {
-            //     rotate: 50,
-            //     stretch: 0,
-            //     // depth: 100,
-            //     modifier: 1,
-            //     slideShadows: true
-            // },
-
-            breakpoints: {
-                320: {
-                    slidesPerView: 3
-                },
-                560: {
-                    slidesPerView: 3
-                },
-                990: {
-                    slidesPerView: 3
-                }
-            },
-
-            // pagination: {
-            //     el: ".swiper-pagination",
-            //     clickable: true
-            // },
-
-            // navigation: {
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev"
-            // }
-        });
-        $('.btn-check').change(function(){
-
-        slide = $(this).val();
-        selector = $(this).data('selector');
-        radio = $('input[name=time]:checked').val();
-            if(radio != undefined && radio != null && radio != ""){
-                $('.swiper-slide').css('background','#b9b9b9');
-                $('.slide_'+selector).css('background','blue');
-            }
-        });
-    </script>
 
 @endsection

@@ -820,6 +820,12 @@
                                                                                     {{ explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] }}</span>
                                                                             </li>
                                                                         @endif
+                                                                        @if(isset($user->visit_fees) && $user->visit_fees != null)
+                                                                        <li style="list-style-type: none;"><span>
+                                                                        <i class="fa fa-money"></i> Fees : {{ $user->visit_fees }} <span class="text-primary">(Does not include procedures)</span>
+                                                                        </span>
+                                                                        </li>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -830,11 +836,8 @@
                                                                             class="btn btn-outline-light w-33 p-2 border-top-0 border-right-0 border-bottom-0"><i
                                                                                 class="fe fe-eye  mr-1"></i>View
                                                                             Profile</a>
-                                                                        <a href="#"
-                                                                            class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"
-                                                                            data-target="#exampleModal"
-                                                                            data-toggle="modal"><i
-                                                                                class="fe fe-phone  mr-1"></i>Appointment</a>
+                                                                        <a style="cursor: pointer;" class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0 book_appointment_cls"
+                                                                            data-type="{{ encrypt($user_type) }}" data-id="{{ encrypt($user->id) }}"><i class="fe fe-phone  mr-1"></i>Appointment</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -936,7 +939,12 @@
                                                                                         {{ explode(',', $user->weekPlan->active_days)[count(explode(',', $user->weekPlan->active_days)) - 1] }}</span>
                                                                                 </li>
                                                                             @endif
-
+                                                                            @if(isset($user->visit_fees) && $user->visit_fees != null)
+                                                                            <li style="list-style-type: none;"><span>
+                                                                            <i class="fa fa-money"></i> Fees : {{ $user->visit_fees }} <span class="text-primary">(Does not include procedures)</span>
+                                                                            </span>
+                                                                            </li>
+                                                                            @endif
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -948,7 +956,7 @@
                                                                             class="fe fe-eye  mr-1"></i>View Profile</a>
                                                                     <a href="#"
                                                                         class="btn btn-outline-light w-34 p-2 border-top-0 border-right-0 border-bottom-0"
-                                                                        data-target="#exampleModal" data-toggle="modal"><i
+                                                                        data-target="#book_visit_modal" data-toggle="modal"><i
                                                                             class="fe fe-phone  mr-1"></i>Appointment</a>
                                                                 </div>
                                                             </div>
@@ -985,18 +993,23 @@
                             <div class="card-header">
                                 <h3 class="card-title">Specialities</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="overflow-x: scroll;">
                                 <div class="" id="container">
                                     <div class="filter-product-checkboxs">
-                                        <label class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input" name="checkbox1"
-                                                value="option1">
-                                            <span class="custom-control-label">
-                                                <span class="text-dark">Cardiologist<span
-                                                        class="label label-light float-right">14</span></span>
-                                            </span>
-                                        </label>
-                                        <label class="custom-control custom-checkbox mb-3">
+                                        @if (isset($specialities) && $specialities->count() > 0)
+                                            @foreach ($specialities as $key => $speciality)
+                                                <label class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" name="checkbox1"
+                                                        value="option1">
+                                                    <span class="custom-control-label">
+                                                        <span class="text-dark">{{ $speciality->name_en }}
+                                                            {{-- <span class="label label-light float-right">{{ $speciality->doctors->count() }}</span> --}}
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            @endforeach
+                                        @endif
+                                        {{-- <label class="custom-control custom-checkbox mb-3">
                                             <input type="checkbox" class="custom-control-input" name="checkbox2"
                                                 value="option2">
                                             <span class="custom-control-label">
@@ -1075,7 +1088,7 @@
                                                 <span class="text-dark">Epidemiologist<span
                                                         class="label label-light float-right">02</span></span>
                                             </span>
-                                        </label>
+                                        </label> --}}
                                     </div>
                                 </div>
                             </div>
