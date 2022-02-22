@@ -739,7 +739,7 @@
                             <div class="cat-item text-center">
                                 <a href="{{ route('users-list', 'medical-centers') }}"></a>
                                 <div class="cat-icon bg-info-transparent brround text-info">
-                                    <i class="fa fa-stethoscope"></i>
+                                    <i class="fa fa-house-chimney-medical"></i>
                                 </div>
                                 <div class="cat-desc">
                                     <h5 class="mb-2">Medical Centers</h5>

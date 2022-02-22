@@ -1056,7 +1056,7 @@ class FrontEndController extends Controller
                             </div>
                             <div class="card-footer">
                                 <div class="">
-                                    <button type="submit" class="btn  btn-primary">Fix Appointment</button>
+                                    <button type="submit" class="btn  btn-primary">Book Now</button>
                                 </div>
                             </div>
                         </form>
@@ -1166,7 +1166,7 @@ class FrontEndController extends Controller
                         </div>
                         <div class="card-footer">
                             <div class="">
-                                <button type="submit" class="btn  btn-primary">Fix Appointment</button>
+                                <button type="submit" class="btn  btn-primary">Book Now</button>
                             </div>
                         </div>
                     </form>
