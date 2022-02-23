@@ -2726,11 +2726,11 @@
     <!--Statistics-->
     <section>
         <div class="about-1 cover-image sptb bg-background-color"
-            data-image-src="{{ asset('front_end_style/assets/images/banners/banner4.jpg') }}">
+            data-image-src="{{ asset('http://rushetta.website/front_end_style/rushetta_images/last_header.png') }}">
             <div class="content-text mb-0 text-white info">
                 <div class="container">
                     <div class="row text-center">
-                        <div class="col-lg-3 col-md-6">
+                        {{-- <div class="col-lg-3 col-md-6">
                             <div class="counter-status md-mb-0">
                                 <div class="counter-icon">
                                     <i class="icon icon-trophy"></i>
@@ -2765,7 +2765,7 @@
                                 <h5 class="font-weight-normal">Happy Customers</h5>
                                 <h2 class="counter mb-0">7253</h2>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -3112,7 +3112,7 @@
     </section>
     <!--/Section-->
 
-    <!--Section-->
+    {{-- <!--Section-->
     <section class="sptb section-bg">
         <div class="container">
             <div class="section-title center-block text-center">
@@ -3284,7 +3284,7 @@
             </div>
         </div>
     </section>
-    <!--Section-->
+    <!--Section--> --}}
 
     <!--Section-->
     <section class="sptb">
