@@ -1418,8 +1418,8 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="item-card2">
-                                                                <small
-                                                                    class="text-muted">{{ isset($doctor->doctor->speciality->name_en) ? $doctor->doctor->speciality->name_en : '--------' }}</small>
+                                                                {{-- <small
+                                                                    class="text-muted">{{ isset($doctor->doctor->speciality->name_en) ? $doctor->doctor->speciality->name_en : '--------' }}</small> --}}
                                                                 <a class="text-dark"
                                                                     href="{{ route('user-details', ['doctors', $doctor->doctor->alias_name_en]) }}">
                                                                     <h4 class="font-weight-semibold mt-1 mb-1">
@@ -1428,7 +1428,29 @@
                                                                             class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                                     </h4>
                                                                 </a>
-                                                                <p class="text-muted fs-13 mb-1">MBBS, MD, DM, Ph.D</p>
+                                                                @if(isset($doctor->doctor->specialities) && $doctor->doctor->specialities->count() > 0)
+                                                                    @foreach ($doctor->doctor->specialities->take(3) as $speciality)
+                                                                        <p class="text-muted fs-13 mt-0"><i
+                                                                            class="fa fa-user-md text-muted mr-2"></i>{{ isset($speciality->speciality->name_en) ? $speciality->speciality->name_en : '--------' }}</p>
+                                                                    @endforeach
+                                                                @endif
+                                                                <div class="mb-0 mt-0">
+                                                                    <ul class="item-card-features mb-0">
+                                                                        <li><span><i
+                                                                                    class="fa fa-map-marker mr-1 text-muted"></i>
+                                                                                {{ isset($doctor->doctor->country_id) ? $doctor->doctor->country->name_en : 'Not Set' }}
+                                                                                /
+                                                                                {{ isset($doctor->doctor->region_id) ? $doctor->doctor->region->name_en : 'Not Set' }}</span>
+                                                                        </li>
+                                                                        @if (isset($doctor->doctor->weekPlan->active_days) && count(explode(',', $doctor->doctor->weekPlan->active_days)) > 0)
+                                                                            <li><span><i
+                                                                                        class="fa fa-calendar-o mr-1 text-muted"></i>{{ explode(',', $doctor->doctor->weekPlan->active_days)[0] }}
+                                                                                    |
+                                                                                    {{ explode(',', $doctor->doctor->weekPlan->active_days)[count(explode(',', $doctor->doctor->weekPlan->active_days)) - 1] }}</span>
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
+                                                                </div>
                                                                 <div class="rating-stars d-inline-flex mb-1">
                                                                     <input class="rating-value star"
                                                                         name="rating-stars-value" readonly="readonly"
@@ -1449,15 +1471,7 @@
                                                                         <div class="rating-star sm">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                    </div>5.0
-                                                                </div>
-                                                                <div class="mb-0 mt-0">
-                                                                    <ul class="item-card-features mb-0">
-                                                                        <li class="mb-0"><span
-                                                                                class="text-muted"><i
-                                                                                    class="fa fa-map-marker mr-1"></i>
-                                                                                Hyderabad</span></li>
-                                                                    </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1534,9 +1548,9 @@
                             <div class="row">
                                 @if (isset($public_doctors) && $public_doctors->count() > 0)
                                     @foreach ($public_doctors as $index => $category)
-                                        <div class="col-lg-6 col-md-12 col-xl-3">
-                                            <div class="card">
-                                                <div class="item-card7-imgs">
+                                        <div class="col-lg-6 col-md-12 col-xl-3" style="height:460px !important; margin-bottom:2%;">
+                                            <div class="card" style="height: 100%">
+                                                <div class="item-card7-imgs h-100">
                                                     <a
                                                         href="{{ route('user-details', ['doctors', $category->alias_name_en]) }}"></a>
                                                     @if (isset($category->profile_photo_path) && file_exists($category->profile_photo_path))
@@ -1566,43 +1580,51 @@
                                                                     class="ion-checkmark-circled  text-success fs-14 ml-1"></i>
                                                             </h4>
                                                         </a>
-                                                        <p class="text-muted fs-13 mb-1"><i
-                                                                class="fa fa-user-md text-muted mr-2"></i>MBBS, MD, DM,
-                                                            Ph.D
-                                                        </p>
-                                                        <div class="rating-stars d-inline-flex mb-1">
-                                                            <input class="rating-value star" name="rating-stars-value"
-                                                                readonly="readonly" type="number" value="3">
-                                                            <div class="rating-stars-container mr-2">
-                                                                <div class="rating-star sm ">
-                                                                    <i class="fa fa-star"></i>
+                                                        @if(isset($category->specialities) && $category->specialities->count() > 0)
+                                                                    @foreach ($category->specialities->take(3) as $speciality)
+                                                                        <p class="text-muted fs-13 mt-0"><i
+                                                                            class="fa fa-user-md text-muted mr-2"></i>{{ isset($speciality->speciality->name_en) ? $speciality->speciality->name_en : '--------' }}</p>
+                                                                    @endforeach
+                                                                @endif
+                                                                <div class="mb-0 mt-0">
+                                                                    <ul class="item-card-features mb-0">
+                                                                        <li><span><i
+                                                                                    class="fa fa-map-marker mr-1 text-muted"></i>
+                                                                                {{ isset($category->country_id) ? $category->country->name_en : 'Not Set' }}
+                                                                                /
+                                                                                {{ isset($category->region_id) ? $category->region->name_en : 'Not Set' }}</span>
+                                                                        </li>
+                                                                        @if (isset($category->weekPlan->active_days) && count(explode(',', $category->weekPlan->active_days)) > 0)
+                                                                            <li><span><i
+                                                                                        class="fa fa-calendar-o mr-1 text-muted"></i>{{ explode(',', $category->weekPlan->active_days)[0] }}
+                                                                                    |
+                                                                                    {{ explode(',', $category->weekPlan->active_days)[count(explode(',', $category->weekPlan->active_days)) - 1] }}</span>
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
                                                                 </div>
-                                                                <div class="rating-star sm ">
-                                                                    <i class="fa fa-star"></i>
+                                                                <div class="rating-stars d-inline-flex mb-1">
+                                                                    <input class="rating-value star"
+                                                                        name="rating-stars-value" readonly="readonly"
+                                                                        type="number" value="5">
+                                                                    <div class="rating-stars-container mr-2">
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm ">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <div class="rating-star sm">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="rating-star sm ">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm ">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>3.2
-                                                        </div>
-                                                        <div class="mb-0 mt-0">
-                                                            <ul class="item-card-features mb-0">
-                                                                <li class="mb-0"><span class="text-muted"><i
-                                                                            class="fa fa-map-marker mr-1"></i>
-                                                                        Hyderabad</span>
-                                                                </li>
-                                                                <li><span class="text-muted "><i
-                                                                            class="fa fa-briefcase mr-1"></i>2 yrs
-                                                                        Exp</span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer p-0 btn-appointment">

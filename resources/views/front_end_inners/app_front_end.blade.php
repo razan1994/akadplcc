@@ -50,10 +50,12 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        {{-- Sweet Alert --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    {{-- Sweet Alert --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -95,16 +97,20 @@
                             <div class="clearfix">
                                 <ul class="socials">
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-facebook"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i
+                                                class="fa-brands fa-facebook"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i
+                                                class="fa-brands fa-twitter"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i
+                                                class="fa-brands fa-linkedin-in"></i></a>
                                     </li>
                                     <li>
-                                        <a class="social-icon text-dark" href="#"><i class="fa-brands fa-google"></i></a>
+                                        <a class="social-icon text-dark" href="#"><i
+                                                class="fa-brands fa-google"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -562,15 +568,19 @@
                         <div class="top-bar-right">
                             <ul class="custom">
 
-                                @if(Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check() || Auth::guard('patient')->check())
+                                @if (Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check() || Auth::guard('patient')->check())
                                     <li>
-                                        <a href="{{ route('front-logout') }}" class="text-dark" style="cursor: pointer;"><i class="icon icon-power"></i>
+                                        <a href="{{ route('front-logout') }}" class="text-dark"
+                                            style="cursor: pointer;"><i class="icon icon-power"></i>
                                             <span>Logout</span></a>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
-                                            {{-- @if(isset(auth()->user()->notifications) && auth()->user()->notifications->count() > 0)
+                                        <a class="text-dark" data-toggle="dropdown" href="#"><i
+                                                class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
+                                        <div
+                                            class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
+                                            {{-- @if (isset(auth()->user()->notifications) &&
+    auth()->user()->notifications->count() > 0)
                                             @else
                                                 <div class="col-md-12" style="text-align: center">
                                                     <h3 class="text-danger"> No Notifications...</h3>
@@ -579,37 +589,61 @@
                                         </div>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="text-dark" data-toggle="dropdown" href="#"><i  class="fa fa-home mr-1"></i> <span>My Profile</span></a>
+                                        <a class="text-dark" data-toggle="dropdown" href="#"><i
+                                                class="fa fa-home mr-1"></i> <span>My Profile</span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            @if(Auth::guard('doctor')->check())
-                                                <a class="dropdown-item" href="{{ route('doctor.doctor-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('doctor')->check())
+                                                <a class="dropdown-item"
+                                                    href="{{ route('doctor.doctor-dashboard') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
-                                            @if(Auth::guard('patient')->check())
-                                                <a class="dropdown-item" href="{{ route('patient.patient-profile') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('patient')->check())
+                                                <a class="dropdown-item"
+                                                    href="{{ route('patient.patient-profile') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
-                                            @if(Auth::guard('hospital')->check())
-                                                <a class="dropdown-item" href="{{ route('hospital.hospital-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('hospital')->check())
+                                                <a class="dropdown-item"
+                                                    href="{{ route('hospital.hospital-dashboard') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
-                                            @if(Auth::guard('radiology_center')->check())
-                                                <a class="dropdown-item" href="{{ route('radiology_center.radiology-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('radiology_center')->check())
+                                                <a class="dropdown-item"
+                                                    href="{{ route('radiology_center.radiology-dashboard') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
-                                            @if(Auth::guard('medical_center')->check())
-                                                <a class="dropdown-item" href="{{ route('medical_center.medical-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('medical_center')->check())
+                                                <a class="dropdown-item"
+                                                    href="{{ route('medical_center.medical-dashboard') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
-                                            @if(Auth::guard('lab')->check())
-                                                <a class="dropdown-item" href="{{ route('lab.lab-dashboard') }}"><i class="dropdown-icon icon icon-user"></i> My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i>Notifications</a>
-                                                <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+                                            @if (Auth::guard('lab')->check())
+                                                <a class="dropdown-item" href="{{ route('lab.lab-dashboard') }}"><i
+                                                        class="dropdown-icon icon icon-user"></i> My Profile</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-bell"></i>Notifications</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="dropdown-icon icon icon-power"></i> Log out</a>
                                             @endif
                                         </div>
                                     </li>
@@ -643,11 +677,13 @@
             <div class="horizontal-main clearfix">
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
+                        <a href="{{ route('welcome') }}"><img
+                                src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
                                 alt="header"></a>
                     </div>
                     <div class="desktoplogo-1">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
+                        <a href="{{ route('welcome') }}"><img
+                                src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
                                 alt="header"></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">
@@ -766,7 +802,8 @@
                                         </ul> --}}
                                     </li>
                                     <li aria-haspopup="true">
-                                        <a href="{{ route('users-list', 'radiology-centers') }}">Radiology Centers</a>
+                                        <a href="{{ route('users-list', 'radiology-centers') }}">Radiology
+                                            Centers</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="pharmacy-list.html">Pharmacy List</a></li>
                                             <li><a href="pharmacy-list-right.html">Pharmacy List Right</a></li>
@@ -821,7 +858,8 @@
                                 <a href="{{ route('contactUs') }}">Contact Us </a>
                             </li>
                             <li aria-haspopup="true" id="search_btn" style="display: none;">
-                                <a href="#search_collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search_collapse"><i class="fa fa-search"></i></a>
+                                <a href="#search_collapse" data-toggle="collapse" role="button" aria-expanded="false"
+                                    aria-controls="search_collapse"><i class="fa fa-search"></i></a>
                             </li>
                             {{-- <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
                                 <span>
@@ -953,16 +991,20 @@
                             <hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">
                             <ul class="list-unstyled mb-0 contact-footer">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> {{ isset($public_contact->address_en) ? $public_contact->address_en : '--------' }}
+                                    <i class="fa fa-map-marker"></i>
+                                    {{ isset($public_contact->address_en) ? $public_contact->address_en : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope "></i>{{ isset($public_contact->email) ? $public_contact->email : '--------' }}
+                                    <i
+                                        class="fa fa-envelope "></i>{{ isset($public_contact->email) ? $public_contact->email : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i>+ {{ isset($public_contact->phone) ? $public_contact->phone : '--------' }}
+                                    <i class="fa fa-phone"></i>+
+                                    {{ isset($public_contact->phone) ? $public_contact->phone : '--------' }}
                                 </li>
                                 <li>
-                                    <i class="fa fa-print"></i>+ {{ isset($public_contact->fax) ? $public_contact->fax : '--------' }}
+                                    <i class="fa fa-print"></i>+
+                                    {{ isset($public_contact->fax) ? $public_contact->fax : '--------' }}
                                 </li>
                             </ul>
                         </div>
@@ -1038,25 +1080,32 @@
         <div class="modal-dialog modal-lg modal-appoint" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Rating</h5><button
-                        aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                    <h5 class="modal-title" id="exampleModalLabel">Rating</h5><button aria-label="Close"
+                        class="close" data-dismiss="modal" type="button"><span
                             aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body d-flex justify-content-center">
-                    <div class="rating-stars d-inline-flex mb-2 mr-3">
-                        <input type="number" readonly="readonly" class="rating-value star"
-                            name="rating_value" value="4">
-                        <div class="rating-stars-container mr-2 modal-stars">
-                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
-                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
-                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
-                            <div class="rating-star sm "> <i class="fa fa-star"></i> </div>
-                            <div class="rating-star sm"> <i class="fa fa-star"></i> </div>
-                        </div>
+                <input type="hidden" name="rating_value">
+                <input type="hidden" name="rating_user_type">
+                <input type="hidden" name="rating_user_id">
+                <div class="modal-body">
+                    <div class="row d-flex justify-content-center" style="font-size: 25pt;">
+                        <div class="rating-star sm star_rate" id="star_1" data-val="1"> <i class="fa fa-star"></i> </div>
+                        <div class="rating-star sm star_rate" id="star_2" data-val="2"> <i class="fa fa-star"></i> </div>
+                        <div class="rating-star sm star_rate" id="star_3" data-val="3"> <i class="fa fa-star"></i> </div>
+                        <div class="rating-star sm star_rate" id="star_4" data-val="4"> <i class="fa fa-star"></i> </div>
+                        <div class="rating-star sm star_rate" id="star_5" data-val="5"> <i class="fa fa-star"></i> </div>
                     </div>
+                    <div class="input-group w-100 mt-7">
+                        <label for="" class="w-100">Leave A Message</label>
+                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-start">
+                    <button class="btn btn-primary">Send</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -1107,12 +1156,16 @@
                                                 tabindex="500">
                                                 @csrf
                                                 <div class="mail">
-                                                    <small class="text-danger">@error('email') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('email')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <input type="text" name="email">
                                                     <label>Mail or Phone</label>
                                                 </div>
                                                 <div class="passwd">
-                                                    <small class="text-danger">@error('password') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('password')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <input type="password" name="password">
                                                     <label>Password</label>
                                                 </div>
@@ -1144,10 +1197,14 @@
                                                 </div>
                                             </div>
                                             <hr class="divider">
-                                            <form action="{{ route('front-register') }}" method="POST" enctype="multipart/form-data" id="Register" class="card-body" tabindex="500">
+                                            <form action="{{ route('front-register') }}" method="POST"
+                                                enctype="multipart/form-data" id="Register" class="card-body"
+                                                tabindex="500">
                                                 @csrf
                                                 <div class="col-md-12 row">
-                                                    <small class="text-danger">@error('user_type') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('user_type')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <div class="col-md-6 row">
                                                         <label for="#patient"
                                                             style="cursor: pointer;font-size:12pt">Patient</label>
@@ -1161,11 +1218,15 @@
                                                             style="height:20px;margin-left: 28%;margin-top: -2%;">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12" style="padding: 0;top:10px;display:none" id="select_type_div">
-                                                    <small class="text-danger">@error('institution_type') {{ $message }} @enderror</small>
-                                                    <label for="#institution_type"
-                                                        style="cursor: pointer;">Institution Type</label>
-                                                    <select name="institution_type" class="form-control" id="institution_type">
+                                                <div class="col-md-12" style="padding: 0;top:10px;display:none"
+                                                    id="select_type_div">
+                                                    <small class="text-danger">@error('institution_type')
+                                                            {{ $message }}
+                                                        @enderror</small>
+                                                    <label for="#institution_type" style="cursor: pointer;">Institution
+                                                        Type</label>
+                                                    <select name="institution_type" class="form-control"
+                                                        id="institution_type">
                                                         <option value="Doctor">Doctor</option>
                                                         <option value="Hospital">Hospital</option>
                                                         <option value="Medical Center">Medical Center</option>
@@ -1175,17 +1236,23 @@
                                                 </div>
                                                 <hr style="font-weight: 900">
                                                 <div class="name">
-                                                    <small class="text-danger">@error('name') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('name')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <input type="text" name="name">
                                                     <label>Name</label>
                                                 </div>
                                                 <div class="mail">
-                                                    <small class="text-danger">@error('email') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('email')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <input type="text" name="email">
                                                     <label>Mail or Phone</label>
                                                 </div>
                                                 <div class="passwd">
-                                                    <small class="text-danger">@error('password') {{ $message }} @enderror</small>
+                                                    <small class="text-danger">@error('password')
+                                                            {{ $message }}
+                                                        @enderror</small>
                                                     <input type="password" name="password">
                                                     <label>Password</label>
                                                 </div>
@@ -1277,112 +1344,112 @@
     <script src="{{ asset('front_end_style/assets/js/custom.js') }}"></script>
 
 
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#patient, #institution").change(function() {
                 if ($("#patient").is(":checked")) {
-                    $("#select_type_div").css('display','none');
+                    $("#select_type_div").css('display', 'none');
                 } else if ($("#institution").is(":checked")) {
-                    $("#select_type_div").css('display','');
+                    $("#select_type_div").css('display', '');
                 }
             });
         });
 
 
-        $(document).on('click','.book_appointment_cls',function(){
+        $(document).on('click', '.book_appointment_cls', function() {
 
             user_id = $(this).data('id');
             user_type = $(this).data('type');
 
             var formData = new FormData();
-                formData.append('user_type', user_type);
-                formData.append('user_id', user_id);
+            formData.append('user_type', user_type);
+            formData.append('user_id', user_id);
 
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'post',
-                    url: "{{ route('appointmentData') }}",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    success: function(data) {
-                        if (data.status == true) {
-                            $("#appointment_body").html('');
-                            $("#appointment_body").html(data.output);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'post',
+                url: "{{ route('appointmentData') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data.status == true) {
+                        $("#appointment_body").html('');
+                        $("#appointment_body").html(data.output);
 
 
-                            const swiper = new Swiper(".swiper-container", {
-                                direction: 'vertical',
-                                navigation: {
-                                    nextEl: '.swiper-button-prev',
-                                    prevEl: '.swiper-button-next'
+                        const swiper = new Swiper(".swiper-container", {
+                            direction: 'vertical',
+                            navigation: {
+                                nextEl: '.swiper-button-prev',
+                                prevEl: '.swiper-button-next'
+                            },
+                            effect: "coverflow",
+                            scrollbar: '.swiper-scrollbar',
+                            initialSlide: 3,
+                            scrollbarHide: true,
+                            slidesPerView: 7,
+                            centeredSlides: true,
+                            freeMode: true,
+                            spaceBetween: 1,
+                            slideToClickedSlide: true,
+                            loop: false,
+                            mousewheel: true,
+                            speed: 600,
+
+                            // autoplay: {
+                            //     delay: 3000
+                            // },
+
+                            coverflowEffect: {
+                                rotate: 10,
+                                stretch: 0,
+                                depth: 20,
+                                modifier: 1,
+                                slideShadows: true
+                            },
+
+                            breakpoints: {
+                                320: {
+                                    slidesPerView: 7
                                 },
-                                effect: "coverflow",
-                                scrollbar: '.swiper-scrollbar',
-                                initialSlide : 3,
-                                scrollbarHide: true,
-                                slidesPerView: 7,
-                                centeredSlides: true,
-                                freeMode: true,
-                                spaceBetween: 1,
-                                slideToClickedSlide: true,
-                                loop: false,
-                                mousewheel:true,
-                                speed:600,
-
-                                // autoplay: {
-                                //     delay: 3000
-                                // },
-
-                                coverflowEffect: {
-                                    rotate: 10,
-                                    stretch: 0,
-                                    depth: 20,
-                                    modifier: 1,
-                                    slideShadows: true
+                                560: {
+                                    slidesPerView: 7
                                 },
+                                990: {
+                                    slidesPerView: 7
+                                }
+                            },
 
-                                breakpoints: {
-                                    320: {
-                                        slidesPerView: 7
-                                    },
-                                    560: {
-                                        slidesPerView: 7
-                                    },
-                                    990: {
-                                        slidesPerView: 7
-                                    }
-                                },
+                            // pagination: {
+                            //     el: ".swiper-pagination",
+                            //     clickable: true
+                            // },
 
-                                // pagination: {
-                                //     el: ".swiper-pagination",
-                                //     clickable: true
-                                // },
-
-                                // navigation: {
-                                //     nextEl: ".swiper-button-next",
-                                //     prevEl: ".swiper-button-prev"
-                                // }
+                            // navigation: {
+                            //     nextEl: ".swiper-button-next",
+                            //     prevEl: ".swiper-button-prev"
+                            // }
 
 
-                            });
-
-
-                            $("#book_visit_modal").modal('show');
-
-                        }
-                    },
-                    error: function(reject) {
-                        var response = $.parseJSON(reject.responseText);
-                        $.each(response.errors, function(key, val) {
-                            $("#" + key + "_error").text(val[0]);
                         });
+
+
+                        $("#book_visit_modal").modal('show');
+
                     }
-                });
+                },
+                error: function(reject) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    });
+                }
+            });
 
         });
     </script>
@@ -1396,7 +1463,7 @@
             },
             effect: "coverflow",
             scrollbar: '.swiper-scrollbar',
-            initialSlide : 3,
+            initialSlide: 3,
             scrollbarHide: true,
             slidesPerView: 7,
             centeredSlides: true,
@@ -1404,8 +1471,8 @@
             spaceBetween: 1,
             slideToClickedSlide: true,
             loop: false,
-            mousewheel:true,
-            speed:600,
+            mousewheel: true,
+            speed: 600,
 
             // autoplay: {
             //     delay: 3000
@@ -1445,48 +1512,6 @@
         });
 
 
-            // $('.swiper-slide').click(function(){
-            //     $('.swiper-slide').css('background','#b9b9b9');
-            //     $(this).css('background','blue');
-            // });
-
-            // swiper.on('transitionEnd', function(e) {
-            //     // alert(this.activeIndex);
-            //     $('.swiper-slide').css('background','');
-            //     if (this.activeIndex == 1) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 2) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 3) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 4) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 5) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 6) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 7) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 8) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 9) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 10) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            //     if (this.activeIndex == 11) {
-            //         $('.swiper-slide-active').css('background','green');
-            //     }
-            // });
 
 
         const swiper2 = new Swiper(".swiper-container-main", {
@@ -1500,14 +1525,6 @@
             autoplay: {
                 delay: 3000
             },
-
-            // coverflowEffect: {
-            //     rotate: 50,
-            //     stretch: 0,
-            //     // depth: 100,
-            //     modifier: 1,
-            //     slideShadows: true
-            // },
 
             breakpoints: {
                 320: {
@@ -1531,22 +1548,50 @@
             //     prevEl: ".swiper-button-prev"
             // }
         });
-        $('.btn-check').change(function(){
+        $('.btn-check').change(function() {
 
-        slide = $(this).val();
-        selector = $(this).data('selector');
-        radio = $('input[name=time]:checked').val();
-            if(radio != undefined && radio != null && radio != ""){
-                $('.swiper-slide').css('background','#b9b9b9');
-                $('.slide_'+selector).css('background','blue');
+            slide = $(this).val();
+            selector = $(this).data('selector');
+            radio = $('input[name=time]:checked').val();
+            if (radio != undefined && radio != null && radio != "") {
+                $('.swiper-slide').css('background', '#b9b9b9');
+                $('.slide_' + selector).css('background', 'blue');
             }
         });
 
 
+        $('.rating-star').mouseenter(function(){
+            num = $(this).data('val');
+            $('.rating-star').css('color','');
+            $('.fa-star').css('color','');
+            for(i=0;i<=num;i++){
+                $('#star_'+i).css('color','#ffe000');
+            }
+        });
 
-        $(document).on('click','.rating-stars',function(){
+        $('.rating-star').mouseleave(function(){
+            $('.rating-star').css('color','');
+        });
+
+        $('.rating-star').click(function(){
+            num = $(this).data('val');
+            $('.rating-star').css('color','');
+            for(i=0;i<=num;i++){
+                in_star = $('#star_'+i).find('.fa-star');
+                in_star.css('color','#ffe000 !important');
+            }
+        });
+
+
+        // $('rating-star').mouseleave(resetRatingStars);
+
+        $(document).on('click', '.rating-stars', function() {
             $("#rating_modal").modal('show');
         });
+
+
+
+
     </script>
 </body>
 

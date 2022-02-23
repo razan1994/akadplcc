@@ -707,19 +707,19 @@
 										<div class="rating-stars d-flex mr-5">
 											<input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" id="rating-stars-value" value="4">
 											<div class="rating-stars-container mr-2">
-												<div class="rating-star sm">
+												<div class="rating-star sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm">
+												<div class="rating-star sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm">
+												<div class="rating-star sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm">
+												<div class="rating-star sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm">
+												<div class="rating-star sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
 											</div> 4.0

@@ -768,19 +768,19 @@
                                                                         class="rating-value star" name="rating-stars-value"
                                                                         readonly="readonly" type="number" value="3">
                                                                     <div class="rating-stars-container">
-                                                                        <div class="rating-star sm">
+                                                                        <div class="rating-star sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star sm">
+                                                                        <div class="rating-star sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star sm">
+                                                                        <div class="rating-star sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star sm">
+                                                                        <div class="rating-star sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star sm">
+                                                                        <div class="rating-star sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
@@ -884,19 +884,19 @@
                                                                             name="rating-stars-value" readonly="readonly"
                                                                             type="number" value="3">
                                                                         <div class="rating-stars-container">
-                                                                            <div class="rating-star sm ">
+                                                                            <div class="rating-star sm " data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                                 <i class="fa fa-star"></i>
                                                                             </div>
-                                                                            <div class="rating-star sm ">
+                                                                            <div class="rating-star sm " data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                                 <i class="fa fa-star"></i>
                                                                             </div>
-                                                                            <div class="rating-star sm ">
+                                                                            <div class="rating-star sm " data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                                 <i class="fa fa-star"></i>
                                                                             </div>
-                                                                            <div class="rating-star sm ">
+                                                                            <div class="rating-star sm " data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                                 <i class="fa fa-star"></i>
                                                                             </div>
-                                                                            <div class="rating-star sm ">
+                                                                            <div class="rating-star sm " data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
                                                                                 <i class="fa fa-star"></i>
                                                                             </div>
                                                                         </div>
