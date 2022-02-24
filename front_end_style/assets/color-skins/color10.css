@@ -1548,7 +1548,7 @@ button#ihavecookiesBtn {
 }
 
 .header-search-logo .header-brand-img {
-    background: url(../images/brand/logos/head.png);
+    background: url(../../rushetta_images/latest_logo_new.png);
     display: block;
     width: 150px;
     height: 40px;
@@ -1575,8 +1575,9 @@ button#ihavecookiesBtn {
 
 @media only screen and (max-width: 991px) {
     .smllogo.mobile-logo {
-        background: url(../images/brand/logos/head.png);
-        width: 150px;
+        background: url(../../rushetta_images/latest_logo_new.png) center center;
+        background-size: contain;
+        width: 200px;
         height: 40px;
         background-repeat: no-repeat;
         margin: 0 auto;

@@ -5,7 +5,7 @@
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/rushetta_images/header_image_new.jpeg') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/header_search.jpg') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">

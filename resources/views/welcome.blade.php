@@ -7,7 +7,7 @@
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/rushetta_images/header_image_new.jpeg') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/header_search.jpg') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">
@@ -15,28 +15,39 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                        <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
                             <div class="item-search-tabs">
                                 <div class="item-search-menu">
                                     <ul class="nav">
                                         <li>
                                             <a class="active" data-toggle="tab" href="#tab2">Doctors</a>
                                         </li>
-                                        <li class="">
-                                            <a class="" data-toggle="tab" href="#tab1">Hospitals</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab3">FitnesCenters</a>
-                                        </li>
                                         <li>
                                             <a data-toggle="tab" href="#tab4">Pharmacies</a>
                                         </li>
+                                        <li class="">
+                                            <a class="" data-toggle="tab" href="#tab1">Hospitals</a>
+                                        </li>
+
                                         <li>
-                                            <a data-toggle="tab" href="#tab5">Clinics</a>
+                                            <a data-toggle="tab" href="#tab3">Fitnes Centers</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab6">Blood Banks</a>
+                                            <a data-toggle="tab" href="#tab6">Life Coaches</a>
                                         </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Medical Equipment</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab5">Medical Centers</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Radiology Centers</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Labs</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="tab-content index-search-select">

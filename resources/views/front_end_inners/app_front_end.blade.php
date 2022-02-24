@@ -678,12 +678,12 @@
                 <div class="horizontal-mainwrapper container clearfix">
                     <div class="desktoplogo">
                         <a href="{{ route('welcome') }}"><img
-                                src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
+                                src="{{ asset('front_end_style/rushetta_images/latest_logo_new.png') }}"
                                 alt="header"></a>
                     </div>
                     <div class="desktoplogo-1">
                         <a href="{{ route('welcome') }}"><img
-                                src="{{ asset('front_end_style/rushetta_images/roshiita_new_logo.png') }}"
+                                src="{{ asset('front_end_style/rushetta_images/latest_logo_new.png') }}"
                                 alt="header"></a>
                     </div>
                     <nav class="horizontalMenu clearfix d-md-flex">
