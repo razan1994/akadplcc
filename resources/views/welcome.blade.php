@@ -954,19 +954,24 @@
                                                                         name="rating-stars-value" readonly="readonly"
                                                                         type="number" value="5">
                                                                     <div class="rating-stars-container mr-2">
-                                                                        <div class="rating-star  user_rate sm " data-val="1" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="1" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}"
+                                                                            @if(isset($doctor->doctor->reviews) && $doctor->doctor->reviews->sum('rating_value') > 0) @if(($doctor->doctor->reviews->sum('rating_value') / $doctor->doctor->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="2" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="2" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}"
+                                                                            @if(isset($doctor->doctor->reviews) && $doctor->doctor->reviews->sum('rating_value') > 0) @if(($doctor->doctor->reviews->sum('rating_value') / $doctor->doctor->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="3" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="3" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}"
+                                                                            @if(isset($doctor->doctor->reviews) && $doctor->doctor->reviews->sum('rating_value') > 0) @if(($doctor->doctor->reviews->sum('rating_value') / $doctor->doctor->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="4" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="4" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}"
+                                                                            @if(isset($doctor->doctor->reviews) && $doctor->doctor->reviews->sum('rating_value') > 0) @if(($doctor->doctor->reviews->sum('rating_value') / $doctor->doctor->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm" data-val="5" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}">
+                                                                        <div class="rating-star  user_rate sm" data-val="5" data-user_type="doctors" data-user_id="{{ encrypt($doctor->doctor->id) }}"
+                                                                            @if(isset($doctor->doctor->reviews) && $doctor->doctor->reviews->sum('rating_value') > 0) @if(($doctor->doctor->reviews->sum('rating_value') / $doctor->doctor->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
@@ -1101,25 +1106,30 @@
                                                                         @endif
                                                                     </ul>
                                                                 </div>
-                                                                
+
                                                                 <div class="rating-stars d-inline-flex mb-1">
                                                                     <input class="rating-value star"
                                                                         name="rating-stars-value" readonly="readonly"
                                                                         type="number" value="5">
                                                                     <div class="rating-stars-container mr-2">
-                                                                        <div class="rating-star  user_rate sm " data-val="1" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="1" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}"
+                                                                            @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="2" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="2" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}"
+                                                                            @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="3" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="3" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}"
+                                                                            @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm " data-val="4" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}">
+                                                                        <div class="rating-star  user_rate sm " data-val="4" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}"
+                                                                            @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                        <div class="rating-star  user_rate sm" data-val="5" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}">
+                                                                        <div class="rating-star  user_rate sm" data-val="5" data-user_type="doctors" data-user_id="{{ encrypt($category->id) }}"
+                                                                            @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
@@ -1186,19 +1196,24 @@
                                                             <input class="rating-value star" name="rating-stars-value"
                                                                 readonly="readonly" type="number" value="5">
                                                             <div class="rating-stars-container mr-2">
-                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="hospitals" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
                                                             </div>5.0
@@ -1282,19 +1297,24 @@
                                                             <input class="rating-value star" name="rating-stars-value"
                                                                 readonly="readonly" type="number" value="5">
                                                             <div class="rating-stars-container mr-2">
-                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="medical-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
                                                             </div>5.0
@@ -1378,19 +1398,24 @@
                                                             <input class="rating-value star" name="rating-stars-value"
                                                                 readonly="readonly" type="number" value="5">
                                                             <div class="rating-stars-container mr-2">
-                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="radiology-centers" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
                                                             </div>5.0
@@ -1474,19 +1499,24 @@
                                                             <input class="rating-value star" name="rating-stars-value"
                                                                 readonly="readonly" type="number" value="5">
                                                             <div class="rating-stars-container mr-2">
-                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="1" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="2" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="3" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm " data-val="4" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
-                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}">
+                                                                <div class="rating-star  user_rate sm" data-val="5" data-user_type="labs" data-user_id="{{ encrypt($category->id) }}"
+                                                                    @if(isset($category->reviews) && $category->reviews->sum('rating_value') > 0) @if(($category->reviews->sum('rating_value') / $category->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
                                                             </div>5.0

@@ -706,19 +706,24 @@
 										</ul>
 										<div class="rating-stars d-flex mr-5">
 											<div class="rating-stars-container mr-2">
-												<div class="rating-star  user_rate sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}"
+                                                    @if(isset($user->reviews) && $user->reviews->sum('rating_value') > 0) @if(($user->reviews->sum('rating_value') / $user->reviews->count()) >= 1) style="color:#ffe000;" @endif @endif>
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star  user_rate sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}"
+                                                    @if(isset($user->reviews) && $user->reviews->sum('rating_value') > 0) @if(($user->reviews->sum('rating_value') / $user->reviews->count()) >= 2) style="color:#ffe000;" @endif @endif>
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star  user_rate sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}"
+                                                    @if(isset($user->reviews) && $user->reviews->sum('rating_value') > 0) @if(($user->reviews->sum('rating_value') / $user->reviews->count()) >= 3) style="color:#ffe000;" @endif @endif>
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star  user_rate sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}"
+                                                    @if(isset($user->reviews) && $user->reviews->sum('rating_value') > 0) @if(($user->reviews->sum('rating_value') / $user->reviews->count()) >= 4) style="color:#ffe000;" @endif @endif>
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star  user_rate sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}"
+                                                    @if(isset($user->reviews) && $user->reviews->sum('rating_value') > 0) @if(($user->reviews->sum('rating_value') / $user->reviews->count()) >= 5) style="color:#ffe000;" @endif @endif>
 													<i class="fa fa-star"></i>
 												</div>
 											</div> 4.0
