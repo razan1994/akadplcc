@@ -1963,7 +1963,7 @@
     <!--Statistics-->
     <section>
         <div class="about-1 cover-image sptb bg-background-color"
-            data-image-src="{{ asset('front_end_style/rushetta_images/last_header.png') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/banner_image.jpeg') }}">
             <div class="content-text mb-0 text-white info">
                 <div class="container">
                     <div class="row text-center">

@@ -180,6 +180,7 @@ class FrontEndController extends Controller
             $user = Patient::create($created_data);
 
             Auth::guard('patient')->login($user);
+            return redirect()->route('patient.patient-profile');
         } else {
             $created_data['user_status'] = 1; // Pendding
 
