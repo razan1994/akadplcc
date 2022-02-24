@@ -93,6 +93,13 @@ class RadiologyCenter extends Authenticatable
         return $this->hasMany(RadiologyCenterGallery::class,'radiology_center_id');
     }
 
+
+    // Relation With Radiology Center reviews Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(RadiologyCenterReview::class,'radiology_center_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

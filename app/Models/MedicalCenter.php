@@ -94,6 +94,13 @@ class MedicalCenter extends Authenticatable
     }
 
 
+    // Relation With Radiology Center Reviews Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(MedicalCenterReview::class,'medical_center_id');
+    }
+
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

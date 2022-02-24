@@ -6,21 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ContactUsRequests\ContactUsFormRequest;
 use App\Http\Requests\Frontend\Guest\BookAppointmentFormRequest;
 use App\Http\Requests\Frontend\Guest\BookAppointmentGuestFormRequest;
+use App\Http\Requests\Frontend\Patient\RateUserFormRequest;
 use App\Models\Blog;
 use App\Models\ContactUs;
 use App\Models\ContactUsRequest;
 use App\Models\Doctor;
 use App\Models\DoctorReservation;
+use App\Models\DoctorReview;
 use App\Models\DoctorSpeciality;
 use App\Models\Gym;
 use App\Models\Hospital;
+use App\Models\HospitalReview;
 use App\Models\InsuranceCompany;
+use App\Models\InsuranceCompanyReview;
 use App\Models\Lab;
+use App\Models\LabReview;
 use App\Models\LatestNew;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
+use App\Models\MedicalCenterReview;
 use App\Models\Patient;
 use App\Models\Pharmacy;
+use App\Models\PharmacyReview;
 use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
@@ -1178,6 +1185,9 @@ class FrontEndController extends Controller
 
         }
     }
+
+
+
 
 
     function crawler(){

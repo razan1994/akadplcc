@@ -89,6 +89,13 @@ class Hospital extends Authenticatable
         return $this->hasOne(HospitalWeekPlan::class,'hospital_id');
     }
 
+    // Relation With Hospital Hospital Review Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(HospitalReview::class,'hospital_id');
+    }
+
+
     // Relation With Hospital Hospital Gallery Table
     // Created By : Mohammed Salah
     public function images(){

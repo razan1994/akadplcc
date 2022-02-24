@@ -16,6 +16,10 @@ class CreateDoctorReviewsTable extends Migration
         Schema::create('doctor_reviews', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->bigInteger('doctor_id');
+            $table->bigInteger('patient_id');
+            $table->tinyInteger('rating_value');
+            $table->longText('rating_message');
             $table->timestamps();
         });
     }

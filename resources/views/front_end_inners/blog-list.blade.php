@@ -3,11 +3,11 @@
 @section('content')
     <!--Section-->
     <section>
-        <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section" data-image-src="{{ asset('front_end_style/rushetta_images/last_header.png') }}">
+        <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section" data-image-src="{{ asset('front_end_style/rushetta_images/header_image_new.jpeg') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">
-                        <h1 class="mb-1">Find the Nearest Medical Facility</h1>
+                        <h1 class="mb-1" style="color: #1d1f35;">Find the Nearest Medical Facility</h1>
 
                     </div>
                     <div class="row">

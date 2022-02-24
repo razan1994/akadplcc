@@ -16,6 +16,10 @@ class CreateMedicalCenterReservationsTable extends Migration
         Schema::create('medical_center_reservations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->bigInteger('medical_center_id');
+            $table->bigInteger('patient_id');
+            $table->tinyInteger('rating_value');
+            $table->longText('rating_message');
             $table->timestamps();
         });
     }

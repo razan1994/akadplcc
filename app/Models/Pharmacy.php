@@ -81,6 +81,13 @@ class Pharmacy extends Authenticatable
         return $this->belongsTo(PublicRegion::class, 'region_id');
     }
 
+
+    // Relation With Pharmacy Reviews Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(PharmacyReview::class,'pharmacy_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

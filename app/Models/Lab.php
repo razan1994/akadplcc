@@ -92,6 +92,12 @@ class Lab extends Authenticatable
         return $this->hasMany(LabGallery::class,'lab_id');
     }
 
+    // Relation With Lab Reviews Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(LabReview::class,'lab_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

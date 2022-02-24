@@ -81,6 +81,14 @@ class InsuranceCompany extends Authenticatable
         return $this->belongsTo(PublicRegion::class, 'region_id');
     }
 
+
+    // Relation With Insurance Reviews Table
+    // Created By : Mohammed Salah
+    public function reviews()
+    {
+        return $this->hasMany(InsuranceCompanyReview::class, 'insurance_company_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

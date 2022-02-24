@@ -16,6 +16,10 @@ class CreatePharmacyReviewsTable extends Migration
         Schema::create('pharmacy_reviews', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->bigInteger('pharmacy_id');
+            $table->bigInteger('patient_id');
+            $table->tinyInteger('rating_value');
+            $table->longText('rating_message');
             $table->timestamps();
         });
     }

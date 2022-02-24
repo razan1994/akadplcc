@@ -120,6 +120,13 @@ class Doctor extends Authenticatable
         return $this->hasMany(DoctorConsultant::class,'doctor_id');
     }
 
+
+    // Relation With Doctor Reviews Table
+    // Created By : Mohammed Salah
+    public function reviews(){
+        return $this->hasMany(DoctorReview::class,'doctor_id');
+    }
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================

@@ -16,6 +16,10 @@ class CreateRadiologyCenterReviewsTable extends Migration
         Schema::create('radiology_center_reviews', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->bigInteger('radiology_center_id');
+            $table->bigInteger('patient_id');
+            $table->tinyInteger('rating_value');
+            $table->longText('rating_message');
             $table->timestamps();
         });
     }

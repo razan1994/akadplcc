@@ -1084,25 +1084,28 @@
                         class="close" data-dismiss="modal" type="button"><span
                             aria-hidden="true">×</span></button>
                 </div>
-                <input type="hidden" name="rating_value">
-                <input type="hidden" name="rating_user_type">
-                <input type="hidden" name="rating_user_id">
-                <div class="modal-body">
-                    <div class="row d-flex justify-content-center" style="font-size: 25pt;">
-                        <div class="rating-star sm star_rate" id="star_1" data-val="1"> <i class="fa fa-star"></i> </div>
-                        <div class="rating-star sm star_rate" id="star_2" data-val="2"> <i class="fa fa-star"></i> </div>
-                        <div class="rating-star sm star_rate" id="star_3" data-val="3"> <i class="fa fa-star"></i> </div>
-                        <div class="rating-star sm star_rate" id="star_4" data-val="4"> <i class="fa fa-star"></i> </div>
-                        <div class="rating-star sm star_rate" id="star_5" data-val="5"> <i class="fa fa-star"></i> </div>
+                <form action="{{ route('patient.rateUser') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="rating_value" id="rating_value">
+                    <input type="hidden" name="rating_user_type" id="rating_user_type">
+                    <input type="hidden" name="rating_user_id" id="rating_user_id">
+                    <div class="modal-body">
+                        <div class="row d-flex justify-content-center" style="font-size: 25pt;">
+                            <div class="rating-star sm star_rate" id="star_1" data-val="1"> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm star_rate" id="star_2" data-val="2"> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm star_rate" id="star_3" data-val="3"> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm star_rate" id="star_4" data-val="4"> <i class="fa fa-star"></i> </div>
+                            <div class="rating-star sm star_rate" id="star_5" data-val="5"> <i class="fa fa-star"></i> </div>
+                        </div>
+                        <div class="input-group w-100 mt-7">
+                            <label for="" class="w-100">Leave A Message</label>
+                            <textarea class="form-control" name="rating_message" id="" cols="30" rows="5"></textarea>
+                        </div>
                     </div>
-                    <div class="input-group w-100 mt-7">
-                        <label for="" class="w-100">Leave A Message</label>
-                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                    <div class="modal-footer d-flex justify-content-start">
+                        <button class="btn btn-primary">Send</button>
                     </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-start">
-                    <button class="btn btn-primary">Send</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1558,41 +1561,48 @@
                 $('.slide_' + selector).css('background', 'blue');
             }
         });
-
-
-        $('.rating-star').mouseenter(function(){
-            num = $(this).data('val');
-            $('.rating-star').css('color','');
-            $('.fa-star').css('color','');
-            for(i=0;i<=num;i++){
-                $('#star_'+i).css('color','#ffe000');
-            }
-        });
-
-        $('.rating-star').mouseleave(function(){
-            $('.rating-star').css('color','');
-        });
-
-        $('.rating-star').click(function(){
-            num = $(this).data('val');
-            $('.rating-star').css('color','');
-            for(i=0;i<=num;i++){
-                in_star = $('#star_'+i).find('.fa-star');
-                in_star.css('color','#ffe000 !important');
-            }
-        });
-
-
-        // $('rating-star').mouseleave(resetRatingStars);
-
-        $(document).on('click', '.rating-stars', function() {
-            $("#rating_modal").modal('show');
-        });
-
-
-
-
     </script>
+    @if(Auth::guard('patient')->check())
+        <script>
+                    $('.rating-star').mouseenter(function(){
+                num = $(this).data('val');
+                $('.rating-star').css('color','');
+                $('.fa-star').css('color','');
+                for(i=0;i<=num;i++){
+                    $('#star_'+i).css('color','#ffe000');
+                }
+            });
+
+            $('.rating-star').mouseleave(function(){
+                $('.rating-star').css('color','');
+            });
+
+            $('.rating-star').click(function(){
+                num = $(this).data('val');
+                $('.rating-star').css('color','');
+                for(i=0;i<=num;i++){
+                    in_star = $('#star_'+i).find('.fa-star');
+                    in_star.css('color','#ffe000 !important');
+                }
+
+                $("#rating_value").val(num);
+            });
+
+
+            // $('rating-star').mouseleave(resetRatingStars);
+
+            $(document).on('click', '.user_rate', function() {
+                user_id = $(this).data('user_id');
+                user_type = $(this).data('user_type');
+
+                $("#rating_user_type").val(user_type);
+                $("#rating_user_id").val(user_id);
+
+                $("#rating_modal").modal('show');
+            });
+        </script>
+    @endif
+
 </body>
 
 </html>

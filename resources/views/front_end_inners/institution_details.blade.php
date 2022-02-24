@@ -5,11 +5,11 @@
     <!--Section-->
     <section>
         <div class="banner-1 cover-image sptb-2 sptb-tab bg-background1 banner-section"
-            data-image-src="{{ asset('front_end_style/rushetta_images/last_header.png') }}">
+            data-image-src="{{ asset('front_end_style/rushetta_images/header_image_new.jpeg') }}">
             <div class="header-text mb-0">
                 <div class="container">
                     <div class="text-center text-white">
-                        <h1 class="mb-1">Find the Nearest Medical Facility</h1>
+                        <h1 class="mb-1" style="color: #1d1f35;">Find the Nearest Medical Facility</h1>
                         <p>It is a long established fact that a reader will be distracted by the when looking at its
                             layout.</p>
                     </div>
@@ -705,21 +705,20 @@
 											<li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> {{ isset($user->view_counter) ? $user->view_counter : 0 }}</a></li>
 										</ul>
 										<div class="rating-stars d-flex mr-5">
-											<input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" id="rating-stars-value" value="4">
 											<div class="rating-stars-container mr-2">
-												<div class="rating-star sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="1" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="2" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="3" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="4" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="rating-star sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
+												<div class="rating-star  user_rate sm" data-val="5" data-user_type="{{ $user_type }}" data-user_id="{{ encrypt($user->id) }}">
 													<i class="fa fa-star"></i>
 												</div>
 											</div> 4.0

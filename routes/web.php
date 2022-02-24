@@ -51,8 +51,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/searchUser', [FrontEndController::class, 'searchUser'])->name('searchUser');
 
     Route::post('/bookAppointmentGuest', [FrontEndController::class, 'bookAppointmentGuest'])->name('book-appointment-guest');
-    
+
     Route::post('/appointmentData', [FrontEndController::class, 'appointmentData'])->name('appointmentData');
+
+
+
 
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
@@ -76,6 +79,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::get('/profile/{active?}', [PatientController::class, 'profile'])->name('patient-profile');
                 Route::post('/patientUpdateProfile/{id}', [PatientController::class, 'patientUpdateProfile'])->name('patient-update-profile');
                 Route::post('/book-appointment', [PatientController::class, 'bookAppointment'])->name('book-appointment');
+
+                Route::post('/rateUser', [PatientController::class, 'rateUser'])->name('rateUser');
             });
         });
 
