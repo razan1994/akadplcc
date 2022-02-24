@@ -14,32 +14,43 @@
                             layout.</p>
                     </div>
                     <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                        <div class="col-xl-12 col-lg-12 col-md-12 d-block mx-auto">
                             <div class="item-search-tabs">
                                 <div class="item-search-menu">
                                     <ul class="nav">
-                                        <li class="">
-                                            <a class="active" data-toggle="tab" href="#tab1">Hospitals</a>
-                                        </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab2">{{ ucfirst($user_type) }}</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab3">FitnesCenters</a>
+                                            <a class="active" data-toggle="tab" href="#tab2">Doctors</a>
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#tab4">Pharmacies</a>
                                         </li>
+                                        <li class="">
+                                            <a class="" data-toggle="tab" href="#tab1">Hospitals</a>
+                                        </li>
+
                                         <li>
-                                            <a data-toggle="tab" href="#tab5">Clinics</a>
+                                            <a data-toggle="tab" href="#tab3">Fitnes Centers</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab6">Blood Banks</a>
+                                            <a data-toggle="tab" href="#tab6">Life Coaches</a>
                                         </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Medical Equipment</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab5">Medical Centers</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Radiology Centers</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#tab6">Labs</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="tab-content index-search-select">
-                                    <div class="tab-pane active" id="tab1">
+                                    <div class="tab-pane" id="tab1">
                                         <div class="search-background">
                                             <div class="form row no-gutters">
                                                 <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
@@ -141,7 +152,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="tab2">
+                                    <div class="tab-pane active" id="tab2">
                                         <div class="search-background">
                                             <div class="form row no-gutters">
                                                 <div class="form-group col-xl-4 col-lg-4 col-md-12 mb-0 location">
@@ -156,7 +167,7 @@
                                                         data-placeholder="Select">
                                                         <optgroup label="Categories">
                                                             <option>
-                                                                Type Of {{ ucfirst($user_type) }}
+                                                                Type Of Doctors
                                                             </option>
                                                             <option value="1">
                                                                 Dentist
