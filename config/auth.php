@@ -83,6 +83,14 @@ return [
         'life_coach' => [
             'driver' => 'session',
             'provider' => 'life_coutches',
+        ],
+        'medical_equipment' => [
+            'driver' => 'session',
+            'provider' => 'medical_equipments',
+        ],
+        'medicine_company' => [
+            'driver' => 'session',
+            'provider' => 'medicine_companies',
         ]
     ],
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
@@ -151,6 +159,14 @@ return [
         'life_coutches' => [
             'driver' => 'eloquent',
             'model' => App\Models\LifeCoutch::class,
+        ],
+        'medical_equipments' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MedicalEquipment::class,
+        ],
+        'medicine_companies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MedicineCompany::class,
         ]
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
         // 'users' => [
@@ -246,7 +262,20 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'medical_equipments' => [
+            'provider' => 'medical_equipments',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'medicine_companies' => [
+            'provider' => 'medicine_companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ]
+
     ],
 // ['Super Admin','Insurance Company','Hospital','Radiology Center','Medical Center','Lab','Doctor','Patient','Pharmacy','SEO Admin','Gym','Life Coach']
     /*

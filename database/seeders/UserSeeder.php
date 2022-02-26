@@ -8,6 +8,8 @@ use App\Models\InsuranceCompany;
 use App\Models\Lab;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
+use App\Models\MedicalEquipment;
+use App\Models\MedicineCompany;
 use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\RadiologyCenter;
@@ -206,6 +208,40 @@ class UserSeeder extends Seeder
                 'alias_name_en' => 'patient-' . $i,
                 'username' => 'patient_' . $i,
                 'email' => 'patient_' . $i . '@rushetta.com',
+                'phone' => '079999989' . $i,
+                'password' => Hash::make('12345678'),
+                'country_id' => 111,
+                'region_id' => 1422,
+                'profile_photo_path' => 'storage/profile-photos/monster.webp',
+                'user_status' => 2, // Active
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'created_by' => 1,
+            ]);
+
+            MedicineCompany::create([
+                'name_ar' => 'مستودع_ادوية_' . $i,
+                'name_en' => 'medicine_company_' . $i,
+                'alias_name_ar' => 'مستودع-ادوية-' . $i,
+                'alias_name_en' => 'medicine-company-' . $i,
+                'username' => 'medicine_company_' . $i,
+                'email' => 'medicine_company_' . $i . '@rushetta.com',
+                'phone' => '079999989' . $i,
+                'password' => Hash::make('12345678'),
+                'country_id' => 111,
+                'region_id' => 1422,
+                'profile_photo_path' => 'storage/profile-photos/monster.webp',
+                'user_status' => 2, // Active
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'created_by' => 1,
+            ]);
+
+            MedicalEquipment::create([
+                'name_ar' => 'معدات_طبية_' . $i,
+                'name_en' => 'medical_equipment_' . $i,
+                'alias_name_ar' => 'معدات-طبية-' . $i,
+                'alias_name_en' => 'medical-equipment-' . $i,
+                'username' => 'medical_equipment_' . $i,
+                'email' => 'medical_equipment_' . $i . '@rushetta.com',
                 'phone' => '079999989' . $i,
                 'password' => Hash::make('12345678'),
                 'country_id' => 111,

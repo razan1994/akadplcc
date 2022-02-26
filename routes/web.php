@@ -19,10 +19,12 @@ use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\SpecialityController;
 use App\Http\Controllers\Frontend\Doctor\DoctorController;
+use App\Http\Controllers\Frontend\Equipment\MedicalEquipmentController;
 use App\Http\Controllers\Frontend\FrontEndController;
 use App\Http\Controllers\Frontend\Hospital\HospitalController;
 use App\Http\Controllers\Frontend\Lab\LabController;
 use App\Http\Controllers\Frontend\Medical\MedicalController;
+use App\Http\Controllers\Frontend\Medicine\MedicineCompanyController;
 use App\Http\Controllers\Frontend\Patient\PatientController;
 use App\Http\Controllers\Frontend\Radiology\RadiologyController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -139,6 +141,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::post('/updateLabWeekPlan/{id}', [LabController::class, 'updateLabWeekPlan'])->name('update-lab-week-plan');
                 Route::post('/labStoreImages', [LabController::class, 'labStoreImages'])->name('lab-store-images');
                 Route::get('/labDeleteImage/{id}', [LabController::class, 'labDeleteImage'])->name('lab-delete-image');
+            });
+        });
+
+
+        Route::prefix('medicalEquipment')->name('medical_equipment.')->group(function () {
+
+            Route::group(['middleware' => 'auth:medical_equipment'], function () {
+                Route::get('/dashboard/{active?}', [MedicalEquipmentController::class, 'dashboard'])->name('equipment-dashboard');
+                Route::post('/MedicalEquipmentUpdateProfile/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentUpdateProfile'])->name('equipment-update-profile');
+                Route::post('/MedicalEquipmentStoreImages', [MedicalEquipmentController::class, 'MedicalEquipmentStoreImages'])->name('equipment-store-images');
+                Route::get('/MedicalEquipmentDeleteImage/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentDeleteImage'])->name('equipment-delete-image');
+            });
+        });
+
+        Route::prefix('medicineCompany')->name('medicine_company.')->group(function () {
+
+            Route::group(['middleware' => 'auth:medicine_company'], function () {
+                Route::get('/dashboard/{active?}', [MedicineCompanyController::class, 'dashboard'])->name('medicine_company-dashboard');
+                Route::post('/medicineCompanyUpdateProfile/{id}', [medicineCompanyController::class, 'medicineCompanyUpdateProfile'])->name('medicine_company-update-profile');
+                Route::post('/medicineCompanyStoreImages', [medicineCompanyController::class, 'medicineCompanyStoreImages'])->name('medicine_company-store-images');
+                Route::get('/medicineCompanyDeleteImage/{id}', [medicineCompanyController::class, 'medicineCompanyDeleteImage'])->name('medicine_company-delete-image');
             });
         });
 
