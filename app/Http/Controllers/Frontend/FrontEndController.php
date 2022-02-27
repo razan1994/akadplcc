@@ -14,6 +14,7 @@ use App\Models\Doctor;
 use App\Models\DoctorReservation;
 use App\Models\DoctorReview;
 use App\Models\DoctorSpeciality;
+use App\Models\DoctorSpecialityRelation;
 use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\HospitalReview;
@@ -28,6 +29,7 @@ use App\Models\MedicalCenterReview;
 use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\PharmacyReview;
+use App\Models\PublicCountry;
 use App\Models\PublicLanguage;
 use App\Models\PublicRegion;
 use App\Models\RadiologyCenter;
@@ -126,8 +128,6 @@ class FrontEndController extends Controller
         ];
         return redirect()->back()->withInput($request->only('username', 'remember'))->withErrors($errors);
     }
-
-
 
 
     function frontRegister(Request $request)
@@ -382,6 +382,7 @@ class FrontEndController extends Controller
 
     function frontGetRegions(Request $request)
     {
+        // return $request;
         if (!isset($request->country_id)) {
             $regions = "";
         } else {
@@ -1188,6 +1189,541 @@ class FrontEndController extends Controller
     }
 
 
+
+
+    function frontSearchHospital(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new Hospital();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'hospitals';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchDoctor(Route $route,$country = null,$region = null,$speciality = null,$name = null){
+        try {
+
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+            if($speciality != null && $speciality != "Speciality"){
+                $speciality = str_replace('-',' ',$speciality);
+            }
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            $speciality_id = DoctorSpeciality::where('name_en',$speciality)->orWhere('name_ar',$speciality)->get()->first();
+
+            if($speciality_id){
+                $spec_relations = DoctorSpecialityRelation::where('speciality_id',$speciality_id->id)->get()->pluck('doctor_id');
+            }
+
+
+            $users = new Doctor();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ])->get();
+            }
+            if($speciality != null && $speciality != "Speciality"){
+                $users = $users->whereIn('id',$spec_relations);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'doctors';
+            $specialities = DoctorSpeciality::where('type','main')->get();
+            return view('front_end_inners.list-users', compact('users', 'user_type','specialities'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchPharmacy(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new Pharmacy();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'pharmacies';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchGym(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new Gym();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'fitness-centers';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchLifeCoach(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new LifeCoutch();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'life-coaches';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchMedicalCenter(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new MedicalCenter();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'medical-centers';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function frontSearchRadiologyCenter(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new RadiologyCenter();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'radiology-centers';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function frontSearchLab(Route $route,$country = null,$region = null,$name = null){
+        try {
+
+            if($country != null && $country != "Country"){
+                $country = str_replace('-',' ',$country);
+            }
+            if($region != null && $region != "Region"){
+                $region = str_replace('-',' ',$region);
+            }
+
+            $country_id = PublicCountry::where('name_en',$country)->orWhere('name_ar',$country)->get()->first();
+            $region_id = PublicRegion::where('name_en',$region)->orWhere('name_ar',$region)->get()->first();
+            if($name != null){
+                $name = str_replace('-',' ',$name);
+            }
+
+            $users = new Lab();
+            $users = $users->select('*');
+            if($name != null){
+            $users = $users->where([
+                    ['user_status', 2],
+                    ['name_en','like', '%' . $name . '%']
+                ])->orWhere([
+                    ['user_status', 2],
+                    ['name_ar','like', '%' . $name . '%']
+                ]);
+            }
+            if($country != null && $country != "Country"){
+                $users = $users->where('country_id',$country_id->id);
+            }
+            if($region != null && $region != "Region"){
+                $users = $users->where('region_id',$region_id->id);
+            }
+
+            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+
+            $user_type = 'labs';
+            return view('front_end_inners.list-users', compact('users', 'user_type'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
 
 
 

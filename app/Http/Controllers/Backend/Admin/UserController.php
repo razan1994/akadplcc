@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\Users\StoreUserFormRequest;
 use App\Http\Requests\Backend\Users\UpdateUserFormRequest;
 use App\Models\Doctor;
 use App\Models\DoctorSpeciality;
+use App\Models\DoctorSpecialityRelation;
 use App\Models\Gym;
 use App\Models\Hospital;
 use App\Models\InsuranceCompany;
@@ -228,15 +229,11 @@ class UserController extends Controller
                 'country_id'=>$request->country_id,
                 'region_id'=>$request->region_id,
             ];
-            if($request->user_type == "Doctor"){
                 $created_data['user_description_en'] = $request->user_description_en;
                 $created_data['user_description_ar'] = $request->user_description_ar;
-            }
-            if($request->user_type == "Doctor"){
-                $created_data['speciality_id']=$request->speciality_id;
-            }
 
-            DB::transaction(function () use ($created_data) {
+
+            DB::transaction(function () use ($created_data,$request) {
                 // Save Main User Information Section :
                 // =====================================================================
                 if ($created_data['user_type'] == 'Super Admin') {
@@ -252,7 +249,18 @@ class UserController extends Controller
                 } else if ($created_data['user_type'] == 'Lab') {
                     Lab::create($created_data);
                 } else if ($created_data['user_type'] == 'Doctor') {
-                    Doctor::create($created_data);
+                    $doctor = Doctor::create($created_data);
+                    if(isset($request->speciality_id)){
+                        foreach($request->speciality_id as $sub){
+                            $spec_id = DoctorSpeciality::find($sub);
+                            if($spec_id){
+                            DoctorSpecialityRelation::create([
+                                'doctor_id'=>$doctor->id,
+                                'speciality_id'=>$sub
+                            ]);
+                        }
+                        }
+                    }
                 } else if ($created_data['user_type'] == 'Patient') {
                     Patient::create($created_data);
                 } else if ($created_data['user_type'] == 'Pharmacy') {
@@ -583,6 +591,20 @@ class UserController extends Controller
 
                 if ($user){
                     $user->update($update_data);
+                    if($request->user_type == 'Doctor'){
+                    if(isset($request->speciality_id)){
+                        DoctorSpecialityRelation::where('doctor_id',$user->id)->delete();
+                        foreach($request->speciality_id as $sub){
+                            $spec_id = DoctorSpeciality::find($sub);
+                            if($spec_id){
+                            DoctorSpecialityRelation::create([
+                                'doctor_id'=>$user->id,
+                                'speciality_id'=>$sub
+                            ]);
+                        }
+                        }
+                    }
+                }
                 }else{
                     return redirect()->back()->with('danger','User Not Found !!!!');
                 }

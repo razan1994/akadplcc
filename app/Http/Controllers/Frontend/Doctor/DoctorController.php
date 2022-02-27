@@ -113,10 +113,13 @@ class DoctorController extends Controller
                 if(isset($request->speciality_id)){
                     DoctorSpecialityRelation::where('doctor_id',$user->id)->delete();
                     foreach($request->speciality_id as $sub){
+                        $spec_id = DoctorSpeciality::find($sub);
+                        if($spec_id){
                         DoctorSpecialityRelation::create([
                             'doctor_id'=>$user->id,
                             'speciality_id'=>$sub
                         ]);
+                    }
                     }
                 }
             });

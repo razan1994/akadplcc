@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class LifeCoutch extends Authenticatable
 {
     use HasFactory;
-    protected $table = 'gyms';
+    protected $table = 'life_coutches';
 
     /**
      * The attributes that are mass assignable.

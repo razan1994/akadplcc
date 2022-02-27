@@ -173,10 +173,10 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-question"></span>
                                                         </div>
-                                                        <select name="speciality_id" class="selectpicker"
-                                                        data-live-search="true" data-width="88%"
+                                                        <select name="speciality_id[]" class="selectpicker"
+                                                        data-live-search="true" data-width="88%" multiple
                                                         id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Select Doctor Speciality...</option>
+                                                            <option>Select Doctor Speciality...</option>
                                                             @if (isset($specialities))
                                                                 @foreach ($specialities as $speciality)
                                                                         <option value="{{ $speciality->id }}"
@@ -287,7 +287,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @if(isset($user_type) && $user_type == "Doctor")
                                                 <div class="col-6">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">User Description AR   <strong
@@ -320,7 +319,6 @@
                                                             rows="10">{{ old('user_description_en') != null ? old('user_description_en') : null }} </textarea>
                                                     </div>
                                                 </div>
-                                                @endif
 
                                                 {{-- User Image --}}
                                                 <div class="col-md-6 mb-3">

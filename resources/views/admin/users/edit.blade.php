@@ -161,14 +161,14 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-question"></span>
                                                         </div>
-                                                        <select name="speciality_id"
-                                                            class="custom-select my-1 mr-sm-2 @error('speciality_id') is-invalid @enderror"
-                                                            id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Select Doctor Speciality...</option>
+                                                        <select name="speciality_id[]" class="selectpicker"
+                                                        data-live-search="true" data-width="88%" multiple
+                                                        id="inlineFormCustomSelectPref">
+                                                            <option>Select Doctor Speciality...</option>
                                                             @if (isset($specialities))
                                                                 @foreach ($specialities as $speciality)
                                                                         <option value="{{ $speciality->id }}"
-                                                                            @if ($user->speciality_id == $speciality->id) selected @endif>{{ $speciality->name_en }}
+                                                                            @if ($user->specialities->contains('speciality_id', $speciality->id))) selected @endif>{{ $speciality->name_en }}
                                                                         </option>
                                                                 @endforeach
                                                             @endif
@@ -287,7 +287,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @if(isset($user_type) && $user_type == "Doctor")
                                                 <div class="col-6">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">User Description AR   <strong
@@ -320,6 +319,21 @@
                                                             rows="10">{{ isset($user->user_description_en) ? $user->user_description_en : null }} </textarea>
                                                     </div>
                                                 </div>
+                                                @if(isset($user_type) && $user_type == "Doctor")
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-cash"></i> Visit Fees : <strong
+                                                            class="text-danger"> * @error('visit_fees') ( {{ $message }}
+                                                            ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cash"></span>
+                                                        </div>
+                                                        <input type="number" class="form-control" name="visit_fees" value="{{ $user->visit_fees }}" min="0.01" step="0.01">
+                                                    </div>
+                                                </div>
                                                 @endif
 
                                                 {{-- User Image Filed --}}
@@ -337,10 +351,6 @@
                                                         <input type="file" name="profile_photo_path" class="form-control"
                                                             id="validationServer01">
                                                     </div>
-                                                </div>
-
-                                                {{-- Display User Image --}}
-                                                <div class="col-md-12 mb-3">
                                                     @if (isset($user->profile_photo_path))
                                                         @if ($user->profile_photo_path && file_exists($user->profile_photo_path))
                                                             <img src="{{ asset($user->profile_photo_path) }}" width="100" height="100" style="border-radius: 10px; border:solid 1px black;">

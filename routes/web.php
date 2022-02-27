@@ -70,6 +70,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/frontGetRegions', [FrontEndController::class, 'frontGetRegions'])->name('frontGetRegions');
     Route::post('/frontGetSpecialities', [FrontEndController::class, 'frontGetSpecialities'])->name('frontGetSpecialities');
 
+
+    Route::get('/search-hospital/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchHospital'])->name('front-search-hospital');
+    Route::get('/search-doctor/{country?}/{region?}/{speciality?}/{name?}', [FrontEndController::class, 'frontSearchDoctor'])->name('front-search-doctor');
+    Route::get('/search-pharmacy/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchPharmacy'])->name('front-search-pharmacy');
+    Route::get('/search-fitness-centers/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchGym'])->name('front-search-gym');
+    Route::get('/search-life-coach/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchLifeCoach'])->name('front-search-life-coach');
+    Route::get('/search-medical-center/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchMedicalCenter'])->name('front-search-medical-center');
+    Route::get('/search-radiology-center/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchRadiologyCenter'])->name('front-search-radiology-center');
+    Route::get('/search-lab/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchLab'])->name('front-search-lab');
+
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
 
