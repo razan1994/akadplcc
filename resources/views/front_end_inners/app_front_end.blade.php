@@ -570,7 +570,7 @@
                         <div class="top-bar-right">
                             <ul class="custom">
 
-                                @if (Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check() || Auth::guard('patient')->check())
+                                @if (Auth::guard('doctor')->check() || Auth::guard('hospital')->check() || Auth::guard('radiology_center')->check() || Auth::guard('medical_center')->check() || Auth::guard('lab')->check() || Auth::guard('patient')->check() || Auth::guard('medical_equipment')->check())
                                     <li>
                                         <a href="{{ route('front-logout') }}" class="text-dark"
                                             style="cursor: pointer;"><i class="icon icon-power"></i>
@@ -581,13 +581,7 @@
                                                 class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
                                         <div
                                             class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
-                                            {{-- @if (isset(auth()->user()->notifications) &&
-    auth()->user()->notifications->count() > 0)
-                                            @else
-                                                <div class="col-md-12" style="text-align: center">
-                                                    <h3 class="text-danger"> No Notifications...</h3>
-                                                </div>
-                                            @endif --}}
+                                            
                                         </div>
                                     </li>
                                     <li class="dropdown">
@@ -1237,6 +1231,10 @@
                                                         <option value="Medical Center">Medical Center</option>
                                                         <option value="Radiology Center">Radiology Center</option>
                                                         <option value="Lab">Lab</option>
+                                                        <option value="Life Coach">Life Coach</option>
+                                                        <option value="Fitness Center">Fitness Center</option>
+                                                        <option value="Medical Equipment">Medical Equipment</option>
+                                                        <option value="Medicine Company">Medicine Company</option>
                                                     </select>
                                                 </div>
                                                 <hr style="font-weight: 900">

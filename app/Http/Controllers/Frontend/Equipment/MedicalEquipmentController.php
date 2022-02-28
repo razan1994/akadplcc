@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Frontend\Equipment;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Equipment\MedicalEquipmentStoreCategoryFormRequest;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentStoreImageFormRequest;
+use App\Http\Requests\Frontend\Equipment\MedicalEquipmentUpdateCategoryFormRequest;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentUpdateProfileFormRequest;
+use App\Models\EquipmentCategory;
 use App\Models\EquipmentImage;
+use App\Models\EquipmentProduct;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
@@ -207,6 +212,308 @@ class MedicalEquipmentController extends Controller
             }else{
                 return redirect()->route('medical_equipment.medical_equipment-dashboard','gallery')->with('danger','Image Not Found');
             }
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentCategories(Route $route){
+        try {
+            $categories = EquipmentCategory::where('equipment_id',auth()->user()->id)->get();
+            $auth = Auth::guard('medical_equipment')->user();
+            return view('front_end_inners.medical_equipments.categories',compact('auth','categories'));
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function MedicalEquipmentStoreCategory(MedicalEquipmentStoreCategoryFormRequest $request,Route $route){
+        try {
+
+            $data = [
+                'equipment_id'=>auth()->user()->id,
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'status'=>1
+            ];
+
+            EquipmentCategory::create($data);
+
+            return redirect()->route('medical_equipment.medical_equipment-categories')->with('success','Added Successfully');
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentEditCategory(Route $route,$id){
+        try {
+
+            $id = decrypt($id);
+            $category =  EquipmentCategory::find($id);
+            $auth = Auth::guard('medical_equipment')->user();
+            return view('front_end_inners.medical_equipments.edit_category',compact('category','auth'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentUpdateCategory(Route $route,$id,MedicalEquipmentUpdateCategoryFormRequest $request){
+        try {
+
+            $id = decrypt($id);
+
+            $category = EquipmentCategory::find($id);
+            if($category){
+                $category->update([
+                    'name_ar'=>$request->name_ar,
+                    'name_en'=>$request->name_en,
+                    'status'=>$request->status,
+                ]);
+
+                return redirect()->route('medical_equipment.medical_equipment-categories')->with('success','Updated Successfully');
+            }
+            else{
+                return redirect()->back()->with('danger','Category Not Found !!!!');
+            }
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentProducts(Route $route){
+        try {
+            $products = EquipmentProduct::where('equipment_id',auth()->user()->id)->get();
+            $auth = Auth::guard('medical_equipment')->user();
+            return view('front_end_inners.medical_equipments.products',compact('auth','products'));
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function MedicalEquipmentStoreProduct(MedicalEquipmentStoreCategoryFormRequest $request,Route $route){
+        try {
+
+            $data = [
+                'equipment_id'=>auth()->user()->id,
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'status'=>1
+            ];
+
+            EquipmentCategory::create($data);
+
+            return redirect()->route('medical_equipment.medical_equipment-categories')->with('success','Added Successfully');
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentEditProduct(Route $route,$id){
+        try {
+
+            $id = decrypt($id);
+            $category =  EquipmentCategory::find($id);
+            $auth = Auth::guard('medical_equipment')->user();
+            return view('front_end_inners.medical_equipments.edit_category',compact('category','auth'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    function MedicalEquipmentUpdateProduct(Route $route,$id,MedicalEquipmentUpdateCategoryFormRequest $request){
+        try {
+
+            $id = decrypt($id);
+
+            $category = EquipmentCategory::find($id);
+            if($category){
+                $category->update([
+                    'name_ar'=>$request->name_ar,
+                    'name_en'=>$request->name_en,
+                    'status'=>$request->status,
+                ]);
+
+                return redirect()->route('medical_equipment.medical_equipment-categories')->with('success','Updated Successfully');
+            }
+            else{
+                return redirect()->back()->with('danger','Category Not Found !!!!');
+            }
+
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

@@ -1,7 +1,7 @@
 <?php
 
 return [
-     "register"=>"تسجيل",
+    "register"=>"تسجيل",
     "login"=>"تسجيل دخول",
     "home"=>"الصفحة الرئيسية",
     "about_us"=>"نبذة عنا",

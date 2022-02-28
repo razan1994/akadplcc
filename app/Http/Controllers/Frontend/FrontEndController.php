@@ -26,6 +26,7 @@ use App\Models\LatestNew;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
 use App\Models\MedicalCenterReview;
+use App\Models\MedicalEquipment;
 use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\PharmacyReview;
@@ -96,6 +97,14 @@ class FrontEndController extends Controller
             } else if (Auth::guard('lab')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                 $auth = Auth::guard('lab')->user();
                 return redirect()->route('lab.lab-dashboard');
+
+            } else if (Auth::guard('medical_equipment')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                $auth = Auth::guard('medical_equipment')->user();
+                return redirect()->route('medical_equipment.medical_equipment-dashboard');
+
+            } else if (Auth::guard('medicine_company')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                $auth = Auth::guard('medicine_company')->user();
+                return redirect()->route('medicine_company.medicine_company-dashboard');
             }
         } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
             // Attempt to log the patient in
@@ -119,6 +128,14 @@ class FrontEndController extends Controller
             } else if (Auth::guard('lab')->attempt(['email' => $request->email, 'password' => $request->password])) {
                 $auth = Auth::guard('lab')->user();
                 return redirect()->route('lab.lab-dashboard');
+
+            } else if (Auth::guard('medical_equipment')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                $auth = Auth::guard('medical_equipment')->user();
+                return redirect()->route('medical_equipment.medical_equipment-dashboard');
+
+            } else if (Auth::guard('medicine_company')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                $auth = Auth::guard('medicine_company')->user();
+                return redirect()->route('medicine_company.medicine_company-dashboard');
             }
         }
 
@@ -213,6 +230,30 @@ class FrontEndController extends Controller
                 Auth::guard('lab')->login($user);
 
                 return redirect()->route('lab.lab-dashboard');
+
+            } else if ($request->institution_type == "Fitness Center") {
+                $user = Gym::create($created_data);
+                Auth::guard('gym')->login($user);
+
+                return redirect()->route('gym.gym-dashboard');
+
+            } else if ($request->institution_type == "Life Coach") {
+                $user = LifeCoutch::create($created_data);
+                Auth::guard('life_coach')->login($user);
+
+                return redirect()->route('life_coach.life-coach-dashboard');
+
+            } else if ($request->institution_type == "Medical Equipment") {
+                $user = MedicalEquipment::create($created_data);
+                Auth::guard('medical_equipmet')->login($user);
+
+                return redirect()->route('medical_equipmet.medical_equipmet-dashboard');
+
+            } else if ($request->institution_type == "Medicine Company") {
+                $user = LifeCoutch::create($created_data);
+                Auth::guard('medicine_company')->login($user);
+
+                return redirect()->route('medicine_company.medicine_company-dashboard');
             }
         }
     }

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Frontend\Equipment;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class MedicalEquipmentStoreImageFormRequest extends FormRequest
+class MedicalEquipmentUpdateCategoryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class MedicalEquipmentStoreImageFormRequest extends FormRequest
     public function rules()
     {
         return [
-                "image" => 'required',
-                "image.*" => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            
+            'name_en'=>'required|unique:equipment_categories,name_en,'.$this->id,
+            'name_ar'=>'required|unique:equipment_categories,name_ar,'.$this->id,
+            'status'=>'required'
         ];
     }
 }

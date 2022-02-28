@@ -35,10 +35,8 @@ class EquipmentCategory extends Model
     public function getStatusAttribute($value)
     {
         if ($value == 1) {
-            return 'Pendding';
-        } elseif ($value == 2) {
             return 'Active';
-        } elseif ($value == 3) {
+        } elseif ($value == 2) {
             return 'Inactive';
         }
     }
