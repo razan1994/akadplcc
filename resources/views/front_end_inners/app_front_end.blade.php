@@ -581,7 +581,7 @@
                                                 class="fa fa-bell mr-1"></i> <span>Notifications</span></a>
                                         <div
                                             class="dropdown-menu dropdown-menu-right dropdown-menu-arrow dropdown-menu-arrow-notifications">
-                                            
+
                                         </div>
                                     </li>
                                     <li class="dropdown">
@@ -828,6 +828,9 @@
                                     </li>
                                     <li aria-haspopup="true">
                                         <a href="{{ route('users-list', 'life-coaches') }}">Life Coaches</a>
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="{{ route('users-list', 'medical-equipments') }}">Medical Equipment</a>
                                     </li>
                                 </ul>
                             </li>

@@ -15,6 +15,8 @@ use App\Models\InsuranceCompany;
 use App\Models\Lab;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
+use App\Models\MedicalEquipment;
+use App\Models\MedicineCompany;
 use App\Models\Patient;
 use App\Models\Pharmacy;
 use App\Models\PublicCountry;
@@ -208,7 +210,13 @@ class UserController extends Controller
                     $last_image = $this->saveFileWithOriginalName('life_coaches', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 } else if ($request->user_type == 'Gym') {
                     $last_image = $this->saveFileWithOriginalName('gyms', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+
+                } else if ($request->user_type == 'Medical Equipment') {
+                    $last_image = $this->saveFileWithOriginalName('medical_equipments', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                } else if ($request->user_type == 'Medicine Company') {
+                    $last_image = $this->saveFileWithOriginalName('medicine_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 }
+            
             } else {
                 $last_image = null;
             }
@@ -271,7 +279,13 @@ class UserController extends Controller
                     LifeCoutch::create($created_data);
                 } else if ($created_data['user_type'] == 'Gym') {
                     Gym::create($created_data);
+
+                } else if ($created_data['user_type'] == 'Medical Equipment') {
+                    MedicalEquipment::create($created_data);
+                } else if ($created_data['user_type'] == 'Medicine Company') {
+                    MedicineCompany::create($created_data);
                 }
+
             });
 
             return redirect()->route('super_admin.users-index',$request->user_type)->with('success', 'The data has been successfully updated');
@@ -352,6 +366,12 @@ class UserController extends Controller
 
             else if($user_type == "Life Coach"){
                 $user =LifeCoutch::find($user_id);
+            }
+            else if($user_type == "Medical Equipment"){
+                $user =MedicalEquipment::find($user_id);
+            }
+            else if($user_type == "Medicine Company"){
+                $user =MedicineCompany::find($user_id);
             }
             else{
                 return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
@@ -439,6 +459,12 @@ class UserController extends Controller
 
             else if($user_type == "Life Coach"){
                 $user =LifeCoutch::find($user_id);
+            }
+            else if($user_type == "Medical Equipment"){
+                $user =MedicalEquipment::find($user_id);
+            }
+            else if($user_type == "Medicine Company"){
+                $user =MedicineCompany::find($user_id);
             }
             else{
                 return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
@@ -530,6 +556,12 @@ class UserController extends Controller
             else if($request->user_type == "Life Coach"){
                 $user =LifeCoutch::find($user_id);
             }
+            else if($request->user_type == "Medical Equipment"){
+                $user =MedicalEquipment::find($user_id);
+            }
+            else if($request->user_type == "Medicine Company"){
+                $user =MedicineCompany::find($user_id);
+            }
             else{
                 return redirect()->back()->with('danger','Please Dont Change The URL !!!!');
             }
@@ -584,6 +616,12 @@ class UserController extends Controller
                         $last_image = $this->saveFileWithOriginalName('life_coaches', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                     } else if ($request->user_type == 'Gym') {
                         $last_image = $this->saveFileWithOriginalName('gyms', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    }
+                    else if ($request->user_type == 'Medical Equipment') {
+                        $last_image = $this->saveFileWithOriginalName('medical_equipments', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                    }
+                    else if ($request->user_type == 'Medicine Company') {
+                        $last_image = $this->saveFileWithOriginalName('medicine_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                     }
                     $update_data['profile_photo_path']= $last_image;
                     File::delete($user->profile_photo_path);

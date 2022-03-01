@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Frontend\Equipment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentStoreCategoryFormRequest;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentStoreImageFormRequest;
+use App\Http\Requests\Frontend\Equipment\MedicalEquipmentStoreProductFormRequest;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentUpdateCategoryFormRequest;
 use App\Http\Requests\Frontend\Equipment\MedicalEquipmentUpdateProfileFormRequest;
 use App\Models\EquipmentCategory;
 use App\Models\EquipmentImage;
 use App\Models\EquipmentProduct;
+use App\Models\EquipmentProductImage;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use GrahamCampbell\ResultType\Success;
@@ -421,19 +423,30 @@ class MedicalEquipmentController extends Controller
 
 
 
-    function MedicalEquipmentStoreProduct(MedicalEquipmentStoreCategoryFormRequest $request,Route $route){
+    function MedicalEquipmentStoreProduct(MedicalEquipmentStoreProductFormRequest $request,Route $route){
         try {
 
             $data = [
                 'equipment_id'=>auth()->user()->id,
+                'category_id'=>$request->category_id,
                 'name_ar'=>$request->name_ar,
                 'name_en'=>$request->name_en,
-                'status'=>1
+                'description_en'=>$request->description_en,
+                'description_ar'=>$request->description_ar,
+                'status'=>1,
             ];
 
-            EquipmentCategory::create($data);
+            if (isset($request->image)) {
+                $orginal_image = $request->file('image');
+                $upload_location = 'storage/equipment_products/';
+                $original_name = $orginal_image->getClientOriginalName();
+                $last_image = $this->saveFileWithOriginalName('equipment_products', 'image', $orginal_image, $original_name, $upload_location);
+                $data['image']= $last_image;
+            }
 
-            return redirect()->route('medical_equipment.medical_equipment-categories')->with('success','Added Successfully');
+            EquipmentProduct::create($data);
+
+            return redirect()->route('medical_equipment.medical_equipment-products')->with('success','Added Successfully');
 
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -465,9 +478,9 @@ class MedicalEquipmentController extends Controller
         try {
 
             $id = decrypt($id);
-            $category =  EquipmentCategory::find($id);
+            $product =  EquipmentProduct::find($id);
             $auth = Auth::guard('medical_equipment')->user();
-            return view('front_end_inners.medical_equipments.edit_category',compact('category','auth'));
+            return view('front_end_inners.medical_equipments.edit_product',compact('product','auth'));
 
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -514,6 +527,152 @@ class MedicalEquipmentController extends Controller
                 return redirect()->back()->with('danger','Category Not Found !!!!');
             }
 
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function MedicalEquipmentShowProduct(Route $route,$id){
+        try {
+
+            $id = decrypt($id);
+            $product =  EquipmentProduct::find($id);
+            $auth = Auth::guard('medical_equipment')->user();
+            return view('front_end_inners.medical_equipments.show_product',compact('product','auth'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function MedicalEquipmentStoreProductImages($id,Request $request,Route $route){
+        try {
+
+            $request->validate([
+                "image" => 'required',
+                "image.*" => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
+            ]);
+            if(!Auth::guard('medical_equipment')->check()){
+                return redirect()->route('welcome')->with('danger','You Are Not Autherized');
+            }
+
+            $product = EquipmentProduct::find($id);
+
+
+            if($product){
+
+                // Upload Main Image Blog :
+                if (isset($request->image)) {
+                    $request_data = [
+                        'product_id' => $product->id,
+                    ];
+                    foreach ($request->image as $key => $value) {
+                        $orginal_image = $value;
+                        $upload_location = 'storage/equipment_product_images/';
+                        $original_name = $orginal_image->getClientOriginalName();
+                        $file_name = $this->saveFileWithOriginalName('equipment_product_images', 'image', $orginal_image, $original_name, $upload_location);
+                        $request_data['image'] = $file_name;
+                        DB::transaction(function () use ($request_data) {
+                            EquipmentProductImage::create($request_data);
+                        });
+                    }
+                } else {
+                    return redirect()->back()->with('danger', 'You must add an image to the news blog ');
+                }
+
+
+                return redirect()->route('medical_equipment.medical_equipment-edit-show',encrypt($product->id))->with('success','Images Added Successfully');
+
+            }
+
+            } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    function MedicalEquipmentDeleteProductImage($id,Route $route){
+        try {
+            if(!Auth::guard('medical_equipment')->check()){
+                return redirect()->route('welcome')->with('danger','You Are Not Autherized');
+            }
+
+            $image = EquipmentProductImage::find($id);
+            if($image){
+                DB::transaction(function () use ($image) {
+                    File::delete($image->image);
+                    $image->delete();
+                });
+
+                return redirect()->back()->with('success','Image Deleted Succesfully');
+            }else{
+                return redirect()->back()->with('danger','Image Not Found');
+            }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

@@ -37,6 +37,11 @@ class EquipmentProduct extends Model
     }
 
 
+    public function images(){
+        return $this->hasMany(EquipmentProductImage::class,'product_id');
+    }
+
+
     // ====================================================================================
     // ============================== Accessories =========================================
     // ====================================================================================
@@ -44,10 +49,8 @@ class EquipmentProduct extends Model
     public function getStatusAttribute($value)
     {
         if ($value == 1) {
-            return 'Pendding';
-        } elseif ($value == 2) {
             return 'Active';
-        } elseif ($value == 3) {
+        } elseif ($value == 2) {
             return 'Inactive';
         }
     }

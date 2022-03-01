@@ -53,15 +53,15 @@
                                         <li style="cursor: pointer">
 											<a class="side-menu__item" href="{{ route('medical_equipment.medical_equipment-dashboard','gallery') }}"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Gallery</span></a>
 										</li>
-                                        <li @if(old('name_en') == null && old('name_ar') == null) class="active" @endif style="cursor: pointer">
+                                        <li style="cursor: pointer">
 											<a class="side-menu__item" href="{{ route('medical_equipment.medical_equipment-categories') }}"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Categories</span></a>
 										</li>
-                                        <li @if(old('name_en') == null && old('name_ar') == null) class="active" @endif style="cursor: pointer">
+                                        <li data-toggle="tab" href="#editCategory" class="active" style="cursor: pointer">
+                                            <a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Edit Category</span></a>
+                                        </li>
+                                        <li class="active" style="cursor: pointer">
 											<a class="side-menu__item" href="{{ route('medical_equipment.medical_equipment-products') }}"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Products</span></a>
 										</li>
-                                        <li data-toggle="tab" href="#createProduct" @if($errors->any()) class="active" @endif style="cursor: pointer">
-                                            <a class="side-menu__item"><i class="fa fa-angle-right mr-2"></i><span class="side-menu__label ml-2">Add Products</span></a>
-                                        </li>
 										<li>
 											<a href="{{ route('front-logout') }}" class="side-menu__item" ><i class="icon icon-power"></i><span class="side-menu__label ml-2">Logout</span></a>
 										</li>
@@ -71,92 +71,52 @@
 						</div>
 					</div>
                     <div class="tab-content col-xl-9 col-lg-12 col-md-12">
-                        <div id="categories" class="tab-pane fade @if(old('name_en') == null && old('name_ar') == null) active in @endif">
+
+                        <div id="createCategory" class="tab-pane fade active in">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="card mb-0">
                                     <div class="card-header">
-                                        <h3 class="card-title">Products</h3>
+                                        <h3 class="card-title">Edit Product</h3>
                                     </div>
                                     <div class="col-md-12 p-1 mt-2">
-                                        <table class="table table-bordered" style="width: 100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Products Name EN</th>
-                                                    <th>Products Name AR</th>
-                                                    <th>Status</th>
-                                                    <th>Control</th>
-                                                </tr>
-                                                </thead>
-                                            <tbody>
-                                                @if(isset($products) && $products->count() > 0)
-                                                @foreach ($products as $product)
-                                                    <tr>
-                                                        <td style="text-align: center">{{ $product->name_en }}</td>
-                                                        <td style="text-align: center">{{ $product->name_ar }}</td>
-                                                        <td style="text-align: center">{{ $product->status }}</td>
-                                                        <td style="text-align: center"><a class="btn btn-success btn-sm" href="{{ route('medical_equipment.medical_equipment-edit-product',encrypt($product->id)) }}"><i class="fa fa-edit"></i></a><a class="btn btn-primary btn-sm" href="{{ route('medical_equipment.medical_equipment-edit-show',encrypt($product->id)) }}"><i class="fa fa-eye"></i></a></td>
-                                                    </tr>
-                                                @endforeach
-                                                @else
-                                                <tr>
-                                                    <td colspan="4" style="text-align: center"><h4 class="tex-danger"> No Products ...</h4></td>
-                                                </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="createProduct" class="tab-pane fade @if($errors->any()) active in @endif">
-                            <div class="col-xl-12 col-lg-12 col-md-12">
-                                <div class="card mb-0">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Add Products</h3>
-                                    </div>
-                                    <div class="col-md-12 p-1 mt-2">
-                                        <form action="{{ route('medical_equipment.medical_equipment-store-product') }}" method="POST" class="form" enctype="multipart/form-data">
+                                        <form action="{{ route('medical_equipment.medical_equipment-update-product',encrypt($product->id)) }}" method="POST" class="form">
                                             @csrf
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="form-label">Category <span class="text-danger">* @error('category_id'){{ $message }}@enderror</span></label>
-                                                            <select name="category_id" id="" class="form-control">
-                                                                <option>Select Category</option>
-                                                                @if(isset($auth->categories) && $auth->categories)
-                                                                    @foreach ($auth->categories as $category)
-                                                                        <option value="{{ $category->id }}">{{ $category->name_en }}</option>
-                                                                    @endforeach
-                                                                @endif
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-sm-6 col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Name EN <span class="text-danger">* @error('name_en'){{ $message }}@enderror</span></label>
-                                                            <input type="text" name="name_en" class="form-control" placeholder="Medical Equipment Name In English" value="{{ old('name_en') }}">
+                                                            <input type="text" name="name_en" class="form-control" placeholder="Medical Equipment Name In English" value="{{ $product->name_en }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Name AR <span class="text-danger">* @error('name_ar'){{ $message }}@enderror</span></label>
-                                                            <input type="text" name="name_ar" class="form-control" placeholder="Medical Equipment Name In Arabic" value="{{ old('name_ar') }}">
+                                                            <input type="text" name="name_ar" class="form-control" placeholder="Medical Equipment Name In Arabic" value="{{ $product->name_ar }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Description AR <span class="text-danger">* @error('description_ar'){{ $message }}@enderror</span></label>
-                                                            <textarea type="text" name="description_ar" class="form-control" placeholder="Medical Equipment Product Description In Arabic">{!! old('description_ar') !!}</textarea>
+                                                            <textarea type="text" name="description_ar" class="form-control" placeholder="Medical Equipment Product Description In Arabic">{!! $product->description_ar !!}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-6">
                                                         <div class="form-group">
                                                             <label class="form-label">Description EN <span class="text-danger">* @error('description_en'){{ $message }}@enderror</span></label>
-                                                            <textarea type="text" name="description_en" class="form-control" placeholder="Medical Equipment Product Description In English">{!! old('description_en') !!}</textarea>
+                                                            <textarea type="text" name="description_en" class="form-control" placeholder="Medical Equipment Product Description In English">{!! $product->description_en !!}</textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Status <span class="text-danger">* @error('status'){{ $message }}@enderror</span></label>
+                                                            <select name="status" id="" class="form-control">
+                                                                <option value="1" @if($product->status == 'Active') selected @endif>Active</option>
+                                                                <option value="2" @if($product->status == 'Inactive') selected @endif>Stop</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6">
                                                         <div class="form-group mb-0">
                                                             <label class="form-label">Upload Image <span class="text-danger"> @error('image'){{ $message }}@enderror</span></label>
                                                             <div class="custom-file">
@@ -164,11 +124,16 @@
                                                                 <label class="custom-file-label">Choose file</label>
                                                             </div>
                                                         </div>
+                                                    <div class="col-md-12">
+                                                        @if(isset($product->image) && file_exists($product->image))
+                                                        <img src="{{ asset($product->image) }}" style="width: 150px;height: 150px;" alt="">
+                                                        @endif
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-secondary">Add</button>
+                                                <button type="submit" class="btn btn-secondary">Update</button>
                                             </div>
                                         </form>
                                 </div>

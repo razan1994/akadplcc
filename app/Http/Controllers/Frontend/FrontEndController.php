@@ -293,6 +293,8 @@ class FrontEndController extends Controller
             $user = LifeCoutch::where('alias_name_en', $alias_name)->get()->first();
         } else if ($user_type == 'fitness-centers') {
             $user = Gym::where('alias_name_en', $alias_name)->get()->first();
+        } else if ($user_type == 'medical-equipments') {
+            $user = MedicalEquipment::where('alias_name_en', $alias_name)->get()->first();
         } else {
             return redirect()->back()->with('danger', 'Not Found');
         }
@@ -410,6 +412,8 @@ class FrontEndController extends Controller
             $users = LifeCoutch::where('user_status', 2)->paginate(20)->onEachSide(2);
         } else if ($user_type == 'fitness-centers') {
             $users = Gym::where('user_status', 2)->paginate(20)->onEachSide(2);
+        } else if ($user_type == 'medical-equipments') {
+            $users = MedicalEquipment::where('user_status', 2)->paginate(20)->onEachSide(2);
         } else {
             return redirect()->back()->with('danger', 'Not Found');
         }

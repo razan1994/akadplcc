@@ -54,8 +54,8 @@ class AppServiceProvider extends ServiceProvider
                 'SEO Admin',
                 'Gym',
                 'Life Coach',
-                'medical_equipment',
-                'medicine_companies'
+                'Medical Equipment',
+                'Medicine Company'
             ];
 
             $public_insurance_companies = InsuranceCompany::where('user_status',2)->inRandomOrder()->take(8)->get();

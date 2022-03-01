@@ -171,6 +171,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::post('/MedicalEquipmentStoreProduct', [MedicalEquipmentController::class, 'MedicalEquipmentStoreProduct'])->name('medical_equipment-store-product');
                 Route::get('/MedicalEquipmentEditProduct/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentEditProduct'])->name('medical_equipment-edit-product');
                 Route::post('/MedicalEquipmentUpdateProduct/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentUpdateProduct'])->name('medical_equipment-update-product');
+                Route::get('/MedicalEquipmentShowProduct/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentShowProduct'])->name('medical_equipment-edit-show');
+
+                Route::post('/MedicalEquipmentStoreProductImages/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentStoreProductImages'])->name('medical_equipment-storeProductImages');
+                Route::get('/MedicalEquipmentDeleteProductImage/{id}', [MedicalEquipmentController::class, 'MedicalEquipmentDeleteProductImage'])->name('medical_equipment-deleteProductImage');
 
             });
         });
