@@ -618,7 +618,7 @@
                                 </div>
                             </div>
                         </div>
-                    @elseif($user_type == 'radiology-centers' || $user_type == 'medical-centers')
+                    @elseif($user_type == 'radiology-centers' || $user_type == 'medical-centers' || $user_type == 'labs')
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Examinations</h3>
@@ -727,7 +727,7 @@
                             </div>
                         </div> --}}
                     </div>
-                    @if ($user_type == 'medical-equipments' || $user_type == 'medicine-company' || $user_type == 'medical-centers' || $user_type == 'radiology-centers')
+                    @if ($user_type == 'medical-equipments' || $user_type == 'medicine-company' || $user_type == 'medical-centers' || $user_type == 'radiology-centers' || $user_type == 'labs')
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Overview</h3>
