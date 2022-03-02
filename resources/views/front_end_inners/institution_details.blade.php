@@ -1,6 +1,6 @@
 @extends('front_end_inners.app_front_end', ['title' => 'About Us'])
 @section('page_title')
-    {{ 'Rushetta | ' . isset($user->name_en) ? $user->name_en : '--------' }}
+    {{ 'Roshiita | ' . isset($user->name_en) ? $user->name_en : '--------' }}
 @endsection
 
 @section('content')

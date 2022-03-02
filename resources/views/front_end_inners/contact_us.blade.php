@@ -1,5 +1,5 @@
 @extends('front_end_inners.app_front_end', ['title' => 'Contact Us'])
-@section('page_title') {{ 'Rushetta | Contact Us' }} @endsection
+@section('page_title') {{ 'Roshiita | Contact Us' }} @endsection
 @section('content')
 
 		<!--Breadcrumb-->

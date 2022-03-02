@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('page_title') Rushetta | Home @endsection
+@section('page_title') Roshiita | Home @endsection
 
     <!--Section-->
     <section>

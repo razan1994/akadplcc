@@ -1,5 +1,5 @@
 @extends('front_end_inners.app_front_end', ['title' => $user_type])
-@section('page_title') {{ 'Rushetta | ' . isset($user_type) ? str_replace('-', '', $user_type) : '--------' }} @endsection
+@section('page_title') {{ 'Roshiita | ' . isset($user_type) ? str_replace('-', '', $user_type) : '--------' }} @endsection
 @section('content')
     <!--Section-->
     <section>

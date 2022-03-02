@@ -1,5 +1,5 @@
 @extends('front_end_inners.app_front_end', ['title' => 'Latest News'])
-@section('page_title') {{ 'Rushetta | Latest News' }} @endsection
+@section('page_title') {{ 'Roshiita | Latest News' }} @endsection
 @section('content')
     <!--Section-->
     <section>
