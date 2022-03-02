@@ -832,20 +832,11 @@
                                     <li aria-haspopup="true">
                                         <a href="{{ route('users-list', 'medical-equipments') }}">Medical Equipment</a>
                                     </li>
+                                    <li aria-haspopup="true">
+                                        <a href="{{ route('users-list', 'medicine_company') }}">Medicine Company</a>
+                                    </li>
                                 </ul>
                             </li>
-                            {{-- <li aria-haspopup="true">
-                                <a href="#">Custom Pages <span class="fe fe-chevron-down"></span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="login-2.html">Login 02</a></li>
-                                    <li><a href="forgot.html">Forgot Password</a></li>
-                                    <li><a href="lockscreen.html">Lock Screen</a></li>
-                                    <li><a href="underconstruction.html">UnderConstruction</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>
-                            </li> --}}
                             <li aria-haspopup="true">
                                 <a href="{{ route('blogs-list') }}">Blogs </a>
 
@@ -860,21 +851,7 @@
                                 <a href="#search_collapse" data-toggle="collapse" role="button" aria-expanded="false"
                                     aria-controls="search_collapse"><i class="fa fa-search"></i></a>
                             </li>
-                            {{-- <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
-                                <span>
-                                    <a href="ad-posts.html" class="btn btn-secondary btn-block mb-lg-0"><i
-                                            class="icon icon-plus mr-1 text-white"></i>Add Your Post</a>
-                                </span>
-                            </li> --}}
                         </ul>
-                        {{-- <ul class="mb-0">
-                            <li aria-haspopup="true" class="d-none d-lg-block ">
-                                <span>
-                                    <a href="ad-posts.html" class="btn btn-danger btn-block mb-lg-0"><i
-                                            class="fe fe-plus-circle mr-1 text-white"></i>Add Your Post</a>
-                                </span>
-                            </li>
-                        </ul> --}}
                     </nav>
                 </div>
             </div>
@@ -890,30 +867,7 @@
     {{-- =================================================================================================================== --}}
     {{-- ================================================== End Content Area =============================================== --}}
     {{-- =================================================================================================================== --}}
-    <!--Section-->
-    {{-- <section class="sptb section-bg">
-        <div class="container">
-            <div class="section-title center-block text-center">
-                <h2>Download Apps</h2>
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center text-wrap">
-                        <div class="btn-list">
-                            <a href="#" class="btn btn-primary btn-lg mb-sm-0"><i
-                                    class="fa fa-apple fa-1x mr-2"></i> App Store</a>
-                            <a href="#" class="btn btn-secondary btn-lg mb-sm-0"><i
-                                    class="fa fa-android fa-1x mr-2"></i> Google Play</a>
-                            <a href="#" class="btn btn-info btn-lg mb-0"><i class="fa fa-windows fa-1x mr-2"></i>
-                                Windows</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!--/Section-->
+
 
     <!--Footer Section-->
     <section>

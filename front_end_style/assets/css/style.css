@@ -14287,7 +14287,7 @@ License        :   Licensed under ThemeForest License
     
     .product-slider .carousel-item img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
     
     #thumbcarousel .carousel-control-prev {
@@ -34115,4 +34115,8 @@ License        :   Licensed under ThemeForest License
     
     .item-search-menu .nav li {
         margin-top: 2%;
+    }
+    
+    #thumbcarousel .carousel-inner {
+        height: 175px;
     }

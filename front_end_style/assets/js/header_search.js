@@ -8,6 +8,7 @@ $(document).ready(function() {
         getMedicalCenterRegions();
         getRadiologyCenterRegions();
         getLabRegions();
+        getMedicalEquipmentRegions();
     }, 500);
 
 
@@ -43,6 +44,10 @@ $(document).ready(function() {
     $(document).on("change", "#country_id_lab", function() {
         getLabRegions($(this));
     });
+
+    $(document).on("change", "#country_id_medical_equipment", function() {
+        getMedicalEquipmentRegions($(this));
+    });
 });
 
 
@@ -58,7 +63,7 @@ function getHospitalRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -115,7 +120,7 @@ function getDoctorRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -172,7 +177,7 @@ function getPharmacyRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -229,7 +234,7 @@ function getGymRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -287,7 +292,7 @@ function getLifeCoachRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -345,7 +350,7 @@ function getMedicalCenterRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -402,7 +407,7 @@ function getRadiologyCenterRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -460,7 +465,7 @@ function getLabRegions(x) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://rushetta.website/en/frontGetRegions",
+        url: "http://roshiita.com//frontGetRegions",
         type: 'POST',
         data: formData,
         processData: false,
@@ -505,6 +510,64 @@ function getLabRegions(x) {
     });
 }
 
+
+function getMedicalEquipmentRegions(x) {
+    formData = new FormData();
+    // $("#country_id_medical_equipment").data('id');
+    country_id = $('option:selected', x).data('id');
+    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+    formData.append('country_id', country_id);
+    // country_id
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "http://roshiita.com//frontGetRegions",
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function(data) {
+            if (data.status == true) {
+                var selectRegions = '<option value="">Region</option>';
+                var name = "Nothing Selected..";
+                for (var key in data.regions) {
+                    // skip loop if the property is from prototype
+                    if (!data.regions.hasOwnProperty(key)) continue;
+
+                    var obj = data.regions[key];
+                    // alert(obj.id);
+                    for (var prop in obj) {
+                        // skip loop if the property is from prototype
+                        if (!obj.hasOwnProperty(prop)) continue;
+
+                        // your code
+                        selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
+                            '</option>';
+                        break;
+                    }
+                }
+                $('#region_id_medical_equipment').html(selectRegions);
+
+                // $('.selectpicker').selectpicker('refresh');
+                // $selected_value = $("#region_id_div").find('.filter-option-inner-inner');
+                // // alert(name);
+                // $selected_value.text(name);
+            }
+            // console.log('fooooooo');
+
+        },
+        error: function(reject) {
+            var response = $.parseJSON(reject.responseText);
+            $.each(response.errors, function(key, val) {
+                $("#" + key + "_error").text(val[0]);
+            });
+        }
+    });
+}
+
 // .on('keyup',function(){
 
 // });
@@ -514,7 +577,7 @@ $('#search_hospital_btn').on('click', function() {
     country = $('option:selected', '#country_id_hospital').text();
     region = $('option:selected', '#region_id_hospital').text();
     text = $('#search_hospital').val();
-    ref = "http://rushetta.website/en/search-hospital";
+    ref = "http://roshiita.com//search-hospital";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -535,7 +598,7 @@ $('#search_doctor_btn').on('click', function() {
     region = $('option:selected', '#region_id_doctor').text();
     speciality = $('option:selected', '#speciality_id_doctor').text();
     text = $('#search_doctor').val();
-    ref = "http://rushetta.website/en/search-doctor";
+    ref = "http://roshiita.com//search-doctor";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -556,7 +619,7 @@ $('#search_pharmacy_btn').on('click', function() {
     country = $('option:selected', '#country_id_pharmacy').text();
     region = $('option:selected', '#region_id_pharmacy').text();
     text = $('#search_pharmacy').val();
-    ref = "http://rushetta.website/en/search-pharmacy";
+    ref = "http://roshiita.com//search-pharmacy";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -576,7 +639,7 @@ $('#search_gym_btn').on('click', function() {
     country = $('option:selected', '#country_id_gym').text();
     region = $('option:selected', '#region_id_gym').text();
     text = $('#search_gym').val();
-    ref = "http://rushetta.website/en/search-fitness-centers') }}";
+    ref = "http://roshiita.com//search-fitness-centers') }}";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -596,7 +659,7 @@ $('#search_life_coach_btn').on('click', function() {
     country = $('option:selected', '#country_id_life_coach').text();
     region = $('option:selected', '#region_id_life_coach').text();
     text = $('#search_life_coach').val();
-    ref = "http://rushetta.website/en/search-life-coach";
+    ref = "http://roshiita.com//search-life-coach";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -617,7 +680,7 @@ $('#search_medical_center_btn').on('click', function() {
     country = $('option:selected', '#country_id_medical_center').text();
     region = $('option:selected', '#region_id_medical_center').text();
     text = $('#search_medical_center').val();
-    ref = "http://rushetta.website/en/search-medical-center";
+    ref = "http://roshiita.com//search-medical-center";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -638,7 +701,7 @@ $('#search_radiology_center_btn').on('click', function() {
     country = $('option:selected', '#country_id_radiology_center').text();
     region = $('option:selected', '#region_id_radiology_center').text();
     text = $('#search_radiology_center').val();
-    ref = "http://rushetta.website/en/search-radiology-center";
+    ref = "http://roshiita.com//search-radiology-center";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");
@@ -659,7 +722,30 @@ $('#search_lab_btn').on('click', function() {
     country = $('option:selected', '#country_id_lab').text();
     region = $('option:selected', '#region_id_lab').text();
     text = $('#search_lab').val();
-    ref = "http://rushetta.website/en/search-lab";
+    ref = "http://roshiita.com//search-lab";
+
+    country_seo = country.replaceAll(" ", "-");
+    region_seo = region.replaceAll(" ", "-");
+    text_seo = text.replaceAll(" ", "-");
+
+    ref += "/" + country_seo + "/" + region_seo + "/" + text_seo;
+    // console.log(country);
+
+
+    $(this).attr("href", ref);
+
+    $(this).click();
+});
+
+
+
+
+$('#search_medical_equipment_btn').on('click', function() {
+
+    country = $('option:selected', '#country_id_medical_equipment').text();
+    region = $('option:selected', '#region_id_medical_equipment').text();
+    text = $('#search_medical_equipment').val();
+    ref = "http://roshiita.com//search-medical-equipment";
 
     country_seo = country.replaceAll(" ", "-");
     region_seo = region.replaceAll(" ", "-");

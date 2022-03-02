@@ -79,6 +79,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/search-medical-center/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchMedicalCenter'])->name('front-search-medical-center');
     Route::get('/search-radiology-center/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchRadiologyCenter'])->name('front-search-radiology-center');
     Route::get('/search-lab/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchLab'])->name('front-search-lab');
+    Route::get('/search-medical-equipment/{country?}/{region?}/{name?}', [FrontEndController::class, 'frontSearchEquipment'])->name('front-search-medical_equipment');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================

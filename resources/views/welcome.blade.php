@@ -37,7 +37,7 @@
                                             <a data-toggle="tab" href="#tab5">Life Coaches</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#tab1">Medical Equipment</a>
+                                            <a data-toggle="tab" href="#tab10">Medical Equipment</a>
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#tab7">Medical Centers</a>
@@ -279,6 +279,34 @@
 
                                                 <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0">
                                                     <a class="btn btn-block btn-orange fs-14" id="search_lab_btn" style="cursor: pointer;" href="{{ route('front-search-lab') }}"><i
+                                                            class="fa fa-search"></i> Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab10">
+                                        <div class="search-background">
+                                            <div class="form row no-gutters">
+                                                <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0 location">
+                                                    <input class="form-control border" placeholder="Search Medical Equipment Name"
+                                                        type="text" name="search_medical_equipment" id="search_medical_equipment">
+                                                </div>
+                                                <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0">
+                                                    <select class="form-control border-bottom-0 w-100 select2-flag-search" name="country_id" id="country_id_medical_equipment" data-placeholder="Select">
+                                                        <option value="country">Country</option>
+                                                            @foreach ($public_countries as $country)
+                                                                <option value="{{ Str::upper($country->country_key) }}" data-id="{{ $country->id }}" @if($country->id == 111) selected @endif>{{ $country->name_en }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0">
+                                                    <select class="form-control select2 select2-show-search border-bottom-0 w-100 select2-show-search" name="region_id" id="region_id_medical_equipment">
+                                                            <option>Region</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0">
+                                                    <a class="btn btn-block btn-orange fs-14" id="search_medical_equipment_btn" style="cursor: pointer;" href="{{ route('front-search-medical_equipment') }}"><i
                                                             class="fa fa-search"></i> Search</a>
                                                 </div>
                                             </div>
