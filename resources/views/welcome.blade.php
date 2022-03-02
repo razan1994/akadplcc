@@ -1763,7 +1763,7 @@
 
     <!--Section-->
     <section class="sptb position-relative pattern">
-        <div class="container">
+        {{-- <div class="container">
             <div class="section-title center-block text-center">
                 <h2 class="text-white position-relative">Testimonials</h2>
 
@@ -1930,7 +1930,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
     <!--/Section-->
 
