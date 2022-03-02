@@ -310,7 +310,11 @@
         <div class="container">
             <div class="row">
                 <!--Add lists-->
+                @if($user_type == 'doctors')
                 <div class="col-xl-9 col-lg-8 col-md-12">
+                @else
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                @endif
                     <div class=" mb-lg-0">
                         <div class="">
                             <div class="item2-gl d-list">
@@ -614,6 +618,7 @@
                 </div>
                 <!--/Add lists-->
                 <!--Right Side Content-->
+                @if($user_type == 'doctors')
                 <div class="col-xl-3 col-lg-4 col-md-12">
                     <div class="card">
                         <form>
@@ -761,6 +766,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <!--/Right Side Content-->
             </div>
         </div>

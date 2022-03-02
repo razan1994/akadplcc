@@ -216,7 +216,7 @@ class UserController extends Controller
                 } else if ($request->user_type == 'Medicine Company') {
                     $last_image = $this->saveFileWithOriginalName('medicine_companies', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
                 }
-            
+
             } else {
                 $last_image = null;
             }
@@ -700,6 +700,12 @@ class UserController extends Controller
                 else if($user_type == "Medical Center"){
                     $user =MedicalCenter::find($user_id);
                 }
+                else if($user_type == "Medical Equipment"){
+                    $user =MedicalEquipment::find($user_id);
+                }
+                else if($user_type == "Medicine Company"){
+                    $user =MedicineCompany::find($user_id);
+                }
 
                 else if($user_type == "Lab"){
                     $user =Lab::find($user_id);
@@ -793,6 +799,12 @@ class UserController extends Controller
                 else if($user_type == "Medical Center"){
                     $user =MedicalCenter::find($user_id);
                 }
+                else if($user_type == "Medical Equipment"){
+                    $user =MedicalEquipment::find($user_id);
+                }
+                else if($user_type == "Medicine Company"){
+                    $user =MedicineCompany::find($user_id);
+                }
 
                 else if($user_type == "Lab"){
                     $user =Lab::find($user_id);
@@ -885,6 +897,12 @@ class UserController extends Controller
 
                 else if($user_type == "Medical Center"){
                     $user =MedicalCenter::find($user_id);
+                }
+                else if($user_type == "Medical Equipment"){
+                    $user =MedicalEquipment::find($user_id);
+                }
+                else if($user_type == "Medicine Company"){
+                    $user =MedicineCompany::find($user_id);
                 }
 
                 else if($user_type == "Lab"){

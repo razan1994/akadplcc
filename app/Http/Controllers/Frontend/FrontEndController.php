@@ -246,9 +246,9 @@ class FrontEndController extends Controller
 
             } else if ($request->institution_type == "Medical Equipment") {
                 $user = MedicalEquipment::create($created_data);
-                Auth::guard('medical_equipmet')->login($user);
+                Auth::guard('medical_equipment')->login($user);
 
-                return redirect()->route('medical_equipmet.medical_equipmet-dashboard');
+                return redirect()->route('medical_equipment.medical_equipment-dashboard');
 
             } else if ($request->institution_type == "Medicine Company") {
                 $user = LifeCoutch::create($created_data);
@@ -382,11 +382,11 @@ class FrontEndController extends Controller
                 return view('front_end_inners.user-details', compact('user', 'user_type', 'languages'));
             } else {
                 if($user_type == 'medical-equipments'){
-                    $products = EquipmentProduct::where('equipment_id',$user->id)->where('status',1)->paginate(9);
+                    $products = EquipmentProduct::where('equipment_id',$user->id)->where('status',1)->paginate(6);
                     return view('front_end_inners.institution_details', compact('user', 'user_type','products'));
                 }
                 elseif($user_type == 'medicine-company'){
-                    $products = EquipmentProduct::where('equipment_id',$user->id)->where('status',1)->paginate(9);
+                    $products = EquipmentProduct::where('equipment_id',$user->id)->where('status',1)->paginate(6);
                     return view('front_end_inners.institution_details', compact('user', 'user_type','products'));
                 }
                 return view('front_end_inners.institution_details', compact('user', 'user_type'));
@@ -403,26 +403,26 @@ class FrontEndController extends Controller
 
         $specialities = null;
         if ($user_type == 'insurances') {
-            $users = InsuranceCompany::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = InsuranceCompany::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'hospitals') {
-            $users = Hospital::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = Hospital::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'radiology-centers') {
-            $users = RadiologyCenter::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = RadiologyCenter::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'medical-centers') {
-            $users = MedicalCenter::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = MedicalCenter::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'labs') {
-            $users = Lab::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = Lab::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'doctors') {
-            $users = Doctor::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = Doctor::where('user_status', 2)->paginate(6)->onEachSide(2);
             $specialities = DoctorSpeciality::where('type','main')->get();
         } else if ($user_type == 'pharmacies') {
-            $users = Pharmacy::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = Pharmacy::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'life-coaches') {
-            $users = LifeCoutch::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = LifeCoutch::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'fitness-centers') {
-            $users = Gym::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = Gym::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else if ($user_type == 'medical-equipments') {
-            $users = MedicalEquipment::where('user_status', 2)->paginate(20)->onEachSide(2);
+            $users = MedicalEquipment::where('user_status', 2)->paginate(6)->onEachSide(2);
         } else {
             return redirect()->back()->with('danger', 'Not Found');
         }
@@ -1279,7 +1279,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'hospitals';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1357,7 +1357,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'doctors';
             $specialities = DoctorSpeciality::where('type','main')->get();
@@ -1423,7 +1423,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'pharmacies';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1488,7 +1488,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'fitness-centers';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1553,7 +1553,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'life-coaches';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1618,7 +1618,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'medical-centers';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1683,7 +1683,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'radiology-centers';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1749,7 +1749,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'labs';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
@@ -1814,7 +1814,7 @@ class FrontEndController extends Controller
                 $users = $users->where('region_id',$region_id->id);
             }
 
-            $users = $users->orderBy('created_at','desc')->paginate(5)->onEachSide(2);
+            $users = $users->orderBy('created_at','desc')->paginate(6)->onEachSide(2);
 
             $user_type = 'medical-equipments';
             return view('front_end_inners.list-users', compact('users', 'user_type'));
