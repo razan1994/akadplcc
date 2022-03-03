@@ -13,7 +13,7 @@
     {{-- ============================================== --}}
     <div class="breadcrumb-wrapper breadcrumb-contacts">
         <div>
-            <h1><i class="mdi mdi-account-multiple"></i> {{ isset($user_type) ? $user_type : 'User' }} Details</h1>
+            <h1><i class="mdi mdi-account-multiple"></i> User Details</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0">
                     <li class="breadcrumb-item">
@@ -21,20 +21,18 @@
                             <i class="mdi  mdi-home"></i> Dashboard
                         </a>
                     </li>
-                    @if(isset($user_type))
                         <li class="breadcrumb-item">
-                            <a href="{{ route('super_admin.users-index',$user_type) }}">
-                                <i class="mdi mdi-account-group"></i> All {{ isset($user_type) ? $user_type : 'User' }}s
+                            <a href="{{ route('super_admin.users-index') }}">
+                                <i class="mdi mdi-account-group"></i> All Users
                             </a>
                         </li>
-                    @endif
-                    <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> {{ isset($user_type) ? $user_type : 'User' }} Details
+                    <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> User Details
                     </li>
                 </ol>
             </nav>
         </div>
         <div>
-            <a href="{{ route('super_admin.users-create',isset($user_type) ? $user_type : 'Undefined') }}" class="mb-1 btn btn-primary"><i
+            <a href="{{ route('super_admin.users-create') }}" class="mb-1 btn btn-primary"><i
                     class="mdi mdi-playlist-plus"></i> Add New </a>
         </div>
     </div>
@@ -82,8 +80,7 @@
                         <div class="card-body">
                             <h5 class="py-2 text-dark"><i class="mdi mdi-account"></i> {!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</h5>
                             <a class="btn btn-primary btn-pill btn-sm my-4"
-                                href="{{ isset($user->id) ? route('super_admin.users-edit', [$user->id, $user_type]) : '#' }}">Update
-                                {{ isset($user_type) ? $user_type : 'User' }} Profile <i class="mdi mdi-update"></i></a>
+                                href="{{ isset($user->id) ? route('super_admin.users-edit', [$user->id]) : '#' }}">Update User Profile <i class="mdi mdi-update"></i></a>
                         </div>
 
                     </div>
@@ -99,9 +96,7 @@
                         <p style="color: blue;">{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</p>
                         <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-contacts"></i> Username :</p>
                         <p style="color: blue;">{!! isset($user->username) ? $user->username : "<span style='color:red;'>Undefined</span>" !!}</p>
-                        <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-account-switch"></i> User Type :
-                        </p>
-                        <p style="color: blue;">{!! isset($user_type) ? $user_type : "<span style='color:red;'>Undefined</span>" !!}</p>
+
                         <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-account-switch"></i> User Status
                             :</p>
                         <p style="color: blue;">{!! isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" !!}</p>
@@ -147,8 +142,7 @@
                             {{-- ============================================== --}}
                             <div class="media mt-3 profile-timeline-media">
                                 <div class="media-body">
-                                    <h3 class="py-3 text-dark"><i class="mdi mdi-information"></i> Main {{ isset($user_type) ? $user_type : 'User' }}
-                                        Information :</h3>
+                                    <h3 class="py-3 text-dark"><i class="mdi mdi-information"></i> Main User Information :</h3>
                                     <table class="table table-hover table-striped">
                                         <thead>
                                             <tr>
@@ -160,8 +154,7 @@
                                             <tr>
                                                 <th><i class="mdi mdi-account"></i> Username : <span
                                                         style="color:blue;">{!! isset($user->username) ? $user->username : '<span style="color:red;">Undefined</span>' !!}</span></th>
-                                                <th><i class="mdi mdi-account-multiple"></i> User Type : <span
-                                                        style="color:blue;">{!! isset($user_type) ? $user_type : '<span style="color:red;">Undefined</span>' !!}</span></th>
+
                                             </tr>
                                             <tr>
                                                 <th><i class="mdi mdi-phone"></i> Phone : <span
@@ -176,15 +169,7 @@
                                                     Registration : <span style="color:blue;">{!! isset($user->created_at) ? date('Y.d.m / h:i A', strtotime($user->created_at)) : '<span style="color:red;">Undefined</span>' !!}</span>
                                                 </th>
                                             </tr>
-                                            @if(isset($user_type) && $user_type == "Doctor")
-                                            <tr>
-                                                <th><i class="mdi mdi-clock-outline mdi-spin"></i> Speciality : <span
-                                                        style="color:blue;">{!! isset($user->speciality->name_en) ? $user->speciality->name_en : '<span style="color:red;">Undefined</span>' !!}</span></th>
-                                                <th>
-                                                    {{-- empty th --}}
-                                                </th>
-                                            </tr>
-                                            @endif
+                                            
                                         </thead>
                                     </table>
                                 </div>

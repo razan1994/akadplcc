@@ -18,7 +18,7 @@
         <meta property="og:image:height" content="300">
         {{-- <meta property="og:description" content="Your description."/>   --}}
 
-    <title>Rushetta | Admin Dashboard</title>
+    <title>Kanaf | Admin Dashboard</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"

@@ -23,8 +23,7 @@ class DatabaseSeeder extends Seeder
             PublicLanguageSeeder::class,
             PublicNationalitySeeder::class,
             PublicPhoneKeySeeder::class,
-            SpecialitySeeder::class,
-            DoctorSeeder::class
+
         ]);
     }
 }

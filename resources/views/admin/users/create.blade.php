@@ -22,15 +22,12 @@
                                     <i class="mdi mdi-home"></i> Dashboard
                                 </a>
                             </li>
-                            @if(isset($user_type))
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.users-index',$user_type) }}">
-                                    <i class="mdi mdi-account-group"></i> All {{ $user_type }}s
+                                <a href="{{ route('super_admin.users-index') }}">
+                                    <i class="mdi mdi-account-group"></i> All Users
                                 </a>
                             </li>
-                            @endif
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New
-                                {{ isset($user_type) ? $user_type : 'User' }}</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i> Add New User</li>
                         </ol>
                     </nav>
                 </div>
@@ -50,18 +47,6 @@
                                             enctype="multipart/form-data" id="createForm">
                                             @csrf
                                             <div class="form-row">
-                                                <input type="hidden" name="user_type" value="{{ isset($user_type) ? $user_type : 'Undefined' }}">
-                                                {{-- User ID --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">User Id :</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-page-last" id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" class="form-control"
-                                                            id="validationServer01" placeholder="Name" value="{{ $nextId }}" required disabled>
-                                                    </div>
-                                                </div> --}}
 
                                                 {{-- Name in AR --}}
                                                 <div class="col-md-6 mb-3">
@@ -161,34 +146,7 @@
                                                             value="{{ old('phone') }}">
                                                     </div>
                                                 </div>
-                                                @if(isset($user_type) && $user_type == "Doctor")
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-account-question"></i> Doctor Speciality : <strong
-                                                            class="text-danger"> * @error('speciality_id') (
-                                                            {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account-question"></span>
-                                                        </div>
-                                                        <select name="speciality_id[]" class="selectpicker"
-                                                        data-live-search="true" data-width="88%" multiple
-                                                        id="inlineFormCustomSelectPref">
-                                                            <option>Select Doctor Speciality...</option>
-                                                            @if (isset($specialities))
-                                                                @foreach ($specialities as $speciality)
-                                                                        <option value="{{ $speciality->id }}"
-                                                                            @if (old('speciality_id') == $speciality->id) selected @endif>{{ $speciality->name_en }}
-                                                                        </option>
-                                                                @endforeach
-                                                            @endif
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @endif
+                                                
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"

@@ -4,7 +4,7 @@
         <div class="app-brand">
             <a href="{{ route('super_admin.dashboard') }}" title="Dashboard">
 
-                <span class="brand-name text-truncate"> Rushetta Dashboard </span>
+                <span class="brand-name text-truncate"> Kanaf Dashboard </span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -26,25 +26,6 @@
                     </a>
                 </li>
 
-                {{-- Contact Us --}}
-                <li class="has-sub active expand">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                        data-target="#linkages" aria-expanded="false" aria-controls="contactUs">
-                        <i class="fas fa-id-card"></i>
-                        <span class="nav-text" style="font-size: 9pt;"> Linkages</span> <b
-                            class="caret"></b>
-                    </a>
-                    <ul class="collapse" id="linkages" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.specialities-index') }}">
-                                    <i class="fas fa-id-card"></i>
-                                    <span class="nav-text" style="font-size: 9pt;"> Doctor Specialities</span>
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
-                </li>
 
                 {{-- Users --}}
                 <li class="has-sub active expand">
@@ -58,61 +39,6 @@
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Super Admin') }}">
                                     <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Admin Users </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Insurance Company') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Insurance </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Hospital') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Hospital </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Radiology Center') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Radiology Center </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Medical Center') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Medical Center </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Lab') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Lab </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Doctor') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Doctor </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Patient') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Patient </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Pharmacy') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Pharmacy </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','SEO Admin') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> SEO Admin </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Gym') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Gym </span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Life Coach') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Life Coach </span>
                                 </a>
                             </li>
                         </div>

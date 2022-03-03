@@ -13,7 +13,7 @@
                 {{-- ================== Header ==================== --}}
                 {{-- ============================================== --}}
                 <div>
-                    <h1><i class="mdi mdi-playlist-edit"></i> Update {{ isset($user_type) ? $user_type : 'User' }} Information</h1>
+                    <h1><i class="mdi mdi-playlist-edit"></i> Update User Information</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
@@ -21,13 +21,11 @@
                                     <i class="mdi mdi-home"></i> Dashboard
                                 </a>
                             </li>
-                            @if(isset($user_type))
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.users-index',$user_type) }}">
-                                    <i class="mdi mdi-account-group"></i> All {{ isset($user_type) ? $user_type : 'User' }}s
+                                <a href="{{ route('super_admin.users-index') }}">
+                                    <i class="mdi mdi-account-group"></i> All Users
                                 </a>
                             </li>
-                            @endif
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-edit"></i> Edit</li>
                         </ol>
                     </nav>
@@ -48,7 +46,6 @@
                                         <form action="{{ route('super_admin.users-update', [$user->id]) }}" method="POST"
                                             id="createForm" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="user_type" value="{{ isset($user_type) ? $user_type : '--------' }}">
                                             <input type="hidden" name="region_id_old_value" value="{{ isset($user->region_id) ? $user->region_id : '--------' }}">
                                             <div class="form-row">
 
@@ -149,35 +146,6 @@
                                                     </div>
                                                 </div>
 
-                                                @if(isset($user_type) && $user_type == "Doctor")
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-account-question"></i> Doctor Speciality : <strong
-                                                            class="text-danger"> * @error('speciality_id') (
-                                                            {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account-question"></span>
-                                                        </div>
-                                                        <select name="speciality_id[]" class="selectpicker"
-                                                        data-live-search="true" data-width="88%" multiple
-                                                        id="inlineFormCustomSelectPref">
-                                                            <option>Select Doctor Speciality...</option>
-                                                            @if (isset($specialities))
-                                                                @foreach ($specialities as $speciality)
-                                                                        <option value="{{ $speciality->id }}"
-                                                                            @if ($user->specialities->contains('speciality_id', $speciality->id))) selected @endif>{{ $speciality->name_en }}
-                                                                        </option>
-                                                                @endforeach
-                                                            @endif
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @endif
-
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -228,27 +196,16 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-switch"></span>
                                                         </div>
-                                                        @if (isset($user_type))
-                                                            @if ($user_type == 'Super Admin')
-                                                                <input type="hidden" name="user_status" value="2">
-                                                                <!-- 2 => Active -->
-                                                            @endif
-                                                            <select
-                                                                {{ $user_type == 'Super Admin' ? 'disabled' : '' }}
-                                                                name="user_status"
-                                                                class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror"
-                                                                id="inlineFormCustomSelectPref">
+
+                                                            <select name="user_status" class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror" id="inlineFormCustomSelectPref">
                                                                 <option value="" selected>Choose User Status...</option>
-                                                                @if (isset($user_type))
                                                                     <option value="1" @if (isset($user->user_status) && $user->user_status == 'Pendding') selected @endif>Pendding
                                                                     </option>
                                                                     <option value="2" @if (isset($user->user_status) && $user->user_status == 'Active') selected @endif>Active
                                                                     </option>
                                                                     <option value="3" @if (isset($user->user_status) && $user->user_status == 'Inactive') selected @endif>Inactive
                                                                     </option>
-                                                                @endif
                                                             </select>
-                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -319,22 +276,7 @@
                                                             rows="10">{{ isset($user->user_description_en) ? $user->user_description_en : null }} </textarea>
                                                     </div>
                                                 </div>
-                                                @if(isset($user_type) && $user_type == "Doctor")
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-cash"></i> Visit Fees : <strong
-                                                            class="text-danger"> * @error('visit_fees') ( {{ $message }}
-                                                            ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cash"></span>
-                                                        </div>
-                                                        <input type="number" class="form-control" name="visit_fees" value="{{ $user->visit_fees }}" min="0.01" step="0.01">
-                                                    </div>
-                                                </div>
-                                                @endif
+                                                
 
                                                 {{-- User Image Filed --}}
                                                 <div class="col-md-6 mb-3">
