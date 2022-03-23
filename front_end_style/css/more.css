@@ -1,0 +1,35 @@
+
+/*************************inners***************************/
+
+.c_categoruys .i_main a.closed.collapsed{
+    background: url('../images/arrowclos.png') no-repeat right;
+    background-position-x: 99%;
+    color: #424242;
+}
+
+.c_categoruys .i_main a.closed{
+    background: url('../images/arrowopen.png') no-repeat right;
+    background-position-x: 99%;
+}
+
+
+
+.page_about{
+    background: url('../images/bgbaout.png') no-repeat top right;
+}
+
+
+/*************************home***************************/
+
+.c_hader_categ .i_main a.closed.collapsed{
+    background: url('../images/arrowopenrigt.png') no-repeat right;
+    background-position-x: 99%;
+    color: #424242;
+}
+
+.c_hader_categ .i_main a.closed{
+    background: url('../images/arrowopen.png') no-repeat right;
+    background-position-x: 99%;
+}
+
+

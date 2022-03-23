@@ -1,0 +1,14 @@
+
+%next_arrow{
+    #{$float_right}: 25px;
+    #{$float_left}: auto;
+}
+
+%prev_arrow{
+    #{$float_left}: 25px;
+    #{$float_right}: auto;
+}
+
+%arrow_after{
+    font-size: 26px;
+}

@@ -1,0 +1,31 @@
+/***********GRID************/
+.wrapper_1400 {
+    @extend %gr_relative;
+    // max-width: 1350px
+}
+
+.container_1300{
+    @extend %gr_relative;
+    max-width: 1300px;
+}
+
+.container_1200{
+    @extend %gr_relative;
+    max-width: 1200px;
+}
+
+
+.container_1033{
+    @extend %gr_relative;
+    max-width: 1033px;
+}
+
+.container_750{
+    @extend %gr_relative;
+    max-width: 750px;
+}
+
+.padding_left200{
+    @extend %gr_relative;
+    padding-#{$float_left}: 200px;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kanaf</title>
+    <link rel="shortcut icon" href="{{ asset('front_end_style/images/faviconlogo.png') }}" type="image/png">
+
+
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/bootstrap-rtl.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/more.css') }}">
+
+
+
+    <!-- Link paginate CSS -->
+    <link rel="stylesheet" rel="preload" href="{{ asset('front_end_style/css/jquery.paginate.css') }}">
+    {{-- <script src="{{ asset('front_end_style/js/jquery.colorbox-min.js') }}"></script> --}}
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/swiper-bundle.min.css') }}">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Link slick CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    {{-- ========================================================== --}}
+    {{-- =================== Sweet Alert Section ================== --}}
+    {{-- ========================================================== --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous"></script>
+    {{-- ========================================================== --}}
+    {{-- =================== Sweet Alert Section ================== --}}
+    {{-- ========================================================== --}}
+
+</head>
+
+<body>
+
+
+
+    <div class="wrapper_1400">
+        <!-- ================================================================= -->
+        <!-- ==================== Start Header Section ======================= -->
+        <!-- ================================================================= -->
+        @include('front_end_layout.header')
+        <!-- ================================================================= -->
+        <!-- ====================== End Header Section ======================= -->
+        <!-- ================================================================= -->
+
+        <!-- ================================================================= -->
+        <!-- ==================== Start Content Section ====================== -->
+        <!-- ================================================================= -->
+        @yield('content')
+        <!-- ================================================================ -->
+        <!-- ===================== End Content Section ======================= -->
+        <!-- ================================================================= -->
+
+        <!-- ================================================================= -->
+        <!-- ==================== Start Footer Section ======================= -->
+        <!-- ================================================================= -->
+        @include('front_end_layout.footer')
+        <!-- ================================================================= -->
+        <!-- ====================== End Footer Section ======================= -->
+        <!-- ================================================================= -->
+
+
+    </div>
+
+</body>
+
+<script src="{{ asset('front_end_style/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('front_end_style/js/popper.min.js') }}"></script>
+<script src="{{ asset('front_end_style/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('front_end_style/js/custom.js') }}"></script>
+<!-- Pagination JS -->
+<script src="{{ asset('front_end_style/js/jquery.paginate.js') }}"></script>
+<!-- Swiper JS -->
+<script src="{{ asset('front_end_style/js/swiper-bundle.min.js') }}"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- slick JS -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script src="{{ asset('js/custom.js') }}"></script>
+
+{{-- swipers --}}
+<script>
+    // slider swiper
+    var swiper = new Swiper('.slider .swiper-container', {
+        slidesPerView: 1,
+        loop: false,
+        // autoplay: {
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // },
+        pagination: {
+            el: ".slider .swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".slider .swiper-button-next",
+            prevEl: ".slider .swiper-button-prev",
+        },
+    });
+
+
+    // featured_products swiper
+    var swiper = new Swiper('.courses .mySwiper', {
+        slidesPerView: 2,
+        spaceBetween: 25,
+        loop: false,
+        grid: {
+            rows: 2,
+        },
+        pagination: {
+            el: ".courses .swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            200: {
+                slidesPerView: 1,
+            },
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 2,
+            },
+        }
+    });
+
+
+       var swiper = new Swiper('.our_brands .swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 50,
+        loop: false,
+        pagination: {
+            el: ".our_brands .swiper-pagination",
+            clickable: true,
+        },
+        // autoplay: {
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // },
+        breakpoints: {
+            200: {
+                slidesPerView: 1,
+            },
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 4,
+            },
+        }
+    });
+
+    $('.c_slick_sales').slick({
+        centerMode: true,
+        centerPadding: '0px',
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: false,
+        dots: true,
+    });
+    // inner swopers
+</script>
+
+{{-- paginate --}}
+<script>
+    $('.data-container').paginate({
+
+        perPage: 6,
+        scope: $('div.pagenitems'), // targets all div elements
+
+    });
+</script>
+
+</html>
