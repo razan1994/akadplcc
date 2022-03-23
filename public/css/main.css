@@ -791,9 +791,6 @@ input#quantity {
 .about .row {
   align-items: center;
 }
-.about .c_post {
-  max-width: 80%;
-}
 .about .c_post .c_body h2 {
   font-size: 28px;
   color: #67328f;
