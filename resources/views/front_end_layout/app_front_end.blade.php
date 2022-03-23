@@ -100,10 +100,10 @@
     var swiper = new Swiper('.slider .swiper-container', {
         slidesPerView: 1,
         loop: false,
-        // autoplay: {
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
         pagination: {
             el: ".slider .swiper-pagination",
             clickable: true,
@@ -120,6 +120,10 @@
         slidesPerView: 2,
         spaceBetween: 25,
         loop: false,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
         grid: {
             rows: 2,
         },
@@ -149,10 +153,10 @@
             el: ".our_brands .swiper-pagination",
             clickable: true,
         },
-        // autoplay: {
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
         breakpoints: {
             200: {
                 slidesPerView: 1,
@@ -171,7 +175,7 @@
         centerPadding: '0px',
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         arrows: false,
         dots: true,
     });

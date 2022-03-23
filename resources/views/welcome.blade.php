@@ -47,6 +47,10 @@
                 <div class="col-md-5">
 
                     <div class="c_imgs">
+
+                        <div class="c_bgimg c_bg_1">
+                            <img src="{{ asset('front_end_style/images/bg1slider.png') }}">
+                        </div>
                         <!-- Swiper pc -->
                         <div class="swiper-container">
                             <div class="swiper-wrapper"> 
@@ -74,6 +78,10 @@
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
+
+                        <div class="c_bgimg c_bg_2">
+                            <img src="{{ asset('front_end_style/images/bg2slider.png') }}">
+                        </div>
                     </div>
 
                 </div>
@@ -92,7 +100,7 @@
     <section class="about">
         <div class="container_1200">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <div class="c_post">
                         <div class="c_body">
                             <h2>نبذة عنا</h2>
@@ -137,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
 
                     <div class="c_image">
                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">

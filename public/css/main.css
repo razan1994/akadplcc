@@ -732,8 +732,9 @@ input#quantity {
 /****************************************************************/
 /****************************************************************/
 .slider {
-  padding-top: 30px;
+  padding-top: 60px;
   padding-bottom: 50px;
+  box-shadow: 0px 8px 10px 5px #97979724 inset;
 }
 .slider .row {
   align-items: center;
@@ -749,6 +750,19 @@ input#quantity {
 }
 .slider .c_post .c_buttn {
   margin-top: 30px;
+}
+.slider .c_imgs {
+  position: relative;
+}
+.slider .c_imgs .c_bgimg {
+  position: absolute;
+}
+.slider .c_imgs .c_bgimg.c_bg_1 {
+  left: 0;
+}
+.slider .c_imgs .c_bgimg.c_bg_2 {
+  bottom: 30px;
+  z-index: 99;
 }
 .slider .c_imgs .c_item img {
   border-radius: 74% 26% 58% 42%/39% 24% 76% 61%;
@@ -846,6 +860,11 @@ input#quantity {
   font-weight: bold;
   margin: 0;
   line-height: 20px;
+}
+.about .c_image {
+  background: url(/front_end_style/images/Untitled-8.png) no-repeat center;
+  text-align: center;
+  padding: 20px;
 }
 .about .c_image img {
   width: 465px;
