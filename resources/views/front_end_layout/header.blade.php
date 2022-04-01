@@ -2,7 +2,7 @@
     <div class="c_top_header">
         <div class="container_1200">
             <div class="c_menus_top">
-                
+
                 <ul class="c_social">
                     <li><a href="" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="">الرئيسية</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">عن الموقع</a>
+                            <a class="nav-link" href="{{ route('aboutUs') }}">عن الموقع</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">الدورات</a>
@@ -65,7 +65,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                         <input class="form-control" type="search" name="search_text" value="" placeholder="ابحث في المنصة" aria-label="Search">
-                        
+
                     </form>
                 </div>
 

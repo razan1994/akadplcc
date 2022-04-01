@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
@@ -33,7 +34,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 
-
+    Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
