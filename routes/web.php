@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\CourcesController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 
@@ -179,6 +180,14 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/showSoftDelete', [LatestNewsController::class, 'showSoftDelete'])->name('latest_news-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [LatestNewsController::class, 'softDeleteRestore'])->name('latest_news-softDeleteRestore');
 
+        });
+
+
+        // Cources Routes:
+        //Created By :Mohammed Salah
+        // ==============================================================================
+        Route::group(['prefix' => 'cources'], function () {
+            Route::get('/index', [CourcesController::class, 'index'])->name('cources-index');
         });
 
 
