@@ -180,6 +180,31 @@
         dots: true,
     });
     // inner swopers
+
+    var swiper = new Swiper('.c_brandas .swiper-container', {
+        slidesPerView: 6,
+        spaceBetween: 50,
+        loop: false,
+        pagination: {
+            el: ".c_brandas .swiper-pagination",
+            clickable: true,
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+            200: {
+                slidesPerView: 1,
+            },
+            600: {
+                slidesPerView: 2,
+            },
+            800: {
+                slidesPerView: 6,
+            },
+        }
+    });
 </script>
 
 {{-- paginate --}}

@@ -46,6 +46,25 @@
     }
 }
 
+
+%subscribe_button{
+    font-size: 11px;
+    background: $main_color;
+    color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    &:hover{
+        background: $btn_hover;
+        color: $main_color;
+    }
+}
+
+
+
+/**************/  
+
 %select_list{
     border-radius: 0;
     border-color: #dadada;

@@ -33,32 +33,15 @@
                         </div>
                         <div class="c_field">
                             <h3>WHO IS HTEE</h3>
-                            <p>{!! isset($aboutUs->about_us_en) ? $aboutUs->about_us_en : '<span style="color: red;">Undefined</span>' !!}</p>
+                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+
+                            </p>
                         </div>
                     </div>
                     <div class="c_vison_mission">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <div class="c_item">
-                                    <div class="c_verti_tit">
-                                        <span>OUR MISSION</span>
-                                    </div>
-                                    <div class="c_field">
-                                        <p>{!! isset($aboutUs->mission_en) ? $aboutUs->mission_en : '<span style="color: red;">Undefined</span>' !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <div class="c_item">
-                                    <div class="c_verti_tit">
-                                        <span>OUR VISION</span>
-                                    </div>
-                                    <div class="c_field">
-                                        <p>{!! isset($aboutUs->vision_en) ? $aboutUs->vision_en : '<span style="color: red;">Undefined</span>' !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

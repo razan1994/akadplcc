@@ -1,855 +1,438 @@
-/***********INNERS PAGE************/
 
 /****************************************************************/
 /****************************************************************/
-/*************************page_products**************************/
+/*************************c_page_profile***************************/
 /****************************************************************/
 /****************************************************************/
 
-.page_products {
-    .c_index_product {
-        .col-md-12 .c_item{
-            height: 200px;
-            .c_buttnons{
-                display: flex;
-                justify-content: center;
-                a{
-                    margin: 10px;
-                }
-            }
+
+
+.c_page_profile{
+
+    .c-right{
+        float: right;
+        width: 37%;
+        padding: 100px 0;
+
+
+
+
+
+        .quieq_tap ul {
+            display: block;
         }
 
-        .c_item {
-            @extend %product_item;
-            margin-top: 30px;
-        }
-    }
-
-    .c_categoruys {
-
-        .c_menu_Categ {
-            border: 1px solid #a5a5a5;
-
-            .i_main {
-                padding: 15px;
-                width: 100%;
-                display: inline-block;
-                border-top: 1px solid #eee;
-                margin-bottom: 0;
-
-                a.closed {
-                    width: 100%;
-                    display: inline-block;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: $main_color;
-                }
-
-                a.closed.collapsed {
-                    color: #000;
-                }
-
-                &:last-child {
-                    border-bottom: 1px solid #eee;
-                }
-
-                ul.c_sub_categ {
-                    margin-top: 15px;
-                }
-
-                li.i_sub {
-                    list-style: inside;
-
-                    a {
-                        font-size: 12px;
-                        color: #878686;
-                        &:hover{
-                            font-weight: bold;
-                            color: $main_color;
-                        }
-                    }
-
-                    .c_sub_active{
-                        color: $main_color;
-                        font-weight: bold;
-                    }
-                }
-            }
-
-        }
-    }
-
-}
-
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_product_details*******************/
-/****************************************************************/
-/****************************************************************/
-
-.page_product_details {
-
-    .c_gallery {
-        width: 45%;
-        float: $float_left;
-
-        @extend %gallery_swiper;
-    }
-
-    .c_information {
-        width: 50%;
-        float: $float_right;
-
-        input#quantity{
-            width: 100px;
-            margin: 0 20px;
-            padding: 0 20px;
-        }
-        @extend %product_info;
-    }
-
-    .c_related {
-        margin-top: 120px;
-        @extend %block_relative;
-
-        .c_item {
-            @extend %product_item;
+        .c_searchc {
+            width: 340px;
+            margin: auto;
+            margin-bottom: 44px;
         }
 
-        .c_titls {
-            text-align: center;
+
+        .c_searchc  input {
+            padding: 15px 35px;
+            width: 100%;
+            height: 45px;
+            border-radius: 35px !important;
         }
 
-        .c_titls h4 {
-            font-size: 27px;
-            display: inline-block;
-            letter-spacing: 3px;
-            padding: 5px 10px;
-            background: $main_color;
-            margin-bottom: 60px;
-            text-transform: uppercase;
+        .c_searchc  input::placeholder {
+            font-size: 18px;
+            color: #a8a8a8;
         }
-    }
-}
 
 
-/****************************************************************/
-/****************************************************************/
-/*************************c_block_login*******************/
-/****************************************************************/
-/****************************************************************/
-
-.c_block_login {
-    @extend %login_block;
-
-    input#email,
-    input#password,
-    button {
-        @extend %login_input;
-    }
-
-    button {
-        background: $main_color;
-        color: #000;
-        transition: .5s;
-        text-transform: capitalize;
-        font-weight: bold;
-        font-size: 20px;
-
-        &:hover {
-            background: none;
-        }
-    }
-
-    a.c_forget_pass {
-        text-align: $float_right;
-        font-size: 15px;
-        display: inline-block;
-        margin: 10px 0 25px;
-        width: 100%;
-        color: #000;
-    }
-
-    .c_social a {
-        @extend %login_input;
-        border: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: bold;
-        font-size: 20px;
-        text-transform: uppercase;
-    }
-
-    .c_face {
-        background: #0072bc;
-    }
-
-    .c_mail {
-        background: #53c8e1;
-    }
-
-    .form-group input {
-        @extend %login_input;
-    }
-}
-
-
-.page_register {
-    padding: 0 !important;
-}
-
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_cart*******************/
-/****************************************************************/
-/****************************************************************/
-
-.page_cart {
-
-    .c_view_content {
-        max-width: 620px;
-        margin: auto;
-    }
-
-    table {
-        @extend %style_table;
-    }
-
-
-}
-
-.page_order_details .c_view_content {
-    max-width: 1000px;
-}
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_myAccount*******************/
-/****************************************************************/
-/****************************************************************/
-
-.page_myAccount {
-
-
-    /***/
-    .c_view_content {
-        max-width: 800px;
-        margin: auto;
-    }
-
-
-    .quieq_tap {
-        li.nav-item {
-            width: 33.33%;
-            text-align: center;
-            margin: 0px;
-        }
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover
+       {
+           border: 0;
+           border-radius: 0;
+       }
 
 
         .nav-tabs .nav-link {
-            border: 1px solid #ddd;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            font-size: 18px;
-            color: #6a6a6a;
-        }
+           font-size: 15px;
+           font-weight: bold;
+           color: $main_color;
+           padding: 15px 140px;
+           border: 0;
+           border-radius: 0;
+       }
 
-        .nav-tabs .nav-item.show .nav-link,
-        .nav-tabs .nav-link.active {
-            color: #fff;
-            background-color: $main_color;
-            border-color: $main_color;
-        }
+
+         .nav-tabs .nav-item.show .nav-link,
+         .nav-tabs .nav-link.active,
+         .nav-tabs .nav-link:hover {
+           color: $main_color;
+           background-color: #f5f5f5;
+       }
+
+
+
+
 
     }
 
 
-    .c_box2 {
-        padding: 30px 15px;
-        background: #fff;
-        border-radius: 15px;
-        @extend %gr_relative;
+
+    .c-left {
+        float: left;
+        width: 63%;
+        padding: 75px 0;
+        box-shadow: inset -2px -3px 5px 0px #d4d4d4d1;
 
 
 
-        .c_top {
-            @extend %gr_relative;
-            padding: 15px 45px;
-            border: 1px solid #ddd;
-        }
-
-        .c_top .c_left {
-            width: 40%;
-            float: $float_left;
-        }
-
-        .c_top .c_right {
-            width: 30%;
-            float: $float_right;
+        .row {
+            margin: auto !important;
         }
 
 
+        .c_editInfo{
 
-        .c_info label {
-            font-size: 20px;
-            color: $main_color;
-        }
 
-        .c_info span,
-        .c_info a {
-            font-size: 20px;
-            color: #6a6a6a;
-        }
+            padding: 0 50px 0 100px;
 
 
+            .c_imgchosee > label{
 
+                width: 100px !important;
+                height: 100px;
 
-
-
-
-
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-        }
-
-
-        .c_submit button {
-            width: 100%;
-            font-size: 21px;
-            border-radius: 20px;
-            height: 50px;
-            background: #b8162b;
-            border: 1px solid #b8162b;
-        }
-
-
-        .c_submit button:hover {
-
-            border: 1px solid #b8162b;
-        }
-
-
-
-
-
-    }
-
-
-    .c_box1 {
-        border: 1px solid #ddd;
-    }
-
-    .c_box1 form {
-        padding: 50px 90px 100px;
-    }
-
-
-    form .input-group {
-        margin-bottom: 20px;
-    }
-
-    form .input-group select {
-        height: 50px;
-        border: 1px solid #ddd;
-        border-radius: 0;
-
-    }
-
-    form button {
-        width: 100%;
-        font-size: 21px;
-        border-radius: 20px;
-        height: 50px;
-        background: $main_color;
-        border: 1px solid $main_color;
-        transition: .5s;
-
-    }
-
-
-    form button:hover {
-
-        border: 1px solid $main_color;
-    }
-
-    .form-group.c-perimg input {
-        width: 0;
-    }
-
-    .form-group.c-perimg {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-
-
-    .form-group input,
-    form .form-group select {
-        height: 50px;
-        border-radius: 0;
-    }
-
-
-
-    /*** 2-5-2021 ****/
-    a.remove_location_profile.btn.btn-danger {
-        float: $float_right;
-    }
-
-    /*** 2-5-2021 ****/
-
-
-
-
-    .c_box1 .c-titl {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-    .c-titl label {
-        font-size: 18px;
-        font-weight: bold;
-    }
-    .c-titl span {
-        font-size: 18px;
-        color: #797979;
-    }
-
-    .c_box1 .c_info {
-        font-size: 18px;
-        padding-top: 10px;
-        border-top: 1px solid #ddd;
-        margin-top: 20px;
-        font-weight: bold;
-    }
-    .c_info span,
-    .c_pendin {
-        color: green;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-
-    .cblock {
-        padding: 50px 40px 100px;
-    }
-
-    .cblock .c_itmes {
-        padding: 20px;
-        border: 1px solid #ddd;
-        position: relative;
-        margin-bottom: 25px;
-    }
-
-
-    .cblock.c_asaddress label {
-        margin-#{$float_right}: 15px;
-    }
-
-    .cblock.c_asaddress li {
-        font-size: 18px;
-        color: #6a6a6a;
-        padding-top: 10px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .c_assaress .c_butmn a {
-        width: 100%;
-        font-size: 21px;
-        border-radius: 20px;
-        height: 50px;
-        background: $main_color;
-        border: 1px solid $main_color;
-        transition: .5s;
-        margin-top: 20px;
-    }
-
-
-    .c_assaress .c_butmn a:hover {
-
-        border: 1px solid $main_color;
-    }
-
-    .c_assaress .c_butmn {
-        padding: 0 40px 30px;
-    }
-
-
-    .c_order_Details {
-        position: absolute;
-        top: 20px;
-        #{$float_right}: 20px;
-        .c_go_details {
-            color: $main_color;
-            font-size: 18px;
-        }
-    }
-
-    .c_rowss {
-        display: flex;
-        justify-content: space-between;
-    }
-
-
-    table {
-        @extend %style_table;
-        // padding: 0 40px;
-    }
-
-}
-
-
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_productsSubCategory***************/
-/****************************************************************/
-/****************************************************************/
-
-.page_productsSubCategory {
-
-    .c_categoruys{
-        .c_menu_Categ {
-            border: 1px solid #a5a5a5;
-
-            .i_main {
-                padding: 15px;
-                width: 100%;
-                display: inline-block;
-                border-top: 1px solid #eee;
-                margin-bottom: 0;
             }
+
+            .c_imgchosee .c_editm {
+                position: absolute;
+                bottom: 20px;
+                right: 2px;
+            }
+
+
+            .c_imgchosee span {
+                font-size: 19px;
+                font-weight: bold;
+                color: $main_color;
+                margin-right: 40px;
+            }
+
+            .c_imgUp input {
+                display: none;
+            }
+
+            .c_imgUp {
+                width: 100%;
+                height: 100%;
+            }
+
+            .c_imgUp img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+
+            .form-group {
+                margin-bottom: 44px;
+            }
+
+            .form-group label{
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                color: #4c4c4c;
+                margin-bottom: 18px;
+            }
+
+            .form-group > input,
+            .form-group > select,
+            .form-group .select2-selection
+             {
+                width: 100%;
+                height: 45px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                padding: 6px 12px;
+                text-align: right;
+            }
+
+
+            .c_btnn button{
+                @extend %main_button;
+
+            }
+
+          
         }
-        .c_subpro_categ a {
-            font-size: 15px;
-            color: #515151;
-            display: inline-block;
-            margin: 5px;
-            font-weight: bold;
+
+        .c_statususerwx h4 {
+            font-size: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
         }
-        ul.c_subpro_categ {
-            padding: 20px 10px;
+
+        .c_statususerwx label {
+            margin-bottom: 0;
+            margin-left: 15px;
+        }
+
+        .c_statususerwx span {
+            font-size: 14px;
+        }
+
+        .c_statususerwx a {
+            color: $main_color;
+        }
+
+        .c_commentMessage {
+            padding: 0 100px;
+            position: relative;
+
+            .c_box {
+                padding: 50px 35px;
+                background: #fff;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                display: flex;
+            }
+
+
+            .c_box .c_image {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+
+            .c_box .c_body {
+                @extend %gr_relative;
+            }
+
+
+            .c_textare textarea{
+                padding: 25px 30px;
+                background: #fff;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                width: 100%;
+                height: 180px;
+            }
+
+
+
+             button{
+                @extend %main_button;
+            }
+
+             
+
+
         }
     }
 
 
-    .c_index_product .c_item {
-        @extend %sub_product_item;
-    }
+
 
 }
 
 
+
+
 /****************************************************************/
 /****************************************************************/
-/*************************page_productsSubCategory***************/
+/*************************c_page_courses***************************/
 /****************************************************************/
 /****************************************************************/
 
-.page_productsBrand {
+
+
+.c_page_courses{
 
     .c_item {
-        @extend %sub_product_item;
-    }
-
+        @extend %box_courses_item;
+        margin: 15px 0;
+     }
+     .c_block{
+         padding: 40px 0;
+     }
 }
 
 
+
+
 /****************************************************************/
 /****************************************************************/
-/*************************page_our_partners**********************/
+/*************************c_page_courseDetails***************************/
 /****************************************************************/
 /****************************************************************/
 
-.page_brands{
 
-    .c_view_content{
 
-      .c_item{
-       @extend %brands_item;
-      }
+.c_page_courseDetails{
 
+    .c_mainContent {
+        padding: 50px 0;
+        @extend %block_relative;
     }
 
+    .c_info{
 
-
-}
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_clients**********************/
-/****************************************************************/
-/****************************************************************/
-
-.page_clients{
-
-    .c_view_content{
-
-        .c_item_cleint{
-            margin-bottom: 65px;
-        }
-
-      .c_item{
-       @extend %clients_item;
-      }
-      .swiper-button-next:after, .swiper-button-prev:after{
-        display: none;
-      }
-      .swiper-container {
-        padding: 0px 45px;
-    }
-    .c_client_title{
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .c_client_title a{
-        @extend %title_cleint;
-
-        &:after{
-            @extend %cleint_after_title;
-        }
-    }
-
-    }
-
-
-
-}
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_services**********************/
-/****************************************************************/
-/****************************************************************/
-
-.page_services{
-    .c_item{
-        @extend %services_item;
-       }
-}
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_contact**********************/
-/****************************************************************/
-/****************************************************************/
-
-.page_contact{
-    padding: 0 !important;
-
-    .c_fomrs {
-        padding: 60px 85px;
-        box-shadow: 0px 0px 10px #bbbbbb73;
-        margin-top: -5px;
-        margin-bottom: 120px;
-
-        .c_workin_toims {
-            padding-#{$float_right}: 70px;
-            height: 530px;
-            position: relative;
-            img{
-                width: 100%;
-                height: 492px;
+        @extend %block_relative;
+        padding-bottom: 45px;
+        .c_right {
+            width: 70%;
+            float: right;
+            .c_itms {
+                padding: 35px;
+                @extend %boxshod_readius;
             }
 
-            .c_div_work {
-                position: absolute;
-                bottom: 0;
-                background: #484848e0;
-                border-radius: 5px;
-                padding: 40px 30px;
-                /* #{$float_left}: 0; */
+            .c_title{
+                @extend %styleTitle_inner;
+            }
 
-                h3{
-                    font-size: 29px;
-                    color: #fff;
-                    margin-bottom: 20px;
+            .c_body{
+                @extend %stylePargraoh_inner;
+            }
+
+            .c_tafsell{
+                @extend %styltfseel;
+            }
+
+        }
+
+
+        .c_left {
+            width: 27%;
+            float: left;
+
+            .c_box_subscribe{
+                @extend %boxshod_readius;
+                video#myvideo {
+                    width: 100%;
+                    height: 190px;
+                    /* border: 2px solid #0b8585; */
                 }
-                .c_tims{
-                    margin-bottom: 20px;
+
+                .c_btn_subscribe{
+                    height: 135px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    a{
+                        @extend %subscribe_button;
+                        width: 65%;
+                        text-align: center;
+                    }
+
                 }
-                .c_tims p {
-                    margin: 0;
-                    color: #fff;
-                    font-size: 18px;
+            }
+        }
+    }
+
+    .c_brandas{
+        @extend %padding_Section;
+        background: $btn_hover;
+    
+        .c_section_title {
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    
+        .c_item {
+            text-align: center;
+            width: 100%;
+            height: 100px;
+            transition: .5s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    
+        .c_item img{
+            // filter: grayscale(100%);
+            transition: .5s;
+            position: absolute;
+            #{$float_left}: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 100%;
+        }
+    
+        .c_item img:hover{
+            filter: none;
+            // transform: scale(1.06);
+        }
+    
+        .swiper-pagination {
+            @extend %bullets_swiper;
+            bottom: -7px !important;
+            text-align: center;
+        }
+    
+    
+    }
+
+    .c_info2{
+        margin-top: 40px;
+        .c_right {
+            width: 38%;
+            float: right;
+
+            .c_box_show{
+                @extend %boxshod_readius;
+                @extend %flex_center ;
+                padding: 50px 0 40px;
+            }
+            .c_bloc{
+                .c_img{
+                    margin-bottom: 30px;
                 }
-                .c_apho p{
+                img{
+                    width: 175px;
+                    height: 130px;
+                }
+                .c_btn_subscribe a{
+                    @extend %subscribe_button;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
+        .c_left {
+            width: 58%;
+            float: left;
+
+            .c_itm_prof{
+                @extend %flex_center ;
+                justify-content: flex-start;
+                @extend %boxshod_readius;
+                padding: 40px 80px;
+                img{
+                    border-radius: 100%;
+                    width: 170px;
+                    height: 170px;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    margin-left: 44px;
+                }
+
+                .c_bdy{
                     color: $main_color;
-                    font-size: 23px;
-                    font-weight: bold;
-                }
-                .c_apho a{
-                    color: #fff;
-                    font-size: 33px;
-                    transition: .5s;
-                    &:hover{
+                    span{
+                        display: inline-block;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: $main_color;
+                        margin-bottom: 10px;
+                    }
+                    h6{
+                        font-size: 13px;
                         color: $main_color;
                     }
                 }
             }
         }
-
-        .c_form_contat{
-            .c_tit_form h3 {
-                font-size: 30px;
-                margin-bottom: 30px;
-                font-weight: bold;
-            }
-
-            .form-group {
-                margin-bottom: 20px
-            }
-            .form-group input{
-                @extend %input_contact;
-            }
-            .form-group textarea{
-                @extend %textarea_contact;
-            }
-
-        }
     }
-
-    .c_social {
-        text-align: center;
-        padding: 0 100px;
-        margin-bottom: 120px;
-
-        .col-md-3 {
-            margin-bottom: 55px;
-        }
-
-        .c_item{
-            margin-bottom: 55px;
-            border-radius: 50%;
-            height: 130px;
-            color: $main_color;
-            background: #fff0;
-            transition: 0.5s;
-            display: table-cell;
-            vertical-align: middle;
-            padding: 20px;
-            &:hover{
-                text-shadow: 0 0 5px  $main_color;
-            }
-            a{
-                color: $main_color;
-            }
-            i{
-
-                font-size: 40px;
-            }
-
-            p {
-                margin: 15px 0;
-            }
-        }
-
-    }
-}
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_contact**********************/
-/****************************************************************/
-/****************************************************************/
-
-.page_about{
-    .c_how_is {
-        width: 50%;
-        display: flex;
-        margin-bottom: 175px;
-
-        .c_verti_tit {
-            @extend %vertical_word;
-        }
-
-        .c_field {
-            padding: 0 30px;
-            h3{
-                font-size: 30px;
-                color: $second_color;
-                margin-bottom: 20px;
-            }
-            p{
-                @extend %stylePargraoh;
-            }
-        }
-
-    }
-
-    .c_vison_mission{
-
-        .c_item{
-            display: flex;
-            height: 290px;
-            .c_verti_tit {
-               @extend %vertical_word;
-            }
-
-            .c_field {
-                padding: 30px;
-                background: #f6f6f6;
-                h3{
-                    font-size: 30px;
-                    color: $second_color;
-                    margin-bottom: 20px;
-                    text-transform: uppercase;
-                }
-                p{
-                    @extend %stylePargraoh;
-                }
-            }
-        }
-    }
-}
-
-
-
-/****************************************************************/
-/****************************************************************/
-/*************************page_terms**********************/
-/****************************************************************/
-/****************************************************************/
-
-.page_terms{
-
-    .c_item{
-        margin-bottom: 75px;
-        .c_title h4 {
-            font-size: 23px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            position: relative;
-            padding: 0 8px;
-            &::before {
-                content: "";
-                position: absolute;
-                width: 150px;
-                height: 60px;
-                background: $main_color;
-                #{$float_left}: 0;
-                z-index: -1;
-                top: -15px;
-            }
-        }
-        .c_body p {
-            color: #535353;
-            font-size: 17px;
-            line-height: 30px;
-        }
-    }
-
-
 }

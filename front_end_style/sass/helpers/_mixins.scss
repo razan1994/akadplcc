@@ -716,3 +716,58 @@
     }
 
 }
+
+
+
+/**o**/
+
+
+
+%styleTitle_inner {
+    font-size: 16px;
+    color: $main_color;
+    margin-bottom: 33px;
+    position: relative;
+    &::after{
+        content: '';
+        width: 50px;
+        height: 2px;
+        background: $main_color;
+        position: absolute;
+    }
+}
+
+%stylePargraoh_inner {
+    font-size: 13px;
+    color: $font_color;
+    text-align: justify;
+}
+
+%styltfseel {
+    display: flex;
+    margin-top: 20px;
+    .c_itme {
+        margin-left: 30px;
+        color: $main_color;
+        p{
+            margin: 0;
+        }
+    }
+    .c_itme img {
+        margin-left: 10px;
+    }
+    label {
+        font-size: 14px;
+    }
+    span {
+        font-size: 12px;
+    }
+
+}
+
+
+%boxshod_readius{
+    box-shadow: 0 0 6px 0px #c7c7c766;
+    border-radius: 5px;
+}
+/**o**/

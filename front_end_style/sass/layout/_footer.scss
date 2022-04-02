@@ -3,6 +3,7 @@
     background: url(/front_end_style/images/bgfooter.png) no-repeat right;
     background-size: auto 100%;
     border-top: 5px solid $main_color;
+    @extend %block_relative ;
     .c_parg {
         font-size: 15px;
         color: $font_color;

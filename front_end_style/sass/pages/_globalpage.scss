@@ -103,3 +103,17 @@ input#quantity {
     @extend %flex_center;
     height: 100%;
 }
+
+
+
+/**********/ 
+
+.c_title_top {
+    background: $btn_hover;
+    padding: 30px 0;
+    .title_page h1 {
+        font-size: 16px;
+        font-weight: bold;
+        color: $second_color;
+    }
+}

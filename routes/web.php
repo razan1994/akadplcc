@@ -198,3 +198,21 @@ Route::get('/error-pendding', function () {
 
 
 Route::get('crawler', [FrontEndController::class, 'crawler'])->name('crawler');
+
+
+// innerds 
+
+Route::get('/myAccount', function () {
+    return view('front_end_inners.myAccount');
+})->name('myAccount');
+
+// courses
+Route::get('/courses', function () {
+    return view('front_end_inners.courses');
+})->name('courses');
+
+
+// courseDetails
+Route::get('/courseDetails', function () {
+    return view('front_end_inners.courseDetails');
+})->name('courseDetails');

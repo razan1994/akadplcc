@@ -186,7 +186,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -210,7 +210,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -234,7 +234,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -258,7 +258,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -282,7 +282,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -306,7 +306,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -330,7 +330,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -354,7 +354,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -378,7 +378,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -402,7 +402,7 @@
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                         <span>الدورات</span>
+                                                         <span>الاستاذ حمزة</span>
                                                     </div>
                                                     <a href="#">اتصل بنا</a>
                                                 </div>
@@ -480,7 +480,7 @@
         <section class="our_brands">
             <div class="container_750">
                 <div class="c_section_title">
-                    <h3>الجهات المعتمدة</h3>
+                    <h3>الجهات المعتمدة</h3> 
                 </div>
                 <!-- Swiper pc -->
                 <div class="c_bloc">
