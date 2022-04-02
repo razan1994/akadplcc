@@ -50,6 +50,25 @@
 
                 {{-- Website Layout --}}
                 <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#cources"
+                        aria-expanded="false" aria-controls="job">
+                        <i class="fas fa-briefcase"> </i>
+                        <span class="nav-text" style="font-size: 9pt;"> Cources </span> <b
+                            class="caret"></b>
+                    </a>
+                    <ul class="collapse" id="cources" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.cources-index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> All Cources </span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                {{-- Website Layout --}}
+                <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#job"
                         aria-expanded="false" aria-controls="job">
                         <i class="fas fa-briefcase"> </i>

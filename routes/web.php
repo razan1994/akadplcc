@@ -9,12 +9,14 @@ use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
+use App\Http\Controllers\Backend\Admin\CourcesController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 
@@ -33,7 +35,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ==================================================================================================================
     // ============================================= End Shared Routes ==================================================
 
-
+    Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
@@ -178,6 +180,14 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/showSoftDelete', [LatestNewsController::class, 'showSoftDelete'])->name('latest_news-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [LatestNewsController::class, 'softDeleteRestore'])->name('latest_news-softDeleteRestore');
 
+        });
+
+
+        // Cources Routes:
+        //Created By :Mohammed Salah
+        // ==============================================================================
+        Route::group(['prefix' => 'cources'], function () {
+            Route::get('/index', [CourcesController::class, 'index'])->name('cources-index');
         });
 
 

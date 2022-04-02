@@ -1,4 +1,4 @@
-@extends('front_end_inners.app_front_end', ['title' => 'الصفحة الرئيسية'])
+@extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
 @section('content')
 
