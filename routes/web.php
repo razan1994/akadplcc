@@ -183,11 +183,14 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         });
 
 
+
         // Cources Routes:
         //Created By :Mohammed Salah
         // ==============================================================================
         Route::group(['prefix' => 'cources'], function () {
             Route::get('/index', [CourcesController::class, 'index'])->name('cources-index');
+            Route::get('/create', [CourcesController::class, 'create'])->name('cources-create');
+            Route::post('/store', [CourcesController::class, 'store'])->name('cources-store');
         });
 
 
@@ -210,7 +213,7 @@ Route::get('/error-pendding', function () {
 Route::get('crawler', [FrontEndController::class, 'crawler'])->name('crawler');
 
 
-// innerds 
+// innerds
 
 Route::get('/myAccount', function () {
     return view('front_end_inners.myAccount');
