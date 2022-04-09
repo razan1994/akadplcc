@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->longText('teacher_ar');
             $table->longText('teacher_en')->nullable();
             $table->integer('section_count');
-            $table->integer('section_time');
+            $table->decimal('section_time',10,2);
             $table->date('course_date');
             $table->tinyInteger('status')->comment('2 => Avtive || 1 => Stopped');
             $table->longText('main_image')->nullable();

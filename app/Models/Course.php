@@ -26,4 +26,9 @@ class Course extends Model
         'main_video'
     ];
 
+
+    public function sections(){
+        return $this->hasMany(CourseSection::class,'course_id');
+    }
+
 }

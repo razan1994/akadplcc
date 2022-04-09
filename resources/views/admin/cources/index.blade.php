@@ -55,7 +55,7 @@
                             class="mdi mdi-playlist-plus"></i> Add New</a>
 
 
-                            <a href="{{ route('super_admin.latest_news-showSoftDelete') }}" class="mb-1 btn btn-danger"><i
+                            <a href="{{ route('super_admin.cources-showSoftDelete') }}" class="mb-1 btn btn-danger"><i
                                 class="mdi mdi-delete"></i> Archive </a>
 
 
@@ -85,7 +85,7 @@
                                 @foreach ($cources as $index => $cource)
                                     <tr>
                                         <td  style="text-align: center">{{ isset($cource->title_ar) ? $cource->title_ar : 'Undefined' }}</td>
-                                        {{-- <td  style="text-align: center">{{ isset($news_blog->title_en) ? $news_blog->title_en : 'Undefined' }}</td> --}}
+                                        {{-- <td  style="text-align: center">{{ isset($cource->title_en) ? $cource->title_en : 'Undefined' }}</td> --}}
                                         <td  style="text-align: center">{{ isset($cource->status) ? $cource->status : 'Undefined' }}</td>
                                         @if (isset($cource->main_image) && file_exists($cource->main_image))
                                             <td  style="text-align: center"><img src="{{ asset($cource->main_image) }}" width="70" height="70"
@@ -105,16 +105,16 @@
 
                                         <td  style="text-align: center">
 
-                                            {{-- <a href="{{ route('super_admin.latest_news-show', $news_blog->id) }}"
+                                            <a href="{{ route('super_admin.cources-show', $cource->id) }}"
                                                 class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-eye"></i></a>
 
-                                            <a href="{{ route('super_admin.latest_news-edit', $news_blog->id) }}"
+                                            <a href="{{ route('super_admin.cources-edit', $cource->id) }}"
                                                 class="mb-1 btn btn-sm btn-success"><i
                                                     class="mdi mdi-playlist-edit"></i></a>
 
 
-                                            <a href="{{ route('super_admin.latest_news-softDelete', $news_blog->id) }}"
-                                                class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
+                                            <a href="{{ route('super_admin.cources-softDelete', $cource->id) }}"
+                                                class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

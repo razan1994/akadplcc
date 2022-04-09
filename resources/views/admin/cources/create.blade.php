@@ -80,11 +80,9 @@
                                                             <span class="input-group-text mdi mdi-format-title"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <textarea type="text" name="title_ar"
+                                                        <input type="text" name="title_ar"
                                                             class="form-control @error('title_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Title...">
-                                                            {!! old('title_ar') !!}
-                                                        </textarea>
+                                                            id="validationServer01" placeholder="Title..." value="{!! old('title_ar') !!}">
                                                     </div>
                                                 </div>
 
@@ -115,7 +113,12 @@
                                                     <label class="text-dark font-weight-medium mb-3" > Teacher Name :
                                                         <strong class="text-danger"> * @error('teacher_ar') - {{ $message }} @enderror</strong>
                                                     </label>
-                                                    <textarea id="teacher_ar" name="teacher_ar" class="form-control">{{ old('teacher_ar') }}</textarea>
+                                                    <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text mdi mdi-account-check"></span>
+                                                    </div>
+                                                    <input type="text" id="teacher_ar" name="teacher_ar" class="form-control" value="{{ old('teacher_ar') }}">
+                                                    </div>
                                                 </div>
 
 
@@ -132,7 +135,7 @@
                                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                                         </div>
                                                         <input type="number" min="1" step="1" name="section_count" class="form-control"
-                                                            id="validationServer01" placeholder="section count">
+                                                            id="validationServer01" placeholder="section count" value="{{ old('section_count') }}">
                                                     </div>
                                                 </div>
 
@@ -148,7 +151,7 @@
                                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                                         </div>
                                                         <input type="number" min="0.01" step="0.01" name="section_time" class="form-control"
-                                                            id="validationServer01" placeholder="section time">
+                                                            id="validationServer01" placeholder="section time" value="{{ old('section_time') }}">
                                                     </div>
                                                 </div>
                                                 {{-- Sections time --}}
@@ -163,7 +166,7 @@
                                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                                         </div>
                                                         <input type="date" name="course_date" class="form-control"
-                                                            id="validationServer01" placeholder="course date">
+                                                            id="validationServer01" placeholder="course date" value="{{ old('course_date') }}">
                                                     </div>
                                                 </div>
 
