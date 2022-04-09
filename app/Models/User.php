@@ -34,8 +34,6 @@ class User extends Authenticatable
         'profile_photo_path',
         'user_status',
         'created_by',
-        'alias_name_ar',
-        'alias_name_en'
     ];
 
     /**

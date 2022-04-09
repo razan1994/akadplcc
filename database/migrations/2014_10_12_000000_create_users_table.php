@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
-            $table->longText('alias_name_ar');
-            $table->longText('alias_name_en');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('phone')->nullable();

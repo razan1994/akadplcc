@@ -65,7 +65,7 @@
                             <tr>
                                 <th>#</th>
                                 {{-- <th><i class="mdi mdi-account"></i> Name AR</th> --}}
-                                <th><i class="mdi mdi-account"></i> Name EN</th>
+                                <th><i class="mdi mdi-account"></i> Name </th>
                                 <th><i class="mdi mdi-email"></i> Email</th>
                                 <th><i class="mdi mdi-phone"></i> Phone</th>
                                 <th><i class="mdi mdi-account-switch"></i> User Status</th>
@@ -80,7 +80,7 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             {{-- <td>{!! isset($user->name_ar) ? $user->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td> --}}
-                                            <td>{!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{!! isset($user->name_ar) ? $user->name_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</td>
                                             <td>
