@@ -52,7 +52,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Name AR : <strong
+                                                        <i class="mdi mdi-account"></i> Name : <strong
                                                             class="text-danger"> * @error('name_ar') (
                                                             {{ $message }} ) @enderror</strong>
                                                     </label>
@@ -63,13 +63,13 @@
                                                         </div>
                                                         <input type="text" name="name_ar"
                                                             class="form-control @error('name_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Name AR"
+                                                            id="validationServer01" placeholder="Name"
                                                             value="{{ old('name_ar') }}">
                                                     </div>
                                                 </div>
 
                                                 {{-- Name EN --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Name EN : <strong
@@ -86,7 +86,7 @@
                                                             id="validationServer01" placeholder="Name EN"
                                                             value="{{ old('name_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Username --}}
                                                 <div class="col-md-6 mb-3">
@@ -141,12 +141,34 @@
                                                             <span class="input-group-text mdi mdi-cellphone"></span>
                                                         </div>
                                                         <input type="number" name="phone"
-                                                            class="form-control @error('phone') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Phone"
-                                                            value="{{ old('phone') }}">
+                                                        class="form-control @error('phone') is-invalid @enderror"
+                                                        id="validationServer01" placeholder="Phone"
+                                                        value="{{ old('phone') }}">
                                                     </div>
                                                 </div>
-                                                
+                                                {{-- User Status --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account-switch"></i> User Status : <strong
+                                                            class="text-danger"> * @error('user_status') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account-check"></span>
+                                                        </div>
+                                                        <select name="user_status"
+                                                            class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror"
+                                                            id="inlineFormCustomSelectPref">
+                                                            <option value="">Select User Status...</option>
+                                                            <option value="1" @if (old('user_status') == '1') selected @endif>Pendding</option>
+                                                            <option value="2" @if (old('user_status') == '2') selected @endif>Active</option>
+                                                            <option value="3" @if (old('user_status') == '3') selected @endif>Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -184,29 +206,7 @@
                                                             autocomplete="new-password">
                                                     </div>
                                                 </div>
-
-                                                {{-- User Status --}}
-                                                <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-account-switch"></i> User Status : <strong
-                                                            class="text-danger"> * @error('user_status') (
-                                                            {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account-check"></span>
-                                                        </div>
-                                                        <select name="user_status"
-                                                            class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror"
-                                                            id="inlineFormCustomSelectPref">
-                                                            <option value="">Select User Status...</option>
-                                                            <option value="1" @if (old('user_status') == '1') selected @endif>Pendding</option>
-                                                            <option value="2" @if (old('user_status') == '2') selected @endif>Active</option>
-                                                            <option value="3" @if (old('user_status') == '3') selected @endif>Inactive</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+{{--
                                                 <div class="col-md-6">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Country : <strong class="text-danger">
@@ -276,7 +276,7 @@
                                                             class="form-control "
                                                             rows="10">{{ old('user_description_en') != null ? old('user_description_en') : null }} </textarea>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- User Image --}}
                                                 <div class="col-md-6 mb-3">
@@ -310,70 +310,3 @@
 
     @endsection
 
-    @section('admin_javascript')
-    <script src="https://cdn.tiny.cloud/1/uze3r9dfhut169wyk3qp6lvudqwpac0rbkigzudv9qfhahqx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
-    <script>
-        $(document).ready(function() {
-            getRegions();
-        });
-
-        $("#country_id").change(function() {
-            getRegions();
-        });
-
-        function getRegions() {
-            var formData = new FormData($('#createForm')[0]);
-            $.ajax({
-                type: 'post',
-                url: "{{ route('super_admin.getRegions') }}",
-                data: formData,
-                processData: false,
-                contentType: false,
-                cache: false,
-                success: function(data) {
-                    if (data.status == true) {
-                        var selectRegions = '<option value="">Choose the region ... </option>';
-                        for (var key in data.regions) {
-                            // skip loop if the property is from prototype
-                            if (!data.regions.hasOwnProperty(key)) continue;
-
-                            var obj = data.regions[key];
-                            // alert(obj.id);
-                            for (var prop in obj) {
-                                // skip loop if the property is from prototype
-                                if (!obj.hasOwnProperty(prop)) continue;
-
-                                // your code
-                                var region_id_old_value = $("#region_id_old_value").val();
-                                if (region_id_old_value) {
-                                    if (obj.id == region_id_old_value) {
-                                        selectRegions += '<option value="' + obj.id + '" selected>' + obj
-                                            .name_ar + '</option>';
-                                    } else {
-                                        selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
-                                            '</option>';
-                                    }
-                                } else {
-                                    selectRegions += '<option value="' + obj.id + '">' + obj.name_ar +
-                                        '</option>';
-                                }
-                                break;
-                            }
-                        }
-                        $('#region_id').html(selectRegions);
-
-                        $('.selectpicker').selectpicker('refresh');
-                    }
-
-                },
-                error: function(reject) {
-                    var response = $.parseJSON(reject.responseText);
-                    $.each(response.errors, function(key, val) {
-                        $("#" + key + "_error").text(val[0]);
-                    });
-                }
-            });
-        }
-    </script>
-    @endsection

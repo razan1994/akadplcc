@@ -23,8 +23,6 @@ class UserSeeder extends Seeder
             'name_ar' => 'مدير النظام',
             'name_en' => 'Super Admin',
             'username' => 'super_admin',
-            'alias_name_ar' => 'مدير-النظام',
-            'alias_name_en' => 'Super-Admin',
             'email' => 'admin@kanaf.com',
             'phone' => '0799999999',
             'password' => Hash::make('12345678'),

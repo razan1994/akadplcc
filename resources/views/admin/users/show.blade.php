@@ -78,7 +78,7 @@
                             @endif
                         </div>
                         <div class="card-body">
-                            <h5 class="py-2 text-dark"><i class="mdi mdi-account"></i> {!! isset($user->name_en) ? $user->name_en : "<span style='color:red;'>Undefined</span>" !!}</h5>
+                            <h5 class="py-2 text-dark"><i class="mdi mdi-account"></i> {!! isset($user->name_ar) ? $user->name_ar : "<span style='color:red;'>Undefined</span>" !!}</h5>
                             <a class="btn btn-primary btn-pill btn-sm my-4"
                                 href="{{ isset($user->id) ? route('super_admin.users-edit', [$user->id]) : '#' }}">Update User Profile <i class="mdi mdi-update"></i></a>
                         </div>
@@ -146,12 +146,9 @@
                                     <table class="table table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th><i class="mdi mdi-account"></i> Name AR : <span
+                                                <th><i class="mdi mdi-account"></i> Name  : <span
                                                         style="color:blue;">{!! isset($user->name_ar) ? $user->name_ar : '<span style="color:red;">Undefined</span>' !!}</span></th>
-                                                <th><i class="mdi mdi-account"></i> Name EN : <span
-                                                        style="color:blue;">{!! isset($user->name_en) ? $user->name_en : '<span style="color:red;">Undefined</span>' !!}</span></th>
-                                            </tr>
-                                            <tr>
+                                                
                                                 <th><i class="mdi mdi-account"></i> Username : <span
                                                         style="color:blue;">{!! isset($user->username) ? $user->username : '<span style="color:red;">Undefined</span>' !!}</span></th>
 
@@ -169,7 +166,7 @@
                                                     Registration : <span style="color:blue;">{!! isset($user->created_at) ? date('Y.d.m / h:i A', strtotime($user->created_at)) : '<span style="color:red;">Undefined</span>' !!}</span>
                                                 </th>
                                             </tr>
-                                            
+
                                         </thead>
                                     </table>
                                 </div>

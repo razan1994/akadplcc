@@ -183,11 +183,22 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         });
 
 
+
         // Cources Routes:
         //Created By :Mohammed Salah
         // ==============================================================================
         Route::group(['prefix' => 'cources'], function () {
             Route::get('/index', [CourcesController::class, 'index'])->name('cources-index');
+            Route::get('/create', [CourcesController::class, 'create'])->name('cources-create');
+            Route::post('/store', [CourcesController::class, 'store'])->name('cources-store');
+            Route::get('show/{id}', [CourcesController::class, 'show'])->name('cources-show');
+            Route::get('edit/{id}', [CourcesController::class, 'edit'])->name('cources-edit');
+            Route::post('update/{id}', [CourcesController::class, 'update'])->name('cources-update');
+            Route::get('softDelete/{id}', [CourcesController::class, 'softDelete'])->name('cources-softDelete');
+            Route::get('/showSoftDelete', [CourcesController::class, 'showSoftDelete'])->name('cources-showSoftDelete');
+            Route::get('softDeleteRestore/{id}', [CourcesController::class, 'softDeleteRestore'])->name('cources-softDeleteRestore');
+            Route::post('addCourseSection/{id}', [CourcesController::class, 'addCourseSection'])->name('add-course-section');
+            Route::get('deleteCourseSection/{id}', [CourcesController::class, 'deleteCourseSection'])->name('delete-course-section');
         });
 
 
@@ -210,7 +221,7 @@ Route::get('/error-pendding', function () {
 Route::get('crawler', [FrontEndController::class, 'crawler'])->name('crawler');
 
 
-// innerds 
+// innerds
 
 Route::get('/myAccount', function () {
     return view('front_end_inners.myAccount');

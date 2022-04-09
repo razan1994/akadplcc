@@ -67,7 +67,7 @@ class UserController extends Controller
         try {
 
 
-            return view('admin.users.create',compact('specialities'));
+            return view('admin.users.create');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -105,8 +105,7 @@ class UserController extends Controller
             if (isset($request->profile_photo_path)) {
                 $orginal_image = $request->file('profile_photo_path');
                 $upload_location = 'storage/profile-photos/';
-                $original_name = $orginal_image->getClientOriginalName();
-                    $last_image = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                $last_image = $this->saveFile($orginal_image,$upload_location);
 
             } else {
                 $last_image = null;
@@ -114,21 +113,15 @@ class UserController extends Controller
 
             $created_data = [
                 'name_ar' => $request->name_ar,
-                'name_en' => $request->name_en,
+                'name_en' => $request->name_ar,
                 'username' => $request->username,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
                 'user_status' => $request->user_status,
                 'profile_photo_path' => $last_image,
-                'created_by' => auth()->user()->id,
-                'alias_name_en'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_en),
-                'alias_name_ar'=>str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->name_ar),
-                'country_id'=>$request->country_id,
-                'region_id'=>$request->region_id,
+                'created_by' => auth()->user()->id
             ];
-                $created_data['user_description_en'] = $request->user_description_en;
-                $created_data['user_description_ar'] = $request->user_description_ar;
 
 
             DB::transaction(function () use ($created_data,$request) {
@@ -255,15 +248,11 @@ class UserController extends Controller
             if ($user) {
                 // Standard Updated Data :
                 $update_data['name_ar'] = $request->name_ar;
-                $update_data['name_en'] = $request->name_en;
+                $update_data['name_en'] = $request->name_ar;
                 $update_data['username'] = $request->username;
                 $update_data['email'] = $request->email;
                 $update_data['phone'] = $request->phone;
                 $update_data['user_status'] = $request->user_status;
-                $update_data['country_id'] = $request->country_id;
-                $update_data['region_id'] = $request->region_id;
-                $update_data['alias_name_en'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_en']);
-                $update_data['alias_name_ar'] = str_replace(array(' ','"','>','<','#','%','|','/'),'-',$update_data['name_ar']);
                 // Add Password to updated date if exist :
                 if (isset($request->password)) {
                     $update_data['password'] = Hash::make($request->password);
@@ -274,7 +263,7 @@ class UserController extends Controller
                     $orginal_image = $request->file('profile_photo_path');
                     $upload_location = 'storage/profile-photos/';
                     $original_name = $orginal_image->getClientOriginalName();
-                        $last_image = $this->saveFileWithOriginalName('users', 'profile_photo_path', $orginal_image, $original_name, $upload_location);
+                        $last_image = $this->saveFile($orginal_image,$upload_location);
 
                     $update_data['profile_photo_path']= $last_image;
                     File::delete($user->profile_photo_path);

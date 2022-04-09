@@ -53,7 +53,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Name AR : <strong
+                                                        <i class="mdi mdi-account"></i> Name : <strong
                                                             class="text-danger"> * @error('name_ar') (
                                                             {{ $message }} ) @enderror</strong>
                                                     </label>
@@ -64,13 +64,13 @@
                                                         </div>
                                                         <input type="text" name="name_ar"
                                                             class="form-control @error('name_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Name AR"
+                                                            id="validationServer01" placeholder="Name"
                                                             value="{{ isset($user->name_ar) ? $user->name_ar : null }}">
                                                     </div>
                                                 </div>
 
                                                 {{-- Name in English --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01"><i class="mdi mdi-account">
                                                         </i> Name EN : <strong class="text-danger"> * @error('name_en') (
@@ -86,7 +86,7 @@
                                                             id="validationServer01" placeholder="Name EN"
                                                             value="{{ isset($user->name_en) ? $user->name_en : null }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Username --}}
                                                 <div class="col-md-6 mb-3">
@@ -146,6 +146,31 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- User Status --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01">
+                                                        <i class="mdi mdi-account-switch"></i> User Status : <strong
+                                                            class="text-danger"> * @error('user_status') (
+                                                            {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account-switch"></span>
+                                                        </div>
+
+                                                            <select name="user_status" class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror" id="inlineFormCustomSelectPref">
+                                                                <option value="" selected>Choose User Status...</option>
+                                                                    <option value="1" @if (isset($user->user_status) && $user->user_status == 'Pendding') selected @endif>Pendding
+                                                                    </option>
+                                                                    <option value="2" @if (isset($user->user_status) && $user->user_status == 'Active') selected @endif>Active
+                                                                    </option>
+                                                                    <option value="3" @if (isset($user->user_status) && $user->user_status == 'Inactive') selected @endif>Inactive
+                                                                    </option>
+                                                            </select>
+                                                    </div>
+                                                </div>
+
                                                 {{-- Password --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
@@ -184,99 +209,6 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- User Status --}}
-                                                <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">
-                                                        <i class="mdi mdi-account-switch"></i> User Status : <strong
-                                                            class="text-danger"> * @error('user_status') (
-                                                            {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-account-switch"></span>
-                                                        </div>
-
-                                                            <select name="user_status" class="custom-select my-1 mr-sm-2 @error('user_status') is-invalid @enderror" id="inlineFormCustomSelectPref">
-                                                                <option value="" selected>Choose User Status...</option>
-                                                                    <option value="1" @if (isset($user->user_status) && $user->user_status == 'Pendding') selected @endif>Pendding
-                                                                    </option>
-                                                                    <option value="2" @if (isset($user->user_status) && $user->user_status == 'Active') selected @endif>Active
-                                                                    </option>
-                                                                    <option value="3" @if (isset($user->user_status) && $user->user_status == 'Inactive') selected @endif>Inactive
-                                                                    </option>
-                                                            </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">Country : <strong class="text-danger">
-                                                            * @error('country_id') - {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-
-                                                        <select id="country_id" name="country_id" class="selectpicker"
-                                                            data-live-search="true" data-width="88%"
-                                                            id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Choose a country...</option>
-                                                            @if (isset($public_countries))
-                                                                @foreach ($public_countries as $public_country)
-                                                                    <option value="{{ $public_country->id }}"
-                                                                        @if ($user->country_id == $public_country->id) selected @endif>
-                                                                        {{ $public_country->name_en }}
-                                                                    </option>
-                                                                @endforeach
-                                                            @endif
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" id="region_id_div">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">City : <strong class="text-danger">
-                                                            * @error('region_id') - {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <input type="hidden" value="{{ $user->region_id }}"
-                                                            id="region_id_old_value">
-                                                        <select name="region_id" id="region_id" class="selectpicker"
-                                                            data-live-search="true" data-width="88%">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">User Description AR   <strong
-                                                            class="text-danger">
-                                                            * @error('user_description_ar') - {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea name="user_description_ar" id="editor1"
-                                                            class="form-control "
-                                                            rows="10" cols="10">{{ isset($user->user_description_ar) ? $user->user_description_ar : null }} </textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">User Description EN   <strong
-                                                            class="text-danger">
-                                                            * @error('user_description_en') - {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-book-open"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <textarea name="user_description_en" id="editor2"
-                                                            class="form-control "
-                                                            rows="10">{{ isset($user->user_description_en) ? $user->user_description_en : null }} </textarea>
-                                                    </div>
-                                                </div>
-                                                
 
                                                 {{-- User Image Filed --}}
                                                 <div class="col-md-6 mb-3">
