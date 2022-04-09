@@ -96,7 +96,7 @@
 
 {{-- swipers --}}
 <script>
-    // slider swiper
+    // slider swiper 
     var swiper = new Swiper('.slider .swiper-container', {
         slidesPerView: 1,
         loop: false,
@@ -205,6 +205,25 @@
             },
         }
     });
+
+
+    var swiper = new Swiper(".c_coursubs_Swiper .mySwiper", {
+        spaceBetween: 20,
+        slidesPerView: 4,
+        watchSlidesProgress: true,
+        direction: "vertical",
+        mousewheel: true,
+      });
+      var swiper2 = new Swiper(".c_coursubs_Swiper .mySwiper2", {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".c_coursubs_Swiper .swiper-button-next",
+          prevEl: ".c_coursubs_Swiper .swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+      });
 </script>
 
 {{-- paginate --}}

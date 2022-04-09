@@ -5,7 +5,7 @@
   padding: 0px 0px;
 }
 
-.footer, .c_page_newsInner, .c_page_contact .c_info, .c_page_courseDetails .c_info, .c_page_courseDetails .c_mainContent, div#mainContent {
+.footer, .c_page_newsInner, .c_page_contact .c_info, .c_page_courseSubscriber .c_mainContent, .c_page_courseDetails .c_info, .c_page_courseDetails .c_mainContent, div#mainContent {
   position: relative;
   width: 100%;
   display: inline-block;
@@ -1047,6 +1047,73 @@ input#quantity {
 .c_page_courseDetails .c_info2 .c_left .c_itm_prof .c_bdy h6 {
   font-size: 13px;
   color: #67328f;
+}
+
+/****************************************************************/
+/****************************************************************/
+/*************************c_page_courseSubscriber***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_courseSubscriber .c_mainContent {
+  padding: 50px 0;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper {
+  display: flex;
+  justify-content: space-between;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper video {
+  max-width: 100%;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .mySwiper {
+  width: 28%;
+  margin: 0;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .mySwiper video {
+  height: 100px;
+  width: 100%;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .mySwiper .swiper-wrapper {
+  height: 600px !important;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .mySwiper .swiper-slide {
+  height: 135px !important;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .mySwiper .c_title h4 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #424242;
+  margin-top: 10px;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 {
+  width: 69%;
+  margin: 0;
+  height: 555px;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .c_title h4 {
+  font-size: 19px;
+  font-weight: bold;
+  color: #67328f;
+  margin-top: 20px;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-next:after, .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-prev:after {
+  display: none;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-next, .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-prev {
+  bottom: 20px;
+  top: auto;
+  color: #67328f;
+  font-size: 15px;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-next img, .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-prev img {
+  margin: 0 10px;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-prev, .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-rtl .swiper-button-next {
+  left: 120px;
+  right: auto;
+}
+.c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-next, .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-rtl .swiper-button-prev {
+  right: auto;
+  left: 20px;
 }
 
 /****************************************************************/

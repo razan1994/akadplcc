@@ -238,6 +238,11 @@ Route::get('/courseDetails', function () {
     return view('front_end_inners.courseDetails');
 })->name('courseDetails');
 
+// courseSubscriber
+Route::get('/courseSubscriber', function () {
+    return view('front_end_inners.courseSubscriber');
+})->name('courseSubscriber');
+
 // about
 Route::get('/about', function () {
     return view('front_end_inners.about');
