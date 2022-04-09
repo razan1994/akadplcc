@@ -30,6 +30,11 @@
                     <h1>الملف الشخصي</h1>
                 </div>
             </div>
+        </div> 
+        <div class="c-breadcrumps">
+            <div class="container_1200">
+            <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>الملف الشخصي</a></p>
+            </div>
         </div>
     </div>
 
