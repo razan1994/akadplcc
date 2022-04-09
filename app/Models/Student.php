@@ -4,25 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class SeoAdmin extends Authenticatable
+class Student extends Authenticatable
 {
+    use HasApiTokens;
     use HasFactory;
-
-    protected $table = 'seo_admins';
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var string[]
      */
+    protected $table = 'users';
     protected $fillable = [
-        'name_ar',
-        'name_en',
+        'first_name',
+        'mid_first_name',
+        'mid_last_name',
+        'last_name',
         'username',
         'email',
         'phone',
@@ -30,16 +36,10 @@ class SeoAdmin extends Authenticatable
         'profile_photo_path',
         'user_status',
         'created_by',
-        'country_id',
-        'region_id',
-        'address_ar',
-        'address_en',
-        'player_id',
-        'alias_name_en',
-        'alias_name_ar'
     ];
+
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
      * @var array
      */
@@ -48,12 +48,10 @@ class SeoAdmin extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
-        'pivot',
-        'profile_photo_url'
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
      * @var array
      */
@@ -61,27 +59,31 @@ class SeoAdmin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
     // ===================================================================================================================
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
 
-    // Relation With Public Country Table
-    // Created By : Mohammed Salah
-    public function country()
-    {
-        return $this->belongsTo(PublicCountry::class);
-    }
 
-    // Relation With Public Region Table
-    // Created By : Mohammed Salah
-    public function region()
-    {
-        return $this->belongsTo(PublicRegion::class, 'region_id');
-    }
 
-    // ====================================================================================
-    // ============================== Accessories =========================================
-    // ====================================================================================
+    // ===================================================================================================================
+    // ============================================= Mutator Section =====================================================
+    // ===================================================================================================================
+
+
+
+
+    // ===================================================================================================================
+    // ============================================= Accessors Section ===================================================
+    // ===================================================================================================================
 
     public function getUserStatusAttribute($value)
     {
@@ -93,6 +95,4 @@ class SeoAdmin extends Authenticatable
             return 'Inactive';
         }
     }
-
-
 }

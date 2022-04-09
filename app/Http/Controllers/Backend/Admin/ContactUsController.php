@@ -92,9 +92,11 @@ class ContactUsController extends Controller
                 $update_data = [
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    'fax' => $request->fax,
-                    'address_en' => $request->address_en,
-                    'address_ar' => $request->address_ar,
+                    'facebook_url' => $request->facebook_url,
+                    'linkedin_url' => $request->linkedin_url,
+                    'instagram_url' => $request->instagram_url,
+                    'twitter_url' => $request->twitter_url,
+                    'youtube_url' => $request->youtube_url
                 ];
 
                 DB::transaction(function () use ($update_data, $contact) {

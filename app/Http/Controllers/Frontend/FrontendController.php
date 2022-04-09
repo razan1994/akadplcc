@@ -11,6 +11,6 @@ class FrontendController extends Controller
     function aboutUs(){
         $about = AboutUs::first();
 
-        return view('front_end_inners.about_us',compact('about'));
+        return view('front_end_inners.about',compact('about'));
     }
 }

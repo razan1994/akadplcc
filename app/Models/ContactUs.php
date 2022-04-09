@@ -16,8 +16,10 @@ class ContactUs extends Model
     protected $fillable = [
         'email',
         'phone',
-        'fax',
-        'address_ar',
-        'address_en',
+        'facebook_url',
+        'linkedin_url',
+        'instagram_url',
+        'twitter_url',
+        'youtube_url'
     ];
 }

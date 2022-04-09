@@ -95,16 +95,12 @@ class SliderController extends Controller
                 $orginal_image = $request->file('image');
                 $upload_location = 'storage/sliders/';
                 $original_name = $orginal_image->getClientOriginalName();
-                $last_image = $this->saveFileWithOriginalName('sliders', 'image', $orginal_image, $original_name, $upload_location);
+                $last_image = $this->saveFile($orginal_image,$upload_location);
             } else {
                 $last_image = null;
             }
 
             $created_data = [
-                'title_ar' => $request->title_ar,
-                'title_en' => $request->title_en,
-                'description_ar' => $request->description_ar,
-                'description_en' => $request->description_en,
                 'status' => $request->status,
                 'image' => $last_image,
                 'created_by' => auth()->user()->id,
@@ -187,10 +183,6 @@ class SliderController extends Controller
 
             if ($slider) {
                 // Standard Updated Data :
-                $update_data['title_ar'] = $request->title_ar;
-                $update_data['title_en'] = $request->title_en;
-                $update_data['description_ar'] = $request->description_ar;
-                $update_data['description_en'] = $request->description_en;
                 $update_data['status'] = $request->status;
 
                 // Upload Image Section :
@@ -198,7 +190,7 @@ class SliderController extends Controller
                     $orginal_image = $request->file('image');
                     $upload_location = 'storage/sliders/';
                     $original_name = $orginal_image->getClientOriginalName();
-                    $update_data['image'] = $this->saveFileWithOriginalName('sliders', 'image', $orginal_image, $original_name, $upload_location);
+                    $update_data['image'] = $this->saveFile($orginal_image, $upload_location);
                     File::delete($slider->image);
                 }
 

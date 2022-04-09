@@ -97,51 +97,79 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- fax --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- Facebook Url --}}
+                                                <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Fax : <strong class="text-danger"> * @error('fax') ( {{ $message }} ) @enderror</strong>
+                                                        <i class="mdi mdi-account"></i> Facebook URL : <strong class="text-danger"> * @error('facebook_url') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-cellphone"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <input type="text" name="fax" class="form-control"
-                                                            id="validationServer01" placeholder="Fax"
-                                                            value="{!! isset($contact->fax) ? $contact->fax : "<span style='color:red;'>Undefined</span>" !!}">
+                                                        <input type="text" name="facebook_url" class="form-control"
+                                                            id="validationServer01" placeholder="Facebook URL"
+                                                            value="{!! isset($contact->facebook_url) ? $contact->facebook_url : "<span style='color:red;'>Undefined</span>" !!}">
                                                     </div>
                                                 </div>
-
-                                                {{-- Address EN --}}
+                                                {{-- Facebook Url --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Address EN : <strong class="text-danger"> * @error('address_en') ( {{ $message }} ) @enderror</strong>
+                                                        <i class="mdi mdi-account"></i> Instagram URL : <strong class="text-danger"> * @error('instagram_url') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-format-title"
+                                                            <span class="input-group-text mdi mdi-cellphone"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <input type="text" name="address_en" class="form-control"
-                                                            id="validationServer01" placeholder="Address EN"
-                                                            value="{!! isset($contact->address_en) ? $contact->address_en : "<span style='color:red;'>Undefined</span>" !!}">
+                                                        <input type="text" name="instagram_url" class="form-control"
+                                                            id="validationServer01" placeholder="Instagram URL"
+                                                            value="{!! isset($contact->instagram_url) ? $contact->instagram_url : "<span style='color:red;'>Undefined</span>" !!}">
                                                     </div>
                                                 </div>
-
-                                                {{-- Address AR --}}
+                                                {{-- Facebook Url --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Address AR : <strong class="text-danger"> * @error('address_ar') ( {{ $message }} ) @enderror</strong>
+                                                        <i class="mdi mdi-account"></i> Linkedin URL : <strong class="text-danger"> * @error('linkedin_url') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-format-title"
+                                                            <span class="input-group-text mdi mdi-cellphone"
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
-                                                        <input type="text" name="address_ar" class="form-control"
-                                                            id="validationServer01" placeholder="Address AR"
-                                                            value="{!! isset($contact->address_ar) ? $contact->address_ar : "<span style='color:red;'>Undefined</span>" !!}">
+                                                        <input type="text" name="linkedin_url" class="form-control"
+                                                            id="validationServer01" placeholder="Linkedin URL"
+                                                            value="{!! isset($contact->linkedin_url) ? $contact->linkedin_url : "<span style='color:red;'>Undefined</span>" !!}">
+                                                    </div>
+                                                </div>
+                                                {{-- Facebook Url --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Twitter URL : <strong class="text-danger"> * @error('twitter_url') ( {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cellphone"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="twitter_url" class="form-control"
+                                                            id="validationServer01" placeholder="Twitter URL"
+                                                            value="{!! isset($contact->twitter_url) ? $contact->twitter_url : "<span style='color:red;'>Undefined</span>" !!}">
+                                                    </div>
+                                                </div>
+                                                {{-- Facebook Url --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                        <i class="mdi mdi-account"></i> Youtube URL : <strong class="text-danger"> * @error('youtube_url') ( {{ $message }} ) @enderror</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cellphone"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <input type="text" name="youtube_url" class="form-control"
+                                                            id="validationServer01" placeholder="Youtube URL"
+                                                            value="{!! isset($contact->youtube_url) ? $contact->youtube_url : "<span style='color:red;'>Undefined</span>" !!}">
                                                     </div>
                                                 </div>
 

@@ -11,6 +11,7 @@ use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class NewsBlogController extends Controller
 {
@@ -101,7 +102,7 @@ class NewsBlogController extends Controller
                 $orginal_image = $request->file('image');
                 $upload_location = 'storage/blogs/';
                 $original_name = $orginal_image->getClientOriginalName();
-                $file_name = $this->saveFileWithOriginalName('blogs', 'image', $orginal_image, $original_name, $upload_location);
+                $file_name = $this->saveFile($orginal_image, $upload_location);
                 $news_blog_main_image   = $file_name;
             } else {
                 $news_blog_main_image = null;
@@ -110,27 +111,12 @@ class NewsBlogController extends Controller
             $created_data = [
                 'user_id' => auth()->user()->id,
                 'title_ar' => $request->title_ar,
-                'title_en' => $request->title_en,
+                'title_en' => $request->title_ar,
                 'status' => $request->status,
                 'desc_ar' => $request->desc_ar,
-                'desc_en' => $request->desc_en,
-                'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_ar),
-                'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_en),
+                'desc_en' => $request->desc_ar,
                 'image' => $news_blog_main_image,
-                'alt_text_ar'=> $request->alt_text_ar,
-                'alt_text_en'=> $request->alt_text_en,
-                'image_title_text_ar'=> $request->image_title_text_ar,
-                'image_title_text_en'=> $request->image_title_text_en,
-                'h2_ar'=> $request->h2_ar,
-                'h2_en'=> $request->h2_en,
-                'seo_title_ar'=> $request->seo_title_ar,
-                'seo_title_en'=> $request->seo_title_en,
-                'keywords_ar'=> str_replace(' ',',',$request->keywords_ar),
-                'keywords_en'=> str_replace(' ',',',$request->keywords_en),
-                'redirect_301_ar'=> $request->redirect_301_ar,
-                'redirect_301_en'=> $request->redirect_301_en,
-                'meta_desc_ar' => $request->meta_desc_ar,
-                'meta_desc_en' => $request->meta_desc_en
+
             ];
 
             DB::transaction(function () use ($created_data) {
@@ -254,33 +240,19 @@ class NewsBlogController extends Controller
                 // General Updated Data :
                 $update_data = [
                     'title_ar' => $request->title_ar,
-                    'title_en' => $request->title_en,
+                    'title_en' => $request->title_ar,
                     'status' => $request->status,
                     'desc_ar' => $request->desc_ar,
-                    'desc_en' => $request->desc_en,
-                    'alias_name_ar' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_ar),
-                    'alias_name_en' => str_replace(array(' ','"','>','<','#','%','|','/'),'-',$request->title_en),
-                    'alt_text_ar'=> $request->alt_text_ar,
-                    'alt_text_en'=> $request->alt_text_en,
-                    'image_title_text_ar'=> $request->image_title_text_ar,
-                    'image_title_text_en'=> $request->image_title_text_en,
-                    'h2_ar'=> $request->h2_ar,
-                    'h2_en'=> $request->h2_en,
-                    'seo_title_ar'=> $request->seo_title_ar,
-                    'seo_title_en'=> $request->seo_title_en,
-                    'keywords_ar'=> str_replace(' ',',',$request->keywords_ar),
-                    'keywords_en'=> str_replace(' ',',',$request->keywords_en),
-                    'redirect_301_ar'=> $request->redirect_301_ar,
-                    'redirect_301_en'=> $request->redirect_301_en,
-                    'meta_desc_ar' => $request->meta_desc_ar,
-                    'meta_desc_en' => $request->meta_desc_en
+                    'desc_en' => $request->desc_ar,
+
                 ];
                 // Upload Image Section :
                 if (isset($request->image)) {
                     $orginal_image = $request->file('image');
                     $upload_location = 'storage/blogs/';
                     $original_name = $orginal_image->getClientOriginalName();
-                    $file_name = $this->saveFileWithOriginalName('blogs', 'image', $orginal_image, $original_name, $upload_location);
+                    $file_name = $this->saveFile($orginal_image,$upload_location);
+                    File::delete($news_blog->image);
                     $update_data['image'] = $file_name;
                 }
 

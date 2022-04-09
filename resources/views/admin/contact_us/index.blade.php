@@ -59,7 +59,7 @@
                                 <div class="card card-default">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
                                                         <h3 class="pb-2" style="color: blue">Email</h3>
@@ -71,7 +71,7 @@
                                                 <hr class="w-100">
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
                                                         <h3 class="pb-2" style="color: blue">Phone</h3>
@@ -83,43 +83,64 @@
                                                 <hr class="w-100">
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <div class="d-flex justify-content-center ">
-                                                    <div class="text-center pb-4">
-                                                        <h3 class="pb-2" style="color: blue">Fax</h3>
-                                                        <p class="text-dark">
-                                                            {!! isset($contact->fax) ? $contact->fax : "<span style='color:red;'>Undefined</span>" !!}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <hr class="w-100">
-                                            </div>
-
-
                                             <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
-                                                        <h3 class="pb-2" style="color: blue"> Address Ar</h3>
+                                                        <h3 class="pb-2" style="color: blue">Facebook URL</h3>
                                                         <p class="text-dark">
-                                                            {!! isset($contact->address_ar) ? $contact->address_ar : "<span style='color:red;'>Undefined</span>" !!}
+                                                            {!! isset($contact->facebook_url) ? $contact->facebook_url : "<span style='color:red;'>Undefined</span>" !!}
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100">
                                             </div>
-
                                             <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
-                                                        <h3 class="pb-2" style="color: blue" >Address EN</h3>
+                                                        <h3 class="pb-2" style="color: blue">Linkedin URL</h3>
                                                         <p class="text-dark">
-                                                            {!! isset($contact->address_en) ? $contact->address_en : "<span style='color:red;'>Undefined</span>" !!}
+                                                            {!! isset($contact->linkedin_url) ? $contact->linkedin_url : "<span style='color:red;'>Undefined</span>" !!}
                                                         </p>
-
                                                     </div>
                                                 </div>
                                                 <hr class="w-100">
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-center ">
+                                                    <div class="text-center pb-4">
+                                                        <h3 class="pb-2" style="color: blue">Instagram URL</h3>
+                                                        <p class="text-dark">
+                                                            {!! isset($contact->instagram_url) ? $contact->instagram_url : "<span style='color:red;'>Undefined</span>" !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="w-100">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-center ">
+                                                    <div class="text-center pb-4">
+                                                        <h3 class="pb-2" style="color: blue">Twitter URL</h3>
+                                                        <p class="text-dark">
+                                                            {!! isset($contact->twitter_url) ? $contact->twitter_url : "<span style='color:red;'>Undefined</span>" !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="w-100">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-center ">
+                                                    <div class="text-center pb-4">
+                                                        <h3 class="pb-2" style="color: blue">Youtube URL</h3>
+                                                        <p class="text-dark">
+                                                            {!! isset($contact->youtube_url) ? $contact->youtube_url : "<span style='color:red;'>Undefined</span>" !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="w-100">
+                                            </div>
+
+
+
                                         </div>
                                     </div>
                                 </div>

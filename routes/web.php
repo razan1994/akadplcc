@@ -22,7 +22,7 @@ use App\Http\Controllers\Backend\Admin\NewsBlogController;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+// Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     // ==================================================================================================================
     // ============================================= Shared Routes ======================================================
 
@@ -45,7 +45,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     });
 
-});
+// });
 
 // ==================================================================================================================
 // =========================================== Super Admin Routes ===================================================

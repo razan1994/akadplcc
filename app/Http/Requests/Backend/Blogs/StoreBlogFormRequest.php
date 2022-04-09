@@ -26,9 +26,7 @@ class StoreBlogFormRequest extends FormRequest
     {
         return [
             'title_ar' => 'required|unique:blogs,title_ar',
-            'title_en' => 'required|unique:blogs,title_en',
             'desc_ar' => 'required',
-            'desc_en' => 'required',
             'image' => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
             'status' => 'required',
         ];

@@ -20,9 +20,6 @@ class ContactUsSeeder extends Seeder
         ContactUs::create([
             'email' => 'Please enter your email',
             'phone' => 'Please enter the phone number ',
-            'fax' => 'Please enter the Fax ',
-            'address_ar' => 'Please enter the address in Arabic',
-            'address_en' => 'Please enter the address in English',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }

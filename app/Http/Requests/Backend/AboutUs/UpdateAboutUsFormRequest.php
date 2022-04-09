@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\Blogs;
+namespace App\Http\Requests\Backend\AboutUs;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateBlogFormRequest extends FormRequest
+class UpdateAboutUsFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,9 @@ class UpdateBlogFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_ar' => 'required|unique:blogs,title_ar,'.$this->id,
-            'desc_ar' => 'required',
-            'image' => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'status' => 'required',
+            'about_us_ar' => 'required',
+            'vision_ar' => 'required',
+            'mission_ar' => 'required'
         ];
     }
 }

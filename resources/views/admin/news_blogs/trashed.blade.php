@@ -68,8 +68,7 @@
                     <table id="hoverable-data-table" class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th style="text-align: center"><i class="mdi mdi-format-title"></i> Title EN </th>
-                                <th style="text-align: center"><i class="mdi mdi-format-title"></i> Title AR </th>
+                                <th style="text-align: center"><i class="mdi mdi-format-title"></i> Title  </th>
                                 <th style="text-align: center"><i class="far fa-question-circle"></i> Status </th>
                                 <th style="text-align: center"><i class="mdi mdi-image"></i> Main Image </th>
                                 <th  style="text-align: center"><i class="mdi mdi-clock-outline mdi-spin"></i> Deleted At</th>
@@ -81,7 +80,6 @@
                                 @foreach ($news_blogs as $index => $news_blog)
                                     <tr>
                                         <td  style="text-align: center">{{ isset($news_blog->title_ar) ? $news_blog->title_ar : 'Undefined' }}</td>
-                                        <td  style="text-align: center">{{ isset($news_blog->title_en) ? $news_blog->title_en : 'Undefined' }}</td>
                                         <td  style="text-align: center">{{ isset($news_blog->status) ? $news_blog->status : 'Undefined' }}</td>
                                         @if ($news_blog->image && file_exists($news_blog->image))
                                             <td  style="text-align: center"><img src="{{ asset($news_blog->image) }}" width="70" height="70"

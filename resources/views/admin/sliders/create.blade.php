@@ -45,7 +45,7 @@
                                             <div class="form-row">
 
                                                 {{-- Title AR --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Title AR : <strong
@@ -62,10 +62,10 @@
                                                             id="validationServer01" placeholder="Title AR"
                                                             value="{{ old('title_ar') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Title EN --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Name EN : <strong
@@ -82,10 +82,10 @@
                                                             id="validationServer01" placeholder="Title EN"
                                                             value="{{ old('title_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Desc AR --}}
-                                                <div class="col-12">
+                                                {{-- <div class="col-12">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         Description AR : <strong class="text-danger"> * @error('description_ar')
@@ -100,10 +100,10 @@
                                                             class="form-control "
                                                             rows="5">{{ old('description_ar') }}</textarea>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Desc EN --}}
-                                                <div class="col-12">
+                                                {{-- <div class="col-12">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         Description EN : <strong class="text-danger"> * @error('description_en')
@@ -118,7 +118,7 @@
                                                             class="form-control "
                                                             rows="5">{{ old('description_en') }}</textarea>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Status --}}
                                                 <div class="col-md-6 mb-3">
@@ -168,5 +168,5 @@
     @endsection
 
     @section('admin_javascript')
-      
+
     @endsection

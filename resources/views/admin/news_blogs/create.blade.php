@@ -71,7 +71,7 @@
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01"> Title AR <strong
+                                                        for="validationServer01"> Title <strong
                                                             class="text-danger"> * @error('title_ar') -
                                                                 {{ $message }}
                                                             @enderror</strong></label>
@@ -82,13 +82,13 @@
                                                         </div>
                                                         <input type="text" name="title_ar"
                                                             class="form-control @error('title_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Title AR"
+                                                            id="validationServer01" placeholder="Title "
                                                             value="{{ old('title_ar') }}">
                                                     </div>
                                                 </div>
 
                                                 {{-- Title EN --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Titl EN <strong
                                                             class="text-danger"> * @error('title_en') -
@@ -103,7 +103,7 @@
                                                             id="validationServer01" placeholder="Titl_EN"
                                                             value="{{ old('title_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Main Image --}}
                                                 <div class="col-md-6 mb-3">
@@ -142,22 +142,22 @@
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details AR :
+                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details :
                                                         <strong class="text-danger"> * @error('desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ old('desc_ar') }}</textarea>
                                                 </div>
 
                                                 {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > Blog Details EN :
                                                         <strong class="text-danger">* @error('desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
                                                     <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ old('desc_en') }}</textarea>
-                                                </div>
+                                                </div> --}}
 
                                                  {{-- alt text Ar --}}
-                                                 <div class="col-md-6 mb-3">
+                                                 {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Alt Text Ar <strong
                                                             class="text-danger"> * @error('alt_text_ar') -
@@ -172,9 +172,9 @@
                                                             id="validationServer01" placeholder="Alt Text Ar"
                                                             value="{{ old('alt_text_ar') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- alt text En --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Alt Text En <strong
                                                             class="text-danger"> * @error('alt_text_en') -
@@ -189,9 +189,9 @@
                                                             id="validationServer01" placeholder="Alt Text EN"
                                                             value="{{ old('alt_text_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- image title text Ar --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Image Title Text AR <strong
                                                             class="text-danger"> * @error('image_title_text_ar') -
@@ -207,9 +207,9 @@
                                                             value="{{ old('image_title_text_ar') }}">
 
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- image title text En --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">Image Title Text En <strong
                                                             class="text-danger"> * @error('image_title_text_en') -
@@ -224,9 +224,9 @@
                                                             id="validationServer01" placeholder="Image Titl Text En"
                                                             value="{{ old('image_title_text_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- H2 Ar --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">H2 AR <strong
                                                             class="text-danger"> * @error('h2_ar') -
@@ -241,9 +241,9 @@
                                                             id="validationServer01" placeholder="H2 AR"
                                                             value="{{ old('h2_ar') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- H2 EN --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">H2 EN <strong
                                                             class="text-danger"> * @error('h2_en') -
@@ -258,9 +258,9 @@
                                                             id="validationServer01" placeholder="H2 AR"
                                                             value="{{ old('h2_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- seo title AR --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">SEO Title AR <strong
                                                             class="text-danger"> * @error('seo_title_ar') -
@@ -275,9 +275,9 @@
                                                             id="validationServer01" placeholder="SEO Titl AR"
                                                             value="{{ old('seo_title_ar') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- seo title En --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">SEO Title En <strong
                                                             class="text-danger"> * @error('seo_title_en') -
@@ -292,50 +292,50 @@
                                                             id="validationServer01" placeholder="SEO Titl En"
                                                             value="{{ old('seo_title_en') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- SEO Meta data AR --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > keywords AR :
                                                         <strong class="text-danger"> * @error('keywords_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_ar" class="form-control" placeholder="Kewords AR">{{ old('keywords_ar') }}</textarea>
-                                                </div>
+                                                </div> --}}
                                                 {{-- SEO Meta data EN --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > keywords EN :
                                                         <strong class="text-danger"> * @error('keywords_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_en" class="form-control" placeholder="Kewords EN">{{ old('keywords_en') }}</textarea>
-                                                </div>
+                                                </div> --}}
                                                 {{-- Redirect 301 AR --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"> Redirect 301 AR :
                                                         <strong class="text-danger"> * @error('redirect_301_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_ar" class="form-control" placeholder="Redirect 301 AR">{{ old('redirect_301_ar') }}</textarea>
-                                                </div>
+                                                </div> --}}
                                                 {{-- Redirect 301 EN --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > Redirect 301 EN :
                                                         <strong class="text-danger"> * @error('redirect_301_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_en" class="form-control" placeholder="Redirect 301 EN">{{ old('redirect_301_en') }}</textarea>
-                                                </div>
+                                                </div> --}}
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > Meta Desc AR :
                                                         <strong class="text-danger"> * @error('meta_desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea  name="meta_desc_ar" rows="10" class="form-control" placeholder="Meta Desc AR">{{ old('meta_desc_ar') }}</textarea>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" > Meta Desc EN :
                                                         <strong class="text-danger">* @error('meta_desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
                                                     <textarea name="meta_desc_en" class="form-control" rows="10" placeholder="Meta Desc EN">{{ old('meta_desc_en') }}</textarea>
-                                                </div>
+                                                </div> --}}
 
 
                                                 <div class="col-md-12 mb-3">
@@ -359,7 +359,7 @@
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
-        <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+        {{-- <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
         <script>
                 CKEDITOR.replace( 'desc_ar',{
@@ -370,7 +370,7 @@
                     fullPage: true,
                     allowedContent: true
                 });
-        </script>
+        </script> --}}
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
