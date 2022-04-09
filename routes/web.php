@@ -226,3 +226,34 @@ Route::get('/courses', function () {
 Route::get('/courseDetails', function () {
     return view('front_end_inners.courseDetails');
 })->name('courseDetails');
+
+// about
+Route::get('/about', function () {
+    return view('front_end_inners.about');
+})->name('about');
+
+// contact
+Route::get('/contact', function () {
+    return view('front_end_inners.contact');
+})->name('contact');
+
+// news
+Route::get('/news', function () {
+    return view('front_end_inners.news');
+})->name('news');
+
+// newsDetails
+Route::get('/newsDetails', function () {
+    return view('front_end_inners.newsDetails');
+})->name('newsDetails');
+
+// subscribe
+Route::get('/subscribe', function () {
+    return view('front_end_inners.subscribe');
+})->name('subscribe');
+
+
+// subscribe
+Route::get('/subscribeForm', function () {
+    return view('front_end_inners.subscribeForm');
+})->name('subscribeForm');

@@ -46,6 +46,7 @@
 %stylePargraoh {
     font-size: 15px;
     color: $font_color;
+    text-align: justify;
 }
 
 /**o**/
@@ -601,7 +602,7 @@
     ul>li>a.page.active {
         opacity: 1 !important;
         cursor: default;
-        background: $main_color;
+        background: $second_color;
         color: #fff;
         /* box-shadow: 0 0 10px grey; */
     }
@@ -771,3 +772,26 @@
     border-radius: 5px;
 }
 /**o**/
+
+
+
+%form_style{
+    form{
+        .form-group input,
+        .form-group textarea {
+            width: 70%;
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+        }
+        .form-group input {
+            height: 40px;
+        }
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .c_butnns{
+            @extend %fomr_button;
+        } 
+    }
+}

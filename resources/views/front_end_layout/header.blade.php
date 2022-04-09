@@ -9,8 +9,8 @@
                     <li><a href="" target="_blank"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <ul class="c_one">
-                    <li><a href="#" >تسجيل جديد </a></li>
-                    <li><a href="#" >تسجيل الدخول</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#loginn">تسجيل جديد </a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#loginn">تسجيل الدخول</a></li>
                 </ul>
             </div>
         </div>
@@ -75,5 +75,100 @@
     </div>
 
 
+    {{-- login popup  --}}
+    <div class="c_login_modal">
+        <!-- Modal -->
+        <div class="c-m-blocks modal fade" id="loginn" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="quieq_tap" id="quieq_tap">
+                            <ul class="nav nav-tabs menu_contact" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab"
+                                        href="#loginf" role="tab" aria-controls="home" aria-selected="true">
+                                        تسجيل الدخول
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#regiesterf"
+                                        role="tab" aria-controls="home" aria-selected="true">
+                                        تسجيل حساب
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div role="tabpanel" class="tab-pane active show" id="loginf">
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="form-group col-md-12" >
+                                            <label>البريد الالكتروني او رقم الهاتف</label>
+                                            <input class="form-control" name="email" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>كلمة المرور</label>
+                                            <input class="form-control" name="password" type="password" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="newaccount">
+                                                <label class="custom-control-label" for="newaccount">تذكرني</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button class="btn btn-lg btn-primary c_butnns">تسجيل الدخول</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="regiesterf">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label>الاسم الرباعي</label>
+                                            <input class="form-control" name="name" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>اسم المستخدم</label>
+                                            <input class="form-control" name="username" type="text" placeholder="">
+                                        </div>
+
+                                        <div class="form-group col-md-12" >
+                                            <label>البريد الالكتروني</label>
+                                            <input class="form-control" name="mail" type="mail" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>رقم الهاتف </label>
+                                            <input class="form-control" name="phone" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>كلمة المرور</label>
+                                            <input class="form-control" name="password" type="password" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label> اعادة كلمة المرور </label>
+                                            <input class="form-control" name="rpassword" type="password" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button class="btn btn-lg btn-primary c_butnns">تسجيل حساب</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+    </div>
 
 </div>

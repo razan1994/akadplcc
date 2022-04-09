@@ -106,3 +106,33 @@
 
 }
 
+
+
+.c_login_modal
+{
+    .modal-content {
+        border-radius: 15px;
+        border: 0;
+    }
+
+    .modal-header {
+        justify-content: center;
+    }
+    .nav-tabs {
+        border-bottom: 0px solid #dee2e6;
+    }
+
+    .nav-tabs .nav-link
+    {
+        @extend %second_button;
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        @extend %main_button2;
+    }
+    form{
+        @extend %formgroub_subscribre;
+        .c_butnns{
+            @extend %subscribe2_button;
+        }
+    }
+}
