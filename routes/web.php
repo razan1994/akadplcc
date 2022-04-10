@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
+use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
@@ -146,6 +147,17 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('showSoftDelete', [SliderController::class, 'showSoftDelete'])->name('sliders-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [SliderController::class, 'softDeleteRestore'])->name('sliders-softDeleteRestore');
             Route::get('destroy/{id}', [SliderController::class, 'destroy'])->name('sliders-destroy');
+        });
+
+
+        // approved_bodies Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'approvedBodies'], function () {
+            Route::get('/create', [ApprovedBodiesController::class, 'create'])->name('approved_bodies-create');
+            Route::post('/store', [ApprovedBodiesController::class, 'store'])->name('approved_bodies-store');
+            Route::get('/index', [ApprovedBodiesController::class, 'index'])->name('approved_bodies-index');
+            Route::get('softDelete/{id}', [ApprovedBodiesController::class, 'softDelete'])->name('approved_bodies-softDelete');
+            Route::get('destroy/{id}', [ApprovedBodiesController::class, 'destroy'])->name('approved_bodies-destroy');
         });
 
 

@@ -15,6 +15,8 @@ class CreateApprovedBodiesTable extends Migration
     {
         Schema::create('approved_bodies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
             $table->timestamps();
         });
     }

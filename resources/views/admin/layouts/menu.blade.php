@@ -102,6 +102,12 @@
                                 </a>
                             </li>
                             <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.approved_bodies-index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Approved Bodies</span>
+                                </a>
+                            </li>
+                            <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.term_and_conditions-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> Term & Conditions</span>

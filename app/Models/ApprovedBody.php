@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ApprovedBody extends Model
 {
     use HasFactory;
+
+    protected $table = 'approved_bodies';
+
+    protected $fillable = [
+        'name','image'
+    ];
+
 }
