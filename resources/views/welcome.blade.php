@@ -53,28 +53,44 @@
                         </div>
                         <!-- Swiper pc -->
                         <div class="swiper-container">
-                            <div class="swiper-wrapper"> 
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                            <div class="swiper-wrapper">
+                                @if(isset($sliders) && $sliders->count() > 0)
+                                    @foreach ($sliders as $slider)
+                                        <div class="swiper-slide">
+                                            <div class="c_item">
+                                                <div class="c_image">
+                                                    @if(isset($slider->image) && file_exists($slider->image))
+                                                    <img src="{{ asset($slider->image) }}">
+                                                    @else
+                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                            </div>
+                                    @endforeach
+                                @else
+                                <div class="swiper-slide">
+                                    <div class="c_item">
+                                        <div class="c_image">
+                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                            </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="c_item">
+                                        <div class="c_image">
+                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="c_item">
+                                        <div class="c_image">
+                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -106,7 +122,7 @@
                             <h2>نبذة عنا</h2>
                             <h3>تعلم مهارات جديدة
                                 تقدم في حياتك المهنية</h3>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
+                            <p>{{ isset($about->about_us_ar) ? $about->about_us_ar : '<span class="text-danger">Undefined</span>' }}</p>
                         </div>
                         <div class="c_buttn">
                             <a href="#">اقرأ المزيد</a>
@@ -114,7 +130,7 @@
                         <div class="c_num">
                             <div class="c_item">
                                 <div class="c_icon">
-                                    &#10003; 
+                                    &#10003;
                                     {{-- check mark  --}}
                                 </div>
                                 <div class="c_bdu">
@@ -148,7 +164,11 @@
                 <div class="col-md-6">
 
                     <div class="c_image">
-                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                        @if(isset($about->about_us_image) && file_exists($about->about_us_image))
+                            <img src="{{ asset($about->about_us_image) }}">
+                        @else
+                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                        @endif
                     </div>
 
                 </div>
@@ -165,14 +185,14 @@
     {{-- ===================================================================================================== --}}
     <section class="courses">
         <div class="container_1200">
-            
+
             <div class="c_section_title">
                 <h3>الدورات</h3>
             </div>
                     <div class="c_blocks">
                         <!-- Swiper pc -->
                         <div class="swiper mySwiper">
-                            <div class="swiper-wrapper"> 
+                            <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="c_item">
                                             <div class="c_image">
@@ -182,7 +202,7 @@
                                                 <div class="c_body">
                                                     <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
                                                     <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div> 
+                                                </div>
                                                 <div class="c_buttn">
                                                     <div class="c_tech">
                                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
@@ -417,7 +437,7 @@
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-           
+
     </section>
     {{-- ===================================================================================================== --}}
     {{-- ========================================= End courses Section ======================================== --}}
@@ -480,7 +500,7 @@
         <section class="our_brands">
             <div class="container_750">
                 <div class="c_section_title">
-                    <h3>الجهات المعتمدة</h3> 
+                    <h3>الجهات المعتمدة</h3>
                 </div>
                 <!-- Swiper pc -->
                 <div class="c_bloc">
