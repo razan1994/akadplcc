@@ -18,7 +18,9 @@ class CreateCourseSectionsTable extends Migration
             $table->bigInteger('course_id');
             $table->longText('title_ar');
             $table->longText('title_en')->nullable();
-            $table->longText('video');
+            $table->longText('video')->nullable();
+            $table->longText('text_ar')->nullable();
+            $table->longText('text_en')->nullable();
             $table->timestamps();
         });
     }

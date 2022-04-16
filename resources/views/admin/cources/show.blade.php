@@ -103,6 +103,20 @@
                                             id="validationServer01" placeholder="Video">
                                     </div>
                                 </div>
+                                {{-- Main text --}}
+                                <div class="col-md-12 mb-3">
+                                    <label class="text-dark font-weight-medium mb-3"
+                                        for="validationServer01"> Section Text <strong
+                                            class="text-danger">
+                                              @error('text_ar') - {{ $message }}
+                                            @enderror</strong></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                        </div>
+                                        <textarea name="text_ar" class="form-control" id="section_text"></textarea>
+                                    </div>
+                                </div>
 
 
                                 <div class="col-md-12 mb-3">
@@ -123,15 +137,20 @@
                                 <div class="text-center pb-4">
                                     <h4 class="text-dark"> Title : {{ isset($section->title_ar) ? $section->title_ar : '<span class="text-danger"> Undefined </span>'}}</h4>
                                 </div>
-                                @if ($section->video && file_exists($section->video))
+                                @if (isset($section->video) && file_exists($section->video))
                                     <video controls style="width:100%;">
                                         <source src="{{ asset($section->video) }}" type="video/mp4">
                                         <source src="{{ asset($section->video) }}" type="video/ogg">
                                         Your browser does not support the video tag.
                                     </video>
                                 @else
+                                @if(isset($section->text))
+                                    <img style="width: 100%;" src="{{ asset('images_default/text_image.webp') }}"
+                                        class="img-thumbnail image-preview" alt="">
+                                @else
                                     <img style="width: 100%;" src="{{ asset('images_default/user.jpg') }}"
                                         class="img-thumbnail image-preview" alt="">
+                                @endif
                                 @endif
                                 <div class="col-md-12">
                                     <a href="{{ route('super_admin.delete-course-section',$section->id) }}" class="btn btn-danger w-100">Delete</a>
@@ -164,7 +183,7 @@
                             <div class="text-center pb-4">
                                 <h4 class="text-dark mb-3"> Status :</h4>
                                 <p style="color: blue">
-                                    {{ isset($course->status) ? ($course->status == 1 ? 'Active' : Inactive) : 'Undefined' }}
+                                    {{ isset($course->status) ? ($course->status == 1 ? 'Active' : 'Inactive') : 'Undefined' }}
                                 </p>
                             </div>
                             <hr class="w-100">
@@ -259,5 +278,13 @@
         </div>
       </div>
 
+      <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
+      <script>
+              CKEDITOR.replace( 'section_text',{
+                  fullPage: true,
+                  allowedContent: true
+              });
+
+      </script>
 @endsection

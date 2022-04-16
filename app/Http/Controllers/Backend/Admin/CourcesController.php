@@ -452,14 +452,17 @@ class CourcesController extends Controller
     // ================================================================
     public function addCourseSection(Route $route,$id,StoreCourseSectionFormRequest $request)
     {
-        // return $request;
+
         try {
+
+
             $course = Course::find($id);
             if ($course) {
 
             $created_data = [
                 'course_id'=>$course->id,
-                'title_ar'=>$request->title_ar
+                'title_ar'=>$request->title_ar,
+                'text_ar'=>$request->text_ar
             ];
 
             // Upload Video Section :

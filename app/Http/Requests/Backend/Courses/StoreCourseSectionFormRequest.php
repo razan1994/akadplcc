@@ -24,10 +24,14 @@ class StoreCourseSectionFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title_ar'=>'required',
-            'video'=>'required|mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
-        ];
+
+
+            return [
+                'title_ar'=>'required',
+                'video'=>'mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
+            ];
+
+
     }
 }
 
