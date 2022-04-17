@@ -45,10 +45,10 @@
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.cources-index') }}">
-                                    <i class="far fa-newspaper"></i></span> All News
+                                    <i class="far fa-newspaper"></i></span> All Courses
                                 </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"> Add New</li>
+                            <li class="breadcrumb-item" aria-current="page"> Add Courses</li>
                         </ol>
                     </nav>
                 </div>
@@ -100,8 +100,8 @@
                                                         <select name="status" class="selectpicker" data-live-search="true" data-width="88%"
                                                             id="inlineFormCustomSelectPref">
                                                             <option value="" selected>Choose...</option>
-                                                            <option value="1" @if (old('status') == '1') selected @endif>Active</option>
-                                                            <option value="2" @if (old('status') == '2') selected @endif>Inactive</option>
+                                                            <option value="2" @if (old('status') == '2') selected @endif>Active</option>
+                                                            <option value="1" @if (old('status') == '1') selected @endif>Inactive</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -114,13 +114,28 @@
                                                         <strong class="text-danger"> * @error('teacher_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text mdi mdi-account-check"></span>
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account-check"></span>
                                                     </div>
                                                     <input type="text" id="teacher_ar" name="teacher_ar" class="form-control" value="{{ old('teacher_ar') }}">
                                                     </div>
                                                 </div>
 
+                                                {{-- Teacher Image --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01"> Teacher Image <strong
+                                                            class="text-danger">
+                                                             @error('teacher_image') - {{ $message }}
+                                                            @enderror</strong></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                                        </div>
+                                                        <input type="file" name="teacher_image" class="form-control"
+                                                            id="validationServer01" placeholder="image">
+                                                    </div>
+                                                </div>
 
 
                                                 {{-- Sections Count --}}
@@ -142,7 +157,7 @@
                                                 {{-- Sections time --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01"> Sections time <strong
+                                                        for="validationServer01"> Sections time In Minutes <strong
                                                             class="text-danger">
                                                             * @error('section_time') - {{ $message }}
                                                             @enderror</strong></label>
@@ -173,7 +188,7 @@
                                                 {{-- Main Image --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01"> Image <strong
+                                                        for="validationServer01"> Course Image <strong
                                                             class="text-danger">
                                                              @error('main_image') - {{ $message }}
                                                             @enderror</strong></label>
@@ -188,7 +203,7 @@
                                                 {{-- Main Video --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01">Main Video <strong
+                                                        for="validationServer01"> Main Video <strong
                                                             class="text-danger">
                                                              @error('main_video') - {{ $message }}
                                                             @enderror</strong></label>

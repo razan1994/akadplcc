@@ -14,10 +14,8 @@ class ContactUsRequest extends Model
     // ===================================================================================================================
     protected $table = 'contact_us_requests';
     protected $fillable = [
-        'full_name',
-        'email',
+        'name',
         'phone',
-        'subject',
         'message'
     ];
 }

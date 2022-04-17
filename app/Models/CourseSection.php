@@ -15,7 +15,10 @@ class CourseSection extends Model
         'course_id',
         'title_ar',
         'title_en',
-        'video'
+        'video',
+        'text_ar',
+        'text_en',
+        'section_image'
     ];
 
 }

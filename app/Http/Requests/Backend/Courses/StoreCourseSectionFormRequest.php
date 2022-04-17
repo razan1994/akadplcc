@@ -28,7 +28,8 @@ class StoreCourseSectionFormRequest extends FormRequest
 
             return [
                 'title_ar'=>'required',
-                'video'=>'mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
+                'video'=>'mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv',
+                'section_image'=>'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048'
             ];
 
 

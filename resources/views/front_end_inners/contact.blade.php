@@ -37,20 +37,20 @@
                 <div class="container_1200">
                     <div class="row">
                         <div class="col-md-6">
-                        
+
                             <div class="c_info">
                                 <ul>
-                                    <li><a href="tel:07777777777"><i class="fas fa-phone-alt"></i> 07777777777 </a></li>
-                                    <li><a href="mailto:info@kanaf.com"><i class="fas fa-envelope"></i> info@kanaf.com </a></li>
+                                    <li><a href="tel:{{ isset($contact->phone) ? $contact->phone : 'Undefined' }}"><i class="fas fa-phone-alt"></i> {{ isset($contact->phone) ? $contact->phone : 'Undefined' }} </a></li>
+                                    <li><a href="mailto:{{ isset($contact->email) ? $contact->email : 'Undefined' }}"><i class="fas fa-envelope"></i> {{ isset($contact->email) ? $contact->email : 'Undefined' }} </a></li>
                                 </ul>
                             </div>
                             <div class="c_form_contat">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('contactReauest') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-            
+
                                     <div class="row">
                                         <div class="form-group col-md-12">
-                                            <input type="text" class="form-control" name="name" id="formGroupExampleInput" 
+                                            <input type="text" class="form-control" name="name" id="formGroupExampleInput"
                                             placeholder="الاسم" required></label>
                                         </div>
 
@@ -59,10 +59,10 @@
                                             <input type="nubmer" class="form-control" name="phone" id="formGroupExampleInput"
                                             placeholder="رقم الهاتف" required>
                                         </div>
-            
+
                                         <div class="form-group  col-md-12">
                                             <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
-                                                placeholder="الرسالة" 
+                                                placeholder="الرسالة"
                                                 required>الرسالة</textarea>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
 
                         </div>
                         <div class="col-md-6">
-        
+
                             <div class="c_imgs">
 
                                 <div class="c_bgimg c_bg_1">
@@ -83,12 +83,12 @@
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
                                 </div>
-        
+
                                 <div class="c_bgimg c_bg_2">
                                     <img src="{{ asset('front_end_style/images/bg2slider.png') }}">
                                 </div>
                             </div>
-        
+
                         </div>
                     </div>
                 </div>

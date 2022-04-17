@@ -22,6 +22,7 @@ class Course extends Model
         'section_time',
         'course_date',
         'status',
+        'teacher_image',
         'main_image',
         'main_video'
     ];
@@ -38,13 +39,5 @@ class Course extends Model
     // ============================================= Accessors Section ===================================================
     // ===================================================================================================================
 
-    public function getStatusAttribute($value)
-    {
-        if ($value == 1) {
-            return 'Inactive';
-        } elseif ($value == 2) {
-            return 'Active';
-        }
-    }
 
 }

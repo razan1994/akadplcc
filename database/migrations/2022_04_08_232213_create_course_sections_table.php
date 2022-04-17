@@ -19,6 +19,7 @@ class CreateCourseSectionsTable extends Migration
             $table->longText('title_ar');
             $table->longText('title_en')->nullable();
             $table->longText('video')->nullable();
+            $table->longText('section_image')->nullable();
             $table->longText('text_ar')->nullable();
             $table->longText('text_en')->nullable();
             $table->timestamps();

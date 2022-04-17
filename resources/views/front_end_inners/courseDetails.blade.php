@@ -49,38 +49,35 @@
                         <div class="c_right">
                             <div class="c_itms">
                                 <div class="c_title">
-                                    <h4>دورة تصميم واجهة المستخدم</h4>
+                                    <h4>{!! isset($course->title_ar) ? $course->title_ar : 'Undefined' !!}</h4>
                                 </div>
                                 <div class="c_body">
                                     <p>
-                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                                            الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
-                                            -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.
-                                            العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص،
-                                            وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث.
-                                            على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة،
-                                            وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.
-
-
+                                        {!! isset($course->desc_ar) ? $course->desc_ar : 'Undefined' !!}
                                     </p>
                                 </div>
                                 <div class="c_tafsell">
                                     <div class="c_itme">
-                                        <p><img src="{{ asset('front_end_style/images/clock.png') }}">
+                                        <p>
+                                            <img src="{{ asset('front_end_style/images/clock.png') }}">
                                             <label>مدة الدورة   : </label>
-                                            <span>  اسبوعين  </span>
+                                            @if(isset($course->section_count) && isset($course->section_time))
+                                                <span> ساعة {{ ceil(($course->section_count * $course->section_time)/60) }}</span>
+                                            @else
+                                                <span>Undefined</span>
+                                            @endif
                                         </p>
                                     </div>
                                     <div class="c_itme">
                                         <p><img src="{{ asset('front_end_style/images/clock.png') }}">
                                             <label>مدة الحصة   : </label>
-                                            <span>  ساعة ونص  </span>
+                                            <span> {{ isset($course->section_time) ? $course->section_time : 'Undefined' }}  </span>
                                         </p>
                                     </div>
                                     <div class="c_itme">
                                         <p><img src="{{ asset('front_end_style/images/clock.png') }}">
                                             <label>عدد الحصص    : </label>
-                                            <span>  8  </span>
+                                            <span>  {{ isset($course->section_count) ? $course->section_count : 'Undefined' }}  </span>
                                         </p>
                                     </div>
                                 </div>
@@ -90,9 +87,13 @@
                         <div class="c_left">
                             <div class="c_box_subscribe">
                                 <div class="c_video">
+                                    @if(isset($course->main_video) && file_exists($course->main_video))
                                     <video  class="bgvid" id="myvideo" muted controls>
-                                        <source src="{{ asset('front_end_style/images/AfterEffectsss.mp4') }}" type="video/mp4" />
+                                        <source src="{{ asset($course->main_video) }}" type="video/mp4" />
                                     </video>
+                                    @else
+                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                    @endif
                                 </div>
                                 <div class="c_btn_subscribe">
                                     <a href="#">اشترك</a>
@@ -103,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="c_brandas">
+            {{-- <div class="c_brandas">
                 <div class="container_1033">
                     <div class="c_section_title">
                         <h3>الجهات المعتمدة</h3>
@@ -157,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="c_info2">
                 <div class="container_1200">
@@ -178,11 +179,14 @@
                         <div class="c_left">
                             <div class="c_itm_prof">
                                 <div class="c_img">
-                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                    @if(isset($course->teacher_image) && file_exists($course->teacher_image))
+                                    <img src="{{ asset($course->teacher_image) }}">
+                                    @else
+                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                    @endif
                                 </div>
                                 <div class="c_bdy">
-                                    <span>الاستاذ حمزة</span>
-                                    <h6>لوريم ايبسوم</h6>
+                                    <span>{!! isset($course->teacher_ar) ? $course->teacher_ar : 'Undefined' !!}</span>
                                 </div>
                             </div>
                         </div>

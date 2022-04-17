@@ -37,22 +37,22 @@
                 <div class="c_main_menu collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="">الرئيسية</a>
+                            <a class="nav-link" href="{{ route('welcome') }}">الرئيسية</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('aboutUs') }}">عن الموقع</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">الدورات</a>
+                            <a class="nav-link" href="{{ route('courses') }}">الدورات</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">الجهات المعتمدة</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""> الأخبار</a>
+                            <a class="nav-link" href="{{ route('news') }}"> الأخبار</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">اتصل بنا</a>
+                            <a class="nav-link" href="{{ route('contactUs') }}">اتصل بنا</a>
                         </li>
                     </ul>
                 </div>
