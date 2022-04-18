@@ -273,3 +273,10 @@ Route::get('/subscribe', function () {
 Route::get('/subscribeForm', function () {
     return view('front_end_inners.subscribeForm');
 })->name('subscribeForm');
+
+
+
+// subscribe
+Route::get('/resume', function () {
+    return view('front_end_inners.resume');
+})->name('resume');
