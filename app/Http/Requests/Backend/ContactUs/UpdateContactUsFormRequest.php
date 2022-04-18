@@ -26,10 +26,7 @@ class UpdateContactUsFormRequest extends FormRequest
     {
         return [
             'email' => 'required',
-            'phone' => 'required',
-            'fax' => 'required',
-            'address_ar' => 'required',
-            'address_en' => 'required',
+            'phone' => 'required'
 
         ];
     }
@@ -38,9 +35,7 @@ class UpdateContactUsFormRequest extends FormRequest
     {
         return [
             'email.required' => trans('custom_validation.email_required'),
-            'phone.required' =>  trans('custom_validation.phone_required'),
-            'address_ar.required' => trans('custom_validation.address_ar_required'),
-            'address_en.required' =>  trans('custom_validation.address_en_required'),
+            'phone.required' =>  trans('custom_validation.phone_required')
         ];
     }
 }

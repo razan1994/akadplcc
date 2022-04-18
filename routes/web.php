@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
+use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Backend\Admin\NewsBlogController;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+// Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     // ==================================================================================================================
     // ============================================= Shared Routes ======================================================
 
@@ -36,6 +37,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // ============================================= End Shared Routes ==================================================
 
     Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
+    Route::get('/contact-us', [FrontendController::class, 'contactUs'])->name('contactUs');
+
+    Route::post('/contactReauest', [FrontendController::class, 'contactReauest'])->name('contactReauest');
+
+    Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+
+    Route::get('/course-details/{id}', [FrontendController::class, 'courseDetails'])->name('course-details');
+
+    Route::get('/news', [FrontendController::class, 'news'])->name('news');
+
+    Route::get('/news-details/{id}', [FrontendController::class, 'newsDetails'])->name('news-details');
 
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
@@ -45,7 +57,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     });
 
-});
+// });
 
 // ==================================================================================================================
 // =========================================== Super Admin Routes ===================================================
@@ -149,6 +161,17 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
         });
 
 
+        // approved_bodies Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'approvedBodies'], function () {
+            Route::get('/create', [ApprovedBodiesController::class, 'create'])->name('approved_bodies-create');
+            Route::post('/store', [ApprovedBodiesController::class, 'store'])->name('approved_bodies-store');
+            Route::get('/index', [ApprovedBodiesController::class, 'index'])->name('approved_bodies-index');
+            Route::get('softDelete/{id}', [ApprovedBodiesController::class, 'softDelete'])->name('approved_bodies-softDelete');
+            Route::get('destroy/{id}', [ApprovedBodiesController::class, 'destroy'])->name('approved_bodies-destroy');
+        });
+
+
 
         // Blog Routes:
         //Created By :Mohammed Salah
@@ -199,6 +222,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('softDeleteRestore/{id}', [CourcesController::class, 'softDeleteRestore'])->name('cources-softDeleteRestore');
             Route::post('addCourseSection/{id}', [CourcesController::class, 'addCourseSection'])->name('add-course-section');
             Route::get('deleteCourseSection/{id}', [CourcesController::class, 'deleteCourseSection'])->name('delete-course-section');
+            Route::get('showSection/{id}', [CourcesController::class, 'showSection'])->name('showSection');
         });
 
 
@@ -228,15 +252,15 @@ Route::get('/myAccount', function () {
 })->name('myAccount');
 
 // courses
-Route::get('/courses', function () {
-    return view('front_end_inners.courses');
-})->name('courses');
+// Route::get('/courses', function () {
+//     return view('front_end_inners.courses');
+// })->name('courses');
 
 
-// courseDetails
-Route::get('/courseDetails', function () {
-    return view('front_end_inners.courseDetails');
-})->name('courseDetails');
+// // courseDetails
+// Route::get('/courseDetails', function () {
+//     return view('front_end_inners.courseDetails');
+// })->name('courseDetails');
 
 // courseSubscriber
 Route::get('/courseSubscriber', function () {
@@ -244,19 +268,19 @@ Route::get('/courseSubscriber', function () {
 })->name('courseSubscriber');
 
 // about
-Route::get('/about', function () {
-    return view('front_end_inners.about');
-})->name('about');
+// Route::get('/about', function () {
+//     return view('front_end_inners.about');
+// })->name('about');
 
 // contact
-Route::get('/contact', function () {
-    return view('front_end_inners.contact');
-})->name('contact');
+// Route::get('/contact', function () {
+//     return view('front_end_inners.contact');
+// })->name('contact');
 
 // news
-Route::get('/news', function () {
-    return view('front_end_inners.news');
-})->name('news');
+// Route::get('/news', function () {
+//     return view('front_end_inners.news');
+// })->name('news');
 
 // newsDetails
 Route::get('/newsDetails', function () {

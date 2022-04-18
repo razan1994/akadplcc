@@ -49,7 +49,7 @@
                                             <div class="form-row">
 
                                                 {{-- Title AR --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Title AR : <strong class="text-danger"> * @error('title_ar') ( {{ $message }} ) @enderror</strong>
                                                     </label>
@@ -62,10 +62,10 @@
                                                             class="form-control @error('title_ar') is-invalid @enderror" id="validationServer01"
                                                             placeholder="Title AR" value="{{ isset($slider->title_ar) ? $slider->title_ar : null }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Title EN --}}
-                                                <div class="col-md-6 mb-3">
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3" for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Title EN : <strong class="text-danger"> * @error('title_en') ( {{ $message }} ) @enderror</strong>
                                                     </label>
@@ -76,10 +76,10 @@
                                                         <input type="text" name="title_en" class="form-control @error('title_en') is-invalid @enderror" id="validationServer01" placeholder="Title EN"
                                                             value="{{ isset($slider->title_en) ? $slider->title_en : null }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Desc AR --}}
-                                                <div class="col-12">
+                                                {{-- <div class="col-12">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         Description AR : <strong class="text-danger"> * @error('description_ar') - {{ $message }} @enderror</strong>
@@ -93,10 +93,10 @@
                                                             class="form-control "
                                                             rows="5">{{ isset($slider->description_ar) ? $slider->description_ar : null }}</textarea>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Desc EN --}}
-                                                <div class="col-12">
+                                                {{-- <div class="col-12">
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01">
                                                         Description EN : <strong class="text-danger"> * @error('description_en')
@@ -111,7 +111,7 @@
                                                             class="form-control "
                                                             rows="5">{{ isset($slider->description_en) ? $slider->description_en : null }}</textarea>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Status --}}
                                                 <div class="col-md-6 mb-3">
@@ -145,7 +145,7 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- Display Image --}} 
+                                                {{-- Display Image --}}
                                                 <div class="col-md-12 mb-3">
                                                     @if (isset($slider->image))
                                                         @if ($slider->image && file_exists($slider->image))

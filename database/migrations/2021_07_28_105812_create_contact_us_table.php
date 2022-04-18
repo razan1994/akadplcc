@@ -18,9 +18,11 @@ class CreateContactUsTable extends Migration
             $table->id();
             $table->string('email');
             $table->string('phone');
-            $table->string('fax');
-            $table->longText('address_ar');
-            $table->longText('address_en');
+            $table->longText('facebook_url')->nullable();
+            $table->longText('linkedin_url')->nullable();
+            $table->longText('instagram_url')->nullable();
+            $table->longText('twitter_url')->nullable();
+            $table->longText('youtube_url')->nullable();
             $table->timestamps();
         });
     }

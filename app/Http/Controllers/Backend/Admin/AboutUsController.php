@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\AboutUs\UpdateAboutUsRequest;
+use App\Http\Requests\Backend\AboutUs\UpdateAboutUsFormRequest;
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -85,7 +85,7 @@ class AboutUsController extends Controller
     // ================================================================
     // ======================= Update Function ========================
     // ================================================================
-    public function update(UpdateAboutUsRequest $request,  Route $route)
+    public function update(UpdateAboutUsFormRequest $request,  Route $route)
     {
         try {
             $about = AboutUs::first();
@@ -94,11 +94,11 @@ class AboutUsController extends Controller
                 $request->validated();
                 // General Updated Data :
                 $update_data = [
-                    'about_us_en' => $request->about_us_en,
+                    'about_us_en' => $request->about_us_ar,
                     'about_us_ar' => $request->about_us_ar,
-                    'vision_en' => $request->vision_en,
+                    'vision_en' => $request->vision_ar,
                     'vision_ar' => $request->vision_ar,
-                    'mission_en' => $request->mission_en,
+                    'mission_en' => $request->mission_ar,
                     'mission_ar' => $request->mission_ar
                 ];
                 // Upload about_us_image  :
@@ -106,24 +106,24 @@ class AboutUsController extends Controller
                     $orginal_image = $request->file('about_us_image');
                     $upload_location = 'storage/about_us/';
                     $original_name = $orginal_image->getClientOriginalName();
-                    $update_data['about_us_image'] = $this->saveFileWithOriginalName('about_us', 'about_us_image', $orginal_image, $original_name, $upload_location);
+                    $update_data['about_us_image'] = $this->saveFile($orginal_image,$upload_location);
                 }
 
-                // Upload vision_image  :
-                if (isset($request->vision_image)) {
-                    $orginal_image = $request->file('vision_image');
-                    $upload_location = 'storage/vision_image/';
-                    $original_name = $orginal_image->getClientOriginalName();
-                    $update_data['vision_image'] = $this->saveFileWithOriginalName('about_us', 'vision_image', $orginal_image, $original_name, $upload_location);
-                }
+                // // Upload vision_image  :
+                // if (isset($request->vision_image)) {
+                //     $orginal_image = $request->file('vision_image');
+                //     $upload_location = 'storage/vision_image/';
+                //     $original_name = $orginal_image->getClientOriginalName();
+                //     $update_data['vision_image'] = $this->saveFileWithOriginalName('about_us', 'vision_image', $orginal_image, $original_name, $upload_location);
+                // }
 
-                // Upload mission_image  :
-                if (isset($request->mission_image)) {
-                    $orginal_image = $request->file('mission_image');
-                    $upload_location = 'storage/mission_image/';
-                    $original_name = $orginal_image->getClientOriginalName();
-                    $update_data['mission_image'] = $this->saveFileWithOriginalName('about_us', 'mission_image', $orginal_image, $original_name, $upload_location);
-                }
+                // // Upload mission_image  :
+                // if (isset($request->mission_image)) {
+                //     $orginal_image = $request->file('mission_image');
+                //     $upload_location = 'storage/mission_image/';
+                //     $original_name = $orginal_image->getClientOriginalName();
+                //     $update_data['mission_image'] = $this->saveFileWithOriginalName('about_us', 'mission_image', $orginal_image, $original_name, $upload_location);
+                // }
                 DB::transaction(function () use ($update_data, $about) {
                     DB::table('about_us')->where('id', $about->id)->update($update_data);
                 });

@@ -16,14 +16,9 @@ class CreateSlidersTable extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('title_ar')->unique();
-            $table->string('title_en')->unique();
-            $table->longText('description_ar')->nullable();
-            $table->longText('description_en')->nullable();
             $table->longText('image')->nullable();
             $table->tinyInteger('status')->comment = '1 => Active || 2 => Inactive';
             $table->foreignId('created_by')->constrained('users');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -35,7 +35,7 @@
             {{-- ============================================== --}}
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
-                    <h1>Edite News</h1>
+                    <h1>Edite Course</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0">
                             <li class="breadcrumb-item">
@@ -71,12 +71,12 @@
                                                     <label class="text-dark font-weight-medium mb-3"
                                                         for="validationServer01"> Title <strong
                                                             class="text-danger"> * @error('title_ar') -
-                                                                {{ $message }}
+                                                            {{ $message }}
                                                             @enderror</strong></label>
-                                                    <div class="input-group">
+                                                            <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-format-title"
-                                                                id="inputGroupPrepend2"></span>
+                                                            id="inputGroupPrepend2"></span>
                                                         </div>
                                                         <input type="text" name="title_ar"
                                                             class="form-control @error('title_ar') is-invalid @enderror"
@@ -91,17 +91,17 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"> Status
                                                         <strong class="text-danger"> * @error('status') - {{ $message }} @enderror</strong></label>
-                                                    <div class="input-group">
+                                                        <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-account-check"></span>
                                                         </div>
                                                         <select name="status" class="selectpicker" data-live-search="true" data-width="88%"
-                                                            id="inlineFormCustomSelectPref">
-                                                            <option value="" selected>Choose...</option>
-                                                            <option value="1" @if ($course->status == '1') selected @endif>Active</option>
-                                                            <option value="2" @if ($course->status == '2') selected @endif>Inactive</option>
-                                                        </select>
-                                                    </div>
+                                                        id="inlineFormCustomSelectPref">
+                                                        <option value="" selected>Choose...</option>
+                                                        <option value="2" @if ($course->status == '2') selected @endif>Active</option>
+                                                        <option value="1" @if ($course->status == '1') selected @endif>Inactive</option>
+                                                    </select>
+                                                </div>
                                                 </div>
 
 
@@ -111,13 +111,41 @@
                                                         <strong class="text-danger"> * @error('teacher_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text mdi mdi-account-check"></span>
-                                                    </div>
-                                                    <input type="text" id="teacher_ar" name="teacher_ar" class="form-control" value="{{ $course->teacher_ar }}">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account-check"></span>
+                                                        </div>
+                                                        <input type="text" id="teacher_ar" name="teacher_ar" class="form-control" value="{{ $course->teacher_ar }}">
                                                     </div>
                                                 </div>
 
+                                                {{-- Main Image --}}
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="text-dark font-weight-medium mb-3"
+                                                        for="validationServer01"> Teacher Image <strong class="text-danger">
+                                                            * @error('teacher_image')
+                                                                - {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                                        </div>
+                                                        <input type="file" name="teacher_image" class="form-control"
+                                                            id="validationServer01" placeholder="teacher_image">
+                                                    </div>
+                                                    <div style="text-align: center">
+                                                        @if ($course->teacher_image && file_exists($course->teacher_image))
+                                                            <img src="{{ asset($course->teacher_image) }}" width="150"
+                                                                height="150"
+                                                                style="border-radius: 10px; border:solid 1px black;">
+                                                        @else
+                                                            <img src="{{ asset('images_default/default.jpg') }}"
+                                                                width="150" height="150"
+                                                                style="border-radius: 10px; border:solid 1px black;">
+                                                        @endif
+                                                    </div>
+                                                </div>
 
 
                                                 {{-- Sections Count --}}
@@ -171,7 +199,7 @@
                                                 {{-- Main Image --}}
                                                 <div class="col-md-6 mb-3">
                                                     <label class="text-dark font-weight-medium mb-3"
-                                                        for="validationServer01"> Main Image <strong class="text-danger">
+                                                        for="validationServer01"> Course Image <strong class="text-danger">
                                                             * @error('main_image')
                                                                 - {{ $message }}
                                                             @enderror

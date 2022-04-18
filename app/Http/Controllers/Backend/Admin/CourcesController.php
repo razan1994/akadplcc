@@ -118,6 +118,15 @@ class CourcesController extends Controller
 
 
             // Upload Image Section :
+            if (isset($request->teacher_image)) {
+                $orginal_image = $request->file('teacher_image');
+                $upload_location = 'storage/courses/teachers/';
+                $last_image = $this->saveFile($orginal_image,$upload_location);
+                $created_data['teacher_image']=$last_image;
+            }
+
+
+            // Upload Image Section :
             if (isset($request->main_image)) {
                 $orginal_image = $request->file('main_image');
                 $upload_location = 'storage/courses/images/';
@@ -270,6 +279,15 @@ class CourcesController extends Controller
                 'status'=>$request->status,
             ];
 
+
+            // Upload Image Section :
+            if (isset($request->teacher_image)) {
+                $orginal_image = $request->file('teacher_image');
+                $upload_location = 'storage/courses/teachers/';
+                $last_image = $this->saveFile($orginal_image,$upload_location);
+                File::delete($course->teacher_image);
+                $update_data['teacher_image']=$last_image;
+            }
 
             // Upload Image Section :
             if (isset($request->main_image)) {
@@ -452,16 +470,26 @@ class CourcesController extends Controller
     // ================================================================
     public function addCourseSection(Route $route,$id,StoreCourseSectionFormRequest $request)
     {
-        // return $request;
+
         try {
+
+
             $course = Course::find($id);
             if ($course) {
 
             $created_data = [
                 'course_id'=>$course->id,
-                'title_ar'=>$request->title_ar
+                'title_ar'=>$request->title_ar,
+                'text_ar'=>$request->text_ar
             ];
 
+            // Upload section image :
+            if (isset($request->section_image)) {
+                $orginal_image = $request->file('section_image');
+                $upload_location = 'storage/course_sections/images/';
+                $last_video = $this->saveFile($orginal_image,$upload_location);
+                $created_data['section_image']=$last_video;
+            }
             // Upload Video Section :
             if (isset($request->video)) {
                 $orginal_image = $request->file('video');
@@ -523,6 +551,47 @@ class CourcesController extends Controller
                 return redirect()->route('super_admin.cources-show',$id)->with('success', 'Restore Completed Successfully');
             } else {
                 return redirect()->route('super_admin.cources-index')->with('danger', 'This section does not exist in the records');
+            }
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    // ================================================================
+    // ==================== Show-course-section ==========================
+    // Created By : Mohammed Salah
+    // ================================================================
+    public function showSection(Route $route,$id)
+    {
+        // return $request;
+        try {
+            $section = CourseSection::find($id);
+            if ($section) {
+                return view('admin.cources.show_section',compact('section'));
+            } else {
+                return redirect()->back()->with('danger', 'This section does not exist in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();

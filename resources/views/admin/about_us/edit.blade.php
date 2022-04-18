@@ -4,7 +4,7 @@
     <link href="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard_files/assets/css/sleek.min.css') }}">
 @endsection
- 
+
 @section('content')
     <div class="content-wrapper">
         <div class="content">
@@ -66,7 +66,7 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <h3 class="mb-3" for="validationServer01">About Us EN:</h3>
                                                     <div class="input-group">
                                                         <textarea name="about_us_en" class="form-control" rows="10">{!! isset($about->about_us_en) ? $about->about_us_en : null !!}</textarea>
@@ -74,9 +74,9 @@
                                                     @error('about_us_en')
                                                         <h4 class="form-text text-danger"> - {{ $message }}</h4>
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <h3 class="mb-3" for="validationServer01">About Us AR :</h3>
+                                                    <h3 class="mb-3" for="validationServer01">About Us :</h3>
                                                     <div class="input-group">
 
                                                         <textarea name="about_us_ar" class="form-control"
@@ -89,7 +89,7 @@
 
 
 
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <h3 class="mb-3" for="validationServer01"> Vision EN:</h3>
                                                     <div class="input-group">
 
@@ -99,9 +99,9 @@
                                                     @error('vision_en')
                                                         <h4 class="form-text text-danger"> - {{ $message }}</h4>
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <h3 class="mb-3" for="validationServer01"> Vision AR :</h3>
+                                                    <h3 class="mb-3" for="validationServer01"> Vision :</h3>
                                                     <div class="input-group">
 
                                                         <textarea name="vision_ar" class="form-control"
@@ -115,7 +115,7 @@
 
 
 
-                                                <div class="col-md-12 mb-3">
+                                                {{-- <div class="col-md-12 mb-3">
                                                     <h3 class="mb-3" for="validationServer01"> Mission EN:</h3>
                                                     <div class="input-group">
 
@@ -126,9 +126,9 @@
                                                     @error('mission_en')
                                                         <h4 class="form-text text-danger"> - {{ $message }}</h4>
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-12 mb-3">
-                                                    <h3 class="mb-3" for="validationServer01"> Mission AR:</h3>
+                                                    <h3 class="mb-3" for="validationServer01"> Mission :</h3>
                                                     <div class="input-group">
 
                                                         <textarea name="mission_ar" class="form-control"
@@ -170,13 +170,13 @@
 
 
                                                     @error('about_us_image')
-                                                    <h4 class="form-text text-danger"> - {{ $message }}</h4>
-                                                @enderror
+                                                        <h4 class="form-text text-danger"> - {{ $message }}</h4>
+                                                    @enderror
                                                 </div>
 
 
 
-                                                <div class="col-md-4 mb-3">
+                                                {{-- <div class="col-md-4 mb-3">
                                                     <h3 class="mb-3" for="validationServer01">Vision  Image  :</h3>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -228,7 +228,7 @@
                                                     @error('mission_image')
                                                         <h4 class="form-text text-danger"> - {{ $message }}</h4>
                                                     @enderror
-                                                </div>
+                                                </div> --}}
 
 
 

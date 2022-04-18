@@ -22,6 +22,7 @@ class Course extends Model
         'section_time',
         'course_date',
         'status',
+        'teacher_image',
         'main_image',
         'main_video'
     ];
@@ -30,5 +31,13 @@ class Course extends Model
     public function sections(){
         return $this->hasMany(CourseSection::class,'course_id');
     }
+
+
+
+
+    // ===================================================================================================================
+    // ============================================= Accessors Section ===================================================
+    // ===================================================================================================================
+
 
 }

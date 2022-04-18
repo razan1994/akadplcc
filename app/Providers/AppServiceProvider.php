@@ -17,6 +17,7 @@ use App\Models\PublicLanguage;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -42,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
 
-
+            Paginator::useBootstrap();
 
             $public_countries = PublicCountry::get();
             $public_languages = PublicLanguage::get();

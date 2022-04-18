@@ -50,21 +50,25 @@
                         <div class="c_mainNews">
                             <div class="c_item">
                                 <div class="c_image">
+                                    @if(isset($news->image) && file_exists($news->image))
+                                    <img src="{{ asset($news->image) }}">
+                                    @else
                                     <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                    @endif
                                 </div>
                                 <div class="c_deatlis">
                                     <div class="c_date">
-                                        <span>27/2/2022</span>
+                                        <span>{{ date('Y-M-d',strtotime($news->created_at)) }}</span>
                                     </div>
                                     <div class="c_title">
                                         <h2>
-                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                            {!! isset($news->title_ar) ? $news->title_ar : 'Undefined' !!}
                                         </h2>
                                     </div>
 
                                     <div class="c_body">
                                         <p>
-                                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي  
+                                            {!! isset($news->desc_ar) ? $news->desc_ar : 'Undefined' !!}
                                         </p>
                                     </div>
 
@@ -76,15 +80,46 @@
                         <div class="c_totl">
                             <h2>أخبار ذات صلة</h2>
                         </div>
+                            @if(isset($relateds) && $relateds->count() > 0)
+                            @foreach ($relateds as $related)
+
+                            <div class="c_itms">
+                                <div class="c_image">
+                                        @if(isset($related->image) && file_exists($related->image))
+                                        <a href="{{ route('news-details',$related->id) }}">
+                                            <img src="{{ asset($related->image) }}">
+                                        </a>
+                                        @else
+                                        <a href="{{ route('news-details',$related->id) }}">
+                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                        </a>
+                                        @endif
+                                    </div>
+
+                                    <div class="c_body">
+                                        <div class="c_title">
+                                            <a href="{{ route('news-details',$related->id) }}">
+                                                <h2>
+                                                    {!! isset($related->title_ar) ? $related->title_ar : 'Undefined' !!}
+                                                </h2>
+                                            </a>
+                                        </div>
+                                        <div class="c_date">
+                                            <span>{{ date('Y-M-d',strtotime($related->created_at)) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else
                                 <div class="c_itms">
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -96,11 +131,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -112,11 +147,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -128,11 +163,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -144,11 +179,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -160,11 +195,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -176,11 +211,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -192,11 +227,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -208,11 +243,11 @@
                                     <div class="c_image">
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     </div>
-                                
+
                                     <div class="c_body">
                                         <div class="c_title">
                                             <h2>
-                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة 
+                                                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة
                                             </h2>
                                         </div>
                                         <div class="c_date">
@@ -220,6 +255,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                     </div>
                 </div>
             </div>

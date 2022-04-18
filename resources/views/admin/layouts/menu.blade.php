@@ -83,12 +83,12 @@
                                     <span class="nav-text" style="font-size: 9pt;"> Blogs </span>
                                 </a>
                             </li>
-                            <li class="active">
+                            {{-- <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.latest_news-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> Latest News </span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.about_us-index') }}">
                                     <i class="fas fa-briefcase"> </i>
@@ -99,6 +99,12 @@
                                 <a class="sidenav-item-link" href="{{ route('super_admin.sliders-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> Slider</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.approved_bodies-index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Approved Bodies</span>
                                 </a>
                             </li>
                             <li class="active">

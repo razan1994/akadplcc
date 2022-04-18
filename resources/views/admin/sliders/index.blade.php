@@ -48,7 +48,6 @@
                 </div>
                 <div>
                     <a href="{{ route('super_admin.sliders-create') }}" class="mb-1 btn btn-primary"><i class="mdi mdi-playlist-plus"></i> Add New </a>
-                    <a href="{{ route('super_admin.sliders-showSoftDelete') }}" class=" mb-1 btn btn-danger"><i class=" mdi mdi-delete"></i> Archive </a>
                 </div>
             </div>
 
@@ -64,10 +63,6 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th><i class="mdi mdi-account"></i> Title Ar</th>
-                                <th><i class="mdi mdi-account"></i> Title EN</th>
-                                <th><i class="mdi mdi-email"></i> Desc AR</th>
-                                <th><i class="mdi mdi-email"></i> Desc EN</th>
                                 <th><i class="mdi mdi-image"></i> Image</th>
                                 <th><i class="mdi mdi-account-switch"></i> Status</th>
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
@@ -79,11 +74,7 @@
                                 @if ($sliders->count() > 0)
                                     @foreach ($sliders as $index => $slider)
                                         <tr>
-                                            <td>{!! isset($slider->id) ? $slider->id : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->title_ar) ? $slider->title_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->title_en) ? $slider->title_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->description_ar) ? $slider->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->description_en) ? $slider->description_en : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                            <td>{{ $index + 1 }}</td>
                                             <td>
                                                 @if (isset($slider->image) && $slider->image && file_exists($slider->image))
                                                     <img src="{{ asset($slider->image) }}" width="120" height="50" style="border-radius: 10px; border:solid 1px black;">
@@ -104,10 +95,10 @@
                                             </td>
                                             <td>
                                                 {{-- <a href="{{ route('super_admin.sliders-show', [$slider->id]) }}" title="Show" class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a> --}}
-                                                <a href="{{ route('super_admin.sliders-edit', [$slider->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a>
+                                                {{-- <a href="{{ route('super_admin.sliders-edit', [$slider->id]) }}" title="Edit" class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-playlist-edit"></i></a> --}}
                                                 <a href="{{ route('super_admin.sliders-activeInactiveSingle', [$slider->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
                                                 <a href="{{ route('super_admin.sliders-softDelete', [$slider->id]) }}" title="Archive" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
-                                                <a href="{{ route('super_admin.sliders-destroy', [$slider->id]) }}" title="Permanently Delete" class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
+
                                             </td>
                                         </tr>
                                     @endforeach

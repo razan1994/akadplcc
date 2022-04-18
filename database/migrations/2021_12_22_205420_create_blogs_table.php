@@ -21,8 +21,6 @@ class CreateBlogsTable extends Migration
             $table->longText('title_en');
             $table->longText('desc_ar');
             $table->longText('desc_en');
-            $table->longText('alias_name_ar');
-            $table->longText('alias_name_en');
             $table->longText('alt_text_ar')->nullable();
             $table->longText('alt_text_en')->nullable();
             $table->longText('image_title_text_ar')->nullable();

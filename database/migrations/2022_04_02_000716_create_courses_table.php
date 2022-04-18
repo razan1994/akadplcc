@@ -25,6 +25,7 @@ class CreateCoursesTable extends Migration
             $table->decimal('section_time',10,2);
             $table->date('course_date');
             $table->tinyInteger('status')->comment('2 => Avtive || 1 => Stopped');
+            $table->longText('teacher_image')->nullable();
             $table->longText('main_image')->nullable();
             $table->longText('main_video')->nullable();
             $table->timestamps();

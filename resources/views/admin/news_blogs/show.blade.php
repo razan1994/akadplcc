@@ -66,7 +66,7 @@
             <div class="col-md-4">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="text-center pb-4">
-                        <h4 class="text-dark mb-3"> title AR :</h4>
+                        <h4 class="text-dark mb-3"> title :</h4>
                         <p style="color: blue">
                             {{ isset($news_blog->title_ar) ? $news_blog->title_ar : 'Undefined' }}</p>
                     </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="text-center pb-4">
                         <h4 class="text-dark mb-3"> Titl EN :</h4>
@@ -83,7 +83,7 @@
                     </div>
                     <hr class="w-100">
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-4">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="text-center pb-4">
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="text-center pb-4">
                         <h4 class="text-dark mb-3"> Blog Details EN :</h4>
@@ -105,12 +105,12 @@
                     </div>
                     <hr class="w-100">
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-md-6">
                 <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
                     <div class="text-center pb-4">
-                        <h4 class="text-dark mb-3"> Blog Details AR :</h4>
+                        <h4 class="text-dark mb-3"> Blog Details :</h4>
 
                         <p style="color: blue">
                             {!! isset($news_blog->desc_ar) ? $news_blog->desc_ar : 'Undefined' !!}</p>

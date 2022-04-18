@@ -21,7 +21,7 @@
 
     <div class="breadcrumb-wrapper breadcrumb-contacts">
         <div>
-            <h1> Show News </h1>
+            <h1> Show Course </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0">
                     <li class="breadcrumb-item">
@@ -30,8 +30,8 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('super_admin.latest_news-index') }}">
-                            <i class="far fa-newspaper"></i></span> List News
+                        <a href="{{ route('super_admin.cources-index') }}">
+                            <i class="far fa-newspaper"></i></span> List Course
                         </a>
                     </li>
                     <li class="breadcrumb-item">
@@ -45,7 +45,7 @@
             </nav>
         </div>
         <div>
-            <a href="{{ route('super_admin.latest_news-edit', $course->id) }}" class="mb-1 btn btn-primary"><i
+            <a href="{{ route('super_admin.cources-edit', $course->id) }}" class="mb-1 btn btn-primary"><i
                     class="mdi mdi-playlist-edit"></i> Edit </a>
 
         </div>
@@ -103,6 +103,35 @@
                                             id="validationServer01" placeholder="Video">
                                     </div>
                                 </div>
+                                {{-- SEction Image --}}
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-dark font-weight-medium mb-3"
+                                        for="validationServer01"> Section Image <strong
+                                            class="text-danger">
+                                             * @error('section_image') - {{ $message }}
+                                            @enderror</strong></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                        </div>
+                                        <input type="file" name="section_image" class="form-control"
+                                            id="validationServer01" placeholder="section_image">
+                                    </div>
+                                </div>
+                                {{-- Main text --}}
+                                <div class="col-md-12 mb-3">
+                                    <label class="text-dark font-weight-medium mb-3"
+                                        for="validationServer01"> Section Text <strong
+                                            class="text-danger">
+                                              @error('text_ar') - {{ $message }}
+                                            @enderror</strong></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                        </div>
+                                        <textarea name="text_ar" class="form-control" id="section_text">{!! old('text_ar') !!}</textarea>
+                                    </div>
+                                </div>
 
 
                                 <div class="col-md-12 mb-3">
@@ -123,16 +152,20 @@
                                 <div class="text-center pb-4">
                                     <h4 class="text-dark"> Title : {{ isset($section->title_ar) ? $section->title_ar : '<span class="text-danger"> Undefined </span>'}}</h4>
                                 </div>
-                                @if ($section->video && file_exists($section->video))
-                                    <video controls style="width:100%;">
-                                        <source src="{{ asset($section->video) }}" type="video/mp4">
-                                        <source src="{{ asset($section->video) }}" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
+                                <a href="{{ route('super_admin.showSection',$section->id) }}">
+                                @if (isset($section->section_image) && file_exists($section->section_image))
+                                    <img style="width: 100%;" src="{{ asset($section->section_image) }}"
+                                        class="img-thumbnail image-preview" alt="">
+                                @else
+                                @if(isset($section->text))
+                                    <img style="width: 100%;" src="{{ asset('images_default/text_image.webp') }}"
+                                        class="img-thumbnail image-preview" alt="">
                                 @else
                                     <img style="width: 100%;" src="{{ asset('images_default/user.jpg') }}"
                                         class="img-thumbnail image-preview" alt="">
                                 @endif
+                                @endif
+                                </a>
                                 <div class="col-md-12">
                                     <a href="{{ route('super_admin.delete-course-section',$section->id) }}" class="btn btn-danger w-100">Delete</a>
                                 </div>
@@ -164,7 +197,7 @@
                             <div class="text-center pb-4">
                                 <h4 class="text-dark mb-3"> Status :</h4>
                                 <p style="color: blue">
-                                    {{ isset($course->status) ? ($course->status == 1 ? 'Active' : Inactive) : 'Undefined' }}
+                                    {{ isset($course->status) ? ($course->status == 1 ? 'Active' : 'Inactive') : 'Undefined' }}
                                 </p>
                             </div>
                             <hr class="w-100">
@@ -227,8 +260,20 @@
                             <hr class="w-100">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="col-md-6 profile-content-left text-center" style="margin: auto;">
+                    <div class="col-md-4">
+                        <div class="col-md-12 profile-content-left text-center" style="margin: auto;">
+                            <h3 class="text-dark mb-3"> Teacher Image </h3>
+                            @if ($course->teacher_image && file_exists($course->teacher_image))
+                                <img style="width:100%;" src="{{ asset($course->teacher_image) }}"
+                                    class="img-thumbnail image-preview" alt="">
+                            @else
+                                <img style="width: 75%;" src=" {{ asset('images_default/user.jpg') }}"
+                                    class="img-thumbnail image-preview" alt="">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12 profile-content-left text-center" style="margin: auto;">
                             <h3 class="text-dark mb-3"> Main Image </h3>
                             @if ($course->main_image && file_exists($course->main_image))
                                 <img style="width:100%;" src="{{ asset($course->main_image) }}"
@@ -239,8 +284,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="col-md-6 profile-content-left text-center" style="margin: auto;">
+                    <div class="col-md-4">
+                        <div class="col-md-12 profile-content-left text-center" style="margin: auto;">
                             <h3 class="text-dark mb-3"> Main Video </h3>
                             @if ($course->main_video && file_exists($course->main_video))
                                 <video controls style="width:100%;">
@@ -259,5 +304,13 @@
         </div>
       </div>
 
+      <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
+      <script>
+              CKEDITOR.replace( 'section_text',{
+                  fullPage: true,
+                  allowedContent: true
+              });
+
+      </script>
 @endsection

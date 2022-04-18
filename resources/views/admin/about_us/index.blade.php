@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
                                                         <h3 class="text-dark pb-2">About Us EN</h3>
@@ -73,12 +73,12 @@
                                                     </div>
                                                 </div>
                                                 <hr class="w-100">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
-                                                        <h3 class="text-dark pb-2">About Us AR</h3>
+                                                        <h3 class="text-dark pb-2">About Us </h3>
                                                         <p class="text-dark">
                                                             {!! isset($about->about_us_ar) ? $about->about_us_ar : "<span style='color:red;'>Undefined</span>" !!}
                                                         </p>
@@ -89,7 +89,7 @@
 
 
 
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
                                                         <h3 class="text-dark pb-2">Vision EN</h3>
@@ -100,12 +100,12 @@
                                                     </div>
                                                 </div>
                                                 <hr class="w-100">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
-                                                        <h3 class="text-dark pb-2">Vision AR</h3>
+                                                        <h3 class="text-dark pb-2">Vision </h3>
                                                         <p class="text-dark">
                                                             {!! isset($about->vision_ar) ? $about->vision_ar : "<span style='color:red;'>Undefined</span>" !!}
 
@@ -115,7 +115,7 @@
                                                 <hr class="w-100">
                                             </div>
 
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
                                                         <h3 class="text-dark pb-2">Mission EN</h3>
@@ -126,12 +126,12 @@
                                                     </div>
                                                 </div>
                                                 <hr class="w-100">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-6">
                                                 <div class="d-flex justify-content-center ">
                                                     <div class="text-center pb-4">
-                                                        <h3 class="text-dark pb-2">Mission AR</h3>
+                                                        <h3 class="text-dark pb-2">Mission </h3>
                                                         <p class="text-dark">
                                                             {!! isset($about->mission_ar) ? $about->mission_ar : "<span style='color:red;'>Undefined</span>" !!}
 
@@ -160,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4 m-auto">
+                                            {{-- <div class="col-md-4 m-auto">
                                                 <div class="card card-mini mb-4">
                                                     @if ($about->mission_image && file_exists($about->mission_image))
                                                         <img style="height: 150px"
@@ -171,10 +171,10 @@
                                                     @endif
                                                     <span class="rounded p-1 text-light bg-danger  text-center">Mission Image</span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
-                                            <div class="col-md-4 m-auto">
+                                            {{-- <div class="col-md-4 m-auto">
                                                 <div class="card card-mini mb-4">
                                                     @if ($about->vision_image && file_exists($about->vision_image))
                                                         <img style="height: 150px" src="{{ asset($about->vision_image) }}"
@@ -185,7 +185,7 @@
                                                     @endif
                                                     <span class="rounded p-1 text-light bg-danger  text-center">Vision Image</span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
                                         </div>

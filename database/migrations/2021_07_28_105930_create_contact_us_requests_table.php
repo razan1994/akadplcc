@@ -16,10 +16,8 @@ class CreateContactUsRequestsTable extends Migration
         Schema::create('contact_us_requests', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('full_name');
-            $table->string('email');
+            $table->string('name');
             $table->string('phone');
-            $table->string('subject');
             $table->longText('message');
             $table->timestamps();
         });

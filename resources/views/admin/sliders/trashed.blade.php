@@ -70,10 +70,6 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th><i class="mdi mdi-account"></i> Title Ar</th>
-                                <th><i class="mdi mdi-account"></i> Title EN</th>
-                                <th><i class="mdi mdi-email"></i> Desc AR</th>
-                                <th><i class="mdi mdi-email"></i> Desc EN</th>
                                 <th><i class="mdi mdi-image"></i> Image</th>
                                 <th><i class="mdi mdi-account-switch"></i> Status</th>
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
@@ -84,12 +80,7 @@
                                 @if ($sliders->count() > 0)
                                     @foreach ($sliders as $index => $slider)
                                         <tr>
-                                            <td>{!! isset($slider->id) ? $slider->id : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->title_ar) ? $slider->title_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->title_en) ? $slider->title_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->description_ar) ? $slider->description_ar : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>{!! isset($slider->description_en) ? $slider->description_en : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                            <td>
+                                           <td>
                                                 @if (isset($slider->image) && $slider->image && file_exists($slider->image))
                                                     <img src="{{ asset($slider->image) }}" width="70" height="70" style="border-radius: 10px; border:solid 1px black;">
                                                 @else
