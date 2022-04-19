@@ -294,6 +294,16 @@
 .c_page_contact .c_form_contat form .form-group textarea {
   height: 100px;
 }
+/****************CV***********/
+/*****************************/
+.c_page_resume .c_createCV .c_postionss, .c_page_resume .c_createCV .c_date p,
+.c_page_resume .c_createCV .c_company p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
 /***********HEADER************/
 .header .c_top_header {
   padding: 13px 0;
@@ -1537,6 +1547,190 @@ input#quantity {
   border: 1px solid #67328f;
   transition: 0.5s;
 }
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_resume {
+  padding: 100px;
+  background: #f6f6f6;
+  direction: ltr;
+  /********/
+  /*********/
+}
+.c_page_resume .container_900 {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  max-width: 860px;
+  padding: 0px 0px;
+}
+.c_page_resume .c_topCv {
+  background: #5d52a3;
+}
+.c_page_resume .c_topCv .c_blockss {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+}
+.c_page_resume .c_topCv .c_blockss .c_infoss {
+  float: left;
+  width: 55%;
+  padding: 80px 20px 50px 60px;
+  margin: 0;
+  text-align: left;
+  color: #fff;
+}
+.c_page_resume .c_topCv .c_blockss .c_infoss .c_name h2 {
+  font-weight: normal;
+  font-size: 50px;
+  margin: 0;
+}
+.c_page_resume .c_topCv .c_blockss .c_infoss .c_name p {
+  font-size: 65px;
+  font-weight: bold;
+  line-height: 50px;
+}
+.c_page_resume .c_topCv .c_blockss .c_infoss .c_postionss h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  word-spacing: 2px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+.c_page_resume .c_topCv .c_blockss .c_infoss .c_postionss p {
+  line-height: 20px;
+  font-size: 15px;
+}
+.c_page_resume .c_topCv .c_blockss .c_image {
+  float: right;
+  width: 50%;
+  padding: 20px;
+  text-align: left;
+}
+.c_page_resume .c_topCv .c_blockss .c_image img {
+  border-radius: 50%;
+  display: inline-block;
+  width: 275px;
+  height: 275px;
+  border: 10px solid #fff;
+}
+.c_page_resume .c_head_cv {
+  float: right;
+  width: 50%;
+  background: #fbfbfb;
+  padding: 40px 40px 50px 50px;
+  line-height: 1.15;
+  margin: 0;
+}
+.c_page_resume .c_body_cv {
+  float: left;
+  width: 55%;
+  background: #5d52a380;
+  padding: 40px 40px 50px 50px;
+  margin: 0;
+}
+.c_page_resume .c_createCV {
+  display: flex;
+  margin: 0;
+  /* width: 100%;
+  height: 100%; */
+  position: relative;
+  /* display: inline-block; */
+  width: 100%;
+  background: #fbfbfb;
+  text-align: left;
+}
+.c_page_resume .c_createCV .c_titles h3 {
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+.c_page_resume .c_createCV .c_company {
+  margin-bottom: 10px;
+}
+.c_page_resume .c_createCV .c_postionss {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.c_page_resume .c_createCV .c_item {
+  position: relative;
+  margin-bottom: 50px;
+}
+.c_page_resume .c_createCV .c_item.c_exper .c_itme_ex {
+  margin-bottom: 30px;
+}
+.c_page_resume .c_createCV .c_item.c_exper ul li {
+  list-style: inside;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 10px;
+}
+.c_page_resume .c_createCV .c_item.c_contact ul li {
+  margin-bottom: 10px;
+}
+.c_page_resume .c_createCV .c_item.c_contact ul li i {
+  color: #67328f;
+  margin-right: 10px;
+}
+.c_page_resume .c_edotadd {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+.c_page_resume .c_edotadd li {
+  float: left;
+  margin: 0 5px;
+}
+.c_page_resume .c_edotadd li a {
+  color: #67328f;
+}
+.c_page_resume .c_skills {
+  /* progress bar  */
+}
+.c_page_resume .c_skills .c_temem {
+  margin-bottom: 20px;
+}
+.c_page_resume .c_skills .c_temem h5 {
+  font-size: 16px;
+}
+.c_page_resume .c_skills .c_progress {
+  padding: 0 !important;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  background: #e5e5e5;
+  border-radius: 20px;
+}
+.c_page_resume .c_skills .c_bar {
+  position: relative;
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  background: #67328f;
+}
+.c_page_resume .c_skills .c_percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: tahoma, arial, helvetica;
+  font-size: 12px;
+  color: white;
+}
+
 /***************************************/
 /************ STYLE BUTTONS ************/
 /***************************************/

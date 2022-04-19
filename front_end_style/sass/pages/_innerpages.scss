@@ -1139,3 +1139,236 @@
     }
 }
 
+
+
+
+
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume***************************/
+/****************************************************************/
+/****************************************************************/
+
+.c_page_resume{
+    padding: 100px;
+    background: #f6f6f6;
+    direction: ltr;
+    
+    .container_900 {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        max-width: 860px;
+        padding: 0px 0px;
+    }
+
+    .c_topCv{
+        background: #5d52a3;
+
+        .c_blockss {
+            display: flex;
+            direction: ltr;
+            align-items: center;
+        }
+    
+        .c_blockss .c_infoss {
+            float: left;
+            width: 55%;
+            padding: 80px 20px 50px 60px;
+            margin: 0;
+            text-align: left;
+            color: #fff;
+
+            .c_name h2 {
+                font-weight: normal;
+                font-size: 50px;
+                margin: 0;
+            }
+            .c_name p {
+                font-size: 65px;
+                font-weight: bold;
+                line-height: 50px;
+            }
+
+            .c_postionss h4 {
+                font-size: 18px;
+                text-transform: uppercase;
+                word-spacing: 2px;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+            .c_postionss p {
+                line-height: 20px;
+                font-size: 15px;
+            }
+        }
+    
+        .c_blockss .c_image{
+                float: right;
+                width: 50%;
+                padding: 20px;
+                text-align: left;
+        }
+    
+        .c_blockss .c_image img {
+            border-radius: 50%;
+            display: inline-block;
+            width: 275px;
+            height: 275px;
+            border: 10px solid #fff;
+        }
+
+        
+    }
+
+
+    /********/
+    .c_head_cv{
+        float: right;
+        width: 50%;
+        background: #fbfbfb;
+        padding: 40px 40px 50px 50px;
+        line-height: 1.15;
+        margin: 0 ;
+    }
+
+    .c_body_cv{
+        float: left;
+        width: 55%;
+        background: #5d52a380;
+        padding: 40px 40px 50px 50px;
+        margin: 0;
+    }
+
+    .c_createCV {
+        display: flex;
+        margin: 0 ;
+        /* width: 100%;
+        height: 100%; */
+        position: relative;
+        /* display: inline-block; */
+        width: 100%;
+        background: #fbfbfb;
+        text-align: left;
+    }
+
+    /*********/ 
+
+
+    .c_createCV{
+
+        .c_titles h3 {
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+    
+        .c_date p,
+        .c_company p {
+            @extend %stykle_texte;
+        }
+    
+        .c_company {
+            margin-bottom: 10px;
+        }
+        .c_postionss{
+            @extend %stykle_texte;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+    
+        .c_item{
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .c_item.c_exper{
+            .c_itme_ex {
+                margin-bottom: 30px;
+            }
+            ul li{
+                list-style: inside;
+                font-size: 15px;
+                color: #000;
+                margin-bottom: 10px;
+            }
+        }
+    
+    
+        .c_item.c_contact{
+            ul li {
+                margin-bottom: 10px;
+                i{
+                    color: $main_color;
+                    margin-right: 10px;
+                }
+            }
+        } 
+    }
+
+
+    .c_edotadd {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 999;
+        li {
+            float: left;
+            margin: 0 5px;
+            a{
+                color: $main_color;
+            }
+        }
+    }
+
+
+.c_skills{
+
+    .c_temem {
+        margin-bottom: 20px;
+        h5 {
+            font-size: 16px;
+        }
+    }
+
+    /* progress bar  */
+
+    .c_progress {
+        padding: 0 !important;
+        width: 100%;
+        height: 15px;
+        overflow: hidden;
+        background: #e5e5e5;
+        border-radius: 20px;
+    }
+    
+    .c_bar {
+        position: relative;
+        float: left;
+        min-width: 1%;
+        height: 100%;
+        background: $main_color;
+    }
+    
+    .c_percent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        font-family: tahoma, arial, helvetica;
+        font-size: 12px;
+        color: white;
+    }
+    
+}
+
+}
