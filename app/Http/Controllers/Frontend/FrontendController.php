@@ -84,7 +84,8 @@ class FrontendController extends Controller
             ContactUsRequest::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'phone'=>$request->phone
+                'phone'=>$request->phone,
+                'message'=>$request->message
             ]);
 
             return redirect()->back()->with('success','تم ارسال رسالتك بنجاح');
