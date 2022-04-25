@@ -23,7 +23,7 @@ class Student extends Authenticatable
      *
      * @var string[]
      */
-    protected $table = 'users';
+    protected $table = 'students';
     protected $fillable = [
         'first_name',
         'mid_first_name',
@@ -35,7 +35,6 @@ class Student extends Authenticatable
         'password',
         'profile_photo_path',
         'user_status',
-        'created_by',
     ];
 
     /**

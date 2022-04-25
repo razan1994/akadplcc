@@ -20,7 +20,7 @@ use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\CourcesController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
-
+use App\Http\Controllers\Frontend\StudentController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
@@ -52,10 +52,15 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
 
-    Route::group(['middleware' => ['checkAuth','checkActiveInactiveUser']], function () {
 
+        Route::prefix('student')->name('student.')->group(function () {
+            Route::post('/login', [StudentController::class, 'login'])->name('login');
+            Route::get('/logout', [StudentController::class, 'logout'])->name('logout');
+            Route::post('/register', [StudentController::class, 'register'])->name('register');
+            Route::group(['middleware' => ['auth:student']], function () {
+            });
+        });
 
-    });
 
 // });
 

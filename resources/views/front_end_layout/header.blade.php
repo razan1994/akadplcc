@@ -128,34 +128,45 @@
 
                             </div>
                             <div role="tabpanel" class="tab-pane" id="regiesterf">
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="POST" action="{{ route('student.register') }}" enctype="multipart/form-data">
                                     @csrf
-
                                     <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <label>الاسم الرباعي</label>
-                                            <input class="form-control" name="name" type="text" placeholder="">
+                                        <div class="form-group col-md-6">
+                                            <label>الاسم الاول <span class="text-danger">* @error('first_name') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="first_name" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>الاسم الثاني <span class="text-danger">* @error('mid_first_name') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="mid_first_name" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>الاسم الثالث <span class="text-danger">* @error('mid_last_name') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="mid_last_name" type="text" placeholder="">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>الاسم الرابع <span class="text-danger">* @error('last_name') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="last_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>اسم المستخدم</label>
+                                            <label>اسم المستخدم <span class="text-danger">* @error('username') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="username" type="text" placeholder="">
                                         </div>
 
                                         <div class="form-group col-md-12" >
-                                            <label>البريد الالكتروني</label>
-                                            <input class="form-control" name="mail" type="mail" placeholder="">
+                                            <label>البريد الالكتروني <span class="text-danger">* @error('email') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="email" type="mail" placeholder="">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>رقم الهاتف </label>
+                                            <label>رقم الهاتف <span class="text-danger">* @error('phone') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="phone" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label>كلمة المرور</label>
+                                            <label>كلمة المرور <span class="text-danger">* @error('password') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="password" type="password" placeholder="">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label> اعادة كلمة المرور </label>
-                                            <input class="form-control" name="rpassword" type="password" placeholder="">
+                                            <label> اعادة كلمة المرور <span class="text-danger">* @error('password') {{ $message }} @enderror</span></label>
+                                            <input class="form-control" name="password_confirmation" type="password" placeholder="">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <button class="btn btn-lg btn-primary c_butnns">تسجيل حساب</button>
