@@ -1,9 +1,6 @@
 @extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
 @section('content')
-
-
-
     <div class="body_inner">
         <div class="c_page_resume">
             <div class="container_900">
@@ -24,7 +21,8 @@
                             </div>
                         </div>
                         <div class="c_image">
-                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                            <input type="file" id="browse" name="image" style="display:none;" onchange="Handlechange();" />
+                            <img id="review-thumbnail-submit" src="{{ asset('/front_end_style/images/omgs.png') }}" onclick="HandleBrowseClick();">
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@
                                                 strategies
                                             </li>
                                             <li>
-                                                Develop new comunity events and all signage to 
+                                                Develop new comunity events and all signage to
                                                 encourage and entice potential buyers
                                             </li>
                                             <li>
@@ -84,7 +82,7 @@
                                                 strategies
                                             </li>
                                             <li>
-                                                Develop new comunity events and all signage to 
+                                                Develop new comunity events and all signage to
                                                 encourage and entice potential buyers
                                             </li>
                                             <li>
@@ -94,7 +92,7 @@
                                     </div>
                                 </div>
 
-                                {{-- edit & add  --}}
+                                {{-- edit & add --}}
 
                                 <div class="c_edotadd">
                                     <ol>
@@ -103,7 +101,7 @@
                                     </ol>
                                 </div>
                             </div>
-                            
+
                             <div class="c_item c_contact">
                                 <div class="c_titles">
                                     <h3>CONTACT</h3>
@@ -115,9 +113,9 @@
                                     <li><i class="fas fa-home"></i><span>123 Anywhere St., Any Cit</span></li>
                                 </ul>
 
-                                 {{-- edit & add  --}}
+                                {{-- edit & add --}}
 
-                                 <div class="c_edotadd">
+                                <div class="c_edotadd">
                                     <ol>
                                         <li><a href="#"><i class="fas fa-edit"></i></a></li>
                                         <li><a href="#"><i class="fas fa-plus"></i></a></li>
@@ -130,104 +128,129 @@
                     </div>
 
                     <div class="c_head_cv">
-                            <div class="c_block_fle">
-                              
-                                <div class="c_item c_exper c_eduction">
-                                    <div class="c_titles">
-                                        <h3>eduction</h3>
-                                    </div>
-                                    <div class="c_bdou">
-                                        <div class="c_itme_ex">
-                                            <div class="c_date">
-                                                <p>2011 - 2014</p>
-                                            </div>
-                                            <div class="c_company">
-                                                <p>
-                                                    Wardiere University
-                                                </p>
-                                            </div>
-                                            <div class="c_postionss">
-                                                <span>Bachelor Degree of Marketing
-                                                </span>
-                                            </div>
+                        <div class="c_block_fle">
+
+                            <div class="c_item c_exper c_eduction">
+                                <div class="c_titles">
+                                    <h3>eduction</h3>
+                                </div>
+                                <div class="c_bdou">
+                                    <div class="c_itme_ex">
+                                        <div class="c_date">
+                                            <p>2011 - 2014</p>
                                         </div>
-                                        <div class="c_itme_ex">
-                                            <div class="c_date">
-                                                <p>2014 - 2016</p>
-                                            </div>
-                                            <div class="c_company">
-                                                <p>
-                                                    Wardiere University
-                                                </p>
-                                            </div>
-                                            <div class="c_postionss">
-                                                <span>Master Degree of Marketing and Busines
-                                                </span>
-                                            </div>
+                                        <div class="c_company">
+                                            <p>
+                                                Wardiere University
+                                            </p>
+                                        </div>
+                                        <div class="c_postionss">
+                                            <span>Bachelor Degree of Marketing
+                                            </span>
                                         </div>
                                     </div>
-    
-                                    {{-- edit & add  --}}
-    
-                                    <div class="c_edotadd">
-                                        <ol>
-                                            <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                                            <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                        </ol>
+                                    <div class="c_itme_ex">
+                                        <div class="c_date">
+                                            <p>2014 - 2016</p>
+                                        </div>
+                                        <div class="c_company">
+                                            <p>
+                                                Wardiere University
+                                            </p>
+                                        </div>
+                                        <div class="c_postionss">
+                                            <span>Master Degree of Marketing and Busines
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="c_item c_skills">
-                                    <div class="c_titles">
-                                        <h3>skills</h3>
-                                    </div>
+                                {{-- edit & add --}}
 
-                                    <div class="c_temem">
-                                        <h5>Good communication</h5>
-                                        <div class="c_progress" style="margin-top:10px;">
-                                            <div class="c_bar" style="width:85%">
-                                                <p class="c_percent"> 85%</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c_temem">
-                                        <h5>Digital Marketing too</h5>
-                                        <div class="c_progress" style="margin-top:10px;">
-                                            <div class="c_bar" style="width:80%">
-                                                <p class="c_percent"> 80%</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c_temem">
-                                        <h5>Trend Forecasting</h5>
-                                        <div class="c_progress" style="margin-top:10px;">
-                                            <div class="c_bar" style="width:75%">
-                                                <p class="c_percent"> 75%</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    
-                                 {{-- edit & add  --}}
-
-                                 <div class="c_edotadd">
+                                <div class="c_edotadd">
                                     <ol>
                                         <li><a href="#"><i class="fas fa-edit"></i></a></li>
                                         <li><a href="#"><i class="fas fa-plus"></i></a></li>
                                     </ol>
                                 </div>
+                            </div>
+
+                            <div class="c_item c_skills">
+                                <div class="c_titles">
+                                    <h3>skills</h3>
+                                </div>
+
+                                <div class="c_temem">
+                                    <h5>Good communication</h5>
+                                    <div class="c_progress" style="margin-top:10px;">
+                                        <div class="c_bar" style="width:85%">
+                                            <p class="c_percent"> 85%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c_temem">
+                                    <h5>Digital Marketing too</h5>
+                                    <div class="c_progress" style="margin-top:10px;">
+                                        <div class="c_bar" style="width:80%">
+                                            <p class="c_percent"> 80%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c_temem">
+                                    <h5>Trend Forecasting</h5>
+                                    <div class="c_progress" style="margin-top:10px;">
+                                        <div class="c_bar" style="width:75%">
+                                            <p class="c_percent"> 75%</p>
+                                        </div>
+                                    </div>
                                 </div>
 
 
+
+                                {{-- edit & add --}}
+
+                                <div class="c_edotadd">
+                                    <ol>
+                                        <li><a href="#"><i class="fas fa-edit"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                    </ol>
+                                </div>
                             </div>
+
+
+                        </div>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#review-thumbnail-submit').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#browse").change(function() {
+            readURL(this);
+        });
+
+        function HandleBrowseClick() {
+            var fileinput = document.getElementById("browse");
+            fileinput.click();
+        }
+
+        function Handlechange() {
+            var fileinput = document.getElementById("browse");
+            var textinput = document.getElementById("filename");
+            textinput.value = fileinput.value;
+        };
+    </script>
 @endsection
-    

@@ -1,3 +1,12 @@
+@if (session()->has('login_error'))
+<script>
+    swal("Oops !!!", "{!! Session::get('login_error') !!}", "error", {
+        button: "Close",
+    });
+
+</script>
+@endif
+
 <div class="header">
     <div class="c_top_header">
         <div class="container_1200">
@@ -103,16 +112,22 @@
                     <div class="modal-body">
                         <div class="tab-content" id="myTabContent">
                             <div role="tabpanel" class="tab-pane active show" id="loginf">
-                                <form action="{{ route('login') }}" method="POST">
+                                <form action="{{ route('student.login') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-12" >
                                             <label>البريد الالكتروني او رقم الهاتف</label>
                                             <input class="form-control" name="email" type="text" placeholder="">
+                                            @if(session()->has('login_error'))
+                                               <span class="text-danger"> {{ Session::get('login_error') }} </span>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>كلمة المرور</label>
                                             <input class="form-control" name="password" type="password" placeholder="">
+                                            @if(session()->has('login_error'))
+                                               <span class="text-danger"> {{ Session::get('login_error') }} </span>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="custom-control custom-checkbox">

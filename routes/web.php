@@ -58,6 +58,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
             Route::get('/logout', [StudentController::class, 'logout'])->name('logout');
             Route::post('/register', [StudentController::class, 'register'])->name('register');
             Route::group(['middleware' => ['auth:student']], function () {
+                Route::get('/student-profile', [StudentController::class, 'studentProfile'])->name('student-profile');
+
+
+
+                Route::get('/cv-first', [StudentController::class, 'cvFirst'])->name('cv-first');
             });
         });
 
