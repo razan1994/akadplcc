@@ -1672,9 +1672,10 @@ input#quantity {
 }
 .c_page_resume .c_createCV .c_item.c_exper ul li {
   list-style: inside;
-  font-size: 15px;
+  font-size: 16px;
   color: #000;
-  margin-bottom: 10px;
+  margin-bottom: 8%;
+  font-weight: 900;
 }
 .c_page_resume .c_createCV .c_item.c_contact ul li {
   margin-bottom: 10px;
