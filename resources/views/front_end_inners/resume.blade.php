@@ -8,17 +8,17 @@
                     <div class="c_blockss">
                         <div class="c_infoss">
                             <div class="c_name">
-                                <h2>DANI</h2>
-                                <p>MARTINEZ</p>
+                                <h2>{{ isset($auth->first_name) ? $auth->first_name : '<span class="text-danger">Undefined</span>' }}</h2>
+                                <p>{{ isset($auth->last_name) ? $auth->last_name : '<span class="text-danger">Undefined</span>' }}</p>
                             </div>
                             <div class="c_postionss">
-                                <h4>REAL ESTATE SALES MANAGER <i class="fas fa-edit"></i></h4>
-                                <p>
+                                <h4 id="job_title_txt">REAL ESTATE SALES MANAGER <a data-toggle="modal" data-target="#job_title_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a></h4>
+                                <p id="over_view_txt">
                                     I’m Property Agent with considerable experience in
                                     selling property such as apartment, real estate, and
                                     residential
 
-                                    <i class="fas fa-edit"></i>
+                                    <a data-toggle="modal" data-target="#over_view_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a>
                                 </p>
                             </div>
 
@@ -222,6 +222,62 @@
             </div>
         </div>
     </div>
+
+
+        {{-- Modals --}}
+
+        {{-- Job Title Modal  --}}
+        <div class="c_login_modal">
+            <div class="c-m-blocks modal fade" id="job_title_modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>المسمى الوظيفي</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group col-md-12" >
+                                    <h5>المسمى الوظيفي :</h5>
+                                    <input class="form-control" name="job_title" id="job_title" type="text" placeholder="ادخل المسمى الوظيفي">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button class="btn btn-md btn-primary c_butnns" id="job_title_btn">تحديث</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- End Job Title Modal --}}
+        {{-- Over View Modal  --}}
+        <div class="c_login_modal">
+            <div class="c-m-blocks modal fade" id="over_view_modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>الوصف</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group col-md-12" >
+                                    <h5>الوصف :</h5>
+                                    <textarea rows="3" class="form-control" name="over_view" id="over_view" type="text" placeholder="ادخل الوصف"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button class="btn btn-md btn-primary c_butnns" id="over_view_btn">تحديث</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- End Over View Modal --}}
+
+
+        {{-- End Modals --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script>
@@ -248,5 +304,89 @@
             var textinput = document.getElementById("filename");
             textinput.value = fileinput.value;
         };
+
+
+
+
+        $(document).on('click','#job_title_btn',function(){
+            add_job_title();
+        });
+
+        $(document).on('click','#over_view_btn',function(){
+            add_over_view();
+        });
+
+
+        function add_job_title(){
+
+            job_title = $("#job_title").val();
+
+            formData = new FormData();
+            formData.append('job_title',job_title);
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('student.add_job_title') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data['status'] == true) {
+                    $('#job_title_txt').html('');
+                    $('#job_title_txt').html(data['output']);
+                    $('#job_title_modal').modal('hide');
+                }else{
+                    swal("خطأ !!!", "حدث خطأ ما يرجى التأكد من المدخلات !!!", "error", {
+                            button: "إغلاق",
+                    });
+                }
+            },
+            error: function(data) {
+                swal("خطأ !!!", "حدث خطأ ما يرجى التأكد من المدخلات !!!", "error", {
+                            button: "إغلاق",
+                });
+            }
+            });
+        }
+
+        function add_over_view(){
+
+            over_view = $("#over_view").val();
+
+            formData = new FormData();
+            formData.append('over_view',over_view);
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('student.add_over_view') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data['status'] == true) {
+                    $('#over_view_txt').html('');
+                    $('#over_view_txt').html(data['output']);
+                    $('#over_view_modal').modal('hide');
+                }else{
+                    swal("خطأ !!!", "حدث خطأ ما يرجى التأكد من المدخلات !!!", "error", {
+                            button: "إغلاق",
+                    });
+                }
+            },
+            error: function(data) {
+                swal("خطأ !!!", "حدث خطأ ما يرجى التأكد من المدخلات !!!", "error", {
+                        button: "إغلاق",
+                });
+            }
+            });
+        }
+
+
     </script>
 @endsection

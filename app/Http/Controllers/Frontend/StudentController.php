@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Student\StudentRegisterFormRequest;
 use App\Models\Student;
+use App\Models\StudentInformation;
 use App\Models\SupportTicket;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -155,6 +156,83 @@ class StudentController extends Controller
     }
 
 
+
+
+    function add_job_title(Request $request){
+
+        $request->validate(['job_title'=>'required']);
+
+        if(!Auth::guard('student')->check()){
+            return response()->json(['status'=>false]);
+        }
+
+        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+
+        if($info){
+            $info->update(['job_title'=>$request->job_title]);
+        }else{
+            StudentInformation::create([
+                                        'student_id'=>Auth::guard('student')->user()->id,
+                                        'job_title'=>$request->job_title
+                                        ]);
+        }
+
+
+
+        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+        if($info){
+
+            $output = '';
+
+            $output .= isset($info->job_title) ? $info->job_title : '<span class="text-danger">Undefined</span>';
+            $output .= '<a data-toggle="modal" data-target="#job_title_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a>';
+
+            return response()->json(['status'=>true,'output'=>$output]);
+
+        }else{
+            return response()->json(['status'=>false]);
+        }
+
+    }
+
+
+
+    function add_over_view(Request $request){
+
+        $request->validate(['over_view'=>'required']);
+
+        if(!Auth::guard('student')->check()){
+            return response()->json(['status'=>false]);
+        }
+
+        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+
+        if($info){
+            $info->update(['over_view'=>$request->over_view]);
+        }else{
+            StudentInformation::create([
+                                        'student_id'=>Auth::guard('student')->user()->id,
+                                        'over_view'=>$request->over_view
+                                        ]);
+        }
+
+
+
+        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+        if($info){
+
+            $output = '';
+
+            $output .= isset($info->over_view) ? $info->over_view : '<span class="text-danger">Undefined</span>';
+            $output .= '<a data-toggle="modal" data-target="#over_view_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a>';
+
+            return response()->json(['status'=>true,'output'=>$output]);
+
+        }else{
+            return response()->json(['status'=>false]);
+        }
+
+    }
 
 
 }

@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Kanaf</title>
     <link rel="shortcut icon" href="{{ asset('front_end_style/images/faviconlogo.png') }}" type="image/png">
 
@@ -96,7 +97,7 @@
 
 {{-- swipers --}}
 <script>
-    // slider swiper 
+    // slider swiper
     var swiper = new Swiper('.slider .swiper-container', {
         slidesPerView: 1,
         loop: false,

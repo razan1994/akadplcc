@@ -60,6 +60,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
             Route::group(['middleware' => ['auth:student']], function () {
                 Route::get('/student-profile', [StudentController::class, 'studentProfile'])->name('student-profile');
 
+                Route::post('/add_job_title', [StudentController::class, 'add_job_title'])->name('add_job_title');
+                Route::post('/add_over_view', [StudentController::class, 'add_over_view'])->name('add_over_view');
 
 
                 Route::get('/cv-first', [StudentController::class, 'cvFirst'])->name('cv-first');
