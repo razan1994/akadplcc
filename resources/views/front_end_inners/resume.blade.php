@@ -12,13 +12,16 @@
                                 <p>MARTINEZ</p>
                             </div>
                             <div class="c_postionss">
-                                <h4>REAL ESTATE SALES MANAGER</h4>
+                                <h4>REAL ESTATE SALES MANAGER <i class="fas fa-edit"></i></h4>
                                 <p>
                                     I’m Property Agent with considerable experience in
                                     selling property such as apartment, real estate, and
                                     residential
+
+                                    <i class="fas fa-edit"></i>
                                 </p>
                             </div>
+
                         </div>
                         <div class="c_image">
                             <input type="file" id="browse" name="image" style="display:none;" onchange="Handlechange();" />
@@ -37,18 +40,7 @@
                                 </div>
                                 <div class="c_bdou">
                                     <div class="c_itme_ex">
-                                        <div class="c_date">
-                                            <p>2016 - 2019</p>
-                                        </div>
-                                        <div class="c_company">
-                                            <p>
-                                                Shodwe Company
-                                            </p>
-                                        </div>
-                                        <div class="c_postionss">
-                                            <span>MARKETING MANAGER
-                                            </span>
-                                        </div>
+
                                         <ul>
                                             <li>
                                                 Planned and executed Company's marketing
@@ -61,22 +53,26 @@
                                             <li>
                                                 Managig team how to selling real estate to buyer
                                             </li>
-                                        </ul>
-                                    </div>
-                                    <div class="c_itme_ex">
-                                        <div class="c_date">
-                                            <p>2019 - present</p>
-                                        </div>
-                                        <div class="c_company">
-                                            <p>
-                                                Handover and Take Company
-                                            </p>
-                                        </div>
-                                        <div class="c_postionss">
-                                            <span>MARKETING MANAGER
-                                            </span>
-                                        </div>
-                                        <ul>
+                                            <li>
+                                                Planned and executed Company's marketing
+                                                strategies
+                                            </li>
+                                            <li>
+                                                Planned and executed Company's marketing
+                                                strategies
+                                            </li>
+                                            <li>
+                                                Planned and executed Company's marketing
+                                                strategies
+                                            </li>
+                                            <li>
+                                                Planned and executed Company's marketing
+                                                strategies
+                                            </li>
+                                            <li>
+                                                Planned and executed Company's marketing
+                                                strategies
+                                            </li>
                                             <li>
                                                 Planned and executed Company's marketing
                                                 strategies
