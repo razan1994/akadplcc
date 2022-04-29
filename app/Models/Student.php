@@ -71,7 +71,25 @@ class Student extends Authenticatable
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
 
+    public function info(){
+        return $this->hasOne(StudentInformation::class,'student_id');
+    }
 
+
+
+    public function experiences(){
+        return $this->hasMany(StudentExperience::class,'student_id');
+    }
+
+
+    public function skills(){
+        return $this->hasMany(StudentSkill::class,'student_id');
+    }
+
+
+    public function educations(){
+        return $this->hasMany(StudentEducation::class,'student_id');
+    }
 
     // ===================================================================================================================
     // ============================================= Mutator Section =====================================================

@@ -62,6 +62,14 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
                 Route::post('/add_job_title', [StudentController::class, 'add_job_title'])->name('add_job_title');
                 Route::post('/add_over_view', [StudentController::class, 'add_over_view'])->name('add_over_view');
+                Route::post('/add_experience', [StudentController::class, 'add_experience'])->name('add_experience');
+                Route::post('/delete_experience', [StudentController::class, 'delete_experience'])->name('delete_experience');
+                Route::post('/add_contact_info', [StudentController::class, 'add_contact_info'])->name('add_contact_info');
+                Route::post('/add_skills', [StudentController::class, 'add_skills'])->name('add_skills');
+                Route::post('/delete_skill', [StudentController::class, 'delete_skill'])->name('delete_skill');
+                Route::post('/add_education', [StudentController::class, 'add_education'])->name('add_education');
+                Route::post('/delete_education', [StudentController::class, 'delete_education'])->name('delete_education');
+                Route::post('/update_image', [StudentController::class, 'update_image'])->name('update_image');
 
 
                 Route::get('/cv-first', [StudentController::class, 'cvFirst'])->name('cv-first');
