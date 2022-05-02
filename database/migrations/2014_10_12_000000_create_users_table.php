@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('username');
+            $table->string('email');
             $table->string('phone')->nullable();
             $table->string('password');
             $table->text('profile_photo_path')->nullable();
