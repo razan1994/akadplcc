@@ -14,6 +14,7 @@ class CreatePublicCountryPhoneKeysTable extends Migration
     public function up()
     {
         Schema::create('public_country_phone_keys', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->longText('key')->references('country_key')->on('public_countries');
             $table->longText('name');

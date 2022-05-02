@@ -14,6 +14,7 @@ class CreatePublicCountriesTable extends Migration
     public function up()
     {
         Schema::create('public_countries', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->longText('country_key');
             $table->longText('name_en');

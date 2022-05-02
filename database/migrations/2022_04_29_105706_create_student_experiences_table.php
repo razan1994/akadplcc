@@ -14,6 +14,7 @@ class CreateStudentExperiencesTable extends Migration
     public function up()
     {
         Schema::create('student_experiences', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->bigInteger('student_id');
             $table->string('company_name')->nullable();

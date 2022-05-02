@@ -14,6 +14,7 @@ class CreateLatestNewsTable extends Migration
     public function up()
     {
         Schema::create('latest_news', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->bigInteger('user_id');
             $table->string('user_type');

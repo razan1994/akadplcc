@@ -14,6 +14,7 @@ class CreatePublicRegionsTable extends Migration
     public function up()
     {
         Schema::create('public_regions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->foreignId('country_id')->constrained('public_countries')->onDelete('cascade');
             $table->longText('country_key');

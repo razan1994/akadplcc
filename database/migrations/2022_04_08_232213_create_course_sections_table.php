@@ -14,6 +14,7 @@ class CreateCourseSectionsTable extends Migration
     public function up()
     {
         Schema::create('course_sections', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->bigInteger('course_id');
             $table->longText('title_ar');

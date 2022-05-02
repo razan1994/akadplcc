@@ -14,6 +14,7 @@ class CreateStudentSkillsTable extends Migration
     public function up()
     {
         Schema::create('student_skills', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->bigInteger('student_id');
             $table->string('skill_name')->nullable();
