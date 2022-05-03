@@ -201,7 +201,8 @@ class CourcesController extends Controller
                     // return 'storage/app/public/'.$file_replaced;
                     $section_video = CourseSection::where('video','public/storage/'.$file_replaced)->get()->first();
                     if(!$section_video){
-                        Storage::delete($file_replaced);
+                        // Storage::delete($file_replaced);
+                        Storage::disk(config('filesystems.default'))->delete($file_replaced);
                     }
                 }
             }
