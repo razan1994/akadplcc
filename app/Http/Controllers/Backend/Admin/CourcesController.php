@@ -201,7 +201,7 @@ class CourcesController extends Controller
                     // return $file_replaced;
                     $section_video = CourseSection::where('video',$file_replaced)->get()->first();
                     if(!$section_video){
-                        File::delete($file_replaced);
+                        File::delete($file);
                     }
                 }
             }
