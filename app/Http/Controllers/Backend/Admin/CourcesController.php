@@ -193,19 +193,19 @@ class CourcesController extends Controller
         try {
 
 
-            // $path = storage_path('app/public/videos');
-            // $files = File::allFiles($path);
-            // // if (count($files) > 0) {
-            // //     foreach ($files as $file) {
-            //     // return $files[0];
-            //         $file_replaced = str_replace(storage_path(), '', $files[0]);
-            //         return $file_replaced;
-            //         $section_video = CourseSection::where('video',$file_replaced)->get()->first();
-            //         if(!$section_video){
-            //             File::delete($file_replaced);
-            //         }
-            // //     }
-            // // }
+            $path = storage_path('app/public/videos');
+            $files = File::allFiles($path);
+            // if (count($files) > 0) {
+            //     foreach ($files as $file) {
+                // return $files[0];
+                    $file_replaced = str_replace(storage_path(), '', $files[0]);
+                    return $file_replaced;
+                    $section_video = CourseSection::where('video',$file_replaced)->get()->first();
+                    if(!$section_video){
+                        File::delete($file_replaced);
+                    }
+            //     }
+            // }
 
 
             $course = Course::find($id);
