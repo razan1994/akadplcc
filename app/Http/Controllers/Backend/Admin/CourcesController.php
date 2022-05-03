@@ -193,7 +193,7 @@ class CourcesController extends Controller
            $path = storage_path('videos');
            $files = File::allFiles($path);
 
-           $file_replaced = str_replace(storage_path('videos\\'),'',$files[0]);
+           $file_replaced = str_replace(storage_path('videos'),'',$files[0]);
            return $file_replaced;
            File::delete($file_replaced);
 
