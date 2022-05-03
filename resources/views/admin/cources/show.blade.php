@@ -68,9 +68,10 @@
                         <h2> Add Course Section :</h2>
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ route('super_admin.add-course-section',$course->id) }}" method="POST"
-                            enctype="multipart/form-data"> --}}
+                        <form action="{{ route('super_admin.add-course-section',$course->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" id="file_save" name="video">
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label class="text-dark font-weight-medium mb-3"
@@ -98,7 +99,7 @@
                                             @enderror</strong></label>
                                             <div class="card-body">
                                                 <div id="upload-container" class="text-center">
-                                                    <button id="browseFile" class="btn btn-primary w-100">Brows File</button>
+                                                    <a id="browseFile" class="btn btn-primary w-100" style="color: #ffff">Brows File</a>
                                                 </div>
                                                 <div  style="display: none" class="progress mt-3" style="height: 25px">
                                                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; height: 100%">75%</div>
@@ -159,7 +160,7 @@
                                 </div>
                             </div>
 
-                        {{-- </form> --}}
+                        </form>
                     </div>
 
                     <div class="card-body">
@@ -338,7 +339,7 @@
     <script type="text/javascript">
         let browseFile = $('#browseFile');
         let resumable = new Resumable({
-            target: '{{ route('super_admin.add-course-section') }}',
+            target: '{{ route('super_admin.add-course-section-video') }}',
             query:{_token:'{{ csrf_token() }}'} ,// CSRF token
             fileType: ['mp4'],
             chunkSize: 10*1024*1024, // default is 1*1024*1024, this should be less than your maximum limit in php.ini
@@ -368,6 +369,7 @@
         resumable.on('fileSuccess', function (file, response) { // trigger when file upload complete
             response = JSON.parse(response)
             $('#videoPreview').attr('src', response.path);
+            $('#file_save').attr('value', response.filesave);
             $('.card-footer').show();
         });
 
