@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
+use App\Http\Controllers\Backend\Admin\BackendStudentController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
@@ -110,6 +111,22 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('/rejectSingle/{id}', [UserController::class, 'rejectSingle'])->name('users-rejectSingle');
             Route::get('/activeInactiveSingle/{id}', [UserController::class, 'activeInactiveSingle'])->name('users-activeInactiveSingle');
             Route::post('/getRegions', [UserController::class, 'getRegions'])->name('getRegions');
+        });
+
+
+        // Student Routes :
+        // ==============================================================================
+        Route::group(['prefix' => 'students'], function () {
+            Route::get('/create', [BackendStudentController::class, 'create'])->name('students-create');
+            Route::post('/store', [BackendStudentController::class, 'store'])->name('students-store');
+            Route::get('/index', [BackendStudentController::class, 'index'])->name('students-index');
+            Route::get('show/{id}', [BackendStudentController::class, 'show'])->name('students-show');
+            Route::get('edit/{id}', [BackendStudentController::class, 'edit'])->name('students-edit');
+            Route::post('update/{id}', [BackendStudentController::class, 'update'])->name('students-update');
+            Route::get('/acceptSingle/{id}', [BackendStudentController::class, 'acceptSingle'])->name('students-acceptSingle');
+            Route::get('/rejectSingle/{id}', [BackendStudentController::class, 'rejectSingle'])->name('students-rejectSingle');
+            Route::get('/activeInactiveSingle/{id}', [BackendStudentController::class, 'activeInactiveSingle'])->name('students-activeInactiveSingle');
+            Route::post('/getRegions', [BackendStudentController::class, 'getRegions'])->name('getRegions');
         });
 
 

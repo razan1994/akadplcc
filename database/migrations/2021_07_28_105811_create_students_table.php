@@ -26,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('password');
             $table->text('profile_photo_path')->nullable();
             $table->tinyInteger('user_status')->comment = '1 => Pendding || 2 => Active || 3 => Inactive';
+            $table->tinyInteger('payment_status')->default(3)->comment = '1 => Pendding || 2 => Active || 3 => Inactive';
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

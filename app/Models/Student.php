@@ -35,6 +35,7 @@ class Student extends Authenticatable
         'password',
         'profile_photo_path',
         'user_status',
+        'payment_status'
     ];
 
     /**
@@ -103,6 +104,17 @@ class Student extends Authenticatable
     // ===================================================================================================================
 
     public function getUserStatusAttribute($value)
+    {
+        if ($value == 1) {
+            return 'Pendding';
+        } elseif ($value == 2) {
+            return 'Active';
+        } elseif ($value == 3) {
+            return 'Inactive';
+        }
+    }
+
+    public function getPaymentStatusAttribute($value)
     {
         if ($value == 1) {
             return 'Pendding';

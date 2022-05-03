@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Student;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
-class StudentRegisterFormRequest extends FormRequest
+class UpdateStudentFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,8 @@ class StudentRegisterFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+
+        return Auth::check();
     }
 
     /**
@@ -32,7 +33,6 @@ class StudentRegisterFormRequest extends FormRequest
             'email'=>'required|unique:students,email|unique:users,email',
             'phone'=>'required|numeric|unique:students,phone|unique:users,phone',
             'password' => [
-                'required',
                 'string',
                 Password::min(8)
                     ->mixedCase()
@@ -40,7 +40,9 @@ class StudentRegisterFormRequest extends FormRequest
                     ->symbols()
                     ->uncompromised(),
                 'confirmed'
-            ]
+            ],
+            'payment_status'=>'required|numeric',
+            'user_status'=>'required|numeric'
 
         ];
     }

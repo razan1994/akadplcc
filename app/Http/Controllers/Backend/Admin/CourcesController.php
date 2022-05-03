@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CourcesController extends Controller
 {
@@ -493,9 +494,16 @@ class CourcesController extends Controller
             // Upload Video Section :
             if (isset($request->video)) {
                 $orginal_image = $request->file('video');
-                $upload_location = 'storage/course_sections/videos/';
-                $last_video = $this->saveFile($orginal_image,$upload_location);
-                $created_data['video']=$last_video;
+                // $name_gen = hexdec(uniqid());
+                // $img_ext = strtolower($orginal_image->getClientOriginalExtension());
+                // $img_name = $name_gen . '.' . $img_ext;
+                // $last_video = 'course_sections/videos/' . $img_name;
+                $image_name = Storage::disk('public')->put('course_sections/videos/',$orginal_image);
+                // $upload_location = 'storage/course_sections/videos/';
+                // $last_video = $this->saveFile($orginal_image,$upload_location);
+                $created_data['video']='public/storage/'.$image_name;
+
+
             }
 
                 DB::transaction(function () use ($created_data) {
