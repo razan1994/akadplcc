@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.5",
         "league/mime-type-detection": "^1.9",
         "livewire/livewire": "^2.5",
-        "mcamara/laravel-localization": "^1.6"
+        "mcamara/laravel-localization": "^1.6",
+        "pion/laravel-chunk-upload": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

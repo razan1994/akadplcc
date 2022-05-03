@@ -16,6 +16,8 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
+use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 
 class CourcesController extends Controller
 {
@@ -186,6 +188,14 @@ class CourcesController extends Controller
     public function show($id, Route $route)
     {
 
+
+
+        //    $path = storage_path('videos');
+        //    $files = File::allFiles($path);
+
+        //    $file_replaced = str_replace(storage_path('videos\\'),'',$files[0]);
+        //    return $file_replaced;
+        //    File::delete($file_replaced);
 
         try {
             $course = Course::find($id);
@@ -469,73 +479,105 @@ class CourcesController extends Controller
     // ==================== addCourseSection ==========================
     // Created By : Mohammed Salah
     // ================================================================
-    public function addCourseSection(Route $route,$id,StoreCourseSectionFormRequest $request)
+    public function addCourseSection(Request $request)
     {
 
-        try {
+        $receiver = new FileReceiver('file', $request, HandlerFactory::classFromRequest($request));
 
-
-            $course = Course::find($id);
-            if ($course) {
-
-            $created_data = [
-                'course_id'=>$course->id,
-                'title_ar'=>$request->title_ar,
-                'text_ar'=>$request->text_ar
-            ];
-
-            // Upload section image :
-            if (isset($request->section_image)) {
-                $orginal_image = $request->file('section_image');
-                $upload_location = 'storage/course_sections/images/';
-                $last_video = $this->saveFile($orginal_image,$upload_location);
-                $created_data['section_image']=$last_video;
-            }
-            // Upload Video Section :
-            if (isset($request->video)) {
-                $orginal_image = $request->file('video');
-                // $name_gen = hexdec(uniqid());
-                // $img_ext = strtolower($orginal_image->getClientOriginalExtension());
-                // $img_name = $name_gen . '.' . $img_ext;
-                // $last_video = 'course_sections/videos/' . $img_name;
-                $image_name = Storage::disk('public')->put('course_sections/videos/',$orginal_image);
-                // $upload_location = 'storage/course_sections/videos/';
-                // $last_video = $this->saveFile($orginal_image,$upload_location);
-                $created_data['video']='public/storage/'.$image_name;
-
-
-            }
-
-                DB::transaction(function () use ($created_data) {
-                    CourseSection::create($created_data);
-                });
-                return redirect()->route('super_admin.cources-show',$id)->with('success', 'Restore Completed Successfully');
-            } else {
-                return redirect()->route('super_admin.cources-index')->with('danger', 'This section does not exist in the records');
-            }
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        if (!$receiver->isUploaded()) {
+            // file not uploaded
         }
+
+        $fileReceived = $receiver->receive(); // receive file
+        if ($fileReceived->isFinished()) { // file uploading is complete / all chunks are uploaded
+            $file = $fileReceived->getFile(); // get file
+            $extension = $file->getClientOriginalExtension();
+            $fileName = str_replace('.'.$extension, '', $file->getClientOriginalName()); //file name without extenstion
+            $fileName .= '_' . md5(time()) . '.' . $extension; // a unique file name
+
+            $disk = Storage::disk(config('filesystems.default'));
+            $path = $disk->putFileAs('videos', $file, $fileName);
+
+            // delete chunked file
+            unlink($file->getPathname());
+            return [
+                'path' => asset('storage/' . $path),
+                'filename' => $fileName
+            ];
+    }
+
+    // otherwise return percentage information
+    $handler = $fileReceived->handler();
+    return [
+        'data'=>$request->data,
+        'done' => $handler->getPercentageDone(),
+        'status' => true
+    ];
+
+        // try {
+
+
+        //     $course = Course::find($id);
+        //     if ($course) {
+
+        //     $created_data = [
+        //         'course_id'=>$course->id,
+        //         'title_ar'=>$request->title_ar,
+        //         'text_ar'=>$request->text_ar
+        //     ];
+
+        //     // Upload section image :
+        //     if (isset($request->section_image)) {
+        //         $orginal_image = $request->file('section_image');
+        //         $upload_location = 'storage/course_sections/images/';
+        //         $last_video = $this->saveFile($orginal_image,$upload_location);
+        //         $created_data['section_image']=$last_video;
+        //     }
+        //     // Upload Video Section :
+        //     if (isset($request->video)) {
+        //         $orginal_image = $request->file('video');
+        //         // $name_gen = hexdec(uniqid());
+        //         // $img_ext = strtolower($orginal_image->getClientOriginalExtension());
+        //         // $img_name = $name_gen . '.' . $img_ext;
+        //         // $last_video = 'course_sections/videos/' . $img_name;
+        //         $image_name = Storage::disk('public')->put('course_sections/videos/',$orginal_image);
+        //         // $upload_location = 'storage/course_sections/videos/';
+        //         // $last_video = $this->saveFile($orginal_image,$upload_location);
+        //         $created_data['video']='public/storage/'.$image_name;
+
+
+        //     }
+
+        //         DB::transaction(function () use ($created_data) {
+        //             CourseSection::create($created_data);
+        //         });
+        //         return redirect()->route('super_admin.cources-show',$id)->with('success', 'Restore Completed Successfully');
+        //     } else {
+        //         return redirect()->route('super_admin.cources-index')->with('danger', 'This section does not exist in the records');
+        //     }
+        // } catch (\Throwable $th) {
+        //     $function_name =  $route->getActionName();
+        //     $check_old_errors = new SupportTicket();
+        //     $check_old_errors = $check_old_errors->select('*')->where([
+        //         'error_location' => $th->getFile(),
+        //         'error_description' => $th->getMessage(),
+        //         'function_name' => $function_name,
+        //         'error_line' => $th->getLine(),
+        //     ])->get();
+
+        //     if ($check_old_errors->count() == 0) {
+        //         $new_error_ticket = SupportTicket::create([
+        //             'error_location' => $th->getFile(),
+        //             'error_description' => $th->getMessage(),
+        //             'function_name' => $function_name,
+        //             'error_line' =>  $th->getLine(),
+        //         ]);
+        //         $end_error_ticket = $new_error_ticket;
+        //     } else {
+        //         $end_error_ticket = $check_old_errors->first();
+        //     }
+        //     return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        // }
     }
 
 

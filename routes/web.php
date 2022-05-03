@@ -257,7 +257,7 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
             Route::get('softDelete/{id}', [CourcesController::class, 'softDelete'])->name('cources-softDelete');
             Route::get('/showSoftDelete', [CourcesController::class, 'showSoftDelete'])->name('cources-showSoftDelete');
             Route::get('softDeleteRestore/{id}', [CourcesController::class, 'softDeleteRestore'])->name('cources-softDeleteRestore');
-            Route::post('addCourseSection/{id}', [CourcesController::class, 'addCourseSection'])->name('add-course-section');
+            Route::post('/addCourseSection', [CourcesController::class, 'addCourseSection'])->name('add-course-section');
             Route::get('deleteCourseSection/{id}', [CourcesController::class, 'deleteCourseSection'])->name('delete-course-section');
             Route::get('showSection/{id}', [CourcesController::class, 'showSection'])->name('showSection');
         });
