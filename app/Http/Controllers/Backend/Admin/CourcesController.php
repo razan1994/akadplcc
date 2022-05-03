@@ -198,10 +198,10 @@ class CourcesController extends Controller
             if (count($files) > 0) {
                 foreach ($files as $file) {
                     $file_replaced = str_replace(storage_path('app/public').'/', '', $files[0]);
-                    // return $file_replaced;
+                    // return 'storage/app/public/'.$file_replaced;
                     $section_video = CourseSection::where('video','public/storage/'.$file_replaced)->get()->first();
                     if(!$section_video){
-                        File::delete($file);
+                        File::delete('storage/app/public/'.$file_replaced);
                     }
                 }
             }
