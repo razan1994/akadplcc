@@ -81,7 +81,7 @@
                     @endif
                 </div>
             </div>
-            <h4>{{ asset($section->video) }}</h4>
+            {{-- <h4>{{ asset($section->video) }}</h4> --}}
             <div class="col-md-6">
                 <div class="col-md-12 profile-content-left text-center" style="margin: auto;">
                     <h3 class="text-dark mb-3"> Section Video </h3>
