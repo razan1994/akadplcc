@@ -269,7 +269,7 @@
                                                                 id="inputGroupPrepend2"></span>
                                                         </div>
                                                         <textarea name="desc_ar" class="form-control @error('desc_ar') is-invalid @enderror" rows="6"
-                                                            id="validationServer01" placeholder="Titl_EN">
+                                                            id="section_text" placeholder="Titl_EN">
                                                             {!! $course->desc_ar !!}
                                                         </textarea>
                                                     </div>
@@ -290,7 +290,15 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
+        <script>
+            CKEDITOR.replace( 'section_text',{
+                fullPage: true,
+                allowedContent: true
+                });
+
+        </script>
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
