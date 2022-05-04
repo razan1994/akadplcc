@@ -197,15 +197,17 @@
                                     @foreach ($courses as $index => $course)
                                         <div class="swiper-slide">
                                             <div class="c_item">
-                                                <a href="{{ route('course-details',encrypt($course->id)) }}">
+                                                
                                                     <div class="c_image">
-                                                        @if(isset($course->main_image) && file_exists($course->main_image))
-                                                        <img src="{{ asset($course->main_image) }}">
-                                                        @else
-                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                        @endif
+                                                        <a href="{{ route('course-details',encrypt($course->id)) }}">
+                                                            @if(isset($course->main_image) && file_exists($course->main_image))
+                                                            <img src="{{ asset($course->main_image) }}">
+                                                            @else
+                                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                            @endif
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                
                                                 <div class="c_post">
                                                     <div class="c_body">
                                                         <a href="{{ route('course-details',encrypt($course->id)) }}">
