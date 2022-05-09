@@ -11,6 +11,7 @@ use App\Models\ContactUsRequest;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\SupportTicket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
@@ -312,7 +313,7 @@ class FrontendController extends Controller
 
             $provider_id = $user->getId();
             $provider_name = $provider;
-            $newUser = Patient::create([
+            $newUser = Student::create([
                 'name_ar' => $user->getName(),
                 'name_en' => $user->getName(),
                 'username' => $user->getName(),
