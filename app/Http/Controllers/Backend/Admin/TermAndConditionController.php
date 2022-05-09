@@ -92,8 +92,8 @@ class TermAndConditionController extends Controller
     {
         try {
             $created_data = [
-                'user_id' => auth()->user()->id,
-                'user_type' => $this->authUserType(),
+                'user_id' => 1,
+                'user_type' => 'Super Admin',
                 'term_and_condition_title_ar' => $request->term_and_condition_title_ar,
                 'term_and_condition_title_en' => $request->term_and_condition_title_en,
                 'term_and_condition_status' => $request->term_and_condition_status,
