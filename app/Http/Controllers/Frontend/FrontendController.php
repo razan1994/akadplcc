@@ -285,6 +285,26 @@ class FrontendController extends Controller
     {
 
         $user = Socialite::driver($provider)->stateless()->user();
+        $first_name = $user->getName();
+        $last_name = $user->getName();
+        switch($provider){
+            case 'facebook':
+               $first_name = $user->offsetGet('first_name');
+               $last_name = $user->offsetGet('last_name');
+               break;
+
+            case 'google':
+               $first_name = $user->offsetGet('given_name');
+               $last_name = $user->offsetGet('family_name');
+               break;
+
+          // You can also add more provider option e.g. linkedin, twitter etc.
+
+            default:
+               $first_name = $user->getName();
+               $last_name = $user->getName();
+         }
+
         if ($user->getEmail() == null) {
             $users = Student::where('provider', $provider)->where('provider_id', $user->getId())->first();
         } else {
@@ -293,7 +313,7 @@ class FrontendController extends Controller
         // return 'id :' . $user->getId() . 'name :' . $user->getName() . ' email :' . $user->getEmail() . ' first name :  ' . $user->getfirstname() . ' last name :  ' . $user->getlastname();
 
         if ($users) {
-            Auth::guard('individual')->login($users);
+            Auth::guard('student')->login($users);
             // Auth::login($users);
             return redirect()->route('welcome');
         } else {
@@ -314,11 +334,9 @@ class FrontendController extends Controller
             $provider_id = $user->getId();
             $provider_name = $provider;
             $newUser = Student::create([
-                'name_ar' => $user->getName(),
-                'name_en' => $user->getName(),
+                'first_name' => $first_name,
+                'last_name' => $last_name,
                 'username' => $user->getName(),
-                'alias_name_ar'=>str_replace(array(' ', '"', '>', '<', '#', '%', '|', '/'), '-', $user->getName()),
-                'alias_name_en'=>str_replace(array(' ', '"', '>', '<', '#', '%', '|', '/'), '-', $user->getName()),
                 'email' => $user_email,
                 'user_status' => 2,
                 'image_url' => $user->getAvatar(),
