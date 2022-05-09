@@ -342,7 +342,7 @@ Route::get('/subscribeForm', function () {
 
 
 
-// subscribe
+// resume 
 Route::get('/resume', function () {
     return view('front_end_inners.resume');
 })->name('resume');
