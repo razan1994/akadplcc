@@ -273,6 +273,12 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 
 
 
+Route::get('/privacy', function () {
+    return view('policy');
+})->name('privacy');
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
 
 
 Route::get('/error-inactive', function () {
@@ -342,7 +348,7 @@ Route::get('/subscribeForm', function () {
 
 
 
-// resume 
+// resume
 Route::get('/resume', function () {
     return view('front_end_inners.resume');
 })->name('resume');
