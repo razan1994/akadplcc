@@ -50,6 +50,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
     Route::get('/news-details/{id}', [FrontendController::class, 'newsDetails'])->name('news-details');
 
+
+    Route::get('login/{provider}', [FrontEndController::class, 'redirectToProvider'])->name('social-auth');
+    Route::get('login/{provider}/callback', [FrontEndController::class, 'handleProviderCallback']);
+
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
 

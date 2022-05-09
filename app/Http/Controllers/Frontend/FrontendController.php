@@ -9,17 +9,21 @@ use App\Models\Blog;
 use App\Models\ContactUs;
 use App\Models\ContactUsRequest;
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\SupportTicket;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class FrontendController extends Controller
 {
-    function aboutUs(Route $route){
+    function aboutUs(Route $route)
+    {
         try {
             $about = AboutUs::first();
 
-            return view('front_end_inners.about',compact('about'));
+            return view('front_end_inners.about', compact('about'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -47,11 +51,12 @@ class FrontendController extends Controller
 
 
 
-    function contactUs(Route $route){
+    function contactUs(Route $route)
+    {
         try {
             $contact = ContactUs::first();
 
-            return view('front_end_inners.contact',compact('contact'));
+            return view('front_end_inners.contact', compact('contact'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -78,18 +83,18 @@ class FrontendController extends Controller
     }
 
 
-    function contactReauest(Route $route,ContactUsFormRequest $request){
+    function contactReauest(Route $route, ContactUsFormRequest $request)
+    {
         try {
 
             ContactUsRequest::create([
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'message'=>$request->message
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message
             ]);
 
-            return redirect()->back()->with('success','تم ارسال رسالتك بنجاح');
-
+            return redirect()->back()->with('success', 'تم ارسال رسالتك بنجاح');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -117,20 +122,19 @@ class FrontendController extends Controller
 
 
 
-    function courseDetails(Route $route,$id){
+    function courseDetails(Route $route, $id)
+    {
 
         try {
 
             $id = decrypt($id);
 
             $course = Course::find($id);
-            if($course){
-                return view('front_end_inners.courseDetails',compact('course'));
+            if ($course) {
+                return view('front_end_inners.courseDetails', compact('course'));
+            } else {
+                return redirect()->back()->with('success', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
             }
-            else{
-                return redirect()->back()->with('success','الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
-            }
-
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -158,16 +162,15 @@ class FrontendController extends Controller
 
 
 
-    function courses(Route $route){
+    function courses(Route $route)
+    {
 
         try {
 
 
-            $courses = Course::where('status',2)->orderBy('created_at','desc')->paginate(6);
+            $courses = Course::where('status', 2)->orderBy('created_at', 'desc')->paginate(6);
 
-            return view('front_end_inners.courses',compact('courses'));
-
-
+            return view('front_end_inners.courses', compact('courses'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -195,18 +198,17 @@ class FrontendController extends Controller
 
 
 
-    function newsDetails(Route $route,$id){
+    function newsDetails(Route $route, $id)
+    {
 
         try {
             $news = Blog::find($id);
-            if($news){
-                $relateds = Blog::where('status',1)->where('id','!=',$id)->inRandomOrder()->limit(9)->get();
-                return view('front_end_inners.newsDetails',compact('news','relateds'));
+            if ($news) {
+                $relateds = Blog::where('status', 1)->where('id', '!=', $id)->inRandomOrder()->limit(9)->get();
+                return view('front_end_inners.newsDetails', compact('news', 'relateds'));
+            } else {
+                return redirect()->back()->with('success', 'الاخبار التي تحاول الوصول اليها غير موجودة في السجلات');
             }
-            else{
-                return redirect()->back()->with('success','الاخبار التي تحاول الوصول اليها غير موجودة في السجلات');
-            }
-
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -234,18 +236,17 @@ class FrontendController extends Controller
 
 
 
-    function news(Route $route){
+    function news(Route $route)
+    {
 
         try {
 
 
-            $news = Blog::where('status',1)->orderBy('created_at','desc')->paginate(6);
+            $news = Blog::where('status', 1)->orderBy('created_at', 'desc')->paginate(6);
 
 
 
-            return view('front_end_inners.news',compact('news'));
-
-
+            return view('front_end_inners.news', compact('news'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -270,5 +271,68 @@ class FrontendController extends Controller
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
     }
+
+
+
+
+
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+    public function handleProviderCallback($provider)
+    {
+
+        $user = Socialite::driver($provider)->stateless()->user();
+        if ($user->getEmail() == null) {
+            $users = Student::where('provider', $provider)->where('provider_id', $user->getId())->first();
+        } else {
+            $users = Student::where('email', $user->getEmail())->first();
+        }
+        // return 'id :' . $user->getId() . 'name :' . $user->getName() . ' email :' . $user->getEmail() . ' first name :  ' . $user->getfirstname() . ' last name :  ' . $user->getlastname();
+
+        if ($users) {
+            Auth::guard('individual')->login($users);
+            // Auth::login($users);
+            return redirect()->route('welcome');
+        } else {
+
+            // $trashed = new Patient();
+            // $trashed = $trashed->where('user_status', 3)->where('provider', $provider)->where('provider_id', $user->getId())->first();
+
+            // if ($trashed) {
+            //     return redirect()->back()->with('danger', 'هذا المستخدم محظور');
+            // }
+
+            if ($user->getEmail() == null) {
+                $user_email = $user->getId() . "@" . $provider . ".com";
+            } else {
+                $user_email = $user->getEmail();
+            }
+
+            $provider_id = $user->getId();
+            $provider_name = $provider;
+            $newUser = Patient::create([
+                'name_ar' => $user->getName(),
+                'name_en' => $user->getName(),
+                'username' => $user->getName(),
+                'alias_name_ar'=>str_replace(array(' ', '"', '>', '<', '#', '%', '|', '/'), '-', $user->getName()),
+                'alias_name_en'=>str_replace(array(' ', '"', '>', '<', '#', '%', '|', '/'), '-', $user->getName()),
+                'email' => $user_email,
+                'user_status' => 2,
+                'image_url' => $user->getAvatar(),
+                'provider' => $provider_name,
+                'provider_id' => $provider_id,
+                'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
+
+            // Auth::login($newUser);
+            Auth::guard('patient')->login($newUser);
+            return redirect()->route('patient.patient-profile')->with('success', 'يرجى استكمال ملفك الشخصي');
+        }
+    }
+
+
+
 
 }
