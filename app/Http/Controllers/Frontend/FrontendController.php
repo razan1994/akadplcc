@@ -311,10 +311,10 @@ class FrontendController extends Controller
                $last_name = $user->offsetGet('last_name');
                break;
 
-            case 'google':
-                $first_name = $user->getFirstName();
-                $last_name = $user->getLastName();
-               break;
+            // case 'google':
+            //    $first_name = $user->user['givenName']['givenName'];
+            //    $last_name = $user->user['familyName']['familyName'];
+            //    break;
 
           // You can also add more provider option e.g. linkedin, twitter etc.
 
