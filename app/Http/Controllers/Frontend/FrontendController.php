@@ -280,7 +280,7 @@ class FrontendController extends Controller
     public function redirectToProvider($provider)
     {
         if($provider == 'google'){
-            return Socialite::driver('google') ->setScopes(['openid', 'email','profile'])->redirect();
+            return Socialite::driver('google') ->setScopes(['openid', 'email','name'])->redirect();
         }else{
 
             return Socialite::driver($provider)->redirect();
