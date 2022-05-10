@@ -312,8 +312,8 @@ class FrontendController extends Controller
                break;
 
             case 'google':
-               $first_name = $user->user['name']['givenName'];
-               $last_name = $user->user['name']['familyName'];
+               $first_name = $user->user['givenName'];
+               $last_name = $user->user['familyName'];
                break;
 
           // You can also add more provider option e.g. linkedin, twitter etc.
