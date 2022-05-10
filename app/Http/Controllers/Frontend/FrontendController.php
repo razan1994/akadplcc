@@ -279,11 +279,11 @@ class FrontendController extends Controller
 
     public function redirectToProvider($provider)
     {
-        // if($provider == 'google'){
-        //     return Socialite::driver('google') ->setScopes(['openid','profile','email'])->redirect();
-        // }else{
+        if($provider == 'google'){
+            return Socialite::driver('google') ->setScopes(['openid','email'])->redirect();
+        }else{
             return Socialite::driver($provider)->redirect();
-        // }
+        }
     }
     public function handleProviderCallback($provider)
     {
