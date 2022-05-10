@@ -289,11 +289,18 @@ class FrontendController extends Controller
     public function handleProviderCallback($provider)
     {
 
-        $driver = Socialite::driver('facebook')
-                ->fields([
+        $driver = Socialite::driver('facebook')->fields([
                     'name',
                     'first_name',
                     'last_name',
+                    'email',
+                    'gender',
+                    'verified'
+                ]);
+        $driver = Socialite::driver('google')->fields([
+                    'name',
+                    'given_name',
+                    'family_name',
                     'email',
                     'gender',
                     'verified'
