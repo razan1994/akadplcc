@@ -280,7 +280,7 @@ class FrontendController extends Controller
     public function redirectToProvider($provider)
     {
         if($provider == 'google'){
-            return Socialite::driver('google') ->setScopes(['openid', 'email'])->redirect();
+            return Socialite::driver('google') ->setScopes(['openid', 'email','given_name','family_name'])->redirect();
         }else{
 
             return Socialite::driver($provider)->redirect();
@@ -297,14 +297,7 @@ class FrontendController extends Controller
                     'gender',
                     'verified'
                 ]);
-        $driver = Socialite::driver('google')->fields([
-                    'name',
-                    'given_name',
-                    'family_name',
-                    'email',
-                    'gender',
-                    'verified'
-                ]);
+
         $user = Socialite::driver($provider)->stateless()->user();
 
 
