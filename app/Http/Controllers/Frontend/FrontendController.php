@@ -299,15 +299,7 @@ class FrontendController extends Controller
                         'verified'
                     ]);
         }
-        else{
-            $driver = Socialite::driver('google')->fields([
-                        'name',
-                        'given_name',
-                        'family_name',
-                        'email',
-                    ]);
-        }
-        
+
         $user = Socialite::driver($provider)->stateless()->user();
 
 
@@ -320,8 +312,8 @@ class FrontendController extends Controller
                break;
 
             case 'google':
-               $first_name = $user->offsetGet('given_name');
-               $last_name = $user->offsetGet('family_name');
+               $first_name = $user->user['name']['givenName'];
+               $last_name = $user->user['name']['familyName'];
                break;
 
           // You can also add more provider option e.g. linkedin, twitter etc.
