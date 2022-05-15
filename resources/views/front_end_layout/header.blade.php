@@ -168,11 +168,11 @@
                                             <input class="form-control" name="first_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>الاسم الثاني <span class="text-danger">* @error('mid_first_name') {{ $message }} @enderror</span></label>
+                                            <label>الاسم الثاني <span class="text-danger"> @error('mid_first_name') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="mid_first_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>الاسم الثالث <span class="text-danger">* @error('mid_last_name') {{ $message }} @enderror</span></label>
+                                            <label>الاسم الثالث <span class="text-danger"> @error('mid_last_name') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="mid_last_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">

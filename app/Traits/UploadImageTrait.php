@@ -12,13 +12,11 @@ trait  UploadImageTrait
     // ================================================================
     function saveFile($orginal_image, $upload_location)
     {
-
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($orginal_image->getClientOriginalExtension());
         $img_name = $name_gen . '.' . $img_ext;
         $last_image = $upload_location . $img_name;
         $orginal_image->move($upload_location, $img_name);
-
 
         // $file_extension = $orginal_image->getClientOriginalExtension();
         // $file_name = rand() . '-' . time() . '.' . $file_extension;
