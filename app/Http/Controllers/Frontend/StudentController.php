@@ -163,6 +163,72 @@ class StudentController extends Controller
     }
 
 
+    function cvSecond(Route $route){
+        try {
+
+            $auth = Auth::guard('student')->user();
+            return view('front_end_inners.resume1',compact('auth'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+
+    function cvThird(Route $route){
+        try {
+
+            $auth = Auth::guard('student')->user();
+            return view('front_end_inners.resume2',compact('auth'));
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
 
 
     function add_job_title(Request $request){

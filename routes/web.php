@@ -78,6 +78,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
                 Route::get('/cv-first', [StudentController::class, 'cvFirst'])->name('cv-first');
+                Route::get('/cv-second', [StudentController::class, 'cvSecond'])->name('cv-second');
+                Route::get('/cv-third', [StudentController::class, 'cvThird'])->name('cv-third');
             });
         });
 
