@@ -139,6 +139,19 @@
                                                 <label class="custom-control-label" for="newaccount">تذكرني</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <a href="{{ route('social-auth' , 'facebook') }}" style="background: #1877f2;padding: 2%;"
+                                            class="btn btn-icon btn-facebook">
+                                            <span class="fab fa-facebook" style="color: #ffff"></span> الدخول عبر الفيسبوك
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <a href="{{ route('social-auth' , 'google') }}" style="background: #ea4537;padding: 2%;"
+                                                class="btn btn-icon btn-google">
+                                                <span class="fab fa-google" style="color: #ffff"></span> الدخول عبر جوجل
+                                            </a>
+
+                                        </div>
                                         <div class="form-group col-md-12">
                                             <button class="btn btn-lg btn-primary c_butnns">تسجيل الدخول</button>
                                         </div>
@@ -155,11 +168,11 @@
                                             <input class="form-control" name="first_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>الاسم الثاني <span class="text-danger">* @error('mid_first_name') {{ $message }} @enderror</span></label>
+                                            <label>الاسم الثاني <span class="text-danger"> @error('mid_first_name') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="mid_first_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>الاسم الثالث <span class="text-danger">* @error('mid_last_name') {{ $message }} @enderror</span></label>
+                                            <label>الاسم الثالث <span class="text-danger"> @error('mid_last_name') {{ $message }} @enderror</span></label>
                                             <input class="form-control" name="mid_last_name" type="text" placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">

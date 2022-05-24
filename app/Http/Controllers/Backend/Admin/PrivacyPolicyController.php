@@ -87,8 +87,8 @@ class PrivacyPolicyController extends Controller
     {
         try {
             $created_data = [
-                'user_id' => auth()->user()->id,
-                'user_type' => $this->authUserType(),
+                'user_id' => 1,
+                'user_type' => 'Super Admin',
                 'privacy_policy_title_ar' => $request->privacy_policy_title_ar,
                 'privacy_policy_title_en' => $request->privacy_policy_title_en,
                 'privacy_policy_status' => $request->privacy_policy_status,
@@ -197,7 +197,7 @@ class PrivacyPolicyController extends Controller
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
     }
-    
+
     // ================================================================
     // ======================= Update Function ========================
     // ================================================================

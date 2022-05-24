@@ -326,6 +326,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3 col-xs-12">
+                                        <div class="c_item">
+                                            <div class="c_image">
+                                                <a href="{{ route('student.cv-second') }}">
+                                                    <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-12">
+                                        <div class="c_item">
+                                            <div class="c_image">
+                                                <a href="{{ route('student.cv-third') }}">
+                                                    <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

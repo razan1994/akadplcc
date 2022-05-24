@@ -23,10 +23,17 @@ class CreateStudentsTable extends Migration
             $table->string('username')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->tinyInteger('user_status')->comment = '1 => Pendding || 2 => Active || 3 => Inactive';
             $table->tinyInteger('payment_status')->default(3)->comment = '1 => Pendding || 2 => Active || 3 => Inactive';
+
+            $table->longText('device_id')->nullable();
+            $table->tinyInteger('provider_status')->nullable()->comment("1 => facebook,Gmail || 2 => website Register");
+            $table->tinyInteger('update_status')->nullable()->comment("1 => updated || 2 => not_updated");
+            $table->longText('provider')->nullable();
+            $table->longText('provider_id')->nullable();
+            $table->longText('image_url')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

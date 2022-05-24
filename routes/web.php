@@ -50,6 +50,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
     Route::get('/news-details/{id}', [FrontendController::class, 'newsDetails'])->name('news-details');
 
+
+    Route::get('login/{provider}', [FrontEndController::class, 'redirectToProvider'])->name('social-auth');
+    Route::get('login/{provider}/callback', [FrontEndController::class, 'handleProviderCallback']);
+
     // ==================================================================================================================
     // ============================================= Auth Routes ========================================================
 
@@ -74,6 +78,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
                 Route::get('/cv-first', [StudentController::class, 'cvFirst'])->name('cv-first');
+                Route::get('/cv-second', [StudentController::class, 'cvSecond'])->name('cv-second');
+                Route::get('/cv-third', [StudentController::class, 'cvThird'])->name('cv-third');
             });
         });
 
@@ -269,6 +275,12 @@ Route::prefix('super_admin')->name('super_admin.')->group(function () {
 
 
 
+Route::get('/privacy', function () {
+    return view('policy');
+})->name('privacy');
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
 
 
 Route::get('/error-inactive', function () {
@@ -338,7 +350,7 @@ Route::get('/subscribeForm', function () {
 
 
 
-// resume 
+// resume
 Route::get('/resume', function () {
     return view('front_end_inners.resume');
 })->name('resume');
