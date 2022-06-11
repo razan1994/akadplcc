@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="body_inner">
-        <div class="c_page_resume">
+        <div class="c_page_resume_2">
             <div class="container_900">
                 <div class="c_topCv">
                     <div class="c_blockss">
