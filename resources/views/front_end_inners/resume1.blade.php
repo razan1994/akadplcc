@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="body_inner">
-        <div class="c_page_resume">
+        <div class="c_page_resume_1">
             <div class="container_900">
-                <div class="c_topCv">
+                <div class="c_topCv"> 
                     <div class="c_blockss">
                         <div class="c_infoss">
                             <div class="c_name">
