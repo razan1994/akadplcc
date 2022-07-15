@@ -193,6 +193,7 @@ class CourcesController extends Controller
         try {
 
 
+            if(file_exists(storage_path('app/public/videos'))){
             $path = storage_path('app/public/videos');
             $files = File::allFiles($path);
             if (count($files) > 0) {
@@ -206,6 +207,7 @@ class CourcesController extends Controller
                     }
                 }
             }
+        }
 
 
             $course = Course::find($id);
@@ -506,7 +508,7 @@ class CourcesController extends Controller
 
             $disk = Storage::disk(config('filesystems.default'));
             $path = $disk->putFileAs('videos', $file, $fileName);
-
+        
             // delete chunked file
             unlink($file->getPathname());
             return [

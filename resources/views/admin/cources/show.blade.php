@@ -306,7 +306,7 @@
                     <div class="col-md-4">
                         <div class="col-md-12 profile-content-left text-center" style="margin: auto;">
                             <h3 class="text-dark mb-3"> Main Video </h3>
-                            @if ($course->main_video && file_exists($course->main_video))
+                            @if (isset($course->main_video) && file_exists($course->main_video))
                                 <video controls style="width:100%;">
                                     <source src="{{ asset($course->main_video) }}" type="video/mp4">
                                     <source src="{{ asset($course->main_video) }}" type="video/ogg">
