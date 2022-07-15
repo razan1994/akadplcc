@@ -5,7 +5,7 @@
   padding: 0px 0px;
 }
 
-.footer, .c_page_newsInner, .c_page_contact .c_info, .c_page_courseSubscriber .c_mainContent, .c_page_courseDetails .c_info, .c_page_courseDetails .c_mainContent, div#mainContent {
+.footer, .c_page_test .c_qustion .form-check label.form-check-label span, .c_page_newsInner, .c_page_contact .c_info, .c_page_courseSubscriber .c_mainContent, .c_page_courseDetails .c_info, .c_page_courseDetails .c_mainContent, div#mainContent {
   position: relative;
   width: 100%;
   display: inline-block;
@@ -297,7 +297,9 @@
 }
 /****************CV***********/
 /*****************************/
-.c_page_resume .c_createCV .c_postionss, .c_page_resume .c_createCV .c_date p,
+.c_page_resume_2 .c_createCV .c_postionss, .c_page_resume_2 .c_createCV .c_date p,
+.c_page_resume_2 .c_createCV .c_company p, .c_page_resume_1 .c_createCV .c_postionss, .c_page_resume_1 .c_createCV .c_date p,
+.c_page_resume_1 .c_createCV .c_company p, .c_page_resume .c_createCV .c_postionss, .c_page_resume .c_createCV .c_date p,
 .c_page_resume .c_createCV .c_company p {
   font-size: 20px;
   font-weight: bold;
@@ -1733,6 +1735,453 @@ input#quantity {
   color: white;
 }
 
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume_1***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_resume_1 {
+  padding: 100px;
+  background: #f6f6f6;
+  direction: ltr;
+  /********/
+  /*********/
+}
+.c_page_resume_1 .container_900 {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  max-width: 860px;
+  padding: 0px 0px;
+  background: #fff;
+}
+.c_page_resume_1 .c_topCv .c_blockss {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss {
+  float: left;
+  width: 55%;
+  padding: 80px 20px 50px 60px;
+  margin: 0;
+  text-align: left;
+  color: #fff;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_name {
+  color: #9e659e;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_name h2 {
+  font-weight: normal;
+  font-size: 60px;
+  margin: 0;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_name p {
+  font-size: 50px;
+  line-height: 50px;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_postionss {
+  color: #9e659e;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_postionss h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  word-spacing: 2px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_infoss .c_postionss p {
+  line-height: 20px;
+  font-size: 15px;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_image {
+  float: right;
+  width: 50%;
+  padding: 20px;
+  text-align: left;
+}
+.c_page_resume_1 .c_topCv .c_blockss .c_image img {
+  border-radius: 50%;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  border: 13px solid #faccd4;
+}
+.c_page_resume_1 .c_head_cv {
+  float: right;
+  width: 50%;
+  padding: 40px 40px 50px 50px;
+  line-height: 1.15;
+  margin: 0;
+}
+.c_page_resume_1 .c_body_cv {
+  float: left;
+  width: 55%;
+  padding: 40px 40px 50px 50px;
+  margin: 0;
+}
+.c_page_resume_1 .c_createCV {
+  display: flex;
+  margin: 0;
+  /* width: 100%;
+  height: 100%; */
+  position: relative;
+  /* display: inline-block; */
+  width: 100%;
+  text-align: left;
+}
+.c_page_resume_1 .c_createCV .c_titles h3 {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  color: #9e659e;
+  width: 200px;
+  background: #faccd4;
+  padding: 5px 10px;
+}
+.c_page_resume_1 .c_createCV .c_date p,
+.c_page_resume_1 .c_createCV .c_company p {
+  color: #9e659e !important;
+}
+.c_page_resume_1 .c_createCV .c_company {
+  margin-bottom: 10px;
+}
+.c_page_resume_1 .c_createCV .c_postionss {
+  color: #9e659e !important;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.c_page_resume_1 .c_createCV .c_item {
+  position: relative;
+  margin-bottom: 50px;
+}
+.c_page_resume_1 .c_createCV .c_item.c_exper .c_itme_ex {
+  margin-bottom: 30px;
+}
+.c_page_resume_1 .c_createCV .c_item.c_exper ul li {
+  list-style: inside;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 8%;
+  font-weight: 900;
+}
+.c_page_resume_1 .c_createCV .c_item.c_contact ul li {
+  margin-bottom: 10px;
+}
+.c_page_resume_1 .c_createCV .c_item.c_contact ul li i {
+  color: #9e659e;
+  margin-right: 10px;
+}
+.c_page_resume_1 .c_edotadd {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+.c_page_resume_1 .c_edotadd li {
+  float: left;
+  margin: 0 5px;
+}
+.c_page_resume_1 .c_edotadd li a {
+  color: #9e659e;
+}
+.c_page_resume_1 .c_skills {
+  /* progress bar  */
+}
+.c_page_resume_1 .c_skills .c_temem {
+  margin-bottom: 20px;
+}
+.c_page_resume_1 .c_skills .c_temem h5 {
+  font-size: 16px;
+}
+.c_page_resume_1 .c_skills .c_progress {
+  padding: 0 !important;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.c_page_resume_1 .c_skills .c_bar {
+  position: relative;
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  background: #9e659e;
+}
+.c_page_resume_1 .c_skills .c_percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: tahoma, arial, helvetica;
+  font-size: 12px;
+  color: white;
+}
+
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume_2***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_resume_2 {
+  padding: 100px;
+  background: #f6f6f6;
+  direction: ltr;
+  /********/
+  /*********/
+}
+.c_page_resume_2 .container_900 {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  max-width: 860px;
+  padding: 0px 0px;
+  background: #fff;
+}
+.c_page_resume_2 .c_topCv .c_blockss {
+  display: flex;
+  direction: ltr;
+  align-items: flex-end;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss {
+  float: left;
+  width: 65%;
+  margin: 0;
+  text-align: left;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_name {
+  padding: 80px 20px 50px 60px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_name h2 {
+  font-weight: normal;
+  font-size: 60px;
+  margin: 0;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_name p {
+  font-size: 50px;
+  line-height: 50px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_postionss {
+  color: #fff;
+  background: #27598ed1;
+  padding: 40px 60px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_postionss h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  word-spacing: 2px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_infoss .c_postionss p {
+  line-height: 20px;
+  font-size: 15px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_image {
+  float: right;
+  width: 40%;
+  text-align: left;
+  padding-right: 60px;
+}
+.c_page_resume_2 .c_topCv .c_blockss .c_image img {
+  border-radius: 140px 140px 0 0;
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  border: 10px solid #ddd;
+}
+.c_page_resume_2 .c_head_cv {
+  float: right;
+  width: 40%;
+  padding: 0px 40px 0px 30px;
+  line-height: 1.15;
+  margin: 40px 0;
+}
+.c_page_resume_2 .c_body_cv {
+  float: left;
+  width: 65%;
+  padding: 0px 40px 0px 50px;
+  margin: 40px 0;
+  border-right: 8px solid #27598ed1;
+}
+.c_page_resume_2 .c_createCV {
+  display: flex;
+  margin: 0;
+  /* width: 100%;
+  height: 100%; */
+  position: relative;
+  /* display: inline-block; */
+  width: 100%;
+  text-align: left;
+}
+.c_page_resume_2 .c_createCV .c_titles h3 {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  color: #fff;
+  width: 90%;
+  background: #27598ed1;
+  padding: 5px 10px;
+}
+.c_page_resume_2 .c_createCV .c_date p,
+.c_page_resume_2 .c_createCV .c_company p {
+  color: #000 !important;
+}
+.c_page_resume_2 .c_createCV .c_company {
+  margin-bottom: 10px;
+}
+.c_page_resume_2 .c_createCV .c_postionss {
+  color: gray !important;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.c_page_resume_2 .c_createCV .c_item {
+  position: relative;
+  margin-bottom: 50px;
+}
+.c_page_resume_2 .c_createCV .c_item.c_exper .c_itme_ex {
+  margin-bottom: 30px;
+}
+.c_page_resume_2 .c_createCV .c_item.c_exper ul li {
+  list-style: inside;
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 8%;
+  font-weight: 900;
+}
+.c_page_resume_2 .c_createCV .c_item.c_contact ul li {
+  margin-bottom: 10px;
+}
+.c_page_resume_2 .c_createCV .c_item.c_contact ul li i {
+  color: #27598ed1;
+  margin-right: 10px;
+}
+.c_page_resume_2 .c_edotadd {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+.c_page_resume_2 .c_edotadd li {
+  float: left;
+  margin: 0 5px;
+}
+.c_page_resume_2 .c_edotadd li a {
+  color: #27598ed1;
+}
+.c_page_resume_2 .c_skills {
+  /* progress bar  */
+}
+.c_page_resume_2 .c_skills .c_temem {
+  margin-bottom: 20px;
+}
+.c_page_resume_2 .c_skills .c_temem h5 {
+  font-size: 16px;
+}
+.c_page_resume_2 .c_skills .c_progress {
+  padding: 0 !important;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.c_page_resume_2 .c_skills .c_bar {
+  position: relative;
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  background: #27598ed1;
+}
+.c_page_resume_2 .c_skills .c_percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: tahoma, arial, helvetica;
+  font-size: 12px;
+  color: white;
+}
+
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume_2***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_test .c_qustion .form-group {
+  margin-bottom: 30px;
+}
+.c_page_test .c_qustion .form-group h5 {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 25px;
+  background: #f8f8f8;
+  box-shadow: 0 0 6px #9e9e9e70;
+  color: #67328f;
+  margin-bottom: 15px;
+}
+.c_page_test .c_qustion .form-check {
+  margin-bottom: 15px;
+  padding: 0;
+}
+.c_page_test .c_qustion .form-check label.form-check-label {
+  width: 100%;
+}
+.c_page_test .c_qustion .form-check input {
+  display: none;
+}
+.c_page_test .c_qustion .form-check label.form-check-label span {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 25px 60px;
+  box-shadow: 0 0 6px #9e9e9e70;
+  color: #38303f;
+}
+.c_page_test .c_qustion .form-check label.form-check-label {
+  background: url(/front_end_style/images/gridcopy.png) no-repeat right center;
+  background-position-x: 98%;
+  cursor: pointer;
+}
+.c_page_test .c_qustion .form-check input[type=radio]:checked ~ span {
+  background: url(/front_end_style/images/check-mark.png) no-repeat left center;
+  background-position-x: 2%;
+}
+.c_page_test .c_qustion .c_butnns {
+  border: 0;
+}
+
+/****************************************************************/
+/****************************************************************/
+/*************************.c_page_resume_2***************************/
+/****************************************************************/
+/****************************************************************/
+.c_page_testAnswer .c_item_test > h3 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #67328f;
+}
+.c_page_testAnswer .c_done {
+  text-align: center;
+  margin-bottom: 130px;
+}
+.c_page_testAnswer .c_qustion .form-check label.form-check-label {
+  cursor: default;
+}
+.c_page_testAnswer .c_true span {
+  background: url(/front_end_style/images/check-mark.png) no-repeat left center;
+  background-position-x: 2%;
+}
+.c_page_testAnswer .c_false span {
+  background: url(/front_end_style/images/x.png) no-repeat left center;
+  background-position-x: 2%;
+}
+
 /***************************************/
 /************ STYLE BUTTONS ************/
 /***************************************/
@@ -1750,7 +2199,7 @@ input#quantity {
   color: #67328f;
 }
 
-.c_login_modal .nav-tabs .nav-item.show .nav-link, .c_login_modal .nav-tabs .nav-link.active, .slider .c_post .c_buttn a:first-child, .about .c_post .c_buttn a, .c_page_about .c_section_1 .c_post .c_buttn a {
+.c_login_modal .nav-tabs .nav-item.show .nav-link, .c_login_modal .nav-tabs .nav-link.active, .slider .c_post .c_buttn a:first-child, .about .c_post .c_buttn a, .c_page_about .c_section_1 .c_post .c_buttn a, .c_page_test .c_qustion .c_butnns {
   font-size: 11px;
   font-weight: bold;
   background: #67328f;
@@ -1760,7 +2209,7 @@ input#quantity {
   transition: 0.5s;
   display: inline-block;
 }
-.c_login_modal .nav-tabs .nav-item.show .nav-link:hover, .c_login_modal .nav-tabs .nav-link.active:hover, .slider .c_post .c_buttn a:hover:first-child, .about .c_post .c_buttn a:hover, .c_page_about .c_section_1 .c_post .c_buttn a:hover {
+.c_login_modal .nav-tabs .nav-item.show .nav-link:hover, .c_login_modal .nav-tabs .nav-link.active:hover, .slider .c_post .c_buttn a:hover:first-child, .about .c_post .c_buttn a:hover, .c_page_about .c_section_1 .c_post .c_buttn a:hover, .c_page_test .c_qustion .c_butnns:hover {
   background: #f9f9f9;
   color: #67328f;
 }

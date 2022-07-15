@@ -355,3 +355,13 @@ Route::get('/resume', function () {
     return view('front_end_inners.resume');
 })->name('resume');
 
+
+// test
+Route::get('/test', function () {
+    return view('front_end_inners.test');
+})->name('test');
+
+// testAnswer
+Route::get('/testAnswer', function () {
+    return view('front_end_inners.testAnswer');
+})->name('testAnswer');
