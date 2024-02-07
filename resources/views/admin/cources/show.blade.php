@@ -342,9 +342,9 @@
             target: '{{ route('super_admin.add-course-section-video') }}',
             query:{_token:'{{ csrf_token() }}'} ,// CSRF token
             maxFilesize: 10*1024*1024*1024,
+            chunkSize: 1*1024*1024, // default is 1*1024*1024, this should be less than your maximum limit in php.ini
+            simultaneousUploads:1,
             fileType: ['mp4'],
-            chunkSize: 10*1024*1024, // default is 1*1024*1024, this should be less than your maximum limit in php.ini
-            simultaneousUploads:30,
             headers: {
                 'Accept' : 'application/json'
             },

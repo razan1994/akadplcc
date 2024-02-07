@@ -24,12 +24,18 @@ class Course extends Model
         'status',
         'teacher_image',
         'main_image',
-        'main_video'
+        'main_video',
+        'test_status'
     ];
 
 
     public function sections(){
         return $this->hasMany(CourseSection::class,'course_id');
+    }
+
+
+    public function tasks(){
+        return $this->hasMany(Task::class,'course_id');
     }
 
 

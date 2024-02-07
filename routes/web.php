@@ -339,7 +339,7 @@ Route::get('/newsDetails', function () {
 
 // subscribe
 Route::get('/subscribe', function () {
-    return view('front_end_inners.subscribe');
+    return view('front_end_inners.resume');
 })->name('subscribe');
 
 
