@@ -14,7 +14,7 @@
 
                     {{-- add the average --}}
                     <span class="float-left">
-                        {{ ($sections->sum('is_watched') / $sections->count()) * 100 }}%
+                        {{ round(($sections->sum('is_watched') / $sections->count()) * 100 , 2) }}%
                     </span>
                 </span>
 
