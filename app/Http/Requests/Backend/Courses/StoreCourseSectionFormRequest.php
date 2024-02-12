@@ -24,14 +24,10 @@ class StoreCourseSectionFormRequest extends FormRequest
      */
     public function rules()
     {
-
-
-            return [
-                'title_ar'=>'required',
-                'section_image'=>'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048'
-            ];
-
-
+        return [
+            'title_ar' => 'required',
+            'section_image' => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
+            'video' => ['required', 'url'],
+        ];
     }
 }
-

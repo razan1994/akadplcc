@@ -23,6 +23,9 @@ class CreateCourseSectionsTable extends Migration
             $table->longText('section_image')->nullable();
             $table->longText('text_ar')->nullable();
             $table->longText('text_en')->nullable();
+            $table->boolean('is_free')->default(0);
+            $table->boolean('is_published')->default(0);
+            $table->boolean('is_watched')->default(0);
             $table->timestamps();
         });
     }

@@ -11,14 +11,5 @@ class CourseSection extends Model
 
     protected $table = 'course_sections';
 
-    protected $fillable = [
-        'course_id',
-        'title_ar',
-        'title_en',
-        'video',
-        'text_ar',
-        'text_en',
-        'section_image'
-    ];
-
+    protected $guarded = [];
 }

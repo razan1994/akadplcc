@@ -29,17 +29,19 @@ class Course extends Model
     ];
 
 
-    public function sections(){
-        return $this->hasMany(CourseSection::class,'course_id');
+
+    // ==============================================================================================================
+    // ============================================= Relationships ==================================================
+    public function sections()
+    {
+        return $this->hasMany(CourseSection::class, 'course_id');
     }
 
 
-    public function tasks(){
-        return $this->hasMany(Task::class,'course_id');
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'course_id');
     }
-
-
-
 
     // ===================================================================================================================
     // ============================================= Accessors Section ===================================================

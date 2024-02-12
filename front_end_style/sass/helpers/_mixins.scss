@@ -25,10 +25,11 @@
     align-items: center;
 }
 
-/**************************/ 
+/**************************/
 
 
 /**o**/
+
 
 
 
@@ -69,7 +70,7 @@
     content: "";
     position: absolute;
     width: 20px;
-    border-bottom: 3px solid  $main_color;
+    border-bottom: 3px solid $main_color;
     border-radius: 0;
     left: 0px;
     right: 0;
@@ -117,7 +118,7 @@
 
 // title about
 
-%vertical_word{
+%vertical_word {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     float: $float_left;
@@ -127,6 +128,7 @@
     text-align: center;
     text-transform: uppercase;
 }
+
 /**h***/
 
 %padding_Section {
@@ -309,10 +311,11 @@
     width: 100%;
     overflow: hidden;
 
-    .c_img{
+    .c_img {
         width: 200px;
         margin: auto;
     }
+
     span {
         font-size: 20px;
         font-weight: bold;
@@ -556,14 +559,15 @@
 }
 
 
-%input_contact{
+%input_contact {
     border: 0;
     background: #f4f4f4;
     padding: 0 25px;
     height: 50px;
     border-radius: 30px;
 }
-%textarea_contact{
+
+%textarea_contact {
     border: 0;
     background: #f4f4f4;
     padding: 15px 25px;
@@ -576,7 +580,7 @@
 
 /**** OUR STORE PAGNOIATION ***********/
 
-%paginate_style{
+%paginate_style {
     ul {
         align-items: center;
         display: flex;
@@ -618,11 +622,11 @@
 
 
 
-/************* NEW ***************/ 
+/************* NEW ***************/
 
 // style box courses 
 
-%box_courses_item{
+%box_courses_item {
     display: flex;
     position: relative;
     border-radius: 20px;
@@ -630,12 +634,15 @@
     margin: 10px;
     height: 200px;
     transition: .5s;
-    &:hover{
+
+    &:hover {
         box-shadow: 0 0 6px gray;
     }
+
     .c_image {
         width: 50%;
-        img{
+
+        img {
             width: 100%;
             height: 200px;
             border-radius: 0 20px 20px 0;
@@ -645,12 +652,14 @@
     .c_post {
         width: 50%;
         padding: 20px;
+
         .c_body h3 {
             font-size: 14px;
             color: $main_color;
             font-weight: bold;
             margin-bottom: 15px;
         }
+
         .c_body p {
             font-size: 13px;
             margin-bottom: 15px;
@@ -679,7 +688,7 @@
             justify-content: space-between;
         }
 
-        .c_buttn a{
+        .c_buttn a {
             @extend %second_button;
         }
     }
@@ -693,6 +702,7 @@
         border-radius: 20px;
         color: #656464;
         font-size: 10px;
+
         i {
             margin-left: 5px;
         }
@@ -700,7 +710,7 @@
 
 }
 
-%bullets_swiper{
+%bullets_swiper {
     .swiper-pagination-bullet-active {
         opacity: 1;
         background: $second_color !important;
@@ -730,7 +740,8 @@
     color: $main_color;
     margin-bottom: 33px;
     position: relative;
-    &::after{
+
+    &::after {
         content: '';
         width: 50px;
         height: 2px;
@@ -748,19 +759,24 @@
 %styltfseel {
     display: flex;
     margin-top: 20px;
+
     .c_itme {
         margin-left: 30px;
         color: $main_color;
-        p{
+
+        p {
             margin: 0;
         }
     }
+
     .c_itme img {
         margin-left: 10px;
     }
+
     label {
         font-size: 14px;
     }
+
     span {
         font-size: 12px;
     }
@@ -768,41 +784,45 @@
 }
 
 
-%boxshod_readius{
+%boxshod_readius {
     box-shadow: 0 0 6px 0px #c7c7c766;
     border-radius: 5px;
 }
+
 /**o**/
 
 
 
-%form_style{
-    form{
+%form_style {
+    form {
+
         .form-group input,
         .form-group textarea {
             width: 70%;
             border: 1px solid #eaeaea;
             border-radius: 10px;
         }
+
         .form-group input {
             height: 40px;
         }
+
         .form-group textarea {
             height: 100px;
         }
 
-        .c_butnns{
+        .c_butnns {
             @extend %fomr_button;
-        } 
+        }
     }
 }
 
 
 
 /****************CV***********/
-/*****************************/ 
+/*****************************/
 
-%stykle_texte{
+%stykle_texte {
     font-size: 20px;
     font-weight: bold;
     color: #000;

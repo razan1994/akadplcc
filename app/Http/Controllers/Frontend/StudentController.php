@@ -93,17 +93,22 @@ class StudentController extends Controller
         }
 
 
-        return redirect()->back()->with('login_error','البريد الالكتروني او كلمة المرور غير صحيحة');
+        return redirect()->back()->with('login_error', 'البريد الالكتروني او كلمة المرور غير صحيحة');
     }
 
+    function logout()
+    {
+        Auth::guard('student')->logout();
 
+        return redirect()->route('welcome');
+    }
 
-    function studentProfile(Route $route){
+    function studentProfile(Route $route)
+    {
         try {
 
             $auth = Auth::guard('student')->user();
-            return view('front_end_inners.myAccount',compact('auth'));
-
+            return view('front_end_inners.myAccount', compact('auth'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -131,12 +136,12 @@ class StudentController extends Controller
 
 
 
-    function cvFirst(Route $route){
+    function cvFirst(Route $route)
+    {
         try {
 
             $auth = Auth::guard('student')->user();
-            return view('front_end_inners.resume',compact('auth'));
-
+            return view('front_end_inners.resume', compact('auth'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -163,46 +168,12 @@ class StudentController extends Controller
     }
 
 
-    function cvSecond(Route $route){
+    function cvSecond(Route $route)
+    {
         try {
 
             $auth = Auth::guard('student')->user();
-            return view('front_end_inners.resume1',compact('auth'));
-
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
-
-
-
-
-    function cvThird(Route $route){
-        try {
-
-            $auth = Auth::guard('student')->user();
-            return view('front_end_inners.resume2',compact('auth'));
-
+            return view('front_end_inners.resume1', compact('auth'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -231,530 +202,546 @@ class StudentController extends Controller
 
 
 
-    function add_job_title(Request $request){
+    function cvThird(Route $route)
+    {
+        try {
 
-        $request->validate(['job_title'=>'required']);
+            $auth = Auth::guard('student')->user();
+            return view('front_end_inners.resume2', compact('auth'));
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+
+    function add_job_title(Request $request)
+    {
+
+        $request->validate(['job_title' => 'required']);
+
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
 
-        if($info){
-            $info->update(['job_title'=>$request->job_title]);
-        }else{
+        if ($info) {
+            $info->update(['job_title' => $request->job_title]);
+        } else {
             StudentInformation::create([
-                                        'student_id'=>Auth::guard('student')->user()->id,
-                                        'job_title'=>$request->job_title
-                                        ]);
+                'student_id' => Auth::guard('student')->user()->id,
+                'job_title' => $request->job_title
+            ]);
         }
 
 
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
-        if($info){
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
+        if ($info) {
 
             $output = '';
 
             $output .= isset($info->job_title) ? $info->job_title : '<span class="text-danger">Undefined</span>';
             $output .= '<a data-toggle="modal" data-target="#job_title_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a>';
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
 
 
-    function add_over_view(Request $request){
+    function add_over_view(Request $request)
+    {
 
-        $request->validate(['over_view'=>'required']);
+        $request->validate(['over_view' => 'required']);
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
 
-        if($info){
-            $info->update(['over_view'=>$request->over_view]);
-        }else{
+        if ($info) {
+            $info->update(['over_view' => $request->over_view]);
+        } else {
             StudentInformation::create([
-                                        'student_id'=>Auth::guard('student')->user()->id,
-                                        'over_view'=>$request->over_view
-                                        ]);
+                'student_id' => Auth::guard('student')->user()->id,
+                'over_view' => $request->over_view
+            ]);
         }
 
 
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
-        if($info){
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
+        if ($info) {
 
             $output = '';
 
             $output .= isset($info->over_view) ? $info->over_view : '<span class="text-danger">Undefined</span>';
             $output .= '<a data-toggle="modal" data-target="#over_view_modal" style="cursor: pointer;"><i class="fas fa-edit"></i></a>';
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
-    function add_experience(Request $request){
+    function add_experience(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'company_name'=>'required',
-            'job_title'=>'required',
-            'experience'=>'required',
-            'untill_now'=>'required|numeric'
+            'company_name' => 'required',
+            'job_title' => 'required',
+            'experience' => 'required',
+            'untill_now' => 'required|numeric'
         ]);
 
-        if($request->untill_now == 2){
+        if ($request->untill_now == 2) {
             $request->validate([
-                'from_date'=>'required|before:today|before:to_date',
-                'to_date'=>'required|before:today|after:from_date'
+                'from_date' => 'required|before:today|before:to_date',
+                'to_date' => 'required|before:today|after:from_date'
             ]);
-        }
-        else{
+        } else {
             $request->validate([
-            'from_date'=>'required|before:today'
+                'from_date' => 'required|before:today'
             ]);
         }
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            StudentExperience::create([
-                'student_id'=>Auth::guard('student')->user()->id,
-                'company_name'=>$request->company_name,
-                'job_title'=>$request->job_title,
-                'experience'=>$request->experience,
-                'from_date'=>$request->from_date,
-                'untill_now'=>$request->untill_now,
-                'to_date'=>$request->to_date
-            ]);
+        StudentExperience::create([
+            'student_id' => Auth::guard('student')->user()->id,
+            'company_name' => $request->company_name,
+            'job_title' => $request->job_title,
+            'experience' => $request->experience,
+            'from_date' => $request->from_date,
+            'untill_now' => $request->untill_now,
+            'to_date' => $request->to_date
+        ]);
 
 
 
-        $experiences = StudentExperience::where('student_id',Auth::guard('student')->user()->id)->get();
-        if(isset($experiences) && $experiences->count() > 0){
+        $experiences = StudentExperience::where('student_id', Auth::guard('student')->user()->id)->get();
+        if (isset($experiences) && $experiences->count() > 0) {
             $output = '';
-            foreach($experiences as $experience){
-                $output .='<div class="c_itme_ex">
+            foreach ($experiences as $experience) {
+                $output .= '<div class="c_itme_ex">
                                         <div class="c_date">
-                                            <p>'.date("F Y", strtotime($experience->from_date)).' - ';
-                                            if($experience->untill_now == 1){
-                                                $output.='Till Now';
-                                            }else{
-                                                $output.=date("F Y", strtotime($experience->to_date));
-                                            }
-                                            $output.='</p>
-                                            <a class="float-right text-danger delete_ex" style="cursor: pointer;" data-id="'.$experience->id.'"><i class="fa fa-trash"></i></a>
+                                            <p>' . date("F Y", strtotime($experience->from_date)) . ' - ';
+                if ($experience->untill_now == 1) {
+                    $output .= 'Till Now';
+                } else {
+                    $output .= date("F Y", strtotime($experience->to_date));
+                }
+                $output .= '</p>
+                                            <a class="float-right text-danger delete_ex" style="cursor: pointer;" data-id="' . $experience->id . '"><i class="fa fa-trash"></i></a>
                                         </div>
                                         <div class="c_company">
                                             <p>
-                                                '.$experience->company_name.'
+                                                ' . $experience->company_name . '
                                             </p>
                                         </div>
                                         <div class="c_postionss">
                                             <span>
-                                                '.$experience->job_title.'
+                                                ' . $experience->job_title . '
                                             </span>
                                         </div>
                                         <ul>
-                                            <li class="font-weight-normal">'.$experience->experience.'</li>
+                                            <li class="font-weight-normal">' . $experience->experience . '</li>
                                         </ul>
                                     </div>';
             }
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
 
-    function delete_experience(Request $request){
+    function delete_experience(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'id'=>'required'
+            'id' => 'required'
         ]);
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            $experience_delete = StudentExperience::find($request->id);
+        $experience_delete = StudentExperience::find($request->id);
 
 
-            if($experience_delete){
-                if($experience_delete->student_id == Auth::guard('student')->user()->id){
-                    $experience_delete->delete();
-                }
-                else{
-                    return response()->json(['status'=>false]);
-                }
+        if ($experience_delete) {
+            if ($experience_delete->student_id == Auth::guard('student')->user()->id) {
+                $experience_delete->delete();
+            } else {
+                return response()->json(['status' => false]);
             }
-            else{
-                return response()->json(['status'=>false]);
-            }
+        } else {
+            return response()->json(['status' => false]);
+        }
 
 
-        $experiences = StudentExperience::where('student_id',Auth::guard('student')->user()->id)->get();
+        $experiences = StudentExperience::where('student_id', Auth::guard('student')->user()->id)->get();
         $output = '';
-        if(isset($experiences) && $experiences->count() > 0){
-            foreach($experiences as $experience){
-                $output .='<div class="c_itme_ex">
+        if (isset($experiences) && $experiences->count() > 0) {
+            foreach ($experiences as $experience) {
+                $output .= '<div class="c_itme_ex">
                                         <div class="c_date">
-                                            <p>'.date("F Y", strtotime($experience->from_date)).' - ';
-                                            if($experience->untill_now == 1){
-                                                $output.='Till Now';
-                                            }else{
-                                                $output.=date("F Y", strtotime($experience->to_date));
-                                            }
-                                            $output.='</p>
-                                            <a class="float-right text-danger delete_ex" style="cursor: pointer;" data-id="'.$experience->id.'"><i class="fa fa-trash"></i></a>
+                                            <p>' . date("F Y", strtotime($experience->from_date)) . ' - ';
+                if ($experience->untill_now == 1) {
+                    $output .= 'Till Now';
+                } else {
+                    $output .= date("F Y", strtotime($experience->to_date));
+                }
+                $output .= '</p>
+                                            <a class="float-right text-danger delete_ex" style="cursor: pointer;" data-id="' . $experience->id . '"><i class="fa fa-trash"></i></a>
                                         </div>
                                         <div class="c_company">
                                             <p>
-                                                '.$experience->company_name.'
+                                                ' . $experience->company_name . '
                                             </p>
                                         </div>
                                         <div class="c_postionss">
                                             <span>
-                                                '.$experience->job_title.'
+                                                ' . $experience->job_title . '
                                             </span>
                                         </div>
                                         <ul>
-                                            <li class="font-weight-normal">'.$experience->experience.'</li>
+                                            <li class="font-weight-normal">' . $experience->experience . '</li>
                                         </ul>
                                     </div>';
             }
-
-
         }
-        return response()->json(['status'=>true,'output'=>$output]);
-
+        return response()->json(['status' => true, 'output' => $output]);
     }
 
 
 
-    function add_contact_info(Request $request){
+    function add_contact_info(Request $request)
+    {
 
         $request->validate([
-            'email'=>'required',
-            'phone'=>'required',
-            'address'=>'required'
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
         ]);
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
 
-        if($info){
+        if ($info) {
             $info->update([
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'link'=>$request->link,
-                'address'=>$request->address
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'link' => $request->link,
+                'address' => $request->address
             ]);
-        }else{
+        } else {
             StudentInformation::create([
-                                        'student_id'=>Auth::guard('student')->user()->id,
-                                        'email'=>$request->email,
-                                        'phone'=>$request->phone,
-                                        'link'=>$request->link,
-                                        'address'=>$request->address
-                                        ]);
+                'student_id' => Auth::guard('student')->user()->id,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'link' => $request->link,
+                'address' => $request->address
+            ]);
         }
 
 
 
-        $info = StudentInformation::where('student_id',Auth::guard('student')->user()->id)->get()->first();
-        if($info){
+        $info = StudentInformation::where('student_id', Auth::guard('student')->user()->id)->get()->first();
+        if ($info) {
 
             $output = '';
 
-            $output .='<li><i class="fas fa-phone-alt"></i><span>'.$info->phone.'</span></li>';
-            $output .='<li><i class="fas fa-envelope"></i><span>'.$info->email.'</span></li>';
-            if(isset($info->link)){
-                $output .='<li><i class="fas fa-globe"></i><span>'.$info->link.'</span></li>';
+            $output .= '<li><i class="fas fa-phone-alt"></i><span>' . $info->phone . '</span></li>';
+            $output .= '<li><i class="fas fa-envelope"></i><span>' . $info->email . '</span></li>';
+            if (isset($info->link)) {
+                $output .= '<li><i class="fas fa-globe"></i><span>' . $info->link . '</span></li>';
             }
-            $output .= '<li><i class="fas fa-home"></i><span>'.$info->address.'</span></li>';
+            $output .= '<li><i class="fas fa-home"></i><span>' . $info->address . '</span></li>';
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
 
 
-    function add_skills(Request $request){
+    function add_skills(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'skill_name'=>'required',
-            'range'=>'required|numeric',
+            'skill_name' => 'required',
+            'range' => 'required|numeric',
         ]);
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            StudentSkill::create([
-                'student_id'=>Auth::guard('student')->user()->id,
-                'skill_name'=>$request->skill_name,
-                'range'=>$request->range
-            ]);
+        StudentSkill::create([
+            'student_id' => Auth::guard('student')->user()->id,
+            'skill_name' => $request->skill_name,
+            'range' => $request->range
+        ]);
 
 
 
-        $skills = StudentSkill::where('student_id',Auth::guard('student')->user()->id)->get();
-        if(isset($skills) && $skills->count() > 0){
+        $skills = StudentSkill::where('student_id', Auth::guard('student')->user()->id)->get();
+        if (isset($skills) && $skills->count() > 0) {
             $output = '';
-            foreach($skills as $skill){
-                $output .='<div class="c_temem">
-                <a class="float-right text-danger delete_skill" style="cursor: pointer;" data-id="'.$skill->id.'"><i class="fa fa-trash"></i></a>
-                                <h5>'.$skill->skill_name.'</h5>
+            foreach ($skills as $skill) {
+                $output .= '<div class="c_temem">
+                <a class="float-right text-danger delete_skill" style="cursor: pointer;" data-id="' . $skill->id . '"><i class="fa fa-trash"></i></a>
+                                <h5>' . $skill->skill_name . '</h5>
                                 <div class="c_progress" style="margin-top:10px;">
-                                    <div class="c_bar" style="width:'.$skill->range.'%">
-                                        <p class="c_percent"> '.$skill->range.'%</p>
+                                    <div class="c_bar" style="width:' . $skill->range . '%">
+                                        <p class="c_percent"> ' . $skill->range . '%</p>
                                     </div>
                                 </div>
                             </div>';
             }
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
 
 
-    function delete_skill(Request $request){
+    function delete_skill(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'id'=>'required'
+            'id' => 'required'
         ]);
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            $skill_delete = StudentSkill::find($request->id);
+        $skill_delete = StudentSkill::find($request->id);
 
 
-            if($skill_delete){
-                if($skill_delete->student_id == Auth::guard('student')->user()->id){
-                    $skill_delete->delete();
-                }
-                else{
-                    return response()->json(['status'=>false]);
-                }
+        if ($skill_delete) {
+            if ($skill_delete->student_id == Auth::guard('student')->user()->id) {
+                $skill_delete->delete();
+            } else {
+                return response()->json(['status' => false]);
             }
-            else{
-                return response()->json(['status'=>false]);
-            }
+        } else {
+            return response()->json(['status' => false]);
+        }
 
 
-            $skills = StudentSkill::where('student_id',Auth::guard('student')->user()->id)->get();
-            $output = '';
-            if(isset($skills) && $skills->count() > 0){
-                foreach($skills as $skill){
-                    $output .='<div class="c_temem">
-                    <a class="float-right text-danger delete_skill" style="cursor: pointer;" data-id="'.$skill->id.'"><i class="fa fa-trash"></i></a>
-                                    <h5>'.$skill->skill_name.'</h5>
+        $skills = StudentSkill::where('student_id', Auth::guard('student')->user()->id)->get();
+        $output = '';
+        if (isset($skills) && $skills->count() > 0) {
+            foreach ($skills as $skill) {
+                $output .= '<div class="c_temem">
+                    <a class="float-right text-danger delete_skill" style="cursor: pointer;" data-id="' . $skill->id . '"><i class="fa fa-trash"></i></a>
+                                    <h5>' . $skill->skill_name . '</h5>
                                     <div class="c_progress" style="margin-top:10px;">
-                                        <div class="c_bar" style="width:'.$skill->range.'%">
-                                            <p class="c_percent"> '.$skill->range.'%</p>
+                                        <div class="c_bar" style="width:' . $skill->range . '%">
+                                            <p class="c_percent"> ' . $skill->range . '%</p>
                                         </div>
                                     </div>
                                 </div>';
-                }
-
-
             }
-            return response()->json(['status'=>true,'output'=>$output]);
-
+        }
+        return response()->json(['status' => true, 'output' => $output]);
     }
 
 
-    function add_education(Request $request){
+    function add_education(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'institution_name'=>'required',
-            'section'=>'required',
-            'degree'=>'required',
-            'from_date'=>'required|before:today|before:to_date',
-            'to_date'=>'required|before:today|after:from_date'
+            'institution_name' => 'required',
+            'section' => 'required',
+            'degree' => 'required',
+            'from_date' => 'required|before:today|before:to_date',
+            'to_date' => 'required|before:today|after:from_date'
         ]);
 
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            StudentEducation::create([
-                'student_id'=>Auth::guard('student')->user()->id,
-                'institution_name'=>$request->institution_name,
-                'section'=>$request->section,
-                'degree'=>$request->degree,
-                'from_date'=>$request->from_date,
-                'to_date'=>$request->to_date
-            ]);
+        StudentEducation::create([
+            'student_id' => Auth::guard('student')->user()->id,
+            'institution_name' => $request->institution_name,
+            'section' => $request->section,
+            'degree' => $request->degree,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date
+        ]);
 
 
 
-        $educations = StudentEducation::where('student_id',Auth::guard('student')->user()->id)->get();
+        $educations = StudentEducation::where('student_id', Auth::guard('student')->user()->id)->get();
         $output = '';
-        if(isset($educations) && $educations->count() > 0){
-            foreach($educations as $education){
-                $output .='<div class="c_itme_ex">
+        if (isset($educations) && $educations->count() > 0) {
+            foreach ($educations as $education) {
+                $output .= '<div class="c_itme_ex">
                                 <div class="c_date">
-                                <a class="float-right text-danger delete_education" style="cursor: pointer;" data-id="'.$education->id.'"><i class="fa fa-trash"></i></a>
-                                    <p>'.date("Y", strtotime($education->from_date)).' - '.date("Y", strtotime($education->to_date)).'</p>
+                                <a class="float-right text-danger delete_education" style="cursor: pointer;" data-id="' . $education->id . '"><i class="fa fa-trash"></i></a>
+                                    <p>' . date("Y", strtotime($education->from_date)) . ' - ' . date("Y", strtotime($education->to_date)) . '</p>
                                 </div>
                                 <div class="c_company">
                                     <p>
-                                    '.$education->institution_name.'
+                                    ' . $education->institution_name . '
                                     </p>
                                 </div>
                                 <div class="c_postionss">
-                                    <span>'.$education->section.' - '.$education->degree.'
+                                    <span>' . $education->section . ' - ' . $education->degree . '
                                     </span>
                                 </div>
                             </div>';
             }
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'output' => $output]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
 
 
-    function delete_education(Request $request){
+    function delete_education(Request $request)
+    {
 
         // return $request;
         $request->validate([
-            'id'=>'required'
+            'id' => 'required'
         ]);
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
-            $education_delete = StudentEducation::find($request->id);
+        $education_delete = StudentEducation::find($request->id);
 
 
-            if($education_delete){
-                if($education_delete->student_id == Auth::guard('student')->user()->id){
-                    $education_delete->delete();
-                }
-                else{
-                    return response()->json(['status'=>false]);
-                }
+        if ($education_delete) {
+            if ($education_delete->student_id == Auth::guard('student')->user()->id) {
+                $education_delete->delete();
+            } else {
+                return response()->json(['status' => false]);
             }
-            else{
-                return response()->json(['status'=>false]);
-            }
+        } else {
+            return response()->json(['status' => false]);
+        }
 
 
-            $educations = StudentEducation::where('student_id',Auth::guard('student')->user()->id)->get();
-            $output = '';
-            if(isset($educations) && $educations->count() > 0){
-                foreach($educations as $education){
-                    $output .='<div class="c_itme_ex">
+        $educations = StudentEducation::where('student_id', Auth::guard('student')->user()->id)->get();
+        $output = '';
+        if (isset($educations) && $educations->count() > 0) {
+            foreach ($educations as $education) {
+                $output .= '<div class="c_itme_ex">
                                     <div class="c_date">
-                                    <a class="float-right text-danger delete_education" style="cursor: pointer;" data-id="'.$education->id.'"><i class="fa fa-trash"></i></a>
-                                        <p>'.date("Y", strtotime($education->from_date)).' - '.date("Y", strtotime($education->to_date)).'</p>
+                                    <a class="float-right text-danger delete_education" style="cursor: pointer;" data-id="' . $education->id . '"><i class="fa fa-trash"></i></a>
+                                        <p>' . date("Y", strtotime($education->from_date)) . ' - ' . date("Y", strtotime($education->to_date)) . '</p>
                                     </div>
                                     <div class="c_company">
                                         <p>
-                                        '.$education->institution_name.'
+                                        ' . $education->institution_name . '
                                         </p>
                                     </div>
                                     <div class="c_postionss">
-                                        <span>'.$education->section.' - '.$education->degree.'
+                                        <span>' . $education->section . ' - ' . $education->degree . '
                                         </span>
                                     </div>
                                 </div>';
-                }
             }
+        }
 
-            return response()->json(['status'=>true,'output'=>$output]);
-
+        return response()->json(['status' => true, 'output' => $output]);
     }
 
 
 
-    function update_image(Request $request){
+    function update_image(Request $request)
+    {
         $request->validate([
-            'image'=>'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif|max:4048'
+            'image' => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif|max:4048'
         ]);
 
 
-        if(!Auth::guard('student')->check()){
-            return response()->json(['status'=>false]);
+        if (!Auth::guard('student')->check()) {
+            return response()->json(['status' => false]);
         }
 
 
         $user = Student::find(Auth::guard('student')->user()->id);
-        if($user){
+        if ($user) {
             $user_image = $user->profile_photo_path;
             if (isset($request->image)) {
                 $orginal_image = $request->file('image');
                 $upload_location = 'storage/blogs/';
                 $original_name = $orginal_image->getClientOriginalName();
-                $file_name = $this->saveFile($orginal_image,$upload_location);
+                $file_name = $this->saveFile($orginal_image, $upload_location);
                 File::delete($user->profile_photo_path);
                 $user_image = $file_name;
             }
             $user->update([
-                'profile_photo_path'=>$user_image
+                'profile_photo_path' => $user_image
             ]);
 
-            return response()->json(['status'=>true,'image'=>asset($user_image)]);
-        }else{
-            return response()->json(['status'=>false]);
+            return response()->json(['status' => true, 'image' => asset($user_image)]);
+        } else {
+            return response()->json(['status' => false]);
         }
-
     }
-
 }

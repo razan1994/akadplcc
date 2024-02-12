@@ -193,21 +193,21 @@ class CourcesController extends Controller
         try {
 
 
-            if(file_exists(storage_path('app/public/videos'))){
-            $path = storage_path('app/public/videos');
-            $files = File::allFiles($path);
-            if (count($files) > 0) {
-                foreach ($files as $file) {
-                    $file_replaced = str_replace(storage_path('app/public').'/', '', $files[0]);
-                    // return 'storage/app/public/'.$file_replaced;
-                    $section_video = CourseSection::where('video','public/storage/'.$file_replaced)->get()->first();
-                    if(!$section_video){
-                        // Storage::delete($file_replaced);
-                        Storage::disk(config('filesystems.default'))->delete($file_replaced);
+            if (file_exists(storage_path('app/public/videos'))) {
+                $path = storage_path('app/public/videos');
+                $files = File::allFiles($path);
+                if (count($files) > 0) {
+                    foreach ($files as $file) {
+                        $file_replaced = str_replace(storage_path('app/public') . '/', '', $files[0]);
+                        // return 'storage/app/public/'.$file_replaced;
+                        $section_video = CourseSection::where('video', 'public/storage/' . $file_replaced)->get()->first();
+                        if (!$section_video) {
+                            // Storage::delete($file_replaced);
+                            Storage::disk(config('filesystems.default'))->delete($file_replaced);
+                        }
                     }
                 }
             }
-        }
 
 
             $course = Course::find($id);
@@ -508,13 +508,13 @@ class CourcesController extends Controller
 
             $disk = Storage::disk(config('filesystems.default'));
             $path = $disk->putFileAs('videos', $file, $fileName);
-        
+
             // delete chunked file
             unlink($file->getPathname());
             return [
                 'path' => asset('storage/app/public/' . $path),
                 'filename' => $fileName,
-                'filesave' => 'public/storage/'.$path
+                'filesave' => 'public/storage/' . $path
             ];
         }
 
@@ -528,11 +528,9 @@ class CourcesController extends Controller
 
 
 
-    function addCourseSection(Route $route,$id,StoreCourseSectionFormRequest $request)
+    function addCourseSection(Route $route, $id, StoreCourseSectionFormRequest $request)
     {
         try {
-
-
             $course = Course::find($id);
             if ($course) {
 
@@ -540,7 +538,7 @@ class CourcesController extends Controller
                     'course_id' => $course->id,
                     'title_ar' => $request->title_ar,
                     'text_ar' => $request->text_ar,
-                    'video'=>$request->video
+                    'video' => $request->video
                 ];
 
                 // Upload section image :

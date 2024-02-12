@@ -89,6 +89,8 @@
     {{-- ========================================================== --}}
     {{-- =============== Live Select Search Section =============== --}}
     {{-- ========================================================== --}}
+
+    @stack('styles')
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

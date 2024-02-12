@@ -1,24 +1,22 @@
 @extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
 @section('content')
-
-<div id="alert_div">
-    @if (session()->has('success'))
-        <script>
-            swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
-                button: "OK",
-            });
-        </script>
-    @endif
-    @if (session()->has('danger'))
-        <script>
-            swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
-                button: "Close",
-            });
-
-        </script>
-    @endif
-</div>
+    <div id="alert_div">
+        @if (session()->has('success'))
+            <script>
+                swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
+                    button: "OK",
+                });
+            </script>
+        @endif
+        @if (session()->has('danger'))
+            <script>
+                swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
+                    button: "Close",
+                });
+            </script>
+        @endif
+    </div>
     <!-- ================================================================================================== -->
     <!-- ======================================== inner-top =============================================== -->
     <!-- ================================================================================================== -->
@@ -33,7 +31,7 @@
         </div>
         <div class="c-breadcrumps">
             <div class="container_1200">
-            <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>الملف الشخصي</a></p>
+                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>الملف الشخصي</a></p>
             </div>
         </div>
     </div>
@@ -72,7 +70,8 @@
                                 </a>
                             </li>
                             <li class="nav-item c_logoutoic">
-                                <a class="nav-link" id="home-tab" href="#" aria-controls="home" aria-selected="true">
+                                <a class="nav-link" id="home-tab" href="{{ route('student.logout') }}" aria-controls="home"
+                                    aria-selected="true">
                                     تسجيل الخروج
                                 </a>
                             </li>
@@ -83,8 +82,7 @@
                 <div class="c-left">
                     <div class="tab-content" id="myTabContent">
                         <div role="tabpanel" class="tab-pane fade active show" id="prof1">
-                            <form class="c_editInfo" action=""
-                                method="POST" enctype="multipart/form-data">
+                            <form class="c_editInfo" action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     {{-- User Image --}}
@@ -110,30 +108,30 @@
 
                                     {{-- Name --}}
                                     <div class="form-group col-md-6 col-xs-12">
-                                        <label>الاسم الرباعي  </label>
-                                        <input type="text" value="" name="name_ar" class=""
-                                            placeholder="" id="name_ar">
+                                        <label>الاسم الرباعي </label>
+                                        <input type="text" value="" name="name_ar" class="" placeholder=""
+                                            id="name_ar">
                                     </div>
 
                                     {{-- Username --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>اسم المستخدم </label>
-                                        <input type="text" value="" name="username" class=""
-                                            placeholder="" id="username">
+                                        <input type="text" value="" name="username" class="" placeholder=""
+                                            id="username">
                                     </div>
 
                                     {{-- E-mail --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>البريد الالكتروني </label>
-                                        <input type="email" value="" name="email" class=""
-                                            placeholder="" id="email">
+                                        <input type="email" value="" name="email" class="" placeholder=""
+                                            id="email">
                                     </div>
 
                                     {{-- Phone --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>رقم الهاتف </label>
-                                        <input type="text" value="" name="phone" class=""
-                                            placeholder="" id="phone">
+                                        <input type="text" value="" name="phone" class="" placeholder=""
+                                            id="phone">
                                     </div>
 
                                     {{-- Button --}}
@@ -151,10 +149,11 @@
                                             <div class="c_image">
                                                 <img src="{{ asset('/front_end_style/images/parnter.png') }}">
                                             </div>
-                                                <div class="c_body">
-                                                    <h3>هناك حقيقة  </h3>
-                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div>
+                                            <div class="c_body">
+                                                <h3>هناك حقيقة </h3>
+                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-12">
@@ -162,10 +161,11 @@
                                             <div class="c_image">
                                                 <img src="{{ asset('/front_end_style/images/parnter.png') }}">
                                             </div>
-                                                <div class="c_body">
-                                                    <h3>هناك حقيقة  </h3>
-                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div>
+                                            <div class="c_body">
+                                                <h3>هناك حقيقة </h3>
+                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-12">
@@ -173,10 +173,11 @@
                                             <div class="c_image">
                                                 <img src="{{ asset('/front_end_style/images/parnter.png') }}">
                                             </div>
-                                                <div class="c_body">
-                                                    <h3>هناك حقيقة  </h3>
-                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div>
+                                            <div class="c_body">
+                                                <h3>هناك حقيقة </h3>
+                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-12">
@@ -184,10 +185,11 @@
                                             <div class="c_image">
                                                 <img src="{{ asset('/front_end_style/images/parnter.png') }}">
                                             </div>
-                                                <div class="c_body">
-                                                    <h3>هناك حقيقة  </h3>
-                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div>
+                                            <div class="c_body">
+                                                <h3>هناك حقيقة </h3>
+                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-12">
@@ -195,10 +197,11 @@
                                             <div class="c_image">
                                                 <img src="{{ asset('/front_end_style/images/parnter.png') }}">
                                             </div>
-                                                <div class="c_body">
-                                                    <h3>هناك حقيقة  </h3>
-                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص  </p>
-                                                </div>
+                                            <div class="c_body">
+                                                <h3>هناك حقيقة </h3>
+                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +218,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +228,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +238,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +248,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +258,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -265,7 +268,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -275,7 +278,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +288,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -295,7 +298,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -305,7 +308,7 @@
                                                 <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
                                             </div>
                                             <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة  </h5>
+                                                <h5 style="text-align:center;">هناك حقيقة </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -352,7 +355,4 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection

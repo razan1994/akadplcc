@@ -1,24 +1,22 @@
 @extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
 @section('content')
-
-<div id="alert_div">
-    @if (session()->has('success'))
-        <script>
-            swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
-                button: "OK",
-            });
-        </script>
-    @endif
-    @if (session()->has('danger'))
-        <script>
-            swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
-                button: "Close",
-            });
-
-        </script>
-    @endif
-</div>
+    <div id="alert_div">
+        @if (session()->has('success'))
+            <script>
+                swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
+                    button: "OK",
+                });
+            </script>
+        @endif
+        @if (session()->has('danger'))
+            <script>
+                swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
+                    button: "Close",
+                });
+            </script>
+        @endif
+    </div>
     <!-- ================================================================================================== -->
     <!-- ======================================== inner-top =============================================== -->
     <!-- ================================================================================================== -->
@@ -33,7 +31,7 @@
         </div>
         <div class="c-breadcrumps">
             <div class="container_1200">
-            <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>صفحة الدورة</a></p>
+                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>صفحة الدورة</a></p>
             </div>
         </div>
     </div>
@@ -60,9 +58,10 @@
                                     <div class="c_itme">
                                         <p>
                                             <img src="{{ asset('front_end_style/images/clock.png') }}">
-                                            <label>مدة الدورة   : </label>
-                                            @if(isset($course->section_count) && isset($course->section_time))
-                                                <span> ساعة {{ ceil(($course->section_count * $course->section_time)/60) }}</span>
+                                            <label>مدة الدورة : </label>
+                                            @if (isset($course->section_count) && isset($course->section_time))
+                                                <span> ساعة
+                                                    {{ ceil(($course->section_count * $course->section_time) / 60) }}</span>
                                             @else
                                                 <span>Undefined</span>
                                             @endif
@@ -70,14 +69,17 @@
                                     </div>
                                     <div class="c_itme">
                                         <p><img src="{{ asset('front_end_style/images/clock.png') }}">
-                                            <label>مدة الحصة   : </label>
-                                            <span> {{ isset($course->section_time) ? $course->section_time : 'Undefined' }}  </span>
+                                            <label>مدة الحصة : </label>
+                                            <span> {{ isset($course->section_time) ? $course->section_time : 'Undefined' }}
+                                            </span>
                                         </p>
                                     </div>
                                     <div class="c_itme">
                                         <p><img src="{{ asset('front_end_style/images/clock.png') }}">
-                                            <label>عدد الحصص    : </label>
-                                            <span>  {{ isset($course->section_count) ? $course->section_count : 'Undefined' }}  </span>
+                                            <label>عدد الحصص : </label>
+                                            <span>
+                                                {{ isset($course->section_count) ? $course->section_count : 'Undefined' }}
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -87,16 +89,16 @@
                         <div class="c_left">
                             <div class="c_box_subscribe">
                                 <div class="c_video">
-                                    @if(isset($course->main_video) && file_exists($course->main_video))
-                                    <video  class="bgvid" id="myvideo" muted controls>
-                                        <source src="{{ asset($course->main_video) }}" type="video/mp4" />
-                                    </video>
+                                    @if (isset($course->main_video) && file_exists($course->main_video))
+                                        <video class="bgvid" id="myvideo" muted controls>
+                                            <source src="{{ asset($course->main_video) }}" type="video/mp4" />
+                                        </video>
                                     @else
-                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     @endif
                                 </div>
                                 <div class="c_btn_subscribe">
-                                    <a href="#">اشترك</a>
+                                    <a href="{{ route('course-sections', encrypt($course->id)) }}">اشترك</a>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +169,7 @@
                             <div class="c_box_show">
                                 <div class="c_bloc">
                                     <div class="c_img">
-                                            <img src="{{ asset('front_end_style/images/SHADA.png') }}">
+                                        <img src="{{ asset('front_end_style/images/SHADA.png') }}">
                                     </div>
                                     <div class="c_btn_subscribe">
                                         <a href="#">اشترك</a>
@@ -179,10 +181,10 @@
                         <div class="c_left">
                             <div class="c_itm_prof">
                                 <div class="c_img">
-                                    @if(isset($course->teacher_image) && file_exists($course->teacher_image))
-                                    <img src="{{ asset($course->teacher_image) }}">
+                                    @if (isset($course->teacher_image) && file_exists($course->teacher_image))
+                                        <img src="{{ asset($course->teacher_image) }}">
                                     @else
-                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     @endif
                                 </div>
                                 <div class="c_bdy">
@@ -195,7 +197,4 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection

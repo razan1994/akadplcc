@@ -162,6 +162,43 @@ class FrontendController extends Controller
     }
 
 
+    function courseSections(Route $route, $id)
+    {
+        $id = decrypt($id);
+
+        $course = Course::with('sections')->find($id);
+        if ($course) {
+            return view('front_end_inners.courseSections', compact('course'));
+        } else {
+            return redirect()->back()->with('success', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
+        }
+        try {
+
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
 
     function courses(Route $route)
     {
@@ -279,26 +316,26 @@ class FrontendController extends Controller
 
     public function redirectToProvider($provider)
     {
-        if($provider == 'google'){
-            return Socialite::driver('google') ->setScopes(['openid','email'])->redirect();
-        }else{
+        if ($provider == 'google') {
+            return Socialite::driver('google')->setScopes(['openid', 'email'])->redirect();
+        } else {
             return Socialite::driver($provider)->redirect();
         }
     }
     public function handleProviderCallback($provider)
     {
 
-        if($provider == 'facebook'){
+        if ($provider == 'facebook') {
             $driver = Socialite::driver('facebook')->fields([
-                        'name',
-                        'first_name',
-                        'last_name',
-                        'email',
-                        'gender',
-                        'verified'
-                    ]);
-        }else{
-            $driver = Socialite::driver('google') ->setScopes(['openid','profile','email']);
+                'name',
+                'first_name',
+                'last_name',
+                'email',
+                'gender',
+                'verified'
+            ]);
+        } else {
+            $driver = Socialite::driver('google')->setScopes(['openid', 'profile', 'email']);
         }
 
         $user = Socialite::driver($provider)->stateless()->user();
@@ -306,23 +343,23 @@ class FrontendController extends Controller
 
         $first_name = $user->getName();
         $last_name = $user->getName();
-        switch($provider){
+        switch ($provider) {
             case 'facebook':
-               $first_name = $user->offsetGet('first_name');
-               $last_name = $user->offsetGet('last_name');
-               break;
+                $first_name = $user->offsetGet('first_name');
+                $last_name = $user->offsetGet('last_name');
+                break;
 
-            // case 'google':
-            //    $first_name = $user->user['givenName']['givenName'];
-            //    $last_name = $user->user['familyName']['familyName'];
-            //    break;
+                // case 'google':
+                //    $first_name = $user->user['givenName']['givenName'];
+                //    $last_name = $user->user['familyName']['familyName'];
+                //    break;
 
-          // You can also add more provider option e.g. linkedin, twitter etc.
+                // You can also add more provider option e.g. linkedin, twitter etc.
 
             default:
-               $first_name = $user->getName();
-               $last_name = $user->getName();
-         }
+                $first_name = $user->getName();
+                $last_name = $user->getName();
+        }
 
         if ($user->getEmail() == null) {
             $users = Student::where('provider', $provider)->where('provider_id', $user->getId())->first();
@@ -369,8 +406,4 @@ class FrontendController extends Controller
             return redirect()->route('patient.patient-profile')->with('success', 'يرجى استكمال ملفك الشخصي');
         }
     }
-
-
-
-
 }
