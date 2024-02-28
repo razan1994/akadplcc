@@ -16,11 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('first_name');
-            $table->string('mid_first_name')->nullable();
-            $table->string('mid_last_name')->nullable();
-            $table->string('last_name');
-            $table->string('username')->nullable();
+            $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('password')->nullable();
@@ -34,10 +30,14 @@ class CreateStudentsTable extends Migration
             $table->longText('provider')->nullable();
             $table->longText('provider_id')->nullable();
             $table->longText('image_url')->nullable();
+            $table->text('own_code')->nullable();
+            $table->text('referral_code')->nullable();
+            $table->integer('points')->default(0);
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
+            $table->string('session_id')->nullable();
             $table->timestamps();
         });
     }

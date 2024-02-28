@@ -31,33 +31,23 @@
                     </li>
                     <li class="breadcrumb-item">
                         <a href="{{ route('super_admin.cources-show', $section->course_id) }}">
-                            <i class="far fa-newspaper"></i></span> Course
+                            <span class="far fa-newspaper"></span> Course
                         </a>
                     </li>
                     <li class="breadcrumb-item">
 
                         <i class="mdi mdi-eye"></i> Show Section
                     </li>
-
-
-
                 </ol>
             </nav>
         </div>
-
     </div>
-
-
-
-
 
 
 
     <div class="bg-white border rounded">
 
-
         <div class="row no-gutters">
-
             <div class="col-md-12">
                 <div class="px-3 pt-5 pb-3 profile-content-left px-xl-5">
                     <div class="pb-4 text-center">

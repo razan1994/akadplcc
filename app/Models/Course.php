@@ -11,24 +11,7 @@ class Course extends Model
 
     protected $table = 'courses';
 
-    protected $fillable = [
-        'title_ar',
-        'title_en',
-        'desc_ar',
-        'desc_en',
-        'teacher_ar',
-        'teacher_en',
-        'section_count',
-        'section_time',
-        'course_date',
-        'status',
-        'teacher_image',
-        'main_image',
-        'main_video',
-        'test_status'
-    ];
-
-
+    protected $guarded = [];
 
     // ==============================================================================================================
     // ============================================= Relationships ==================================================
@@ -40,7 +23,17 @@ class Course extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Task::class, 'course_id');
+        return $this->hasMany(Task::class, 'course_id')->with('answers');
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'student_courses', 'course_id', 'student_id');
+    }
+
+    public function studentSections()
+    {
+        return $this->hasMany(StudentSection::class, 'course_id')->where('student_id', auth('student')->id());
     }
 
     // ===================================================================================================================

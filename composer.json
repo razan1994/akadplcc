@@ -16,6 +16,7 @@
         "laravel/ui": "^4.2",
         "livewire/livewire": "^3.4",
         "mcamara/laravel-localization": "^1.8",
+        "paypal/paypal-checkout-sdk": "^1.0",
         "tightenco/ziggy": "^1.0",
         "tymon/jwt-auth": "^2.0"
     },

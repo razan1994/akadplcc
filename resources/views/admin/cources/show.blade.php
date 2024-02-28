@@ -103,7 +103,7 @@
                                                 id="inputGroupPrepend2"></span>
                                         </div>
                                         <input type="text" name="title_ar"
-                                            class="form-control @error('title_ar') is-invalid @enderror"
+                                            class="form-control @error('title_ar') is-invalid @enderror" required
                                             id="validationServer01" placeholder="Title..." value="{!! old('title_ar') !!}">
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="mb-3 text-dark font-weight-medium" for="validationServer01">
                                         Video URL
-                                        <strong class="text-danger"> *
+                                        <strong class="text-danger">
                                             @error('video')
                                                 -
                                                 {{ $message }}
@@ -140,7 +140,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                         </div>
-                                        <input type="file" name="section_image" class="form-control"
+                                        <input type="file" name="section_image" class="form-control" required
                                             id="validationServer01" placeholder="section_image" accept="image/*">
                                     </div>
                                 </div>

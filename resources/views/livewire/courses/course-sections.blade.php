@@ -1,4 +1,4 @@
-<div class="px-4 row">
+<div class="px-4 row" wire:poll>
     {{-- Course Sections --}}
     <div class="col-md-3" style="max-height: 100vh ; overflow-y: auto ">
 
@@ -10,12 +10,16 @@
                 </h2>
                 <span>
                     المكتملة :
-                    {{ $sections->sum('is_watched') }} / {{ $sections->count() }}
+                    <div class="">
+                        {{ $course->studentSections->sum('is_watched') }} / {{ $course->sections->count() }}
 
-                    {{-- add the average --}}
-                    <span class="float-left">
-                        {{ round(($sections->sum('is_watched') / $sections->count()) * 100 , 2) }}%
-                    </span>
+
+                        {{-- the average --}}
+                        <span class="float-left">
+                            {{ round(($course->studentSections->sum('is_watched') / $course->sections->count()) * 100, 2) }}%
+                        </span>
+
+                    </div>
                 </span>
 
 
@@ -28,9 +32,9 @@
                             ]) wire:click="changeSection({{ $section->id }})">
 
 
-                                <div class="form-check d-flex align-items-center">
+                                <div class="form-check d-flex align-items-center flex-md-column flex-xl-row">
                                     <div class="d-flex align-items-center">
-                                        <input class="form-check-input" @checked($section->is_watched)
+                                        <input class="form-check-input" @checked($course->studentSections->firstWhere('section_id', $section->id)?->is_watched == 1)
                                             wire:click="toggleWatched('{{ encrypt($section->id) }}')" type="checkbox">
                                         <div class="c_section_thumbnail">
                                             <img src="{{ asset($section->section_image) }}"
@@ -55,9 +59,11 @@
     <div class="col-md-9">
         <div class="card">
             <div class="card-body">
-                <video id="cSectionVideo" src="{{ $selectedSection->video }}" controls="controls" autoplay="autoplay" preload="auto"
-                    poster="{{ asset('assets/images/placeholder.jpg') }}" width="100%" height="100%"
-                    controlsList="nodownload" style="object-fit: cover;" alt></video>
+                @if ($selectedSection->video)
+                    <video id="cSectionVideo" src="{{ $selectedSection->video }}" controls="controls" preload="auto"
+                        autoplay="autoplay" width="100%" height="100%" controlsList="nodownload"
+                        style="object-fit: cover;" alt></video>
+                @endif
                 <hr>
                 <h2>
                     <u>

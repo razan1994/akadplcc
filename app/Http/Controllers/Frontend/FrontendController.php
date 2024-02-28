@@ -162,42 +162,7 @@ class FrontendController extends Controller
     }
 
 
-    function courseSections(Route $route, $id)
-    {
-        $id = decrypt($id);
 
-        $course = Course::with('sections')->find($id);
-        if ($course) {
-            return view('front_end_inners.courseSections', compact('course'));
-        } else {
-            return redirect()->back()->with('success', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
-        }
-        try {
-
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
 
 
     function courses(Route $route)
@@ -206,7 +171,9 @@ class FrontendController extends Controller
         try {
 
 
-            $courses = Course::where('status', 2)->orderBy('created_at', 'desc')->paginate(6);
+            $courses = Course::where('status', 2)
+                ->whereHas('sections')
+                ->orderBy('created_at', 'desc')->paginate(6);
 
             return view('front_end_inners.courses', compact('courses'));
         } catch (\Throwable $th) {

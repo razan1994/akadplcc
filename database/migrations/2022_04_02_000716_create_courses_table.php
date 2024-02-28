@@ -23,13 +23,14 @@ class CreateCoursesTable extends Migration
             $table->longText('teacher_ar');
             $table->longText('teacher_en')->nullable();
             $table->integer('section_count');
-            $table->decimal('section_time',10,2);
+            $table->decimal('section_time', 10, 2);
             $table->date('course_date');
             $table->tinyInteger('status')->comment('2 => Avtive || 1 => Stopped');
             $table->tinyInteger('test_status')->nullable()->comment('2 => Avtive || 1 => Stopped');
             $table->longText('teacher_image')->nullable();
             $table->longText('main_image')->nullable();
             $table->longText('main_video')->nullable();
+            $table->float('price', 8, 2)->default(0);
             $table->timestamps();
         });
     }

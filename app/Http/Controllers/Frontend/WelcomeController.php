@@ -10,17 +10,22 @@ use App\Models\Course;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
+
 class WelcomeController extends Controller
 {
-    function welcome(){
+    function welcome()
+    {
 
         $about = AboutUs::get()->first();
         $contact = ContactUs::get()->first();
-        $sliders = Slider::where('status',1)->inRandomOrder()->limit(3)->get();
-        $courses = Course::where('status',2)->orderBy('created_at','desc')->limit(10)->get();
-        $approved = ApprovedBody::orderBy('created_at','desc')->limit(12)->get();
+        $sliders = Slider::where('status', 1)->inRandomOrder()->limit(3)->get();
+        $courses = Course::where('status', 2)
+            ->whereHas('sections')
+            ->orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
+        $approved = ApprovedBody::orderBy('created_at', 'desc')->limit(12)->get();
 
-        return view('welcome',compact('about','contact','sliders','courses','approved'));
-
+        return view('welcome', compact('about', 'contact', 'sliders', 'courses', 'approved'));
     }
 }

@@ -43,6 +43,13 @@ return [
         'client_id'     => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect'      => env('GOOGLE_URL'),
+    ],
+    'paypal' => [
+        'client_id' => env('PAYPAL_CLIENT_ID'),
+        'client_secret' => env('PAYPAL_SECRET_KEY'),
+        'mode' => env('PAYPAL_MODE', 'sandbox'),
     ]
+
+
 
 ];

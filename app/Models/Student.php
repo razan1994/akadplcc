@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class Student extends Authenticatable
+class Student extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -24,19 +25,7 @@ class Student extends Authenticatable
      * @var string[]
      */
     protected $table = 'students';
-    protected $fillable = [
-        'first_name',
-        'mid_first_name',
-        'mid_last_name',
-        'last_name',
-        'username',
-        'email',
-        'phone',
-        'password',
-        'profile_photo_path',
-        'user_status',
-        'payment_status'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -72,26 +61,54 @@ class Student extends Authenticatable
     // =========================================== Relationship Section ==================================================
     // ===================================================================================================================
 
-    public function info(){
-        return $this->hasOne(StudentInformation::class,'student_id');
+    public function info()
+    {
+        return $this->hasOne(StudentInformation::class, 'student_id');
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(StudentExperience::class, 'student_id');
     }
 
 
-
-    public function experiences(){
-        return $this->hasMany(StudentExperience::class,'student_id');
+    public function skills()
+    {
+        return $this->hasMany(StudentSkill::class, 'student_id');
     }
 
 
-    public function skills(){
-        return $this->hasMany(StudentSkill::class,'student_id');
+    public function educations()
+    {
+        return $this->hasMany(StudentEducation::class, 'student_id');
     }
 
 
-    public function educations(){
-        return $this->hasMany(StudentEducation::class,'student_id');
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'student_courses', 'student_id', 'course_id');
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'student_id');
+    }
+
+    public function sections()
+    {
+        return $this->belongsToMany(CourseSection::class, 'student_sections', 'student_id', 'section_id')
+            ->withPivot('is_watched', 'is_finished');
+    }
+
+    public function referralStudents()
+    {
+        return $this->hasMany(Student::class, 'referral_code', 'own_code');
+    }
+
+    public function referrerStudent()
+    {
+        return $this->belongsTo(Student::class, 'own_code', 'referral_code');
+    }
     // ===================================================================================================================
     // ============================================= Mutator Section =====================================================
     // ===================================================================================================================

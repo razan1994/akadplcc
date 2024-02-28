@@ -1,5 +1,21 @@
 @extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
+
+@push('styles')
+    <style>
+        #generatedCode {
+            cursor: pointer;
+            margin: 0 5px;
+            transition: 0.3s;
+            padding: 5px 10px;
+        }
+
+        #generatedCode:hover {
+            box-shadow: 0 0 5px 0 #000;
+            border-radius: 15px
+        }
+    </style>
+@endpush
 @section('content')
     <div id="alert_div">
         @if (session()->has('success'))
@@ -42,6 +58,7 @@
     <div class="c_page_profile c_inner_body">
         <div class="container_1200">
             <div class="c_mainContent">
+
                 <div class="c-right">
                     <div class="quieq_tap">
                         <ul class="nav nav-tabs menu_contact" id="myTab" role="tablist">
@@ -49,6 +66,13 @@
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#prof1" role="tab"
                                     aria-controls="home" aria-selected="true">
                                     الصفحة الشخصية
+                                </a>
+                            </li>
+
+                            <li class="nav-item c_logic">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#myCourses" role="tab"
+                                    aria-controls="home" aria-selected="true">
+                                    دوراتي
                                 </a>
                             </li>
                             <li class="nav-item c_logic">
@@ -82,56 +106,62 @@
                 <div class="c-left">
                     <div class="tab-content" id="myTabContent">
                         <div role="tabpanel" class="tab-pane fade active show" id="prof1">
+                            @php
+                                $lastPayment = auth('student')->user()->payments()->latest()->first();
+                            @endphp
+                            <div class="c_editInfo">
+                                @if ($lastPayment)
+                                    <div class="px-3 py-2">
+                                        <p>
+                                            <b>
+                                                فعال لغاية :
+                                            </b>
+                                            <br>
+                                            @php
+                                                \Carbon\Carbon::setLocale('ar');
+                                                $timestamp = \Carbon\Carbon::parse($lastPayment->due_at);
+                                            @endphp
+                                            {{-- parse the date for format YYY--MM--DD --}}
+                                            {{ \Carbon\Carbon::parse($timestamp)->format('Y/m/d') . '     -     ( ' . $timestamp->diffForHumans() . ')' }}
+                                        </p>
+                                    </div>
+                                @endif
+                                <div class="px-3 py-2">
+                                    <p>
+                                        <b class="pb-2">
+                                            كود الاحالة :
+                                        </b>
+                                        <br>
+                                        <span id="generatedCode" class="px-2 ">
+                                            {{ auth('student')->user()->own_code }}
+                                            <i id="copyCode" class="fa fa-copy"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
                             <form class="c_editInfo" action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    {{-- User Image --}}
-                                    {{-- <div class="form-group c_imgchosee col-md-12">
-                                        <label>
-                                            <div class="c_imgUp">
-                                                <input type="file" id="img" name="profile_photo_path" accept="image/*">
-
-                                                @if (auth()->user()->profile_photo_path && file_exists(auth()->user()->profile_photo_path))
-                                                    <img src="{{ asset(auth()->user()->profile_photo_path) }}" width="100"
-                                                        height="100" style="border-radius: 10px; border:solid 1px black;">
-                                                @else
-                                                    <img src="{{ asset('front_end_style/images/profilesf.png') }}">
-                                                @endif
-                                            </div>
-                                            <div class="c_editm">
-                                                <img src="{{ asset('front_end_style/images/edit7.png') }}">
-                                            </div>
-                                        </label>
-                                        <span>{{ auth()->user()->name_ar }}</span>
-                                    </div> --}}
-
-
                                     {{-- Name --}}
                                     <div class="form-group col-md-6 col-xs-12">
-                                        <label>الاسم الرباعي </label>
-                                        <input type="text" value="" name="name_ar" class="" placeholder=""
-                                            id="name_ar">
-                                    </div>
-
-                                    {{-- Username --}}
-                                    <div class="form-group col-md-6 col-xs-12">
                                         <label>اسم المستخدم </label>
-                                        <input type="text" value="" name="username" class="" placeholder=""
-                                            id="username">
+                                        <input type="text" value="{{ auth('student')->user()->name }}" name="name"
+                                            class="" placeholder="" id="name_ar">
                                     </div>
 
                                     {{-- E-mail --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>البريد الالكتروني </label>
-                                        <input type="email" value="" name="email" class="" placeholder=""
-                                            id="email">
+                                        <input type="email" value="{{ auth('student')->user()->email }}" name="email"
+                                            class="" placeholder="" id="email">
                                     </div>
 
                                     {{-- Phone --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>رقم الهاتف </label>
-                                        <input type="text" value="" name="phone" class="" placeholder=""
-                                            id="phone">
+                                        <input type="text" value="{{ auth('student')->user()->phone }}" name="phone"
+                                            class="" placeholder="" id="phone">
                                     </div>
 
                                     {{-- Button --}}
@@ -140,6 +170,32 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="myCourses">
+                            <div class="c_research">
+                                <div class="row">
+                                    @forelse (auth('student')->user()->courses as $item)
+                                        <a href="{{ route('course-details', encrypt($item->id)) }}"
+                                            class="col-md-3 col-xs-12">
+                                            <div class="rounded-lg card">
+                                                <div class="card-header">
+                                                    <img src="{{ asset($item->main_image) }}">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>{{ $item->title_ar }}</h5>
+                                                    <p>{{ $item->description }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @empty
+
+                                        <div>
+                                            <h3 class="text-center">لا يوجد دورات</h3>
+                                        </div>
+                                    @endforelse
+                                </div>
+                            </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="prof2">
                             <div class="c_research">
@@ -356,3 +412,37 @@
         </div>
     </div>
 @endsection
+
+
+@push('scripts')
+    <script>
+        // Copy the code
+        document.getElementById('copyCode').addEventListener('click', function() {
+            var copyText = document.getElementById('generatedCode').innerText.trim();
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+            swal("", "تم نسخ الكود بنجاح", "info", {
+                button: "حسناً",
+            });
+        });
+
+
+        // now i want another code to copy the code when click on the code itself
+        document.getElementById('generatedCode').addEventListener('click', function() {
+            var copyText = document.getElementById('generatedCode').innerText.trim();
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+            swal("", "تم نسخ الكود بنجاح", "info", {
+                button: "حسناً",
+            });
+        });
+    </script>
+@endpush

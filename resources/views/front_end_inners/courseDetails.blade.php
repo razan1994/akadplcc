@@ -86,7 +86,7 @@
                             </div>
 
                         </div>
-                        <div class="c_left">
+                        <div class="c_left card">
                             <div class="c_box_subscribe">
                                 <div class="c_video">
                                     @if (isset($course->main_video) && file_exists($course->main_video))
@@ -97,8 +97,92 @@
                                         <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                     @endif
                                 </div>
-                                <div class="c_btn_subscribe">
-                                    <a href="{{ route('course-sections', encrypt($course->id)) }}">اشترك</a>
+                                <div class="card-body">
+                                    {{-- <div class="">
+                                        <span>السعر : </span>
+                                        <span>
+                                            @if (isset($course->price) && $course->price > 0)
+                                                {{ $course->price }} د.أ
+                                            @else
+                                                مجانا
+                                            @endif
+                                        </span>
+                                    </div> --}}
+                                    <div class="h-0 py-3 c_btn_subscribe">
+                                        <!-- Button trigger modal -->
+                                        @auth('student')
+                                            @if ($isUserRegisterationActive)
+                                                {{-- if the user is registered in "KANAF" --}}
+                                                @if (auth('student')->user()->courses->contains($course->id))
+                                                    <a href="{{ route('student.course-sections', encrypt($course->id)) }}">
+                                                        متابعة الدورة
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('student.register-course', encrypt($course->id)) }}">
+                                                        اشترك في الدورة
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <a href="#" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#exampleModal">
+                                                    اشترك في المنصة
+                                                </a>
+                                            @endif
+                                        @endauth
+
+                                        @guest('student')
+                                            <a href="#" data-toggle="modal" data-target="#loginn">
+                                                تسجيل الدخول
+                                            </a>
+                                        @endguest
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            اشتراك في المنصة
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ route('student.paypal.create') }}" method="GET">
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="mb-3 col-md-6">
+                                                                    <label class="mb-3 text-dark font-weight-medium"
+                                                                        for="validationServer01">سعر الاشتارك:
+                                                                    </label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span
+                                                                                class="input-group-text mdi mdi-format-title"
+                                                                                id="inputGroupPrepend2"></span>
+                                                                        </div>
+                                                                        <input type="text" name="amount"
+                                                                            class="form-control @error('amount') is-invalid @enderror"
+                                                                            id="validationServer01" placeholder="amount"
+                                                                            value="{{ old('amount', $public_values['registeration_amount']) }}"
+                                                                            disabled>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                style="background: #67328f !important">
+                                                                اشترك
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

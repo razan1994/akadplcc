@@ -15,9 +15,9 @@ use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\CourcesController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
+use App\Http\Controllers\Backend\Admin\PublicValuesController;
 use App\Http\Controllers\Backend\Admin\SectionController;
-
-
+use App\Http\Controllers\Backend\Admin\TasksController;
 
 Route::controller(AdminLoginController::class)
     ->group(function () {
@@ -185,6 +185,7 @@ Route::middleware('auth:super_admin')
                 Route::get('softDeleteRestore/{id}', 'softDeleteRestore')->name('news_blogs-softDeleteRestore');
             });
 
+
         // Latest NEws Routes:
         //Created By :Mohammed Salah
         // ==============================================================================
@@ -201,6 +202,7 @@ Route::middleware('auth:super_admin')
                 Route::get('/showSoftDelete', 'showSoftDelete')->name('latest_news-showSoftDelete');
                 Route::get('softDeleteRestore/{id}', 'softDeleteRestore')->name('latest_news-softDeleteRestore');
             });
+
 
 
 
@@ -232,4 +234,24 @@ Route::middleware('auth:super_admin')
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::put('/update/{id}', 'update')->name('update');
         });
+
+        // Public Values Routes:
+        //Created By :Ahmad Alsakhen
+        Route::controller(PublicValuesController::class)
+            ->prefix("public_values")
+            ->group(function () {
+                Route::get('/index', 'index')->name('public_values-index');
+                Route::put('update', 'update')->name('public_values-update');
+            });
+
+        // Course Tasks Routes:
+        //Created By :Ahmad Alsakhen
+        Route::controller(TasksController::class)
+            ->prefix("tasks")
+            ->group(function () {
+                Route::get('/index/{id}', 'index')->name('tasks-index');
+                Route::post('store/{id}', 'store')->name('tasks-store');
+                Route::get('delete/{id}', 'destroy')->name('tasks-delete');
+                Route::put('update/{id}', 'update')->name('tasks-update');
+            });
     });

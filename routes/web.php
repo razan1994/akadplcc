@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CodeController;
 use Illuminate\Support\Facades\Route;
 
 // ===================================================================================================================
@@ -8,16 +9,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\StudentController;
+use App\Http\Controllers\Payments\PaypalController;
 
 // Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 // ==================================================================================================================
 // ============================================= Shared Routes ======================================================
-
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
-
-
-
-
+Route::get('check-code-if-exist', [CodeController::class, 'checkCodeIfExist'])->name('checkCodeIfExist');
 
 // ==================================================================================================================
 // ============================================= End Shared Routes ==================================================
@@ -32,7 +30,7 @@ Route::controller(FrontendController::class)
         Route::get('/courses', 'courses')->name('courses');
 
         Route::get('/course-details/{id}', 'courseDetails')->name('course-details');
-        Route::get('course-sections/{id}', 'courseSections')->name('course-sections');
+
 
         Route::get('/news', 'news')->name('news');
 
@@ -51,32 +49,48 @@ Route::controller(StudentController::class)
         Route::post('/login',  'login')->name('login');
         Route::get('/logout',  'logout')->name('logout');
         Route::post('/register',  'register')->name('register');
-        Route::group(['middleware' => ['auth:student']], function () {
-            Route::get('/student-profile',  'studentProfile')->name('student-profile');
-
-            Route::post('/add_job_title',  'add_job_title')->name('add_job_title');
-            Route::post('/add_over_view',  'add_over_view')->name('add_over_view');
-            Route::post('/add_experience',  'add_experience')->name('add_experience');
-            Route::post('/delete_experience',  'delete_experience')->name('delete_experience');
-            Route::post('/add_contact_info',  'add_contact_info')->name('add_contact_info');
-            Route::post('/add_skills',  'add_skills')->name('add_skills');
-            Route::post('/delete_skill',  'delete_skill')->name('delete_skill');
-            Route::post('/add_education',  'add_education')->name('add_education');
-            Route::post('/delete_education',  'delete_education')->name('delete_education');
-            Route::post('/update_image',  'update_image')->name('update_image');
 
 
-            Route::get('/cv-first',  'cvFirst')->name('cv-first');
-            Route::get('/cv-second',  'cvSecond')->name('cv-second');
-            Route::get('/cv-third',  'cvThird')->name('cv-third');
-        });
+        // ----------------- Authinticated Student -----------------
+        Route::middleware(['auth:student', 'checkSessionId'])
+            ->group(function () {
+
+                // course sections 
+                Route::get('course-sections/{id}', 'courseSections')->name('course-sections')->middleware('checkStudentIfPaid');
+
+                Route::get('/student-profile',  'studentProfile')->name('student-profile');
+
+                Route::post('/add_job_title',  'add_job_title')->name('add_job_title');
+                Route::post('/add_over_view',  'add_over_view')->name('add_over_view');
+                Route::post('/add_experience',  'add_experience')->name('add_experience');
+                Route::post('/delete_experience',  'delete_experience')->name('delete_experience');
+                Route::post('/add_contact_info',  'add_contact_info')->name('add_contact_info');
+                Route::post('/add_skills',  'add_skills')->name('add_skills');
+                Route::post('/delete_skill',  'delete_skill')->name('delete_skill');
+                Route::post('/add_education',  'add_education')->name('add_education');
+                Route::post('/delete_education',  'delete_education')->name('delete_education');
+                Route::post('/update_image',  'update_image')->name('update_image');
+
+
+                Route::get('/cv-first',  'cvFirst')->name('cv-first');
+                Route::get('/cv-second',  'cvSecond')->name('cv-second');
+                Route::get('/cv-third',  'cvThird')->name('cv-third');
+
+                // ----------------- Courses -----------------
+                Route::get('register-course/{id}', 'registerCourse')->name('register-course');
+
+
+                // =================== Paypal ===================
+                Route::controller(PaypalController::class)->prefix('paypal')->name('paypal.')->group(function () {
+                    Route::get('/create/{invoiceId?}', 'create')->name('create');
+                    Route::get('/rollback/{invoiceId}', 'rollback')->name('rollback');
+                    Route::get('/cancel/{invoiceId}', 'cancel')->name('cancel');
+                });
+            });
     });
 // ------------------------------------------------------------------------------------------------------------------
 // ============================================= End Student Routes ==================================================
 // ******************************************************************************************************************
-
-
-// });
 
 
 Route::get('/privacy', function () {

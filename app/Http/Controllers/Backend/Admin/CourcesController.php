@@ -111,12 +111,14 @@ class CourcesController extends Controller
             ini_set('post_max_size', '10000M');
             $created_data = [
                 'title_ar' => $request->title_ar,
+                'title_en' => $request->title_en,
                 'desc_ar' => $request->desc_ar,
                 'teacher_ar' => $request->teacher_ar,
                 'section_count' => $request->section_count,
                 'section_time' => $request->section_time,
                 'course_date' => $request->course_date,
                 'status' => $request->status,
+                'price' => $request->price ?? 0,
             ];
 
 
@@ -186,12 +188,7 @@ class CourcesController extends Controller
     // ================================================================
     public function show($id, Route $route)
     {
-
-
-
-
         try {
-
 
             if (file_exists(storage_path('app/public/videos'))) {
                 $path = storage_path('app/public/videos');
@@ -294,12 +291,14 @@ class CourcesController extends Controller
 
                 $update_data = [
                     'title_ar' => $request->title_ar,
+                    'title_en' => $request->title_en,
                     'desc_ar' => $request->desc_ar,
                     'teacher_ar' => $request->teacher_ar,
                     'section_count' => $request->section_count,
                     'section_time' => $request->section_time,
                     'course_date' => $request->course_date,
                     'status' => $request->status,
+                    'price' => $request->price ?? 0,
                 ];
 
 

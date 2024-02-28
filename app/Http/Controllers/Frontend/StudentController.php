@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Student\StudentLoginFormRequest;
 use App\Http\Requests\Frontend\Student\StudentRegisterFormRequest;
+use App\Models\Code;
+use App\Models\Course;
 use App\Models\Student;
 use App\Models\StudentEducation;
 use App\Models\StudentExperience;
@@ -11,11 +14,14 @@ use App\Models\StudentInformation;
 use App\Models\StudentSkill;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -25,22 +31,33 @@ class StudentController extends Controller
     {
         try {
 
+            // Generate a unique code
+            do {
+                $generatedCode = Str::random(16);
+            } while (Student::where('own_code', $generatedCode)->exists()); // Check if the code already exists in the database
+
+            $name = $request->first_name . ' ' . $request->mid_first_name . ' ' . $request->mid_last_name . ' ' . $request->last_name;
+            $name =  preg_replace('/\s+/', ' ', $name); // Remove any double spaces
+
             $created_data = [
-                'first_name' => $request->first_name,
-                'mid_first_name' => $request->mid_first_name,
-                'mid_last_name' => $request->mid_last_name,
-                'last_name' => $request->last_name,
-                'username' => $request->username,
+                'name' => $name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
                 'user_status' => 2,
+                'own_code' => $generatedCode,
             ];
+
+            if ($request->has('referral_code')) {
+                $created_data['referral_code'] = $request->referral_code;
+            }
 
             // Start the transaction
             $user = Student::create($created_data);
             Auth::guard('student')->login($user);
-            return redirect()->back()->with('success', 'تم التسجيل بنجاح ...');
+            event(new Registered($user));
+            Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
+            return redirect()->route('student.student-profile')->with('success', 'تم التسجيل بنجاح ...');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -67,20 +84,17 @@ class StudentController extends Controller
     }
 
 
-    function login(Request $request)
+    function login(StudentLoginFormRequest $request)
     {
-        // Validate form data
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required|min:6'
-        ]);
+
         // التحقق اذا كان الدخول عن طريق رقم الهاتف او الايميل
         if (is_numeric($request->get('email'))) {
             // Attempt to log the patient in
             if (Auth::guard('student')->attempt(['phone' => $request->email, 'password' => $request->password])) {
                 Auth::guard('student')->user();
+                Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
                 // return "logged in Patient";
-                return redirect()->route('student.student-profile');
+                return redirect()->route('student.student-profile')->with('success', 'تم تسجيل الدخول بنجاح');
 
                 // Attempt to log the doctor in
             }
@@ -88,10 +102,10 @@ class StudentController extends Controller
             // Attempt to log the patient in
             if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password])) {
                 Auth::guard('student')->user();
-                return redirect()->route('student.student-profile');
+                Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
+                return redirect()->route('student.student-profile')->with('success', 'تم تسجيل الدخول بنجاح');
             }
         }
-
 
         return redirect()->back()->with('login_error', 'البريد الالكتروني او كلمة المرور غير صحيحة');
     }
@@ -99,7 +113,6 @@ class StudentController extends Controller
     function logout()
     {
         Auth::guard('student')->logout();
-
         return redirect()->route('welcome');
     }
 
@@ -234,7 +247,49 @@ class StudentController extends Controller
     }
 
 
+    function courseSections(Route $route, $id)
+    {
 
+        try {
+            $id = decrypt($id);
+            $student = auth('student')->user();
+
+            $course = Course::with('sections')->find($id);
+
+            if (!$course) {
+                return redirect()->back()->with('danger', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
+            } else {
+                // check if the student is registered in the course
+                if ($course->students->contains($student)) {
+                    return view('front_end_inners.courseSections', compact('course'));
+                } else {
+                    return redirect()->back()->with('danger', 'الطالب غير مسجل في هذه الدورة');
+                }
+            }
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
 
     function add_job_title(Request $request)
     {
@@ -390,7 +445,6 @@ class StudentController extends Controller
 
     function delete_experience(Request $request)
     {
-
         // return $request;
         $request->validate([
             'id' => 'required'
@@ -744,4 +798,44 @@ class StudentController extends Controller
             return response()->json(['status' => false]);
         }
     }
+
+
+    // ===============================================================================================
+    // ================================ Courses Section ==============================================
+    // ===============================================================================================
+    public function registerCourse(Request $request, $id, Route $route)
+    {
+        try {
+            $course_id = decrypt($id);
+            $course = Course::find($course_id);
+            if (!$course) {
+                return redirect()->back()->with('danger', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
+            }
+            $course->students()->attach(auth('student')->id());
+            return redirect()->route('student.course-sections', encrypt($course_id))->with('success', 'تم التسجيل في الدورة بنجاح');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
 }

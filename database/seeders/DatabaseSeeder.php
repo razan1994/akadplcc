@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            UserSeeder::class,
-            AboutUsSeeder::class,
-            ContactUsSeeder::class,
-            PublicCountrySeeder::class,
-            PublicLanguageSeeder::class,
-            PublicNationalitySeeder::class,
-            PublicPhoneKeySeeder::class,
-
+            // UserSeeder::class,
+            // AboutUsSeeder::class,
+            // ContactUsSeeder::class,
+            // PublicCountrySeeder::class,
+            // PublicLanguageSeeder::class,
+            // PublicNationalitySeeder::class,
+            // PublicPhoneKeySeeder::class,
+            PublicValuesSeeder::class,
         ]);
     }
 }

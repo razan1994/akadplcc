@@ -37,8 +37,10 @@
                     <ul class="collapse" id="user" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.users-index','Super Admin') }}">
-                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i> Admin Users </span>
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.users-index', 'Super Admin') }}">
+                                    <span class="nav-text" style="font-size: 9pt;"><i class="mdi mdi-account-group"></i>
+                                        Admin Users </span>
                                 </a>
                             </li>
                         </div>
@@ -53,8 +55,7 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#cources"
                         aria-expanded="false" aria-controls="job">
                         <i class="fas fa-briefcase"> </i>
-                        <span class="nav-text" style="font-size: 9pt;"> Cources </span> <b
-                            class="caret"></b>
+                        <span class="nav-text" style="font-size: 9pt;"> Cources </span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="cources" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -72,8 +73,7 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#job"
                         aria-expanded="false" aria-controls="job">
                         <i class="fas fa-briefcase"> </i>
-                        <span class="nav-text" style="font-size: 9pt;"> Website Layout </span> <b
-                            class="caret"></b>
+                        <span class="nav-text" style="font-size: 9pt;"> Website Layout </span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="job" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -108,7 +108,8 @@
                                 </a>
                             </li>
                             <li class="active">
-                                <a class="sidenav-item-link" href="{{ route('super_admin.term_and_conditions-index') }}">
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.term_and_conditions-index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="nav-text" style="font-size: 9pt;"> Term & Conditions</span>
                                 </a>
@@ -128,8 +129,7 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#contactUs" aria-expanded="false" aria-controls="contactUs">
                         <i class="fas fa-id-card"></i>
-                        <span class="nav-text" style="font-size: 9pt;"> Contact Us</span> <b
-                            class="caret"></b>
+                        <span class="nav-text" style="font-size: 9pt;"> Contact Us</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="contactUs" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -149,6 +149,25 @@
                     </ul>
                 </li>
 
+                {{-- Public Values --}}
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                        data-target="#public_values" aria-expanded="false" aria-controls="public_values">
+                        <i class="fas fa-briefcase"> </i>
+                        <span class="nav-text" style="font-size: 9pt;"> Public values </span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" id="public_values" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.public_values-index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="nav-text" style="font-size: 9pt;"> Index </span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+
                 {{-- Support Tickets --}}
                 <li class="active">
                     <a class="sidenav-item-link" href="{{ route('super_admin.support_tickets-index') }}">
@@ -159,7 +178,8 @@
 
                 {{-- Logout : --}}
                 <li class="active">
-                    <a class="sidenav-item-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="sidenav-item-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout"></i>
                         <span class="nav-text" style="font-size: 9pt;">Logout</span>
                     </a>

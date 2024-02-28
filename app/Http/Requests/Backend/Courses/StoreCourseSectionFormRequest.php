@@ -27,7 +27,7 @@ class StoreCourseSectionFormRequest extends FormRequest
         return [
             'title_ar' => 'required',
             'section_image' => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
-            'video' => ['required', 'url'],
+            'video' => ['url', 'nullable'],
         ];
     }
 }

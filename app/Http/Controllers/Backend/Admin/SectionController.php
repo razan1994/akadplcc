@@ -21,7 +21,6 @@ class SectionController extends Controller
     {
         $section = CourseSection::findOrFail($id);
 
-
         if ($section) {
             return view('admin.sections.edit', compact('section'));
         } else {

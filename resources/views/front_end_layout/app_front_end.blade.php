@@ -44,6 +44,7 @@
     {{-- ========================================================== --}}
     {{-- =================== Sweet Alert Section ================== --}}
     {{-- ========================================================== --}}
+
     @stack('styles')
 
 </head>
@@ -96,6 +97,38 @@
 
 <script src="{{ asset('js/custom.js') }}"></script>
 
+{{-- For The Code Registeration Input --}}
+<script>
+    $(document).ready(function() {
+        $('#codeInput').on('input', function() {
+            let code = $(this).val();
+            let validationMessage = $('#codeValidationMessage');
+            $.ajax({
+                url: "{{ route('checkCodeIfExist') }}",
+                type: "GET",
+                data: {
+                    code: code,
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        validationMessage.html(response.message);
+                        // make the input readonly
+                        $('#codeInput').attr('readonly', true);
+                        // take the parent of this element and replace class text-danger with text-success
+                        validationMessage.parent()
+                            .removeClass('text-danger')
+                            .addClass('text-success');
+                    } else {
+                        validationMessage.html(response.message);
+                    }
+                },
+                error: function(err) {
+                    $('#codeValidationMessage').html('حدث خطأ ما');
+                },
+            });
+        });
+    });
+</script>
 {{-- swipers --}}
 <script>
     // slider swiper
@@ -103,8 +136,8 @@
         slidesPerView: 1,
         loop: false,
         autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false,
         },
         pagination: {
             el: ".slider .swiper-pagination",
@@ -123,8 +156,8 @@
         spaceBetween: 25,
         loop: false,
         autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false,
         },
         grid: {
             rows: 2,
@@ -147,7 +180,7 @@
     });
 
 
-       var swiper = new Swiper('.our_brands .swiper-container', {
+    var swiper = new Swiper('.our_brands .swiper-container', {
         slidesPerView: 4,
         spaceBetween: 50,
         loop: false,
@@ -156,8 +189,8 @@
             clickable: true,
         },
         autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false,
         },
         breakpoints: {
             200: {
@@ -192,8 +225,8 @@
             clickable: true,
         },
         autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false,
         },
         breakpoints: {
             200: {
@@ -215,17 +248,17 @@
         watchSlidesProgress: true,
         direction: "vertical",
         mousewheel: true,
-      });
-      var swiper2 = new Swiper(".c_coursubs_Swiper .mySwiper2", {
+    });
+    var swiper2 = new Swiper(".c_coursubs_Swiper .mySwiper2", {
         spaceBetween: 10,
         navigation: {
-          nextEl: ".c_coursubs_Swiper .swiper-button-next",
-          prevEl: ".c_coursubs_Swiper .swiper-button-prev",
+            nextEl: ".c_coursubs_Swiper .swiper-button-next",
+            prevEl: ".c_coursubs_Swiper .swiper-button-prev",
         },
         thumbs: {
-          swiper: swiper,
+            swiper: swiper,
         },
-      });
+    });
 </script>
 
 {{-- paginate --}}
@@ -240,22 +273,32 @@
 
 <!-- Meta Pixel Code -->
 <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '365919791763759');
     fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=365919791763759&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+</script>
+<noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=365919791763759&ev=PageView&noscript=1" /></noscript>
+<!-- End Meta Pixel Code -->
 
 
-    @stack('scripts')
+@stack('scripts')
+
 </html>

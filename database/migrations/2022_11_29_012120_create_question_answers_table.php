@@ -17,7 +17,7 @@ class CreateQuestionAnswersTable extends Migration
             $table->id();
             $table->bigInteger('task_id');
             $table->longText('answer');
-            $table->tinyInteger('status')->comment('1 => Correct || 2 => Incorrect');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
