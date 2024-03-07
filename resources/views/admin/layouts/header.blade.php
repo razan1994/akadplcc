@@ -32,35 +32,35 @@
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-account-plus"></i> New user registered
-                                <span class="float-right  font-size-12 d-inline-block"><i
+                                <span class="float-right font-size-12 d-inline-block"><i
                                         class="mdi mdi-clock-outline"></i> 10 AM</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-account-remove"></i> User deleted
-                                <span class="float-right  font-size-12 d-inline-block"><i
+                                <span class="float-right font-size-12 d-inline-block"><i
                                         class="mdi mdi-clock-outline"></i> 07 AM</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
-                                <span class="float-right  font-size-12 d-inline-block"><i
+                                <span class="float-right font-size-12 d-inline-block"><i
                                         class="mdi mdi-clock-outline"></i> 12 PM</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-account-supervisor"></i> New client
-                                <span class="float-right  font-size-12 d-inline-block"><i
+                                <span class="float-right font-size-12 d-inline-block"><i
                                         class="mdi mdi-clock-outline"></i> 10 AM</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-server-network-off"></i> Server overloaded
-                                <span class="float-right  font-size-12 d-inline-block"><i
+                                <span class="float-right font-size-12 d-inline-block"><i
                                         class="mdi mdi-clock-outline"></i> 05 AM</span>
                             </a>
                         </li>

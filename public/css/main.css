@@ -799,8 +799,7 @@ input#quantity {
   margin: auto !important;
 }
 .c_page_profile .c-left .c_editInfo {
-    /* // NOTE: i stopped this padding */
-  /* padding: 0 50px 0 100px; */
+  padding: 0 50px 0 100px;
 }
 .c_page_profile .c-left .c_editInfo .c_imgchosee > label {
   width: 100px !important;

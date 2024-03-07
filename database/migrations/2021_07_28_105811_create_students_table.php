@@ -36,6 +36,7 @@ class CreateStudentsTable extends Migration
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->timestamp('name_updated_at')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->string('session_id')->nullable();
             $table->timestamps();

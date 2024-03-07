@@ -8,6 +8,7 @@ use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
 use App\Http\Controllers\Backend\Admin\BackendStudentController;
+use App\Http\Controllers\Backend\Admin\BannerController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\CourcesController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
+use App\Http\Controllers\Backend\Admin\PaymentWalletController;
 use App\Http\Controllers\Backend\Admin\PublicValuesController;
 use App\Http\Controllers\Backend\Admin\SectionController;
 use App\Http\Controllers\Backend\Admin\TasksController;
@@ -254,4 +256,25 @@ Route::middleware('auth:super_admin')
                 Route::get('delete/{id}', 'destroy')->name('tasks-delete');
                 Route::put('update/{id}', 'update')->name('tasks-update');
             });
+
+        // Banner Routes:
+        //Created By :Ahmad Alsakhen
+        Route::resource('banners', BannerController::class)->except(['show']);
+
+
+        // Wallet Routes :
+        //Created By :Ahmad Alsakhen
+        // ==============================================================================
+        Route::group(['prefix' => 'wallet'], function () {
+            // Route::get('/', [WalletController::class, 'index'])->name('wallet-index');
+            // Route::get('/pay-out/{id}', [WalletController::class, 'payOut'])->name('wallet-pay-out');
+            // paymnet wallets
+            Route::resource('payment_wallets', PaymentWalletController::class);
+            Route::post('payment_wallets/{id}/toggle-status', [PaymentWalletController::class, 'toggleStatus'])->name('payment_wallets.toggle-status');
+            // =========== Wallet Request Orders Controller ===========
+            // Route::get('wallet_requested_orders/{status?}', [RequestedWalletOrders::class, 'index'])->name('wallet_orders.index');
+            // Route::get('western_requested_orders/{status?}', [RequestedWalletOrders::class, 'western'])->name('western_orders.index');
+            // Route::post('requested_orders/pay/{id}', [RequestedWalletOrders::class, 'pay'])->name('requested_orders.pay');
+            // Route::post('requested_orders/reject/{id}', [RequestedWalletOrders::class, 'reject'])->name('requested_orders.reject');
+        });
     });

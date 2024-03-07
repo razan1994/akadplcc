@@ -314,12 +314,17 @@
 
 @if (auth('student')->check() && !auth('student')->user()->email_verified_at)
     <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center justify-content-between"
-        role="alert" style="direction: rtl">
-        <p class="m-0">
-            <strong>تنبيه !</strong> يجب عليك تفعيل البريد الالكتروني الخاص بك
-        </p>
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        role="alert">
+        <form action="{{ route('verification.send') }}" method="post" class="w-full d-flex justify-content-between align-items-center">
+            @csrf
+            <p class="m-0">
+                <strong>تنبيه !</strong> يجب عليك تفعيل البريد الالكتروني الخاص بك
+                <br>
+            </p>
+
+            <button>
+                    إعادة ارسال رابط التفعيل
+            </button>
+        </form>
     </div>
 @endif

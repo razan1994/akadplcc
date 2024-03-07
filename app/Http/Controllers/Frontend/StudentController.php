@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Student\StudentLoginFormRequest;
 use App\Http\Requests\Frontend\Student\StudentRegisterFormRequest;
+use App\Http\Requests\Frontend\Student\UpdateStudentProfileRequest;
 use App\Models\Code;
 use App\Models\Course;
 use App\Models\Student;
@@ -147,7 +148,69 @@ class StudentController extends Controller
         }
     }
 
+    function updateStudentProfile(UpdateStudentProfileRequest $request, Route $route)
+    {
+        // try {
+        // check if the name length is less than 2 words return error
+        if (count(explode(' ', $request->name)) < 2) {
+            return redirect()->back()->with('danger', 'اسم المستخدم يجب ان يتكون من مقطعين على الاقل');
+        }
+        if (count(explode(' ', $request->name)) > 4) {
+            return redirect()->back()->with('danger', 'اسم المستخدم يجب ان لا يزيد عن 4 مقاطع');
+        }
+        
+        $user = Student::find(auth('student')->user()->id);
 
+        if ($user->name_updated_at == null) { // first time
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'name_updated_at' => now()
+            ]);
+        } else {
+            $name_updated_at = $user->name_updated_at;
+            $now = now();
+            $diff = $now->diffInDays($name_updated_at);
+
+            $user->update([
+                'email' => $request->email,
+                'phone' => $request->phone,
+            ]);
+
+            if ($diff > 60) {
+                $user->update([
+                    'name' => $request->name,
+                    'name_updated_at' => now()
+                ]);
+            }
+        }
+        return redirect()->back()->with('success', 'تم تحديث البيانات بنجاح');
+
+        // } catch (\Throwable $th) {
+        //     $function_name =  $route->getActionName();
+        //     $check_old_errors = new SupportTicket();
+        //     $check_old_errors = $check_old_errors->select('*')->where([
+        //         'error_location' => $th->getFile(),
+        //         'error_description' => $th->getMessage(),
+        //         'function_name' => $function_name,
+        //         'error_line' => $th->getLine(),
+        //     ])->get();
+
+        //     if ($check_old_errors->count() == 0) {
+        //         $new_error_ticket = SupportTicket::create([
+        //             'error_location' => $th->getFile(),
+        //             'error_description' => $th->getMessage(),
+        //             'function_name' => $function_name,
+        //             'error_line' =>  $th->getLine(),
+        //         ]);
+        //         $end_error_ticket = $new_error_ticket;
+        //     } else {
+        //         $end_error_ticket = $check_old_errors->first();
+        //     }
+        //     return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        // }
+    }
 
     function cvFirst(Route $route)
     {
@@ -837,5 +900,4 @@ class StudentController extends Controller
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
     }
-
 }

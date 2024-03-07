@@ -105,11 +105,11 @@
 
                 <div class="c-left">
                     <div class="tab-content" id="myTabContent">
-                        <div role="tabpanel" class="tab-pane fade active show" id="prof1">
+                        <div role="tabpanel" class="tab-pane fade active show c_editInfo" id="prof1">
                             @php
                                 $lastPayment = auth('student')->user()->payments()->latest()->first();
                             @endphp
-                            <div class="c_editInfo">
+                            <div>
                                 @if ($lastPayment)
                                     <div class="px-3 py-2">
                                         <p>
@@ -140,14 +140,38 @@
                                 </div>
                             </div>
 
-                            <form class="c_editInfo" action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('student.update-student-profile') }}" method="POST">
                                 @csrf
                                 <div class="row">
+                                    @php
+                                        $lastUpdate = \Carbon\Carbon::parse(auth('student')->user()->name_updated_at);
+                                        $now = \Carbon\Carbon::now();
+                                        $diffInDays = $lastUpdate->diffInDays($now);
+                                        $diff = 60 - $diffInDays;
+                                
+                                        $canUpdateName = (auth('student')->user()->name_updated_at == null ? true : $diffInDays >= 60) ? true : false;
+                                    @endphp
                                     {{-- Name --}}
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label>اسم المستخدم </label>
                                         <input type="text" value="{{ auth('student')->user()->name }}" name="name"
-                                            class="" placeholder="" id="name_ar">
+                                            @readonly($canUpdateName) class="" placeholder="" id="name_ar">
+                                        {{-- add note for: the name can updated ionly every 60 day --}}
+                                        <span>
+                                            <strong>تنبيه!</strong>
+                                            <small class="text-danger">
+                                                @if (auth('student')->user()->name_updated_at)
+                                                    @if ($canUpdateName)
+                                                        يمكن تحديث الاسم مرة كل 60 يوم (التحديث القادم في
+                                                        {{ $diff }} يوم)
+                                                    @else
+                                                        يمكن تحديث الاسم مرة كل 60 يوم
+                                                    @endif
+                                                @else
+                                                    يمكن تحديث الاسم مرة كل 60 يوم
+                                                @endif
+                                            </small>
+                                        </span>
                                     </div>
 
                                     {{-- E-mail --}}
@@ -166,10 +190,12 @@
 
                                     {{-- Button --}}
                                     <div class="c_btnn col-md-12">
+
                                         <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
                                     </div>
                                 </div>
                             </form>
+
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="myCourses">

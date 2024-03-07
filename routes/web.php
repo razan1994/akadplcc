@@ -59,6 +59,7 @@ Route::controller(StudentController::class)
                 Route::get('course-sections/{id}', 'courseSections')->name('course-sections')->middleware('checkStudentIfPaid');
 
                 Route::get('/student-profile',  'studentProfile')->name('student-profile');
+                Route::post('/update-student-profile',  'updateStudentProfile')->name('update-student-profile');
 
                 Route::post('/add_job_title',  'add_job_title')->name('add_job_title');
                 Route::post('/add_over_view',  'add_over_view')->name('add_over_view');
@@ -183,3 +184,6 @@ Route::get('/test', function () {
 Route::get('/testAnswer', function () {
     return view('front_end_inners.testAnswer');
 })->name('testAnswer');
+
+
+require __DIR__ . '/auth.php';
