@@ -516,42 +516,25 @@
         <section class="sales">
             <div class="container_1200">
                 <div class="c_slick_sales">
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
+
+                    @forelse ($banners as $banner)
+                        <div class="c_item">
+                            @if (isset($banner->image) && file_exists($banner->image))
+                                <img src="{{ asset($banner->image) }}">
+                            @else
+                                <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                            @endif
                         </div>
-                    </div>
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
-                        </div>
-                    </div>
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
-                        </div>
-                    </div>
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
-                        </div>
-                    </div>
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
-                        </div>
-                    </div>
-                    <div class="c_item">
-                        <div class="c_body">
-                            <h4>احصل على خصم 50%</h4>
-                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
-                        </div>
-                    </div>
+                    @empty
+                        @for ($i = 0; $i < 5; $i++)
+                            <div class="c_item">
+                                <div class="c_body">
+                                    <h4>احصل على خصم 50%</h4>
+                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
+                                </div>
+                            </div>
+                        @endfor
+                    @endforelse ()
                 </div>
             </div>
         </section>
@@ -585,46 +568,13 @@
                                     </div>
                                 @endforeach
                             @else
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                @for ($i = 0; $i < 8; $i++)
+                                    <div class="swiper-slide">
+                                        <div class="c_item">
+                                            <img src="{{ asset('front_end_style/images/parnter.png') }}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                    </div>
-                                </div>
+                                @endfor
                             @endif
                         </div>
                         <div class="swiper-pagination"></div>

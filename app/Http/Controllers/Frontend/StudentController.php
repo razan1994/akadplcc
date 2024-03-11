@@ -3,18 +3,26 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\RequestPaymentOrder\StoreRequestOrderRequest;
 use App\Http\Requests\Frontend\Student\StudentLoginFormRequest;
 use App\Http\Requests\Frontend\Student\StudentRegisterFormRequest;
 use App\Http\Requests\Frontend\Student\UpdateStudentProfileRequest;
+use App\Http\Requests\Frontend\SubscriptionRequests\StoreSubscriptionRequest;
 use App\Models\Code;
 use App\Models\Course;
+use App\Models\Payment;
+use App\Models\PaymentWallet;
+use App\Models\PaymentWalletOrders;
+use App\Models\PublicValue;
 use App\Models\Student;
 use App\Models\StudentEducation;
 use App\Models\StudentExperience;
 use App\Models\StudentInformation;
 use App\Models\StudentSkill;
+use App\Models\SubscriptionRequest;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -122,7 +130,8 @@ class StudentController extends Controller
         try {
 
             $auth = Auth::guard('student')->user();
-            return view('front_end_inners.myAccount', compact('auth'));
+            $paymentWallets = PaymentWallet::where('status', 'active')->get();
+            return view('front_end_inners.myAccount', compact('auth', 'paymentWallets'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -158,7 +167,7 @@ class StudentController extends Controller
         if (count(explode(' ', $request->name)) > 4) {
             return redirect()->back()->with('danger', 'اسم المستخدم يجب ان لا يزيد عن 4 مقاطع');
         }
-        
+
         $user = Student::find(auth('student')->user()->id);
 
         if ($user->name_updated_at == null) { // first time
@@ -875,7 +884,213 @@ class StudentController extends Controller
                 return redirect()->back()->with('danger', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
             }
             $course->students()->attach(auth('student')->id());
+            // update the timestamp records
+            $course->students()->updateExistingPivot(auth('student')->id(), ['created_at' => now(), 'updated_at' => now()]);
+
             return redirect()->route('student.course-sections', encrypt($course_id))->with('success', 'تم التسجيل في الدورة بنجاح');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+    // ===============================================================================================
+    // ================================ Wallet Subscriptions ==============================================
+    // ===============================================================================================
+    public function storeSubscriptionRequest(StoreSubscriptionRequest $request, Route  $route)
+    {
+        try {
+            $student = auth('student')->user();
+            // ارسال طلب الاشتراك باستخدام المحفظة
+            $payment_wallet = PaymentWallet::where('id', $request->wallet_id)->latest()->first();
+            if (!$payment_wallet) {
+                return redirect()->back()->with('danger', 'المحفظة التي تحاول الوصول اليها غير موجودة في السجلات');
+            }
+
+            // check if the student already registered in the webiste
+            $lastPayment = $student->payments()->latest()->first();
+            if ($lastPayment && $lastPayment->payment_status == 'paid' && $lastPayment->due_at > Carbon::now()) {
+                return redirect()->back()->with('danger', 'لديك اشتراك ساري المفعول');
+            }
+
+            // check if the student have previous pending subscription
+            $last_subscription = SubscriptionRequest::where('user_id', $student->id)->latest()->first();
+            if ($last_subscription && $last_subscription->status == 'pending') {
+                return redirect()->back()->with('danger', 'لديك طلب اشتراك قيد المراجعة');
+            }
+
+
+
+
+            SubscriptionRequest::create([
+                'user_id' => $student->id,
+                'payment_wallet' => $payment_wallet->name,
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message,
+            ]);
+
+            return redirect()->back()->with('success', 'تم ارسال طلب الاشتراك بنجاح');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+
+
+    // ===============================================================================================
+    // ================================ Points Subscriptions ==============================================
+    // ===============================================================================================
+    public function subscribeToWebisteUsingPoints(Route  $route)
+    {
+        try {
+            $student = auth('student')->user();
+            // check if the student already registered in the webiste
+            $lastPayment = $student->payments()->latest()->first();
+            if ($lastPayment && $lastPayment->payment_status == 'paid' && $lastPayment->due_at > Carbon::now()) {
+                return redirect()->back()->with('danger', 'لديك اشتراك ساري المفعول');
+            }
+
+            // check if the student have previous pending subscription
+            $last_subscription = SubscriptionRequest::where('user_id', $student->id)->latest()->first();
+            if ($last_subscription && $last_subscription->status == 'pending') {
+                return redirect()->back()->with('danger', 'لديك طلب اشتراك قيد المراجعة');
+            }
+
+            // check for the student points
+            if ($student->points < 100) {
+                return redirect()->back()->with('danger', 'عدد النقاط غير كافي للاشتراك, يجب ان يكون عدد النقاط 100 نقطة على الاقل');
+            }
+
+            Payment::create([
+                'payment_method' => 'points',
+                'status' => 'accepted',
+                'payment_status' => 'paid',
+                'amount' => 100,
+                'student_id' => $student->id,
+                'due_at' => Carbon::now()->addYear(),
+            ]);
+
+            // deduct the points from the student
+            $student->update([
+                'points' => $student->points - 100
+            ]);
+
+            return redirect()->back()->with('success', 'تم الاشتراك بنجاح');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    // ===============================================================================================
+    // ================================ Payment Wallet Orders ==============================================
+    // ===============================================================================================
+    public function requestPaymentWalletOrder(StoreRequestOrderRequest $request, Route  $route)
+    {
+        try {
+            $student = auth('student')->user();
+            $maximumPointsForWithdrawls = PublicValue::where('key', 'maximum_points_for_withdrawls')->first()->value;
+
+            // check if the student have previous pending withdrawl request
+            $lastOrderRequest = $student->paymentWalletOrders()->latest()->first();
+            if ($lastOrderRequest && $lastOrderRequest->status == 'pending') {
+                return redirect()->back()->with('danger', 'لديك طلب سابق قيد المراجعة');
+            }
+
+            // check for the student points
+            if ($student->points < $maximumPointsForWithdrawls) {
+                return redirect()->back()->with('danger', 'عدد النقاط غير كافي للسحب, يجب ان يكون عدد النقاط ' . $maximumPointsForWithdrawls . ' نقطة على الاقل');
+            }
+
+            if ($request->type == 'wallet') {
+                $payment_wallet = PaymentWallet::where('id', $request->payment_wallet_id)->latest()->first();
+                PaymentWalletOrders::create([
+                    'payment_wallet_id' => $payment_wallet->id,
+                    'wallet_name' => $payment_wallet->name,
+                    'student_id' => $student->id,
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                    'type' => 'wallet',
+                    'amount' => $student->points,
+                    'message' => $request->message,
+                ]);
+            } else {
+                PaymentWalletOrders::create([
+                    'student_id' => $student->id,
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'type' => 'paypal',
+                    'amount' => $student->points,
+                    'message' => $request->message,
+                ]);
+            }
+
+            return redirect()->back()->with('success', 'تم ارسال طلب السحب بنجاح');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

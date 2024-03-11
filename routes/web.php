@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\StudentController;
 use App\Http\Controllers\Payments\PaypalController;
+use App\Mail\MyEmail;
+use Illuminate\Support\Facades\Mail;
 
 // Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 // ==================================================================================================================
@@ -87,6 +89,14 @@ Route::controller(StudentController::class)
                     Route::get('/rollback/{invoiceId}', 'rollback')->name('rollback');
                     Route::get('/cancel/{invoiceId}', 'cancel')->name('cancel');
                 });
+
+                // =================== Subscription Requests ===================
+                Route::post('/store-subscription-request', 'storeSubscriptionRequest')->name('store-subscription-request');
+
+                // =================== Subscription Using Pointts ===================
+                Route::get('/subscribe-using-points', 'subscribeToWebisteUsingPoints')->name('subscribe-using-points');
+                // =================== Reuquted Orders Withdrawls ===================
+                Route::post('/store-withdrawal-request', 'requestPaymentWalletOrder')->name('request-withdrawl-order');
             });
     });
 // ------------------------------------------------------------------------------------------------------------------
@@ -185,5 +195,11 @@ Route::get('/testAnswer', function () {
     return view('front_end_inners.testAnswer');
 })->name('testAnswer');
 
+
+Route::get('test-email', function () {
+    return Mail::to(
+        'ahmadalsakhen36@gmail.com'
+    )->send(new MyEmail());
+});
 
 require __DIR__ . '/auth.php';

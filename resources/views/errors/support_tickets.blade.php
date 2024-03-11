@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Target Point Tech | TPT</title>
+    <title>
+
+    </title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -71,16 +73,29 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md ">
-                <img class="img-thumbnail image-preview " style="border: 1px solid #9b3c05; width: 50% !important;" src="{{ asset('images_default/target_point.png') }}" alt="">
+                <img class="img-thumbnail image-preview " style="border: 1px solid #9b3c05; width: 50% !important;"
+                    src="{{ asset('images_default/target_point.png') }}" alt="">
             </div>
             <div class="m-b-md-12">
-                <h1 style="color: #797979;">Target Point Technologies</h1>
+                <h1 style="color: #797979;">
+                    Smartzone JO
+                </h1>
                 <hr>
-                <h1 style="color: #797979;">Ticket Number : ( @isset ($end_error_ticket){{ $end_error_ticket->id }}@endisset )</h1>
+                <h1 style="color: #797979;">Ticket Number :
+                    (
+                    @isset($end_error_ticket)
+                        {{ $end_error_ticket->id }}
+                    @endisset
+                    )
+                </h1>
                 <hr>
                 <h2 style="color:red">Please contact the technical support department to solve this problem</h2>
-                <h2 style="color: #b84f04;">Mobile : +962 788823233 || E-mail : TTTTTTTTTTTT</h2>
-                <h2><a href="{{ route('welcome',1) }}">Back To Home Page</a></h2>
+                <h2 style="color: #b84f04;">
+                    <b>Mobile :</b> <a style="color: #883d08;" href="tel:+962777005665">+962 777005665 </a>
+                    ||
+                    <b>E-mail :</b> <a style="color: #883d08;" href="mailto:it@smartzone-jo.com">it@smartzone-jo.com</a>
+                </h2>
+                <h2><a href="{{ route('welcome', 1) }}">Back To Home Page</a></h2>
             </div>
         </div>
     </div>

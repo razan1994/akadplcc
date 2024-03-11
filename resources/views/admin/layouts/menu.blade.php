@@ -48,7 +48,32 @@
                     </ul>
                 </li>
 
+                {{-- Students --}}
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                        data-target="#students" aria-expanded="false" aria-controls="students">
+                        <i class="mdi mdi-account-group"></i>
+                        <span class="pl-1 nav-text" style="font-size: 9pt;">Students</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" id="students" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.students.index') }}">
+                                    <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
+                                        style="font-size: 9pt;"> All Students
+                                    </span>
+                                </a>
 
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.students.requested-subscriptions') }}">
+                                    <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
+                                        style="font-size: 9pt;"> Subscription requests
+                                    </span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
 
 
                 {{-- Website Layout --}}
@@ -69,6 +94,7 @@
                         </div>
                     </ul>
                 </li>
+
                 {{-- Website Layout --}}
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#job"
@@ -171,6 +197,24 @@
                                 <a class="sidenav-item-link" href="{{ route('super_admin.payment_wallets.index') }}">
                                     <i class="fas fa-briefcase"> </i>
                                     <span class="pl-1 nav-text" style="font-size: 9pt;"> Payment Wallets </span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'wallet' ,'status'=>'pending']) }}">
+                                    <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
+                                        style="font-size: 9pt;"> Wallet withdrawals
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a class="sidenav-item-link"
+                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'paypal' ,'status'=>'pending']) }}">
+                                    <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
+                                        style="font-size: 9pt;"> Paypal withdrawals
+                                    </span>
                                 </a>
                             </li>
                         </div>

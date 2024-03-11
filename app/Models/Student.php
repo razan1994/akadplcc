@@ -86,12 +86,18 @@ class Student extends Authenticatable implements MustVerifyEmail
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'student_courses', 'student_id', 'course_id');
+        return $this->belongsToMany(Course::class, 'student_courses', 'student_id', 'course_id')
+            ->withPivot(['progress', 'created_at', 'updated_at']);
     }
 
     public function payments()
     {
         return $this->hasMany(Payment::class, 'student_id');
+    }
+
+    public function lastPayment()
+    {
+        return $this->hasOne(Payment::class, 'student_id')->latest() ?? null;
     }
 
     public function sections()
@@ -108,6 +114,16 @@ class Student extends Authenticatable implements MustVerifyEmail
     public function referrerStudent()
     {
         return $this->belongsTo(Student::class, 'own_code', 'referral_code');
+    }
+
+    public function paymentWalletOrders()
+    {
+        return $this->hasMany(PaymentWalletOrders::class, 'student_id')->latest();
+    }
+
+    public function totalWithdrawlsPoints()
+    {
+        return $this->hasMany(PaymentWalletOrders::class, 'student_id')->where('status', 'paid')->sum('amount');
     }
     // ===================================================================================================================
     // ============================================= Mutator Section =====================================================

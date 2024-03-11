@@ -99,15 +99,15 @@
                                 </div>
                                 <div class="card-body">
                                     {{-- <div class="">
-                                        <span>السعر : </span>
-                                        <span>
-                                            @if (isset($course->price) && $course->price > 0)
-                                                {{ $course->price }} د.أ
-                                            @else
-                                                مجانا
-                                            @endif
-                                        </span>
-                                    </div> --}}
+                                    <span>السعر : </span>
+                                    <span>
+                                        @if (isset($course->price) && $course->price > 0)
+                                        {{ $course->price }} د.أ
+                                        @else
+                                        مجانا
+                                        @endif
+                                    </span>
+                                </div> --}}
                                     <div class="h-0 py-3 c_btn_subscribe">
                                         <!-- Button trigger modal -->
                                         @auth('student')
@@ -149,33 +149,170 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('student.paypal.create') }}" method="GET">
-                                                        <div class="modal-body">
-                                                            <div class="form-row">
-                                                                <div class="mb-3 col-md-6">
-                                                                    <label class="mb-3 text-dark font-weight-medium"
-                                                                        for="validationServer01">سعر الاشتارك:
-                                                                    </label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span
-                                                                                class="input-group-text mdi mdi-format-title"
-                                                                                id="inputGroupPrepend2"></span>
-                                                                        </div>
-                                                                        <input type="text" name="amount"
-                                                                            class="form-control @error('amount') is-invalid @enderror"
-                                                                            id="validationServer01" placeholder="amount"
-                                                                            value="{{ old('amount', $public_values['registeration_amount']) }}"
-                                                                            disabled>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('student.paypal.create') }}" method="GET"
+                                                            id="paypalForm">
+                                                        </form>
 
+                                                        <form action="{{ route('student.subscribe-using-points') }}"
+                                                            method="GET" id="pointsForm">
+                                                        </form>
+
+                                                        {{-- <input type="text" name="amount"
+                                                        class="form-control @error('amount') is-invalid @enderror"
+                                                        id="validationServer01" placeholder="amount"
+                                                        value="{{ old('amount', $public_values['registeration_amount']) }}"
+                                                        disabled> --}}
+
+                                                        <p>
+                                                            رسوم الاشتراك في المنصة
+                                                            <strong>
+                                                                {{ $public_values['registeration_amount'] }} دولار
+                                                            </strong>
+                                                            /
+                                                            <strong>
+                                                                10 د.أ
+                                                            </strong>
+                                                        </p>
+                                                        <br>
+                                                        <p>
+                                                            مدة الاشتراك تكون عام من لحظة التسجيل.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer flex-column">
+                                                        <p>
+                                                            ادفع من خلال :
+                                                        </p>
+                                                        <div class="w-100 d-flex justify-content-around">
+                                                            <button type="button" class="btn btn-primary" id="paypalBtn">
+                                                                PAYPAL
+                                                            </button>
+
+                                                            <button type="button" class="btn btn-primary" id="walletBtn"
+                                                                data-toggle="modal" data-target="#walletsSubscribeModal">
+                                                                المحافظ الالكترونية
+                                                            </button>
+
+                                                            <button type="button" class="btn btn-primary" id="pointsBtn">
+                                                                نقاطي
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal fade" id="walletsSubscribeModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            طلب الاشتراك من خلال المحافظ الالكترونية
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ route('student.store-subscription-request') }}"
+                                                        method="POST">
+                                                        <div class="modal-body">
+
+                                                            @csrf
+                                                            <div class="form-row">
+                                                                {{-- Name --}}
+                                                                <div class="form-group col-12">
+                                                                    <label for="validationServer01">الاسم</label>
+                                                                    <input type="text" name="name"
+                                                                        class="form-control @error('name') is-invalid @enderror"
+                                                                        id="validationServer01" placeholder="الاسم"
+                                                                        value="{{ old('name', auth('student')->user()->name) }}"
+                                                                        required>
+                                                                    @error('name')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                {{-- email --}}
+                                                                <div class="form-group col-12">
+                                                                    <label for="validationServer01">البريد
+                                                                        الالكتروني</label>
+                                                                    <input type="email" name="email"
+                                                                        class="form-control @error('email') is-invalid @enderror"
+                                                                        id="validationServer01"
+                                                                        placeholder="البريد الالكتروني"
+                                                                        value="{{ old('email', auth('student')->user()->email) }}"
+                                                                        required>
+                                                                    @error('email')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                {{-- phone --}}
+                                                                <div class="form-group col-12">
+                                                                    <label for="validationServer01">رقم الهاتف</label>
+                                                                    <input type="text" name="phone"
+                                                                        class="form-control @error('phone') is-invalid @enderror"
+                                                                        id="validationServer01" placeholder="رقم الهاتف"
+                                                                        value="{{ old('phone', auth('student')->user()->phone) }}"
+                                                                        required>
+                                                                    @error('phone')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+
+
+                                                                {{-- payment wallet --}}
+                                                                <div class="form-group col-12">
+                                                                    <label for="validationServer01">المحفظة
+                                                                        الالكترونية</label>
+                                                                    <select class="form-control" id="wallet_id"
+                                                                        name="wallet_id">
+                                                                        <option value="0" disabled selected>اختر
+                                                                            المحفظة الالكترونية</option>
+                                                                        @foreach ($paymentWallets as $wallet)
+                                                                            <option value="{{ $wallet->id }}">
+                                                                                {{ $wallet->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+                                                                {{-- message --}}
+                                                                <div class="form-group col-12">
+                                                                    <label for="validationServer01">رسالة</label>
+                                                                    <textarea name="message" class="form-control @error('message') is-invalid @enderror" id="validationServer01"
+                                                                        placeholder="رسالة">{{ old('message') }}</textarea>
+                                                                    @error('message')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <small>
+                                                                    <strong>
+                                                                        الرجاء التأكد من البيانات قبل عملية الطلب
+                                                                    </strong>
+                                                                    <br>
+                                                                    <strong>
+                                                                        سيتم التواصل معكم بعد الطلب في اقرب وقت
+                                                                    </strong>
+                                                                </small>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary"
-                                                                style="background: #67328f !important">
-                                                                اشترك
+
+                                                            <button type="submit" class="btn btn-primary">
+                                                                طلب
                                                             </button>
                                                         </div>
                                                     </form>
@@ -191,60 +328,60 @@
             </div>
 
             {{-- <div class="c_brandas">
-                <div class="container_1033">
-                    <div class="c_section_title">
-                        <h3>الجهات المعتمدة</h3>
-                    </div>
-                    <!-- Swiper pc -->
-                    <div class="c_bloc">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                        </div>
-                                    </div>
+            <div class="container_1033">
+                <div class="c_section_title">
+                    <h3>الجهات المعتمدة</h3>
+                </div>
+                <!-- Swiper pc -->
+                <div class="c_bloc">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
                             </div>
-                            <div class="swiper-pagination"></div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="c_item">
+                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                </div>
+                            </div>
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
+        </div> --}}
 
             <div class="c_info2">
                 <div class="container_1200">
@@ -282,3 +419,20 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        // when clicl on paypalBtn submit thr paypalForm
+        $(document).ready(function() {
+            $('#paypalBtn').click(function(e) {
+                e.preventDefault();
+                $('#paypalForm').submit()
+            });
+
+            $('#pointsBtn').click(function(e) {
+                e.preventDefault();
+                $('#pointsForm').submit()
+            });
+        });
+    </script>
+@endpush

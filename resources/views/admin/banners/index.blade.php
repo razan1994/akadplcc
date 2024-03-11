@@ -66,6 +66,7 @@
                                 <th>#</th>
                                 <th><i class="mdi mdi-account-switch"></i> Name</th>
                                 <th><i class="mdi mdi-image"></i> Image</th>
+                                <th>Status</th>
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
                             </tr>
                         </thead>
@@ -87,11 +88,21 @@
                                                         width="70" height="50">
                                                 @endif
                                             </td>
+                                            <td>
+                                                @if ($banner->status == 1)
+                                                    <span class="badge badge-success">Active</span>
+                                                @else
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                @endif
+                                            </td>
 
                                             <td class="gap-1 d-flex">
                                                 <a href="{{ route('super_admin.banners.edit', $banner->id) }}"
-                                                    class="mb-1 btn btn-primary btn-sm"><i
-                                                        class="mdi mdi-playlist-edit"></i>
+                                                    class=" btn btn-primary btn-sm"><i class="mdi mdi-playlist-edit"></i>
+                                                </a>
+                                                <a href="{{ route('super_admin.banners.toggle-status', $banner->id) }}"
+                                                    title="Toggle status" class="mx-1 process btn btn-sm btn-warning"><i
+                                                        class="mdi mdi-stop"></i>
                                                 </a>
                                                 <form action="{{ route('super_admin.banners.destroy', $banner->id) }}"
                                                     method="post">

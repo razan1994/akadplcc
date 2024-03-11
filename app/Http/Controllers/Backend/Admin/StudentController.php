@@ -3,27 +3,23 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Banner\StoreBannerRequest;
-use App\Http\Requests\Backend\Banner\UpdateBannerRequest;
-use App\Models\Banner;
+use App\Models\Payment;
+use App\Models\PublicValue;
+use App\Models\Student;
+use App\Models\SubscriptionRequest;
 use App\Models\SupportTicket;
-use App\Traits\UploadImageTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\DB;
 
-class BannerController extends Controller
+class StudentController extends Controller
 {
-    use UploadImageTrait;
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Route $route)
+    public function index(Request $request, Route $route)
     {
+
         try {
-            $banners = Banner::all();
-            return view('admin.banners.index', compact('banners'));
+            $students = Student::with(['lastPayment'])->get();
+            return view('admin.students.index', compact('students'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -49,236 +45,204 @@ class BannerController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Route $route)
-    {
-        try {
-            return view('admin.banners.create');
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreBannerRequest $request, Route $route)
-    {
-        try {
-            // Upload Image Section :
-            if (isset($request->image)) {
-                $orginal_image = $request->file('image');
-                $upload_location = 'storage/banners/';
-                $last_image = $this->saveFile($orginal_image, $upload_location);
-            } else {
-                $last_image = null;
-            }
-
-            $created_data = [
-                'title' => $request->title,
-                'image' => $last_image,
-            ];
-
-            DB::transaction(function () use ($created_data) {
-                Banner::create($created_data);
-            });
-
-            return redirect()->route('super_admin.banners.index')->with('success', 'Banner Created Successfully');
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id, Route $route)
-    {
-        try {
-            $banner = Banner::find($id);
-            return view('admin.banners.edit', compact('banner'));
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateBannerRequest $request, string $id, Route $route)
-    {
-        try {
-            $banner = Banner::find($id);
-            $old_image = $banner->image ?? null;
-            $updated_data = [
-                'title' => $request->title,
-                'image' => $old_image,
-
-
-            ];
-
-            if (isset($request->image)) {
-                $orginal_image = $request->file('image');
-                $upload_location = 'storage/banners/';
-                $last_image = $this->saveFile($orginal_image, $upload_location);
-                $updated_data['image'] = $last_image;
-            }
-
-            DB::transaction(function () use ($banner, $updated_data) {
-                $banner->update($updated_data);
-            });
-
-
-            // Delete Old Image If Exists :
-            if (isset($request->image) && $old_image != null) {
-                if (file_exists($old_image)) {
-                    unlink($old_image);
-                }
-            }
-
-            return redirect()->route('super_admin.banners.index')->with('success', 'Banner Updated Successfully');
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id, Route $route)
-    {
-        try {
-            $banner = Banner::find($id);
-            $banner->delete();
-
-            // Delete Image If Exists :
-            if ($banner->image  && file_exists($banner->image)) {
-                unlink($banner->image);
-            }
-
-            return redirect()->route('super_admin.banners.index')->with('success', 'Banner Deleted Successfully');
-        } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
-                'error_location' => $th->getFile(),
-                'error_description' => $th->getMessage(),
-                'function_name' => $function_name,
-                'error_line' => $th->getLine(),
-            ])->get();
-
-            if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
-                    'error_location' => $th->getFile(),
-                    'error_description' => $th->getMessage(),
-                    'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
-                ]);
-                $end_error_ticket = $new_error_ticket;
-            } else {
-                $end_error_ticket = $check_old_errors->first();
-            }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
-        }
-    }
 
     public function toggleStatus(Request $request, Route $route)
     {
         try {
-            $banner = Banner::find($request->id);
-            $banner->status = !$banner->status;
-            $banner->save();
+            $student = Student::find($request->id);
+            if ($student->user_status == 'Active') {
+                $student->user_status = 3;
+            } else {
+                $student->user_status = 2;
+            }
+            $student->save();
             return redirect()->back()->with('success', 'Status Updated');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+
+    public function subscriptionRequests(Request $request, Route $route, $status = 'pending')
+    {
+        if (!in_array($status, ['approved', 'pending', 'rejected'])) {
+            return redirect()->back()->with('error', 'Invalid status');
+        }
+        try {
+            $requests = SubscriptionRequest::where('status', $status)->get();
+            return view('admin.students.subscription_requests', compact('requests', 'status'));
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+    public function approveSubscriptionRequest(Request $request, Route $route)
+    {
+        try {
+            $registeration_amount = (float) PublicValue::where('key', 'registeration_amount')->first()->value;
+            if (!$registeration_amount) {
+                return redirect()->back()->with('danger', 'قيمة التسجيل غير موجودة');
+            }
+
+            // --------- Update Subscription Request Status ---------
+            $subscription_request = SubscriptionRequest::find($request->id);
+            if (!$subscription_request) {
+                return redirect()->back()->with('danger', 'Request Not Found');
+            } else if ($subscription_request->status == 'approved') {
+                return redirect()->back()->with('danger', 'Request Already Approved');
+            }
+
+
+
+            //--------- Check if student already paid and registeration date not ended ---------
+            $student = Student::find($subscription_request->user_id);
+            if (!$student) {
+                return redirect()->back()->with('danger', 'الطالب غير موجود');
+            }
+            $last_payment = $student->payments()->latest()->first();
+            if ($last_payment && $last_payment->payment_status == 'paid' && $last_payment->due_at > Carbon::now()) {
+                $subscription_request->status = 'rejected';
+                $subscription_request->save();
+                return redirect()->back()->with('success', 'الطالب مسجل بالفعل');
+            }
+
+            $subscription_request->status = 'approved';
+            $subscription_request->save();
+
+            // --------- Create Payment --------- 
+            $payment = Payment::create([
+                'payment_method' => 'wallet',
+                'status' => 'accepted',
+                'payment_status' => 'paid',
+                'amount' => $registeration_amount,
+                'student_id' => $student->id,
+                'due_at' => Carbon::now()->addYear(),
+            ]);
+
+
+            // --------- Add Points To The Referral Student If Exist ---------
+            if ($student->referral_code) {
+                $referral_student = Student::where('own_code', $student->referral_code)->first();
+                $old_points = $referral_student->points;
+                if ($referral_student) {
+                    $referral_student->update([
+                        'points' => $old_points + (int) 25,
+                    ]);
+                }
+            }
+
+            return redirect()->back()->with('success', 'Request Approved');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+    public function rejectSubscriptionRequest(Request $request, Route $route)
+    {
+        try {
+            $subscription_request = SubscriptionRequest::find($request->id);
+            if (!$subscription_request) {
+                return redirect()->back()->with('danger', 'Request Not Found');
+            } else if ($subscription_request->status == 'rejected') {
+                return redirect()->back()->with('danger', 'Request Already Rejected');
+            }
+            $subscription_request->status = 'rejected';
+            $subscription_request->save();
+            return redirect()->back()->with('success', 'Request Rejected');
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
+    public function deleteSubscriptionRequest(Request $request, Route $route)
+    {
+        try {
+            $subscription_request = SubscriptionRequest::find($request->id);
+            if (!$subscription_request) {
+                return redirect()->back()->with('danger', 'Request Not Found');
+            }
+            $subscription_request->delete();
+            return redirect()->back()->with('success', 'Request Deleted');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

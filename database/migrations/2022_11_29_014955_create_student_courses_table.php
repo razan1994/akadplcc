@@ -17,6 +17,7 @@ class CreateStudentCoursesTable extends Migration
             $table->id();
             $table->bigInteger('student_id');
             $table->bigInteger('course_id');
+            $table->integer('progress')->default(0);
             $table->timestamps();
         });
     }

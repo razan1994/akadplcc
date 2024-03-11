@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\ContactUs;
 use App\Models\ContactUsRequest;
 use App\Models\Course;
+use App\Models\PaymentWallet;
 use App\Models\Student;
 use App\Models\SupportTicket;
 use Carbon\Carbon;
@@ -131,8 +132,9 @@ class FrontendController extends Controller
             $id = decrypt($id);
 
             $course = Course::find($id);
+            $paymentWallets = PaymentWallet::where('status', 'active')->get();
             if ($course) {
-                return view('front_end_inners.courseDetails', compact('course'));
+                return view('front_end_inners.courseDetails', compact('course', 'paymentWallets'));
             } else {
                 return redirect()->back()->with('success', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
             }

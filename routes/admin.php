@@ -18,7 +18,9 @@ use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\PaymentWalletController;
 use App\Http\Controllers\Backend\Admin\PublicValuesController;
+use App\Http\Controllers\Backend\Admin\RequestesdWithdrawalsController;
 use App\Http\Controllers\Backend\Admin\SectionController;
+use App\Http\Controllers\Backend\Admin\StudentController;
 use App\Http\Controllers\Backend\Admin\TasksController;
 
 Route::controller(AdminLoginController::class)
@@ -60,20 +62,20 @@ Route::middleware('auth:super_admin')
 
         // Student Routes :
         // ==============================================================================
-        Route::controller(BackendStudentController::class)
-            ->prefix('students')
-            ->group(function () {
-                Route::get('/create',  'create')->name('students-create');
-                Route::post('/store',  'store')->name('students-store');
-                Route::get('/index',  'index')->name('students-index');
-                Route::get('show/{id}',  'show')->name('students-show');
-                Route::get('edit/{id}',  'edit')->name('students-edit');
-                Route::post('update/{id}',  'update')->name('students-update');
-                Route::get('/acceptSingle/{id}',  'acceptSingle')->name('students-acceptSingle');
-                Route::get('/rejectSingle/{id}',  'rejectSingle')->name('students-rejectSingle');
-                Route::get('/activeInactiveSingle/{id}',  'activeInactiveSingle')->name('students-activeInactiveSingle');
-                Route::post('/getRegions',  'getRegions')->name('getRegions');
-            });
+        // Route::controller(BackendStudentController::class)
+        //     ->prefix('students')
+        //     ->group(function () {
+        //         Route::get('/create',  'create')->name('students-create');
+        //         Route::post('/store',  'store')->name('students-store');
+        //         Route::get('/index',  'index')->name('students-index');
+        //         Route::get('show/{id}',  'show')->name('students-show');
+        //         Route::get('edit/{id}',  'edit')->name('students-edit');
+        //         Route::post('update/{id}',  'update')->name('students-update');
+        //         Route::get('/acceptSingle/{id}',  'acceptSingle')->name('students-acceptSingle');
+        //         Route::get('/rejectSingle/{id}',  'rejectSingle')->name('students-rejectSingle');
+        //         Route::get('/activeInactiveSingle/{id}',  'activeInactiveSingle')->name('students-activeInactiveSingle');
+        //         Route::post('/getRegions',  'getRegions')->name('getRegions');
+        //     });
 
 
         // About Us Routes :
@@ -260,6 +262,7 @@ Route::middleware('auth:super_admin')
         // Banner Routes:
         //Created By :Ahmad Alsakhen
         Route::resource('banners', BannerController::class)->except(['show']);
+        Route::get('banners/toggle-status/{id}', [BannerController::class, 'toggleStatus'])->name('banners.toggle-status');
 
 
         // Wallet Routes :
@@ -277,4 +280,32 @@ Route::middleware('auth:super_admin')
             // Route::post('requested_orders/pay/{id}', [RequestedWalletOrders::class, 'pay'])->name('requested_orders.pay');
             // Route::post('requested_orders/reject/{id}', [RequestedWalletOrders::class, 'reject'])->name('requested_orders.reject');
         });
+
+
+        // Students Routes :
+        //Created By :Ahmad Alsakhen
+        // ==============================================================================
+        Route::prefix('students')
+            ->as('students.')
+            ->controller(StudentController::class)
+            ->group(function () {
+                Route::get('/',  'index')->name('index');
+                Route::get('toggle-status/{id}',  'toggleStatus')->name('toggle-status');
+                Route::get('requested-subscriptions/{status?}',  'subscriptionRequests')->name('requested-subscriptions');
+                Route::get('requested-subscriptions/{id}/approve',  'approveSubscriptionRequest')->name('approve-subscription-request');
+                Route::get('requested-subscriptions/{id}/reject',  'rejectSubscriptionRequest')->name('reject-subscription-request');
+                Route::get('requested-subscriptions/{id}/delete',  'deleteSubscriptionRequest')->name('delete-subscription-request');
+            });
+
+
+        // Withdarals Routes :
+        //Created By :Ahmad Alsakhen
+        Route::prefix('withdrawals')->as('withdrawals.')
+            ->controller(RequestesdWithdrawalsController::class)
+            ->group(function () {
+                Route::get('requested-withdrawals/{type}/{status?}', 'index')->name('orders'); //wallet_orders.index
+                Route::get('approve-withdrawals/{id}', 'approveWithdrawalRequest')->name('approve');
+                Route::get('reject-withdrawals/{id}', 'rejectWithdrawalRequest')->name('reject');
+                Route::get('delete-withdrawals/{id}', 'deleteWithdrawalRequest')->name('delete');
+            });
     });

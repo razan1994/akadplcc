@@ -16,7 +16,7 @@
 
                         {{-- the average --}}
                         <span class="float-left">
-                            {{ round(($course->studentSections->sum('is_watched') / $course->sections->count()) * 100, 2) }}%
+                            {{ $percentage }}%
                         </span>
 
                     </div>
