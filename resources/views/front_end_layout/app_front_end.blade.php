@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('front_end_style/css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/bootstrap-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/all.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/more.css') }}">
@@ -31,9 +32,9 @@
 
     <!-- Link slick CSS -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-
+{{-- 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous"> --}}
 
     {{-- ========================================================== --}}
     {{-- =================== Sweet Alert Section ================== --}}

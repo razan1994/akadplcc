@@ -22,6 +22,7 @@ use App\Models\StudentSkill;
 use App\Models\SubscriptionRequest;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+
 
 class StudentController extends Controller
 {
@@ -1114,5 +1116,12 @@ class StudentController extends Controller
             }
             return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
         }
+    }
+
+
+    public function downloadCv()
+    {
+        $pdf = Pdf::loadView('front_end_inners.resume');
+        return $pdf->download('cv1.pdf');
     }
 }

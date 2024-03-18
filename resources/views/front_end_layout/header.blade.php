@@ -40,15 +40,38 @@
 @endif
 
 
-<div class="header">
+<div class="header hidePrint">
     <div class="c_top_header">
         <div class="container_1200">
             <div class="c_menus_top">
 
                 <ul class="c_social">
-                    <li><a href="" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://web.facebook.com/kanaffcom" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href=" https://www.instagram.com/kanaffcom" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/kanaffcom" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/%D9%83%D9%86%D9%81-%D8%A7%D9%84%D9%85%D8%B9%D8%B1%D9%81%D8%A9-810920235/"
+                            target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCGjCh3T9mePQ5SDA1zSc1bA" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="c_one">
                     @if (Auth::guard('student')->check())
@@ -99,7 +122,7 @@
                             <a class="px-2 nav-link" href="{{ route('news') }}"> الأخبار</a>
                         </li>
                         <li class="nav-item">
-                            <a class="px-2 nav-link" href="#"> الأبحاث</a>
+                            <a class="px-2 nav-link" href="{{ route('researches') }}"> الأبحاث</a>
                         </li>
                         <li class="nav-item">
                             <a class="px-2 nav-link" href="{{ route('contactUs') }}">اتصل بنا</a>
@@ -315,7 +338,8 @@
 @if (auth('student')->check() && !auth('student')->user()->email_verified_at)
     <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center justify-content-between"
         role="alert">
-        <form action="{{ route('verification.send') }}" method="post" class="w-full d-flex justify-content-between align-items-center">
+        <form action="{{ route('verification.send') }}" method="post"
+            class="w-full d-flex justify-content-between align-items-center">
             @csrf
             <p class="m-0">
                 <strong>تنبيه !</strong> يجب عليك تفعيل البريد الالكتروني الخاص بك
@@ -323,7 +347,7 @@
             </p>
 
             <button>
-                    إعادة ارسال رابط التفعيل
+                إعادة ارسال رابط التفعيل
             </button>
         </form>
     </div>

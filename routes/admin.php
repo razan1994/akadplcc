@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\PaymentWalletController;
 use App\Http\Controllers\Backend\Admin\PublicValuesController;
 use App\Http\Controllers\Backend\Admin\RequestesdWithdrawalsController;
+use App\Http\Controllers\Backend\Admin\ResarchesController;
 use App\Http\Controllers\Backend\Admin\SectionController;
 use App\Http\Controllers\Backend\Admin\StudentController;
 use App\Http\Controllers\Backend\Admin\TasksController;
@@ -307,5 +308,23 @@ Route::middleware('auth:super_admin')
                 Route::get('approve-withdrawals/{id}', 'approveWithdrawalRequest')->name('approve');
                 Route::get('reject-withdrawals/{id}', 'rejectWithdrawalRequest')->name('reject');
                 Route::get('delete-withdrawals/{id}', 'deleteWithdrawalRequest')->name('delete');
+            });
+
+
+        // Resarches Routes :
+        //Created By :Ahmad Alsakhen
+        // ==============================================================================
+        Route::controller(ResarchesController::class)
+            ->prefix('researches')
+            ->name('researches.')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/store', 'store')->name('store');
+                // Route::get('show/{id}', 'show')->name('show');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('update/{id}', 'update')->name('update');
+                Route::get('destroy/{id}', 'destroy')->name('destroy');
+                Route::get('toggle-status/{id}', 'toggleStatus')->name('toggle');
             });
     });

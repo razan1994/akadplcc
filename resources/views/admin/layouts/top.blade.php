@@ -10,13 +10,13 @@
         content="Sleek Dashboard - Free Bootstrap 4 Admin Dashboard Template and UI Kit. It is very powerful bootstrap admin dashboard, which allows you to build products like admin panels, content management systems and CRMs etc.">
 
 
-        {{-- <meta property="og:image" content="https://br-ws.com/wazefate/public/front_end_style/images/logo.png"/> --}}
-        <meta property="og:title" content="JmeGoods"/>
-        <meta property="og:type" content="website" />
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:image:width" content="300">
-        <meta property="og:image:height" content="300">
-        {{-- <meta property="og:description" content="Your description."/>   --}}
+    {{-- <meta property="og:image" content="https://br-ws.com/wazefate/public/front_end_style/images/logo.png"/> --}}
+    <meta property="og:title" content="JmeGoods" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    {{-- <meta property="og:description" content="Your description."/>   --}}
 
     <title>Kanaf | Admin Dashboard</title>
 
@@ -27,8 +27,6 @@
     <!-- PLUGINS CSS STYLE -->
     <link href="{{ asset('dashboard_files/assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     {{-- Button CSS --}}
     {{-- <link href="{{ asset('resources/dashboard_files/assets/plugins/ladda/ladda.min.css') }}" rel="stylesheet" /> --}}
 
@@ -51,6 +49,8 @@
     {{--  --}}
     <link href="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.css') }}"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/all.min.css') }}">
 
     <!-- FAVICON -->
     <link href="{{ asset('dashboard_files/assets/img/favicon.png') }}" rel="shortcut icon" />
@@ -75,17 +75,17 @@
     <!-- L.A.L Custom : -->
 
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     @yield('admin_css')
 
     {{-- ========================================================== --}}
     {{-- =============== Live Select Search Section =============== --}}
     {{-- ========================================================== --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     {{-- ========================================================== --}}
     {{-- =============== Live Select Search Section =============== --}}
     {{-- ========================================================== --}}

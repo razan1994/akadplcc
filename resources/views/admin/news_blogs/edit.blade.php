@@ -39,7 +39,7 @@
                 <div>
                     <h1>Edite Blogs</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb p-0">
+                        <ol class="p-0 breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}">
                                     <span class="mdi mdi-home"></span> Dashboard
@@ -68,8 +68,8 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01"> Title <strong
                                                             class="text-danger"> * @error('title_ar') -
                                                                 {{ $message }}
@@ -87,8 +87,8 @@
                                                 </div>
 
                                                 {{-- Title EN --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Titl EN <strong
                                                             class="text-danger"> * @error('title_en') -
                                                                 {{ $message }}
@@ -105,8 +105,8 @@
                                                 </div> --}}
 
                                                     {{-- Status --}}
-                                                    <div class="col-md-12 mb-3">
-                                                        <label class="text-dark font-weight-medium mb-3"> Status
+                                                    <div class="mb-3 col-md-12">
+                                                        <label class="mb-3 text-dark font-weight-medium"> Status
                                                             <strong class="text-danger"> * @error('status') - {{ $message }} @enderror</strong></label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
@@ -121,8 +121,8 @@
                                                         </div>
                                                     </div>
                                                 {{-- Main Image --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01"> Image <strong
                                                             class="text-danger">
                                                             * @error('image') - {{ $message }}
@@ -132,7 +132,7 @@
                                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                                         </div>
                                                         <input type="file" name="image" class="form-control"
-                                                            id="validationServer01" placeholder="image">
+                                                            id="validationServer01" placeholder="image" accept="image/*">
                                                     </div>
                                                     <div style="text-align: center">
                                                         @if ($news_blog->image && file_exists($news_blog->image))
@@ -149,16 +149,16 @@
 
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
-                                                <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details :
+                                                <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > Blog Details :
                                                         <strong class="text-danger"> * @error('desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ $news_blog->desc_ar }}</textarea>
                                                 </div>
 
                                                 {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Blog Details EN :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > Blog Details EN :
                                                         <strong class="text-danger">* @error('desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
                                                     <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ $news_blog->desc_en }}</textarea>
@@ -166,8 +166,8 @@
 
 
                                                 {{-- alt text Ar --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Alt Text Ar <strong
                                                             class="text-danger"> * @error('alt_text_ar') -
                                                                 {{ $message }}
@@ -183,8 +183,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- alt text En --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Alt Text En <strong
                                                             class="text-danger"> * @error('alt_text_en') -
                                                                 {{ $message }}
@@ -200,8 +200,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- image title text Ar --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Image Title Text AR <strong
                                                             class="text-danger"> * @error('image_title_text_ar') -
                                                                 {{ $message }}
@@ -218,8 +218,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- image title text En --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Image Title Text En <strong
                                                             class="text-danger"> * @error('image_title_text_en') -
                                                                 {{ $message }}
@@ -235,8 +235,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- H2 Ar --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">H2 AR <strong
                                                             class="text-danger"> * @error('h2_ar') -
                                                                 {{ $message }}
@@ -252,8 +252,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- H2 EN --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">H2 EN <strong
                                                             class="text-danger"> * @error('h2_en') -
                                                                 {{ $message }}
@@ -269,8 +269,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- seo title AR --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">SEO Title AR <strong
                                                             class="text-danger"> * @error('seo_title_ar') -
                                                                 {{ $message }}
@@ -286,8 +286,8 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- seo title En --}}
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"
+                                                {{-- <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">SEO Title En <strong
                                                             class="text-danger"> * @error('seo_title_en') -
                                                                 {{ $message }}
@@ -303,50 +303,50 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- SEO Meta data AR --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > keywords AR :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > keywords AR :
                                                         <strong class="text-danger"> * @error('keywords_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_ar" class="form-control" placeholder="Kewords AR">{{ str_replace(',',' ',$news_blog->keywords_ar) }}</textarea>
                                                 </div> --}}
                                                 {{-- SEO Meta data EN --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > keywords EN :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > keywords EN :
                                                         <strong class="text-danger"> * @error('keywords_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_en" class="form-control" placeholder="Kewords EN">{{ str_replace(',',' ',$news_blog->keywords_en) }}</textarea>
                                                 </div> --}}
                                                 {{-- Redirect 301 AR --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3"> Redirect 301 AR :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium"> Redirect 301 AR :
                                                         <strong class="text-danger"> * @error('redirect_301_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_ar" class="form-control" placeholder="Redirect 301 AR">{{ $news_blog->redirect_301_ar }}</textarea>
                                                 </div> --}}
                                                 {{-- Redirect 301 EN --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Redirect 301 EN :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > Redirect 301 EN :
                                                         <strong class="text-danger"> * @error('redirect_301_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_en" class="form-control" placeholder="Redirect 301 EN">{{ $news_blog->redirect_301_en }}</textarea>
                                                 </div> --}}
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Meta Desc AR :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > Meta Desc AR :
                                                         <strong class="text-danger"> * @error('meta_desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea  name="meta_desc_ar" rows="10" class="form-control" placeholder="Meta Desc AR">{{ $news_blog->meta_desc_ar }}</textarea>
                                                 </div> --}}
 
                                                 {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                {{-- <div class="col-md-12 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" > Meta Desc EN :
+                                                {{-- <div class="mb-3 col-md-12">
+                                                    <label class="mb-3 text-dark font-weight-medium" > Meta Desc EN :
                                                         <strong class="text-danger">* @error('meta_desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
                                                     <textarea name="meta_desc_en" class="form-control" rows="10" placeholder="Meta Desc EN">{{ $news_blog->meta_desc_en }}</textarea>
                                                 </div> --}}
 
-                                                <div class="col-md-12 mb-3">
+                                                <div class="mb-3 col-md-12">
                                                     <div class="input-group">
                                                         <button class="btn btn-primary" type="submit">Add</button>
                                                     </div>

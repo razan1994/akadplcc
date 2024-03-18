@@ -1,8 +1,117 @@
 @extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/all.min.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+
+        @media print only {
+            body *:not(.body_inner) {
+                display: none !important;
+            }
+            .hidePrint {
+                display: none !important;
+            }
+
+            .body_inner {
+                font-family: Arial, sans-serif;
+                background: red;
+                padding: 20px;
+            }
+
+            .c_page_resume {
+                margin-bottom: 20px;
+            }
+
+            .container_900 {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .c_topCv {
+                margin-bottom: 20px;
+            }
+
+            .c_name h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .c_name p {
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            .c_postionss h4 {
+                font-size: 18px;
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+
+            .c_postionss p {
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            .c_image {
+                margin-top: 20px;
+            }
+
+            .c_item {
+                margin-bottom: 20px;
+            }
+
+            .c_titles h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .c_bdou p {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+
+            .c_company p,
+            .c_postionss span {
+                font-size: 16px;
+            }
+
+            .c_item ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+            .c_item ul li {
+                margin-bottom: 10px;
+            }
+
+            .c_item ul li.font-weight-normal {
+                font-weight: normal;
+            }
+
+            .c_edotadd ol {
+                padding-left: 0;
+            }
+
+            .c_edotadd ol li {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    </style>
+@endpush
 @section('content')
     <div class="body_inner">
         <div class="c_page_resume">
+            <a href="{{ route('student.download-cv') }}" class="btn btn-primary btn-md hidePrint">
+                Download cv
+            </a>
             <div class="container_900">
                 <div class="c_topCv">
                     <div class="c_blockss">
@@ -139,7 +248,6 @@
 
                     <div class="c_head_cv">
                         <div class="c_block_fle">
-
                             <div class="c_item c_exper c_eduction">
                                 <div class="c_titles">
                                     <h3>eduction</h3>
@@ -174,7 +282,6 @@
                                 </div>
 
                                 {{-- edit & add --}}
-
                                 <div class="c_edotadd">
                                     <ol>
                                         <li><a data-toggle="modal" data-target="#education_modal"
@@ -207,24 +314,16 @@
                                         @endforeach
                                     @endif
                                 </div>
-
-
-
                                 {{-- edit & add --}}
-
                                 <div class="c_edotadd">
                                     <ol>
-                                        <li><a data-toggle="modal" data-target="#skills_modal" style="cursor: pointer;"><i
-                                                    class="fas fa-plus"></i></a></li>
+                                        <li><a data-toggle="modal" data-target="#skills_modal"
+                                                style="cursor: pointer;"><i class="fas fa-plus"></i></a></li>
                                     </ol>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -234,7 +333,7 @@
     {{-- Modals --}}
 
     {{-- Job Title Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="job_title_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -259,7 +358,7 @@
     </div>
     {{-- End Job Title Modal --}}
     {{-- Over View Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="over_view_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -284,7 +383,7 @@
     </div>
     {{-- End Over View Modal --}}
     {{-- Experience Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="experience_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -337,7 +436,7 @@
     </div>
     {{-- End Experience Modal --}}
     {{-- Contact Info Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="contact_info_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -380,7 +479,7 @@
     </div>
     {{-- End Contact Info Modal --}}
     {{-- Skills Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="skills_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -414,7 +513,7 @@
     </div>
     {{-- End Skills Modal --}}
     {{-- Education Modal  --}}
-    <div class="c_login_modal">
+    <div class="c_login_modal hidePrint">
         <div class="c-m-blocks modal fade" id="education_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

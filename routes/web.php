@@ -35,8 +35,9 @@ Route::controller(FrontendController::class)
 
 
         Route::get('/news', 'news')->name('news');
-
         Route::get('/news-details/{id}', 'newsDetails')->name('news-details');
+        Route::get('/researches', 'researches')->name('researches');
+
 
         Route::get('login/{provider}', 'redirectToProvider')->name('social-auth');
         Route::get('login/{provider}/callback', 'handleProviderCallback');
@@ -75,9 +76,11 @@ Route::controller(StudentController::class)
                 Route::post('/update_image',  'update_image')->name('update_image');
 
 
+                // ----------------- CV -----------------
                 Route::get('/cv-first',  'cvFirst')->name('cv-first');
                 Route::get('/cv-second',  'cvSecond')->name('cv-second');
                 Route::get('/cv-third',  'cvThird')->name('cv-third');
+                Route::get('download-cv', 'downloadCv')->name('download-cv');
 
                 // ----------------- Courses -----------------
                 Route::get('register-course/{id}', 'registerCourse')->name('register-course');

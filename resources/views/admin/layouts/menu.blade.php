@@ -111,6 +111,13 @@
                                     <span class="pl-1 nav-text" style="font-size: 9pt;"> Blogs </span>
                                 </a>
                             </li>
+
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ route('super_admin.researches.index') }}">
+                                    <i class="fas fa-briefcase"> </i>
+                                    <span class="pl-1 nav-text" style="font-size: 9pt;"> Researches </span>
+                                </a>
+                            </li>
                             {{-- <li class="active">
                                 <a class="sidenav-item-link" href="{{ route('super_admin.latest_news-index') }}">
                                     <i class="fas fa-briefcase"> </i>
@@ -202,7 +209,7 @@
 
                             <li class="active">
                                 <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'wallet' ,'status'=>'pending']) }}">
+                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'wallet', 'status' => 'pending']) }}">
                                     <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
                                         style="font-size: 9pt;"> Wallet withdrawals
                                     </span>
@@ -211,7 +218,7 @@
 
                             <li class="active">
                                 <a class="sidenav-item-link"
-                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'paypal' ,'status'=>'pending']) }}">
+                                    href="{{ route('super_admin.withdrawals.orders', ['type' => 'paypal', 'status' => 'pending']) }}">
                                     <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
                                         style="font-size: 9pt;"> Paypal withdrawals
                                     </span>
