@@ -125,6 +125,11 @@ class Student extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(PaymentWalletOrders::class, 'student_id')->where('status', 'paid')->sum('amount');
     }
+
+    public function researches()
+    {
+        return $this->belongsToMany(Research::class, 'research_student', 'student_id', 'research_id');
+    }
     // ===================================================================================================================
     // ============================================= Mutator Section =====================================================
     // ===================================================================================================================

@@ -228,7 +228,7 @@
                                                                     <input type="text" name="name"
                                                                         class="form-control @error('name') is-invalid @enderror"
                                                                         id="validationServer01" placeholder="الاسم"
-                                                                        value="{{ old('name', auth('student')->user()->name) }}"
+                                                                        value="{{ old('name', auth('student')?->user()?->name) }}"
                                                                         required>
                                                                     @error('name')
                                                                         <div class="invalid-feedback">
@@ -245,7 +245,7 @@
                                                                         class="form-control @error('email') is-invalid @enderror"
                                                                         id="validationServer01"
                                                                         placeholder="البريد الالكتروني"
-                                                                        value="{{ old('email', auth('student')->user()->email) }}"
+                                                                        value="{{ old('email', auth('student')?->user()?->email) }}"
                                                                         required>
                                                                     @error('email')
                                                                         <div class="invalid-feedback">
@@ -260,7 +260,7 @@
                                                                     <input type="text" name="phone"
                                                                         class="form-control @error('phone') is-invalid @enderror"
                                                                         id="validationServer01" placeholder="رقم الهاتف"
-                                                                        value="{{ old('phone', auth('student')->user()->phone) }}"
+                                                                        value="{{ old('phone', auth('student')?->user()?->phone) }}"
                                                                         required>
                                                                     @error('phone')
                                                                         <div class="invalid-feedback">

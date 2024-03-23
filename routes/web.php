@@ -100,6 +100,10 @@ Route::controller(StudentController::class)
                 Route::get('/subscribe-using-points', 'subscribeToWebisteUsingPoints')->name('subscribe-using-points');
                 // =================== Reuquted Orders Withdrawls ===================
                 Route::post('/store-withdrawal-request', 'requestPaymentWalletOrder')->name('request-withdrawl-order');
+
+
+                // =================== Researches ===================
+                Route::get('download-research/{id}', 'downloadResearch')->name('downloadResearch');
             });
     });
 // ------------------------------------------------------------------------------------------------------------------

@@ -14,6 +14,7 @@ use App\Models\Payment;
 use App\Models\PaymentWallet;
 use App\Models\PaymentWalletOrders;
 use App\Models\PublicValue;
+use App\Models\Research;
 use App\Models\Student;
 use App\Models\StudentEducation;
 use App\Models\StudentExperience;
@@ -1119,9 +1120,46 @@ class StudentController extends Controller
     }
 
 
+    public function downloadResearch(Request $request, $id, Route $route)
+    {
+        try {
+            $research = Research::find($id);
+            if (!$research) {
+                return redirect()->back()->with('danger', 'البحث الذي تحاول الوصول اليه غير موجود في السجلات');
+            }
+            if (!file_exists($research->file)) {
+                return redirect()->back()->with('danger', 'الملف الذي تحاول تحميله غير موجود');
+            }
+            auth('student')->user()->researches()->attach($research->id);
+            return response()->download($research->file);
+        } catch (\Throwable $th) {
+            $function_name =  $route->getActionName();
+            $check_old_errors = new SupportTicket();
+            $check_old_errors = $check_old_errors->select('*')->where([
+                'error_location' => $th->getFile(),
+                'error_description' => $th->getMessage(),
+                'function_name' => $function_name,
+                'error_line' => $th->getLine(),
+            ])->get();
+
+            if ($check_old_errors->count() == 0) {
+                $new_error_ticket = SupportTicket::create([
+                    'error_location' => $th->getFile(),
+                    'error_description' => $th->getMessage(),
+                    'function_name' => $function_name,
+                    'error_line' =>  $th->getLine(),
+                ]);
+                $end_error_ticket = $new_error_ticket;
+            } else {
+                $end_error_ticket = $check_old_errors->first();
+            }
+            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+        }
+    }
+
     public function downloadCv()
     {
-        $pdf = Pdf::loadView('front_end_inners.resume');
+        $pdf = Pdf::loadView('PDF.resume1');
         return $pdf->download('cv1.pdf');
     }
 }

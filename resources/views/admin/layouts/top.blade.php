@@ -93,7 +93,7 @@
     @stack('styles')
 </head>
 
-<body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+<body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" dir="ltr">
     <script>
         NProgress.configure({
             showSpinner: false

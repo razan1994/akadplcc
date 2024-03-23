@@ -45,18 +45,17 @@
                 <div class="c_block">
                     <div class="row data-container">
                         @if (isset($researches) && $researches->count() > 0)
-                            @foreach ($researches as $index => $new)
+                            @foreach ($researches as $index => $research)
                                 <div id="i_show_num" class="col-md-6 pagenitems">
                                     <div class="c_item">
                                         <div>
                                             <div class="c_image">
-                                                @if (isset($new->image) && file_exists($new->image))
-                                                    <img src="{{ asset($new->image) }}"
-                                                        alt="{{ isset($new->title) ? $new->title : 'Undefined' }}"
-                                                        title="{{ isset($new->title) ? $new->title : 'Undefined' }}"
+                                                @if (isset($research->image) && file_exists($research->image))
+                                                    <img src="{{ asset($research->image) }}"
+                                                        alt="{{ isset($research->title) ? $research->title : 'Undefined' }}"
+                                                        title="{{ isset($research->title) ? $research->title : 'Undefined' }}"
                                                         loading="lazy"
-                                                        style="object-fit: contain; object-position: center;"
-                                                    >
+                                                        style="object-fit: contain; object-position: center;">
                                                 @else
                                                     <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                                 @endif
@@ -64,17 +63,18 @@
                                         </div>
                                         <div class="c_post">
                                             <div class="c_body">
-                                                <h3>{!! isset($new->title) ? $new->title : 'Undefined' !!} </h3>
+                                                <h3>{!! isset($research->title) ? $research->title : 'Undefined' !!} </h3>
                                                 <p>{!! \Illuminate\Support\Str::limit(
-                                                    isset($new->description) ? str_replace('&nbsp;', ' ', $new->description) : '--------',
+                                                    isset($research->description) ? str_replace('&nbsp;', ' ', $research->description) : '--------',
                                                     70,
                                                     $end = '...',
                                                 ) !!}</p>
                                             </div>
                                             @if (auth('student')->check())
-                                                @if (isset($new->file) && file_exists($new->file))
+                                                @if (isset($research->file) && file_exists($research->file))
                                                     <div class="c_buttn">
-                                                        <a href="{{ route('news-details', $new->id) }}">
+                                                        <a
+                                                            href="{{ route('student.downloadResearch', $research->id) }}">
                                                             تحميل الملف
                                                         </a>
                                                     </div>
