@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="{{ asset('front_end_style/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/more.css') }}">
-
+    <meta name="google-site-verification" content="zBHgCOISHWrCD81xSxrV_A7gKj92xic531u1oe1hRLI" />
 
 
     <!-- Link paginate CSS -->

@@ -19,6 +19,7 @@
     {{-- <meta property="og:description" content="Your description."/>   --}}
 
     <title>Kanaf | Admin Dashboard</title>
+    <meta name="google-site-verification" content="zBHgCOISHWrCD81xSxrV_A7gKj92xic531u1oe1hRLI" />
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
