@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('front_end_style/css/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/all.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('front_end_style/css/more.css') }}">
 
 
