@@ -59,7 +59,7 @@
                 <div class="card-header justify-content-between " style="background-color: #4c84ff;">
                     {{-- <h2 style="color:white;"><i class="mdi mdi-star mdi-spin"></i> طلبات سحب الرصيد : </h2> --}}
                 </div>
-                <div class="card-body">
+                <div class="card-body responsive-table">
                     <table id="hoverable-data-table" class="table table-hover table-striped">
                         <thead>
                             <tr>
@@ -70,6 +70,9 @@
                                 <th><i class="mdi mdi-phone"></i> Phone</th>
                                 <th><i class="mdi mdi-account-switch"></i> User Status</th>
                                 <th><i class="mdi mdi-account-switch"></i> Payment Status</th>
+                                <th>
+                                    Registered at
+                                </th>
                                 <th><i class="mdi mdi-settings mdi-spin"></i> Control</th>
                             </tr>
                         </thead>
@@ -112,6 +115,13 @@
                                                     <span style='color:red;'>
                                                         Unpaid
                                                     </span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if (isset($student->lastPayment))
+                                                    {{ $student->lastPayment->created_at->format('Y-m-d') }}
+                                                @else
+                                                    <span style='color:red;'>Undefined</span>
                                                 @endif
                                             </td>
                                             <td>

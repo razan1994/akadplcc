@@ -94,7 +94,9 @@
                                 <th>Phone</th>
                                 <th>Wallet</th>
                                 <th>Message</th>
-                                <th>Control</th>
+                                @if ($status != 'approved')
+                                    <th>Control</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -119,10 +121,12 @@
                                                     <i class="mdi mdi-window-close"></i>
                                                 </a>
                                             @else
-                                                <a href="{{ route('super_admin.students.delete-subscription-request', $request->id) }}"
-                                                    class="mb-1 confirm btn btn-sm btn-danger">
-                                                    <i class="mdi mdi-trash-can"></i>
-                                                </a>
+                                                @if ($status != 'approved')
+                                                    <a href="{{ route('super_admin.students.delete-subscription-request', $request->id) }}"
+                                                        class="mb-1 confirm btn btn-sm btn-danger">
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </a>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>

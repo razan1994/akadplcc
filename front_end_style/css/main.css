@@ -11,6 +11,9 @@
   padding: 0px 0px;
 }
 
+.wrapper_1400  {
+  overflow: hidden;
+}
 .footer,
 .c_page_test .c_qustion .form-check label.form-check-label span,
 .c_page_newsInner,
@@ -2874,4 +2877,32 @@ input#quantity {
   color: #67328f !important;
   border: 1px solid #67328f !important;
   box-shadow: none !important;
+}
+
+.swiper-slide .c_item .c_image img {
+  width: 100%;
+  border-radius: 10px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.courses .c_item .c_post .c_buttn a {
+  max-width: fit-content !important;
+  padding: 10px 20px !important;
+}
+
+.c_post .c_body:not(p) {
+  /* cut the text if it be more than 2 lines */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important; 
+  text-overflow: ellipsis !important;
+
+}
+
+/* add some padding to right and left for small screens for the class .body */
+@media (max-width: 768px) {
+  .header , .footer ,.body {
+    padding: 0 10px;
+  }
 }

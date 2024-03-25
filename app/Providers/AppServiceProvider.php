@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\ContactUs;
+use App\Models\Course;
 use App\Models\Doctor;
 use App\Models\DoctorSpeciality;
 use App\Models\Gym;
@@ -64,17 +65,25 @@ class AppServiceProvider extends ServiceProvider
 
 
 
-            $public_contact = ContactUs::first();
             $public_values = PublicValue::get();
             $public_values = $public_values->mapWithKeys(function ($item) {
                 return [$item['key'] => $item['value']];
             });
 
             view()->share(compact(
-                'public_contact',
                 'public_values',
                 'isUserRegisterationActive'
             ));
+        });
+
+        View::composer(['front_end_layout.footer'], function ($view) {
+            $view->with('latestCourses', Course::where('status', 2)
+                ->whereHas('sections')
+                ->orderBy('created_at', 'desc')
+                ->limit(5)
+                ->get());
+
+            $view->with('contactUs', ContactUs::first());
         });
     }
 }

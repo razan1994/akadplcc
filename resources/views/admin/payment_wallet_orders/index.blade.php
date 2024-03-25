@@ -105,7 +105,9 @@
                                 <th>Points / JD</th>
                                 <th>Message</th>
                                 <th>Ordered At</th>
-                                <th>Control</th>
+                                @if ($status != 'paid')
+                                    <th>Control</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -144,10 +146,12 @@
                                                     <i class="mdi mdi-window-close"></i>
                                                 </a>
                                             @else
-                                                <a href="{{ route('super_admin.withdrawals.delete', $request->id) }}"
-                                                    class="mb-1 confirm btn btn-sm btn-danger">
-                                                    <i class="mdi mdi-trash-can"></i>
-                                                </a>
+                                                @if ($status != 'paid')
+                                                    <a href="{{ route('super_admin.withdrawals.delete', $request->id) }}"
+                                                        class="mb-1 confirm btn btn-sm btn-danger">
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </a>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>

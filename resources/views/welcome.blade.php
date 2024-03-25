@@ -50,7 +50,7 @@
                         <div class="c_imgs">
 
                             <div class="c_bgimg c_bg_1">
-                                <img src="{{ asset('front_end_style/images/bg1slider.png') }}">
+                                <img src="{{ asset('front_end_style/images/bg1slider.png') }}" loading="lazy">
                             </div>
                             <!-- Swiper pc -->
                             <div class="swiper-container">
@@ -61,9 +61,10 @@
                                                 <div class="c_item">
                                                     <div class="c_image">
                                                         @if (isset($slider->image) && file_exists($slider->image))
-                                                            <img src="{{ asset($slider->image) }}">
+                                                            <img src="{{ asset($slider->image) }}" loading="lazy">
                                                         @else
-                                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                                loading="lazy">
                                                         @endif
                                                     </div>
                                                 </div>
@@ -73,21 +74,24 @@
                                         <div class="swiper-slide">
                                             <div class="c_item">
                                                 <div class="c_image">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                        loading="lazy">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="c_item">
                                                 <div class="c_image">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                        loading="lazy">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="c_item">
                                                 <div class="c_image">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                        loading="lazy">
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +101,7 @@
                             </div>
 
                             <div class="c_bgimg c_bg_2">
-                                <img src="{{ asset('front_end_style/images/bg2slider.png') }}">
+                                <img src="{{ asset('front_end_style/images/bg2slider.png') }}" loading="lazy">
                             </div>
                         </div>
 
@@ -167,9 +171,9 @@
 
                         <div class="c_image">
                             @if (isset($about->about_us_image) && file_exists($about->about_us_image))
-                                <img src="{{ asset($about->about_us_image) }}">
+                                <img src="{{ asset($about->about_us_image) }}" loading="lazy">
                             @else
-                                <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                <img src="{{ asset('/front_end_style/images/omgs.png') }}" loading="lazy">
                             @endif
                         </div>
 
@@ -203,9 +207,10 @@
                                             <div class="c_image">
                                                 <a href="{{ route('course-details', encrypt($course->id)) }}">
                                                     @if (isset($course->main_image) && file_exists($course->main_image))
-                                                        <img src="{{ asset($course->main_image) }}">
+                                                        <img src="{{ asset($course->main_image) }}" loading="lazy">
                                                     @else
-                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                            loading="lazy">
                                                     @endif
                                                 </a>
                                             </div>
@@ -221,14 +226,16 @@
                                                             70,
                                                             $end = '...',
                                                         ) !!}
+                                                        {!! $course->desc_ar !!}
                                                     </p>
                                                 </div>
-                                                <div class="c_buttn">
+                                                <div class="c_buttn flex-column flex-lg-row">
                                                     <div class="c_tech">
                                                         @if (isset($course->teacher_image) && file_exists($course->teacher_image))
-                                                            <img src="{{ asset($course->teacher_image) }}">
+                                                            <img src="{{ asset($course->teacher_image) }}" loading="lazy">
                                                         @else
-                                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                                loading="lazy">
                                                         @endif
                                                         <span>{!! isset($course->teacher_ar) ? $course->teacher_ar : 'Undefined' !!}</span>
                                                     </div>
@@ -248,256 +255,34 @@
                                     </div>
                                 @endforeach
                             @else
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
+                                @for ($i = 0; $i < 10; $i++)
+                                    <div class="swiper-slide">
+                                        <div class="c_item">
+                                            <div class="c_image">
+                                                <img src="{{ asset('/front_end_style/images/omgs.png') }}" loading="lazy">
                                             </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
+                                            <div class="c_post">
+                                                <div class="c_body">
+                                                    <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
+                                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                                        القارئ عن التركيز على الشكل الخارجي للنص </p>
                                                 </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
+                                                <div class="c_buttn">
+                                                    <div class="c_tech">
+                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                            loading="lazy">
+                                                        <span>الاستاذ حمزة</span>
+                                                    </div>
+                                                    <a href="#">اتصل بنا</a>
+                                                </div>
+                                                <div class="c_time">
+                                                    <i class="far fa-clock"></i>
+                                                    <span>18 ساعة</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="c_item">
-                                        <div class="c_image">
-                                            <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                        </div>
-                                        <div class="c_post">
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                            <div class="c_buttn">
-                                                <div class="c_tech">
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                                    <span>الاستاذ حمزة</span>
-                                                </div>
-                                                <a href="#">اتصل بنا</a>
-                                            </div>
-                                            <div class="c_time">
-                                                <i class="far fa-clock"></i>
-                                                <span>18 ساعة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endfor
                             @endif
                         </div>
                         <div class="swiper-pagination"></div>
@@ -520,9 +305,9 @@
                     @forelse ($banners as $banner)
                         <div class="c_item">
                             @if (isset($banner->image) && file_exists($banner->image))
-                                <img src="{{ asset($banner->image) }}">
+                                <img src="{{ asset($banner->image) }}" loading="lazy">
                             @else
-                                <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                <img src="{{ asset('front_end_style/images/parnter.png') }}" loading="lazy">
                             @endif
                         </div>
                     @empty
@@ -560,9 +345,10 @@
                                     <div class="swiper-slide">
                                         <div class="c_item">
                                             @if (isset($app->image) && file_exists($app->image))
-                                                <img src="{{ asset($app->image) }}">
+                                                <img src="{{ asset($app->image) }}" loading="lazy">
                                             @else
-                                                <img src="{{ asset('front_end_style/images/parnter.png') }}">
+                                                <img src="{{ asset('front_end_style/images/parnter.png') }}"
+                                                    loading="lazy">
                                             @endif
                                         </div>
                                     </div>
@@ -571,7 +357,8 @@
                                 @for ($i = 0; $i < 8; $i++)
                                     <div class="swiper-slide">
                                         <div class="c_item">
-                                            <img src="{{ asset('front_end_style/images/parnter.png') }}"/>
+                                            <img src="{{ asset('front_end_style/images/parnter.png') }}"
+                                                loading="lazy" />
                                         </div>
                                     </div>
                                 @endfor

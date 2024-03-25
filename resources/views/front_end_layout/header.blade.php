@@ -91,7 +91,7 @@
                 {{-- =========================== Logo Section ======================== --}}
                 <div class="logo col-md-3 col-xs-12">
                     <a href="{{ route('welcome') }}">
-                        <img src="{{ asset('front_end_style/images/logo.png') }}">
+                        <img src="{{ asset('front_end_style/images/logo.png') }}" loading="lazy">
                     </a>
                 </div>
 
@@ -196,7 +196,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <div class="col-md-12 d-flex justify-content-center">
+                                        {{-- <div class="col-md-12 d-flex justify-content-center">
                                             <a href="{{ route('social-auth', 'google') }}"
                                                 style="background: #ea4537;padding: 2%;"
                                                 class="btn btn-icon btn-google">
@@ -204,7 +204,7 @@
                                                 عبر
                                                 جوجل
                                             </a>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-md-12">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="newaccount">

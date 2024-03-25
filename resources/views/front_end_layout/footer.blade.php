@@ -1,4 +1,4 @@
-<div class="footer hidePrint">
+<div class="overflow-hidden footer hidePrint">
     <div class="c_main_footer">
         <div class="container_1200">
             <div class="row">
@@ -34,7 +34,7 @@
                                 <a href="{{ route('researches') }}">الأبحاث</a>
                             </li>
                             <li>
-                                <a href=""> الأخبار</a>
+                                <a href="{{ route('news') }}"> الأخبار</a>
                             </li>
                             <li>
                                 <a href="">اتصل بنا</a>
@@ -45,14 +45,15 @@
 
                 <div class="col-md">
                     <div class="c-title">
-                        <h3>الدورات</h3>
+                        <h3>احدث الدورات</h3>
                     </div>
                     <div class="c-body">
                         <ul>
-                            <li><a href="#">لوريم ايبسوم</a></li>
-                            <li><a href="#">لوريم ايبسوم</a></li>
-                            <li><a href="#">لوريم ايبسوم</a></li>
-                            <li><a href="#">لوريم ايبسوم</a></li>
+                            @foreach ($latestCourses as $course)
+                                <li><a
+                                        href="{{ route('course-details', encrypt($course->id)) }}">{{ $course->title_ar }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -63,8 +64,10 @@
                     </div>
                     <div class="c-body">
                         <ul>
-                            <li><a href="tel:07777777777"><i class="fas fa-phone-alt"></i> 07777777777 </a></li>
-                            <li><a href="mailto:info@kanaf.com"><i class="fas fa-envelope"></i> info@kanaf.com </a></li>
+                            <li><a href="tel:{{ $contactUs->phone }}"><i class="fas fa-phone-alt"></i>
+                                    {{ $contactUs->phone }} </a></li>
+                            <li><a href="mailto:{{ $contactUs->email }}"><i class="fas fa-envelope"></i>
+                                    {{ $contactUs->email }} </a></li>
                         </ul>
                         <ul class="c_social">
                             <li><a href="https://web.facebook.com/kanaffcom" target="_blank"><i
@@ -78,14 +81,27 @@
                             <li><a href="https://www.youtube.com/channel/UCGjCh3T9mePQ5SDA1zSc1bA" target="_blank"><i
                                         class="fab fa-youtube"></i></a></li>
                         </ul>
-                        <div class="c_copright">
-                            <p> <span>Kanaf </span>. All rights reserved © </p>
-                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+    <div class="pt-4 pb-0 text-white row bg-dark">
+        <div class="text-center col">
+            <p>جميع الحقوق محفوظة - <a href="{{ route('welcome') }}" class="text-white text-decoration-none">
+                    كنف المعرفة
+                </a>
+                {{-- current year --}}
+                {{ date('Y') }} ©
+            </p>
 
+            <p>Powered by
+                <a href="https://smartzone-jo.com/en" class="text-white underline text-decoration-none fw-bold"
+                    target="_blank" style="color: #f8f9fa; text-decoration: underline !important; font-weight: bold;">
+                    Smart Zone
+                </a>
+            </p>
+        </div>
+    </div>
 </div>

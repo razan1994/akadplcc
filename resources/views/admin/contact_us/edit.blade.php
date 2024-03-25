@@ -35,7 +35,7 @@
                 <div>
                     <h1>Update Contact Us</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb p-0">
+                        <ol class="p-0 breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}">
                                     <span class="mdi mdi-home"></span> dashboard
@@ -66,8 +66,8 @@
                                             <div class="form-row">
 
                                                 {{-- Email --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Email : <strong class="text-danger"> * @error('email') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
@@ -82,8 +82,8 @@
                                                 </div>
 
                                                 {{-- Phone --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="validationServer01">
                                                         <i class="mdi mdi-account"></i> Phone : <strong class="text-danger"> * @error('phone') ( {{ $message }} ) @enderror</strong>
                                                     </label>
                                                     <div class="input-group">
@@ -96,83 +96,6 @@
                                                             value="{!! isset($contact->phone) ? $contact->phone : "<span style='color:red;'>Undefined</span>" !!}">
                                                     </div>
                                                 </div>
-
-                                                {{-- Facebook Url --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Facebook URL : <strong class="text-danger"> * @error('facebook_url') ( {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cellphone"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="facebook_url" class="form-control"
-                                                            id="validationServer01" placeholder="Facebook URL"
-                                                            value="{!! isset($contact->facebook_url) ? $contact->facebook_url : "<span style='color:red;'>Undefined</span>" !!}">
-                                                    </div>
-                                                </div>
-                                                {{-- Facebook Url --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Instagram URL : <strong class="text-danger"> * @error('instagram_url') ( {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cellphone"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="instagram_url" class="form-control"
-                                                            id="validationServer01" placeholder="Instagram URL"
-                                                            value="{!! isset($contact->instagram_url) ? $contact->instagram_url : "<span style='color:red;'>Undefined</span>" !!}">
-                                                    </div>
-                                                </div>
-                                                {{-- Facebook Url --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Linkedin URL : <strong class="text-danger"> * @error('linkedin_url') ( {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cellphone"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="linkedin_url" class="form-control"
-                                                            id="validationServer01" placeholder="Linkedin URL"
-                                                            value="{!! isset($contact->linkedin_url) ? $contact->linkedin_url : "<span style='color:red;'>Undefined</span>" !!}">
-                                                    </div>
-                                                </div>
-                                                {{-- Facebook Url --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Twitter URL : <strong class="text-danger"> * @error('twitter_url') ( {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cellphone"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="twitter_url" class="form-control"
-                                                            id="validationServer01" placeholder="Twitter URL"
-                                                            value="{!! isset($contact->twitter_url) ? $contact->twitter_url : "<span style='color:red;'>Undefined</span>" !!}">
-                                                    </div>
-                                                </div>
-                                                {{-- Facebook Url --}}
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="text-dark font-weight-medium mb-3" for="validationServer01">
-                                                        <i class="mdi mdi-account"></i> Youtube URL : <strong class="text-danger"> * @error('youtube_url') ( {{ $message }} ) @enderror</strong>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cellphone"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="youtube_url" class="form-control"
-                                                            id="validationServer01" placeholder="Youtube URL"
-                                                            value="{!! isset($contact->youtube_url) ? $contact->youtube_url : "<span style='color:red;'>Undefined</span>" !!}">
-                                                    </div>
-                                                </div>
-
                                             </div>
                                             <button class="btn btn-primary" type="submit">Edit</button>
                                         </form>
