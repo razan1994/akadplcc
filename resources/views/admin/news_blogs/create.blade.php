@@ -373,7 +373,7 @@
     {{-- ========================================================== --}}
     {{-- ================ Advance Text Area Section =============== --}}
     {{-- ========================================================== --}}
-    {{-- <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
         <script>
                 CKEDITOR.replace( 'desc_ar',{
@@ -384,7 +384,7 @@
                     fullPage: true,
                     allowedContent: true
                 });
-        </script> --}}
+        </script>
     {{-- ========================================================== --}}
     {{-- ================ Advance Text Area Section =============== --}}
     {{-- ========================================================== --}}

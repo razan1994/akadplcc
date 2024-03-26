@@ -348,7 +348,7 @@
 
                                                 <div class="mb-3 col-md-12">
                                                     <div class="input-group">
-                                                        <button class="btn btn-primary" type="submit">Add</button>
+                                                        <button class="btn btn-primary" type="submit">Update</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -365,7 +365,7 @@
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
-        {{-- <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
         <script>
                 CKEDITOR.replace( 'desc_ar',{
@@ -376,7 +376,7 @@
                     fullPage: true,
                     allowedContent: true
                 });
-        </script> --}}
+        </script>
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
