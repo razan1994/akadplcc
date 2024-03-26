@@ -53,7 +53,14 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#students" aria-expanded="false" aria-controls="students">
                         <i class="mdi mdi-account-group"></i>
-                        <span class="pl-1 nav-text" style="font-size: 9pt;">Students</span> <b class="caret"></b>
+
+                        <span class="pl-1 nav-text" style="font-size: 9pt;">
+                            Students
+                            <span class="ml-2 badge badge-danger">{{ $newSubsciptionRequests }}</span>
+                        </span>
+
+                        <b class="caret"></b>
+                        <br>
                     </a>
                     <ul class="collapse" id="students" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -67,7 +74,7 @@
                                 <a class="sidenav-item-link"
                                     href="{{ route('super_admin.students.requested-subscriptions') }}">
                                     <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
-                                        style="font-size: 9pt;"> Subscription requests
+                                        style="font-size: 9pt;"> Subscription requests @if ($newSubsciptionRequests) <small>({{ $newSubsciptionRequests }})</small>@endif 
                                     </span>
                                 </a>
                             </li>
@@ -196,7 +203,9 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#wallets" aria-expanded="false" aria-controls="wallets">
                         <i class="fas fa-briefcase"> </i>
-                        <span class="pl-1 nav-text" style="font-size: 9pt;"> Wallets </span> <b class="caret"></b>
+                        <span class="pl-1 nav-text" style="font-size: 9pt;"> Wallets 
+                            <span class="ml-2 badge badge-danger">{{ (int)$newWalletWithdrawRequests  + (int)$newPaypalWithdrawRequests }}</span>
+                        </span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="wallets" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -211,7 +220,7 @@
                                 <a class="sidenav-item-link"
                                     href="{{ route('super_admin.withdrawals.orders', ['type' => 'wallet', 'status' => 'pending']) }}">
                                     <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
-                                        style="font-size: 9pt;"> Wallet withdrawals
+                                        style="font-size: 9pt;"> Wallet withdrawals @if ($newWalletWithdrawRequests) <small>({{ $newWalletWithdrawRequests }})</small>@endif
                                     </span>
                                 </a>
                             </li>
@@ -220,7 +229,7 @@
                                 <a class="sidenav-item-link"
                                     href="{{ route('super_admin.withdrawals.orders', ['type' => 'paypal', 'status' => 'pending']) }}">
                                     <i class="mdi mdi-account-group"></i><span class="pl-1 nav-text"
-                                        style="font-size: 9pt;"> Paypal withdrawals
+                                        style="font-size: 9pt;"> Paypal withdrawals @if ($newPaypalWithdrawRequests)  <small>({{ $newPaypalWithdrawRequests }})</small>@endif
                                     </span>
                                 </a>
                             </li>

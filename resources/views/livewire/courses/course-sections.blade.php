@@ -60,9 +60,7 @@
         <div class="card">
             <div class="card-body">
                 @if ($selectedSection->video)
-                    <video id="cSectionVideo" src="{{ $selectedSection->video }}" controls="controls" preload="auto"
-                        autoplay="autoplay" width="100%" height="100%" controlsList="nodownload"
-                        style="object-fit: cover;" alt></video>
+                    {!! $selectedSection->video !!}
                 @endif
                 <hr>
                 <h2>

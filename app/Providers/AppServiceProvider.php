@@ -12,12 +12,14 @@ use App\Models\InsuranceCompany;
 use App\Models\Lab;
 use App\Models\LifeCoutch;
 use App\Models\MedicalCenter;
+use App\Models\PaymentWalletOrders;
 use App\Models\Pharmacy;
 use App\Models\PublicCountry;
 use App\Models\PublicLanguage;
 use App\Models\PublicValue;
 use App\Models\RadiologyCenter;
 use App\Models\SeoAdmin;
+use App\Models\SubscriptionRequest;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\Paginator;
@@ -84,6 +86,16 @@ class AppServiceProvider extends ServiceProvider
                 ->get());
 
             $view->with('contactUs', ContactUs::first());
+        });
+
+        View::composer(['admin.layouts.menu'], function ($view) {
+            $view->with('newSubsciptionRequests', SubscriptionRequest::where('status', 'pending')->count());
+            $view->with('newWalletWithdrawRequests', PaymentWalletOrders::where('status', 'pending')
+                ->where('type', 'wallet')
+                ->count());
+            $view->with('newPaypalWithdrawRequests', PaymentWalletOrders::where('status', 'pending')
+                ->where('type', 'paypal')
+                ->count());
         });
     }
 }

@@ -99,7 +99,7 @@
                                 {{-- Main Video --}}
                                 <div class="mb-3 col-md-6">
                                     <label class="mb-3 text-dark font-weight-medium" for="validationServer01">
-                                        Video URL
+                                        Embeded Video
                                         <strong class="text-danger"> *
                                             @error('video')
                                                 -
@@ -111,7 +111,7 @@
                                         <input type="text" name="video"
                                             class="form-control @error('video') is-invalid @enderror"
                                             id="validationServer01" placeholder="Video URL ...."
-                                            value="{!! old('video' , $section->video) !!}">
+                                            value="">
                                     </div>
                                 </div>
 

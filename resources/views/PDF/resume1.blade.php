@@ -124,7 +124,6 @@
                                     $name = explode(' ', $fullName);
                                     $first_name = $name[0];
                                     $last_name = $name[-1] ?? '';
-
                                 @endphp
                                 <h2>{{ isset($first_name) ? $first_name : '<span class="text-danger">Undefined</span>' }}
                                 </h2>
@@ -133,11 +132,9 @@
                             <div class="c_postionss">
                                 <h4 id="job_title_txt">
                                     {{ isset($auth->info->job_title) ? $auth->info->job_title : 'Undefined' }}
-                                 
                                 </h4>
                                 <p id="over_view_txt">
                                     {!! isset($auth->info->over_view) ? $auth->info->over_view : 'Undefined' !!}
-                                  
                                 </p>
                             </div>
 
@@ -159,10 +156,8 @@
                     </div>
                 </div>
                 <div class="c_createCV">
-
                     <div class="c_body_cv">
                         <div class="c_padding_re">
-
                             <div class="c_item c_exper">
                                 <div class="c_titles">
                                     <h3>experience</h3>
@@ -200,8 +195,6 @@
                                         @endforeach
                                     @endif
                                 </div>
-
-
                             </div>
 
                             <div class="c_item c_contact">
@@ -224,12 +217,7 @@
                                             class="fas fa-home"></i><span>{{ isset($auth->info->address) ? $auth->info->address : 'country - region' }}</span>
                                     </li>
                                 </ul>
-
-                               
-                                
                             </div>
-
-
                         </div>
                     </div>
 
@@ -267,8 +255,6 @@
                                         @endforeach
                                     @endif
                                 </div>
-
-
                             </div>
 
                             <div class="c_item c_skills">
