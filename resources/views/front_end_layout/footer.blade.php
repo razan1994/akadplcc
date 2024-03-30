@@ -25,16 +25,16 @@
                                 <a href="{{ route('welcome') }}">الرئيسية</a>
                             </li>
                             <li>
-                                <a href="{{ route('aboutUs') }}">عن الموقع</a>
+                                <a href="{{ route('aboutUs') }}">عن المنصة</a>
                             </li>
                             <li>
                                 <a href="{{ route('courses') }}">الدورات</a>
                             </li>
                             <li>
-                                <a href="{{ route('researches') }}">الأبحاث</a>
+                                <a href="{{ route('researches') }}">المكتبة الرقمية</a>
                             </li>
                             <li>
-                                <a href="{{ route('news') }}"> الأخبار</a>
+                                <a href="{{ route('news') }}"> التسويق الإلكتروني</a>
                             </li>
                             <li>
                                 <a href="">اتصل بنا</a>

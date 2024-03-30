@@ -27,12 +27,12 @@
         <div class="c_title_top">
             <div class="container_1200">
                 <div class="title_page">
-                    <h1>الأخبار</h1>
+                    <h1>التسويق الإلكتروني</h1>
                 </div>
             </div>
             <div class="c-breadcrumps">
                 <div class="container_1200">
-                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>الأخبار</a></p>
+                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>التسويق الإلكتروني</a></p>
                 </div>
             </div>
         </div>

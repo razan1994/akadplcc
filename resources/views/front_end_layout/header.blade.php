@@ -110,7 +110,7 @@
                             <a class="px-2 nav-link" href="{{ route('welcome') }}">الرئيسية</a>
                         </li>
                         <li class="nav-item">
-                            <a class="px-2 nav-link" href="{{ route('aboutUs') }}">عن الموقع</a>
+                            <a class="px-2 nav-link" href="{{ route('aboutUs') }}">عن المنصة</a>
                         </li>
                         <li class="nav-item">
                             <a class="px-2 nav-link" href="{{ route('courses') }}">الدورات</a>
@@ -119,10 +119,10 @@
                             <a class="px-2 nav-link" href="">الجهات المعتمدة</a>
                         </li>
                         <li class="nav-item">
-                            <a class="px-2 nav-link" href="{{ route('news') }}"> الأخبار</a>
+                            <a class="px-2 nav-link" href="{{ route('news') }}"> التسويق الإلكتروني</a>
                         </li>
                         <li class="nav-item">
-                            <a class="px-2 nav-link" href="{{ route('researches') }}"> الأبحاث</a>
+                            <a class="px-2 nav-link" href="{{ route('researches') }}"> المكتبة الرقمية</a>
                         </li>
                         <li class="nav-item">
                             <a class="px-2 nav-link" href="{{ route('contactUs') }}">اتصل بنا</a>

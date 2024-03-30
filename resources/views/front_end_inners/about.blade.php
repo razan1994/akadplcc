@@ -14,13 +14,13 @@
             <div class="c_title_top">
                 <div class="container_1200">
                     <div class="title_page">
-                        <h1>عن الموقع</h1>
+                        <h1>عن المنصة</h1>
                     </div>
                 </div>
             </div>
             <div class="c-breadcrumps">
                 <div class="container_1200">
-                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>عن الموقع</a></p>
+                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>عن المنصة</a></p>
                 </div>
             </div>
         </div>
