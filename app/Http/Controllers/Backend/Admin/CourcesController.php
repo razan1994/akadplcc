@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
+use Illuminate\Support\Str;
 
 class CourcesController extends Controller
 {
@@ -112,6 +113,7 @@ class CourcesController extends Controller
             $created_data = [
                 'title_ar' => $request->title_ar,
                 'title_en' => $request->title_en,
+                'slug' => Str::slug($request->title_en),
                 'desc_ar' => $request->desc_ar,
                 'teacher_ar' => $request->teacher_ar,
                 'section_count' => $request->section_count,

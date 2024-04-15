@@ -31,11 +31,11 @@ Route::controller(FrontendController::class)
 
         Route::get('/courses', 'courses')->name('courses');
 
-        Route::get('/course-details/{id}', 'courseDetails')->name('course-details');
+        Route::get('/course/{slug}', 'courseDetails')->name('course-details');
 
 
         Route::get('/news', 'news')->name('news');
-        Route::get('/news-details/{id}', 'newsDetails')->name('news-details');
+        Route::get('/news-details/{slug}', 'newsDetails')->name('news-details');
         Route::get('/researches', 'researches')->name('researches');
 
 
@@ -59,7 +59,7 @@ Route::controller(StudentController::class)
             ->group(function () {
 
                 // course sections 
-                Route::get('course-sections/{id}', 'courseSections')->name('course-sections')->middleware('checkStudentIfPaid');
+                Route::get('course/{slug}/sections', 'courseSections')->name('course-sections')->middleware('checkStudentIfPaid');
 
                 Route::get('/student-profile',  'studentProfile')->name('student-profile');
                 Route::post('/update-student-profile',  'updateStudentProfile')->name('update-student-profile');

@@ -322,14 +322,13 @@ class StudentController extends Controller
     }
 
 
-    function courseSections(Route $route, $id)
+    function courseSections(Route $route, $slug)
     {
 
         try {
-            $id = decrypt($id);
             $student = auth('student')->user();
 
-            $course = Course::with('sections')->find($id);
+            $course = Course::with('sections')->where('slug', $slug)->first();
 
             if (!$course) {
                 return redirect()->back()->with('danger', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');

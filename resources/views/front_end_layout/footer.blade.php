@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md">
                     <div class="logofooter">
-                        <a href="{{ route('welcome') }}">
+                        <a href="{{ route('welcome') }}" wire:navigate>
                             <img alt="" loading="lazy" src="{{ asset('front_end_style/images/logo.png') }}">
                         </a>
                     </div>
@@ -22,22 +22,22 @@
                     <div class="c-body">
                         <ul>
                             <li>
-                                <a href="{{ route('welcome') }}">الرئيسية</a>
+                                <a href="{{ route('welcome') }}" wire:navigate>الرئيسية</a>
                             </li>
                             <li>
-                                <a href="{{ route('aboutUs') }}">عن المنصة</a>
+                                <a href="{{ route('aboutUs') }}" wire:navigate>عن المنصة</a>
                             </li>
                             <li>
-                                <a href="{{ route('courses') }}">الدورات</a>
+                                <a href="{{ route('courses') }}" wire:navigate>الدورات</a>
                             </li>
                             <li>
-                                <a href="{{ route('researches') }}">المكتبة الرقمية</a>
+                                <a href="{{ route('researches') }}" wire:navigate>المكتبة الرقمية</a>
                             </li>
                             <li>
-                                <a href="{{ route('news') }}"> التسويق الإلكتروني</a>
+                                <a href="{{ route('news') }}" wire:navigate> المدونة</a>
                             </li>
                             <li>
-                                <a href="">اتصل بنا</a>
+                                <a href="{{ route('contactUs') }}" wire:navigate>اتصل بنا</a>
                             </li>
                         </ul>
                     </div>
@@ -50,8 +50,10 @@
                     <div class="c-body">
                         <ul>
                             @foreach ($latestCourses as $course)
-                                <li><a
-                                        href="{{ route('course-details', encrypt($course->id)) }}">{{ $course->title_ar }}</a>
+                                <li>
+                                    <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
+                                        {{ $course->title_ar }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
@@ -60,7 +62,7 @@
 
                 <div class="col-md">
                     <div class="c-title">
-                        <h3><a href="#"> تواصل معنا</a></h3>
+                        <h3> تواصل معنا</h3>
                     </div>
                     <div class="c-body">
                         <ul>

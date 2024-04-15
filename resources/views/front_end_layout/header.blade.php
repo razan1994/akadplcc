@@ -116,10 +116,7 @@
                             <a class="px-2 nav-link" href="{{ route('courses') }}">الدورات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="px-2 nav-link" href="">الجهات المعتمدة</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="px-2 nav-link" href="{{ route('news') }}"> التسويق الإلكتروني</a>
+                            <a class="px-2 nav-link" href="{{ route('news') }}"> المدونة</a>
                         </li>
                         <li class="nav-item">
                             <a class="px-2 nav-link" href="{{ route('researches') }}"> المكتبة الرقمية</a>

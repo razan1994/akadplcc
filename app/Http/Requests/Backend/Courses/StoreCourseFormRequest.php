@@ -26,7 +26,7 @@ class StoreCourseFormRequest extends FormRequest
     {
         return [
             'title_ar' => 'required',
-            'title_en' => 'required |regex:/^[a-zA-Z\s]+$/u',
+            'title_en' => 'required |regex:/^[a-zA-Z0-9\s]+$/u | unique:courses,title_en',
             'desc_ar' => 'required',
             'teacher_ar' => 'required',
             'section_count' => 'required|numeric',

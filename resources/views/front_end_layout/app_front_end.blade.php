@@ -32,7 +32,7 @@
 
     <!-- Link slick CSS -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-{{-- 
+    {{-- 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous"> --}}
 
@@ -45,7 +45,61 @@
     {{-- ========================================================== --}}
     {{-- =================== Sweet Alert Section ================== --}}
     {{-- ========================================================== --}}
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-bottom-left-radius: 12px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-bottom-left-radius: 12px;
+
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        #searchResult {
+            top: 102%;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: #fff;
+            border: 1px solid #ddd;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 12px;
+        }
+
+        #searchResult ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #searchResult ul li {
+            border-bottom: 1px solid #ddd;
+        }
+        #searchResult ul li a {
+            display: block;
+            padding: 10px;
+            color: #000;
+            text-decoration: none;
+        }
+        #searchResult ul li:hover {
+            background: #f1f1f1;
+        }
+    </style>
     @stack('styles')
 
 </head>
@@ -58,7 +112,7 @@
         <!-- ================================================================= -->
         <!-- ==================== Start Header Section ======================= -->
         <!-- ================================================================= -->
-        @include('front_end_layout.header')
+        @livewire('frontend.layout.navbar')
         <!-- ================================================================= -->
         <!-- ====================== End Header Section ======================= -->
         <!-- ================================================================= -->

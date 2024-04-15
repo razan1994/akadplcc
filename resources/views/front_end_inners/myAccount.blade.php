@@ -220,7 +220,7 @@
                             <div class="c_research">
                                 <div class="row">
                                     @forelse (auth('student')->user()->courses as $item)
-                                        <a href="{{ route('course-details', encrypt($item->id)) }}"
+                                        <a href="{{ route('course-details', $item->slug) }}" wire:navigate
                                             class="col-md-3 col-12">
                                             <div class="rounded-lg card">
                                                 <div class="card-header">
@@ -593,7 +593,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        طلب سحب النقاط 
+                        طلب سحب النقاط
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -675,8 +675,7 @@
                                 <label for="email">الايميل</label>
                                 <input type="email" name="email"
                                     class="form-control @error('email') is-invalid @enderror" id="email"
-                                    placeholder="الاسم" value="{{ old('email', auth('student')->user()->email) }}"
-                                    >
+                                    placeholder="الاسم" value="{{ old('email', auth('student')->user()->email) }}">
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -754,7 +753,7 @@
         $(document).ready(function() {
             // hide the email 
             $('#emailInput').hide();
-            
+
             // show the payment wallets when the type is wallet
             $('input[name="type"]').change(function() {
                 if ($(this).val() == 'wallet') {

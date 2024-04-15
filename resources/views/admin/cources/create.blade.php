@@ -275,7 +275,7 @@
                                                             <span class="input-group-text mdi mdi-cloud-upload"></span>
                                                         </div>
                                                         <input type="file" name="main_video" class="form-control"
-                                                            id="validationServer01" placeholder="Video">
+                                                            id="validationServer01" placeholder="Video" accept="video/*">
                                                     </div>
                                                 </div>
 

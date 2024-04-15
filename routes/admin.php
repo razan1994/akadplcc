@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Admin\AboutUsController;
 use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
 use App\Http\Controllers\Backend\Admin\BackendStudentController;
 use App\Http\Controllers\Backend\Admin\BannerController;
+use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\TermAndConditionController;
 use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
@@ -233,6 +234,9 @@ Route::middleware('auth:super_admin')
             });
 
 
+
+
+
         // Course Sections Routes:
         //Created By :Ahmad Alsakhen
         Route::prefix("sections")->name('section.')->controller(SectionController::class)->group(function () {
@@ -264,6 +268,12 @@ Route::middleware('auth:super_admin')
         //Created By :Ahmad Alsakhen
         Route::resource('banners', BannerController::class)->except(['show']);
         Route::get('banners/toggle-status/{id}', [BannerController::class, 'toggleStatus'])->name('banners.toggle-status');
+
+
+        // Cattegories Routes:
+        //Created By :Ahmad Alsakhen
+        Route::resource('categories', CategoryController::class);
+
 
 
         // Wallet Routes :

@@ -40,8 +40,8 @@
                                     الشكل الخارجي للنص </p>
                             </div>
                             <div class="c_buttn">
-                                <a href="#">الدورات</a>
-                                <a href="#">اتصل بنا</a>
+                                <a href="{{ route('courses') }}" wire:navigate>الدورات</a>
+                                <a href="{{ route('contactUs') }}" wire:navigate>اتصل بنا</a>
                             </div>
                         </div>
                     </div>
@@ -131,12 +131,12 @@
                                 </p>
                             </div>
                             <div class="c_buttn">
-                                <a href="#">اقرأ المزيد</a>
+                                <a href="{{ route('aboutUs') }}" wire:navigate>اقرأ المزيد</a>
                             </div>
                             <div class="c_num">
                                 <div class="c_item">
                                     <div class="c_icon">
-                                        &#10003;
+                                        &#10003;<Fig></Fig>
                                         {{-- check mark  --}}
                                     </div>
                                     <div class="c_bdu">
@@ -205,7 +205,7 @@
                                         <div class="c_item">
 
                                             <div class="c_image">
-                                                <a href="{{ route('course-details', encrypt($course->id)) }}">
+                                                <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
                                                     @if (isset($course->main_image) && file_exists($course->main_image))
                                                         <img src="{{ asset($course->main_image) }}" loading="lazy">
                                                     @else
@@ -217,7 +217,7 @@
 
                                             <div class="c_post">
                                                 <div class="c_body">
-                                                    <a href="{{ route('course-details', encrypt($course->id)) }}">
+                                                    <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
                                                         <h3>{!! isset($course->title_ar) ? $course->title_ar : 'Undefined' !!}</h3>
                                                     </a>
                                                     <p>

@@ -114,11 +114,12 @@
                                             @if ($isUserRegisterationActive)
                                                 {{-- if the user is registered in "KANAF" --}}
                                                 @if (auth('student')->user()->courses->contains($course->id))
-                                                    <a href="{{ route('student.course-sections', encrypt($course->id)) }}">
+                                                    <a href="{{ route('student.course-sections', $course->slug) }}"
+                                                        wire:navigate>
                                                         متابعة الدورة
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('student.register-course', encrypt($course->id)) }}">
+                                                    <a href="{{ route('student.register-course', $course->slug) }}">
                                                         اشترك في الدورة
                                                     </a>
                                                 @endif

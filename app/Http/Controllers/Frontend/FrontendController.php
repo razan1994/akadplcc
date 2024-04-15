@@ -125,14 +125,11 @@ class FrontendController extends Controller
 
 
 
-    function courseDetails(Route $route, $id)
+    function courseDetails(Route $route, $slug = '')
     {
 
         try {
-
-            $id = decrypt($id);
-
-            $course = Course::find($id);
+            $course = Course::where('slug', $slug)->first();
             $paymentWallets = PaymentWallet::where('status', 'active')->get();
             if ($course) {
                 return view('front_end_inners.courseDetails', compact('course', 'paymentWallets'));
@@ -206,13 +203,13 @@ class FrontendController extends Controller
 
 
 
-    function newsDetails(Route $route, $id)
+    function newsDetails(Route $route, $slug)
     {
 
         try {
-            $news = Blog::find($id);
+            $news = Blog::where('slug', $slug)->first();
             if ($news) {
-                $relateds = Blog::where('status', 1)->where('id', '!=', $id)->inRandomOrder()->limit(9)->get();
+                $relateds = Blog::where('status', 1)->where('id', '!=', $news->id)->latest()->take(9)->get();
                 return view('front_end_inners.newsDetails', compact('news', 'relateds'));
             } else {
                 return redirect()->back()->with('success', 'الاخبار التي تحاول الوصول اليها غير موجودة في السجلات');
@@ -381,7 +378,7 @@ class FrontendController extends Controller
     {
         try {
             $researches = Research::where('status', 1)->orderBy('created_at', 'desc')->paginate(12);
-            return view('front_end_inners.researches' , compact('researches'));
+            return view('front_end_inners.researches', compact('researches'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
