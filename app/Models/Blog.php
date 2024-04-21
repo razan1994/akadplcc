@@ -13,38 +13,33 @@ class Blog extends Model
 
     protected $table = "blogs";
 
-    protected $fillable = [
-        'user_id',
-        'title_ar',
-        'title_en',
-        'desc_ar',
-        'desc_en',
-        'alias_name_ar',
-        'alias_name_en',
-        'image',
-        'status',
-        'alt_text_ar',
-        'alt_text_en',
-        'image_title_text_ar',
-        'image_title_text_en',
-        'h2_ar',
-        'h2_en',
-        'seo_title_ar',
-        'seo_title_en',
-        'keywords_ar',
-        'keywords_en',
-        'redirect_301_ar',
-        'redirect_301_en',
-        'meta_desc_ar',
-        'meta_desc_en',
-    ];
+    protected $guarded = [];
 
     protected $date = ['deleted_at'];
 
 
-    // Relation With User Table
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+
+
+    // =========================================
+    // ============= Scopes =================
+    // =========================================
+    public function scopeActive($query)
+    {
+        // the active products will be thw products that have at least one size and the category that belongs to is active
+        return $query->where('status', 1);
     }
 
+
+    // =========================================
+    // ============= Relations =================
+    // =========================================
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

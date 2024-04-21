@@ -51,6 +51,9 @@
                             <tr>
                                 <th style="text-align: center"><i class="mdi mdi-format-title"></i> Title EN </th>
                                 <th style="text-align: center"><i class="mdi mdi-format-title"></i>Title AR </th>
+                                <th>
+                                    Description
+                                </th>
                                 {{-- <th style="text-align: center"><i class="mdi mdi-format-title"></i>Price </th> --}}
                                 <th style="text-align: center"><i class="far fa-question-circle"></i>Status</th>
                                 <th style="text-align: center"><i class="mdi mdi-image"></i> Main Image </th>
@@ -69,6 +72,14 @@
 
                                         <td style="text-align: center">
                                             {{ isset($cource->title_ar) ? $cource->title_ar : '-' }}
+                                        </td>
+
+                                        <td>
+                                            @if (strlen($cource->short_description) > 100)
+                                                {{ substr($cource->short_description, 0, 100) }} ...
+                                            @else
+                                                {{ $cource->short_description }}
+                                            @endif
                                         </td>
 
                                         {{-- <td style="text-align: center">

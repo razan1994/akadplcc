@@ -34,7 +34,7 @@ Route::controller(FrontendController::class)
         Route::get('/course/{slug}', 'courseDetails')->name('course-details');
 
 
-        Route::get('/news', 'news')->name('news');
+        Route::get('/news/{categorySlug?}', 'news')->name('news');
         Route::get('/news-details/{slug}', 'newsDetails')->name('news-details');
         Route::get('/researches', 'researches')->name('researches');
 

@@ -127,6 +127,32 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- Short Sescription --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
+                                                        for="validationServer01">
+                                                        Short Description
+                                                        <strong class="text-danger">
+
+                                                            @error('short_description')
+                                                                -
+                                                                {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                        <small class="text-danger">
+                                                            this description will only shown on the news card
+                                                        </small>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Short Description">{{ old('short_description', $course->short_description) }}</textarea>
+                                                    </div>
+                                                </div>
+
 
 
                                                 <div class="mb-3 col-md-6">

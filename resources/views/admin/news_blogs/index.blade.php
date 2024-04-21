@@ -5,7 +5,6 @@
         rel="stylesheet"> --}}
     {{-- <link href="{{ asset('dashboard_files/assets/css/sleek.min.css') }}"> --}}
     {{-- <link href="{{ asset('dashboard_files/assets/css/sleek.css') }}"> --}}
-
 @endsection
 
 @section('content')
@@ -20,7 +19,6 @@
                         swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
                             button: "OK",
                         });
-
                     </script>
                 @endif
                 @if (session()->has('danger'))
@@ -28,7 +26,6 @@
                         swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
                             button: "Close",
                         });
-
                     </script>
                 @endif
             </div>
@@ -40,7 +37,7 @@
                 <div>
                     <h1> Blogs </h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb p-0">
+                        <ol class="p-0 breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('super_admin.dashboard') }}">
                                     <span class="mdi mdi-home"></span> Dashboard
@@ -55,8 +52,8 @@
                             class="mdi mdi-playlist-plus"></i> Add New</a>
 
 
-                            <a href="{{ route('super_admin.news_blogs-showSoftDelete') }}" class="mb-1 btn btn-danger"><i
-                                class="mdi mdi-delete"></i> Archive </a>
+                    <a href="{{ route('super_admin.news_blogs-showSoftDelete') }}" class="mb-1 btn btn-danger"><i
+                            class="mdi mdi-delete"></i> Archive </a>
 
 
                 </div>
@@ -73,9 +70,12 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center"><i class="mdi mdi-format-title"></i>Title </th>
+                                <th style="text-align: center"><i class="mdi mdi-format-title"></i>Description </th>
                                 <th style="text-align: center"><i class="far fa-question-circle"></i>Status</th>
+                                <th style="text-align: center"><i class="far fa-question-circle"></i>Category</th>
                                 <th style="text-align: center"><i class="mdi mdi-image"></i> Main Image </th>
-                                <th  style="text-align: center"><i class="mdi mdi-clock-outline mdi-spin"></i> Date_Time </th>
+                                <th style="text-align: center"><i class="mdi mdi-clock-outline mdi-spin"></i> Date_Time
+                                </th>
                                 <th style="text-align: center"><i class="mdi mdi-settings mdi-spin"></i> Control </th>
                             </tr>
                         </thead>
@@ -83,14 +83,37 @@
                             @if ($news_blogs->count() > 0)
                                 @foreach ($news_blogs as $index => $news_blog)
                                     <tr>
-                                        <td  style="text-align: center">{{ isset($news_blog->title_ar) ? $news_blog->title_ar : 'Undefined' }}</td>
-                                        <td  style="text-align: center">{{ isset($news_blog->status) ? $news_blog->status : 'Undefined' }}</td>
+                                        <td style="text-align: center">
+                                            {{ isset($news_blog->title_ar) ? $news_blog->title_ar : 'Undefined' }}</td>
+
+                                        <td>
+                                            @if (strlen($news_blog->short_description) > 100)
+                                                {{ substr($news_blog->short_description, 0, 100) }} ...
+                                            @else
+                                                {{ $news_blog->short_description }}
+                                            @endif
+                                        </td>
+                                        <td style="text-align: center">
+                                            {{ isset($news_blog->status) ? $news_blog->status : 'Undefined' }}</td>
+
+                                        <td>
+                                            @if ($news_blog->category)
+                                                <span class="p-2 m-1 badge badge-pill badge-primary font-size-14">
+                                                    {{ $news_blog->category->name }}
+                                                </span>
+                                            @else
+                                                <span style="color:red;">Undefined</span>
+                                            @endif
+                                        </td>
                                         @if ($news_blog->image && file_exists($news_blog->image))
-                                            <td  style="text-align: center"><img src="{{ asset($news_blog->image) }}" width="70" height="70"
+                                            <td style="text-align: center"><img src="{{ asset($news_blog->image) }}"
+                                                    width="70" height="70"
                                                     style="border-radius: 10px; border:solid 1px black;"></th>
                                             @else
-                                            <td  style="text-align: center"><img src="{{ asset('images_default/default.jpg') }}" width="70" height="70"
-                                                    style="border-radius: 10px; border:solid 1px black;"></th>
+                                            <td style="text-align: center"><img
+                                                    src="{{ asset('images_default/default.jpg') }}" width="70"
+                                                    height="70" style="border-radius: 10px; border:solid 1px black;">
+                                                </th>
                                         @endif
 
 
@@ -101,7 +124,7 @@
 
 
 
-                                        <td  style="text-align: center">
+                                        <td style="text-align: center">
 
                                             <a href="{{ route('super_admin.news_blogs-show', $news_blog->id) }}"
                                                 class="mb-1 btn btn-sm btn-primary"><i class="mdi mdi-eye"></i></a>
@@ -112,7 +135,8 @@
 
 
                                             <a href="{{ route('super_admin.news_blogs-softDelete', $news_blog->id) }}"
-                                                class="confirm mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a>
+                                                class="mb-1 confirm btn btn-sm btn-danger"><i
+                                                    class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -126,23 +150,19 @@
         @section('admin_javascript')
             <script>
                 jQuery(document).ready(function() {
-            jQuery('#hoverable-data-table').DataTable({
-                "aLengthMenu": [
-                    [20, 30, 50, 75, -1],
-                    [20, 30, 50, 75, "All"]
-                ],
-                "pageLength": 20,
-                "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
-                "order": [
-                    [0, "desc"]
-                ]
-            });
-        });
-
+                    jQuery('#hoverable-data-table').DataTable({
+                        "aLengthMenu": [
+                            [20, 30, 50, 75, -1],
+                            [20, 30, 50, 75, "All"]
+                        ],
+                        "pageLength": 20,
+                        "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
+                        "order": [
+                            [0, "desc"]
+                        ]
+                    });
+                });
             </script>
-            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}">
-            </script>
-            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}">
-            </script>
-
+            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}"></script>
+            <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}"></script>
         @endsection

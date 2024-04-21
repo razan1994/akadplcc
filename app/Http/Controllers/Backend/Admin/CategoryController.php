@@ -59,12 +59,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
+            'name_en' => ['required', 'string', 'max:255', 'unique:categories,name_en'],
+            'parent_id' => 'nullable|exists:categories,id',
+        ]);
         try {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
-                'name_en' => ['required', 'string', 'max:255', 'unique:categories,name_en'],
-                'parent_id' => 'nullable|exists:categories,id',
-            ]);
 
             $data = $request->all();
             $slug = Str::slug($request->name_en);
@@ -179,12 +179,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'unique:categories,name,' . $id],
+            'name_en' => ['required', 'string', 'max:255', 'unique:categories,name_en,' . $id],
+            'parent_id' => 'nullable|exists:categories,id',
+        ]);
+
         try {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255', 'unique:categories,name,' . $id],
-                'name_en' => ['required', 'string', 'max:255', 'unique:categories,name_en,' . $id],
-                'parent_id' => 'nullable|exists:categories,id',
-            ]);
 
             $data = $request->all();
             $slug = Str::slug($request->name_en);
@@ -234,6 +235,9 @@ class CategoryController extends Controller
 
             if ($category->childrens->count() > 0) {
                 return redirect()->back()->with('danger', 'Category has childrens');
+            }
+            if ($category->blogs->count() > 0) {
+                return redirect()->back()->with('danger', 'Category has blogs');
             }
             $category->delete();
             return redirect()->route('super_admin.categories.index')->with('success', 'Category deleted successfully');

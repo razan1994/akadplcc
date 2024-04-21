@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\Backend\Admin\AboutUsController;
+use App\Http\Controllers\Backend\Admin\Api\ExtrasController;
 use App\Http\Controllers\Backend\Admin\ApprovedBodiesController;
 use App\Http\Controllers\Backend\Admin\BackendStudentController;
 use App\Http\Controllers\Backend\Admin\BannerController;
@@ -337,4 +338,13 @@ Route::middleware('auth:super_admin')
                 Route::get('destroy/{id}', 'destroy')->name('destroy');
                 Route::get('toggle-status/{id}', 'toggleStatus')->name('toggle');
             });
+
+
+
+        // Extras Routes :
+        // by : Ahmad Alsakhen
+        // ------------------------------------------
+        Route::controller(ExtrasController::class)->group(function () {
+            Route::post('/get-sub-categories', 'getSubCategories')->name('getSubCategories');
+        });
     });

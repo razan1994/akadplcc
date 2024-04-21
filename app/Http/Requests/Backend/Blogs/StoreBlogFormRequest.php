@@ -29,8 +29,7 @@ class StoreBlogFormRequest extends FormRequest
             'desc_ar' => 'required',
             'image' => 'required|mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
             'status' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
-
-
 }

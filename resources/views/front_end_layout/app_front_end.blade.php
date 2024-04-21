@@ -45,61 +45,7 @@
     {{-- ========================================================== --}}
     {{-- =================== Sweet Alert Section ================== --}}
     {{-- ========================================================== --}}
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 9px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-bottom-left-radius: 12px;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-bottom-left-radius: 12px;
-
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        #searchResult {
-            top: 102%;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: #fff;
-            border: 1px solid #ddd;
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 12px;
-        }
-
-        #searchResult ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #searchResult ul li {
-            border-bottom: 1px solid #ddd;
-        }
-        #searchResult ul li a {
-            display: block;
-            padding: 10px;
-            color: #000;
-            text-decoration: none;
-        }
-        #searchResult ul li:hover {
-            background: #f1f1f1;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     @stack('styles')
 
 </head>

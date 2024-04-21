@@ -116,9 +116,36 @@
                             <li class="nav-item">
                                 <a class="px-2 nav-link" href="{{ route('courses') }}" wire:navigate>الدورات</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="px-2 nav-link" href="{{ route('news') }}" wire:navigate> المدونة</a>
-                            </li>
+                            @if (count($categories) > 0 && !empty($categories))
+                                <li class="nav-item">
+                                    <a class="px-2 nav-link" href="{{ route('news') }}" wire:navigate>
+                                        المدونة
+                                    </a>
+                                    <div class="subMenu">
+                                        <div class="row">
+                                            @foreach ($categories as $category)
+                                                <div class="col-md-2">
+                                                    <span
+                                                        class="gap-2 text-underlinf font-weight-bold d-flex align-items-center">
+                                                        {{ $category->name }}
+                                                    </span>
+                                                    <ul>
+                                                        @foreach ($category->activeChildrens as $subCategory)
+                                                            <li>
+                                                                <a href="{{ route('news', $subCategory->slug) }}"
+                                                                    wire:navigate>
+                                                                    {{ $subCategory->name }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                    </div>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="px-2 nav-link" href="{{ route('researches') }}" wire:navigate> المكتبة
                                     الرقمية</a>

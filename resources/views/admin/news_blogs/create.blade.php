@@ -149,6 +149,74 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- Short Sescription --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
+                                                        for="validationServer01">
+                                                        Short Description
+                                                        <strong class="text-danger">
+
+                                                            @error('short_description')
+                                                                -
+                                                                {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                        <small class="text-danger">
+                                                            this description will only shown on the news card
+                                                        </small>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Short Description">{{ old('short_description') }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <hr>
+                                            <div class="row">
+
+                                                {{-- Main Categories --}}
+                                                <div class="col-md-6" id="mainCategoryContainer">
+                                                    <div class="form-group">
+                                                        <label for="main_category_id">Main Category</label>
+                                                        <div class="">
+                                                            <select class="form-control"
+                                                                data-placeholder="Select a Category" name="main_category_id"
+                                                                id="main_category_id" style="width: 100%;">
+                                                                @foreach ($mainCategories as $item)
+                                                                    <option value="{{ $item->id }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+
+                                                {{-- Categories --}}
+                                                <div class="col-md-6" id="mainCategoryContainer">
+                                                    <div class="form-group">
+                                                        <label for="categories">Category
+                                                            <strong class="text-danger"> * @error('category_id')
+                                                                    - {{ $message }}
+                                                                @enderror
+                                                            </strong>
+
+                                                        </label>
+                                                        <div class="">
+                                                            <select class="form-control" required
+                                                                data-placeholder="Select a Category" name="category_id"
+                                                                id="categories" style="width: 100%;">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+
 
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
@@ -161,17 +229,19 @@
                                                     </label>
                                                     <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ old('desc_ar') }}</textarea>
                                                 </div>
+                                            </div>
 
-                                                {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                {{-- <div class="mb-3 col-md-12">
+
+                                            {{-- @lang('front_end.News_Blog_Details_EN') --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > Blog Details EN :
                                                         <strong class="text-danger">* @error('desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
                                                     <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ old('desc_en') }}</textarea>
                                                 </div> --}}
 
-                                                {{-- alt text Ar --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- alt text Ar --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Alt Text Ar <strong
                                                             class="text-danger"> * @error('alt_text_ar') -
@@ -187,8 +257,8 @@
                                                             value="{{ old('alt_text_ar') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- alt text En --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- alt text En --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Alt Text En <strong
                                                             class="text-danger"> * @error('alt_text_en') -
@@ -204,8 +274,8 @@
                                                             value="{{ old('alt_text_en') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- image title text Ar --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- image title text Ar --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Image Title Text AR <strong
                                                             class="text-danger"> * @error('image_title_text_ar') -
@@ -222,8 +292,8 @@
 
                                                     </div>
                                                 </div> --}}
-                                                {{-- image title text En --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- image title text En --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Image Title Text En <strong
                                                             class="text-danger"> * @error('image_title_text_en') -
@@ -239,8 +309,8 @@
                                                             value="{{ old('image_title_text_en') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- H2 Ar --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- H2 Ar --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">H2 AR <strong
                                                             class="text-danger"> * @error('h2_ar') -
@@ -256,8 +326,8 @@
                                                             value="{{ old('h2_ar') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- H2 EN --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- H2 EN --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">H2 EN <strong
                                                             class="text-danger"> * @error('h2_en') -
@@ -273,8 +343,8 @@
                                                             value="{{ old('h2_en') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- seo title AR --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- seo title AR --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">SEO Title AR <strong
                                                             class="text-danger"> * @error('seo_title_ar') -
@@ -290,8 +360,8 @@
                                                             value="{{ old('seo_title_ar') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- seo title En --}}
-                                                {{-- <div class="mb-3 col-md-6">
+                                            {{-- seo title En --}}
+                                            {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">SEO Title En <strong
                                                             class="text-danger"> * @error('seo_title_en') -
@@ -307,44 +377,44 @@
                                                             value="{{ old('seo_title_en') }}">
                                                     </div>
                                                 </div> --}}
-                                                {{-- SEO Meta data AR --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- SEO Meta data AR --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > keywords AR :
                                                         <strong class="text-danger"> * @error('keywords_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_ar" class="form-control" placeholder="Kewords AR">{{ old('keywords_ar') }}</textarea>
                                                 </div> --}}
-                                                {{-- SEO Meta data EN --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- SEO Meta data EN --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > keywords EN :
                                                         <strong class="text-danger"> * @error('keywords_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="keywords_en" class="form-control" placeholder="Kewords EN">{{ old('keywords_en') }}</textarea>
                                                 </div> --}}
-                                                {{-- Redirect 301 AR --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- Redirect 301 AR --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium"> Redirect 301 AR :
                                                         <strong class="text-danger"> * @error('redirect_301_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_ar" class="form-control" placeholder="Redirect 301 AR">{{ old('redirect_301_ar') }}</textarea>
                                                 </div> --}}
-                                                {{-- Redirect 301 EN --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- Redirect 301 EN --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > Redirect 301 EN :
                                                         <strong class="text-danger"> * @error('redirect_301_en') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea name="redirect_301_en" class="form-control" placeholder="Redirect 301 EN">{{ old('redirect_301_en') }}</textarea>
                                                 </div> --}}
-                                                {{-- @lang('front_end.News_Blog_Details_AR') --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- @lang('front_end.News_Blog_Details_AR') --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > Meta Desc AR :
                                                         <strong class="text-danger"> * @error('meta_desc_ar') - {{ $message }} @enderror</strong>
                                                     </label>
                                                     <textarea  name="meta_desc_ar" rows="10" class="form-control" placeholder="Meta Desc AR">{{ old('meta_desc_ar') }}</textarea>
                                                 </div> --}}
 
-                                                {{-- @lang('front_end.News_Blog_Details_EN') --}}
-                                                {{-- <div class="mb-3 col-md-12">
+                                            {{-- @lang('front_end.News_Blog_Details_EN') --}}
+                                            {{-- <div class="mb-3 col-md-12">
                                                     <label class="mb-3 text-dark font-weight-medium" > Meta Desc EN :
                                                         <strong class="text-danger">* @error('meta_desc_en') - {{ $message }}@enderror</strong>
                                                     </label>
@@ -352,15 +422,13 @@
                                                 </div> --}}
 
 
-                                                <div class="mb-3 col-md-12">
-                                                    <div class="input-group">
-                                                        <button class="btn btn-primary" type="submit">Add</button>
-                                                    </div>
+                                            <div class="mb-3 col-md-12">
+                                                <div class="input-group">
+                                                    <button class="btn btn-primary" type="submit">Add</button>
                                                 </div>
                                             </div>
-
-                                        </form>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -369,23 +437,93 @@
             </div>
         </div>
     </div>
+    </div>
 
     {{-- ========================================================== --}}
     {{-- ================ Advance Text Area Section =============== --}}
     {{-- ========================================================== --}}
     <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
-        <script>
-                CKEDITOR.replace( 'desc_ar',{
-                    fullPage: true,
-                    allowedContent: true
-                });
-                CKEDITOR.replace( 'desc_en',{
-                    fullPage: true,
-                    allowedContent: true
-                });
-        </script>
+    <script>
+        CKEDITOR.replace('desc_ar', {
+            fullPage: true,
+            allowedContent: true
+        });
+        // CKEDITOR.replace('desc_en', {
+        //     fullPage: true,
+        //     allowedContent: true
+        // });
+    </script>
     {{-- ========================================================== --}}
     {{-- ================ Advance Text Area Section =============== --}}
     {{-- ========================================================== --}}
 @endsection
+
+
+@push('scripts')
+    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#mainCategoriesContainer').hide();
+
+            setTimeout(() => {
+                super_id = $("#main_category_id").val();
+                if (super_id !== "") {
+                    getSubCategories();
+                }
+            }, 1000);
+
+
+            $(document).on("change", "#main_category_id", function() {
+                getSubCategories();
+                // getBrand();
+            });
+        });
+
+        function getSubCategories() {
+
+            main_category_id = $("#main_category_id").val();
+
+            formData = new FormData();
+            formData.append('main_category_id', main_category_id);
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "{{ route('super_admin.getSubCategories') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    if (data['status'] == true) {
+                        console.log(data)
+                        let subCategories = data?.subCategories ?? [];
+                        old_super = $("#old_super").val();
+                        // old_brand = $("#old_brand").val();
+
+                        $("#categories").html('');
+                        html = '<option value="">Select Sub Category....</option>';
+                        for (let key = 0; key < subCategories.length; key++) {
+                            // console.log(data.mainCategories[key]['id']);
+                            if (old_super == subCategories[key]['id']) {
+                                html += '<option value="' + subCategories[key]['id'] + '" selected>' +
+                                    subCategories[key]['name_en'] + '</option>';
+                            } else {
+                                html += '<option value="' + subCategories[key]['id'] + '">' +
+                                    subCategories[key]['name_en'] + '</option>';
+                            }
+                        }
+                        $("#categories").html(html);
+                        // $('.selectpicker').selectpicker('refresh');
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+    </script>
+@endpush

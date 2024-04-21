@@ -49,32 +49,36 @@
                             @foreach ($courses as $index => $course)
                                 <div class="col-md-6 col-xs-12">
                                     <div class="c_item">
-                                        <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
-                                            <div class="c_image">
+                                        <div class="c_image">
+                                            <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
                                                 @if (isset($course->main_image) && file_exists($course->main_image))
-                                                    <img src="{{ asset($course->main_image) }}">
+                                                    <img src="{{ asset($course->main_image) }}" loading="lazy">
                                                 @else
-                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                    <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                        loading="lazy">
                                                 @endif
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                         <div class="c_post">
                                             <div class="c_body">
                                                 <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
                                                     <h3>{!! isset($course->title_ar) ? $course->title_ar : 'Undefined' !!}</h3>
                                                 </a>
-                                                <p>{!! \Illuminate\Support\Str::limit(
-                                                    isset($course->desc_ar) ? str_replace('&nbsp;', ' ', $course->desc_ar) : '--------',
-                                                    70,
-                                                    $end = '...',
-                                                ) !!}</p>
+                                                <p>
+                                                    {!! \Illuminate\Support\Str::limit(
+                                                        isset($course->short_description) ? str_replace('&nbsp;', ' ', $course->short_description) : '--------',
+                                                        70,
+                                                        $end = '...',
+                                                    ) !!}
+                                                </p>
                                             </div>
-                                            <div class="c_buttn">
+                                            <div class="c_buttn flex-column flex-lg-row">
                                                 <div class="c_tech">
                                                     @if (isset($course->teacher_image) && file_exists($course->teacher_image))
-                                                        <img src="{{ asset($course->teacher_image) }}">
+                                                        <img src="{{ asset($course->teacher_image) }}" loading="lazy">
                                                     @else
-                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
+                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                                            loading="lazy">
                                                     @endif
                                                     <span>{!! isset($course->teacher_ar) ? $course->teacher_ar : 'Undefined' !!}</span>
                                                 </div>

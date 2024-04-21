@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blogs\StoreBlogFormRequest;
 use App\Http\Requests\Backend\Blogs\UpdateBlogFormRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class NewsBlogController extends Controller
 {
@@ -26,9 +28,10 @@ class NewsBlogController extends Controller
 
 
         try {
-            $news_blogs = new Blog();
-            $news_blogs = $news_blogs->select('*')->orderBy('created_at', 'asc')->get();
+            // $news_blogs = new Blog();
+            // $news_blogs = $news_blogs->select('*')->orderBy('created_at', 'asc')->get();
 
+            $news_blogs = Blog::with('category')->orderBy('created_at', 'asc')->get();
             return view('admin.news_blogs.index', compact(
                 'news_blogs',
             ));
@@ -64,7 +67,10 @@ class NewsBlogController extends Controller
     public function create(Route $route)
     {
         try {
-            return view('admin.news_blogs.create');
+            $mainCategories = Category::where('parent_id', null)
+                ->whereHas('childrens')
+                ->get();
+            return view('admin.news_blogs.create', compact('mainCategories'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -116,7 +122,9 @@ class NewsBlogController extends Controller
                 'desc_ar' => $request->desc_ar,
                 'desc_en' => $request->desc_ar,
                 'image' => $news_blog_main_image,
-
+                'category_id' => $request->category_id,
+                'slug' => Str::slug($request->title_ar),
+                'short_description' => $request->short_description ?? null,
             ];
 
             DB::transaction(function () use ($created_data) {
@@ -156,7 +164,7 @@ class NewsBlogController extends Controller
     public function show($id, Route $route)
     {
         try {
-            $news_blog = Blog::find($id);
+            $news_blog = Blog::with('category')->find($id);
 
             if ($news_blog) {
                 // return $news_blog;
@@ -196,10 +204,13 @@ class NewsBlogController extends Controller
     public function edit($id, Route $route)
     {
         try {
+            $mainCategories = Category::where('parent_id', null)
+                ->whereHas('childrens')
+                ->get();
             $news_blog = Blog::find($id);
 
             if ($news_blog) {
-                return view('admin.news_blogs.edit', compact('news_blog'));
+                return view('admin.news_blogs.edit', compact('news_blog', 'mainCategories'));
             } else {
                 return redirect()->route('super_admin.news_blogs-index')->with('danger', 'This record is not in the records');
             }
@@ -235,7 +246,7 @@ class NewsBlogController extends Controller
     public function update($id, UpdateBlogFormRequest $request, Route $route)
     {
         try {
-            $news_blog = Blog::find($id);
+            $news_blog = Blog::with('category')->find($id);
             if ($news_blog) {
                 // General Updated Data :
                 $update_data = [
@@ -244,14 +255,16 @@ class NewsBlogController extends Controller
                     'status' => $request->status,
                     'desc_ar' => $request->desc_ar,
                     'desc_en' => $request->desc_ar,
-
+                    'category_id' => $request->category_id,
+                    'slug' => Str::slug($request->title_ar),
+                    'short_description' => $request->short_description ?? null,
                 ];
                 // Upload Image Section :
                 if (isset($request->image)) {
                     $orginal_image = $request->file('image');
                     $upload_location = 'storage/blogs/';
                     $original_name = $orginal_image->getClientOriginalName();
-                    $file_name = $this->saveFile($orginal_image,$upload_location);
+                    $file_name = $this->saveFile($orginal_image, $upload_location);
                     File::delete($news_blog->image);
                     $update_data['image'] = $file_name;
                 }
@@ -259,7 +272,7 @@ class NewsBlogController extends Controller
                 DB::transaction(function () use ($update_data, $id) {
                     Blog::find($id)->update($update_data);
                 });
-                return redirect()->back()->with('success', 'The data has been successfully updated');
+                return redirect()->route('super_admin.news_blogs-index')->with('success', 'The data has been successfully updated');
             } else {
                 return redirect()->route('super_admin.news_blogs-index')->with('danger', 'This record does not exist in the records');
             }

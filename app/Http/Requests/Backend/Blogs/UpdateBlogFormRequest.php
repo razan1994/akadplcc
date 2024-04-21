@@ -25,10 +25,11 @@ class UpdateBlogFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_ar' => 'required|unique:blogs,title_ar,'.$this->id,
+            'title_ar' => ['required', 'unique:blogs,title_ar,' . $this->id, 'max:255'],
             'desc_ar' => 'required',
             'image' => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
             'status' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 }

@@ -121,6 +121,7 @@ class CourcesController extends Controller
                 'course_date' => $request->course_date,
                 'status' => $request->status,
                 'price' => $request->price ?? 0,
+                'short_description' => $request->short_description ?? null,
             ];
 
 
@@ -301,6 +302,7 @@ class CourcesController extends Controller
                     'course_date' => $request->course_date,
                     'status' => $request->status,
                     'price' => $request->price ?? 0,
+                    'short_description' => $request->short_description ?? null,
                 ];
 
 

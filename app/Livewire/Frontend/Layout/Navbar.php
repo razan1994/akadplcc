@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Layout;
 
+use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -12,9 +13,7 @@ class Navbar extends Component
     public $searchText = '';
     public function render()
     {
-        Log::info($this->searchText);
         $search = $this->searchText;
-        // Perform search only if searchText has a value
         if ($this->searchText) {
             $searchResult = Course::where('status', 2)
                 ->whereHas('sections') // Ensure courses have sections
@@ -28,6 +27,8 @@ class Navbar extends Component
             $searchResult = []; // Set searchResult to an empty array if no search text
         }
 
-        return view('livewire.frontend.layout.navbar', compact('searchResult'));
+        $categories = Category::activeMainCategoriesWithChildrensHavingBlogs()->get() ?? [];
+
+        return view('livewire.frontend.layout.navbar', compact('searchResult', 'categories'));
     }
 }

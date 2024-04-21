@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\ApprovedBody;
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Course;
 use App\Models\Slider;
@@ -28,6 +29,15 @@ class WelcomeController extends Controller
         $approved = ApprovedBody::orderBy('created_at', 'desc')->limit(12)->get();
         $banners = Banner::where('status', 1)->inRandomOrder()->get();
 
-        return view('welcome', compact('about', 'contact', 'sliders', 'courses', 'approved', 'banners'));
+        // dd($categories);
+
+        return view('welcome', compact(
+            'about',
+            'contact',
+            'sliders',
+            'courses',
+            'approved',
+            'banners'
+        ));
     }
 }

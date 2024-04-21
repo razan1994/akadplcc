@@ -18,7 +18,6 @@
                         swal("Great Job !!!", "{!! Session::get('success') !!}", "success", {
                             button: "OK",
                         });
-
                     </script>
                 @endif
                 @if (session()->has('danger'))
@@ -26,7 +25,6 @@
                         swal("Oops !!!", "{!! Session::get('danger') !!}", "error", {
                             button: "Close",
                         });
-
                     </script>
                 @endif
             </div>
@@ -68,12 +66,17 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
+
+                                                {{-- Title --}}
                                                 <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
-                                                        for="validationServer01"> Title <strong
-                                                            class="text-danger"> * @error('title_ar') -
+                                                        for="validationServer01"> Title <strong class="text-danger"> *
+                                                            @error('title_ar')
+                                                                -
                                                                 {{ $message }}
-                                                            @enderror</strong></label>
+                                                            @enderror
+                                                        </strong>
+                                                    </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text mdi mdi-format-title"
@@ -86,6 +89,34 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- Main Image --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
+                                                        for="validationServer01"> Image <strong class="text-danger">
+                                                            * @error('image')
+                                                                - {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
+                                                        </div>
+                                                        <input type="file" name="image" class="form-control"
+                                                            id="validationServer01" placeholder="image" accept="image/*">
+                                                    </div>
+                                                    <div style="text-align: center">
+                                                        @if ($news_blog->image && file_exists($news_blog->image))
+                                                            <img src="{{ asset($news_blog->image) }}" width="100"
+                                                                height="100"
+                                                                style="border-radius: 10px; border:solid 1px black;">
+                                                        @else
+                                                            <img src="{{ asset('images_default/default.jpg') }}"
+                                                                width="100" height="100"
+                                                                style="border-radius: 10px; border:solid 1px black;">
+                                                        @endif
+                                                    </div>
+                                                </div>
                                                 {{-- Title EN --}}
                                                 {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
@@ -104,54 +135,110 @@
                                                         </div>
                                                 </div> --}}
 
-                                                    {{-- Status --}}
-                                                    <div class="mb-3 col-md-12">
-                                                        <label class="mb-3 text-dark font-weight-medium"> Status
-                                                            <strong class="text-danger"> * @error('status') - {{ $message }} @enderror</strong></label>
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text mdi mdi-account-check"></span>
-                                                            </div>
-                                                            <select name="status" class="selectpicker" data-live-search="true" data-width="88%"
-                                                                id="inlineFormCustomSelectPref">
-                                                                <option value="" selected>Choose...</option>
-                                                                <option value="1" @if ($news_blog->status == '1') selected @endif>Active</option>
-                                                                <option value="2" @if ($news_blog->status == '2') selected @endif>Inactive</option>
+                                                {{-- Status --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"> Status
+                                                        <strong class="text-danger"> * @error('status')
+                                                                - {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-account-check"></span>
+                                                        </div>
+                                                        <select name="status" class="selectpicker" data-live-search="true"
+                                                            data-width="88%" id="inlineFormCustomSelectPref">
+                                                            <option value="" selected>Choose...</option>
+                                                            <option value="1"
+                                                                @if ($news_blog->status == '1') selected @endif>Active
+                                                            </option>
+                                                            <option value="2"
+                                                                @if ($news_blog->status == '2') selected @endif>Inactive
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Short Sescription --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium"
+                                                        for="validationServer01">
+                                                        Short Description
+                                                        <strong class="text-danger">
+
+                                                            @error('short_description')
+                                                                -
+                                                                {{ $message }}
+                                                            @enderror
+                                                        </strong>
+                                                        <small class="text-danger">
+                                                            this description will only shown on the news card
+                                                        </small>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-format-title"
+                                                                id="inputGroupPrepend2"></span>
+                                                        </div>
+                                                        <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                                                            id="validationServer01" placeholder="Short Description">{{ old('short_description', $news_blog->short_description) }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="row">
+
+                                                {{-- Main Categories --}}
+                                                <div class="col-md-6" id="mainCategoryContainer">
+                                                    <div class="form-group">
+                                                        <label for="main_category_id">Main Category</label>
+                                                        <div class="">
+                                                            <select class="form-control"
+                                                                data-placeholder="Select a Category" name="main_category_id"
+                                                                id="main_category_id" style="width: 100%;">
+                                                                @foreach ($mainCategories as $item)
+                                                                    <option value="{{ $item->id }}"
+                                                                        @selected($item->id == $news_blog->category->parent->id)>
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
-                                                {{-- Main Image --}}
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="mb-3 text-dark font-weight-medium"
-                                                        for="validationServer01"> Image <strong
-                                                            class="text-danger">
-                                                            * @error('image') - {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-cloud-upload"></span>
-                                                        </div>
-                                                        <input type="file" name="image" class="form-control"
-                                                            id="validationServer01" placeholder="image" accept="image/*">
-                                                    </div>
-                                                    <div style="text-align: center">
-                                                        @if ($news_blog->image && file_exists($news_blog->image))
-                                                            <img src="{{ asset($news_blog->image) }}"
-                                                                width="100" height="100"
-                                                                style="border-radius: 10px; border:solid 1px black;">
-                                                        @else
-                                                            <img src="{{ asset('images_default/default.jpg') }}"
-                                                                width="100" height="100"
-                                                                style="border-radius: 10px; border:solid 1px black;">
-                                                        @endif
-                                                    </div>
+                                                    <!-- /.form-group -->
                                                 </div>
+
+                                                {{-- Categories --}}
+                                                <div class="col-md-6" id="mainCategoryContainer">
+                                                    <div class="form-group">
+                                                        <label for="categories">Category
+                                                            <strong class="text-danger"> * @error('category_id')
+                                                                    - {{ $message }}
+                                                                @enderror
+                                                            </strong>
+
+                                                        </label>
+                                                        <div class="">
+                                                            <select class="form-control" required
+                                                                data-placeholder="Select a Category" name="category_id"
+                                                                id="categories" style="width: 100%;">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+
+
 
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
                                                 <div class="mb-3 col-md-12">
-                                                    <label class="mb-3 text-dark font-weight-medium" > Blog Details :
-                                                        <strong class="text-danger"> * @error('desc_ar') - {{ $message }} @enderror</strong>
+                                                    <label class="mb-3 text-dark font-weight-medium"> Blog Details :
+                                                        <strong class="text-danger"> * @error('desc_ar')
+                                                                - {{ $message }}
+                                                            @enderror
+                                                        </strong>
                                                     </label>
                                                     <textarea id="desc_ar" name="desc_ar" class="form-control ">{{ $news_blog->desc_ar }}</textarea>
                                                 </div>
@@ -368,17 +455,88 @@
         <script src="https://cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
         <script>
-                CKEDITOR.replace( 'desc_ar',{
-                    fullPage: true,
-                    allowedContent: true
-                });
-                CKEDITOR.replace( 'desc_en',{
-                    fullPage: true,
-                    allowedContent: true
-                });
+            CKEDITOR.replace('desc_ar', {
+                fullPage: true,
+                allowedContent: true
+            });
+            CKEDITOR.replace('desc_en', {
+                fullPage: true,
+                allowedContent: true
+            });
         </script>
         {{-- ========================================================== --}}
         {{-- ================ Advance Text Area Section =============== --}}
         {{-- ========================================================== --}}
-
     @endsection
+
+
+    @push('scripts')
+        <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                $('#mainCategoriesContainer').hide();
+
+                setTimeout(() => {
+                    super_id = $("#main_category_id").val();
+                    if (super_id !== "") {
+                        getSubCategories();
+                    }
+                }, 1000);
+
+
+                $(document).on("change", "#main_category_id", function() {
+                    getSubCategories();
+                    // getBrand();
+                });
+            });
+
+            function getSubCategories() {
+
+                main_category_id = $("#main_category_id").val();
+
+                formData = new FormData();
+                formData.append('main_category_id', main_category_id);
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: "{{ route('super_admin.getSubCategories') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(data) {
+                        if (data['status'] == true) {
+                            console.log(data)
+                            let subCategories = data?.subCategories ?? [];
+                            old_super = $("#old_super").val();
+                            // old_brand = $("#old_brand").val();
+
+                            $("#categories").html('');
+                            html = '<option value="">Select Sub Category....</option>';
+                            for (let key = 0; key < subCategories.length; key++) {
+                                // console.log(data.mainCategories[key]['id']);
+                                let catId = subCategories[key]['id'];
+
+                                if (catId == {{ $news_blog->category->id }}) {
+
+                                    html += '<option value="' + subCategories[key]['id'] + '" selected>' +
+                                        subCategories[key]['name_en'] + '</option>';
+                                } else {
+                                    html += '<option value="' + subCategories[key]['id'] + '">' +
+                                        subCategories[key]['name_en'] + '</option>';
+                                }
+                            }
+                            $("#categories").html(html);
+                            // $('.selectpicker').selectpicker('refresh');
+                        }
+                    },
+                    error: function(data) {
+
+                    }
+                });
+            }
+        </script>
+    @endpush

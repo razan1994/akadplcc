@@ -43,7 +43,7 @@
         <div class="c_mainContent">
             <div class="container_1200">
                 <div class="c_block">
-                    <div class="row data-container">
+                    <div class="row">
                         @if (isset($researches) && $researches->count() > 0)
                             @foreach ($researches as $index => $research)
                                 <div id="i_show_num" class="col-md-6 pagenitems">
@@ -73,8 +73,7 @@
                                             @if (auth('student')->check())
                                                 @if (isset($research->file) && file_exists($research->file))
                                                     <div class="c_buttn">
-                                                        <a
-                                                            href="{{ route('student.downloadResearch', $research->id) }}">
+                                                        <a href="{{ route('student.downloadResearch', $research->id) }}">
                                                             تحميل الملف
                                                         </a>
                                                     </div>

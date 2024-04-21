@@ -398,7 +398,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="c_left">
                             <div class="c_itm_prof">

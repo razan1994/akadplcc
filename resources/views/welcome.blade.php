@@ -203,9 +203,8 @@
                                 @foreach ($courses as $index => $course)
                                     <div class="swiper-slide">
                                         <div class="c_item">
-
                                             <div class="c_image">
-                                                <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
+                                                <a href="{{ route('course-details', $course->slug) }}">
                                                     @if (isset($course->main_image) && file_exists($course->main_image))
                                                         <img src="{{ asset($course->main_image) }}" loading="lazy">
                                                     @else
@@ -214,19 +213,17 @@
                                                     @endif
                                                 </a>
                                             </div>
-
                                             <div class="c_post">
                                                 <div class="c_body">
-                                                    <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
+                                                    <a href="{{ route('course-details', $course->slug) }}">
                                                         <h3>{!! isset($course->title_ar) ? $course->title_ar : 'Undefined' !!}</h3>
                                                     </a>
                                                     <p>
                                                         {!! \Illuminate\Support\Str::limit(
-                                                            isset($course->desc_ar) ? str_replace('&nbsp;', ' ', $course->desc_ar) : '--------',
+                                                            isset($course->short_description) ? str_replace('&nbsp;', ' ', $course->short_description) : '--------',
                                                             70,
                                                             $end = '...',
                                                         ) !!}
-                                                        {!! $course->desc_ar !!}
                                                     </p>
                                                 </div>
                                                 <div class="c_buttn flex-column flex-lg-row">

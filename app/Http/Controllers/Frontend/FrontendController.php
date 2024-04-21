@@ -239,19 +239,10 @@ class FrontendController extends Controller
         }
     }
 
-
-
-    function news(Route $route)
+    function news(Route $route, $categorySlug = '')
     {
-
         try {
-
-
-            $news = Blog::where('status', 1)->orderBy('created_at', 'desc')->paginate(6);
-
-
-
-            return view('front_end_inners.news', compact('news'));
+            return view('front_end_inners.news', compact('categorySlug'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -278,9 +269,6 @@ class FrontendController extends Controller
     }
 
 
-
-
-
     public function redirectToProvider($provider)
     {
         if ($provider == 'google') {
@@ -289,9 +277,10 @@ class FrontendController extends Controller
             return Socialite::driver($provider)->redirect();
         }
     }
+
+
     public function handleProviderCallback($provider)
     {
-
         if ($provider == 'facebook') {
             $driver = Socialite::driver('facebook')->fields([
                 'name',
@@ -304,10 +293,7 @@ class FrontendController extends Controller
         } else {
             $driver = Socialite::driver('google')->setScopes(['openid', 'profile', 'email']);
         }
-
         $user = Socialite::driver($provider)->stateless()->user();
-
-
         $first_name = $user->getName();
         $last_name = $user->getName();
         switch ($provider) {
@@ -333,20 +319,11 @@ class FrontendController extends Controller
         } else {
             $users = Student::where('email', $user->getEmail())->first();
         }
-        // return 'id :' . $user->getId() . 'name :' . $user->getName() . ' email :' . $user->getEmail() . ' first name :  ' . $user->getfirstname() . ' last name :  ' . $user->getlastname();
 
         if ($users) {
             Auth::guard('student')->login($users);
-            // Auth::login($users);
             return redirect()->route('welcome');
         } else {
-
-            // $trashed = new Patient();
-            // $trashed = $trashed->where('user_status', 3)->where('provider', $provider)->where('provider_id', $user->getId())->first();
-
-            // if ($trashed) {
-            //     return redirect()->back()->with('danger', 'هذا المستخدم محظور');
-            // }
 
             if ($user->getEmail() == null) {
                 $user_email = $user->getId() . "@" . $provider . ".com";

@@ -1,0 +1,194 @@
+       /* width */
+       ::-webkit-scrollbar {
+           width: 9px;
+       }
+
+       /* Track */
+       ::-webkit-scrollbar-track {
+           background: #f1f1f1;
+           border-bottom-left-radius: 12px;
+       }
+
+       /* Handle */
+       ::-webkit-scrollbar-thumb {
+           background: #888;
+           border-bottom-left-radius: 12px;
+
+       }
+
+       /* Handle on hover */
+       ::-webkit-scrollbar-thumb:hover {
+           background: #555;
+       }
+
+       #searchResult {
+           top: 102%;
+           left: 0;
+           right: 0;
+           z-index: 999;
+           background: #fff;
+           border: 1px solid #ddd;
+           max-height: 300px;
+           overflow-y: auto;
+           border-radius: 12px;
+       }
+
+       #searchResult ul {
+           list-style: none;
+           padding: 0;
+           margin: 0;
+       }
+
+       #searchResult ul li {
+           border-bottom: 1px solid #ddd;
+       }
+
+       #searchResult ul li a {
+           display: block;
+           padding: 10px;
+           color: #000;
+           text-decoration: none;
+       }
+
+       #searchResult ul li:hover {
+           background: #f1f1f1;
+       }
+
+
+       /* navbar submenu styling */
+       .navbar .navbar-nav .nav-item {
+           position: relative;
+           padding-bottom: 15px;
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu {
+           display: none;
+           opacity: 0;
+           position: absolute;
+           left: 0;
+           right: 0;
+           top: auto;
+           margin-top: .1rem;
+           list-style: none;
+           background: #fff;
+           box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
+           border-radius: 12px;
+           z-index: 999;
+           min-width: 100vw !important;
+           padding: 5px 15px;
+           transition: all .5s ease-in-out;
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu li {
+           display: block;
+           max-width: fit-content;
+           padding: 0 7px;
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu li a {
+           display: block;
+           padding: 5px;
+           color: #000;
+           text-decoration: none;
+           text-align: right;
+           transition: all .3s ease-in-out;
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu li:hover a {
+           transform: translateX(-5px);
+       }
+
+       .navbar .navbar-nav .nav-item:hover .subMenu {
+           display: block;
+           opacity: 1;
+           right: 0;
+           left: 0;
+           transition: all .5s ease-in-out;
+
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu .row div {
+           min-width: fit-content !important;
+       }
+
+       .navbar .navbar-nav .nav-item .subMenu .row div span {
+           text-decoration: underline;
+       }
+
+       /* navbar submenu styling */
+
+
+
+
+       /* News Card Style */
+
+       .news-card {
+           position: relative;
+       }
+
+       .news-card .card-category {
+           position: absolute;
+           top: 8px;
+           right: 10px;
+           background: #67328f;
+           color: #fff;
+           padding: 5px 10px;
+           font-size: 1rem;
+           border: 1px solid #fff;
+
+       }
+
+       .news-card .card-category:hover {
+           background: #fff;
+           color: #67328f;
+           border: 1px solid #67328f;
+       }
+
+
+       /* Course Details Responsive */
+       .c_page_courseDetails .c_info .c_right .c_tafsell {
+           flex-wrap: wrap;
+       }
+
+       .c_page_courseDetails .c_info .c_left .c_box_subscribe .c_btn_subscribe {
+           height: max-content;
+       }
+
+
+
+
+
+       .sales .slick-track .slick-slide {
+           box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+           border-radius: 12px;
+           padding: 10px 0;
+       }
+
+       .sales .slick-track .slick-slide img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+       }
+
+
+       @media only screen and (max-width: 768px) {
+
+           /* For mobile phones: */
+           .c_page_courseDetails .c_info .c_right,
+           .c_page_courseDetails .c_info .c_left,
+           .c_page_courseDetails .c_info2 .c_left,
+           .c_page_courseDetails .c_info2 .c_right {
+               width: 100% !important;
+               margin: auto;
+               padding: 0 9px;
+           }
+
+           .sales .slick-track .slick-slide {
+               overflow: hidden;
+           }
+
+           .sales .slick-track .slick-slide img {
+               height: 150px;
+               object-fit: contain;
+           }
+       }
