@@ -200,7 +200,7 @@
                                                                 id="main_category_id" style="width: 100%;">
                                                                 @foreach ($mainCategories as $item)
                                                                     <option value="{{ $item->id }}"
-                                                                        @selected($item->id == $news_blog->category->parent->id)>
+                                                                        @selected($item->id == $news_blog?->category?->parent?->id)>
                                                                         {{ $item->name }}</option>
                                                                 @endforeach
                                                             </select>
@@ -486,6 +486,7 @@
 
                 $(document).on("change", "#main_category_id", function() {
                     getSubCategories();
+                    console.log('changed')
                     // getBrand();
                 });
             });
@@ -520,7 +521,7 @@
                                 // console.log(data.mainCategories[key]['id']);
                                 let catId = subCategories[key]['id'];
 
-                                if (catId == {{ $news_blog->category->id }}) {
+                                if (catId == {{ $news_blog?->category?->id ?? 0 }}) {
 
                                     html += '<option value="' + subCategories[key]['id'] + '" selected>' +
                                         subCategories[key]['name_en'] + '</option>';

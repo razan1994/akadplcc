@@ -31,7 +31,13 @@
             </div>
             <div class="c-breadcrumps">
                 <div class="container_1200">
-                    <p><a href="{{ route('welcome') }}" wire:navigate>الرئيسية</a> <span>»</span> <a>المدونة</a></p>
+                    <p>
+                        <a href="{{ route('welcome') }}" wire:navigate>الرئيسية</a>
+                        <span>»</span>
+                        <a href="{{ route('news') }}" wire:navigate>المدونة</a>
+                        <span>»</span>
+                        <a>{{ $news->title_ar }}</a>
+                    </p>
                 </div>
             </div>
         </div>

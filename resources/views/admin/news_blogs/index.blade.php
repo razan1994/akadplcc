@@ -87,11 +87,13 @@
                                             {{ isset($news_blog->title_ar) ? $news_blog->title_ar : 'Undefined' }}</td>
 
                                         <td>
-                                            @if (strlen($news_blog->short_description) > 100)
-                                                {{ substr($news_blog->short_description, 0, 100) }} ...
-                                            @else
-                                                {{ $news_blog->short_description }}
-                                            @endif
+                                            <p style="width: 150px ; text-wrap: wrap">
+                                                @if (strlen($news_blog->short_description) > 100)
+                                                    {{ substr($news_blog->short_description, 0, 100) }} ...
+                                                @else
+                                                    {{ $news_blog->short_description }}
+                                                @endif
+                                            </p>
                                         </td>
                                         <td style="text-align: center">
                                             {{ isset($news_blog->status) ? $news_blog->status : 'Undefined' }}</td>

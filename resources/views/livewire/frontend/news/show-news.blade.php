@@ -10,7 +10,11 @@
         <div class="row">
             @if (isset($news) && $news->count() > 0)
                 @foreach ($news as $index => $new)
-                    <div id="i_show_num" class="col-md-6 col-xs-12 pagenitems ">
+                    <div class="col-md-6 col-xs-12 pagenitems">
+                        <x-frontend.cards.blog-card-component :new="$new" />
+                    </div>
+
+                    {{-- <div class="col-md-6 col-xs-12 pagenitems">
                         <div class="c_item news-card">
                             <a href="{{ route('news-details', $new->slug) }}" wire:navigate>
                                 <div class="c_image">
@@ -42,7 +46,7 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 @endforeach
             @else
                 @for ($i = 0; $i < 8; $i++)

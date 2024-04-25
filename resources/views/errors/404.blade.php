@@ -1,124 +1,40 @@
-{{-- @extends('errors::minimal') --}}
+@extends('front_end_layout.app_front_end', ['title' => 'الصفحة الرئيسية'])
 
-@section('title', __('Not Found'))
-<!DOCTYPE html>
-<html class="no-js" lang="en">
+@section('content')
+    <div class="c_inner_body">
+        <div class="c_mainContent">
+            {{-- اضافة نص بموضوع 404 --}}
+            <div class="container_1200">
+                <div class="c_block">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 ">
+                            <div class="c_item" style="padding:  30px 0;">
+                                <div class="c_image d-flex align-items-center justify-content-center">
+                                    <img src="{{ asset('/front_end_style/images/404.svg') }}" loading="lazy"
+                                        style="height: 30vh; width: 100%">
+                                </div>
+                                <div class="container py-3 text-center">
+                                    <div class="row">
+                                        <div class="mx-auto col-md-6">
+                                            <div class="c_post">
+                                                <div class="c_body">
+                                                    <h1>الصفحة غير موجودة</h1>
+                                                    <p>للأسف، لم نتمكن من العثور على الصفحة التي تبحث عنها.</p>
+                                                </div>
+                                                <div class="mt-4 c_buttn">
+                                                    <a href="{{ route('welcome') }}" wire:navigate>الرجوع إلى الصفحة
+                                                        الرئيسية</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<head>
-
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Kanaf">
-    <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="appointments, booking, bootstrap list template,  directory listing html template,  directory website template, doctor directory, doctor search, health template, healthcare directory, hospital,  html css templates, html directory listing, listing, medical bootstrap template, medical directory, medical html template , medical template,  medical web templates, medical website templates, pharma website templates, responsive html template,template html css, online directory website,  html5 template, themeforest html,  online directory, simple html templates ">
-
-    <!-- Favicon -->
-    <link rel="icon" href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon"
-        href="{{ asset('front_end_style/assets/images/brand/favicon.ico') }}" />
-
-    <!-- Title -->
-    <title>Kanaf</title>
-
-    <!-- Bootstrap Css -->
-    <link href="{{ asset('front_end_style/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-
-    <!-- Style Css -->
-    <link href="{{ asset('front_end_style/assets/css/style.css') }}" rel="stylesheet" />
-
-    <!--Icons  Css -->
-    <link href="{{ asset('front_end_style/assets/css/icons.css') }}" rel="stylesheet" />
-
-    <!--Select2 Css -->
-    <link href="{{ asset('front_end_style/assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
-
-    <!-- Countdown css-->
-    <link href="{{ asset('front_end_style/assets/plugins/jquery-countdown/countdown.css') }}" rel="stylesheet">
-
-    <!-- Custom scroll bar css-->
-    <link href="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css') }}"
-        rel="stylesheet" />
-
-    <!--Color-Skin Css -->
-    <link href="{{ asset('front_end_style/assets/color-skins/color10.css') }}" id="theme" media="all"
-        rel="stylesheet">
-
-</head>
-
-<body class="construction-image">
-
-    <!--Loader-->
-    <div id="global-loader">
-        <img alt="" class="loader-img" src="{{ asset('front_end_style/assets/images/loader.svg') }}">
-    </div>
-    <!--/Loader-->
-
-    <!-- Page -->
-    <div class="page page-h">
-        <div class="page-content z-index-10">
-            <div class="container text-center">
-                <div class="mb-5 text-white display-1">400</div>
-                <h1 class="mb-3 text-white h2">Page Not Found</h1>
-                <p class="text-white h4 font-weight-Automatic mb-7 leading-Automatic">Oops!!!! you tried to access a
-                    page which is not available.</p>
-                <a class="btn btn-orange" href="{{ route('welcome') }}">
-                    Back To Home
-                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Page -->
-
-    <!--Back to top -->
-    <a href="#top" id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-    <!-- JQuery js-->
-    <script src="{{ asset('front_end_style/assets/js/jquery-3.2.1.min.js') }}"></script>
-
-    <!-- Bootstrap js -->
-    <script src="{{ asset('front_end_style/assets/plugins/bootstrap/js/popper.min.js') }}"></script>
-    <script src="{{ asset('front_end_style/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
-    <!--JQueryVehiclerkline Js-->
-    <script src="{{ asset('front_end_style/assets/js/jquery.sparkline.min.js') }}"></script>
-
-    <!-- Circle Progress Js-->
-    <script src="{{ asset('front_end_style/assets/js/circle-progress.min.js') }}"></script>
-
-    <!-- Star Rating Js-->
-    <script src="{{ asset('front_end_style/assets/plugins/rating/jquery.rating-stars.js') }}"></script>
-
-    <!--Owl Carousel js -->
-    <script src="{{ asset('front_end_style/assets/plugins/owl-carousel/owl.carousel.js') }}"></script>
-
-    <!--JQuery TouchSwipe js-->
-    <script src="{{ asset('front_end_style/assets/js/jquery.touchSwipe.min.js') }}"></script>
-
-    <!--Select2 js -->
-    <script src="{{ asset('front_end_style/assets/plugins/select2/select2.full.min.js') }}"></script>
-    <script src="{{ asset('front_end_style/assets/js/select2.js') }}"></script>
-
-    <!-- Cookie js -->
-    <script src="{{ asset('front_end_style/assets/plugins/cookie/jquery.ihavecookies.js') }}"></script>
-    <script src="{{ asset('front_end_style/assets/plugins/cookie/cookie.js') }}"></script>
-
-    <!-- Custom scroll bar Js-->
-    <script src="{{ asset('front_end_style/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-
-    <!-- sticky Js-->
-    <script src="{{ asset('front_end_style/assets/js/sticky.js') }}"></script>
-
-    <!-- Swipe Js-->
-    <script src="{{ asset('front_end_style/assets/js/swipe.js') }}"></script>
-
-    <!--Owl-Carousel Js-->
-    <script src="{{ asset('front_end_style/assets/js/owl-carousel.js') }}"></script>
-
-    <!-- Custom Js-->
-    <script src="{{ asset('front_end_style/assets/js/custom.js') }}"></script>
-
-</body>
-
-</html>
+@endsection

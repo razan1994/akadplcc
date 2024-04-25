@@ -45,7 +45,7 @@
     {{-- ========================================================== --}}
     {{-- =================== Sweet Alert Section ================== --}}
     {{-- ========================================================== --}}
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/style.css') }}">
     @stack('styles')
 
 </head>
@@ -55,6 +55,9 @@
 
 
     <div class="wrapper_1400">
+        @include('front_end_layout.preloader')
+
+
         <!-- ================================================================= -->
         <!-- ==================== Start Header Section ======================= -->
         <!-- ================================================================= -->
@@ -101,6 +104,9 @@
 {{-- For The Code Registeration Input --}}
 <script>
     $(document).ready(function() {
+        $('#preloader').fadeOut('slow');
+
+
         $('#codeInput').on('input', function() {
             let code = $(this).val();
             let validationMessage = $('#codeValidationMessage');

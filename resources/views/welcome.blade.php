@@ -308,15 +308,15 @@
                             @endif
                         </div>
                     @empty
-                        @for ($i = 0; $i < 5; $i++)
+                        {{-- @for ($i = 0; $i < 5; $i++)
                             <div class="c_item">
                                 <div class="c_body">
                                     <h4>احصل على خصم 50%</h4>
                                     <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي </p>
                                 </div>
                             </div>
-                        @endfor
-                    @endforelse ()
+                        @endfor --}}
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -350,7 +350,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            @else
+                                {{-- @else
                                 @for ($i = 0; $i < 8; $i++)
                                     <div class="swiper-slide">
                                         <div class="c_item">
@@ -358,7 +358,7 @@
                                                 loading="lazy" />
                                         </div>
                                     </div>
-                                @endfor
+                                @endfor --}}
                             @endif
                         </div>
                         <div class="swiper-pagination"></div>

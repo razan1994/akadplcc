@@ -122,11 +122,11 @@
                                         المدونة
                                     </a>
                                     <div class="subMenu">
-                                        <div class="row">
+                                        <div class="row" style="gap: 25px; flex-wrap: wrap">
                                             @foreach ($categories as $category)
-                                                <div class="col-md-2">
+                                                <div class="col-2">
                                                     <span
-                                                        class="gap-2 text-underlinf font-weight-bold d-flex align-items-center">
+                                                        class="gap-2 text-underline font-weight-bold d-flex align-items-center">
                                                         {{ $category->name }}
                                                     </span>
                                                     <ul>
@@ -170,7 +170,8 @@
                                     <ul class="list-group">
                                         @foreach ($searchResult as $result)
                                             <li class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action">
+                                                <a href="{{ route('course-details', $result->slug) }}" wire:navigate
+                                                    class="list-group-item list-group-item-action">
                                                     {{ $result->title_ar }} </a>
                                             </li>
                                         @endforeach
