@@ -2,12 +2,17 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2|^8.1|^8.2",
-        "barryvdh/laravel-dompdf": "^2.1",
+        "php": "^8.0.2|^8.1|^8.2|^8.3",
+        "barryvdh/laravel-snappy": "^1.0",
         "guzzlehttp/guzzle": "^7.5",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "inertiajs/inertia-laravel": "^0.6.8",
         "laravel/framework": "^10.11",
         "laravel/jetstream": "^3.2",
@@ -19,7 +24,8 @@
         "mcamara/laravel-localization": "^1.8",
         "paypal/paypal-checkout-sdk": "^1.0",
         "tightenco/ziggy": "^1.0",
-        "tymon/jwt-auth": "^2.0"
+        "tymon/jwt-auth": "^2.0",
+        "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
@@ -39,13 +45,14 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files": ["app/helpers.php"]
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
-
     },
     "scripts": {
         "post-autoload-dump": [

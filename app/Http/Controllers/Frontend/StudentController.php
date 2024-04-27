@@ -23,7 +23,7 @@ use App\Models\StudentSkill;
 use App\Models\SubscriptionRequest;
 use App\Models\SupportTicket;
 use App\Traits\UploadImageTrait;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -1158,7 +1158,10 @@ class StudentController extends Controller
 
     public function downloadCv()
     {
-        $pdf = Pdf::loadView('PDF.resume1');
+        // $pdf = Pdf::loadView('PDF.resume1');
+        // return $pdf->download('cv1.pdf');
+
+        $pdf = SnappyPdf::loadView('PDF.resume1');
         return $pdf->download('cv1.pdf');
     }
 }

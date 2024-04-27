@@ -14,6 +14,7 @@
             body *:not(.body_inner) {
                 display: none !important;
             }
+
             .hidePrint {
                 display: none !important;
             }
