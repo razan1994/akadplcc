@@ -182,7 +182,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Barryvdh\Snappy\ServiceProvider::class,
+        // Barryvdh\Snappy\ServiceProvider::class,
     ],
 
     /*
@@ -237,8 +237,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        // 'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        // 'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];
