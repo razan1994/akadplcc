@@ -461,7 +461,7 @@
 
 
 @push('scripts')
-    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/js/jquery/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#mainCategoriesContainer').hide();
