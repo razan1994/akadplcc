@@ -206,10 +206,9 @@
                                             <div class="c_image">
                                                 <a href="{{ route('course-details', $course->slug) }}">
                                                     @if (isset($course->main_image) && file_exists($course->main_image))
-                                                        <img src="{{ asset($course->main_image) }}" loading="lazy">
+                                                        <img src="{{ asset($course->main_image) }}">
                                                     @else
-                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}"
-                                                            loading="lazy">
+                                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
                                                     @endif
                                                 </a>
                                             </div>
@@ -328,29 +327,31 @@
         {{-- ===================================================================================================== --}}
         {{-- ======================================= Start Our Brands Section ==================================== --}}
         {{-- ===================================================================================================== --}}
-        <section class="our_brands">
-            <div class="container_750">
-                <div class="c_section_title">
-                    <h3>الجهات المعتمدة</h3>
-                </div>
-                <!-- Swiper pc -->
-                <div class="c_bloc">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            @if (isset($approved) && $approved->count() > 0)
-                                @foreach ($approved as $app)
-                                    <div class="swiper-slide">
-                                        <div class="c_item">
-                                            @if (isset($app->image) && file_exists($app->image))
-                                                <img src="{{ asset($app->image) }}" loading="lazy">
-                                            @else
-                                                <img src="{{ asset('front_end_style/images/parnter.png') }}"
-                                                    loading="lazy">
-                                            @endif
+        @if ($approved->count() > 0)
+
+            <section class="our_brands">
+                <div class="container_750">
+                    <div class="c_section_title">
+                        <h3>الجهات المعتمدة</h3>
+                    </div>
+                    <!-- Swiper pc -->
+                    <div class="c_bloc">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                @if (isset($approved) && $approved->count() > 0)
+                                    @foreach ($approved as $app)
+                                        <div class="swiper-slide">
+                                            <div class="c_item">
+                                                @if (isset($app->image) && file_exists($app->image))
+                                                    <img src="{{ asset($app->image) }}" loading="lazy">
+                                                @else
+                                                    <img src="{{ asset('front_end_style/images/parnter.png') }}"
+                                                        loading="lazy">
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                                {{-- @else
+                                    @endforeach
+                                    {{-- @else
                                 @for ($i = 0; $i < 8; $i++)
                                     <div class="swiper-slide">
                                         <div class="c_item">
@@ -359,13 +360,14 @@
                                         </div>
                                     </div>
                                 @endfor --}}
-                            @endif
+                                @endif
+                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
         {{-- ===================================================================================================== --}}
         {{-- ======================================== End Our Brands Section ===================================== --}}
         {{-- ===================================================================================================== --}}

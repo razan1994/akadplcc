@@ -50,7 +50,7 @@
 
 </head>
 
-<body>
+<body style="direction: rtl !important">
 
 
 

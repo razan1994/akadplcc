@@ -393,9 +393,9 @@
                                     <div class="c_img">
                                         <img src="{{ asset('front_end_style/images/SHADA.png') }}">
                                     </div>
-                                    <div class="c_btn_subscribe">
+                                    {{-- <div class="c_btn_subscribe">
                                         <a href="#">اشترك</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

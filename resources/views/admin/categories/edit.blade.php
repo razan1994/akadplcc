@@ -25,7 +25,7 @@
                                     All Categories </a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-playlist-plus"></i>Update
-                                Banner
+                                Category
                             </li>
                         </ol>
                     </nav>
@@ -45,6 +45,7 @@
                                         <form action="{{ route('super_admin.categories.update', $category->id) }}"
                                             method="post">
                                             @csrf
+                                            @method('PUT')
                                             <div class="row align-items-center">
                                                 <div
                                                     class="form-group col-md-6
@@ -69,27 +70,28 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="parent_id">Parent</label>
-                                                    <select name="parent_id" id="parent_id" class="form-control">
-                                                        <option value="">
-                                                            Select Parent Category
-                                                        </option>
-                                                        @if (isset($mainCategories))
-                                                            @if ($mainCategories->count() > 0)
-                                                                @foreach ($mainCategories as $category)
-                                                                    <option value="{{ $category->id }}"
-                                                                        {{ $category->id == $category->parent_id ? 'selected' : '' }}>
-                                                                        {{ $category->name }}
-                                                                    </option>
-                                                                @endforeach
+
+                                                @if ($category->parent_id != null)
+                                                    <div class="form-group col-md-6">
+                                                        <label for="parent_id">Parent</label>
+                                                        <select name="parent_id" id="parent_id" class="form-control">
+                                                            @if (isset($mainCategories))
+                                                                @if ($mainCategories->count() > 0)
+                                                                    @foreach ($mainCategories as $mainCategory)
+                                                                        <option value="{{ $mainCategory->id }}"
+                                                                            @selected($mainCategory->id == $category->parent_id)>
+                                                                            {{ $mainCategory->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                @endif
                                                             @endif
-                                                        @endif
-                                                    </select>
-                                                </div>
+                                                        </select>
+                                                    </div>
+
+                                                @endif
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                                <button type="submit" class="btn btn-primary">Update Category</button>
                                             </div>
                                         </form>
                                     </div>
