@@ -36,9 +36,12 @@ return [
     'pdf' => [
         'enabled' => true,
         // 'binary'  => base_path('usr/local/bin/wkhtmltopdf'),
-        'binary'  => base_path('vendor/h4cc/wkhtmltopdf/bin/wkhtmltopdf'),
+        'binary'  => 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe',
         'timeout' => false,
-        'options' => [],
+        'options' => [
+            'enable-local-file-access' => true,
+            'orientation'   => 'landscape'
+        ],
         'env'     => [],
         'encode' => 'utf-8',
     ],
