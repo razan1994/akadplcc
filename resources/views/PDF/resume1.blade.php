@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,42 +35,152 @@
     <link rel="stylesheet" href="{{ asset('front_end_style/css/style.css') }}">
 
     <style>
-
         body {
             direction: ltr;
             text-align: left;
         }
+
+        .c_page_resume {
+            padding: 0 100px !important;
+        }
+
+        /* ========================================================= */
+        /* ====================== CV Header ====================== */
         .c_page_resume .c_topCv .c_blockss {
             direction: ltr;
-            background: red;
-            height: 400px;
+            background: #5d52a3;
+            height: 350px;
             overflow: hidden;
+            padding-top: 30px;
         }
-        .c_page_resume .c_topCv .c_blockss .c_infoss{
+
+        .c_page_resume .c_topCv .c_blockss .c_infoss {
             align-items: center;
             float: left;
             width: 55%;
-            padding: 0 30px;
+            padding: 0 50px !important;
+            color: white;
+            padding-top: 60px !important;
         }
 
-        .c_page_resume .c_topC
-        v .c_blockss .c_image{
+        .c_page_resume .c_topCv .c_blockss .c_infoss .c_name h2 {
+            font-size: 40px !important;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .c_page_resume .c_topC .c_blockss .c_image {
             padding-top: 60px;
             width: 45%;
             float: right;
-            backgroun
         }
+
         .c_page_resume .c_topCv .c_blockss .c_image img {
             width: 300px;
             height: 300px;
             border-radius: 50%;
             object-fit: contain;
             object-position: center;
-            border: 5px solid white;
+            border: 10px solid #fff !important;
+            margin-left: 50px !important;
         }
+
+        /* ---------------------------------------------------------- */
+
+
+        /* ========================================================= */
+        /* ====================== CV Body ====================== */
+        .c_titles h3 {
+            text-transform: capitalize;
+            font-size: 22px;
+            font-weight: 800 !important;
+        }
+
+        .c_createCV {
+            padding: 0 !important;
+            overflow: hidden;
+        }
+
+        #c_body_cv {
+            float: left;
+            width: 55%;
+            background: rgba(93, 82, 163, 0.5) !important;
+            padding: 40px 40px 50px 50px !important;
+            height: 100% !important;
+        }
+
+        #c_body_cv #contact_info_ul {
+            list-style: none;
+            padding: 7px 0;
+        }
+
+        .c_page_resume .c_createCV .c_item.c_contact ul li i {
+            color: #67328f !important;
+            margin-right: 10px !important;
+        }
+
+        .c_head_cv {
+            float: right;
+            width: 45%;
+            background: white;
+            padding: 40px 40px 50px 50px;
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        /* ---- Education ---- */
+        #education_div .c_itme_ex {
+            margin: 20px 0 !important;
+        }
+
+        #education_div .c_itme_ex .c_date p,
+        #education_div .c_itme_ex .c_date,
+        #experiences_div .c_itme_ex .c_date p,
+        #experiences_div .c_itme_ex .c_date,
+        #education_div .c_itme_ex .c_company p {
+            margin: 0 !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+        }
+
+        #education_div .c_itme_ex .c_company {
+            margin-top: 4px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .c_page_resume .c_skills .c_progress {
+            padding: 0 !important;
+            width: 100%;
+            height: 15px;
+            overflow: hidden;
+            background: #e5e5e5;
+            border-radius: 20px;
+        }
+
+        .c_page_resume .c_skills .c_bar {
+            position: relative;
+            float: left;
+            min-width: 1%;
+            height: 100%;
+            background: #67328f;
+        }
+
+        .c_page_resume .c_skills .c_percent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            font-family: tahoma, arial, helvetica;
+            font-size: 12px;
+            color: white;
+        }
+
+        /* ---------------------------------------------------------- */
     </style>
     <title>Document</title>
 </head>
+
 <body>
     <div class="body_inner">
         <div class="c_page_resume">
@@ -84,10 +195,14 @@
                                 $first_name = $name[0];
                                 $last_name = $name[-1] ?? '';
                             @endphp
-                            <h2>{{ isset($first_name) ? $first_name : '<span class="text-danger">Undefined</span>' }}
+                            <h2>
+                                {{ isset($first_name) ? $first_name : '<span class="text-danger">Undefined</span>' }}
                             </h2>
-                            <p>{{ isset($last_name) ? $last_name : '<span class="text-danger">Undefined</span>' }}</p>
+                            <p>
+                                {{ isset($last_name) ? $last_name : '<span class="text-danger">Undefined</span>' }}
+                            </p>
                         </div>
+
                         <div class="c_postionss">
                             <h4 id="job_title_txt">
                                 {{ isset($auth->info->job_title) ? $auth->info->job_title : 'Undefined' }}
@@ -115,7 +230,7 @@
                 </div>
             </div>
             <div class="c_createCV">
-                <div class="c_body_cv">
+                <div class="c_body_cv" id="c_body_cv">
                     <div class="c_padding_re">
                         <div class="c_item c_exper">
                             <div class="c_titles">
@@ -134,8 +249,6 @@
                                                         {{ isset($experience->to_date) ? date('F Y', strtotime($experience->to_date)) : '<span class="text-danger"></span>' }}
                                                     @endif
                                                 </p>
-                                                <a class="float-right text-danger delete_ex" style="cursor: pointer;"
-                                                    data-id="{{ $experience->id }}"><i class="fa fa-trash"></i></a>
                                             </div>
                                             <div class="c_company">
                                                 <p>
@@ -158,7 +271,7 @@
 
                         <div class="c_item c_contact">
                             <div class="c_titles">
-                                <h3>CONTACT</h3>
+                                <h3>contact</h3>
                             </div>
                             <ul id="contact_info_ul">
                                 <li><i
@@ -191,9 +304,6 @@
                                     @foreach ($auth->educations as $education)
                                         <div class="c_itme_ex">
                                             <div class="c_date">
-                                                <a class="float-right text-danger delete_education"
-                                                    style="cursor: pointer;" data-id="{{ $education->id }}"><i
-                                                        class="fa fa-trash"></i></a>
                                                 <p>{{ isset($education->from_date) ? date('Y', strtotime($education->from_date)) : '<span class="text-danger"></span>' }}
                                                     -
                                                     {{ isset($education->to_date) ? date('Y', strtotime($education->to_date)) : '<span class="text-danger"></span>' }}
@@ -224,8 +334,6 @@
                                 @if (isset($auth->skills) && $auth->skills->count() > 0)
                                     @foreach ($auth->skills as $skill)
                                         <div class="c_temem">
-                                            <a class="float-right text-danger delete_skill" style="cursor: pointer;"
-                                                data-id="{{ $skill->id }}"><i class="fa fa-trash"></i></a>
                                             <h5>{{ isset($skill->skill_name) ? $skill->skill_name : '<span class="text-danger"></span>' }}
                                             </h5>
                                             <div class="c_progress" style="margin-top:10px;">
@@ -247,8 +355,9 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
 
 
