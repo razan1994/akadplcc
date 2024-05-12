@@ -86,10 +86,12 @@
 
         /* ========================================================= */
         /* ====================== CV Body ====================== */
-        .c_titles h3 {
-            text-transform: capitalize;
-            font-size: 22px;
-            font-weight: 800 !important;
+        .c_page_resume .c_createCV .c_titles h3 {
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
         }
 
         .c_createCV {
@@ -113,6 +115,11 @@
         .c_page_resume .c_createCV .c_item.c_contact ul li i {
             color: #67328f !important;
             margin-right: 10px !important;
+        }
+
+        .c_page_resume .c_createCV .c_item {
+            position: relative;
+            margin-bottom: 50px;
         }
 
         .c_head_cv {
