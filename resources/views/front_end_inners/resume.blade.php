@@ -110,9 +110,9 @@
 @section('content')
     <div class="body_inner">
         <div class="c_page_resume">
-            {{-- <a href="{{ route('student.download-cv') }}" class="btn btn-primary btn-md hidePrint">
+            <a href="{{ route('student.download-cv') }}" class="btn btn-primary btn-md hidePrint">
                 Download cv
-            </a> --}}
+            </a>
             <div class="container_900">
                 <div class="c_topCv">
                     <div class="c_blockss">

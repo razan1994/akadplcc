@@ -81,6 +81,8 @@ Route::controller(StudentController::class)
                 Route::get('/cv-second',  'cvSecond')->name('cv-second');
                 Route::get('/cv-third',  'cvThird')->name('cv-third');
                 Route::get('download-cv', 'downloadCv')->name('download-cv');
+                Route::get('download-cv1', 'downloadCv1')->name('download-cv-1');
+                Route::get('download-cv2', 'downloadCv2')->name('download-cv-2');
 
                 // ----------------- Courses -----------------
                 Route::get('register-course/{id}', 'registerCourse')->name('register-course');
@@ -203,10 +205,10 @@ Route::get('/testAnswer', function () {
 })->name('testAnswer');
 
 
-Route::get('test-email', function () {
-    return Mail::to(
-        'ahmadalsakhen36@gmail.com'
-    )->send(new MyEmail());
-});
+// Route::get('test-email', function () {
+//     return Mail::to(
+//         'ahmadalsakhen36@gmail.com'
+//     )->send(new MyEmail());
+// });
 
 require __DIR__ . '/auth.php';

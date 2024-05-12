@@ -40,10 +40,6 @@
             text-align: left;
         }
 
-        .c_page_resume {
-            padding: 0 100px !important;
-        }
-
         /* ========================================================= */
         /* ====================== CV Header ====================== */
         .c_page_resume .c_topCv .c_blockss {
@@ -76,8 +72,8 @@
         }
 
         .c_page_resume .c_topCv .c_blockss .c_image img {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: contain;
             object-position: center;
@@ -163,17 +159,19 @@
             min-width: 1%;
             height: 100%;
             background: #67328f;
+            border-radius: 20px;
         }
 
         .c_page_resume .c_skills .c_percent {
             position: absolute;
-            top: 50%;
+            top: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
             margin: 0;
             font-family: tahoma, arial, helvetica;
             font-size: 12px;
             color: white;
+            border-radius: 20px;
         }
 
         /* ---------------------------------------------------------- */

@@ -1160,17 +1160,18 @@ class StudentController extends Controller
     {
 
         $pdf = SnappyPdf::loadView('PDF.resume1');
-
-        $options = $pdf->getOptions();
-        // return $options;
-        $options['enable-local-file-access'] = true; // Enable access to local files (potential solution)
-        $pdf->setOptions($options);
-
-
         return $pdf->download('cv1.pdf');
+    }
 
+    public function downloadCv1()
+    {
+        $pdf = SnappyPdf::loadView('PDF.resume2');
+        return $pdf->download('cv2.pdf');
+    }
 
-        return "FOOOOOOOOOO";
-
+    public function downloadCv2()
+    {
+        $pdf = SnappyPdf::loadView('PDF.resume3');
+        return $pdf->download('cv2.pdf');
     }
 }

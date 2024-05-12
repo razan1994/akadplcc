@@ -40,7 +40,12 @@ return [
         'timeout' => false,
         'options' => [
             'enable-local-file-access' => true,
-            'orientation'   => 'landscape'
+            'orientation'   => 'portrait',
+            'page-size' => 'A4',
+            'margin-top' => 0,
+            'margin-right' => 0,
+            'margin-bottom' => 0,
+            'margin-left' => 0,
         ],
         'env'     => [],
         'encode' => 'utf-8',
