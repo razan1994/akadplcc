@@ -1158,20 +1158,22 @@ class StudentController extends Controller
 
     public function downloadCv()
     {
-
+        $user = auth('student')->user();
         $pdf = SnappyPdf::loadView('PDF.resume1');
-        return $pdf->download('cv1.pdf');
+        return $pdf->download("{$user->name}_cv.pdf");
     }
 
     public function downloadCv1()
     {
+        $user = auth('student')->user();
         $pdf = SnappyPdf::loadView('PDF.resume2');
-        return $pdf->download('cv2.pdf');
+        return $pdf->download("{$user->name}_cv.pdf");
     }
 
     public function downloadCv2()
     {
+        $user = auth('student')->user();
         $pdf = SnappyPdf::loadView('PDF.resume3');
-        return $pdf->download('cv2.pdf');
+        return $pdf->download("{$user->name}_cv.pdf");
     }
 }
