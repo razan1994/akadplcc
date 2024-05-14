@@ -30,8 +30,8 @@ class UserController extends Controller
     {
         try {
 
-                $users = new User();
-                $users = $users->select('*')->orderBy('created_at', 'desc')->get();
+            $users = new User();
+            $users = $users->select('*')->orderBy('created_at', 'desc')->get();
 
             return view('admin.users.index', compact('users'));
         } catch (\Throwable $th) {
@@ -105,8 +105,7 @@ class UserController extends Controller
             if (isset($request->profile_photo_path)) {
                 $orginal_image = $request->file('profile_photo_path');
                 $upload_location = 'storage/profile-photos/';
-                $last_image = $this->saveFile($orginal_image,$upload_location);
-
+                $last_image = $this->saveFile($orginal_image, $upload_location);
             } else {
                 $last_image = null;
             }
@@ -124,12 +123,11 @@ class UserController extends Controller
             ];
 
 
-            DB::transaction(function () use ($created_data,$request) {
+            DB::transaction(function () use ($created_data, $request) {
                 // Save Main User Information Section :
                 // =====================================================================
 
-                    User::create($created_data);
-
+                User::create($created_data);
             });
 
             return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
@@ -164,7 +162,7 @@ class UserController extends Controller
     public function show($user_id, Route $route)
     {
         try {
-                $user =User::find($user_id);
+            $user = User::find($user_id);
 
             if ($user) {
                 return view('admin.users.show', compact('user'));
@@ -201,15 +199,18 @@ class UserController extends Controller
     // ================================================================
     public function edit($user_id, Route $route)
     {
+        $loggedinUserId = auth('super_admin')->user()->id;
         try {
-                $user =User::find($user_id);
-
-
-            if ($user) {
-                return view('admin.users.edit', compact('user'));
-            } else {
+            $user = User::find($user_id);
+            if (!$user) {
                 return redirect()->route('super_admin.users-index')->with('danger', 'This record is not in the records');
             }
+            // block the loggedin users whose id is not equal to 1 ,to edit the super admin with id 1 
+            if ($user_id == 1 && $loggedinUserId != 1) {
+                return redirect()->route('super_admin.users-index')->with('danger', 'You are not allowed to edit this user');
+            }
+
+            return view('admin.users.edit', compact('user'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -238,12 +239,13 @@ class UserController extends Controller
     // ================================================================
     // ======================= Update Function ========================
     // ================================================================
-    public function update($user_id, UpdateUserFormRequest $request,Route $route)
+    public function update($user_id, UpdateUserFormRequest $request, Route $route)
     {
+        $loggedinUserId = auth('super_admin')->user()->id;
 
         try {
 
-                $user =User::find($user_id);
+            $user = User::find($user_id);
 
             if ($user) {
                 // Standard Updated Data :
@@ -258,21 +260,25 @@ class UserController extends Controller
                     $update_data['password'] = Hash::make($request->password);
                 }
 
+                if ($user_id == 1 && $loggedinUserId != 1) {
+                    return redirect()->route('super_admin.users-index')->with('danger', 'You are not allowed to edit this user');
+                }
+
                 // Upload Image Section :
                 if (isset($request->profile_photo_path)) {
                     $orginal_image = $request->file('profile_photo_path');
                     $upload_location = 'storage/profile-photos/';
                     $original_name = $orginal_image->getClientOriginalName();
-                        $last_image = $this->saveFile($orginal_image,$upload_location);
+                    $last_image = $this->saveFile($orginal_image, $upload_location);
 
-                    $update_data['profile_photo_path']= $last_image;
+                    $update_data['profile_photo_path'] = $last_image;
                     File::delete($user->profile_photo_path);
                 }
 
-                if ($user){
+                if ($user) {
                     $user->update($update_data);
-                }else{
-                    return redirect()->back()->with('danger','User Not Found !!!!');
+                } else {
+                    return redirect()->back()->with('danger', 'User Not Found !!!!');
                 }
 
                 return redirect()->route('super_admin.users-index')->with('success', 'The data has been successfully updated');
@@ -309,7 +315,6 @@ class UserController extends Controller
     // ================================================================
     public function acceptSingle($user_id, Route $route)
     {
-
     }
 
     // ================================================================
@@ -317,7 +322,6 @@ class UserController extends Controller
     // ================================================================
     public function rejectSingle($user_id, Route $route)
     {
-
     }
 
     // ================================================================
@@ -325,11 +329,10 @@ class UserController extends Controller
     // ================================================================
     public function activeInactiveSingle($user_id, Route $route)
     {
-
     }
 
 
-        // ========================================================================
+    // ========================================================================
     // ================ Fetch Regions By Country ID (AJAX) ====================
     // ========================================================================
     public function getRegions(Request $request)
@@ -347,5 +350,4 @@ class UserController extends Controller
             'regions' => $regions,
         ]);
     }
-
 }

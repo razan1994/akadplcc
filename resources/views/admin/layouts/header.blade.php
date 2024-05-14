@@ -137,7 +137,7 @@
                         </li> --}}
 
                         <li class="dropdown-footer">
-                            <a href="{{ route('logout') }}"
+                            <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i
                                     class="mdi mdi-logout"></i> Logout </a>
                         </li>

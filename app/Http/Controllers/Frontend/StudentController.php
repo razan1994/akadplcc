@@ -880,8 +880,7 @@ class StudentController extends Controller
     public function registerCourse(Request $request, $id, Route $route)
     {
         try {
-            $course_id = decrypt($id);
-            $course = Course::find($course_id);
+            $course = Course::where('slug', $id)->first();
             if (!$course) {
                 return redirect()->back()->with('danger', 'الدورة التي تحاول الوصول اليها غير موجودة في السجلات');
             }
@@ -889,7 +888,7 @@ class StudentController extends Controller
             // update the timestamp records
             $course->students()->updateExistingPivot(auth('student')->id(), ['created_at' => now(), 'updated_at' => now()]);
 
-            return redirect()->route('student.course-sections', encrypt($course_id))->with('success', 'تم التسجيل في الدورة بنجاح');
+            return redirect()->route('student.course-sections', $id)->with('success', 'تم التسجيل في الدورة بنجاح');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();

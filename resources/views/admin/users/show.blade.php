@@ -15,18 +15,18 @@
         <div>
             <h1><i class="mdi mdi-account-multiple"></i> User Details</h1>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb p-0">
+                <ol class="p-0 breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{ route('super_admin.dashboard') }}">
-                            <i class="mdi  mdi-home"></i> Dashboard
+                            <i class="mdi mdi-home"></i> Dashboard
                         </a>
                     </li>
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('super_admin.users-index') }}">
-                                <i class="mdi mdi-account-group"></i> All Users
-                            </a>
-                        </li>
-                    <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> User Details
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('super_admin.users-index') }}">
+                            <i class="mdi mdi-account-group"></i> All Users
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-account-multiple"></i> User Details
                     </li>
                 </ol>
             </nav>
@@ -64,40 +64,46 @@
             {{-- ========================================= Left Section ========================================= --}}
             {{-- ================================================================================================= --}}
             <div class="col-lg-4 col-xl-3">
-                <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
-                    <div class="card text-center widget-profile px-0 border-0">
-                        <div class="card-img mx-auto rounded-circle">
+                <div class="px-3 pt-5 pb-3 profile-content-left px-xl-5">
+                    <div class="px-0 text-center border-0 card widget-profile">
+                        <div class="mx-auto card-img rounded-circle">
                             @if (isset($user->profile_photo_path))
                                 @if ($user->profile_photo_path && file_exists($user->profile_photo_path))
                                     <img src="{{ asset($user->profile_photo_path) }}" width="100" alt="user image">
                                 @else
-                                    <img src="{{ asset('front_end_style/images/profilesf.png') }}" width="100" alt="user image">
+                                    <img src="{{ asset('front_end_style/images/profilesf.png') }}" width="100"
+                                        alt="user image">
                                 @endif
                             @else
-                                <img src="{{ asset('front_end_style/images/profilesf.png') }}" width="100" alt="user image">
+                                <img src="{{ asset('front_end_style/images/profilesf.png') }}" width="100"
+                                    alt="user image">
                             @endif
                         </div>
                         <div class="card-body">
                             <h5 class="py-2 text-dark"><i class="mdi mdi-account"></i> {!! isset($user->name_ar) ? $user->name_ar : "<span style='color:red;'>Undefined</span>" !!}</h5>
-                            <a class="btn btn-primary btn-pill btn-sm my-4"
-                                href="{{ isset($user->id) ? route('super_admin.users-edit', [$user->id]) : '#' }}">Update User Profile <i class="mdi mdi-update"></i></a>
+
+                            @if (auth()->user()->id == $user->id)
+                                <a class="my-4 btn btn-primary btn-pill btn-sm"
+                                    href="{{ isset($user->id) ? route('super_admin.users-edit', [$user->id]) : '#' }}">Update
+                                    User Profile <i class="mdi mdi-update"></i></a>
+                            @endif
                         </div>
 
                     </div>
 
                     <hr class="w-100">
-                    <div class="contact-info pt-4">
+                    <div class="pt-4 contact-info">
                         <h6 class="text-dark"><i class="mdi mdi-contacts"></i> Contact Information :</h6>
                         <hr>
                         <h5 class="text-dark"></h5>
-                        <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-email"></i> Email : </p>
+                        <p class="pt-4 mb-2 text-dark font-weight-medium"><i class="mdi mdi-email"></i> Email : </p>
                         <p style="color: blue;">{!! isset($user->email) ? $user->email : "<span style='color:red;'>Undefined</span>" !!}</p>
-                        <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-phone"></i> Phone :</p>
+                        <p class="pt-4 mb-2 text-dark font-weight-medium"><i class="mdi mdi-phone"></i> Phone :</p>
                         <p style="color: blue;">{!! isset($user->phone) ? $user->phone : "<span style='color:red;'>Undefined</span>" !!}</p>
-                        <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-contacts"></i> Username :</p>
+                        <p class="pt-4 mb-2 text-dark font-weight-medium"><i class="mdi mdi-contacts"></i> Username :</p>
                         <p style="color: blue;">{!! isset($user->username) ? $user->username : "<span style='color:red;'>Undefined</span>" !!}</p>
 
-                        <p class="text-dark font-weight-medium pt-4 mb-2"><i class="mdi mdi-account-switch"></i> User Status
+                        <p class="pt-4 mb-2 text-dark font-weight-medium"><i class="mdi mdi-account-switch"></i> User Status
                             :</p>
                         <p style="color: blue;">{!! isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" !!}</p>
                     </div>
@@ -108,11 +114,11 @@
             {{-- ========================================== Right Section ========================================= --}}
             {{-- ================================================================================================= --}}
             <div class="col-lg-8 col-xl-9">
-                <div class="profile-content-right py-5">
+                <div class="py-5 profile-content-right">
                     {{-- ================================================================================================= --}}
                     {{-- ===================================== Tabs Titles Section ======================================= --}}
                     {{-- ================================================================================================= --}}
-                    <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myTab" role="tablist">
+                    <ul class="px-3 nav nav-tabs px-xl-5 nav-style-border" id="myTab" role="tablist">
                         {{-- User Profile Tab Title --}}
                         <li class="nav-item">
                             <a class="nav-link active" id="timeline-tab" data-toggle="tab" href="#tab_1" role="tab"
@@ -131,24 +137,26 @@
                     {{-- ================================================================================================= --}}
                     {{-- ===================================== Tabs Bodies Section ======================================= --}}
                     {{-- ================================================================================================= --}}
-                    <div class="tab-content px-3 px-xl-5" id="myTabContent">
+                    <div class="px-3 tab-content px-xl-5" id="myTabContent">
 
                         {{-- ============================================================================== --}}
                         {{-- =========================== User Profile Tab Body ============================ --}}
                         {{-- ============================================================================== --}}
-                        <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="timeline-tab">
+                        <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
+                            aria-labelledby="timeline-tab">
                             {{-- ============================================== --}}
                             {{-- =========== Main User Information ============ --}}
                             {{-- ============================================== --}}
-                            <div class="media mt-3 profile-timeline-media">
+                            <div class="mt-3 media profile-timeline-media">
                                 <div class="media-body">
-                                    <h3 class="py-3 text-dark"><i class="mdi mdi-information"></i> Main User Information :</h3>
+                                    <h3 class="py-3 text-dark"><i class="mdi mdi-information"></i> Main User Information :
+                                    </h3>
                                     <table class="table table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th><i class="mdi mdi-account"></i> Name  : <span
+                                                <th><i class="mdi mdi-account"></i> Name : <span
                                                         style="color:blue;">{!! isset($user->name_ar) ? $user->name_ar : '<span style="color:red;">Undefined</span>' !!}</span></th>
-                                                
+
                                                 <th><i class="mdi mdi-account"></i> Username : <span
                                                         style="color:blue;">{!! isset($user->username) ? $user->username : '<span style="color:red;">Undefined</span>' !!}</span></th>
 
@@ -163,7 +171,9 @@
                                                 <th><i class="mdi mdi-clock-outline mdi-spin"></i> Registered Since : <span
                                                         style="color:blue;">{!! isset($user->created_at) ? $user->created_at->diffForHumans() : '<span style="color:red;">Undefined</span>' !!}</span></th>
                                                 <th><i class="mdi mdi-clock-outline mdi-spin"></i> Date & Time of
-                                                    Registration : <span style="color:blue;">{!! isset($user->created_at) ? date('Y.d.m / h:i A', strtotime($user->created_at)) : '<span style="color:red;">Undefined</span>' !!}</span>
+                                                    Registration : <span style="color:blue;">{!! isset($user->created_at)
+                                                        ? date('Y.d.m / h:i A', strtotime($user->created_at))
+                                                        : '<span style="color:red;">Undefined</span>' !!}</span>
                                                 </th>
                                             </tr>
 
@@ -199,8 +209,12 @@
                                                     @if ($activitylogs->count() > 0)
                                                         @foreach ($activitylogs->sortBy('created_at') as $index => $activitylog)
                                                             <tr>
-                                                                <td>{!! isset($activitylog->activity_key_type) ? $activitylog->activity_key_type : "<span style='color:red;'>Undefined</span>" !!}</td>
-                                                                <td>{!! isset($activitylog->created_at) ? $activitylog->created_at->diffForHumans() : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                                                <td>{!! isset($activitylog->activity_key_type)
+                                                                    ? $activitylog->activity_key_type
+                                                                    : "<span style='color:red;'>Undefined</span>" !!}</td>
+                                                                <td>{!! isset($activitylog->created_at)
+                                                                    ? $activitylog->created_at->diffForHumans()
+                                                                    : "<span style='color:red;'>Undefined</span>" !!}</td>
                                                                 {{-- <td>{!! (isset($activitylog->created_at) ?  date('Y.d.m / h:i A', strtotime($activitylog->created_at)) : "<span style='color:red;'>Undefined</span>") !!}</td> --}}
                                                                 <td>{!! isset($activitylog->created_at) ? $activitylog->created_at : "<span style='color:red;'>Undefined</span>" !!}</td>
                                                                 <td>
@@ -258,9 +272,6 @@
             });
         });
     </script>
-    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}">
-    </script>
-    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}">
-    </script>
-
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}"></script>
 @endsection

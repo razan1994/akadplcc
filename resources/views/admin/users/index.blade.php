@@ -5,7 +5,6 @@
         rel="stylesheet"> --}}
     {{-- <link href="{{ asset('dashboard_files/assets/css/sleek.min.css') }}"> --}}
     {{-- <link href="{{ asset('dashboard_files/assets/css/sleek.css') }}"> --}}
-
 @endsection
 
 @section('content')
@@ -38,17 +37,19 @@
                 <div>
                     <h1><i class="mdi mdi-account-multiple"></i> All Users</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb p-0">
+                        <ol class="p-0 breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi  mdi-home"></i> Dashboard </a>
+                                <a href="{{ route('super_admin.dashboard') }}"> <i class="mdi mdi-home"></i> Dashboard </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page"><i class="mdi  mdi-account-multiple"></i> All Users</li>
+                            <li class="breadcrumb-item" aria-current="page"><i class="mdi mdi-account-multiple"></i> All
+                                Users</li>
                         </ol>
                     </nav>
                 </div>
 
                 <div>
-                    <a href="{{ route('super_admin.users-create') }}" class="mb-1 btn btn-primary"><i class="mdi mdi-playlist-plus"></i> Add New </a>
+                    <a href="{{ route('super_admin.users-create') }}" class="mb-1 btn btn-primary"><i
+                            class="mdi mdi-playlist-plus"></i> Add New </a>
                 </div>
             </div>
 
@@ -86,26 +87,38 @@
                                             <td>
                                                 @if (isset($user->user_status))
                                                     @if ($user->user_status == 'Active')
-                                                        <span style="color: green;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                        <span
+                                                            style="color: green;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
                                                     @else
-                                                        <span style="color: red;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
+                                                        <span
+                                                            style="color: red;">{{ isset($user->user_status) ? $user->user_status : "<span style='color:red;'>Undefined</span>" }}</span>
                                                     @endif
                                                 @else
                                                     <span style='color:red;'>Undefined</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('super_admin.users-show', [$user->id]) }}"
-                                                    title="Show" class="mb-1 btn btn-sm btn-info"><i
-                                                        class="mdi mdi-eye"></i></a>
-                                                <a href="{{ route('super_admin.users-edit', [$user->id]) }}"
-                                                    title="Edit" class="mb-1 btn btn-sm btn-primary"><i
-                                                        class="mdi mdi-playlist-edit"></i></a>
+                                                <a href="{{ route('super_admin.users-show', [$user->id]) }}" title="Show"
+                                                    class="mb-1 btn btn-sm btn-info"><i class="mdi mdi-eye"></i></a>
+                                                @if ($user->id != 1)
+                                                    <a href="{{ route('super_admin.users-edit', [$user->id]) }}"
+                                                        title="Edit" class="mb-1 btn btn-sm btn-primary"><i
+                                                            class="mdi mdi-playlist-edit"></i></a>
+                                                @endif
                                                 @if ($user->user_status != 'Pendding')
-                                                    <a href="{{ route('super_admin.users-activeInactiveSingle', [$user->id]) }}" title="Active / Inactive" class="process mb-1 btn btn-sm btn-warning"><i class="mdi mdi-stop"></i></a>
+                                                    @if ($user->id != 1)
+                                                        <a href="{{ route('super_admin.users-activeInactiveSingle', [$user->id]) }}"
+                                                            title="Active / Inactive"
+                                                            class="mb-1 process btn btn-sm btn-warning"><i
+                                                                class="mdi mdi-stop"></i></a>
+                                                    @endif
                                                 @else
-                                                    <a href="{{ route('super_admin.users-acceptSingle', [$user->id]) }}" title="Accept" class="process mb-1 btn btn-sm btn-success"><i class="mdi mdi-check"></i></a>
-                                                    <a href="{{ route('super_admin.users-rejectSingle', [$user->id]) }}" title="Reject" class="process mb-1 btn btn-sm btn-danger"><i class="mdi mdi-close"></i></a>
+                                                    <a href="{{ route('super_admin.users-acceptSingle', [$user->id]) }}"
+                                                        title="Accept" class="mb-1 process btn btn-sm btn-success"><i
+                                                            class="mdi mdi-check"></i></a>
+                                                    <a href="{{ route('super_admin.users-rejectSingle', [$user->id]) }}"
+                                                        title="Reject" class="mb-1 process btn btn-sm btn-danger"><i
+                                                            class="mdi mdi-close"></i></a>
                                                 @endif
                                                 {{-- <a href="" class="mb-1 btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></a> --}}
                                             </td>
@@ -132,13 +145,12 @@
                 ],
                 "pageLength": 20,
                 "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
-                "order": [[ 0, "asc" ]]
+                "order": [
+                    [0, "asc"]
+                ]
             });
         });
     </script>
-    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}">
-    </script>
-    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}">
-    </script>
-
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/jquery.datatables.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}"></script>
 @endsection
