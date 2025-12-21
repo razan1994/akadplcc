@@ -33,7 +33,7 @@
             <div class="c_section_1">
                 <div class="container_1200">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="c_post">
                                 <div class="c_body">
                                     <h2>نبذة عنا</h2>
@@ -77,25 +77,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-
-                            <div class="c_imgs">
-
-                                <div class="c_bgimg c_bg_1">
-                                    <img src="{{ asset('front_end_style/images/bg1slider.png') }}">
-                                </div>
-                                <div class="c_item">
-                                    <div class="c_image">
-                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                    </div>
-                                </div>
-
-                                <div class="c_bgimg c_bg_2">
-                                    <img src="{{ asset('front_end_style/images/bg2slider.png') }}">
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +87,12 @@
                         <div class="col-md-6">
                             <div class="c_item">
                                 <div class="c_title">
-                                    <img src="{{ asset('front_end_style/images/binoculars.png') }}">
+                                    <span class="icon-vision">
+                                        <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="32" cy="32" rx="24" ry="16" stroke="#1aaac3" stroke-width="4" fill="none"/>
+                                            <circle cx="32" cy="32" r="6" fill="#1aaac3"/>
+                                        </svg>
+                                    </span>
                                     <h4>رؤيتنا</h4>
                                 </div>
                                 <div class="c_body">
@@ -121,7 +107,13 @@
                         <div class="col-md-6">
                             <div class="c_item">
                                 <div class="c_title">
-                                    <img src="{{ asset('front_end_style/images/target.png') }}">
+                                    <span class="icon-mission">
+                                        <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="32" cy="32" r="28" stroke="#1aaac3" stroke-width="4" fill="none"/>
+                                            <path d="M32 16 L32 48" stroke="#1aaac3" stroke-width="4" stroke-linecap="round"/>
+                                            <path d="M32 32 L44 24" stroke="#1aaac3" stroke-width="4" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                     <h4>مهمتنا</h4>
                                 </div>
                                 <div class="c_body">

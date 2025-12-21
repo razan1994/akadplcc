@@ -190,46 +190,6 @@
 
                                             <div class="row">
 
-                                                {{-- Main Categories --}}
-                                                <div class="col-md-6" id="mainCategoryContainer">
-                                                    <div class="form-group">
-                                                        <label for="main_category_id">Main Category</label>
-                                                        <div class="">
-                                                            <select class="form-control"
-                                                                data-placeholder="Select a Category" name="main_category_id"
-                                                                id="main_category_id" style="width: 100%;">
-                                                                @foreach ($mainCategories as $item)
-                                                                    <option value="{{ $item->id }}"
-                                                                        @selected($item->id == $news_blog?->category?->parent?->id)>
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
-                                                </div>
-
-                                                {{-- Categories --}}
-                                                <div class="col-md-6" id="mainCategoryContainer">
-                                                    <div class="form-group">
-                                                        <label for="categories">Category
-                                                            <strong class="text-danger"> * @error('category_id')
-                                                                    - {{ $message }}
-                                                                @enderror
-                                                            </strong>
-
-                                                        </label>
-                                                        <div class="">
-                                                            <select class="form-control" required
-                                                                data-placeholder="Select a Category" name="category_id"
-                                                                id="categories" style="width: 100%;">
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
-                                                </div>
-
-
 
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}

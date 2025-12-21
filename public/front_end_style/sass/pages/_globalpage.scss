@@ -1,0 +1,131 @@
+/***********GLOBAL PAGE************/
+*{
+    font-family: $font_Main;
+}
+
+// .body,
+// .body_inner{
+//     min-height: 2000px;
+
+// }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style: none;
+
+}
+
+a{
+    text-decoration: none !important;
+}
+
+img{
+    max-width: 100%;
+    display: inline !important;
+}
+
+
+/**********home*************/
+
+
+/**********inners*************/
+
+div#mainContent {
+    @extend %block_relative;
+}
+
+.c_selectl select{
+    @extend %select_list;
+    &:hover{
+        @extend %select_list_hover;
+    }
+
+}
+
+input#quantity {
+    border: 0;
+    background: #f4f4f4;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+}
+
+.inner-top{
+    @extend %inner_top;
+}
+
+.c_bar{
+    @extend %bar;
+}
+
+
+
+// paginate
+.paginate-pagination{
+    @extend %paginate_style;
+}
+
+#i_show_num{
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.c_show_num {
+    /* float: $float_right; */
+    display: flex;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+
+    a{
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    i {
+        display: inline-block;
+        color: #fff;
+        font-size: 25px;
+    }
+}
+
+
+.c_flex_center{
+    @extend %flex_center;
+    height: 100%;
+}
+
+
+
+/**********/ 
+
+.c_title_top {
+    background: $btn_hover;
+    padding: 30px 0;
+    .title_page h1 {
+        font-size: 16px;
+        font-weight: bold;
+        color: $second_color;
+    }
+}
+
+
+.c-breadcrumps{
+    padding: 15px 0;
+    p{
+        font-size: 11px;
+        font-weight: bold;
+        color: $main_color;
+    }
+    a{
+        color: $main_color;
+    }
+}

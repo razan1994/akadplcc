@@ -179,44 +179,6 @@
                                             <hr>
                                             <div class="row">
 
-                                                {{-- Main Categories --}}
-                                                <div class="col-md-6" id="mainCategoryContainer">
-                                                    <div class="form-group">
-                                                        <label for="main_category_id">Main Category</label>
-                                                        <div class="">
-                                                            <select class="form-control"
-                                                                data-placeholder="Select a Category" name="main_category_id"
-                                                                id="main_category_id" style="width: 100%;">
-                                                                @foreach ($mainCategories as $item)
-                                                                    <option value="{{ $item->id }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
-                                                </div>
-
-                                                {{-- Categories --}}
-                                                <div class="col-md-6" id="mainCategoryContainer">
-                                                    <div class="form-group">
-                                                        <label for="categories">Category
-                                                            <strong class="text-danger"> * @error('category_id')
-                                                                    - {{ $message }}
-                                                                @enderror
-                                                            </strong>
-
-                                                        </label>
-                                                        <div class="">
-                                                            <select class="form-control" required
-                                                                data-placeholder="Select a Category" name="category_id"
-                                                                id="categories" style="width: 100%;">
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
-                                                </div>
-
 
 
                                                 {{-- @lang('front_end.News_Blog_Details_AR') --}}
@@ -240,41 +202,6 @@
                                                     <textarea id="desc_en" name="desc_en" class="form-control" rows="10">{{ old('desc_en') }}</textarea>
                                                 </div> --}}
 
-                                            {{-- alt text Ar --}}
-                                            {{-- <div class="mb-3 col-md-6">
-                                                    <label class="mb-3 text-dark font-weight-medium"
-                                                        for="validationServer01">Alt Text Ar <strong
-                                                            class="text-danger"> * @error('alt_text_ar') -
-                                                                {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-format-title"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="alt_text_ar" class="form-control @error('alt_text_ar') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Alt Text Ar"
-                                                            value="{{ old('alt_text_ar') }}">
-                                                    </div>
-                                                </div> --}}
-                                            {{-- alt text En --}}
-                                            {{-- <div class="mb-3 col-md-6">
-                                                    <label class="mb-3 text-dark font-weight-medium"
-                                                        for="validationServer01">Alt Text En <strong
-                                                            class="text-danger"> * @error('alt_text_en') -
-                                                                {{ $message }}
-                                                            @enderror</strong></label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text mdi mdi-format-title"
-                                                                id="inputGroupPrepend2"></span>
-                                                        </div>
-                                                        <input type="text" name="alt_text_en" class="form-control @error('alt_text_en') is-invalid @enderror"
-                                                            id="validationServer01" placeholder="Alt Text EN"
-                                                            value="{{ old('alt_text_en') }}">
-                                                    </div>
-                                                </div> --}}
-                                            {{-- image title text Ar --}}
                                             {{-- <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
                                                         for="validationServer01">Image Title Text AR <strong

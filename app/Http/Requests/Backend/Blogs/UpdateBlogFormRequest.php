@@ -30,7 +30,6 @@ class UpdateBlogFormRequest extends FormRequest
             'image' => 'mimes:g3,gif,ief,jpeg,jpg,jpe,ktx,png,btif,sgi,svg,svgz,tiff,tif,webp|max:4048',
             'status' => 'required',
             'short_description' => ['string', 'max:500'],
-            'category_id' => 'required|exists:categories,id',
         ];
     }
 }

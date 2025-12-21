@@ -1,19 +1,25 @@
-<div class="overflow-hidden footer hidePrint">
+
+<div class="overflow-hidden footer hidePrint footer-bg-full" style="background: #fbf7f5;">
     <div class="c_main_footer">
         <div class="container_1200">
             <div class="row">
                 <div class="col-md">
-                    <div class="logofooter">
-                        <a href="{{ route('welcome') }}" wire:navigate>
-                            <img alt="" loading="lazy" src="{{ asset('front_end_style/images/logo.png') }}">
-                        </a>
-                    </div>
-                    <div class="c_parg">
-                        <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                        </p>
-                    </div>
-                </div>
+    <div class="logofooter">
+        <a href="{{ route('welcome') }}" wire:navigate>
+            <img alt="" loading="lazy" src="{{ asset('front_end_style/images/logo.png') }}">
+        </a>
+    </div>
+
+    <div class="c_parg">
+        <p>
+            نسعى إلى تقديم تجربة تعليمية متكاملة تواكب التطورات الحديثة في عالم التسويق والإعلانات.
+            نركز على بناء مهارات عملية حقيقية تساعد المتدربين على التميز، وصناعة محتوى مؤثر،
+            وإدارة الحملات باحترافية للوصول إلى أفضل النتائج. رؤيتنا أن نصبح الشريك الأول
+            لكل من يبحث عن تطوير مهاراته وفتح آفاق جديدة في حياته المهنية.
+        </p>
+    </div>
+</div>
+
 
                 <div class="col-md">
                     <div class="c-title">
@@ -92,17 +98,10 @@
     <div class="pt-4 pb-0 text-white row bg-dark">
         <div class="text-center col">
             <p>جميع الحقوق محفوظة - <a href="{{ route('welcome') }}" class="text-white text-decoration-none">
-                    كنف المعرفة
+                     الأكاديمية الحديثة لإدارة الإعلانات
                 </a>
                 {{-- current year --}}
                 {{ date('Y') }} ©
-            </p>
-
-            <p>Powered by
-                <a href="https://smartzone-jo.com/en" class="text-white underline text-decoration-none fw-bold"
-                    target="_blank" style="color: #f8f9fa; text-decoration: underline !important; font-weight: bold;">
-                    Smart Zone
-                </a>
             </p>
         </div>
     </div>

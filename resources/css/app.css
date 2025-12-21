@@ -1,3 +1,116 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* Modern sidebar styles */
+.modern-sidebar {
+	background: #232946;
+	border-radius: 18px;
+	box-shadow: 0 4px 24px rgba(44, 62, 80, 0.12);
+	padding: 18px 0 18px 0;
+}
+.modern-sidebar-inner {
+	padding: 0 10px;
+}
+.modern-app-brand {
+	background: #121629;
+	border-radius: 12px;
+	margin: 0 10px 18px 10px;
+	padding: 18px 0;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+.modern-brand-name {
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.modern-sidebar-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.modern-menu-item {
+	margin-bottom: 8px;
+	border-radius: 10px;
+	transition: background 0.2s, box-shadow 0.2s;
+}
+.modern-menu-item.active, .modern-menu-item:hover {
+	background: #393e6e;
+	box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+}
+.modern-link {
+	display: flex;
+	align-items: center;
+	padding: 12px 18px;
+	color: #eebbc3;
+	font-size: 1rem;
+	font-weight: 500;
+	border-radius: 10px;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+.modern-link:hover, .modern-link:focus {
+	color: #fff;
+	background: #393e6e;
+}
+.modern-icon {
+	font-size: 1.2rem;
+	margin-right: 10px;
+	color: #b8c1ec;
+	transition: color 0.2s;
+}
+.modern-menu-item.active .modern-icon, .modern-menu-item:hover .modern-icon {
+	color: #fff;
+}
+.modern-nav-text {
+	font-size: 1rem !important;
+	color: #eebbc3 !important;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+.modern-menu-item.active .modern-nav-text, .modern-menu-item:hover .modern-nav-text {
+	color: #fff !important;
+}
+.modern-badge {
+	background: #eebbc3 !important;
+	color: #232946 !important;
+	font-weight: bold;
+	border-radius: 8px;
+	padding: 2px 8px;
+	font-size: 0.85em;
+}
+.modern-submenu-item {
+	margin: 0;
+	padding: 0;
+}
+.modern-submenu-item .modern-link {
+	padding-left: 36px;
+	font-size: 0.97rem;
+	color: #b8c1ec;
+}
+.modern-submenu-item .modern-link:hover {
+	color: #fff;
+	background: #393e6e;
+}
+.modern-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #b8c1ec #232946;
+}
+.modern-scrollbar::-webkit-scrollbar {
+	width: 8px;
+	background: #232946;
+}
+.modern-scrollbar::-webkit-scrollbar-thumb {
+	background: #b8c1ec;
+	border-radius: 8px;
+}
+/* Show submenu on hover for sidebar */
+.has-sub:hover > ul.collapse,
+.has-sub:focus-within > ul.collapse {
+	display: block !important;
+	height: auto !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	z-index: 1000;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

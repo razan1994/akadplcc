@@ -18,7 +18,7 @@ class CompletedCourseEmail extends Mailable
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -27,6 +27,7 @@ class CompletedCourseEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new \Illuminate\Mail\Mailables\Address('noreply@example.com', 'Your App Name'),
             subject: 'Completed Course Email',
         );
     }

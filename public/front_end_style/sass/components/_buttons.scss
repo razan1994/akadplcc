@@ -1,0 +1,184 @@
+/***************************************/
+/************ STYLE BUTTONS ************/ 
+/***************************************/
+
+%main_button{
+    font-size: 10px;
+    background: $main_color;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    &:hover{
+        background: $btn_hover;
+        color: $main_color;
+    }
+}
+
+%main_button2{
+    font-size: 11px;
+    font-weight: bold;
+    background: $main_color;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    &:hover{
+        background: $btn_hover;
+        color: $main_color;
+    }
+}
+
+%second_button{
+    font-size: 11px;
+    font-weight: bold;
+    background: $btn_hover;
+    color: $main_color;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    &:hover{
+        background: $main_color ;
+        color: $btn_hover;
+    }
+}
+
+
+%subscribe_button{
+    font-size: 11px;
+    background: $main_color;
+    color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    &:hover{
+        background: $btn_hover;
+        color: $main_color;
+    }
+}
+
+%subscribe2_button{
+    font-size: 11px;
+    background: $second_color;
+    color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    transition: .5s;
+    display: inline-block;
+    border: 0;
+    width: 100%;
+    &:hover{
+        background: $btn_hover;
+        color: $main_color;
+    }
+}
+
+%fomr_button{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    width: 70%;
+    display: inline-block;
+    background: $second_color;
+}
+
+/**************/  
+
+%select_list{
+    border-radius: 0;
+    border-color: #dadada;
+    height: 42px;
+    font-size: 13px;
+    color: $main_color;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+%select_list_hover{
+    border-color: $main_color;
+}
+
+/**/
+
+%search_form{
+    position: relative;
+    width: 300px;
+}
+
+%search_input{
+    width: 100% !important;
+    height: 45px;
+    border: 0;
+    border-radius: 20px;
+    padding-right: 60px;
+    background: $btn_hover;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+%search_button{
+    position: absolute;
+    padding: 0;
+    right: 30px;
+    border: 0;
+    background: none;
+    color: $main_color;
+}
+
+
+%circle_icon{
+    @extend %flex_center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+    width: 35px;
+    height: 35px;
+    i{
+        color: #fff;
+
+    }
+}
+
+%num_notifaction{
+    position: absolute;
+    #{$float_right}: -3px;
+    top: -3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: $second_color;
+    span{
+        color: #fff;
+        font-size: 13px;
+        height: 100%;
+        @extend %flex_center;
+    }
+}
+
+
+
+%formgroub_subscribre{
+    text-align: right;
+    label{
+        font-size: 13px;
+        font-weight: bold;
+        color: #4a4a4a;
+    }
+
+    .form-control{
+        background: $btn_hover;
+        color: $main_color;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 0;
+    }
+}
+

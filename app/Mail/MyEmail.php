@@ -29,6 +29,7 @@ class MyEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address('noreply@example.com', 'Your App Name'),
             subject: $this->title,
         );
     }

@@ -179,7 +179,7 @@
            position: absolute;
            top: 8px;
            right: 10px;
-           background: #67328f;
+           background: #203444;
            color: #fff;
            padding: 5px 10px;
            font-size: 1rem;
@@ -189,8 +189,8 @@
 
        .news-card .card-category:hover {
            background: #fff;
-           color: #67328f;
-           border: 1px solid #67328f;
+           color: #203444;
+           border: 1px solid #203444;
        }
 
 

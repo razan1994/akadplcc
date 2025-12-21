@@ -1,0 +1,57 @@
+.footer{
+
+    background: url(/front_end_style/images/bgfooter.png) no-repeat right;
+    background-size: auto 100%;
+    border-top: 5px solid $second_color;
+    @extend %block_relative ;
+    .c_parg {
+        font-size: 15px;
+        color: $font_color;
+        margin: 20px 0;
+    }
+    .c_social{
+        display: flex;
+        a{
+            transition: .5s;
+            color: $hint_colro;
+            &:hover{
+                color: $main_color;
+            }
+        }
+        li {
+            margin-#{$float_left}: 15px;
+        }
+    } 
+
+    .c_main_footer{
+        padding: 50px 0 30px;
+        .logofooter{
+            img{
+                width: 210px;
+            }
+        }
+
+        .c-title h3{
+            @extend %title_footer;
+
+            &:after{
+                @extend %line_after_title;
+            }
+
+            a{
+                color: $main_color;
+            }
+        }
+        .c-body ul a{
+            @extend %li_footer;
+        }
+
+        .c-body ul{
+            li i{
+                margin-left: 10px;
+            }
+        }
+    }
+
+    
+}

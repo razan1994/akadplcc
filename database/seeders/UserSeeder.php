@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'name_ar' => 'مدير النظام',
             'name_en' => 'Super Admin',
             'username' => 'super_admin',
-            'email' => 'admin@kanaf.com',
+            'email' => 'admin@advertisingschool.com',
             'phone' => '0799999999',
             'password' => Hash::make('12345678'),
             'profile_photo_path' => 'storage/profile-photos/monster.webp',

@@ -67,10 +67,7 @@ class NewsBlogController extends Controller
     public function create(Route $route)
     {
         try {
-            $mainCategories = Category::where('parent_id', null)
-                ->whereHas('childrens')
-                ->get();
-            return view('admin.news_blogs.create', compact('mainCategories'));
+            return view('admin.news_blogs.create');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
@@ -102,16 +99,16 @@ class NewsBlogController extends Controller
     // ================================================================
     public function store(StoreBlogFormRequest $request, Route $route)
     {
+        // Remove category_id and main_category_id from validation in the form request or here if present
+        // If validation is in StoreBlogFormRequest, remove those rules from that file
         try {
             // Upload Image Section :
-            if (isset($request->image)) {
+            $news_blog_main_image = null;
+            if ($request->hasFile('image')) {
                 $orginal_image = $request->file('image');
                 $upload_location = 'storage/blogs/';
-                $original_name = $orginal_image->getClientOriginalName();
                 $file_name = $this->saveFile($orginal_image, $upload_location);
-                $news_blog_main_image   = $file_name;
-            } else {
-                $news_blog_main_image = null;
+                $news_blog_main_image = $file_name;
             }
 
             $created_data = [
@@ -122,13 +119,12 @@ class NewsBlogController extends Controller
                 'desc_ar' => $request->desc_ar,
                 'desc_en' => $request->desc_ar,
                 'image' => $news_blog_main_image,
-                'category_id' => $request->category_id,
                 'slug' => Str::slug($request->title_ar),
                 'short_description' => $request->short_description ?? null,
             ];
 
             DB::transaction(function () use ($created_data) {
-                $base = Blog::create($created_data);
+                Blog::create($created_data);
             });
 
             return redirect()->route('super_admin.news_blogs-index')->with('success', 'The data has been successfully added');
@@ -245,8 +241,10 @@ class NewsBlogController extends Controller
     // ================================================================
     public function update($id, UpdateBlogFormRequest $request, Route $route)
     {
+        // Remove category_id and main_category_id from validation in the form request or here if present
+        // If validation is in UpdateBlogFormRequest, remove those rules from that file
         try {
-            $news_blog = Blog::with('category')->find($id);
+            $news_blog = Blog::find($id);
             if ($news_blog) {
                 // General Updated Data :
                 $update_data = [
@@ -255,15 +253,13 @@ class NewsBlogController extends Controller
                     'status' => $request->status,
                     'desc_ar' => $request->desc_ar,
                     'desc_en' => $request->desc_ar,
-                    'category_id' => $request->category_id,
                     'slug' => Str::slug($request->title_ar),
                     'short_description' => $request->short_description ?? null,
                 ];
                 // Upload Image Section :
-                if (isset($request->image)) {
+                if ($request->hasFile('image')) {
                     $orginal_image = $request->file('image');
                     $upload_location = 'storage/blogs/';
-                    $original_name = $orginal_image->getClientOriginalName();
                     $file_name = $this->saveFile($orginal_image, $upload_location);
                     File::delete($news_blog->image);
                     $update_data['image'] = $file_name;

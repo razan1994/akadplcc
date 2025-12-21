@@ -68,7 +68,12 @@ class StudentController extends Controller
             $user = Student::create($created_data);
             Auth::guard('student')->login($user);
             event(new Registered($user));
-            Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
+            $student = Student::find(Auth::guard('student')->id());
+            if ($student) {
+                $student->session_id = Session::getId();
+                $student->email_verified_at = now();
+                $student->save();
+            }
             return redirect()->route('student.student-profile')->with('success', 'تم التسجيل بنجاح ...');
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -103,9 +108,13 @@ class StudentController extends Controller
         if (is_numeric($request->get('email'))) {
             // Attempt to log the patient in
             if (Auth::guard('student')->attempt(['phone' => $request->email, 'password' => $request->password])) {
-                Auth::guard('student')->user();
-                Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
-                // return "logged in Patient";
+                $student = Student::find(Auth::guard('student')->id());
+                if ($student) {
+                    $student->update([
+                        'session_id' => Session::getId(),
+                        'email_verified_at' => now()
+                    ]);
+                }
                 return redirect()->route('student.student-profile')->with('success', 'تم تسجيل الدخول بنجاح');
 
                 // Attempt to log the doctor in
@@ -113,8 +122,13 @@ class StudentController extends Controller
         } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
             // Attempt to log the patient in
             if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                Auth::guard('student')->user();
-                Auth::guard('student')->user()->update(['session_id' => Session::getId()]);
+                $student = Auth::guard('student')->user();
+                if ($student) {
+                    $student->update([
+                        'session_id' => Session::getId(),
+                        'email_verified_at' => now()
+                    ]);
+                }
                 return redirect()->route('student.student-profile')->with('success', 'تم تسجيل الدخول بنجاح');
             }
         }

@@ -42,12 +42,12 @@ div#mainContent {
 /**o**/
 .slider .c_post .c_body h2 {
   font-size: 36px;
-  color: #67328f;
+  color: #203444 !important;
 }
 
 .slider .c_post .c_body h3 {
   font-size: 30px;
-  color: #5d52a3;
+  color: #37d7f1 ;
 }
 
 .c_page_newsInner .c_mainNews .c_body p,
@@ -64,7 +64,7 @@ div#mainContent {
 /******** title footer***********/
 .footer .c_main_footer .c-title h3 {
   font-size: 16px;
-  color: #67328f;
+  color: #203444;
   font-weight: bold;
   text-transform: capitalize;
   margin-bottom: 40px;
@@ -75,7 +75,7 @@ div#mainContent {
   content: "";
   position: absolute;
   width: 20px;
-  border-bottom: 3px solid #67328f;
+  border-bottom: 3px solid #203444;
   border-radius: 0;
   left: 0px;
   right: 0;
@@ -91,7 +91,7 @@ div#mainContent {
 }
 
 .footer .c_main_footer .c-body ul a:hover {
-  color: #67328f;
+  color: #203444;
 }
 
 /******** title cleint***********/
@@ -145,7 +145,7 @@ div#mainContent {
 .c_bar {
   width: 100%;
   height: 47px;
-  background: #67328f;
+  background: #203444;
 }
 
 .c_bar h3 {
@@ -181,14 +181,14 @@ div#mainContent {
 .paginate-pagination ul>li>a.page.active {
   opacity: 1 !important;
   cursor: default;
-  background: #5d52a3;
+  background: #37d7f1;
   color: #fff;
   /* box-shadow: 0 0 10px grey; */
 }
 
 .paginate-pagination ul>li>a.page:hover {
   opacity: 0.7;
-  background: #67328f;
+  background: #203444;
   color: #fff;
 }
 
@@ -236,7 +236,7 @@ div#mainContent {
 .c_page_courses .c_item .c_post .c_body h3,
 .courses .c_item .c_post .c_body h3 {
   font-size: 14px;
-  color: #67328f;
+  color: #203444;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -306,7 +306,7 @@ div#mainContent {
 .courses .swiper-pagination .swiper-pagination-bullet-active,
 .slider .c_imgs .swiper-pagination .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #5d52a3 !important;
+  background: #37d7f1 !important;
   border: 2px solid #EBEAEE !important;
 }
 
@@ -322,13 +322,13 @@ div#mainContent {
   border-radius: 50%;
   background: #0000;
   opacity: 1;
-  border: 2px solid #5d52a3;
+  border: 2px solid #37d7f1;
 }
 
 /**o**/
 .c_page_courseDetails .c_info .c_right .c_title {
   font-size: 16px;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 33px;
   position: relative;
 }
@@ -337,7 +337,7 @@ div#mainContent {
   content: "";
   width: 50px;
   height: 2px;
-  background: #67328f;
+  background: #203444;
   position: absolute;
 }
 
@@ -354,7 +354,7 @@ div#mainContent {
 
 .c_page_courseDetails .c_info .c_right .c_tafsell .c_itme {
   margin-left: 30px;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_courseDetails .c_info .c_right .c_tafsell .c_itme p {
@@ -437,7 +437,7 @@ div#mainContent {
 }
 
 .header .c_top_header ul.c_social a:hover {
-  color: #67328f;
+  color: #203444;
 }
 
 .header .c_top_header ul.c_social li {
@@ -454,7 +454,7 @@ div#mainContent {
 
 .header .c_top_header ul.c_one li:nth-child(1) a {
   font-size: 10px;
-  color: #67328f;
+  color: #203444;
   padding: 5px 10px;
 }
 
@@ -472,7 +472,7 @@ div#mainContent {
 }
 
 .header .c_main_header .c_main_menu li.nav-item a.nav-link {
-  color: #67328f;
+  color: #203444;
   font-size: 14px;
   padding: 5px 15px;
   transition: 0.5s;
@@ -480,7 +480,7 @@ div#mainContent {
 }
 
 .header .c_main_header .c_main_menu li.nav-item a.nav-link:hover {
-  color: #5d52a3;
+  color: #37d7f1;
   background: #f9f9f9;
 }
 
@@ -591,7 +591,7 @@ input#quantity {
 .c_title_top .title_page h1 {
   font-size: 16px;
   font-weight: bold;
-  color: #5d52a3;
+  color: #37d7f1;
 }
 
 .c-breadcrumps {
@@ -601,11 +601,11 @@ input#quantity {
 .c-breadcrumps p {
   font-size: 11px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
 }
 
 .c-breadcrumps a {
-  color: #67328f;
+  color: #203444;
 }
 
 /***********HOME PAGE************/
@@ -689,10 +689,10 @@ input#quantity {
 
 .about .c_post .c_body h2 {
   font-size: 28px;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 20px;
   padding-right: 20px;
-  border-right: 2px solid #67328f;
+  border-right: 2px solid #203444;
 }
 
 .about .c_post .c_body h3 {
@@ -726,12 +726,12 @@ input#quantity {
 }
 
 .about .c_post .c_num .c_item:hover .c_icon {
-  background: #67328f;
+  background: #203444;
   color: #fff;
 }
 
 .about .c_post .c_num .c_item:hover .c_bdu {
-  color: #67328f;
+  color: #203444;
 }
 
 .about .c_post .c_num .c_icon {
@@ -857,14 +857,14 @@ input#quantity {
   border-radius: 50%;
   background: #0000;
   opacity: 1;
-  border: 2px solid #5d52a3;
+  border: 2px solid #37d7f1;
   font-size: 0;
   padding: 0;
 }
 
 .sales ul.slick-dots li.slick-active button {
   opacity: 1;
-  background: #5d52a3 !important;
+  background: #37d7f1 !important;
   border: 2px solid #EBEAEE !important;
 }
 
@@ -960,7 +960,7 @@ input#quantity {
 .c_page_profile .c-right .nav-tabs .nav-link {
   font-size: 15px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
   padding: 15px;
   border: 0;
   border-radius: 0;
@@ -969,7 +969,7 @@ input#quantity {
 .c_page_profile .c-right .nav-tabs .nav-item.show .nav-link,
 .c_page_profile .c-right .nav-tabs .nav-link.active,
 .c_page_profile .c-right .nav-tabs .nav-link:hover {
-  color: #67328f;
+  color: #203444;
   background-color: #f5f5f5;
 }
 
@@ -1002,7 +1002,7 @@ input#quantity {
 .c_page_profile .c-left .c_editInfo .c_imgchosee span {
   font-size: 19px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
   margin-right: 40px;
 }
 
@@ -1060,7 +1060,7 @@ input#quantity {
 }
 
 .c_page_profile .c-left .c_statususerwx a {
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_profile .c-left .c_commentMessage {
@@ -1283,20 +1283,20 @@ input#quantity {
 }
 
 .c_page_courseDetails .c_info2 .c_left .c_itm_prof .c_bdy {
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_courseDetails .c_info2 .c_left .c_itm_prof .c_bdy span {
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 10px;
 }
 
 .c_page_courseDetails .c_info2 .c_left .c_itm_prof .c_bdy h6 {
   font-size: 13px;
-  color: #67328f;
+  color: #203444;
 }
 
 /****************************************************************/
@@ -1351,7 +1351,7 @@ input#quantity {
 .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .c_title h4 {
   font-size: 19px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
   margin-top: 20px;
 }
 
@@ -1364,7 +1364,7 @@ input#quantity {
 .c_page_courseSubscriber .c_coursubs_Swiper .swiper.mySwiper2 .swiper-button-prev {
   bottom: 20px;
   top: auto;
-  color: #67328f;
+  color: #203444;
   font-size: 15px;
 }
 
@@ -1400,10 +1400,10 @@ input#quantity {
 
 .c_page_about .c_section_1 .c_post .c_body h2 {
   font-size: 28px;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 20px;
   padding-right: 20px;
-  border-right: 2px solid #67328f;
+  border-right: 2px solid #203444;
 }
 
 .c_page_about .c_section_1 .c_post .c_body h3 {
@@ -1439,12 +1439,12 @@ input#quantity {
 }
 
 .c_page_about .c_section_1 .c_post .c_num .c_item:hover .c_icon {
-  background: #67328f;
+  background: #203444;
   color: #fff;
 }
 
 .c_page_about .c_section_1 .c_post .c_num .c_item:hover .c_bdu {
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_about .c_section_1 .c_post .c_num .c_icon {
@@ -1587,7 +1587,7 @@ input#quantity {
 }
 
 .c_page_contact .c_info li i {
-  color: #67328f;
+  color: #203444;
   margin-left: 15px;
 }
 
@@ -1674,7 +1674,7 @@ input#quantity {
 
 .c_page_newsInner .c_mainNews .c_title h2 {
   font-size: 16px;
-  color: #67328f;
+  color: #203444;
   font-weight: bold;
   margin-bottom: 33px;
 }
@@ -1727,7 +1727,7 @@ input#quantity {
   font-weight: bold;
   margin-bottom: 40px;
   padding-right: 45px;
-  color: #67328f;
+  color: #203444;
   position: relative;
   /* padding-top: 10px; */
 }
@@ -1737,7 +1737,7 @@ input#quantity {
   position: absolute;
   width: 30px;
   height: 4px;
-  background: #67328f;
+  background: #203444;
   border-radius: 0;
   right: 0px;
   top: 8px;
@@ -1771,7 +1771,7 @@ input#quantity {
 .c_page_newsInner .c_relatedNews .c_title h2 {
   font-size: 13px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_newsInner .c_relatedNews .c_date {
@@ -1795,7 +1795,7 @@ input#quantity {
 }
 
 .c_page_subscribe .c_block .c_box .c_subs_now h4 {
-  background: #67328f;
+  background: #203444;
   border-radius: 15px 15px 0 0;
   padding: 20px;
   color: #fff;
@@ -1810,7 +1810,7 @@ input#quantity {
 .c_page_subscribe .c_block .c_box .c_body .c_subs_year h5 {
   font-size: 18px;
   font-weight: bold;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 20px;
 }
 
@@ -1818,7 +1818,7 @@ input#quantity {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_subscribe .c_block .c_box .c_body .c_price h6 {
@@ -1881,7 +1881,7 @@ input#quantity {
 }
 
 .c_page_subscribe .c_form_subscr form .c-checkbox input[type=radio]:checked~h5 {
-  border: 1px solid #67328f;
+  border: 1px solid #203444;
   transition: 0.5s;
 }
 
@@ -1914,7 +1914,7 @@ input#quantity {
 }
 
 .c_page_resume .c_topCv {
-  background: #5d52a3;
+  background: #37d7f1;
 }
 
 .c_page_resume .c_topCv .c_blockss {
@@ -1984,7 +1984,7 @@ input#quantity {
 .c_page_resume .c_body_cv {
   float: left;
   width: 55%;
-  background: #5d52a380;
+  background: #37d7f180;
   padding: 40px 40px 50px 50px;
   margin: 0;
 }
@@ -2040,7 +2040,7 @@ input#quantity {
 }
 
 .c_page_resume .c_createCV .c_item.c_contact ul li i {
-  color: #67328f;
+  color: #203444;
   margin-right: 10px;
 }
 
@@ -2057,7 +2057,7 @@ input#quantity {
 }
 
 .c_page_resume .c_edotadd li a {
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_resume .c_skills {
@@ -2086,7 +2086,7 @@ input#quantity {
   float: left;
   min-width: 1%;
   height: 100%;
-  background: #67328f;
+  background: #203444;
 }
 
 .c_page_resume .c_skills .c_percent {
@@ -2552,7 +2552,7 @@ input#quantity {
   padding: 25px;
   background: #f8f8f8;
   box-shadow: 0 0 6px #9e9e9e70;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 15px;
 }
 
@@ -2601,7 +2601,7 @@ input#quantity {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 50px;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_testAnswer .c_done {
@@ -2630,7 +2630,7 @@ input#quantity {
 .c_page_profile .c-left .c_editInfo .c_btnn button,
 .c_page_profile .c-left .c_commentMessage button {
   font-size: 10px;
-  background: #67328f;
+  background: #203444 !important;
   color: #fff;
   padding: 5px 10px;
   border-radius: 20px;
@@ -2642,7 +2642,7 @@ input#quantity {
 .c_page_profile .c-left .c_editInfo .c_btnn button:hover,
 .c_page_profile .c-left .c_commentMessage button:hover {
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_login_modal .nav-tabs .nav-item.show .nav-link,
@@ -2651,9 +2651,9 @@ input#quantity {
 .about .c_post .c_buttn a,
 .c_page_about .c_section_1 .c_post .c_buttn a,
 .c_page_test .c_qustion .c_butnns {
-  font-size: 11px;
+  font-size: 16px;
   font-weight: bold;
-  background: #67328f;
+  background: #203444;
   color: #fff;
   padding: 10px 20px;
   border-radius: 20px;
@@ -2668,7 +2668,7 @@ input#quantity {
 .c_page_about .c_section_1 .c_post .c_buttn a:hover,
 .c_page_test .c_qustion .c_butnns:hover {
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_login_modal .nav-tabs .nav-link,
@@ -2679,7 +2679,7 @@ input#quantity {
   font-size: 11px;
   font-weight: bold;
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
   padding: 10px 20px;
   border-radius: 20px;
   transition: 0.5s;
@@ -2691,7 +2691,7 @@ input#quantity {
 .courses .c_item .c_post .c_buttn a:hover,
 .c_page_courses .c_item .c_post .c_buttn a:hover,
 .c_page_news .c_item .c_post .c_buttn a:hover {
-  background: #67328f;
+  background: #203444;
   color: #f9f9f9;
 }
 
@@ -2699,7 +2699,7 @@ input#quantity {
 .c_page_courseDetails .c_info2 .c_right .c_bloc .c_btn_subscribe a,
 .c_page_subscribe .c_block .c_box .c_body .c_butn a {
   font-size: 11px;
-  background: #67328f;
+  background: #203444;
   color: #fff;
   padding: 10px;
   border-radius: 20px;
@@ -2711,13 +2711,13 @@ input#quantity {
 .c_page_courseDetails .c_info2 .c_right .c_bloc .c_btn_subscribe a:hover,
 .c_page_subscribe .c_block .c_box .c_body .c_butn a:hover {
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_login_modal form .c_butnns,
 .c_page_subscribe .c_form_subscr .c_butnns {
   font-size: 11px;
-  background: #5d52a3;
+  background: #37d7f1;
   color: #fff;
   padding: 10px;
   border-radius: 20px;
@@ -2730,7 +2730,7 @@ input#quantity {
 .c_login_modal form .c_butnns:hover,
 .c_page_subscribe .c_form_subscr .c_butnns:hover {
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_page_contact .c_form_contat form .c_butnns {
@@ -2743,7 +2743,7 @@ input#quantity {
   border-radius: 10px;
   width: 70%;
   display: inline-block;
-  background: #5d52a3;
+  background: #37d7f1;
 }
 
 /**************/
@@ -2752,13 +2752,13 @@ input#quantity {
   border-color: #dadada;
   height: 42px;
   font-size: 13px;
-  color: #67328f;
+  color: #203444;
   text-transform: capitalize;
   cursor: pointer;
 }
 
 .c_selectl select:hover {
-  border-color: #67328f;
+  border-color: #203444;
 }
 
 /**/
@@ -2784,7 +2784,7 @@ input#quantity {
   right: 30px;
   border: 0;
   background: none;
-  color: #67328f;
+  color: #203444;
 }
 
 .c_login_modal form,
@@ -2802,7 +2802,7 @@ input#quantity {
 .c_login_modal form .form-control,
 .c_page_subscribe .c_form_subscr form .form-control {
   background: #f9f9f9;
-  color: #67328f;
+  color: #203444;
   padding: 10px 20px;
   border-radius: 20px;
   border: 0;
@@ -2811,14 +2811,14 @@ input#quantity {
 .c_section_title {
   text-align: center;
   font-size: 28px;
-  color: #67328f;
+  color: #203444;
   margin-bottom: 50px;
 }
 
 .footer {
   background: url(/front_end_style/images/bgfooter.png) no-repeat right;
   background-size: auto 100%;
-  border-top: 5px solid #5d52a3;
+  border-top: 5px solid #37d7f1;
 }
 
 .footer .c_parg {
@@ -2837,7 +2837,7 @@ input#quantity {
 }
 
 .footer .c_social a:hover {
-  color: #67328f;
+  color: #203444;
 }
 
 .footer .c_social li {
@@ -2853,7 +2853,7 @@ input#quantity {
 }
 
 .footer .c_main_footer .c-title h3 a {
-  color: #67328f;
+  color: #203444;
 }
 
 .footer .c_main_footer .c-body ul li i {
@@ -2862,8 +2862,8 @@ input#quantity {
 
 
 .btn-primary {
-  background-color: #67328f;
-  border-color: #67328f;
+  background-color: #203444;
+  border-color: #203444;
   border-radius: 15px;
   padding: 0.4rem;
   color: #fff;
@@ -2871,13 +2871,13 @@ input#quantity {
   display: inline-block;
   text-align: center;
   cursor: pointer;
-  border: 1px solid #67328f;
+  border: 1px solid #203444;
 }
 
 .btn-primary:is(:hover, :focus, :active) {
   background-color: #f9f9f9 !important;
-  color: #67328f !important;
-  border: 1px solid #67328f !important;
+  color: #203444 !important;
+  border: 1px solid #203444 !important;
   box-shadow: none !important;
 }
 

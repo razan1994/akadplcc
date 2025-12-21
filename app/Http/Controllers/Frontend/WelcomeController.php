@@ -21,15 +21,12 @@ class WelcomeController extends Controller
         $about = AboutUs::get()->first();
         $contact = ContactUs::get()->first();
         $sliders = Slider::where('status', 1)->inRandomOrder()->limit(3)->get();
-        $courses = Course::where('status', 2)
-            ->whereHas('sections')
-            ->orderBy('created_at', 'desc')
+        $courses = Course::orderBy('created_at', 'desc')
             ->limit(10)
             ->get();
         $approved = ApprovedBody::orderBy('created_at', 'desc')->limit(12)->get();
         $banners = Banner::where('status', 1)->inRandomOrder()->get();
-
-        // dd($categories);
+        $blogs = \App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get();
 
         return view('welcome', compact(
             'about',
@@ -37,7 +34,8 @@ class WelcomeController extends Controller
             'sliders',
             'courses',
             'approved',
-            'banners'
+            'banners',
+            'blogs'
         ));
     }
 }

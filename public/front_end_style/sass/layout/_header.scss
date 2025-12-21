@@ -1,0 +1,138 @@
+/***********HEADER************/
+.header{
+
+    .c_top_header{
+        padding: 13px 0;
+        border-bottom: 2px solid #fafafa;
+        .c_menus_top {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+        ul {
+            display: flex;
+            justify-content: flex-end;
+        }
+        ul a{
+            
+            @extend %flex_center;
+
+        }
+
+        ul.c_social{
+            a{
+                transition: .5s;
+                color: $hint_colro;
+                &:hover{
+                    color: $main_color;
+                }
+            }
+            li {
+                margin-#{$float_left}: 15px;
+            }
+        } 
+
+       
+
+        ul.c_one{
+            li {
+                margin-right: 15px;
+                a{
+                    font-weight: bold;
+                }
+            }
+            li:nth-child(1){
+                a{
+                    font-size: 10px;
+                    color: $main_color;
+                    padding: 5px 10px;
+                }
+               
+            }
+            li:nth-child(2){
+                a{
+                    @extend %main_button;
+                }
+            }
+    
+        } 
+
+    }
+
+    .c_main_header {
+        padding: 10px 0;
+        border-bottom: 2px solid #fafafa;
+        nav.navbar {
+            padding: 0;
+            .logo{
+                padding: 0;
+            }
+        }
+
+        .c_main_menu {
+            // ul.navbar-nav {
+            //     margin: auto;
+            // }
+            li.nav-item a.nav-link {
+                color: $main_color;
+                font-size: 14px;
+                padding: 5px 15px;
+                transition: 0.5s;
+                border-radius: 20px;
+                &:hover{
+                    color: $second_color;
+                    background: $btn_hover;
+                }
+            }
+        }
+
+        .c_search {
+            form{
+                @extend %search_form;
+            }
+
+            input.form-control{
+                @extend %search_input;
+            }
+            button{
+                @extend %search_button;
+            }
+        }
+
+
+    }
+
+    
+
+}
+
+
+
+.c_login_modal
+{
+    .modal-content {
+        border-radius: 15px;
+        border: 0;
+    }
+
+    .modal-header {
+        justify-content: center;
+    }
+    .nav-tabs {
+        border-bottom: 0px solid #dee2e6;
+    }
+
+    .nav-tabs .nav-link
+    {
+        @extend %second_button;
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        @extend %main_button2;
+    }
+    form{
+        @extend %formgroub_subscribre;
+        .c_butnns{
+            @extend %subscribe2_button;
+        }
+    }
+}

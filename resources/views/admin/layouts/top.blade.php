@@ -3,10 +3,26 @@
 <html lang="en" dir='ltr'>
 
 <head>
+    <!-- ...existing code... -->
+    <!-- SLEEK CSS LTR (EN): -->
+    <link id="sleek-css" rel="stylesheet" href="{{ asset('dashboard_files/assets/css/sleek.css') }}" />
+
+    <!-- SLEEK CSS RTL (AR) : -->
+    {{-- <link id="sleek-css" rel="stylesheet" href="{{ asset('dashboard_files/assets/css/sleek.rtl.css') }}" /> --}}
+
+    {{--  --}}
+    <link href="{{ asset('dashboard_files/assets/plugins/data-tables/datatables.bootstrap4.min.css') }}"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('front_end_style/css/all.min.css') }}">
+
+    <!-- Laravel Mix compiled CSS for admin dashboard (placed last to avoid conflicts) -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/main.css') }}">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
     <meta name="description"
         content="Sleek Dashboard - Free Bootstrap 4 Admin Dashboard Template and UI Kit. It is very powerful bootstrap admin dashboard, which allows you to build products like admin panels, content management systems and CRMs etc.">
 
@@ -19,7 +35,7 @@
     <meta property="og:image:height" content="300">
     {{-- <meta property="og:description" content="Your description."/>   --}}
 
-    <title>Kanaf | Admin Dashboard</title>
+    <title>Advertising School | Admin Dashboard</title>
     <meta name="google-site-verification" content="zBHgCOISHWrCD81xSxrV_A7gKj92xic531u1oe1hRLI" />
 
     <!-- GOOGLE FONTS -->
@@ -79,7 +95,7 @@
 
 
 
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}" /> --}}
 
     @yield('admin_css')
 

@@ -79,10 +79,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['front_end_layout.footer'], function ($view) {
-            $view->with('latestCourses', Course::where('status', 2)
-                ->whereHas('sections')
+            $view->with('latestCourses', Course::whereHas('sections')
                 ->orderBy('created_at', 'desc')
-                ->limit(5)
+                ->limit(6)
                 ->get());
 
             $view->with('contactUs', ContactUs::first());

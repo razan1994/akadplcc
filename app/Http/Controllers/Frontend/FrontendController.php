@@ -171,9 +171,8 @@ class FrontendController extends Controller
         try {
 
 
-            $courses = Course::where('status', 2)
-                ->whereHas('sections')
-                ->orderBy('created_at', 'desc')->paginate(6);
+           $courses = Course::orderBy('created_at', 'desc')
+            ->paginate(8);
 
             return view('front_end_inners.courses', compact('courses'));
         } catch (\Throwable $th) {

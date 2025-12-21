@@ -255,7 +255,7 @@ class CourcesController extends Controller
             if ($course) {
                 return view('admin.cources.edit', compact('course'));
             } else {
-                return redirect()->route('super_admin.courses-index')->with('danger', 'This record is not in the records');
+                return redirect()->route('super_admin.cources-index')->with('danger', 'This record is not in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -340,7 +340,7 @@ class CourcesController extends Controller
 
                 return redirect()->route('super_admin.cources-index')->with('success', 'Created Successfully...');
             } else {
-                return redirect()->route('super_admin.courses-index')->with('danger', 'This record does not exist in the records');
+                return redirect()->route('super_admin.cources-index')->with('danger', 'This record does not exist in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -379,9 +379,9 @@ class CourcesController extends Controller
                 DB::transaction(function () use ($course) {
                     $course->delete();
                 });
-                return redirect()->route('super_admin.courses-index')->with('success', 'The deletion process has been successful');
+                return redirect()->route('super_admin.cources-index')->with('success', 'The deletion process has been successful');
             } else {
-                return redirect()->route('super_admin.courses-index')->with('danger', 'This record is not in the records');
+                return redirect()->route('super_admin.cources-index')->with('danger', 'This record is not in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
@@ -458,9 +458,9 @@ class CourcesController extends Controller
                 DB::transaction(function () use ($course) {
                     $course->restore();
                 });
-                return redirect()->route('super_admin.courses-index')->with('success', 'Restore Completed Successfully');
+                return redirect()->route('super_admin.cources-index')->with('success', 'Restore Completed Successfully');
             } else {
-                return redirect()->route('super_admin.courses-index')->with('danger', 'This section does not exist in the records');
+                return redirect()->route('super_admin.cources-index')->with('danger', 'This section does not exist in the records');
             }
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
