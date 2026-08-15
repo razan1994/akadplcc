@@ -1118,7 +1118,7 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="ak-hero-image">
+                        <div class="ak-hero-image  d-none d-md-flex">
                             <img src="{{ asset('/front_end_style/images/omgs.png') }}"
                                 alt="علي خضير - التدريب في التسويق الرقمي والإعلانات" loading="eager">
                         </div>
