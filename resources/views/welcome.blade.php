@@ -352,7 +352,7 @@
         .trainer-image-wrapper>img {
             display: block;
             width: 100%;
-            height: 560px;
+            height:512px;
             object-fit: cover;
             border-radius: 28px;
         }
@@ -360,7 +360,7 @@
         .trainer-experience-badge {
             position: absolute;
             right: -18px;
-            bottom: 28px;
+            bottom: 90px;
             min-width: 115px;
             padding: 13px 14px;
             text-align: center;
