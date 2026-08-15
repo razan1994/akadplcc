@@ -1172,8 +1172,7 @@
 
                                     <div class="trainer-accreditation-content">
                                         <span class="label">معتمد من</span>
-                                        <strong>Oxford College of Training — UK</strong>
-                                        <small>Internationally Accredited</small>
+                                        <strong> Oxford College of Training — UK | Internationally Accredited</strong>
                                     </div>
                                 </div>
 
