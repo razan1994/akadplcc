@@ -89,6 +89,42 @@
                                                     </div>
                                                 </div>
 
+                                                {{-- Prices --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="price_before_discount">
+                                                        Price Before Discount
+                                                        @error('price_before_discount')
+                                                            <strong class="text-danger">- {{ $message }}</strong>
+                                                        @enderror
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cash"></span>
+                                                        </div>
+                                                        <input type="number" step="0.01" min="0" name="price_before_discount"
+                                                            class="form-control @error('price_before_discount') is-invalid @enderror"
+                                                            id="price_before_discount" placeholder="0.00"
+                                                            value="{{ old('price_before_discount') }}">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="price_after_discount">
+                                                        Price After Discount
+                                                        @error('price_after_discount')
+                                                            <strong class="text-danger">- {{ $message }}</strong>
+                                                        @enderror
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-cash-check"></span>
+                                                        </div>
+                                                        <input type="number" step="0.01" min="0" name="price_after_discount"
+                                                            class="form-control @error('price_after_discount') is-invalid @enderror"
+                                                            id="price_after_discount" placeholder="0.00"
+                                                            value="{{ old('price_after_discount') }}">
+                                                    </div>
+                                                </div>
+
                                                 {{-- Title EN --}}
                                                 <div class="mb-3 col-md-6">
                                                     <label class="mb-3 text-dark font-weight-medium"
@@ -327,6 +363,42 @@
                                                         * If the course is free, keep the price 0
                                                     </span>
                                                 </div> --}}
+
+                                                {{-- Payment Links --}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="course_payment_link">
+                                                        Course Payment Link
+                                                        @error('course_payment_link')
+                                                            <strong class="text-danger">- {{ $message }}</strong>
+                                                        @enderror
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-credit-card-outline"></span>
+                                                        </div>
+                                                        <input type="url" name="course_payment_link"
+                                                            class="form-control @error('course_payment_link') is-invalid @enderror"
+                                                            id="course_payment_link" placeholder="https://..."
+                                                            value="{{ old('course_payment_link') }}">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="mb-3 text-dark font-weight-medium" for="certificate_payment_link">
+                                                        Certificate Payment Link
+                                                        @error('certificate_payment_link')
+                                                            <strong class="text-danger">- {{ $message }}</strong>
+                                                        @enderror
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text mdi mdi-certificate-outline"></span>
+                                                        </div>
+                                                        <input type="url" name="certificate_payment_link"
+                                                            class="form-control @error('certificate_payment_link') is-invalid @enderror"
+                                                            id="certificate_payment_link" placeholder="https://..."
+                                                            value="{{ old('certificate_payment_link') }}">
+                                                    </div>
+                                                </div>
 
                                                 {{-- Title EN --}}
                                                 <div class="mb-3 col-md-12">

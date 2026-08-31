@@ -112,6 +112,40 @@
         color: #888;
         margin-bottom: 10px;
     }
+    .modern-course-prices {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 8px 0;
+        color: #203444;
+        font-weight: 700;
+    }
+    .modern-course-prices del {
+        color: #999;
+        font-size: 0.95rem;
+    }
+    .modern-course-prices strong {
+        color: #1aaac3;
+        font-size: 1.15rem;
+    }
+    .modern-course-payments {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+    }
+    .modern-course-payment-link {
+        color: #203444;
+        border: 1px solid #1aaac3;
+        border-radius: 6px;
+        padding: 7px 10px;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
+    .modern-course-payment-link:hover {
+        color: #fff;
+        background: #1aaac3;
+    }
     .modern-course-link {
         display: flex;
         align-items: center;
@@ -167,6 +201,24 @@
                                     <span>Undefined</span>
                                 @endif
                             </div>
+                            <div class="modern-course-prices">
+                                @if ($course->price_before_discount !== null && $course->price_after_discount !== null && (float) $course->price_before_discount > (float) $course->price_after_discount)
+                                    <del>{{ number_format((float) $course->price_before_discount, 2) }} د.أ</del>
+                                    <strong>{{ number_format((float) $course->price_after_discount, 2) }} د.أ</strong>
+                                @else
+                                    <strong>{{ number_format((float) ($course->price_after_discount ?? $course->price), 2) }} د.أ</strong>
+                                @endif
+                            </div>
+                            @if ($course->course_payment_link || $course->certificate_payment_link)
+                                <div class="modern-course-payments">
+                                    @if ($course->course_payment_link)
+                                        <a href="{{ $course->course_payment_link }}" class="modern-course-payment-link" target="_blank" rel="noopener">شراء الدورة</a>
+                                    @endif
+                                    @if ($course->certificate_payment_link)
+                                        <a href="{{ $course->certificate_payment_link }}" class="modern-course-payment-link" target="_blank" rel="noopener">شراء الشهادة</a>
+                                    @endif
+                                </div>
+                            @endif
                             <a href="{{ route('contactUs') }}" class="modern-course-link">اتصل بنا <span style="font-size:1.2em;display:inline-block;transform:rotate(180deg);">&#8592;</span></a>
                         </div>
                     </div>

@@ -121,7 +121,11 @@ class CourcesController extends Controller
                 'course_date' => $request->course_date,
                 'status' => $request->status,
                 'price' => $request->price ?? 0,
+                'price_before_discount' => $request->price_before_discount ?: null,
+                'price_after_discount' => $request->price_after_discount ?: null,
                 'short_description' => $request->short_description ?? null,
+                'course_payment_link' => $request->course_payment_link ?: null,
+                'certificate_payment_link' => $request->certificate_payment_link ?: null,
             ];
 
 
@@ -302,7 +306,11 @@ class CourcesController extends Controller
                     'course_date' => $request->course_date,
                     'status' => $request->status,
                     'price' => $request->price ?? 0,
+                    'price_before_discount' => $request->price_before_discount ?: null,
+                    'price_after_discount' => $request->price_after_discount ?: null,
                     'short_description' => $request->short_description ?? null,
+                    'course_payment_link' => $request->course_payment_link ?: null,
+                    'certificate_payment_link' => $request->certificate_payment_link ?: null,
                 ];
 
 

@@ -77,7 +77,6 @@
                     @if (Auth::guard('student')->check())
                         <li><a href="{{ route('student.student-profile') }}">الملف الشخصي</a></li>
                     @else
-                        <li><a href="#" data-toggle="modal" data-target="#loginn">تسجيل جديد </a></li>
                         <li><a href="#" data-toggle="modal" data-target="#loginn">تسجيل الدخول</a></li>
                     @endif
                 </ul>

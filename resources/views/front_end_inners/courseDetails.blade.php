@@ -98,16 +98,25 @@
                                     @endif
                                 </div>
                                 <div class="card-body">
-                                    {{-- <div class="">
-                                    <span>السعر : </span>
-                                    <span>
-                                        @if (isset($course->price) && $course->price > 0)
-                                        {{ $course->price }} د.أ
+                                    <div class="mb-3 course-prices">
+                                        <span>السعر : </span>
+                                        @if ($course->price_before_discount !== null && $course->price_after_discount !== null && (float) $course->price_before_discount > (float) $course->price_after_discount)
+                                            <del class="mx-2 text-muted">{{ number_format((float) $course->price_before_discount, 2) }} د.أ</del>
+                                            <strong>{{ number_format((float) $course->price_after_discount, 2) }} د.أ</strong>
                                         @else
-                                        مجانا
+                                            <strong>{{ number_format((float) ($course->price_after_discount ?? $course->price), 2) }} د.أ</strong>
                                         @endif
-                                    </span>
-                                </div> --}}
+                                    </div>
+                                    @if ($course->course_payment_link || $course->certificate_payment_link)
+                                        <div class="mb-3 d-flex flex-wrap" style="gap: 8px;">
+                                            @if ($course->course_payment_link)
+                                                <a href="{{ $course->course_payment_link }}" class="btn btn-primary" target="_blank" rel="noopener">شراء الدورة</a>
+                                            @endif
+                                            @if ($course->certificate_payment_link)
+                                                <a href="{{ $course->certificate_payment_link }}" class="btn btn-outline-primary" target="_blank" rel="noopener">شراء الشهادة</a>
+                                            @endif
+                                        </div>
+                                    @endif
                                     <div class="h-0 py-3 c_btn_subscribe">
                                         <!-- Button trigger modal -->
                                         @auth('student')
