@@ -99,32 +99,19 @@
 
                         <ul class="c_social">
                             <li>
-                                <a href="https://web.facebook.com/kanaffcom" target="_blank">
+                                <a href="https://www.facebook.com/akadsschool" target="_blank">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="https://www.instagram.com/kanaffcom" target="_blank">
+                                <a href="https://www.instagram.com/alikhdeirads/" target="_blank">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="https://twitter.com/kanaffcom" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="https://www.linkedin.com/in/%D9%83%D9%86%D9%81-%D8%A7%D9%84%D9%85%D8%B9%D8%B1%D9%81%D8%A9-810920235/"
-                                    target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="https://www.youtube.com/channel/UCGjCh3T9mePQ5SDA1zSc1bA" target="_blank">
+                                <a href="https://www.youtube.com/@alikhdeirads" target="_blank">
                                     <i class="fab fa-youtube"></i>
                                 </a>
                             </li>

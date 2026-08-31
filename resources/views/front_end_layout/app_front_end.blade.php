@@ -422,19 +422,20 @@
     </div>
 
     {{-- =========================================================
-        Floating Social Links
-        Replace the placeholder URLs with the real accounts.
-    ========================================================== --}}
+    Floating Social Links
+    Replace the placeholder URLs with the real accounts.
+========================================================== --}}
     <div class="fixed-social-bar d-none d-md-flex" aria-label="روابط التواصل الاجتماعي">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+
+        <a href="https://www.facebook.com/akadsschool" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
             <i class="fab fa-facebook-f"></i>
         </a>
 
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
+        <a href="https://www.youtube.com/@alikhdeirads" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
         </a>
 
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram"
+        <a href="https://www.instagram.com/alikhdeirads/" target="_blank" rel="noopener noreferrer" title="Instagram"
             aria-label="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
@@ -442,6 +443,7 @@
         <a href="mailto:info@example.com" title="Email" aria-label="Email">
             <i class="fas fa-envelope"></i>
         </a>
+
     </div>
 
     {{-- =========================================================
