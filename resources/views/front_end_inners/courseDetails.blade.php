@@ -24,16 +24,16 @@
 
         <div class="c_title_top">
             <div class="container_1200">
-                <div class="title_page">
-                    <h1>صفحة الدورة</h1>
+                <div class="c-breadcrumps">
+                    <div class="container_1200">
+                        <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>
+                                {!! isset($course->title_ar) ? $course->title_ar : 'Undefined' !!}
+                            </a></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="c-breadcrumps">
-            <div class="container_1200">
-                <p><a href="{{ route('welcome') }}">الرئيسية</a> <span>»</span> <a>صفحة الدورة</a></p>
-            </div>
-        </div>
+
     </div>
 
     <!-- ================================================================================================== -->
@@ -100,20 +100,29 @@
                                 <div class="card-body">
                                     <div class="mb-3 course-prices">
                                         <span>السعر : </span>
-                                        @if ($course->price_before_discount !== null && $course->price_after_discount !== null && (float) $course->price_before_discount > (float) $course->price_after_discount)
-                                            <del class="mx-2 text-muted">{{ number_format((float) $course->price_before_discount, 2) }} د.أ</del>
-                                            <strong>{{ number_format((float) $course->price_after_discount, 2) }} د.أ</strong>
+                                        @if (
+                                            $course->price_before_discount !== null &&
+                                                $course->price_after_discount !== null &&
+                                                (float) $course->price_before_discount > (float) $course->price_after_discount)
+                                            <del class="mx-2 text-muted">{{ number_format((float) $course->price_before_discount, 2) }}
+                                                د.أ</del>
+                                            <strong>{{ number_format((float) $course->price_after_discount, 2) }}
+                                                د.أ</strong>
                                         @else
-                                            <strong>{{ number_format((float) ($course->price_after_discount ?? $course->price), 2) }} د.أ</strong>
+                                            <strong>{{ number_format((float) ($course->price_after_discount ?? $course->price), 2) }}
+                                                د.أ</strong>
                                         @endif
                                     </div>
                                     @if ($course->course_payment_link || $course->certificate_payment_link)
                                         <div class="mb-3 d-flex flex-wrap" style="gap: 8px;">
                                             @if ($course->course_payment_link)
-                                                <a href="{{ $course->course_payment_link }}" class="btn btn-primary" target="_blank" rel="noopener">شراء الدورة</a>
+                                                <a href="{{ $course->course_payment_link }}" class="btn btn-primary"
+                                                    target="_blank" rel="noopener">شراء الدورة</a>
                                             @endif
                                             @if ($course->certificate_payment_link)
-                                                <a href="{{ $course->certificate_payment_link }}" class="btn btn-outline-primary" target="_blank" rel="noopener">شراء الشهادة</a>
+                                                <a href="{{ $course->certificate_payment_link }}"
+                                                    class="btn btn-outline-primary" target="_blank" rel="noopener">شراء
+                                                    الشهادة</a>
                                             @endif
                                         </div>
                                     @endif
@@ -140,11 +149,7 @@
                                             @endif
                                         @endauth
 
-                                        @guest('student')
-                                            <a href="#" data-toggle="modal" data-target="#loginn">
-                                                تسجيل الدخول
-                                            </a>
-                                        @endguest
+
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -337,94 +342,6 @@
                 </div>
             </div>
 
-            {{-- <div class="c_brandas">
-            <div class="container_1033">
-                <div class="c_section_title">
-                    <h3>الجهات المعتمدة</h3>
-                </div>
-                <!-- Swiper pc -->
-                <div class="c_bloc">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="c_item">
-                                    <img src="{{ asset('front_end_style/images/parnter.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-            <div class="c_info2">
-                <div class="container_1200">
-                    <div class="c_block">
-                        <div class="c_right">
-                            <div class="c_box_show">
-                                <div class="c_bloc">
-                                    <div class="c_img">
-                                        <img src="{{ asset('front_end_style/images/SHADA.png') }}">
-                                    </div>
-                                    {{-- <div class="c_btn_subscribe">
-                                        <a href="#">اشترك</a>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c_left">
-                            <div class="c_itm_prof">
-                                <div class="c_img">
-                                    @if (isset($course->teacher_image) && file_exists($course->teacher_image))
-                                        <img src="{{ asset($course->teacher_image) }}">
-                                    @else
-                                        <img src="{{ asset('/front_end_style/images/omgs.png') }}">
-                                    @endif
-                                </div>
-                                <div class="c_bdy">
-                                    <span>{!! isset($course->teacher_ar) ? $course->teacher_ar : 'Undefined' !!}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
