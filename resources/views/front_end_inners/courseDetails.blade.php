@@ -105,12 +105,12 @@
                                                 $course->price_after_discount !== null &&
                                                 (float) $course->price_before_discount > (float) $course->price_after_discount)
                                             <del class="mx-2 text-muted">{{ number_format((float) $course->price_before_discount, 2) }}
-                                                د.أ</del>
+                                               $</del>
                                             <strong>{{ number_format((float) $course->price_after_discount, 2) }}
-                                                د.أ</strong>
+                                                $</strong>
                                         @else
                                             <strong>{{ number_format((float) ($course->price_after_discount ?? $course->price), 2) }}
-                                                د.أ</strong>
+                                               $</strong>
                                         @endif
                                     </div>
                                     @if ($course->course_payment_link || $course->certificate_payment_link)
