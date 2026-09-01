@@ -65,6 +65,7 @@
                                 <li>
                                     <a href="{{ route('course-details', $course->slug) }}" wire:navigate>
                                         {{ $course->title_ar }}
+
                                     </a>
                                 </li>
                             @endforeach

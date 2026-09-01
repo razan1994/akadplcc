@@ -9,6 +9,7 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Course;
+use App\Models\GalleryItem;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,14 @@ class WelcomeController extends Controller
         $banners = Banner::where('status', 1)->inRandomOrder()->get();
         $blogs = \App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get();
 
+        // 2) Inside the function that returns welcome.blade.php, add:
+        $galleryItems = GalleryItem::query()
+            ->active()
+            ->orderBy('sort_order')
+            ->orderByDesc('id')
+            ->get();
+
+
         return view('welcome', compact(
             'about',
             'contact',
@@ -35,7 +44,8 @@ class WelcomeController extends Controller
             'courses',
             'approved',
             'banners',
-            'blogs'
+            'blogs',
+            'galleryItems'
         ));
     }
 }

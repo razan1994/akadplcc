@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\ContactUsController;
 use App\Http\Controllers\Backend\Admin\CourcesController;
+use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\LatestNewsController;
 use App\Http\Controllers\Backend\Admin\NewsBlogController;
 use App\Http\Controllers\Backend\Admin\PaymentWalletController;
@@ -233,6 +234,21 @@ Route::middleware('auth:super_admin')
                 Route::get('deleteCourseSection/{id}', 'deleteCourseSection')->name('delete-course-section');
                 Route::get('showSection/{id}', 'showSection')->name('showSection');
             });
+
+        // Put this group inside your existing super_admin route group.
+        Route::controller(GalleryController::class)
+            ->prefix('gallery')
+            ->group(function () {
+                Route::get('/index', 'index')->name('gallery-index');
+                Route::get('/create', 'create')->name('gallery-create');
+                Route::post('/store', 'store')->name('gallery-store');
+                Route::get('/edit/{id}', 'edit')->name('gallery-edit');
+                Route::post('/update/{id}', 'update')->name('gallery-update');
+                Route::get('/softDelete/{id}', 'softDelete')->name('gallery-softDelete');
+                Route::get('/showSoftDelete', 'showSoftDelete')->name('gallery-showSoftDelete');
+                Route::get('/softDeleteRestore/{id}', 'softDeleteRestore')->name('gallery-softDeleteRestore');
+            });
+
 
 
 

@@ -19,8 +19,8 @@
         }
 
         /* =========================
-                   Shared
-                ========================== */
+                       Shared
+                    ========================== */
         .ak-section {
             padding: 85px 0;
         }
@@ -57,8 +57,8 @@
         }
 
         /* =========================
-                   Hero
-                ========================== */
+                       Hero
+                    ========================== */
         .slider.ak-hero {
             position: relative;
             overflow: hidden;
@@ -191,8 +191,8 @@
         }
 
         /* =========================
-                   Trainer
-                ========================== */
+                       Trainer
+                    ========================== */
         .trainer-about {
             padding: 85px 0;
         }
@@ -352,7 +352,7 @@
         .trainer-image-wrapper>img {
             display: block;
             width: 100%;
-            height:512px;
+            height: 512px;
             object-fit: cover;
             border-radius: 28px;
         }
@@ -386,8 +386,8 @@
         }
 
         /* =========================
-                   Courses
-                ========================== */
+                       Courses
+                    ========================== */
         .modern-courses-section {
             padding: 85px 0;
             background: var(--ak-light);
@@ -488,8 +488,8 @@
         }
 
         /* =========================
-                   Brands
-                ========================== */
+                       Brands
+                    ========================== */
         .ak-brands {
             padding: 70px 0;
             background: #fff;
@@ -500,8 +500,8 @@
         }
 
         /* =========================
-                   Blogs
-                ========================== */
+                       Blogs
+                    ========================== */
         .blogs-section {
             padding: 85px 0;
             background: #fff;
@@ -561,8 +561,8 @@
         }
 
         /* =========================
-                   CTA
-                ========================== */
+                       CTA
+                    ========================== */
         .call-to-action-section {
             position: relative;
             min-height: 360px;
@@ -639,8 +639,8 @@
         }
 
         /* =========================
-                   Responsive
-                ========================== */
+                       Responsive
+                    ========================== */
         @media (max-width: 991px) {
             .ak-hero-title {
                 font-size: 34px;
@@ -766,8 +766,8 @@
         }
 
         /* =====================================================
-           WHY LEARN WITH US
-        ===================================================== */
+               WHY LEARN WITH US
+            ===================================================== */
 
         .why-learn-section {
             padding: 85px 0;
@@ -906,8 +906,8 @@
 
 
         /* =====================================================
-           Bottom Box
-        ===================================================== */
+               Bottom Box
+            ===================================================== */
 
         .why-learn-bottom {
             margin-top: 35px;
@@ -991,8 +991,8 @@
 
 
         /* =====================================================
-           Tablet
-        ===================================================== */
+               Tablet
+            ===================================================== */
 
         @media (max-width: 991px) {
 
@@ -1004,8 +1004,8 @@
 
 
         /* =====================================================
-           Mobile
-        ===================================================== */
+               Mobile
+            ===================================================== */
 
         @media (max-width: 767px) {
 
@@ -1033,6 +1033,176 @@
                 width: 100%;
             }
 
+        }
+
+        /* =====================================================
+               Photo & Video Gallery
+            ===================================================== */
+        .ak-gallery-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .ak-gallery-grid {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-right: -50vw;
+            margin-left: -50vw;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0;
+            overflow: hidden;
+            background: #eef3f5;
+        }
+
+        .ak-gallery-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1.38 / 1;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            background: #e9eef1;
+            cursor: pointer;
+        }
+
+        .ak-gallery-item img,
+        .ak-gallery-item video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .45s ease, filter .45s ease;
+        }
+
+        .ak-gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 45%, rgba(15, 38, 50, .48));
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .ak-gallery-item:hover img,
+        .ak-gallery-item:hover video {
+            transform: scale(1.06);
+            filter: brightness(.88);
+        }
+
+        .ak-gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .ak-gallery-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            width: 52px;
+            height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, .75);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .92);
+            color: var(--ak-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .18);
+            font-size: 17px;
+            transform: translate(-50%, -50%);
+            transition: transform .25s ease, background .25s ease;
+        }
+
+        .ak-gallery-item:hover .ak-gallery-icon {
+            background: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .ak-gallery-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 10050;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(12, 25, 34, .94);
+        }
+
+        .ak-gallery-lightbox.is-open {
+            display: flex;
+        }
+
+        .ak-gallery-lightbox-content {
+            max-width: min(1100px, 94vw);
+            max-height: 88vh;
+            position: relative;
+        }
+
+        .ak-gallery-lightbox-content img,
+        .ak-gallery-lightbox-content video {
+            display: block;
+            max-width: 100%;
+            max-height: 88vh;
+            margin: auto;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .ak-gallery-close {
+            position: fixed;
+            top: 20px;
+            left: 24px;
+            z-index: 2;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, .35);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            color: #fff;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .ak-gallery-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .ak-gallery-section {
+                padding: 60px 0;
+            }
+
+            .ak-gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .ak-gallery-item {
+                aspect-ratio: 1 / 1;
+            }
+
+            .ak-gallery-icon {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .ak-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ak-gallery-item {
+                aspect-ratio: 1.35 / 1;
+            }
         }
     </style>
 
@@ -1483,6 +1653,47 @@
         </section>
 
 
+        {{-- Photo & Video Gallery from database --}}
+        @if (isset($galleryItems) && $galleryItems->count() > 0)
+            <section class="ak-gallery-section" id="gallery">
+                <div class="container_1200">
+                    <div class="ak-section-title center">
+                        <span class="eyebrow">لحظات من دوراتنا</span>
+                        <h2>معرض الصور والفيديوهات</h2>
+                        <p>شاهد جانباً من أجواء التدريب والتطبيق العملي وتجارب المتدربين.</p>
+                    </div>
+                </div>
+
+                <div class="ak-gallery-grid">
+                    @foreach ($galleryItems as $item)
+                        <button type="button" class="ak-gallery-item" data-gallery-type="{{ $item->type }}"
+                            data-gallery-src="{{ asset($item->file_path) }}"
+                            aria-label="فتح {{ $item->title_ar ?: 'عنصر من المعرض' }}">
+                            @if ($item->type === 'video')
+                                <img src="{{ $item->poster_path ? asset($item->poster_path) : asset('front_end_style/images/omgs.png') }}"
+                                    alt="{{ $item->title_ar ?: 'فيديو من المعرض' }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
+                                <span class="ak-gallery-icon" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            @else
+                                <img src="{{ asset($item->file_path) }}" alt="{{ $item->title_ar ?: 'صورة من المعرض' }}"
+                                    loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
+                                <span class="ak-gallery-icon" aria-hidden="true"><i
+                                        class="fas fa-search-plus"></i></span>
+                            @endif
+                        </button>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
+        <div class="ak-gallery-lightbox" id="akGalleryLightbox" role="dialog" aria-modal="true"
+            aria-label="عارض الصور والفيديوهات" aria-hidden="true">
+            <button type="button" class="ak-gallery-close" aria-label="إغلاق">&times;</button>
+            <div class="ak-gallery-lightbox-content"></div>
+        </div>
+
+
         {{-- =========================================================
         Approved / Partners
     ========================================================== --}}
@@ -1611,3 +1822,48 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('akGalleryLightbox');
+            if (!lightbox) return;
+
+            const content = lightbox.querySelector('.ak-gallery-lightbox-content');
+            const closeButton = lightbox.querySelector('.ak-gallery-close');
+
+            function closeGallery() {
+                const video = content.querySelector('video');
+                if (video) video.pause();
+                content.innerHTML = '';
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.ak-gallery-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    const type = item.dataset.galleryType;
+                    const src = item.dataset.gallerySrc;
+
+                    content.innerHTML = type === 'video' ?
+                        '<video src="' + src + '" controls autoplay playsinline></video>' :
+                        '<img src="' + src + '" alt="صورة من المعرض">';
+
+                    lightbox.classList.add('is-open');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                    closeButton.focus();
+                });
+            });
+
+            closeButton.addEventListener('click', closeGallery);
+            lightbox.addEventListener('click', function(event) {
+                if (event.target === lightbox) closeGallery();
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeGallery();
+            });
+        });
+    </script>
+@endpush

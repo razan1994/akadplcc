@@ -64,9 +64,6 @@ class AppServiceProvider extends ServiceProvider
                     $isUserRegisterationActive = false;
                 }
             }
-
-
-
             $public_values = PublicValue::get();
             $public_values = $public_values->mapWithKeys(function ($item) {
                 return [$item['key'] => $item['value']];
