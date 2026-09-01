@@ -19,8 +19,8 @@
         }
 
         /* =========================
-                       Shared
-                    ========================== */
+                           Shared
+                        ========================== */
         .ak-section {
             padding: 85px 0;
         }
@@ -57,8 +57,8 @@
         }
 
         /* =========================
-                       Hero
-                    ========================== */
+                           Hero
+                        ========================== */
         .slider.ak-hero {
             position: relative;
             overflow: hidden;
@@ -191,8 +191,8 @@
         }
 
         /* =========================
-                       Trainer
-                    ========================== */
+                           Trainer
+                        ========================== */
         .trainer-about {
             padding: 85px 0;
         }
@@ -386,8 +386,8 @@
         }
 
         /* =========================
-                       Courses
-                    ========================== */
+                           Courses
+                        ========================== */
         .modern-courses-section {
             padding: 85px 0;
             background: var(--ak-light);
@@ -488,8 +488,8 @@
         }
 
         /* =========================
-                       Brands
-                    ========================== */
+                           Brands
+                        ========================== */
         .ak-brands {
             padding: 70px 0;
             background: #fff;
@@ -500,8 +500,8 @@
         }
 
         /* =========================
-                       Blogs
-                    ========================== */
+                           Blogs
+                        ========================== */
         .blogs-section {
             padding: 85px 0;
             background: #fff;
@@ -561,8 +561,8 @@
         }
 
         /* =========================
-                       CTA
-                    ========================== */
+                           CTA
+                        ========================== */
         .call-to-action-section {
             position: relative;
             min-height: 360px;
@@ -639,8 +639,8 @@
         }
 
         /* =========================
-                       Responsive
-                    ========================== */
+                           Responsive
+                        ========================== */
         @media (max-width: 991px) {
             .ak-hero-title {
                 font-size: 34px;
@@ -766,8 +766,8 @@
         }
 
         /* =====================================================
-               WHY LEARN WITH US
-            ===================================================== */
+                   WHY LEARN WITH US
+                ===================================================== */
 
         .why-learn-section {
             padding: 85px 0;
@@ -906,8 +906,8 @@
 
 
         /* =====================================================
-               Bottom Box
-            ===================================================== */
+                   Bottom Box
+                ===================================================== */
 
         .why-learn-bottom {
             margin-top: 35px;
@@ -991,8 +991,8 @@
 
 
         /* =====================================================
-               Tablet
-            ===================================================== */
+                   Tablet
+                ===================================================== */
 
         @media (max-width: 991px) {
 
@@ -1004,8 +1004,8 @@
 
 
         /* =====================================================
-               Mobile
-            ===================================================== */
+                   Mobile
+                ===================================================== */
 
         @media (max-width: 767px) {
 
@@ -1036,8 +1036,8 @@
         }
 
         /* =====================================================
-               Photo & Video Gallery
-            ===================================================== */
+                   Photo & Video Gallery
+                ===================================================== */
         .ak-gallery-section {
             padding: 80px 0;
             background: #fff;
@@ -1393,6 +1393,145 @@
         </section>
 
 
+
+
+
+        {{-- =========================================================
+        Courses
+    ========================================================== --}}
+        <section class="modern-courses-section">
+            <div class="container_1200">
+
+                <div class="ak-section-title center">
+                    <span class="eyebrow">تعلم وطبّق</span>
+                    <h2>الدورات التدريبية</h2>
+                    <p>
+                        برامج عملية تساعدك على تطوير مهاراتك في التسويق الرقمي والإعلانات
+                        وتحويل المعرفة إلى نتائج قابلة للقياس.
+                    </p>
+                </div>
+
+                <div class="modern-courses-grid">
+
+                    @if (isset($courses) && $courses->count() > 0)
+                        @foreach ($courses as $course)
+                            <article class="modern-course-card">
+
+                                <a href="{{ route('course-details', $course->slug) }}">
+                                    @if (isset($course->main_image) && file_exists($course->main_image))
+                                        <img class="modern-course-img" src="{{ asset($course->main_image) }}"
+                                            alt="{{ $course->title_ar }}" loading="lazy">
+                                    @else
+                                        <img class="modern-course-img" src="{{ asset('/front_end_style/images/omgs.png') }}"
+                                            alt="{{ $course->title_ar ?? 'دورة تدريبية' }}" loading="lazy">
+                                    @endif
+                                </a>
+
+                                <div class="modern-course-content">
+
+                                    <h3>
+                                        <a href="{{ route('course-details', $course->slug) }}"
+                                            style="color: inherit; text-decoration: none;">
+                                            {!! $course->title_ar ?? 'Undefined' !!}
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        {!! \Illuminate\Support\Str::limit(
+                                            isset($course->short_description) ? str_replace('&nbsp;', ' ', strip_tags($course->short_description)) : '--------',
+                                            100,
+                                            '...',
+                                        ) !!}
+                                    </p>
+
+                                    <div class="modern-course-meta">
+                                        @if (isset($course->teacher_image) && file_exists($course->teacher_image))
+                                            <img class="modern-course-teacher-img"
+                                                src="{{ asset($course->teacher_image) }}" loading="lazy"
+                                                alt="{{ $course->teacher_ar ?? 'المدرب' }}">
+                                        @else
+                                            <img class="modern-course-teacher-img"
+                                                src="{{ asset('/front_end_style/images/omgs.png') }}" loading="lazy"
+                                                alt="{{ $course->teacher_ar ?? 'المدرب' }}">
+                                        @endif
+
+                                        <span class="modern-course-teacher-name">
+                                            {!! $course->teacher_ar ?? 'Undefined' !!}
+                                        </span>
+                                    </div>
+
+                                    <div class="modern-course-time">
+                                        <i class="far fa-clock"></i>
+
+                                        @if (isset($course->section_count) && isset($course->section_time))
+                                            <span>
+                                                {{ ceil(($course->section_count * $course->section_time) / 60) }}
+                                                ساعة
+                                            </span>
+                                        @else
+                                            <span>المدة غير محددة</span>
+                                        @endif
+                                    </div>
+
+                                    <a href="{{ route('course-details', $course->slug) }}" class="modern-course-link">
+                                        تفاصيل الدورة
+                                    </a>
+
+                                </div>
+
+                            </article>
+                        @endforeach
+                    @else
+                        <div style="grid-column: 1 / -1; text-align:center; color:#777;">
+                            لا توجد دورات متاحة حالياً.
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+        </section>
+
+
+        {{-- Photo & Video Gallery from database --}}
+        @if (isset($galleryItems) && $galleryItems->count() > 0)
+            <section class="ak-gallery-section" id="gallery">
+                <div class="container_1200">
+                    <div class="ak-section-title center">
+                        <span class="eyebrow">لحظات من دوراتنا</span>
+                        <h2>معرض الصور والفيديوهات</h2>
+                        <p>شاهد جانباً من أجواء التدريب والتطبيق العملي وتجارب المتدربين.</p>
+                    </div>
+                </div>
+
+                <div class="ak-gallery-grid">
+                    @foreach ($galleryItems as $item)
+                        <button type="button" class="ak-gallery-item" data-gallery-type="{{ $item->type }}"
+                            data-gallery-src="{{ asset($item->file_path) }}"
+                            aria-label="فتح {{ $item->title_ar ?: 'عنصر من المعرض' }}">
+                            @if ($item->type === 'video')
+                                <img src="{{ $item->poster_path ? asset($item->poster_path) : asset('front_end_style/images/omgs.png') }}"
+                                    alt="{{ $item->title_ar ?: 'فيديو من المعرض' }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
+                                <span class="ak-gallery-icon" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            @else
+                                <img src="{{ asset($item->file_path) }}" alt="{{ $item->title_ar ?: 'صورة من المعرض' }}"
+                                    loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
+                                <span class="ak-gallery-icon" aria-hidden="true"><i
+                                        class="fas fa-search-plus"></i></span>
+                            @endif
+                        </button>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
+        <div class="ak-gallery-lightbox" id="akGalleryLightbox" role="dialog" aria-modal="true"
+            aria-label="عارض الصور والفيديوهات" aria-hidden="true">
+            <button type="button" class="ak-gallery-close" aria-label="إغلاق">&times;</button>
+            <div class="ak-gallery-lightbox-content"></div>
+        </div>
+
         <section class="why-learn-section">
             <div class="container_1200">
 
@@ -1554,144 +1693,6 @@
 
             </div>
         </section>
-
-
-        {{-- =========================================================
-        Courses
-    ========================================================== --}}
-        <section class="modern-courses-section">
-            <div class="container_1200">
-
-                <div class="ak-section-title center">
-                    <span class="eyebrow">تعلم وطبّق</span>
-                    <h2>الدورات التدريبية</h2>
-                    <p>
-                        برامج عملية تساعدك على تطوير مهاراتك في التسويق الرقمي والإعلانات
-                        وتحويل المعرفة إلى نتائج قابلة للقياس.
-                    </p>
-                </div>
-
-                <div class="modern-courses-grid">
-
-                    @if (isset($courses) && $courses->count() > 0)
-                        @foreach ($courses as $course)
-                            <article class="modern-course-card">
-
-                                <a href="{{ route('course-details', $course->slug) }}">
-                                    @if (isset($course->main_image) && file_exists($course->main_image))
-                                        <img class="modern-course-img" src="{{ asset($course->main_image) }}"
-                                            alt="{{ $course->title_ar }}" loading="lazy">
-                                    @else
-                                        <img class="modern-course-img"
-                                            src="{{ asset('/front_end_style/images/omgs.png') }}"
-                                            alt="{{ $course->title_ar ?? 'دورة تدريبية' }}" loading="lazy">
-                                    @endif
-                                </a>
-
-                                <div class="modern-course-content">
-
-                                    <h3>
-                                        <a href="{{ route('course-details', $course->slug) }}"
-                                            style="color: inherit; text-decoration: none;">
-                                            {!! $course->title_ar ?? 'Undefined' !!}
-                                        </a>
-                                    </h3>
-
-                                    <p>
-                                        {!! \Illuminate\Support\Str::limit(
-                                            isset($course->short_description) ? str_replace('&nbsp;', ' ', strip_tags($course->short_description)) : '--------',
-                                            100,
-                                            '...',
-                                        ) !!}
-                                    </p>
-
-                                    <div class="modern-course-meta">
-                                        @if (isset($course->teacher_image) && file_exists($course->teacher_image))
-                                            <img class="modern-course-teacher-img"
-                                                src="{{ asset($course->teacher_image) }}" loading="lazy"
-                                                alt="{{ $course->teacher_ar ?? 'المدرب' }}">
-                                        @else
-                                            <img class="modern-course-teacher-img"
-                                                src="{{ asset('/front_end_style/images/omgs.png') }}" loading="lazy"
-                                                alt="{{ $course->teacher_ar ?? 'المدرب' }}">
-                                        @endif
-
-                                        <span class="modern-course-teacher-name">
-                                            {!! $course->teacher_ar ?? 'Undefined' !!}
-                                        </span>
-                                    </div>
-
-                                    <div class="modern-course-time">
-                                        <i class="far fa-clock"></i>
-
-                                        @if (isset($course->section_count) && isset($course->section_time))
-                                            <span>
-                                                {{ ceil(($course->section_count * $course->section_time) / 60) }}
-                                                ساعة
-                                            </span>
-                                        @else
-                                            <span>المدة غير محددة</span>
-                                        @endif
-                                    </div>
-
-                                    <a href="{{ route('course-details', $course->slug) }}" class="modern-course-link">
-                                        تفاصيل الدورة
-                                    </a>
-
-                                </div>
-
-                            </article>
-                        @endforeach
-                    @else
-                        <div style="grid-column: 1 / -1; text-align:center; color:#777;">
-                            لا توجد دورات متاحة حالياً.
-                        </div>
-                    @endif
-
-                </div>
-            </div>
-        </section>
-
-
-        {{-- Photo & Video Gallery from database --}}
-        @if (isset($galleryItems) && $galleryItems->count() > 0)
-            <section class="ak-gallery-section" id="gallery">
-                <div class="container_1200">
-                    <div class="ak-section-title center">
-                        <span class="eyebrow">لحظات من دوراتنا</span>
-                        <h2>معرض الصور والفيديوهات</h2>
-                        <p>شاهد جانباً من أجواء التدريب والتطبيق العملي وتجارب المتدربين.</p>
-                    </div>
-                </div>
-
-                <div class="ak-gallery-grid">
-                    @foreach ($galleryItems as $item)
-                        <button type="button" class="ak-gallery-item" data-gallery-type="{{ $item->type }}"
-                            data-gallery-src="{{ asset($item->file_path) }}"
-                            aria-label="فتح {{ $item->title_ar ?: 'عنصر من المعرض' }}">
-                            @if ($item->type === 'video')
-                                <img src="{{ $item->poster_path ? asset($item->poster_path) : asset('front_end_style/images/omgs.png') }}"
-                                    alt="{{ $item->title_ar ?: 'فيديو من المعرض' }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
-                                <span class="ak-gallery-icon" aria-hidden="true"><i class="fas fa-play"></i></span>
-                            @else
-                                <img src="{{ asset($item->file_path) }}" alt="{{ $item->title_ar ?: 'صورة من المعرض' }}"
-                                    loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('front_end_style/images/omgs.png') }}';">
-                                <span class="ak-gallery-icon" aria-hidden="true"><i
-                                        class="fas fa-search-plus"></i></span>
-                            @endif
-                        </button>
-                    @endforeach
-                </div>
-            </section>
-        @endif
-
-        <div class="ak-gallery-lightbox" id="akGalleryLightbox" role="dialog" aria-modal="true"
-            aria-label="عارض الصور والفيديوهات" aria-hidden="true">
-            <button type="button" class="ak-gallery-close" aria-label="إغلاق">&times;</button>
-            <div class="ak-gallery-lightbox-content"></div>
-        </div>
 
 
         {{-- =========================================================
