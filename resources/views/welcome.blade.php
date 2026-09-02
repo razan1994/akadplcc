@@ -183,11 +183,12 @@
             margin: 0 auto;
         }
 
-        .ak-hero-image img {
+        .ak-hero-image video {
             display: block;
             width: 100%;
             height: auto;
             object-fit: contain;
+            border-radius: var(--ak-radius);
         }
 
         /* =========================
@@ -1235,7 +1236,7 @@
             <div class="container_1200">
                 <div class="row">
 
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="ak-hero-content">
 
                             <span class="ak-hero-kicker">
@@ -1287,10 +1288,12 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="ak-hero-image  d-none d-md-flex">
-                            <img src="{{ asset('/front_end_style/images/omgs.png') }}"
-                                alt="علي خضير - التدريب في التسويق الرقمي والإعلانات" loading="eager">
+                            <video autoplay muted loop playsinline preload="metadata"
+                                aria-label="علي خضير - التدريب في التسويق الرقمي والإعلانات">
+                                <source src="{{ asset('front_end_style/images/video.mp4') }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
 
