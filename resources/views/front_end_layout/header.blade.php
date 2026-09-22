@@ -46,30 +46,19 @@
             <div class="c_menus_top">
 
                 <ul class="c_social">
-                    <li><a href="https://web.facebook.com/kanaffcom" target="_blank">
+                    <li><a href="https://www.facebook.com/akadsschool" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
 
                     </li>
                     <li>
-                        <a href=" https://www.instagram.com/kanaffcom" target="_blank">
+                        <a href="https://www.instagram.com/alikhdeirads" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/kanaffcom" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/%D9%83%D9%86%D9%81-%D8%A7%D9%84%D9%85%D8%B9%D8%B1%D9%81%D8%A9-810920235/"
-                            target="_blank">
+                        <a href="https://www.linkedin.com/in/ali-khdeir-83a06791" target="_blank">
                             <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCGjCh3T9mePQ5SDA1zSc1bA" target="_blank">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </li>
                 </ul>
@@ -192,15 +181,6 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        {{-- <div class="col-md-12 d-flex justify-content-center">
-                                            <a href="{{ route('social-auth', 'google') }}"
-                                                style="background: #ea4537;padding: 2%;"
-                                                class="btn btn-icon btn-google">
-                                                <span class="fab fa-google" style="color: #ffff"></span> الدخول
-                                                عبر
-                                                جوجل
-                                            </a>
-                                        </div> --}}
                                         <div class="form-group col-md-12">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="newaccount">
@@ -330,5 +310,3 @@
         <!-- Modal -->
     </div>
 </div>
-
-<!-- Removed email verification alert after login -->
