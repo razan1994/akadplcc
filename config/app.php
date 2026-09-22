@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'كنف المعرفة | Kanaf Almaarifa'),
+    'name' => env('APP_NAME', 'المدرسة الحديثة لإدارة الاعلانات  | The Modern School of Advertising Management'),
 
     /*
     |--------------------------------------------------------------------------
