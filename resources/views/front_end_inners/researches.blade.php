@@ -47,10 +47,11 @@
             margin: 32px 0 40px 0;
             animation: fadeInUp 1.1s;
         }
+
         .research-card {
             background: #fff;
             border-radius: 20px;
-            box-shadow: 0 4px 24px rgba(32,52,68,0.10);
+            box-shadow: 0 4px 24px rgba(32, 52, 68, 0.10);
             padding: 28px 22px 22px 22px;
             display: flex;
             flex-direction: column;
@@ -59,10 +60,12 @@
             min-height: 320px;
             position: relative;
         }
+
         .research-card:hover {
-            box-shadow: 0 8px 32px rgba(26,170,195,0.16);
+            box-shadow: 0 8px 32px rgba(26, 170, 195, 0.16);
             transform: translateY(-6px) scale(1.02);
         }
+
         .research-card .research-img {
             width: 100%;
             max-width: 120px;
@@ -73,26 +76,43 @@
             align-self: center;
             animation: fadeIn 1.2s;
         }
+
         @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
+
         .research-card h3 {
             font-size: 1.18rem;
             font-weight: 800;
             color: #203444;
             margin-bottom: 10px;
         }
+
         .research-card p {
             font-size: 1.02rem;
             color: #444;
             margin-bottom: 18px;
             min-height: 44px;
         }
+
         .research-card .download-btn {
             display: inline-block;
             background: linear-gradient(120deg, #1aaac3 0%, #203444 100%);
@@ -103,48 +123,78 @@
             font-weight: 700;
             text-decoration: none;
             transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-            box-shadow: 0 2px 12px rgba(32,52,68,0.10);
+            box-shadow: 0 2px 12px rgba(32, 52, 68, 0.10);
             margin-top: auto;
             animation: pulseBtn 1.5s infinite alternate;
         }
+
         .research-card .download-btn:hover {
             background: #203444;
             color: #fff;
             transform: scale(1.04);
         }
+
         @keyframes pulseBtn {
-            0% { box-shadow: 0 2px 12px rgba(32,52,68,0.10); }
-            100% { box-shadow: 0 6px 24px rgba(26,170,195,0.18); }
+            0% {
+                box-shadow: 0 2px 12px rgba(32, 52, 68, 0.10);
+            }
+
+            100% {
+                box-shadow: 0 6px 24px rgba(26, 170, 195, 0.18);
+            }
         }
     </style>
-    <div class="container_1200">
-        <div class="researches-grid">
-            @if (isset($researches) && $researches->count() > 0)
-                @foreach ($researches as $index => $research)
-                    <div class="research-card">
-                        @if (isset($research->image) && file_exists($research->image))
-                            <img class="research-img" src="{{ asset($research->image) }}" alt="{{ isset($research->title_ar) ? $research->title_ar : 'Undefined' }}" title="{{ isset($research->title_ar) ? $research->title_ar : 'Undefined' }}" loading="lazy">
-                        @else
-                            <img class="research-img" src="{{ asset('/front_end_style/images/omgs.png') }}">
-                        @endif
-                        <h3>{!! isset($research->title_ar) ? $research->title_ar : 'Undefined' !!}</h3>
-                        <p>{!! \Illuminate\Support\Str::limit(isset($research->desc_ar) ? str_replace('&nbsp;', ' ', $research->desc_ar) : '--------', 70, $end = '...') !!}</p>
-                        @if (auth('student')->check())
-                            @if (isset($research->file) && file_exists($research->file))
-                                <a class="download-btn" href="{{ route('student.downloadResearch', $research->id) }}">تحميل الملف</a>
-                            @else
-                                <a class="download-btn" href="#">لا يوجد ملف</a>
-                            @endif
-                        @else
-                            <a class="download-btn" href="#" data-toggle="modal" data-target="#loginn">تحميل الملف</a>
-                        @endif
-                    </div>
-                @endforeach
+    {{-- =========================================================
+        Blogs
+    ========================================================== --}}
+    @if (isset($blogs) && $blogs->count() > 0)
+        <section class="blogs-section">
+            <div class="container_1200">
 
-            @endif
-        </div>
-        <div class="d-flex justify-content-center">
-            {!! $researches->links() !!}
-        </div>
-    </div>
+                <div class="ak-section-title center">
+                    <span class="eyebrow">محتوى يساعدك تتطور</span>
+                    <h2>أحدث المقالات</h2>
+                    <p>
+                        مقالات وأفكار عملية في التسويق الرقمي والإعلانات وتطوير الأداء.
+                    </p>
+                </div>
+
+                <div class="row">
+                    @foreach ($blogs as $blog)
+                        <div class="col-md-4 mb-4">
+
+                            <article class="ak-blog-card">
+
+                                <div class="ak-blog-image">
+                                    @if ($blog->image && file_exists(public_path($blog->image)))
+                                        <img src="{{ asset($blog->image) }}" alt="{{ $blog->title_ar }}" loading="lazy">
+                                    @else
+                                        <img src="{{ asset('front_end_style/images/omgs.png') }}"
+                                            alt="{{ $blog->title_ar ?? 'مقال' }}" loading="lazy">
+                                    @endif
+                                </div>
+
+                                <div class="ak-blog-content">
+
+                                    <h4>{{ $blog->title_ar }}</h4>
+
+                                    <p>
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->desc_ar), 100, '...') }}
+                                    </p>
+
+                                    <a href="#">
+                                        اقرأ المزيد
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </section>
+    @endif
 @endsection
