@@ -495,7 +495,7 @@
                                 </h4>
 
                                 <p>
-                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->desc_ar ?? ''), 120, '...') }}
+                                    {{ \Illuminate\Support\Str::limit($blog->desc_ar) }}
                                 </p>
 
                                 <a href="#">
