@@ -87,25 +87,13 @@
                                     دوراتي
                                 </a>
                             </li>
-
-                            <li class="nav-item c_logic">
-                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#prof2" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    الابحاث
-                                </a>
-                            </li>
                             <li class="nav-item c_logic">
                                 <a class="nav-link " id="home-tab" data-toggle="tab" href="#prof3" role="tab"
                                     aria-controls="home" aria-selected="true">
                                     شهاداتي
                                 </a>
                             </li>
-                            <li class="nav-item c_logic">
-                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#prof4" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    السيرة الذاتية
-                                </a>
-                            </li>
+                           
                             <li class="nav-item c_logoutoic">
                                 <a class="nav-link" id="home-tab" href="{{ route('student.logout') }}" aria-controls="home"
                                     aria-selected="true">
@@ -366,215 +354,8 @@
 
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="prof2">
-                            <div class="c_research">
-                                <div class="row">
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/parnter.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/parnter.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/parnter.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/parnter.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/parnter.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h3>هناك حقيقة </h3>
-                                                <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
-                                                    القارئ عن التركيز على الشكل الخارجي للنص </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="prof3">
-                            <div class="c_certifcate">
-                                <div class="c_add_certif">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                            </div>
-                                            <div class="c_body">
-                                                <h5 style="text-align:center;">هناك حقيقة </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="prof4">
-                            <div class="c_certifcate">
-                                <div class="c_add_certif">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <a href="{{ route('student.cv-first') }}">
-                                                    <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <a href="{{ route('student.cv-second') }}">
-                                                    <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-12">
-                                        <div class="c_item">
-                                            <div class="c_image">
-                                                <a href="{{ route('student.cv-third') }}">
-                                                    <img src="{{ asset('/front_end_style/images/sertv3.png') }}">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -583,8 +364,8 @@
 
 
     {{-- Modals --}}
-    {{-- 
-        
+    {{--
+
             $table->enum('status', ['pending', 'paid', 'rejected'])->default('pending');
             $table->string('message')->nullable();
             --}}
@@ -751,7 +532,7 @@
         });
 
         $(document).ready(function() {
-            // hide the email 
+            // hide the email
             $('#emailInput').hide();
 
             // show the payment wallets when the type is wallet

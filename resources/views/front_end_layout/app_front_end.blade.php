@@ -405,9 +405,6 @@
 
     <div class="wrapper_1400">
 
-        {{-- Preloader --}}
-        @include('front_end_layout.preloader')
-
         {{-- Header --}}
         @livewire('frontend.layout.navbar')
 
@@ -492,21 +489,6 @@
     ========================================================== --}}
     <script>
         $(function() {
-
-            /* ---------------------------------------------
-               Preloader
-            --------------------------------------------- */
-            function hidePreloader() {
-                const preloader = $('#preloader');
-
-                if (preloader.length) {
-                    preloader.fadeOut('slow');
-                }
-            }
-
-            $(window).on('load', hidePreloader);
-
-            setTimeout(hidePreloader, 5000);
 
 
             /* ---------------------------------------------

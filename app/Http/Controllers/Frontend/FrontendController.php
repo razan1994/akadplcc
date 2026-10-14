@@ -171,8 +171,8 @@ class FrontendController extends Controller
         try {
 
 
-           $courses = Course::orderBy('created_at', 'desc')
-            ->paginate(8);
+            $courses = Course::orderBy('created_at', 'desc')
+                ->paginate(8);
 
             return view('front_end_inners.courses', compact('courses'));
         } catch (\Throwable $th) {
@@ -301,12 +301,12 @@ class FrontendController extends Controller
                 $last_name = $user->offsetGet('last_name');
                 break;
 
-                // case 'google':
-                //    $first_name = $user->user['givenName']['givenName'];
-                //    $last_name = $user->user['familyName']['familyName'];
-                //    break;
+            // case 'google':
+            //    $first_name = $user->user['givenName']['givenName'];
+            //    $last_name = $user->user['familyName']['familyName'];
+            //    break;
 
-                // You can also add more provider option e.g. linkedin, twitter etc.
+            // You can also add more provider option e.g. linkedin, twitter etc.
 
             default:
                 $first_name = $user->getName();
