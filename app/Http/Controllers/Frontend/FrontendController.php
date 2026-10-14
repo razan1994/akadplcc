@@ -353,12 +353,13 @@ class FrontendController extends Controller
     public function researches(Route $route)
     {
         try {
-            $researches = Research::where('status', 1)->orderBy('created_at', 'desc')->paginate(12);
+            $researches = Blog::latest()->paginate(12);
+
             return view('front_end_inners.researches', compact('researches'));
         } catch (\Throwable $th) {
-            $function_name =  $route->getActionName();
-            $check_old_errors = new SupportTicket();
-            $check_old_errors = $check_old_errors->select('*')->where([
+            $function_name = $route->getActionName();
+
+            $check_old_errors = SupportTicket::where([
                 'error_location' => $th->getFile(),
                 'error_description' => $th->getMessage(),
                 'function_name' => $function_name,
@@ -366,17 +367,21 @@ class FrontendController extends Controller
             ])->get();
 
             if ($check_old_errors->count() == 0) {
-                $new_error_ticket = SupportTicket::create([
+                $end_error_ticket = SupportTicket::create([
                     'error_location' => $th->getFile(),
                     'error_description' => $th->getMessage(),
                     'function_name' => $function_name,
-                    'error_line' =>  $th->getLine(),
+                    'error_line' => $th->getLine(),
                 ]);
-                $end_error_ticket = $new_error_ticket;
             } else {
                 $end_error_ticket = $check_old_errors->first();
             }
-            return view('errors.support_tickets', compact('th', 'function_name', 'end_error_ticket'));
+
+            return view('errors.support_tickets', compact(
+                'th',
+                'function_name',
+                'end_error_ticket'
+            ));
         }
     }
 }
