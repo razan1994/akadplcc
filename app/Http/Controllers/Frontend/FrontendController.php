@@ -355,7 +355,8 @@ class FrontendController extends Controller
     {
 
         try {
-            return view('front_end_inners.researches', compact('categorySlug'));
+             $blogs = Blog::orderBy('created_at', 'desc')->get();
+            return view('front_end_inners.researches', compact('categorySlug', 'blogs'));
         } catch (\Throwable $th) {
             $function_name =  $route->getActionName();
             $check_old_errors = new SupportTicket();
