@@ -123,12 +123,12 @@
                 @foreach ($researches as $index => $research)
                     <div class="research-card">
                         @if (isset($research->image) && file_exists($research->image))
-                            <img class="research-img" src="{{ asset($research->image) }}" alt="{{ isset($research->title) ? $research->title : 'Undefined' }}" title="{{ isset($research->title) ? $research->title : 'Undefined' }}" loading="lazy">
+                            <img class="research-img" src="{{ asset($research->image) }}" alt="{{ isset($research->title_ar) ? $research->title_ar : 'Undefined' }}" title="{{ isset($research->title_ar) ? $research->title_ar : 'Undefined' }}" loading="lazy">
                         @else
                             <img class="research-img" src="{{ asset('/front_end_style/images/omgs.png') }}">
                         @endif
-                        <h3>{!! isset($research->title) ? $research->title : 'Undefined' !!}</h3>
-                        <p>{!! \Illuminate\Support\Str::limit(isset($research->description) ? str_replace('&nbsp;', ' ', $research->description) : '--------', 70, $end = '...') !!}</p>
+                        <h3>{!! isset($research->title_ar) ? $research->title_ar : 'Undefined' !!}</h3>
+                        <p>{!! \Illuminate\Support\Str::limit(isset($research->desc_ar) ? str_replace('&nbsp;', ' ', $research->desc_ar) : '--------', 70, $end = '...') !!}</p>
                         @if (auth('student')->check())
                             @if (isset($research->file) && file_exists($research->file))
                                 <a class="download-btn" href="{{ route('student.downloadResearch', $research->id) }}">تحميل الملف</a>
@@ -140,7 +140,7 @@
                         @endif
                     </div>
                 @endforeach
-           
+
             @endif
         </div>
         <div class="d-flex justify-content-center">
