@@ -140,15 +140,7 @@
                         @endif
                     </div>
                 @endforeach
-            @else
-                @for ($i = 0; $i < 10; $i++)
-                    <div class="research-card">
-                        <img class="research-img" src="{{ asset('/front_end_style/images/omgs.png') }}">
-                        <h3>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </h3>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص </p>
-                        <a class="download-btn" href="#">اقرأ المزيد</a>
-                    </div>
-                @endfor
+           
             @endif
         </div>
         <div class="d-flex justify-content-center">
