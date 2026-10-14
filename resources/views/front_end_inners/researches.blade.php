@@ -40,7 +40,96 @@
     <!-- ======================================== inner-top =============================================== -->
     <!-- ================================================================================================== -->
     <style>
-        .researches-grid {
+        ```css
+        /* =========================
+       Blogs
+    ========================= */
+
+        .blogs-section {
+            padding: 85px 0;
+            background: #fff;
+        }
+
+        .ak-blog-card {
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid #edf1f4;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 6px 22px rgba(32, 52, 68, .07);
+            transition: .25s ease;
+        }
+
+        .ak-blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(32, 52, 68, .11);
+        }
+
+        .ak-blog-image {
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .ak-blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ak-blog-content {
+            padding: 18px;
+        }
+
+        .ak-blog-content h4 {
+            color: #203444;
+            font-size: 17px;
+            font-weight: 800;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .ak-blog-content p {
+            color: #69737b;
+            font-size: 13px;
+            line-height: 1.9;
+            min-height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .ak-blog-content a {
+            color: #1aaac3;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .ak-blog-content a:hover {
+            color: #0e7a99;
+        }
+
+        /* =========================
+       Responsive
+    ========================= */
+
+        @media (max-width: 767px) {
+            .blogs-section {
+                padding: 60px 0;
+            }
+
+            .ak-blog-image {
+                height: 220px;
+            }
+
+            .ak-blog-content {
+                padding: 16px;
+            }
+
+            .ak-blog-content h4 {
+                font-size: 16px;
+            }
+        }
+
+        ``` .researches-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
