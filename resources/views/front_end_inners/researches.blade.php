@@ -268,7 +268,7 @@
                                     <h4>{{ $blog->title_ar }}</h4>
 
                                     <p>
-                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->desc_ar), 100, '...') }}
+                                        {{ \Illuminate\Support\Str::limit($blog->desc_ar, 100, '...') }}
                                     </p>
 
                                     <a href="#">
